@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dgsi42nlemm63"]
+
+[ext_resource type="Texture2D" uid="uid://d0sgp4a52ffei" path="res://assets/3d/textures/coarse-old-fabric-bl/coarse-old-fabric_albedo.png" id="1_214gw"]
+[ext_resource type="Texture2D" uid="uid://bl2aqsue8l4xr" path="res://assets/3d/textures/coarse-old-fabric-bl/coarse-old-fabric_height.png" id="3_ikx1y"]
+
+[resource]
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_214gw")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_ikx1y")
+uv1_triplanar = true

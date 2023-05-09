@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bff888blpslor"
+path="res://.godot/imported/desk.obj-8072237a6669e7331fe3abf798077efe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/desk.obj-8072237a6669e7331fe3abf798077efe.mesh"]
+
+source_file="res://assets/3d/desk.obj"
+dest_files=["res://.godot/imported/desk.obj-8072237a6669e7331fe3abf798077efe.mesh", "res://.godot/imported/desk.obj-8072237a6669e7331fe3abf798077efe.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

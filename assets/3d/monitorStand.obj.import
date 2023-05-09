@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://buq1uso8urd3a"
+path="res://.godot/imported/monitorStand.obj-66c2cd63f2e08be7b7c9d4aed73f417f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/monitorStand.obj-66c2cd63f2e08be7b7c9d4aed73f417f.mesh"]
+
+source_file="res://assets/3d/monitorStand.obj"
+dest_files=["res://.godot/imported/monitorStand.obj-66c2cd63f2e08be7b7c9d4aed73f417f.mesh", "res://.godot/imported/monitorStand.obj-66c2cd63f2e08be7b7c9d4aed73f417f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

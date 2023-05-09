@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://d2m0d4dev2kg1"]
+
+[ext_resource type="Texture2D" uid="uid://b3koxxptk440r" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-albedo.png" id="1_8noq2"]
+[ext_resource type="Texture2D" uid="uid://3arokunua8q1" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-height.png" id="2_rkpkp"]
+[ext_resource type="Texture2D" uid="uid://h4s4bpdavl5m" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-metallic.png" id="3_6jeyd"]
+[ext_resource type="Texture2D" uid="uid://dqljkmoa6e70k" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-normal-ogl.png" id="4_xhrja"]
+[ext_resource type="Texture2D" uid="uid://dcgk10aa4tm8k" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-roughness.png" id="5_hs4xg"]
+
+[resource]
+albedo_texture = ExtResource("1_8noq2")
+metallic = 1.0
+metallic_texture = ExtResource("3_6jeyd")
+roughness_texture = ExtResource("5_hs4xg")
+normal_enabled = true
+normal_texture = ExtResource("4_xhrja")
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_rkpkp")
+uv1_triplanar = true
