@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ct21oa0rwkssp"]
+
+[ext_resource type="Texture2D" uid="uid://cslkhj6dgwalp" path="res://assets/3d/textures/coarse-old-fabric-bl/coarse-old-fabric_albedo_brown.png" id="1_4d1vq"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l4kwy"]
+load_path = "res://.godot/imported/coarse-old-fabric_height.png-19a9bf27130fd5b15906f0e297525d77.s3tc.ctex"
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_4d1vq")
+heightmap_enabled = true
+heightmap_texture = SubResource("CompressedTexture2D_l4kwy")
+uv1_triplanar = true
