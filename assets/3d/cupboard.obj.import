@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cq7wdtox2vlu6"
+path="res://.godot/imported/cupboard.obj-c1f5c9ea9055b0443c777e836127f4ed.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cupboard.obj-c1f5c9ea9055b0443c777e836127f4ed.mesh"]
+
+source_file="res://assets/3d/cupboard.obj"
+dest_files=["res://.godot/imported/cupboard.obj-c1f5c9ea9055b0443c777e836127f4ed.mesh", "res://.godot/imported/cupboard.obj-c1f5c9ea9055b0443c777e836127f4ed.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
