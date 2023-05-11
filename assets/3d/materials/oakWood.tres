@@ -1,0 +1,22 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://ducwgc1mxv620"]
+
+[ext_resource type="Texture2D" uid="uid://d2w8r3oqqlurx" path="res://assets/3d/textures/oakWood/TexturesCom_Wood_OakVeneer2_2K_albedo.png" id="1_oupgr"]
+[ext_resource type="Texture2D" uid="uid://dr22hbyepp5hn" path="res://assets/3d/textures/oakWood/TexturesCom_Wood_OakVeneer2_2K_roughness.png" id="2_y23bk"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qq8wc"]
+load_path = "res://.godot/imported/streaky-plywood_ao.png-efa76707493227cf45fc11c79b0cc8bb.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v0qkr"]
+load_path = "res://.godot/imported/streaky-plywood_height.png-11ca6ef55f2f8a7b328b833c02d2010c.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ooo8x"]
+load_path = "res://.godot/imported/streaky-plywood_normal-ogl.png-04777348410107147ee116319090e124.s3tc.ctex"
+
+[resource]
+albedo_texture = ExtResource("1_oupgr")
+roughness_texture = ExtResource("2_y23bk")
+normal_texture = SubResource("CompressedTexture2D_ooo8x")
+ao_texture = SubResource("CompressedTexture2D_qq8wc")
+heightmap_texture = SubResource("CompressedTexture2D_v0qkr")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_triplanar = true
