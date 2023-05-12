@@ -1,4 +1,4 @@
-[gd_scene load_steps=116 format=3 uid="uid://bi4kkj3ot12jb"]
+[gd_scene load_steps=120 format=3 uid="uid://bi4kkj3ot12jb"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -61,6 +61,8 @@
 [ext_resource type="ArrayMesh" uid="uid://4e1e01fuau3w" path="res://assets/3d/door.obj" id="55_tvyxf"]
 [ext_resource type="ArrayMesh" uid="uid://cgbrv1hrewn51" path="res://assets/3d/bin.obj" id="57_ov2jb"]
 [ext_resource type="ArrayMesh" uid="uid://dp7od8s70u74a" path="res://assets/3d/ceilingLamp.obj" id="58_38w1i"]
+[ext_resource type="ArrayMesh" uid="uid://dlctkaoujnt03" path="res://assets/3d/teacup.obj" id="62_vug04"]
+[ext_resource type="Texture2D" uid="uid://d0h73lblbjy8t" path="res://assets/3d/textures/teacup/Tiles101_1K_Color.jpg" id="63_ri1tj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4ojb"]
 sky_top_color = Color(0.0627451, 0.733333, 1, 1)
@@ -259,6 +261,7 @@ cull_mode = 2
 albedo_texture = SubResource("CompressedTexture2D_cruka")
 metallic = 1.0
 metallic_texture = SubResource("CompressedTexture2D_otj08")
+roughness = 0.0
 roughness_texture = SubResource("CompressedTexture2D_dv1j5")
 normal_enabled = true
 normal_texture = SubResource("CompressedTexture2D_4cupn")
@@ -324,6 +327,12 @@ albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 1.0
 roughness = 0.0
 emission = Color(1, 0.854902, 0.647059, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kgplj"]
+roughness = 0.08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xr7qh"]
+albedo_texture = ExtResource("63_ri1tj")
 
 [node name="home" type="Node3D"]
 
@@ -1045,3 +1054,9 @@ shadow_enabled = true
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.338729, 0)
 visible = false
 light_color = Color(0.388235, 0, 0.0156863, 1)
+
+[node name="Teacup" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.15, 0, -1.31134e-08, 0, 0.15, 0, 1.31134e-08, 0, -0.15, -0.41979, 1.27268, 3.31865)
+mesh = ExtResource("62_vug04")
+surface_material_override/0 = SubResource("StandardMaterial3D_kgplj")
+surface_material_override/1 = SubResource("StandardMaterial3D_xr7qh")

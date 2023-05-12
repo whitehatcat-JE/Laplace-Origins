@@ -14,6 +14,7 @@ load_path = "res://.godot/imported/streaky-plywood_normal-ogl.png-04777348410107
 
 [resource]
 albedo_texture = ExtResource("1_oupgr")
+roughness = 0.0
 roughness_texture = ExtResource("2_y23bk")
 normal_texture = SubResource("CompressedTexture2D_ooo8x")
 ao_texture = SubResource("CompressedTexture2D_qq8wc")

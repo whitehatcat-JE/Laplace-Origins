@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dlctkaoujnt03"
+path="res://.godot/imported/teacup.obj-074754e98ff6cb66a297dcdae702d3a3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/teacup.obj-074754e98ff6cb66a297dcdae702d3a3.mesh"]
+
+source_file="res://assets/3d/teacup.obj"
+dest_files=["res://.godot/imported/teacup.obj-074754e98ff6cb66a297dcdae702d3a3.mesh", "res://.godot/imported/teacup.obj-074754e98ff6cb66a297dcdae702d3a3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
