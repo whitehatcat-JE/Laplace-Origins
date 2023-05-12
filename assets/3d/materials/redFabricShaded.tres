@@ -9,6 +9,5 @@ load_path = "res://.godot/imported/coarse-old-fabric_height.png-19a9bf27130fd5b1
 [resource]
 cull_mode = 2
 albedo_texture = SubResource("CompressedTexture2D_u07wd")
-heightmap_enabled = true
 heightmap_texture = SubResource("CompressedTexture2D_g7k87")
 uv1_triplanar = true

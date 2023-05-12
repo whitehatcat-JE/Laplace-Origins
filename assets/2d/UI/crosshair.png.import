@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8v8bgps6768t"
-path="res://.godot/imported/Tiles101_1K_AmbientOcclusion.jpg-1949b38b191e00338a1e3fe6eb01931d.ctex"
+uid="uid://byasw2wllivf0"
+path="res://.godot/imported/crosshair.png-76c9cc8dd81320d6610bb64a5d175234.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/3d/textures/teacup/Tiles101_1K_AmbientOcclusion.jpg"
-dest_files=["res://.godot/imported/Tiles101_1K_AmbientOcclusion.jpg-1949b38b191e00338a1e3fe6eb01931d.ctex"]
+source_file="res://assets/2d/UI/crosshair.png"
+dest_files=["res://.godot/imported/crosshair.png-76c9cc8dd81320d6610bb64a5d175234.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
-roughness/mode=0
+roughness/mode=1
 roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false

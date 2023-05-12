@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0h73lblbjy8t"
-path.s3tc="res://.godot/imported/Tiles101_1K_Color.jpg-a557cba96e57e276774579f58b2563eb.s3tc.ctex"
+path.s3tc="res://.godot/imported/Tiles101_1K_Color.jpg-75b9b6ebdba6bbd05c71e08fb7433777.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/3d/textures/teacup/Tiles101_1K_Color.jpg"
-dest_files=["res://.godot/imported/Tiles101_1K_Color.jpg-a557cba96e57e276774579f58b2563eb.s3tc.ctex"]
+source_file="res://assets/3d/textures/china/Tiles101_1K_Color.jpg"
+dest_files=["res://.godot/imported/Tiles101_1K_Color.jpg-75b9b6ebdba6bbd05c71e08fb7433777.s3tc.ctex"]
 
 [params]
 
