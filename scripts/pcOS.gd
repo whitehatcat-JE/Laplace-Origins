@@ -1,10 +1,14 @@
 extends Node2D
 
+signal exitOS
+signal approvalEmailViewed
+
 var mouseSensitivity:float = 0.5
 var time:int = 0
 
 var currentInteraction:String = ""
 var menuDisplaying:bool = false
+var emailDisplaying:bool = false
 
 @onready var minX:float = $boundaryNW.position.x
 @onready var maxX:float = $boundarySE.position.x
@@ -39,7 +43,17 @@ func eventTriggered(event):
 				menuDisplaying = false
 				$loginScreen.position.x = 0
 				$homeScreen.position.x = 10000
-
+				emit_signal("exitOS")
+			"emailOpen":
+				if emailDisplaying:
+					$homeScreen/emailWindow/emailAnims.play("disappear")
+				else:
+					$homeScreen/emailWindow/emailAnims.play("appear")
+					emit_signal("approvalEmailViewed")
+				emailDisplaying = !emailDisplaying
+			"emailQuit":
+				$homeScreen/emailWindow/emailAnims.play("disappear")
+				emailDisplaying = false
 func _process(delta):
 	$mouse/mousePointer.visible = false
 	$mouse/mouseInteract.visible = false
@@ -63,6 +77,8 @@ func _process(delta):
 				$homeScreen/menuBar/files/fileBack.modulate = "ffffff00"
 			"emailOpen":
 				$homeScreen/menuBar/email/emailBack.modulate = "ffffff00"
+			"emailQuit":
+				$homeScreen/emailWindow/quit/quitBack.modulate = "ffffff00"
 		match interaction:
 			"login":
 				$loginScreen/loginButton.modulate = "969696d5"
@@ -74,6 +90,8 @@ func _process(delta):
 				$homeScreen/menuBar/files/fileBack.modulate = "969696d5"
 			"emailOpen":
 				$homeScreen/menuBar/email/emailBack.modulate = "969696d5"
+			"emailQuit":
+				$homeScreen/emailWindow/quit/quitBack.modulate = "969696d5"
 		currentInteraction = interaction
 
 

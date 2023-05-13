@@ -9,10 +9,13 @@ const DECELERATION:float = 20.0
 var cameraAngle:float = 0
 var disabled:bool = false
 
+var unlockedInteractions = ["monitor"]
+
 @onready var interactCast = $head/cam/interactCast
 @onready var collisionCast = $head/cam/collisionCast
 @onready var HUDcrosshair = $HUD/crosshair
 @onready var HUDinteract = $HUD/interact
+@onready var HUDlock = $HUD/lock
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,6 +38,7 @@ func _physics_process(delta):
 	if disabled: return;
 	HUDinteract.visible = false
 	HUDcrosshair.visible = false
+	HUDlock.visible = false
 	if interactCast.is_colliding():
 		var curPos = interactCast.global_transform.origin
 		var colDis = 100000.0
@@ -46,8 +50,10 @@ func _physics_process(delta):
 			var intPos = interactCast.get_collider().global_transform.origin
 			if interactCast.get_collider().minDistance < intPos.distance_to(curPos):
 				HUDcrosshair.visible = true
-			else:
+			elif interactCast.get_collider().interactionName in unlockedInteractions:
 				HUDinteract.visible = true
+			else:
+				HUDlock.visible = true
 		
 	var aim = get_global_transform().basis
 	var direction:Vector3 = Vector3(0, -1, 0)

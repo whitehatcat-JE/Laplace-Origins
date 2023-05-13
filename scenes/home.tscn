@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=3 uid="uid://c311m5x6mx8bi"]
+[gd_scene load_steps=139 format=3 uid="uid://c311m5x6mx8bi"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://d2m0d4dev2kg1" path="res://assets/3d/materials/darkPlanks.tres" id="2_xynmm"]
 [ext_resource type="Material" uid="uid://cv76vwfwvvxvt" path="res://assets/3d/materials/concrete.tres" id="5_6kw2r"]
 [ext_resource type="Material" uid="uid://djscqebmxa2dj" path="res://assets/3d/materials/metal.tres" id="5_tn6ee"]
+[ext_resource type="Texture2D" uid="uid://cigjq25fsqn45" path="res://assets/2d/UI/interactIconLocked.png" id="6_5fre7"]
 [ext_resource type="PackedScene" uid="uid://csnnn1yw8ccgs" path="res://scenes/pcOS.tscn" id="6_wgccf"]
 [ext_resource type="Texture2D" uid="uid://bfp30fvpiae72" path="res://assets/3d/textures/concrete3-bl/concrete3-albedo.png" id="7_2m1v7"]
 [ext_resource type="ArrayMesh" uid="uid://drl6ksmb42nis" path="res://assets/3d/potPlant.obj" id="7_10o0d"]
@@ -178,7 +179,7 @@ radial_segments = 4
 rings = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fyhrf"]
-size = Vector3(5.35123, 1.50706, 1.99863)
+size = Vector3(4.58449, 1.50706, 1.99863)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aduyn"]
 albedo_color = Color(0.627451, 0.262745, 0.0235294, 1)
@@ -231,6 +232,9 @@ emission_energy_multiplier = 0.1
 emission_texture = ExtResource("27_q6856")
 heightmap_texture = ExtResource("28_w1sg1")
 uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d8bbg"]
+size = Vector3(0.734126, 1.91874, 1.59881)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s5yas"]
 cull_mode = 2
@@ -537,6 +541,13 @@ position = Vector2(4, 14)
 scale = Vector2(0.188636, 0.188636)
 texture = ExtResource("70_jemre")
 
+[node name="lock" type="Sprite2D" parent="player/HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(4, 14)
+scale = Vector2(0.188636, 0.188636)
+texture = ExtResource("6_5fre7")
+
 [node name="bobAnim" type="AnimationPlayer" parent="player"]
 root_node = NodePath("../..")
 autoplay = "bob"
@@ -572,7 +583,7 @@ target_position = Vector3(0, -10, 0)
 
 [node name="pcWindow" type="SubViewport" parent="."]
 disable_3d = true
-size = Vector2i(4096, 4096)
+size = Vector2i(4098, 4098)
 
 [node name="pcOS" parent="pcWindow" instance=ExtResource("6_wgccf")]
 
@@ -608,7 +619,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0928049)
 shape = SubResource("BoxShape3D_84r30")
 
 [node name="cam" type="Camera3D" parent="desk/monitorScreen"]
-transform = Transform3D(-1.25, 0, -1.09278e-07, 0, 1.25, 0, 1.09278e-07, 0, -1.25, 0, 0, -1.04694)
+transform = Transform3D(-1.25, 0, -1.09278e-07, 0, 1.25, 0, 1.09278e-07, 0, -1.25, 0, 0, -1.02107)
 
 [node name="drawerHandleA" type="MeshInstance3D" parent="desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.926272, 0.319634, 0.866864)
@@ -628,7 +639,11 @@ mesh = SubResource("CylinderMesh_lg7o6")
 [node name="StaticBody3D" type="StaticBody3D" parent="desk"]
 
 [node name="hitbox" type="CollisionShape3D" parent="desk/StaticBody3D"]
-transform = Transform3D(1, 0, -5.68434e-14, 0, 1, 0, 5.68434e-14, 0, 1, -0.368753, 0, 0)
+transform = Transform3D(1, 0, -5.68434e-14, 0, 1, 0, 5.68434e-14, 0, 1, 0.0664335, 0, 0)
+shape = SubResource("BoxShape3D_fyhrf")
+
+[node name="hitbox2" type="CollisionShape3D" parent="desk/StaticBody3D"]
+transform = Transform3D(1, 0, -5.68434e-14, 0, 1, 0, 5.68434e-14, 0, 1, -1.25302, -0.77111, 0)
 shape = SubResource("BoxShape3D_fyhrf")
 
 [node name="potPlant" type="MeshInstance3D" parent="desk"]
@@ -734,6 +749,15 @@ transform = Transform3D(-4.37113e-08, 4.17959e-15, 1, -0.258819, -0.965925, -1.1
 pixel_size = 0.001
 shaded = true
 texture = ExtResource("29_t6lnm")
+
+[node name="usbInteraction" parent="desk/Pc" instance=ExtResource("13_pkg5h")]
+transform = Transform3D(1, 0, 1.0842e-19, 0, 1, 0, -1.0842e-19, 0, 1, 0, 0, 0)
+minDistance = 1.5
+interactionName = "usb"
+
+[node name="hitbox" type="CollisionShape3D" parent="desk/Pc/usbInteraction"]
+transform = Transform3D(1, 0, -2.71051e-20, 0, 1, 0, 2.71051e-20, 0, 1, -0.239327, 0, 0.0621848)
+shape = SubResource("BoxShape3D_d8bbg")
 
 [node name="Teacup" type="MeshInstance3D" parent="desk"]
 transform = Transform3D(0.248536, 0, -0.112292, 0, 0.272727, 0, 0.112292, 0, 0.248536, 0.849664, 0.778773, -0.0790792)
@@ -1230,3 +1254,5 @@ visible = false
 light_color = Color(0.388235, 0, 0.0156863, 1)
 
 [connection signal="interacted" from="player" to="." method="_on_player_interacted"]
+[connection signal="approvalEmailViewed" from="pcWindow/pcOS" to="." method="_on_pc_os_approval_email_viewed"]
+[connection signal="exitOS" from="pcWindow/pcOS" to="." method="_on_pc_os_exit_os"]

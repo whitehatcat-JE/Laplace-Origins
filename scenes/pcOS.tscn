@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://csnnn1yw8ccgs"]
+[gd_scene load_steps=24 format=3 uid="uid://csnnn1yw8ccgs"]
 
 [ext_resource type="Script" path="res://scripts/pcOS.gd" id="1_xeigj"]
 [ext_resource type="Texture2D" uid="uid://b8f2gr7p8vcd2" path="res://assets/2d/pcOS/dropBackground.png" id="2_j3svo"]
@@ -36,7 +36,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(0, 200), Vector2(0, 0)]
+"values": [Vector2(-120, 200), Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -76,7 +76,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(0.5, 0.5),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 200)]
+"values": [Vector2(0, 0), Vector2(-120, 200)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -107,6 +107,106 @@ tracks/2/keys = {
 _data = {
 "appear": SubResource("Animation_y873e"),
 "disappear": SubResource("Animation_ek3cu")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d85xy"]
+size = Vector2(28.5714, 47.5)
+
+[sub_resource type="Animation" id="Animation_22kq3"]
+resource_name = "appear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("emailDescription:visible_ratio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 1),
+"transitions": PackedFloat32Array(1, 1, 2),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(666, 94), Vector2(666, 94)]
+}
+
+[sub_resource type="Animation" id="Animation_cb47g"]
+resource_name = "disappear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.2001),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7), Vector2(0.7, 0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(666, 94), Vector2(10000, 94)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_86od8"]
+_data = {
+"appear": SubResource("Animation_22kq3"),
+"disappear": SubResource("Animation_cb47g")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnmcw"]
@@ -210,7 +310,7 @@ texture = ExtResource("7_ou12u")
 
 [node name="menuBar" type="Node2D" parent="homeScreen"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(0, 200)
+position = Vector2(-120, 200)
 scale = Vector2(1, 0.5)
 
 [node name="menubar" type="ColorRect" parent="homeScreen/menuBar"]
@@ -306,6 +406,120 @@ shape = SubResource("RectangleShape2D_8nfdd")
 [node name="menuAnims" type="AnimationPlayer" parent="homeScreen/menuBar"]
 libraries = {
 "": SubResource("AnimationLibrary_enq42")
+}
+
+[node name="emailWindow" type="Node2D" parent="homeScreen"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(10000, 94)
+scale = Vector2(0.7, 0.7)
+
+[node name="taskbar" type="ColorRect" parent="homeScreen/emailWindow"]
+offset_left = 3.0
+offset_top = -2.0
+offset_right = 483.0
+offset_bottom = 327.0
+color = Color(0.14902, 0.14902, 0.14902, 0.835294)
+
+[node name="taskbar2" type="ColorRect" parent="homeScreen/emailWindow"]
+offset_left = 3.0
+offset_top = -2.0
+offset_right = 483.0
+offset_bottom = 17.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="taskbar3" type="ColorRect" parent="homeScreen/emailWindow"]
+offset_left = 3.0
+offset_top = 17.0
+offset_right = 152.0
+offset_bottom = 327.0
+color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="files" type="Label" parent="homeScreen/emailWindow"]
+offset_left = 9.00006
+offset_top = -1.99999
+offset_right = 272.0
+offset_bottom = 46.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 35
+text = "Email"
+
+[node name="files3" type="Label" parent="homeScreen/emailWindow"]
+offset_left = 10.0
+offset_top = 21.0
+offset_right = 352.0
+offset_bottom = 69.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 30
+text = "Next test approved!"
+
+[node name="files4" type="Label" parent="homeScreen/emailWindow"]
+offset_left = 10.0
+offset_top = 35.0
+offset_right = 58.0
+offset_bottom = 64.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 25
+text = "Anne"
+
+[node name="quit" type="Label" parent="homeScreen/emailWindow"]
+offset_left = 466.0
+offset_top = -1.99999
+offset_right = 489.0
+offset_bottom = 46.0
+scale = Vector2(0.7, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 35
+text = "X"
+
+[node name="quitBack" type="ColorRect" parent="homeScreen/emailWindow/quit"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = -4.0
+offset_right = 24.0
+offset_bottom = 47.0
+
+[node name="interact" parent="homeScreen/emailWindow/quit" instance=ExtResource("8_kdwn3")]
+interactionName = "emailQuit"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/emailWindow/quit/interact"]
+position = Vector2(9.99988, 23.75)
+shape = SubResource("RectangleShape2D_d85xy")
+
+[node name="emailDescription" type="Label" parent="homeScreen/emailWindow"]
+offset_left = 163.0
+offset_top = 28.0
+offset_right = 928.0
+offset_bottom = 616.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 30
+text = "Looks like the stakeholders have finally given us the go-ahead to do another test run!
+
+First I’m gonna need you to switch off the router near your wardrobe. Can’t have the program accidentally scraping un-filtered data from the internet, can we?
+
+Then just run the .exe file and let it do its thing. Oh, and MAKE SURE you shut down the program before re-connecting your router. I’d like to avoid getting fired right after Christmas."
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="taskbar4" type="ColorRect" parent="homeScreen/emailWindow"]
+offset_left = 10.0
+offset_top = 49.0
+offset_right = 145.0
+offset_bottom = 51.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="emailAnims" type="AnimationPlayer" parent="homeScreen/emailWindow"]
+libraries = {
+"": SubResource("AnimationLibrary_86od8")
 }
 
 [node name="taskbar" type="ColorRect" parent="homeScreen"]

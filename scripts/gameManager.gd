@@ -1,5 +1,7 @@
 extends Node3D
 
+var questNum = 0
+
 @onready var player:Node = $player
 @onready var playerCam:Node = $player/head/cam
 
@@ -31,3 +33,18 @@ func _on_player_interacted(interactionName:String):
 			player.get_node("HUD").visible = false
 			playerCam.current = false
 			pcCam.current = true
+		"router":
+			player.unlockedInteractions.erase("router")
+			questNum += 1
+
+func _on_pc_os_exit_os():
+	if pcCam.current:
+		player.disabled = false
+		player.get_node("HUD").visible = true
+		playerCam.current = true
+		pcCam.current = false
+
+func _on_pc_os_approval_email_viewed():
+	if questNum == 0:
+		questNum += 1
+		player.unlockedInteractions.append("router")
