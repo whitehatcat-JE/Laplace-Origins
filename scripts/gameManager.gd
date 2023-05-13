@@ -35,7 +35,9 @@ func _on_player_interacted(interactionName:String):
 			pcCam.current = true
 		"router":
 			player.unlockedInteractions.erase("router")
-			questNum += 1
+			$walls/Router/routerLogo.visible = false
+			$walls/Router/routerOffLogo.visible = true
+			GI.progress = 2
 
 func _on_pc_os_exit_os():
 	if pcCam.current:
@@ -45,6 +47,6 @@ func _on_pc_os_exit_os():
 		pcCam.current = false
 
 func _on_pc_os_approval_email_viewed():
-	if questNum == 0:
-		questNum += 1
+	if GI.progress == 0:
+		GI.progress = 1
 		player.unlockedInteractions.append("router")

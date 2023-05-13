@@ -1,10 +1,11 @@
-[gd_scene load_steps=139 format=3 uid="uid://c311m5x6mx8bi"]
+[gd_scene load_steps=141 format=3 uid="uid://c311m5x6mx8bi"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
 [ext_resource type="Script" path="res://scripts/gameManager.gd" id="1_vrfjs"]
 [ext_resource type="Material" uid="uid://c6bd8j480mhl1" path="res://assets/3d/materials/lightPlanks.tres" id="2_wae18"]
 [ext_resource type="Material" uid="uid://d2m0d4dev2kg1" path="res://assets/3d/materials/darkPlanks.tres" id="2_xynmm"]
+[ext_resource type="Script" path="res://scripts/globalInformation.gd" id="2_yyxee"]
 [ext_resource type="Material" uid="uid://cv76vwfwvvxvt" path="res://assets/3d/materials/concrete.tres" id="5_6kw2r"]
 [ext_resource type="Material" uid="uid://djscqebmxa2dj" path="res://assets/3d/materials/metal.tres" id="5_tn6ee"]
 [ext_resource type="Texture2D" uid="uid://cigjq25fsqn45" path="res://assets/2d/UI/interactIconLocked.png" id="6_5fre7"]
@@ -65,6 +66,7 @@
 [ext_resource type="Texture2D" uid="uid://dvlkrnxhlpeu1" path="res://assets/3d/textures/coarse-old-fabric-bl/coarse-old-fabric_roughness.png" id="51_kmcal"]
 [ext_resource type="ArrayMesh" uid="uid://c1mh5r0ijba6w" path="res://assets/3d/heater.obj" id="52_cs0xl"]
 [ext_resource type="Texture2D" uid="uid://dp1pkds0ev2ht" path="res://assets/2d/3dSprites/heaterLogo.png" id="53_xyys3"]
+[ext_resource type="Texture2D" uid="uid://b7ujhjcqengnu" path="res://assets/2d/3dSprites/routerOff.png" id="54_1addg"]
 [ext_resource type="ArrayMesh" uid="uid://8njcbfxjs2pj" path="res://assets/3d/doorFrame.obj" id="54_y7hfr"]
 [ext_resource type="ArrayMesh" uid="uid://4e1e01fuau3w" path="res://assets/3d/door.obj" id="55_tvyxf"]
 [ext_resource type="ArrayMesh" uid="uid://cgbrv1hrewn51" path="res://assets/3d/bin.obj" id="57_ov2jb"]
@@ -413,6 +415,9 @@ emission = Color(1, 0.854902, 0.647059, 1)
 
 [node name="home" type="Node3D"]
 script = ExtResource("1_vrfjs")
+
+[node name="globalInformation" type="Node" parent="."]
+script = ExtResource("2_yyxee")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_unycy")
@@ -1003,6 +1008,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.095129, 0.0231352, -0.04943
 flip_h = true
 pixel_size = 0.0005
 texture = ExtResource("46_7te8v")
+
+[node name="routerOffLogo" type="Sprite3D" parent="walls/Router"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.095129, 0.0231352, -0.0494374)
+visible = false
+flip_h = true
+pixel_size = 0.0005
+texture = ExtResource("54_1addg")
 
 [node name="routerInteraction" parent="walls/Router" instance=ExtResource("13_pkg5h")]
 transform = Transform3D(-0.800003, 0, 1.20797e-07, 0, 0.800003, 0, -1.20797e-07, 0, -0.800003, -0.0483184, 0.11414, -0.121593)

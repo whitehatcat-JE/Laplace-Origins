@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://csnnn1yw8ccgs"]
+[gd_scene load_steps=33 format=3 uid="uid://csnnn1yw8ccgs"]
 
 [ext_resource type="Script" path="res://scripts/pcOS.gd" id="1_xeigj"]
 [ext_resource type="Texture2D" uid="uid://b8f2gr7p8vcd2" path="res://assets/2d/pcOS/dropBackground.png" id="2_j3svo"]
+[ext_resource type="Script" path="res://scripts/globalInformation.gd" id="2_r5xwc"]
 [ext_resource type="Texture2D" uid="uid://dhbxv28wumo4r" path="res://assets/2d/UI/mousePointer.png" id="2_wtwt2"]
 [ext_resource type="Shader" path="res://scripts/shaders/blur.gdshader" id="3_s1hks"]
 [ext_resource type="Texture2D" uid="uid://db3h652iy8rqm" path="res://assets/2d/UI/infinityLogoText.png" id="5_15xv0"]
@@ -112,59 +113,8 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d85xy"]
 size = Vector2(28.5714, 47.5)
 
-[sub_resource type="Animation" id="Animation_22kq3"]
-resource_name = "appear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector2(0.7, 0.7), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("emailDescription:visible_ratio")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 1),
-"transitions": PackedFloat32Array(1, 1, 2),
-"update": 0,
-"values": [0.0, 0.0, 1.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(666, 94), Vector2(666, 94)]
-}
-
-[sub_resource type="Animation" id="Animation_cb47g"]
-resource_name = "disappear"
+[sub_resource type="Animation" id="Animation_8bypv"]
+resource_name = "emailDisappear"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -200,20 +150,360 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(666, 94), Vector2(10000, 94)]
+"values": [Vector2(684, 86), Vector2(10000, 94)]
+}
+
+[sub_resource type="Animation" id="Animation_m70jk"]
+resource_name = "emailAppear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(684, 86), Vector2(684, 86)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("emailDescription:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_cb47g"]
+resource_name = "filesDisappear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.2001),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7), Vector2(0.7, 0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1191, 104), Vector2(10000, 94)]
+}
+
+[sub_resource type="Animation" id="Animation_22kq3"]
+resource_name = "filesAppear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1191, 104), Vector2(1191, 104)]
+}
+
+[sub_resource type="Animation" id="Animation_hnuaa"]
+resource_name = "errorAppear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1083, 311), Vector2(1083, 311)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../mouse/pointerRay:collision_mask")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_2tuc3"]
+resource_name = "errorDisappear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.2001),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7), Vector2(0.7, 0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1083, 311), Vector2(10000, 94)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../mouse/pointerRay:collision_mask")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_16fps"]
+resource_name = "consoleAppear"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1203, 317), Vector2(1203, 317)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("consoleOutput:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ufsi6"]
+resource_name = "consoleDisappear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.2001),
+"transitions": PackedFloat32Array(0.5, 0.5, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.7, 0.7), Vector2(0.7, 0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1203, 317), Vector2(10000, 94)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_86od8"]
 _data = {
-"appear": SubResource("Animation_22kq3"),
-"disappear": SubResource("Animation_cb47g")
+"consoleAppear": SubResource("Animation_16fps"),
+"consoleDisappear": SubResource("Animation_ufsi6"),
+"emailAppear": SubResource("Animation_m70jk"),
+"emailDisappear": SubResource("Animation_8bypv"),
+"errorAppear": SubResource("Animation_hnuaa"),
+"errorDisappear": SubResource("Animation_2tuc3"),
+"filesAppear": SubResource("Animation_22kq3"),
+"filesDisappear": SubResource("Animation_cb47g")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkom"]
+size = Vector2(60, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xewah"]
+size = Vector2(190, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnmcw"]
 size = Vector2(348.402, 201.001)
 
 [node name="pcOS" type="Node2D"]
 script = ExtResource("1_xeigj")
+
+[node name="globalInformation" type="Node" parent="."]
+script = ExtResource("2_r5xwc")
 
 [node name="DropBackground" type="Sprite2D" parent="."]
 position = Vector2(1056, 410)
@@ -369,7 +659,7 @@ offset_right = 247.0
 offset_bottom = 78.0
 
 [node name="interact" parent="homeScreen/menuBar/files" instance=ExtResource("8_kdwn3")]
-interactionName = "fileOpen"
+interactionName = "filesOpen"
 
 [node name="hitbox" type="CollisionShape2D" parent="homeScreen/menuBar/files/interact"]
 position = Vector2(115, 35)
@@ -413,14 +703,14 @@ modulate = Color(1, 1, 1, 0)
 position = Vector2(10000, 94)
 scale = Vector2(0.7, 0.7)
 
-[node name="taskbar" type="ColorRect" parent="homeScreen/emailWindow"]
+[node name="windowBack" type="ColorRect" parent="homeScreen/emailWindow"]
 offset_left = 3.0
 offset_top = -2.0
 offset_right = 483.0
 offset_bottom = 327.0
 color = Color(0.14902, 0.14902, 0.14902, 0.835294)
 
-[node name="taskbar2" type="ColorRect" parent="homeScreen/emailWindow"]
+[node name="navBack" type="ColorRect" parent="homeScreen/emailWindow"]
 offset_left = 3.0
 offset_top = -2.0
 offset_right = 483.0
@@ -434,7 +724,7 @@ offset_right = 152.0
 offset_bottom = 327.0
 color = Color(0.294118, 0.294118, 0.294118, 1)
 
-[node name="files" type="Label" parent="homeScreen/emailWindow"]
+[node name="windowName" type="Label" parent="homeScreen/emailWindow"]
 offset_left = 9.00006
 offset_top = -1.99999
 offset_right = 272.0
@@ -507,8 +797,8 @@ First I’m gonna need you to switch off the router near your wardrobe. Can’t 
 
 Then just run the .exe file and let it do its thing. Oh, and MAKE SURE you shut down the program before re-connecting your router. I’d like to avoid getting fired right after Christmas."
 autowrap_mode = 2
-visible_characters = 0
-visible_ratio = 0.0
+visible_characters = 86
+visible_ratio = 0.2
 
 [node name="taskbar4" type="ColorRect" parent="homeScreen/emailWindow"]
 offset_left = 10.0
@@ -518,6 +808,314 @@ offset_bottom = 51.0
 color = Color(0.4, 0.4, 0.4, 1)
 
 [node name="emailAnims" type="AnimationPlayer" parent="homeScreen/emailWindow"]
+libraries = {
+"": SubResource("AnimationLibrary_86od8")
+}
+
+[node name="filesWindow" type="Node2D" parent="homeScreen"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(10000, 94)
+scale = Vector2(0.7, 0.7)
+
+[node name="windowBack" type="ColorRect" parent="homeScreen/filesWindow"]
+offset_top = 20.0
+offset_right = 343.0
+offset_bottom = 194.0
+color = Color(0.14902, 0.14902, 0.14902, 0.835294)
+
+[node name="taskbar3" type="ColorRect" parent="homeScreen/filesWindow"]
+offset_left = 7.0
+offset_top = 48.0
+offset_right = 337.0
+offset_bottom = 187.0
+color = Color(0.14902, 0.14902, 0.14902, 0.835294)
+
+[node name="navBack" type="ColorRect" parent="homeScreen/filesWindow"]
+offset_top = 1.0
+offset_right = 343.0
+offset_bottom = 20.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="windowName" type="Label" parent="homeScreen/filesWindow"]
+offset_left = 4.0
+offset_top = 2.00003
+offset_right = 267.0
+offset_bottom = 50.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 35
+text = "Files"
+
+[node name="quit" type="Label" parent="homeScreen/filesWindow"]
+offset_left = 326.0
+offset_top = 1.0
+offset_right = 349.0
+offset_bottom = 49.0
+scale = Vector2(0.7, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 35
+text = "X"
+
+[node name="quitBack" type="ColorRect" parent="homeScreen/filesWindow/quit"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = -4.0
+offset_right = 24.0
+offset_bottom = 47.0
+
+[node name="interact" parent="homeScreen/filesWindow/quit" instance=ExtResource("8_kdwn3")]
+interactionName = "filesQuit"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/filesWindow/quit/interact"]
+position = Vector2(9.99988, 23.75)
+shape = SubResource("RectangleShape2D_d85xy")
+
+[node name="documentsName" type="Label" parent="homeScreen/filesWindow"]
+offset_left = 5.0
+offset_top = 26.0
+offset_right = 347.0
+offset_bottom = 74.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 30
+text = "Local Documents"
+
+[node name="documentsDivider" type="ColorRect" parent="homeScreen/filesWindow/documentsName"]
+offset_left = 288.0
+offset_top = 18.0
+offset_right = 830.0
+offset_bottom = 23.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="filesAnims" type="AnimationPlayer" parent="homeScreen/filesWindow"]
+libraries = {
+"": SubResource("AnimationLibrary_86od8")
+}
+
+[node name="laplaceBack" type="ColorRect" parent="homeScreen/filesWindow"]
+modulate = Color(0.333333, 0.333333, 0.333333, 0)
+offset_left = 7.0
+offset_top = 48.0
+offset_right = 67.0
+offset_bottom = 108.0
+
+[node name="interact" parent="homeScreen/filesWindow" instance=ExtResource("8_kdwn3")]
+interactionName = "laplaceExe"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/filesWindow/interact"]
+position = Vector2(36.9999, 78)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_cpkom")
+
+[node name="laplaceIcon" type="Sprite2D" parent="homeScreen/filesWindow"]
+modulate = Color(1, 0, 0.027451, 1)
+position = Vector2(36, 73)
+rotation = -0.523598
+scale = Vector2(0.216418, 0.216418)
+texture = ExtResource("10_3u8fc")
+
+[node name="laplaceName" type="Label" parent="homeScreen/filesWindow"]
+offset_left = 10.0
+offset_top = 92.0
+offset_right = 148.0
+offset_bottom = 127.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 20
+text = "laplace.exe"
+
+[node name="consoleWindow" type="Node2D" parent="homeScreen"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(10000, 94)
+scale = Vector2(0.7, 0.7)
+
+[node name="windowBack" type="ColorRect" parent="homeScreen/consoleWindow"]
+offset_top = 20.0
+offset_right = 343.0
+offset_bottom = 194.0
+color = Color(0, 0, 0, 1)
+
+[node name="navBack" type="ColorRect" parent="homeScreen/consoleWindow"]
+offset_top = 1.0
+offset_right = 343.0
+offset_bottom = 20.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="windowName" type="Label" parent="homeScreen/consoleWindow"]
+offset_left = 4.0
+offset_top = 2.00003
+offset_right = 267.0
+offset_bottom = 50.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 35
+text = "Command Prompt"
+
+[node name="quit" type="Label" parent="homeScreen/consoleWindow"]
+offset_left = 326.0
+offset_top = 1.0
+offset_right = 349.0
+offset_bottom = 49.0
+scale = Vector2(0.7, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 35
+text = "X"
+
+[node name="quitBack" type="ColorRect" parent="homeScreen/consoleWindow/quit"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = -4.0
+offset_right = 24.0
+offset_bottom = 47.0
+
+[node name="interact" parent="homeScreen/consoleWindow/quit" instance=ExtResource("8_kdwn3")]
+interactionName = "cmdQuit"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/consoleWindow/quit/interact"]
+position = Vector2(9.99988, 23.75)
+shape = SubResource("RectangleShape2D_d85xy")
+
+[node name="consoleAnims" type="AnimationPlayer" parent="homeScreen/consoleWindow"]
+libraries = {
+"": SubResource("AnimationLibrary_86od8")
+}
+
+[node name="consoleOutput" type="Label" parent="homeScreen/consoleWindow"]
+offset_left = 5.0
+offset_top = 26.0
+offset_right = 826.0
+offset_bottom = 411.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 20
+text = "3fourths Infinity [Version 7.321.43.5656.4]
+(c) Infinity Corporation. All rights reserved.
+
+C:\\Users\\Pierre> cmd -run laplace.exe
+> moving trainingSet to memory... 128GB loaded.
+> compiling node tree... complete.
+> establishing neural pathways... complete.
+> superuser access granted to Laplace.
+> now launching neural network... complete."
+autowrap_mode = 2
+
+[node name="newLineTimer" type="Timer" parent="homeScreen/consoleWindow"]
+wait_time = 0.2
+
+[node name="errorWindow" type="Node2D" parent="homeScreen"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+position = Vector2(10000, 94)
+scale = Vector2(0.7, 0.7)
+
+[node name="backgroundShadow" type="ColorRect" parent="homeScreen/errorWindow"]
+offset_left = -1533.0
+offset_top = -719.0
+offset_right = 1640.0
+offset_bottom = 961.0
+color = Color(0, 0, 0, 1)
+
+[node name="taskbar" type="ColorRect" parent="homeScreen/errorWindow"]
+offset_left = -166.0
+offset_top = -44.0
+offset_right = 177.0
+offset_bottom = 74.0
+color = Color(0.14902, 0.14902, 0.14902, 0.835294)
+
+[node name="taskbar2" type="ColorRect" parent="homeScreen/errorWindow"]
+offset_left = -166.0
+offset_top = -63.0
+offset_right = 177.0
+offset_bottom = -44.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="windowName" type="Label" parent="homeScreen/errorWindow"]
+offset_left = -162.0
+offset_top = -62.0
+offset_right = 101.0
+offset_bottom = -14.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 35
+text = "Error"
+
+[node name="quit" type="Label" parent="homeScreen/errorWindow"]
+offset_left = 160.0
+offset_top = -63.0
+offset_right = 183.0
+offset_bottom = -15.0
+scale = Vector2(0.7, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 35
+text = "X"
+
+[node name="quitBack" type="ColorRect" parent="homeScreen/errorWindow/quit"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = -4.0
+offset_right = 24.0
+offset_bottom = 47.0
+
+[node name="interact" parent="homeScreen/errorWindow/quit" instance=ExtResource("8_kdwn3")]
+collision_layer = 4
+interactionName = "errorQuit"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/errorWindow/quit/interact"]
+position = Vector2(9.99988, 23.75)
+shape = SubResource("RectangleShape2D_d85xy")
+
+[node name="errorMessage" type="Label" parent="homeScreen/errorWindow"]
+offset_left = -161.0
+offset_top = -38.0
+offset_right = 672.0
+offset_bottom = 110.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 30
+text = "Please disable internet connection before running program."
+autowrap_mode = 2
+
+[node name="continueBack" type="Sprite2D" parent="homeScreen/errorWindow"]
+modulate = Color(0.333333, 0.333333, 0.333333, 1)
+position = Vector2(124, 48)
+scale = Vector2(0.4, 0.5)
+texture = ExtResource("6_rpg4f")
+
+[node name="interact" parent="homeScreen/errorWindow/continueBack" instance=ExtResource("8_kdwn3")]
+collision_layer = 4
+interactionName = "errorOK"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/errorWindow/continueBack/interact"]
+shape = SubResource("RectangleShape2D_xewah")
+debug_color = Color(0, 0.857143, 1, 0.42)
+
+[node name="continueText" type="Label" parent="homeScreen/errorWindow"]
+offset_left = 86.0
+offset_top = 35.0
+offset_right = 276.0
+offset_bottom = 102.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 35
+text = "OK"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="errorAnims" type="AnimationPlayer" parent="homeScreen/errorWindow"]
 libraries = {
 "": SubResource("AnimationLibrary_86od8")
 }
@@ -570,4 +1168,6 @@ theme_override_fonts/font = ExtResource("11_830h1")
 theme_override_font_sizes/font_size = 48
 text = "00:00"
 
+[connection signal="animation_finished" from="homeScreen/consoleWindow/consoleAnims" to="." method="_on_console_anims_animation_finished"]
+[connection signal="timeout" from="homeScreen/consoleWindow/newLineTimer" to="." method="_on_new_line_timer_timeout"]
 [connection signal="timeout" from="homeScreen/clockTimer" to="." method="_on_clock_timer_timeout"]
