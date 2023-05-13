@@ -1,67 +1,359 @@
-[gd_scene load_steps=5 format=3 uid="uid://csnnn1yw8ccgs"]
+[gd_scene load_steps=20 format=3 uid="uid://csnnn1yw8ccgs"]
 
-[ext_resource type="Texture2D" uid="uid://bnonis3h6ejsj" path="res://assets/2d/3dSprites/posterA.png" id="1_usux7"]
-[ext_resource type="Texture2D" uid="uid://c7v3yyaterqns" path="res://assets/2d/3dSprites/router.png" id="2_2mvvf"]
+[ext_resource type="Script" path="res://scripts/pcOS.gd" id="1_xeigj"]
+[ext_resource type="Texture2D" uid="uid://b8f2gr7p8vcd2" path="res://assets/2d/pcOS/dropBackground.png" id="2_j3svo"]
+[ext_resource type="Texture2D" uid="uid://dhbxv28wumo4r" path="res://assets/2d/UI/mousePointer.png" id="2_wtwt2"]
+[ext_resource type="Shader" path="res://scripts/shaders/blur.gdshader" id="3_s1hks"]
+[ext_resource type="Texture2D" uid="uid://db3h652iy8rqm" path="res://assets/2d/UI/infinityLogoText.png" id="5_15xv0"]
+[ext_resource type="Texture2D" uid="uid://1ybrvdjx2poq" path="res://assets/2d/UI/mouseInteract.png" id="5_qgg84"]
+[ext_resource type="Texture2D" uid="uid://d02hm25iumb2l" path="res://assets/2d/pcOS/buttonSmall.png" id="6_rpg4f"]
+[ext_resource type="Texture2D" uid="uid://yu6lr7swrokl" path="res://assets/2d/pcOS/loginText.png" id="7_ou12u"]
+[ext_resource type="PackedScene" uid="uid://g15p8sneaum5" path="res://objects/interaction2D.tscn" id="8_kdwn3"]
+[ext_resource type="Texture2D" uid="uid://vt6sk807soog" path="res://assets/2d/UI/3-4thInfinityLogo.png" id="10_3u8fc"]
+[ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="11_830h1"]
+[ext_resource type="Texture2D" uid="uid://bnyoikpnj3qpy" path="res://assets/2d/pcOS/wifiIcon.png" id="11_g7mk2"]
 
-[sub_resource type="Animation" id="Animation_e7m7t"]
-resource_name = "sway"
-loop_mode = 2
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v6mo5"]
+shader = ExtResource("3_s1hks")
+shader_parameter/lod = 3.526
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bqf8q"]
+size = Vector2(191.667, 46)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8nfdd"]
+size = Vector2(265, 85)
+
+[sub_resource type="Animation" id="Animation_y873e"]
+resource_name = "appear"
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Router:position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-2, -2),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(1253.86, 438.75), Vector2(1253.86, 516)]
+"values": [Vector2(0, 200), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(1, 0.5), Vector2(1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_t7yhc"]
-_data = {
-"sway": SubResource("Animation_e7m7t")
+[sub_resource type="Animation" id="Animation_ek3cu"]
+resource_name = "disappear"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 200)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_enq42"]
+_data = {
+"appear": SubResource("Animation_y873e"),
+"disappear": SubResource("Animation_ek3cu")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnmcw"]
+size = Vector2(348.402, 201.001)
 
 [node name="pcOS" type="Node2D"]
+script = ExtResource("1_xeigj")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = 583.0
-offset_top = 79.0
-offset_right = 1591.0
-offset_bottom = 579.0
+[node name="DropBackground" type="Sprite2D" parent="."]
+position = Vector2(1056, 410)
+scale = Vector2(0.516, 0.516)
+texture = ExtResource("2_j3svo")
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-offset_left = 697.0
-offset_top = 177.0
-offset_right = 855.0
-offset_bottom = 399.0
-color = Color(0, 0, 0, 1)
+[node name="screenShape" type="ColorRect" parent="."]
+visible = false
+offset_left = 547.0
+offset_top = 76.0
+offset_right = 1561.0
+offset_bottom = 582.0
+color = Color(0, 0, 0, 0.443137)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(574, 328)
+position = Vector2(542, 328)
 rotation = -1.57079
 ignore_rotation = false
 zoom = Vector2(2, 1)
 
-[node name="PosterA" type="Sprite2D" parent="."]
-position = Vector2(929, 361)
-scale = Vector2(0.3, 0.3)
-texture = ExtResource("1_usux7")
+[node name="boundaryNW" type="Node2D" parent="."]
+position = Vector2(550, 79)
 
-[node name="Router" type="Sprite2D" parent="."]
-position = Vector2(1253.86, 493.297)
-scale = Vector2(0.354962, 0.354962)
-texture = ExtResource("2_2mvvf")
+[node name="boundarySE" type="Node2D" parent="."]
+position = Vector2(1558, 579)
 
-[node name="Router2" type="Sprite2D" parent="."]
-position = Vector2(1275, 352)
-scale = Vector2(0.283, 0.283)
-texture = ExtResource("2_2mvvf")
+[node name="mouse" type="Node2D" parent="."]
+z_index = 10
+position = Vector2(1379, 440)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "sway"
+[node name="mousePointer" type="Sprite2D" parent="mouse"]
+position = Vector2(6, 6)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_wtwt2")
+
+[node name="mouseInteract" type="Sprite2D" parent="mouse"]
+visible = false
+position = Vector2(3, 8)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_qgg84")
+
+[node name="pointerRay" type="RayCast2D" parent="mouse"]
+position = Vector2(1, 1)
+rotation = 2.35619
+scale = Vector2(0.1, 0.1)
+target_position = Vector2(0, 15)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="loginScreen" type="Node2D" parent="."]
+
+[node name="blurShader" type="ColorRect" parent="loginScreen"]
+material = SubResource("ShaderMaterial_v6mo5")
+offset_left = 547.0
+offset_top = 76.0
+offset_right = 1561.0
+offset_bottom = 582.0
+color = Color(1, 1, 1, 0.101961)
+
+[node name="loginLogo" type="Sprite2D" parent="loginScreen"]
+modulate = Color(1, 1, 1, 0.862745)
+position = Vector2(1061, 266)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_15xv0")
+
+[node name="loginDivider" type="ColorRect" parent="loginScreen"]
+offset_left = 1019.0
+offset_top = 340.0
+offset_right = 1103.0
+offset_bottom = 342.0
+
+[node name="loginButton" type="Sprite2D" parent="loginScreen"]
+modulate = Color(0.223529, 0.223529, 0.223529, 0.835294)
+position = Vector2(1061, 367.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("6_rpg4f")
+
+[node name="interact" parent="loginScreen/loginButton" instance=ExtResource("8_kdwn3")]
+visible = false
+interactionName = "login"
+
+[node name="hitbox" type="CollisionShape2D" parent="loginScreen/loginButton/interact"]
+position = Vector2(-0.833252, 6.10352e-05)
+shape = SubResource("RectangleShape2D_bqf8q")
+
+[node name="loginText" type="Sprite2D" parent="loginScreen"]
+position = Vector2(1063, 368.5)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_ou12u")
+
+[node name="homeScreen" type="Node2D" parent="."]
+
+[node name="menuBar" type="Node2D" parent="homeScreen"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(0, 200)
+scale = Vector2(1, 0.5)
+
+[node name="menubar" type="ColorRect" parent="homeScreen/menuBar"]
+offset_left = 547.0
+offset_top = 324.0
+offset_right = 653.0
+offset_bottom = 548.0
+color = Color(0.14902, 0.14902, 0.14902, 0.835294)
+
+[node name="email" type="Label" parent="homeScreen/menuBar"]
+offset_left = 553.0
+offset_top = 327.0
+offset_right = 816.0
+offset_bottom = 392.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 48
+text = "Email
+"
+
+[node name="emailBack" type="ColorRect" parent="homeScreen/menuBar/email"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = -15.0001
+offset_top = -7.50006
+offset_right = 250.0
+offset_bottom = 77.4999
+
+[node name="interact" parent="homeScreen/menuBar/email" instance=ExtResource("8_kdwn3")]
+position = Vector2(2.49988, -6.10352e-05)
+interactionName = "emailOpen"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/menuBar/email/interact"]
+position = Vector2(115, 35)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_8nfdd")
+
+[node name="files" type="Label" parent="homeScreen/menuBar"]
+offset_left = 554.0
+offset_top = 363.0
+offset_right = 817.0
+offset_bottom = 428.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 48
+text = "Files"
+
+[node name="fileBack" type="ColorRect" parent="homeScreen/menuBar/files"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = -18.0
+offset_top = -7.0
+offset_right = 247.0
+offset_bottom = 78.0
+
+[node name="interact" parent="homeScreen/menuBar/files" instance=ExtResource("8_kdwn3")]
+interactionName = "fileOpen"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/menuBar/files/interact"]
+position = Vector2(115, 35)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_8nfdd")
+
+[node name="logout" type="Label" parent="homeScreen/menuBar"]
+offset_left = 554.0
+offset_top = 517.0
+offset_right = 817.0
+offset_bottom = 582.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 48
+text = "Logout"
+
+[node name="logoutBack" type="ColorRect" parent="homeScreen/menuBar/logout"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = -18.0
+offset_top = -7.0
+offset_right = 247.0
+offset_bottom = 78.0
+
+[node name="interact" parent="homeScreen/menuBar/logout" instance=ExtResource("8_kdwn3")]
+interactionName = "logout"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/menuBar/logout/interact"]
+position = Vector2(115, 35)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_8nfdd")
+
+[node name="menuAnims" type="AnimationPlayer" parent="homeScreen/menuBar"]
 libraries = {
-"": SubResource("AnimationLibrary_t7yhc")
+"": SubResource("AnimationLibrary_enq42")
 }
+
+[node name="taskbar" type="ColorRect" parent="homeScreen"]
+offset_left = 547.0
+offset_top = 548.0
+offset_right = 1561.0
+offset_bottom = 578.0
+color = Color(0.223529, 0.223529, 0.223529, 0.835294)
+
+[node name="menuButton" type="Sprite2D" parent="homeScreen"]
+position = Vector2(572, 563)
+scale = Vector2(0.149253, 0.149253)
+texture = ExtResource("10_3u8fc")
+
+[node name="menuButtonBackground" type="ColorRect" parent="homeScreen/menuButton"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = -168.0
+offset_top = -101.0
+offset_right = 181.0
+offset_bottom = 107.0
+
+[node name="interact" parent="homeScreen/menuButton" instance=ExtResource("8_kdwn3")]
+visible = false
+interactionName = "menu"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/menuButton/interact"]
+position = Vector2(6.69971, 0)
+shape = SubResource("RectangleShape2D_nnmcw")
+
+[node name="clockTimer" type="Timer" parent="homeScreen"]
+wait_time = 60.0
+autostart = true
+
+[node name="wifiIcon" type="Sprite2D" parent="homeScreen"]
+position = Vector2(1469, 563)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("11_g7mk2")
+
+[node name="clock" type="Label" parent="homeScreen"]
+offset_left = 1495.0
+offset_top = 550.0
+offset_right = 1640.0
+offset_bottom = 615.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 48
+text = "00:00"
+
+[connection signal="timeout" from="homeScreen/clockTimer" to="." method="_on_clock_timer_timeout"]

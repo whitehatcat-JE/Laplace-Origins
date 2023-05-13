@@ -13,12 +13,16 @@ func _process(delta):
 	pass
 
 func _input(event):
+	if Input.is_action_pressed("quit"):
+		get_tree().quit()
 	if Input.is_action_just_pressed("back"):
 		if pcCam.current:
 			player.disabled = false
 			player.get_node("HUD").visible = true
 			playerCam.current = true
 			pcCam.current = false
+	elif pcCam.current:
+		$pcWindow/pcOS.eventTriggered(event)
 
 func _on_player_interacted(interactionName:String):
 	match interactionName:
