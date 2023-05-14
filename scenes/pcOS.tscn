@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://csnnn1yw8ccgs"]
+[gd_scene load_steps=36 format=3 uid="uid://csnnn1yw8ccgs"]
 
 [ext_resource type="Script" path="res://scripts/pcOS.gd" id="1_xeigj"]
 [ext_resource type="Texture2D" uid="uid://b8f2gr7p8vcd2" path="res://assets/2d/pcOS/dropBackground.png" id="2_j3svo"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://vt6sk807soog" path="res://assets/2d/UI/3-4thInfinityLogo.png" id="10_3u8fc"]
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="11_830h1"]
 [ext_resource type="Texture2D" uid="uid://bnyoikpnj3qpy" path="res://assets/2d/pcOS/wifiIcon.png" id="11_g7mk2"]
+[ext_resource type="Shader" path="res://scripts/shaders/glitch.gdshader" id="14_8bkd7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v6mo5"]
 shader = ExtResource("3_s1hks")
@@ -110,11 +111,78 @@ _data = {
 "disappear": SubResource("Animation_ek3cu")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jcph"]
+size = Vector2(135, 27)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d85xy"]
 size = Vector2(28.5714, 47.5)
 
-[sub_resource type="Animation" id="Animation_8bypv"]
-resource_name = "emailDisappear"
+[sub_resource type="Animation" id="Animation_16fps"]
+resource_name = "consoleAppear"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0.7, 0.7), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1203, 317), Vector2(1203, 317)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("consoleOutput:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../glitchEffect:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 6.6, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ufsi6"]
+resource_name = "consoleDisappear"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -150,7 +218,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(684, 86), Vector2(10000, 94)]
+"values": [Vector2(1203, 317), Vector2(10000, 94)]
 }
 
 [sub_resource type="Animation" id="Animation_m70jk"]
@@ -194,7 +262,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("emailDescription:visible_ratio")
+tracks/3/path = NodePath("emailA/description:visible_ratio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -203,9 +271,33 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("emailB/description:visible_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("emailC/description:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
-[sub_resource type="Animation" id="Animation_cb47g"]
-resource_name = "filesDisappear"
+[sub_resource type="Animation" id="Animation_8bypv"]
+resource_name = "emailDisappear"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -241,46 +333,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(1191, 104), Vector2(10000, 94)]
-}
-
-[sub_resource type="Animation" id="Animation_22kq3"]
-resource_name = "filesAppear"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Vector2(0.7, 0.7), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1191, 104), Vector2(1191, 104)]
+"values": [Vector2(684, 86), Vector2(10000, 94)]
 }
 
 [sub_resource type="Animation" id="Animation_hnuaa"]
@@ -386,9 +439,8 @@ tracks/3/keys = {
 "values": [2]
 }
 
-[sub_resource type="Animation" id="Animation_16fps"]
-resource_name = "consoleAppear"
-length = 7.0
+[sub_resource type="Animation" id="Animation_22kq3"]
+resource_name = "filesAppear"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -423,23 +475,11 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1203, 317), Vector2(1203, 317)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("consoleOutput:visible_ratio")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
+"values": [Vector2(1191, 104), Vector2(1191, 104)]
 }
 
-[sub_resource type="Animation" id="Animation_ufsi6"]
-resource_name = "consoleDisappear"
+[sub_resource type="Animation" id="Animation_cb47g"]
+resource_name = "filesDisappear"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -475,7 +515,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2(1203, 317), Vector2(10000, 94)]
+"values": [Vector2(1191, 104), Vector2(10000, 94)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_86od8"]
@@ -498,6 +538,14 @@ size = Vector2(190, 44)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nnmcw"]
 size = Vector2(348.402, 201.001)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymseb"]
+shader = ExtResource("14_8bkd7")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.123
 
 [node name="pcOS" type="Node2D"]
 script = ExtResource("1_xeigj")
@@ -625,6 +673,7 @@ text = "Email
 [node name="emailBack" type="ColorRect" parent="homeScreen/menuBar/email"]
 modulate = Color(1, 1, 1, 0)
 show_behind_parent = true
+layout_mode = 0
 offset_left = -15.0001
 offset_top = -7.50006
 offset_right = 250.0
@@ -636,7 +685,6 @@ interactionName = "emailOpen"
 
 [node name="hitbox" type="CollisionShape2D" parent="homeScreen/menuBar/email/interact"]
 position = Vector2(115, 35)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8nfdd")
 
 [node name="files" type="Label" parent="homeScreen/menuBar"]
@@ -653,6 +701,7 @@ text = "Files"
 [node name="fileBack" type="ColorRect" parent="homeScreen/menuBar/files"]
 modulate = Color(1, 1, 1, 0)
 show_behind_parent = true
+layout_mode = 0
 offset_left = -18.0
 offset_top = -7.0
 offset_right = 247.0
@@ -663,7 +712,6 @@ interactionName = "filesOpen"
 
 [node name="hitbox" type="CollisionShape2D" parent="homeScreen/menuBar/files/interact"]
 position = Vector2(115, 35)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8nfdd")
 
 [node name="logout" type="Label" parent="homeScreen/menuBar"]
@@ -680,6 +728,7 @@ text = "Logout"
 [node name="logoutBack" type="ColorRect" parent="homeScreen/menuBar/logout"]
 modulate = Color(1, 1, 1, 0)
 show_behind_parent = true
+layout_mode = 0
 offset_left = -18.0
 offset_top = -7.0
 offset_right = 247.0
@@ -690,7 +739,6 @@ interactionName = "logout"
 
 [node name="hitbox" type="CollisionShape2D" parent="homeScreen/menuBar/logout/interact"]
 position = Vector2(115, 35)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8nfdd")
 
 [node name="menuAnims" type="AnimationPlayer" parent="homeScreen/menuBar"]
@@ -735,7 +783,25 @@ theme_override_fonts/font = ExtResource("11_830h1")
 theme_override_font_sizes/font_size = 35
 text = "Email"
 
-[node name="files3" type="Label" parent="homeScreen/emailWindow"]
+[node name="emailA" type="Node2D" parent="homeScreen/emailWindow"]
+
+[node name="emailABack" type="ColorRect" parent="homeScreen/emailWindow/emailA"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = 10.0
+offset_top = 21.0
+offset_right = 145.0
+offset_bottom = 48.0
+
+[node name="interact" parent="homeScreen/emailWindow/emailA" instance=ExtResource("8_kdwn3")]
+position = Vector2(0, -1)
+interactionName = "emailA"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/emailWindow/emailA/interact"]
+position = Vector2(77.5, 35.5)
+shape = SubResource("RectangleShape2D_7jcph")
+
+[node name="title" type="Label" parent="homeScreen/emailWindow/emailA"]
 offset_left = 10.0
 offset_top = 21.0
 offset_right = 352.0
@@ -746,16 +812,168 @@ theme_override_fonts/font = ExtResource("11_830h1")
 theme_override_font_sizes/font_size = 30
 text = "Next test approved!"
 
-[node name="files4" type="Label" parent="homeScreen/emailWindow"]
+[node name="sender" type="Label" parent="homeScreen/emailWindow/emailA"]
 offset_left = 10.0
 offset_top = 35.0
-offset_right = 58.0
-offset_bottom = 64.0
+offset_right = 70.0
+offset_bottom = 70.0
 scale = Vector2(0.4, 0.4)
 theme_override_constants/outline_size = 1
 theme_override_fonts/font = ExtResource("11_830h1")
 theme_override_font_sizes/font_size = 25
 text = "Anne"
+
+[node name="emailDivider" type="ColorRect" parent="homeScreen/emailWindow/emailA"]
+offset_left = 10.0
+offset_top = 49.0
+offset_right = 145.0
+offset_bottom = 51.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="description" type="RichTextLabel" parent="homeScreen/emailWindow/emailA"]
+offset_left = 163.0
+offset_top = 28.0
+offset_right = 928.0
+offset_bottom = 743.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("11_830h1")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Looks like the stakeholders have finally given us the go-ahead to do another test run!
+
+First I’m gonna need you to switch off the router near your wardrobe. Can’t have the program accidentally scraping un-filtered data from the internet, can we?
+
+Then just run the .exe file and let it do its thing. Oh, and MAKE SURE you shut down the program before re-connecting your router. I’d like to avoid getting fired right after Christmas."
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="emailB" type="Node2D" parent="homeScreen/emailWindow"]
+visible = false
+
+[node name="emailBBack" type="ColorRect" parent="homeScreen/emailWindow/emailB"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = 10.0
+offset_top = 52.0
+offset_right = 145.0
+offset_bottom = 79.0
+
+[node name="interact" parent="homeScreen/emailWindow/emailB" instance=ExtResource("8_kdwn3")]
+position = Vector2(0, 30)
+interactionName = "emailB"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/emailWindow/emailB/interact"]
+position = Vector2(77.5, 35.5)
+shape = SubResource("RectangleShape2D_7jcph")
+disabled = true
+
+[node name="title" type="Label" parent="homeScreen/emailWindow/emailB"]
+offset_left = 10.0
+offset_top = 52.0
+offset_right = 352.0
+offset_bottom = 100.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 30
+text = "Data transfer();"
+
+[node name="sender" type="Label" parent="homeScreen/emailWindow/emailB"]
+offset_left = 10.0
+offset_top = 66.0
+offset_right = 70.0
+offset_bottom = 101.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 25
+text = "Anne"
+
+[node name="emailDivider" type="ColorRect" parent="homeScreen/emailWindow/emailB"]
+offset_left = 10.0
+offset_top = 80.0
+offset_right = 145.0
+offset_bottom = 82.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="description" type="RichTextLabel" parent="homeScreen/emailWindow/emailB"]
+visible = false
+offset_left = 163.0
+offset_top = 28.0
+offset_right = 928.0
+offset_bottom = 743.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("11_830h1")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Congratu lations       ass0ciate!
+   Now take the USB $tick [color=orange][outline_color=red][font_size=45](Location Data: Attached to PC)[color=white][outline_color=white][font_size=32] and     p|ug it into the 
+
+server termin@l. [color=orange][outline_color=red][font_size=30](Location Data: Basement)"
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="emailC" type="Node2D" parent="homeScreen/emailWindow"]
+visible = false
+
+[node name="emailCBack" type="ColorRect" parent="homeScreen/emailWindow/emailC"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+offset_left = 10.0
+offset_top = 83.0
+offset_right = 145.0
+offset_bottom = 110.0
+
+[node name="interact" parent="homeScreen/emailWindow/emailC" instance=ExtResource("8_kdwn3")]
+position = Vector2(0, 61)
+interactionName = "emailC"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/emailWindow/emailC/interact"]
+position = Vector2(77.5, 35.5)
+shape = SubResource("RectangleShape2D_7jcph")
+disabled = true
+
+[node name="title" type="Label" parent="homeScreen/emailWindow/emailC"]
+offset_left = 10.0
+offset_top = 83.0
+offset_right = 352.0
+offset_bottom = 131.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 30
+text = "More"
+
+[node name="sender" type="Label" parent="homeScreen/emailWindow/emailC"]
+offset_left = 10.0
+offset_top = 97.0
+offset_right = 70.0
+offset_bottom = 132.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 25
+text = "Anne"
+
+[node name="description" type="RichTextLabel" parent="homeScreen/emailWindow/emailC"]
+visible = false
+offset_left = 163.0
+offset_top = 28.0
+offset_right = 928.0
+offset_bottom = 743.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("11_830h1")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Excellent job! Now just switch back on the router, and your assignment will be complete [color=red]: [color=white]]"
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="quit" type="Label" parent="homeScreen/emailWindow"]
 offset_left = 466.0
@@ -771,41 +989,18 @@ text = "X"
 [node name="quitBack" type="ColorRect" parent="homeScreen/emailWindow/quit"]
 modulate = Color(1, 1, 1, 0)
 show_behind_parent = true
+layout_mode = 0
 offset_left = -4.0
 offset_right = 24.0
 offset_bottom = 47.0
 
 [node name="interact" parent="homeScreen/emailWindow/quit" instance=ExtResource("8_kdwn3")]
+monitorable = false
 interactionName = "emailQuit"
 
 [node name="hitbox" type="CollisionShape2D" parent="homeScreen/emailWindow/quit/interact"]
 position = Vector2(9.99988, 23.75)
 shape = SubResource("RectangleShape2D_d85xy")
-
-[node name="emailDescription" type="Label" parent="homeScreen/emailWindow"]
-offset_left = 163.0
-offset_top = 28.0
-offset_right = 928.0
-offset_bottom = 616.0
-scale = Vector2(0.4, 0.4)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("11_830h1")
-theme_override_font_sizes/font_size = 30
-text = "Looks like the stakeholders have finally given us the go-ahead to do another test run!
-
-First I’m gonna need you to switch off the router near your wardrobe. Can’t have the program accidentally scraping un-filtered data from the internet, can we?
-
-Then just run the .exe file and let it do its thing. Oh, and MAKE SURE you shut down the program before re-connecting your router. I’d like to avoid getting fired right after Christmas."
-autowrap_mode = 2
-visible_characters = 86
-visible_ratio = 0.2
-
-[node name="taskbar4" type="ColorRect" parent="homeScreen/emailWindow"]
-offset_left = 10.0
-offset_top = 49.0
-offset_right = 145.0
-offset_bottom = 51.0
-color = Color(0.4, 0.4, 0.4, 1)
 
 [node name="emailAnims" type="AnimationPlayer" parent="homeScreen/emailWindow"]
 libraries = {
@@ -861,6 +1056,7 @@ text = "X"
 [node name="quitBack" type="ColorRect" parent="homeScreen/filesWindow/quit"]
 modulate = Color(1, 1, 1, 0)
 show_behind_parent = true
+layout_mode = 0
 offset_left = -4.0
 offset_right = 24.0
 offset_bottom = 47.0
@@ -884,6 +1080,7 @@ theme_override_font_sizes/font_size = 30
 text = "Local Documents"
 
 [node name="documentsDivider" type="ColorRect" parent="homeScreen/filesWindow/documentsName"]
+layout_mode = 0
 offset_left = 288.0
 offset_top = 18.0
 offset_right = 830.0
@@ -907,7 +1104,6 @@ interactionName = "laplaceExe"
 
 [node name="hitbox" type="CollisionShape2D" parent="homeScreen/filesWindow/interact"]
 position = Vector2(36.9999, 78)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_cpkom")
 
 [node name="laplaceIcon" type="Sprite2D" parent="homeScreen/filesWindow"]
@@ -970,6 +1166,7 @@ text = "X"
 [node name="quitBack" type="ColorRect" parent="homeScreen/consoleWindow/quit"]
 modulate = Color(1, 1, 1, 0)
 show_behind_parent = true
+layout_mode = 0
 offset_left = -4.0
 offset_right = 24.0
 offset_bottom = 47.0
@@ -1063,6 +1260,7 @@ text = "X"
 [node name="quitBack" type="ColorRect" parent="homeScreen/errorWindow/quit"]
 modulate = Color(1, 1, 1, 0)
 show_behind_parent = true
+layout_mode = 0
 offset_left = -4.0
 offset_right = 24.0
 offset_bottom = 47.0
@@ -1167,6 +1365,14 @@ theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("11_830h1")
 theme_override_font_sizes/font_size = 48
 text = "00:00"
+
+[node name="glitchEffect" type="ColorRect" parent="."]
+visible = false
+z_index = 2
+material = SubResource("ShaderMaterial_ymseb")
+offset_right = 2035.0
+offset_bottom = 842.0
+color = Color(1, 0.0627451, 0, 1)
 
 [connection signal="animation_finished" from="homeScreen/consoleWindow/consoleAnims" to="." method="_on_console_anims_animation_finished"]
 [connection signal="timeout" from="homeScreen/consoleWindow/newLineTimer" to="." method="_on_new_line_timer_timeout"]

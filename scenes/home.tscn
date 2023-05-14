@@ -1,4 +1,4 @@
-[gd_scene load_steps=141 format=3 uid="uid://c311m5x6mx8bi"]
+[gd_scene load_steps=145 format=3 uid="uid://c311m5x6mx8bi"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -50,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://cvkdu4lr15mhr" path="res://assets/2d/3dSprites/decals/TexturesCom_DecalsPatches2041_2_masked_S.png" id="34_s1ngj"]
 [ext_resource type="Texture2D" uid="uid://cisak4vsdb8x0" path="res://assets/2d/3dSprites/decals/wallC.png" id="34_sitxa"]
 [ext_resource type="Texture2D" uid="uid://cbh85wxcbou0s" path="res://assets/2d/3dSprites/decals/wallDecal.png" id="35_85mj4"]
+[ext_resource type="Texture2D" uid="uid://bn4jnrdtf2e0x" path="res://assets/3d/textures/coarse-old-fabric-bl/coarse-old-fabric-blue_albedo.png" id="35_sflak"]
 [ext_resource type="ArrayMesh" uid="uid://jpvsc65lwqbr" path="res://assets/3d/bed.obj" id="36_mrx28"]
 [ext_resource type="Material" uid="uid://ct21oa0rwkssp" path="res://assets/3d/materials/brownFabric.tres" id="37_jq4xl"]
 [ext_resource type="Material" uid="uid://ducwgc1mxv620" path="res://assets/3d/materials/oakWood.tres" id="37_n8rk8"]
@@ -227,11 +228,11 @@ animations = [{
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ng5f3"]
 cull_mode = 2
-albedo_texture = ExtResource("27_q6856")
+albedo_texture = ExtResource("35_sflak")
 emission_enabled = true
-emission = Color(1, 0.00784314, 0.0156863, 1)
+emission = Color(0.0666667, 0, 1, 1)
 emission_energy_multiplier = 0.1
-emission_texture = ExtResource("27_q6856")
+emission_texture = ExtResource("35_sflak")
 heightmap_texture = ExtResource("28_w1sg1")
 uv1_triplanar = true
 
@@ -412,6 +413,66 @@ albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 1.0
 roughness = 0.0
 emission = Color(1, 0.854902, 0.647059, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u07wd"]
+load_path = "res://.godot/imported/coarse-old-fabric_albedo.png-1b47e186a3cbf3d2c46e46c0972ab696.s3tc.ctex"
+
+[sub_resource type="Animation" id="Animation_apeby"]
+resource_name = "red"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Curtains:surface_material_override/1:albedo_texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("35_sflak"), SubResource("CompressedTexture2D_u07wd")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("desk/lamp:surface_material_override/1:emission_texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("35_sflak"), ExtResource("27_q6856")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("desk/lamp:surface_material_override/1:emission")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0.0666667, 0, 1, 1), Color(1, 0.00784314, 0.0156863, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("desk/lamp:surface_material_override/1:albedo_texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("35_sflak"), ExtResource("27_q6856")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_asrhb"]
+_data = {
+"red": SubResource("Animation_apeby")
+}
 
 [node name="home" type="Node3D"]
 script = ExtResource("1_vrfjs")
@@ -1265,6 +1326,11 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.338729, 0)
 visible = false
 light_color = Color(0.388235, 0, 0.0156863, 1)
 
+[node name="roomTransformations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_asrhb")
+}
+
 [connection signal="interacted" from="player" to="." method="_on_player_interacted"]
-[connection signal="approvalEmailViewed" from="pcWindow/pcOS" to="." method="_on_pc_os_approval_email_viewed"]
 [connection signal="exitOS" from="pcWindow/pcOS" to="." method="_on_pc_os_exit_os"]
+[connection signal="updatedProgress" from="pcWindow/pcOS" to="." method="_on_pc_os_updated_progress"]

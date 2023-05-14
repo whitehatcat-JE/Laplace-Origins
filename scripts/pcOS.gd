@@ -1,16 +1,18 @@
 extends Node2D
 
 signal exitOS
-signal approvalEmailViewed
+signal updatedProgress
 
 var mouseSensitivity:float = 0.5
 var time:int = 0
 
 var currentInteraction:String = ""
 var menuDisplaying:bool = false
-var emailDisplaying:bool = false
 var filesDisplaying:bool = false
 var cmdDisplaying:bool = false
+
+var emailDisplaying:bool = false
+var emailCDisplaying:bool = false
 
 var wifiEnabled:bool = true
 
@@ -66,11 +68,24 @@ func eventTriggered(event):
 					$homeScreen/emailWindow/emailAnims.play("emailDisappear")
 				else:
 					$homeScreen/emailWindow/emailAnims.play("emailAppear")
-					emit_signal("approvalEmailViewed")
+					GI.progress = 1
+					emit_signal("updatedProgress")
 				emailDisplaying = !emailDisplaying
 			"emailQuit":
 				$homeScreen/emailWindow/emailAnims.play("emailDisappear")
 				emailDisplaying = false
+			"emailA":
+				$homeScreen/emailWindow/emailA/description.visible = true
+				$homeScreen/emailWindow/emailB/description.visible = false
+				$homeScreen/emailWindow/emailC/description.visible = false
+			"emailB":
+				$homeScreen/emailWindow/emailA/description.visible = false
+				$homeScreen/emailWindow/emailB/description.visible = true
+				$homeScreen/emailWindow/emailC/description.visible = false
+			"emailC":
+				$homeScreen/emailWindow/emailA/description.visible = false
+				$homeScreen/emailWindow/emailB/description.visible = false
+				$homeScreen/emailWindow/emailC/description.visible = true
 			"filesOpen":
 				if filesDisplaying:
 					$homeScreen/filesWindow/filesAnims.play("filesDisappear")
@@ -132,6 +147,12 @@ func _process(delta):
 				$homeScreen/menuBar/email/emailBack.modulate = "ffffff00"
 			"emailQuit":
 				$homeScreen/emailWindow/quit/quitBack.modulate = "ffffff00"
+			"emailA":
+				$homeScreen/emailWindow/emailA/emailABack.modulate = "ffffff00"
+			"emailB":
+				$homeScreen/emailWindow/emailB/emailBBack.modulate = "ffffff00"
+			"emailC":
+				$homeScreen/emailWindow/emailC/emailCBack.modulate = "ffffff00"
 			"errorOK":
 				$homeScreen/errorWindow/continueBack.modulate = "393939d5"
 			"errorQuit":
@@ -155,6 +176,12 @@ func _process(delta):
 				$homeScreen/menuBar/email/emailBack.modulate = "969696d5"
 			"emailQuit":
 				$homeScreen/emailWindow/quit/quitBack.modulate = "969696d5"
+			"emailA":
+				$homeScreen/emailWindow/emailA/emailABack.modulate = "969696d5"
+			"emailB":
+				$homeScreen/emailWindow/emailB/emailBBack.modulate = "969696d5"
+			"emailC":
+				$homeScreen/emailWindow/emailC/emailCBack.modulate = "969696d5"
 			"errorOK":
 				$homeScreen/errorWindow/continueBack.modulate = "969696d5"
 			"errorQuit":
@@ -164,6 +191,8 @@ func _process(delta):
 	if GI.progress == 2 and wifiEnabled:
 		wifiEnabled = false
 		$homeScreen/wifiIcon.texture = load("res://assets/2d/pcOS/wifiOffIcon.png")
+	if GI.progress == 4 and !emailCDisplaying:
+		emailCDisplaying = true
 
 func _on_clock_timer_timeout():
 	time += 1
@@ -178,6 +207,12 @@ func _on_clock_timer_timeout():
 func _on_console_anims_animation_finished(anim_name):
 	if anim_name == "consoleAppear":
 		$homeScreen/consoleWindow/newLineTimer.start()
+		GI.progress = 3
+		$homeScreen/emailWindow/emailB.visible = true
+		$homeScreen/emailWindow/emailA/description.visible = false
+		$homeScreen/emailWindow/emailB/description.visible = true
+		$homeScreen/emailWindow/emailB/interact/hitbox.disabled = false
+		emit_signal("updatedProgress")
 
 func _on_new_line_timer_timeout():
 	consoleOutputList.append("C:/Users/Laplace>")

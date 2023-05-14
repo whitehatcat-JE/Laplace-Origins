@@ -46,7 +46,9 @@ func _on_pc_os_exit_os():
 		playerCam.current = true
 		pcCam.current = false
 
-func _on_pc_os_approval_email_viewed():
-	if GI.progress == 0:
-		GI.progress = 1
-		player.unlockedInteractions.append("router")
+func _on_pc_os_updated_progress():
+	match GI.progress:
+		1:
+			player.unlockedInteractions.append("router")
+		3:
+			if pcCam.current: $roomTransformations.play("red");
