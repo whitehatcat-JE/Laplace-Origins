@@ -38,6 +38,11 @@ func _on_player_interacted(interactionName:String):
 			$walls/Router/routerLogo.visible = false
 			$walls/Router/routerOffLogo.visible = true
 			GI.progress = 2
+		"usb":
+			$desk/Pc/usbStick.visible = false
+			player.unlockedInteractions.erase("usb")
+			$walls/DoorFrame/doorAnims.play("openDoor")
+			GI.progress = 4
 
 func _on_pc_os_exit_os():
 	if pcCam.current:
@@ -52,3 +57,4 @@ func _on_pc_os_updated_progress():
 			player.unlockedInteractions.append("router")
 		3:
 			if pcCam.current: $roomTransformations.play("red");
+			player.unlockedInteractions.append("usb")
