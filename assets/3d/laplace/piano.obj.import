@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dcd7h4sfy0w1i"
+path="res://.godot/imported/piano.obj-f18f25664992333a91e0c027c8b4d802.mesh"
+
+[deps]
+
+files=["res://.godot/imported/piano.obj-f18f25664992333a91e0c027c8b4d802.mesh"]
+
+source_file="res://assets/3d/laplace/piano.obj"
+dest_files=["res://.godot/imported/piano.obj-f18f25664992333a91e0c027c8b4d802.mesh", "res://.godot/imported/piano.obj-f18f25664992333a91e0c027c8b4d802.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
