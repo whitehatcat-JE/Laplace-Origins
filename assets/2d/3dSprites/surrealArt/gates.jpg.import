@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7veq4fovbfuo"
-path.s3tc="res://.godot/imported/halo.png-b8809b4eb7dd5b43fa3a981386220ae8.s3tc.ctex"
+uid="uid://dn6utpaofeh2q"
+path.s3tc="res://.godot/imported/gates.jpg-76bac68b79ffc35160218762b670ad69.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/2d/halo.png"
-dest_files=["res://.godot/imported/halo.png-b8809b4eb7dd5b43fa3a981386220ae8.s3tc.ctex"]
+source_file="res://assets/2d/3dSprites/surrealArt/gates.jpg"
+dest_files=["res://.godot/imported/gates.jpg-76bac68b79ffc35160218762b670ad69.s3tc.ctex"]
 
 [params]
 

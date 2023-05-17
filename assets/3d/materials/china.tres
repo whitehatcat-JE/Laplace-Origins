@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://di68gyvikxw3q"]
+
+[ext_resource type="Texture2D" uid="uid://d0h73lblbjy8t" path="res://assets/3d/textures/china/Tiles101_1K_Color.jpg" id="1_epxfv"]
+
+[resource]
+albedo_texture = ExtResource("1_epxfv")
+roughness = 0.0

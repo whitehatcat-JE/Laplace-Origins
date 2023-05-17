@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://buxmmbr76mqx5"
+path="res://.godot/imported/entranceDoorFrame.obj-541ab5a90cf73cccb4da4e65ab42baef.mesh"
+
+[deps]
+
+files=["res://.godot/imported/entranceDoorFrame.obj-541ab5a90cf73cccb4da4e65ab42baef.mesh"]
+
+source_file="res://assets/3d/entranceDoorFrame.obj"
+dest_files=["res://.godot/imported/entranceDoorFrame.obj-541ab5a90cf73cccb4da4e65ab42baef.mesh", "res://.godot/imported/entranceDoorFrame.obj-541ab5a90cf73cccb4da4e65ab42baef.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

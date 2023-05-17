@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c3amplcsn5ckt"
+path="res://.godot/imported/vase.obj-3c116ee23910f4e101f6cd3e59abc0fe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/vase.obj-3c116ee23910f4e101f6cd3e59abc0fe.mesh"]
+
+source_file="res://assets/3d/vase.obj"
+dest_files=["res://.godot/imported/vase.obj-3c116ee23910f4e101f6cd3e59abc0fe.mesh", "res://.godot/imported/vase.obj-3c116ee23910f4e101f6cd3e59abc0fe.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

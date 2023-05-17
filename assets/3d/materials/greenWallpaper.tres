@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bak4i13bdfs7n"]
+
+[ext_resource type="Texture2D" uid="uid://rapu4ovi2h0v" path="res://assets/3d/textures/hallWallpaper/TexturesCom_WallpaperForties0083_seamless_S_green.jpg" id="1_k713f"]
+
+[resource]
+albedo_texture = ExtResource("1_k713f")
+uv1_triplanar = true

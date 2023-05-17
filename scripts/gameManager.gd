@@ -5,7 +5,7 @@ var questNum = 0
 @onready var player:Node = $player
 @onready var playerCam:Node = $player/head/cam
 
-@onready var pcCam:Node = $desk/monitorScreen/cam
+@onready var pcCam:Node = $bedroom/desk/monitorScreen/cam
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -24,7 +24,7 @@ func _input(event):
 			playerCam.current = true
 			pcCam.current = false
 	elif pcCam.current:
-		$pcWindow/pcOS.eventTriggered(event)
+		$bedroom/pcWindow/pcOS.eventTriggered(event)
 
 func _on_player_interacted(interactionName:String):
 	match interactionName:
@@ -39,7 +39,7 @@ func _on_player_interacted(interactionName:String):
 			$walls/Router/routerOffLogo.visible = true
 			GI.progress = 2
 		"usb":
-			$desk/Pc/usbStick.visible = false
+			$bedroom/desk/Pc/usbStick.visible = false
 			player.unlockedInteractions.erase("usb")
 			$walls/DoorFrame/doorAnims.play("openDoor")
 			GI.progress = 4
@@ -56,5 +56,5 @@ func _on_pc_os_updated_progress():
 		1:
 			player.unlockedInteractions.append("router")
 		3:
-			if pcCam.current: $roomTransformations.play("red");
+			if pcCam.current: $bedroom/roomTransformations.play("red");
 			player.unlockedInteractions.append("usb")
