@@ -9,7 +9,7 @@ const DECELERATION:float = 20.0
 var cameraAngle:float = 0
 var disabled:bool = false
 
-var unlockedInteractions = ["monitor"]
+var unlockedInteractions = ["monitor", "passcode"]
 
 @onready var interactCast = $head/cam/interactCast
 @onready var collisionCast = $head/cam/collisionCast
@@ -35,7 +35,9 @@ func _input(event):
 		emit_signal("interacted", interactCast.get_collider().interactionName)
 
 func _physics_process(delta):
-	if disabled: return;
+	if disabled:
+		$bobAnim.speed_scale = 0.1
+		return
 	HUDinteract.visible = false
 	HUDcrosshair.visible = false
 	HUDlock.visible = false

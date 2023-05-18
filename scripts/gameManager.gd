@@ -1,18 +1,11 @@
 extends Node3D
 
-var questNum = 0
+var inPasscodeScreen:bool = false
 
 @onready var player:Node = $player
 @onready var playerCam:Node = $player/head/cam
 
 @onready var pcCam:Node = $bedroom/desk/monitorScreen/cam
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func _input(event):
 	if Input.is_action_pressed("quit"):
@@ -23,10 +16,17 @@ func _input(event):
 			player.get_node("HUD").visible = true
 			playerCam.current = true
 			pcCam.current = false
+		elif inPasscodeScreen:
+			player.disabled = false
+			player.get_node("HUD").visible = true
+			inPasscodeScreen = false
 	elif pcCam.current:
 		$bedroom/pcWindow/pcOS.eventTriggered(event)
+	elif inPasscodeScreen:
+		$basement/passcode/passcodeEntry.eventTriggered(event)
 
 func _on_player_interacted(interactionName:String):
+	await get_tree().process_frame
 	match interactionName:
 		"monitor":
 			player.disabled = true
@@ -43,6 +43,10 @@ func _on_player_interacted(interactionName:String):
 			player.unlockedInteractions.erase("usb")
 			$walls/DoorFrame/doorAnims.play("openDoor")
 			GI.progress = 4
+		"passcode":
+			player.disabled = true
+			player.get_node("HUD").visible = false
+			inPasscodeScreen = true
 
 func _on_pc_os_exit_os():
 	if pcCam.current:
@@ -58,3 +62,12 @@ func _on_pc_os_updated_progress():
 		3:
 			if pcCam.current: $bedroom/roomTransformations.play("red");
 			player.unlockedInteractions.append("usb")
+
+func _on_passcode_entry_updated_progress():
+	player.unlockedInteractions.erase("passcode")
+	$basement/doorAnims.play("openDoor")
+
+func _on_passcode_entry_exit_passcode():
+	player.disabled = false
+	player.get_node("HUD").visible = true
+	inPasscodeScreen = false
