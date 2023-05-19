@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://smi13sggafqw"]
+[gd_scene load_steps=22 format=3 uid="uid://smi13sggafqw"]
 
 [ext_resource type="Script" path="res://scripts/passcodeEntry.gd" id="1_4011o"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_rukca"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://b8og4d1ipbg3i" path="res://assets/2d/passcode/button0.png" id="14_7trqs"]
 [ext_resource type="Texture2D" uid="uid://dhbxv28wumo4r" path="res://assets/2d/UI/mousePointer.png" id="16_iven8"]
 [ext_resource type="Texture2D" uid="uid://1ybrvdjx2poq" path="res://assets/2d/UI/mouseInteract.png" id="17_l6t5q"]
+[ext_resource type="Texture2D" uid="uid://cfe408ssq7x8y" path="res://assets/2d/passcode/reloadButton.png" id="17_ulqad"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ou234"]
 shader = ExtResource("2_bbpvo")
@@ -179,6 +180,19 @@ visible = false
 interactionName = "quit"
 
 [node name="hitbox" type="CollisionShape2D" parent="cancelButton/interact"]
+position = Vector2(-0.666748, -0.666656)
+shape = SubResource("RectangleShape2D_fd8tl")
+
+[node name="reloadButton" type="Sprite2D" parent="."]
+position = Vector2(839, 526)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("17_ulqad")
+
+[node name="interact" parent="reloadButton" instance=ExtResource("6_f3a7o")]
+visible = false
+interactionName = "reload"
+
+[node name="hitbox" type="CollisionShape2D" parent="reloadButton/interact"]
 position = Vector2(-0.666748, -0.666656)
 shape = SubResource("RectangleShape2D_fd8tl")
 

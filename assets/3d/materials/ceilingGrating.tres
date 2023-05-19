@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=7 format=3 uid="uid://bnm64yuey80v"]
+
+[ext_resource type="Texture2D" uid="uid://cqt7jtjw5n66t" path="res://assets/3d/textures/metalgrid4-bl/metalgrid4_basecolor.png" id="1_lscyl"]
+[ext_resource type="Texture2D" uid="uid://b0hfu64vegqow" path="res://assets/3d/textures/metalgrid4-bl/metalgrid4_AO.png" id="2_mwbvy"]
+[ext_resource type="Texture2D" uid="uid://pmwd7tk82x7h" path="res://assets/3d/textures/military-panel1-bl/military-panel1-height_.png" id="3_qhygd"]
+[ext_resource type="Texture2D" uid="uid://b5fn2cuao2f0h" path="res://assets/3d/textures/metalgrid4-bl/metalgrid4_metallic.png" id="4_821x4"]
+[ext_resource type="Texture2D" uid="uid://cv7iixut81a4k" path="res://assets/3d/textures/metalgrid4-bl/metalgrid4_normal-ogl.png" id="5_j8786"]
+[ext_resource type="Texture2D" uid="uid://c7remj1s7e3lp" path="res://assets/3d/textures/metalgrid4-bl/metalgrid4_roughness.png" id="6_1qiwo"]
+
+[resource]
+albedo_texture = ExtResource("1_lscyl")
+metallic = 1.0
+metallic_texture = ExtResource("4_821x4")
+roughness_texture = ExtResource("6_1qiwo")
+normal_enabled = true
+normal_texture = ExtResource("5_j8786")
+ao_enabled = true
+ao_texture = ExtResource("2_mwbvy")
+heightmap_texture = ExtResource("3_qhygd")
+uv1_scale = Vector3(5, 5, 5)

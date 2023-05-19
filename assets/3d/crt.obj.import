@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c0bbnk4cxlf7a"
+path="res://.godot/imported/crt.obj-9a0bf90757e93543cc1d4cefc516e281.mesh"
+
+[deps]
+
+files=["res://.godot/imported/crt.obj-9a0bf90757e93543cc1d4cefc516e281.mesh"]
+
+source_file="res://assets/3d/crt.obj"
+dest_files=["res://.godot/imported/crt.obj-9a0bf90757e93543cc1d4cefc516e281.mesh", "res://.godot/imported/crt.obj-9a0bf90757e93543cc1d4cefc516e281.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

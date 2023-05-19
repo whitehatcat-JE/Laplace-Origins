@@ -52,6 +52,9 @@ func eventTriggered(event):
 			"7": $b7.modulate = "5cff53";
 			"8": $b8.modulate = "5cff53";
 			"9": $b9.modulate = "5cff53";
+			"reload":
+				userCode = ""
+				$reloadButton.modulate = "5cff53"
 			"quit":
 				$cancelButton.modulate = "ffffff"
 				emit_signal("exitPasscode")
@@ -67,6 +70,7 @@ func eventTriggered(event):
 			"7": $b7.modulate = "59d3ff" if buttonHeld == currentInteraction else "ffffff";
 			"8": $b8.modulate = "59d3ff" if buttonHeld == currentInteraction else "ffffff";
 			"9": $b9.modulate = "59d3ff" if buttonHeld == currentInteraction else "ffffff";
+			"reload": $reloadButton.modulate = "59d3ff" if buttonHeld == currentInteraction else "ffffff";
 		buttonHeld = ""
 		
 
@@ -93,6 +97,7 @@ func _process(delta):
 			"7": $b7.modulate = "ffffff";
 			"8": $b8.modulate = "ffffff";
 			"9": $b9.modulate = "ffffff";
+			"reload": $reloadButton.modulate = "ffffff";
 			"quit": $cancelButton.modulate = "ffffff";
 		match interaction:
 			"0": $b0.modulate = "59d3ff";
@@ -105,5 +110,6 @@ func _process(delta):
 			"7": $b7.modulate = "59d3ff";
 			"8": $b8.modulate = "59d3ff";
 			"9": $b9.modulate = "59d3ff";
+			"reload": $reloadButton.modulate = "59d3ff";
 			"quit": $cancelButton.modulate = "ff000c";
 		currentInteraction = interaction
