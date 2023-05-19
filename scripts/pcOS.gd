@@ -191,8 +191,16 @@ func _process(delta):
 	if GI.progress == 2 and wifiEnabled:
 		wifiEnabled = false
 		$homeScreen/wifiIcon.texture = load("res://assets/2d/pcOS/wifiOffIcon.png")
-	if GI.progress == 4 and !emailCDisplaying:
+	if GI.progress == 6 and !emailCDisplaying:
 		emailCDisplaying = true
+		$homeScreen/emailWindow/emailC.visible = true
+		$homeScreen/emailWindow/emailA/description.visible = false
+		$homeScreen/emailWindow/emailA/description.text = """Looks like the stakeholders have finally given us the go-ahead to do another test run!
+
+Just run   it immEdiate|y and let it do its thing."""
+		$homeScreen/emailWindow/emailB/description.visible = false
+		$homeScreen/emailWindow/emailC/description.visible = true
+		$homeScreen/emailWindow/emailC/interact/hitbox.disabled = false
 
 func _on_clock_timer_timeout():
 	time += 1

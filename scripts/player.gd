@@ -9,7 +9,7 @@ const DECELERATION:float = 20.0
 var cameraAngle:float = 0
 var disabled:bool = false
 
-var unlockedInteractions = ["monitor", "passcode"]
+var unlockedInteractions = ["monitor", "passcode", "crt"]
 
 @onready var interactCast = $head/cam/interactCast
 @onready var collisionCast = $head/cam/collisionCast

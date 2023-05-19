@@ -846,8 +846,6 @@ First I’m gonna need you to switch off the router near your wardrobe. Can’t 
 
 Then just run the .exe file and let it do its thing. Oh, and MAKE SURE you shut down the program before re-connecting your router. I’d like to avoid getting fired right after Christmas."
 autowrap_mode = 2
-visible_characters = 0
-visible_ratio = 0.0
 
 [node name="emailB" type="Node2D" parent="homeScreen/emailWindow"]
 visible = false
@@ -914,8 +912,6 @@ text = "Congratu lations       ass0ciate!
 
 server termin@l. [color=orange][outline_color=red][font_size=30](Location Data: Basement)"
 autowrap_mode = 2
-visible_characters = 0
-visible_ratio = 0.0
 
 [node name="emailC" type="Node2D" parent="homeScreen/emailWindow"]
 visible = false
@@ -972,8 +968,6 @@ theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Excellent job! Now just switch back on the router, and your assignment will be complete [color=red]: [color=white]]"
 autowrap_mode = 2
-visible_characters = 0
-visible_ratio = 0.0
 
 [node name="quit" type="Label" parent="homeScreen/emailWindow"]
 offset_left = 466.0

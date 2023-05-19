@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://c7cm5si86s4g2"]
+
+[ext_resource type="Shader" path="res://scripts/shaders/crt.gdshader" id="1_jwunl"]
+[ext_resource type="Script" path="res://scripts/globalInformation.gd" id="2_dlk15"]
+[ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="3_0c3go"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oybso"]
+shader = ExtResource("1_jwunl")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.174
+shader_parameter/scanlines_width = 0.153
+shader_parameter/grille_opacity = 0.235
+shader_parameter/resolution = Vector2(2000, 2000)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 4.0
+shader_parameter/roll_size = 34.356
+shader_parameter/roll_variation = 1.247
+shader_parameter/distort_intensity = 0.034
+shader_parameter/noise_opacity = 0.371
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.29
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[node name="crtInterface" type="Node2D"]
+
+[node name="background" type="ColorRect" parent="."]
+offset_left = -418.0
+offset_top = -973.0
+offset_right = 5250.0
+offset_bottom = 4938.0
+color = Color(1, 0.0156863, 0, 1)
+
+[node name="crtFilter" type="ColorRect" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_oybso")
+offset_left = 1008.0
+offset_top = 1075.0
+offset_right = 1844.0
+offset_bottom = 1732.0
+
+[node name="globalInformation" type="Node" parent="."]
+script = ExtResource("2_dlk15")
+
+[node name="terminal" type="RichTextLabel" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 1116.0
+offset_top = 1150.0
+offset_right = 5003.0
+offset_bottom = 3412.0
+rotation = 0.0724129
+theme_override_fonts/normal_font = ExtResource("3_0c3go")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "c:\\systemhub\\hub> loading usb... done.
+c:\\systemhub\\hub> found .exe file on usb, executing.
+...
+...
+...
+data successfully processed.
+\\systemhub\\hub> ping port 3902.3
+[font_size=180]EMAIL SENT"
+visible_characters = 102
+visible_ratio = 0.585
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(55, 78)
+rotation = 1.57079
+ignore_rotation = false
+zoom = Vector2(0.25, 0.25)
+
+[node name="foreground" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -418.0
+offset_top = -973.0
+offset_right = 5250.0
+offset_bottom = 4938.0
+color = Color(0, 0, 0, 1)

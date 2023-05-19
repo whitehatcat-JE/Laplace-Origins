@@ -35,9 +35,16 @@ func _on_player_interacted(interactionName:String):
 			pcCam.current = true
 		"router":
 			player.unlockedInteractions.erase("router")
-			$walls/Router/routerLogo.visible = false
-			$walls/Router/routerOffLogo.visible = true
-			GI.progress = 2
+			if GI.progress == 6:
+				GI.progress = 7
+				$basement/crtAnim.play("redAllLights")
+				$pianoRoom/DoorFrame/doorAnims.play("openDoor")
+				$walls/Router/routerLogo.visible = true
+				$walls/Router/routerOffLogo.visible = false
+			else:
+				GI.progress = 2
+				$walls/Router/routerLogo.visible = false
+				$walls/Router/routerOffLogo.visible = true
 		"usb":
 			$bedroom/desk/Pc/usbStick.visible = false
 			player.unlockedInteractions.erase("usb")
@@ -47,6 +54,12 @@ func _on_player_interacted(interactionName:String):
 			player.disabled = true
 			player.get_node("HUD").visible = false
 			inPasscodeScreen = true
+		"crt":
+			$basement/crtAnim.play("displayMessage")
+			player.unlockedInteractions.erase("crt")
+			player.unlockedInteractions.append("router")
+			$basement/crt/usbStick.visible = true
+			GI.progress = 6
 
 func _on_pc_os_exit_os():
 	if pcCam.current:
