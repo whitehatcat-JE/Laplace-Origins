@@ -16,6 +16,8 @@ var emailCDisplaying:bool = false
 
 var wifiEnabled:bool = true
 
+var alertCharNum:int = 0
+
 var consoleCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*()-=_+"
 var consoleOutputList = [
 	"3fourths Infinity [Version 7.321.43.5656.4]",
@@ -230,3 +232,9 @@ func _on_new_line_timer_timeout():
 	$homeScreen/consoleWindow/consoleOutput.text = ""
 	for output in consoleOutputList:
 		$homeScreen/consoleWindow/consoleOutput.text += output + "\n"
+
+func _on_alert_scroll_timer_timeout():
+	var currentText:String = $emergencyAlert/alertText.text
+	alertCharNum += 1
+	currentText = ("UNKNOWN "[7 - alertCharNum % 8] + currentText).substr(0, 300)
+	$emergencyAlert/alertText.text = currentText

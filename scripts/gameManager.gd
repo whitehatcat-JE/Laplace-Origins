@@ -29,18 +29,30 @@ func _on_player_interacted(interactionName:String):
 	await get_tree().process_frame
 	match interactionName:
 		"monitor":
-			player.disabled = true
-			player.get_node("HUD").visible = false
-			playerCam.current = false
-			pcCam.current = true
+			if GI.progress == 8:
+				player.unlockedInteractions.erase("monitor")
+				player.unlockedInteractions.append("exitHome")
+				$bedroom/easSFX.stop()
+				$hallway/sirenSFX.stop()
+				$pianoRoom/pianoSongGlitched.play()
+				$bedroom/pcWindow/pcOS/safeMessage.visible = true
+				$powercutAnim.play("cutPower")
+			else:
+				player.disabled = true
+				player.get_node("HUD").visible = false
+				playerCam.current = false
+				pcCam.current = true
 		"router":
 			player.unlockedInteractions.erase("router")
 			if GI.progress == 6:
 				GI.progress = 7
 				$basement/crtAnim.play("redAllLights")
+				$pianoRoom/triggerField.set_deferred("monitoring", true)
 				$pianoRoom/DoorFrame/doorAnims.play("openDoor")
 				$walls/Router/routerLogo.visible = true
 				$walls/Router/routerOffLogo.visible = false
+				$pianoRoom/piano.visible = false
+				$pianoRoom/pianoSong.play()
 			else:
 				GI.progress = 2
 				$walls/Router/routerLogo.visible = false
@@ -60,6 +72,16 @@ func _on_player_interacted(interactionName:String):
 			player.unlockedInteractions.append("router")
 			$basement/crt/usbStick.visible = true
 			GI.progress = 6
+		"piano":
+			player.unlockedInteractions.erase("piano")
+			$bedroom/easSFX.play()
+			$hallway/sirenSFX.play()
+			$bedroom/pcWindow/pcOS/emergencyAlert.visible = true
+			GI.progress = 8
+		"exitHome":
+			GI.progress = 9
+			player.disabled = true
+			$player/HUD/fadeAnim.play("fadeOut")
 
 func _on_pc_os_exit_os():
 	if pcCam.current:
@@ -84,3 +106,13 @@ func _on_passcode_entry_exit_passcode():
 	player.disabled = false
 	player.get_node("HUD").visible = true
 	inPasscodeScreen = false
+
+func _on_trigger_field_body_entered(body):
+	$pianoRoom/triggerField.set_deferred("monitoring", false)
+	$pianoRoom/eyes.visible = false
+	$pianoRoom/SpotLight.visible = true
+	$pianoRoom/piano.visible = true
+	$pianoRoom/pianoSong.stop()
+
+func _on_fade_anim_animation_finished(anim_name):
+	print("Transferring...")

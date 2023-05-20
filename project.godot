@@ -76,6 +76,7 @@ quit={
 2d_physics/layer_2="interact"
 3d_physics/layer_2="interact"
 2d_physics/layer_3="secondaryInteract"
+3d_physics/layer_3="player"
 
 [rendering]
 

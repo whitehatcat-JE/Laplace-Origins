@@ -558,14 +558,6 @@ position = Vector2(1056, 410)
 scale = Vector2(0.516, 0.516)
 texture = ExtResource("2_j3svo")
 
-[node name="screenShape" type="ColorRect" parent="."]
-visible = false
-offset_left = 547.0
-offset_top = 76.0
-offset_right = 1561.0
-offset_bottom = 582.0
-color = Color(0, 0, 0, 0.443137)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(542, 328)
 rotation = -1.57079
@@ -1360,6 +1352,99 @@ theme_override_fonts/font = ExtResource("11_830h1")
 theme_override_font_sizes/font_size = 48
 text = "00:00"
 
+[node name="emergencyAlert" type="Node2D" parent="."]
+visible = false
+z_index = 11
+
+[node name="screenShape" type="ColorRect" parent="emergencyAlert"]
+offset_left = 547.0
+offset_top = 76.0
+offset_right = 1561.0
+offset_bottom = 582.0
+color = Color(0, 0, 0, 1)
+
+[node name="alertTitle" type="Label" parent="emergencyAlert"]
+offset_left = 778.0
+offset_top = 152.0
+offset_right = 2128.0
+offset_bottom = 344.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(1, 0, 0.00784314, 1)
+theme_override_colors/font_outline_color = Color(1, 0.588235, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 150
+text = "EMERGENCY ALERT"
+
+[node name="alertText" type="Label" parent="emergencyAlert"]
+offset_left = 549.0
+offset_top = 257.0
+offset_right = 3074.0
+offset_bottom = 337.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(1, 0, 0.00784314, 1)
+theme_override_colors/font_outline_color = Color(1, 0.588235, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 60
+clip_text = true
+
+[node name="alertScrollTimer" type="Timer" parent="emergencyAlert"]
+wait_time = 0.1
+autostart = true
+
+[node name="safeMessage" type="Node2D" parent="."]
+visible = false
+z_index = 12
+
+[node name="screenShape" type="ColorRect" parent="safeMessage"]
+offset_left = 547.0
+offset_top = 76.0
+offset_right = 1561.0
+offset_bottom = 582.0
+color = Color(1, 0.027451, 0, 1)
+
+[node name="hiddenMessage1" type="Label" parent="safeMessage"]
+offset_left = 681.0
+offset_top = 182.0
+offset_right = 2031.0
+offset_bottom = 374.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(1, 0, 0.00784314, 1)
+theme_override_colors/font_outline_color = Color(1, 0.588235, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 150
+text = "GOD SAVE US"
+
+[node name="hiddenMessage2" type="Label" parent="safeMessage"]
+offset_left = 997.0
+offset_top = 433.0
+offset_right = 2347.0
+offset_bottom = 625.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(1, 0, 0.00784314, 1)
+theme_override_colors/font_outline_color = Color(1, 0.588235, 0, 1)
+theme_override_constants/outline_size = 1
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 150
+text = "PRAISE HIM"
+
+[node name="safeMessage" type="Label" parent="safeMessage"]
+offset_left = 742.0
+offset_top = 246.0
+offset_right = 2275.0
+offset_bottom = 661.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 150
+text = "Stay happy. You are safe."
+horizontal_alignment = 1
+autowrap_mode = 2
+
 [node name="glitchEffect" type="ColorRect" parent="."]
 visible = false
 z_index = 2
@@ -1371,3 +1456,4 @@ color = Color(1, 0.0627451, 0, 1)
 [connection signal="animation_finished" from="homeScreen/consoleWindow/consoleAnims" to="." method="_on_console_anims_animation_finished"]
 [connection signal="timeout" from="homeScreen/consoleWindow/newLineTimer" to="." method="_on_new_line_timer_timeout"]
 [connection signal="timeout" from="homeScreen/clockTimer" to="." method="_on_clock_timer_timeout"]
+[connection signal="timeout" from="emergencyAlert/alertScrollTimer" to="." method="_on_alert_scroll_timer_timeout"]

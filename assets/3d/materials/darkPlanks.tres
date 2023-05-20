@@ -14,4 +14,4 @@ roughness_texture = ExtResource("5_hs4xg")
 normal_enabled = true
 normal_texture = ExtResource("4_xhrja")
 heightmap_texture = ExtResource("2_rkpkp")
-uv1_triplanar = true
+uv1_scale = Vector3(3, 3, 3)
