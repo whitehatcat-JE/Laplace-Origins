@@ -115,4 +115,4 @@ func _on_trigger_field_body_entered(body):
 	$pianoRoom/pianoSong.stop()
 
 func _on_fade_anim_animation_finished(anim_name):
-	print("Transferring...")
+	get_tree().change_scene_to_file("res://scenes/outside.tscn")

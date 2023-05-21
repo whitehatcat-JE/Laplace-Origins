@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ci0y0og4d48dh"
+path="res://.godot/imported/body.obj-d7e587bf1fc618b7ade96d883524d1e5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/body.obj-d7e587bf1fc618b7ade96d883524d1e5.mesh"]
+
+source_file="res://assets/3d/laplace/body.obj"
+dest_files=["res://.godot/imported/body.obj-d7e587bf1fc618b7ade96d883524d1e5.mesh", "res://.godot/imported/body.obj-d7e587bf1fc618b7ade96d883524d1e5.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
