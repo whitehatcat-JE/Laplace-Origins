@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://df4qa2heyeu4s"
+path="res://.godot/imported/houseExterior.obj-c386fb79c1334121e0e0a7a508c1f328.mesh"
+
+[deps]
+
+files=["res://.godot/imported/houseExterior.obj-c386fb79c1334121e0e0a7a508c1f328.mesh"]
+
+source_file="res://assets/3d/laplace/houseExterior.obj"
+dest_files=["res://.godot/imported/houseExterior.obj-c386fb79c1334121e0e0a7a508c1f328.mesh", "res://.godot/imported/houseExterior.obj-c386fb79c1334121e0e0a7a508c1f328.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

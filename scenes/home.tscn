@@ -1,4 +1,4 @@
-[gd_scene load_steps=363 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=364 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -144,6 +144,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c0bbnk4cxlf7a" path="res://assets/3d/crt.obj" id="135_sofnr"]
 [ext_resource type="Texture2D" uid="uid://p2q07wl4p4c8" path="res://assets/2d/3dSprites/crtLogos.png" id="136_kd2gh"]
 [ext_resource type="Texture2D" uid="uid://da76e3evduwti" path="res://assets/2d/3dSprites/decals/TexturesCom_DecalBottom0031_1_masked_S.png" id="138_nccd0"]
+[ext_resource type="Texture2D" uid="uid://c0rm0p86imx5j" path="res://assets/2d/3dSprites/vines.png" id="143_b8ogo"]
 [ext_resource type="AudioStream" uid="uid://buv6wcekvl551" path="res://assets/audio/music/nocturne.mp3" id="146_hevbh"]
 [ext_resource type="AudioStream" uid="uid://beehvo0hosw3j" path="res://assets/audio/music/nocturneDistorted.mp3" id="146_ifhja"]
 
@@ -3791,7 +3792,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_sdyv3")
 shape = SubResource("ConcavePolygonShape3D_cjxxh")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="basement/walls"]
-transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -9.49393, -0.452447, 6.68514)
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -9.49393, -0.452447, 6.56184)
 mesh = SubResource("BoxMesh_ulj46")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("2_xynmm")
@@ -4424,6 +4425,69 @@ surface_material_override/0 = ExtResource("5_6kw2r")
 libraries = {
 "": SubResource("AnimationLibrary_dbgkk")
 }
+
+[node name="vines1" type="Sprite3D" parent="basement"]
+transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, 0, -0.234814, -1.16567)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+texture = ExtResource("143_b8ogo")
+
+[node name="vines2" type="Sprite3D" parent="basement"]
+transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, 0, -0.846818, -1.16567)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+texture = ExtResource("143_b8ogo")
+
+[node name="vines3" type="Sprite3D" parent="basement"]
+transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -0.25095, -0.168667, -1.60517)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+texture = ExtResource("143_b8ogo")
+
+[node name="vines4" type="Sprite3D" parent="basement"]
+transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -0.25095, 0.11068, -1.351)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+texture = ExtResource("143_b8ogo")
+
+[node name="vines5" type="Sprite3D" parent="basement"]
+transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -0.25095, -0.44912, -1.351)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+texture = ExtResource("143_b8ogo")
+
+[node name="vines6" type="Sprite3D" parent="basement"]
+transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -9.12049, -0.276912, 0.16563)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+texture = ExtResource("143_b8ogo")
+
+[node name="vines9" type="Sprite3D" parent="basement"]
+transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -3.55595, -0.276912, 2.28233)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+texture = ExtResource("143_b8ogo")
+
+[node name="vines7" type="Sprite3D" parent="basement"]
+transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -9.37144, -0.243534, -0.0197011)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+texture = ExtResource("143_b8ogo")
+
+[node name="vines8" type="Sprite3D" parent="basement"]
+transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -9.37144, -0.803334, -0.0197011)
+pixel_size = 0.001
+billboard = 2
+shaded = true
+texture = ExtResource("143_b8ogo")
 
 [node name="pianoRoom" type="Node3D" parent="."]
 
