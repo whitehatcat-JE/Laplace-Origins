@@ -11,6 +11,8 @@ var disabled:bool = false
 
 var unlockedInteractions = ["monitor", "passcode", "crt", "piano"]
 
+@export var lockYRot:bool = false
+
 @onready var interactCast = $head/cam/interactCast
 @onready var collisionCast = $head/cam/collisionCast
 @onready var HUDcrosshair = $HUD/crosshair
@@ -28,7 +30,7 @@ func _input(event):
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
 		
 		var change = -event.relative.y * MOUSE_SENSITIVITY
-		if change + cameraAngle < 85 and change + cameraAngle > -85:
+		if change + cameraAngle < 85 and change + cameraAngle > -85 and !lockYRot:
 			$head/cam.rotate_x(deg_to_rad(change))
 			cameraAngle += change
 	elif Input.is_action_just_pressed("interact") and HUDinteract.visible:

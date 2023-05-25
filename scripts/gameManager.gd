@@ -8,8 +8,6 @@ var inPasscodeScreen:bool = false
 @onready var pcCam:Node = $bedroom/desk/monitorScreen/cam
 
 func _input(event):
-	if Input.is_action_pressed("quit"):
-		get_tree().quit()
 	if Input.is_action_just_pressed("back"):
 		if pcCam.current:
 			player.disabled = false

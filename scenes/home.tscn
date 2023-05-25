@@ -1,4 +1,4 @@
-[gd_scene load_steps=364 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=372 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -147,6 +147,9 @@
 [ext_resource type="Texture2D" uid="uid://c0rm0p86imx5j" path="res://assets/2d/3dSprites/vines.png" id="143_b8ogo"]
 [ext_resource type="AudioStream" uid="uid://buv6wcekvl551" path="res://assets/audio/music/nocturne.mp3" id="146_hevbh"]
 [ext_resource type="AudioStream" uid="uid://beehvo0hosw3j" path="res://assets/audio/music/nocturneDistorted.mp3" id="146_ifhja"]
+[ext_resource type="Texture2D" uid="uid://bpecj4jeahrox" path="res://assets/2d/menus/gameView.png" id="148_eln84"]
+[ext_resource type="Script" path="res://scripts/mainMenu.gd" id="148_kk8v6"]
+[ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="150_blp0k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4ojb"]
 sky_top_color = Color(0.0627451, 0.733333, 1, 1)
@@ -1986,6 +1989,61 @@ _data = {
 "cutPower": SubResource("Animation_bmkph")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_kysv3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbo7j"]
+shading_mode = 0
+albedo_texture = ExtResource("148_eln84")
+
+[sub_resource type="QuadMesh" id="QuadMesh_6vii6"]
+size = Vector2(2, 1.125)
+
+[sub_resource type="Animation" id="Animation_ytsih"]
+resource_name = "zoom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("menuCam:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(-0.034, 0.258, 0.387), Vector3(0.023, 0.313, 0.046)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("menuCam:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.523599, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"switchPauseState"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jgsmf"]
+_data = {
+"zoom": SubResource("Animation_ytsih")
+}
+
 [node name="home" type="Node3D"]
 script = ExtResource("1_vrfjs")
 
@@ -2000,6 +2058,11 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.0
 visible = false
 light_color = Color(1, 0.0117647, 0, 1)
 light_energy = 0.05
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.866025, 0.5, 2.93063e-08, 0.12941, -0.224144, 0.965926, 0.482963, -0.836516, -0.258819, 0, 0, 0)
+shadow_opacity = 0.0
+editor_only = true
 
 [node name="tempLayout" type="Node3D" parent="."]
 
@@ -2479,6 +2542,7 @@ shape = SubResource("BoxShape3D_84r30")
 
 [node name="cam" type="Camera3D" parent="bedroom/desk/monitorScreen"]
 transform = Transform3D(-1.25, 0, -1.09278e-07, 0, 1.25, 0, 1.09278e-07, 0, -1.25, 0, 0, -1.02107)
+current = true
 
 [node name="drawerHandleA" type="MeshInstance3D" parent="bedroom/desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.926272, 0.319634, 0.866864)
@@ -3285,7 +3349,7 @@ shaded = true
 texture = ExtResource("15_tc58i")
 
 [node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(-0.917213, 0, -0.398397, 0, 1, 0, 0.398397, 0, -0.917213, 0, 1.4939, 1.07929)
+transform = Transform3D(-0.622214, 0, 0.782847, 0, 1, 0, -0.782847, 0, -0.622214, 1.25526, 1.4939, 0.814159)
 collision_layer = 4
 floor_constant_speed = true
 floor_block_on_wall = false
@@ -4602,6 +4666,67 @@ shape = SubResource("BoxShape3D_nmduc")
 libraries = {
 "": SubResource("AnimationLibrary_n2502")
 }
+
+[node name="mainMenu" type="Node3D" parent="."]
+process_mode = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34.7084)
+script = ExtResource("148_kk8v6")
+
+[node name="desk" type="MeshInstance3D" parent="mainMenu"]
+transform = Transform3D(-3.2551e-08, 0, -1, 0, 0.11461, 0, 0.74468, 0, -4.37114e-08, -0.112999, 0, -0.112999)
+visible = false
+mesh = SubResource("BoxMesh_kysv3")
+
+[node name="screen" type="MeshInstance3D" parent="mainMenu"]
+transform = Transform3D(0.216506, 3.26915e-08, -0.125, -3.7749e-08, 0.25, -8.34336e-16, 0.125, 1.88745e-08, 0.216506, 0.112995, 0.312284, -0.112999)
+material_override = SubResource("StandardMaterial3D_nbo7j")
+mesh = SubResource("QuadMesh_6vii6")
+
+[node name="menuCam" type="Camera3D" parent="mainMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034, 0.258, 0.387)
+current = true
+
+[node name="mainAnims" type="AnimationPlayer" parent="mainMenu"]
+speed_scale = 1.5
+libraries = {
+"": SubResource("AnimationLibrary_jgsmf")
+}
+
+[node name="startLabel" type="Label3D" parent="mainMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.499655, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0.439216, 0, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Start"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="settingsLabel" type="Label3D" parent="mainMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.377481, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Settings"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="keybindsLabel" type="Label3D" parent="mainMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.247068, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Keybinds"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="quitLabel" type="Label3D" parent="mainMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.12036, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Quit"
+font = ExtResource("150_blp0k")
+font_size = 128
 
 [connection signal="exitOS" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_exit_os"]
 [connection signal="updatedProgress" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_updated_progress"]
