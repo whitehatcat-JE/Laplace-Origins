@@ -531,6 +531,7 @@ texture = ExtResource("9_ix76t")
 
 [node name="text" type="RichTextLabel" parent="player/HUD"]
 visible = false
+layout_mode = 0
 offset_left = 267.0
 offset_top = 433.0
 offset_right = 2079.0

@@ -7,18 +7,29 @@ enum MENU {
 	quit
 }
 
+const SCROLL_SPEED:float = 1.0
+var scrollPos:float = 0.0
+
 var menuOpen:bool = true
+var keybindsOpen:bool = false
 
 var curMenu:MENU = MENU.start
 
 var unColor:Color = Color(1, 0, 0.05923652648926)
 var unOutline:Color = Color(0.37109375, 0, 0.02198230475187)
 
-var sColor:Color = Color(1, 0.56874907016754, 0)
-var sOutline:Color = Color(0.28515625, 0.10666152834892, 0)
+var sColor:Color = Color(1, 0.5686274766922, 0)
+var sOutline:Color = Color(0.28627452254295, 0.10588235408068, 0)
 
 func _ready():
 	get_tree().paused = true
+
+func _process(delta):
+	if menuOpen:
+		scrollPos += SCROLL_SPEED * delta
+		if scrollPos > 400: scrollPos -= 400
+		$backgroundPillar1.set_region_rect(Rect2(0, scrollPos, 304, 400))
+		$backgroundPillar2.set_region_rect(Rect2(0, 400 - scrollPos, 304, 400))
 
 func _input(event):
 	if Input.is_action_just_pressed("menu"):
@@ -26,6 +37,12 @@ func _input(event):
 		else: $mainAnims.play_backwards("zoom");
 		menuOpen = !menuOpen
 	if !menuOpen: return;
+	elif keybindsOpen:
+		if Input.is_action_just_pressed("interact"):
+			$keybindsMenu.visible = false
+			$navMenu.visible = true
+			keybindsOpen = false
+		return
 	if Input.is_action_just_pressed("moveForward"):
 		match curMenu:
 			MENU.start: updateMainMenu(MENU.quit);
@@ -43,6 +60,10 @@ func _input(event):
 			MENU.start:
 				$mainAnims.play("zoom")
 				menuOpen = false
+			MENU.keybinds:
+				$keybindsMenu.visible = true
+				$navMenu.visible = false
+				keybindsOpen = true
 			MENU.quit:
 				get_tree().quit()
 
@@ -52,20 +73,20 @@ func colorLabel(label:Label3D, iColor:Color, oColor:Color):
 
 func updateMainMenu(newMenu:MENU):
 	match curMenu:
-		MENU.start: colorLabel($startLabel, unColor, unOutline);
-		MENU.settings: colorLabel($settingsLabel, unColor, unOutline);
-		MENU.keybinds: colorLabel($keybindsLabel, unColor, unOutline);
-		MENU.quit: colorLabel($quitLabel, unColor, unOutline);
+		MENU.start: colorLabel($navMenu/startLabel, unColor, unOutline);
+		MENU.settings: colorLabel($navMenu/settingsLabel, unColor, unOutline);
+		MENU.keybinds: colorLabel($navMenu/keybindsLabel, unColor, unOutline);
+		MENU.quit: colorLabel($navMenu/quitLabel, unColor, unOutline);
 	match newMenu:
-		MENU.start: colorLabel($startLabel, sColor, sOutline);
-		MENU.settings: colorLabel($settingsLabel, sColor, sOutline);
-		MENU.keybinds: colorLabel($keybindsLabel, sColor, sOutline);
-		MENU.quit: colorLabel($quitLabel, sColor, sOutline);
+		MENU.start: colorLabel($navMenu/startLabel, sColor, sOutline);
+		MENU.settings: colorLabel($navMenu/settingsLabel, sColor, sOutline);
+		MENU.keybinds: colorLabel($navMenu/keybindsLabel, sColor, sOutline);
+		MENU.quit: colorLabel($navMenu/quitLabel, sColor, sOutline);
 	curMenu = newMenu
 
 func switchPauseState():
 	get_tree().paused = menuOpen
-	$startLabel.text = "Continue"
+	$navMenu/startLabel.text = "Continue"
 	if menuOpen:
 		var tex = ImageTexture.create_from_image(get_viewport().get_texture().get_image())
 		$screen.get_active_material(0).albedo_texture = tex

@@ -150,6 +150,7 @@
 [ext_resource type="Texture2D" uid="uid://bpecj4jeahrox" path="res://assets/2d/menus/gameView.png" id="148_eln84"]
 [ext_resource type="Script" path="res://scripts/mainMenu.gd" id="148_kk8v6"]
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="150_blp0k"]
+[ext_resource type="Texture2D" uid="uid://ul2l14s1r7a" path="res://assets/2d/laplace/backgroundTrunk.png" id="151_138o5"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4ojb"]
 sky_top_color = Color(0.0627451, 0.733333, 1, 1)
@@ -1988,8 +1989,6 @@ tracks/30/keys = {
 _data = {
 "cutPower": SubResource("Animation_bmkph")
 }
-
-[sub_resource type="BoxMesh" id="BoxMesh_kysv3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbo7j"]
 shading_mode = 0
@@ -4672,11 +4671,6 @@ process_mode = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34.7084)
 script = ExtResource("148_kk8v6")
 
-[node name="desk" type="MeshInstance3D" parent="mainMenu"]
-transform = Transform3D(-3.2551e-08, 0, -1, 0, 0.11461, 0, 0.74468, 0, -4.37114e-08, -0.112999, 0, -0.112999)
-visible = false
-mesh = SubResource("BoxMesh_kysv3")
-
 [node name="screen" type="MeshInstance3D" parent="mainMenu"]
 transform = Transform3D(0.216506, 3.26915e-08, -0.125, -3.7749e-08, 0.25, -8.34336e-16, 0.125, 1.88745e-08, 0.216506, 0.112995, 0.312284, -0.112999)
 material_override = SubResource("StandardMaterial3D_nbo7j")
@@ -4692,7 +4686,102 @@ libraries = {
 "": SubResource("AnimationLibrary_jgsmf")
 }
 
-[node name="startLabel" type="Label3D" parent="mainMenu"]
+[node name="keybindsMenu" type="Node3D" parent="mainMenu"]
+visible = false
+
+[node name="keybindsTitle" type="Label3D" parent="mainMenu/keybindsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.498248, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Keybinds"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="fowardLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.436275, -0.240002)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Forward - W / Up Arrow"
+font = ExtResource("150_blp0k")
+font_size = 64
+
+[node name="backwardLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.394184, -0.240002)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Backward - S / Down Arrow"
+font = ExtResource("150_blp0k")
+font_size = 64
+
+[node name="leftLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.355005, -0.240002)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Left - A / Left Arrow"
+font = ExtResource("150_blp0k")
+font_size = 64
+
+[node name="rightLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.312914, -0.240002)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Right - D / Right Arrow"
+font = ExtResource("150_blp0k")
+font_size = 64
+
+[node name="interactLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.274656, -0.240002)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Interact - Left Mouse Button / F / Enter"
+font = ExtResource("150_blp0k")
+font_size = 64
+
+[node name="unfocusLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.232565, -0.240002)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Unfocus - Right Mouse Button / Backspace"
+font = ExtResource("150_blp0k")
+font_size = 64
+
+[node name="unfocusNote" type="Label3D" parent="mainMenu/keybindsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.205574, -0.240002)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "(Used to stop interacting with screens)"
+font = ExtResource("150_blp0k")
+font_size = 48
+
+[node name="menuLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.171096, -0.240002)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Open / Close Menu - Escape"
+font = ExtResource("150_blp0k")
+font_size = 64
+
+[node name="backOption" type="Label3D" parent="mainMenu/keybindsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.114618, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0.568627, 0, 1)
+outline_modulate = Color(0.286275, 0.105882, 0, 1)
+text = "Back"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="navMenu" type="Node3D" parent="mainMenu"]
+
+[node name="startLabel" type="Label3D" parent="mainMenu/navMenu"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.499655, -0.239532)
 pixel_size = 0.0005
 modulate = Color(1, 0.439216, 0, 1)
@@ -4701,7 +4790,7 @@ text = "Start"
 font = ExtResource("150_blp0k")
 font_size = 128
 
-[node name="settingsLabel" type="Label3D" parent="mainMenu"]
+[node name="settingsLabel" type="Label3D" parent="mainMenu/navMenu"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.377481, -0.239532)
 pixel_size = 0.0005
 modulate = Color(1, 0, 0.0392157, 1)
@@ -4710,7 +4799,7 @@ text = "Settings"
 font = ExtResource("150_blp0k")
 font_size = 128
 
-[node name="keybindsLabel" type="Label3D" parent="mainMenu"]
+[node name="keybindsLabel" type="Label3D" parent="mainMenu/navMenu"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.247068, -0.239532)
 pixel_size = 0.0005
 modulate = Color(1, 0, 0.0392157, 1)
@@ -4719,7 +4808,7 @@ text = "Keybinds"
 font = ExtResource("150_blp0k")
 font_size = 128
 
-[node name="quitLabel" type="Label3D" parent="mainMenu"]
+[node name="quitLabel" type="Label3D" parent="mainMenu/navMenu"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.12036, -0.239532)
 pixel_size = 0.0005
 modulate = Color(1, 0, 0.0392157, 1)
@@ -4727,6 +4816,30 @@ outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
 text = "Quit"
 font = ExtResource("150_blp0k")
 font_size = 128
+
+[node name="backgroundPillar1" type="Sprite3D" parent="mainMenu"]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.818827, 0, -1.16574)
+modulate = Color(0.196078, 0.196078, 0.196078, 1)
+texture_filter = 0
+texture = ExtResource("151_138o5")
+region_enabled = true
+region_rect = Rect2(0, 0, 304, 400)
+
+[node name="backgroundPillar2" type="Sprite3D" parent="mainMenu"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1.18177, 0, -1.16574)
+modulate = Color(0.105882, 0.105882, 0.105882, 1)
+texture_filter = 0
+texture = ExtResource("151_138o5")
+region_enabled = true
+region_rect = Rect2(0, 0, 304, 400)
+
+[node name="backgroundPillar3" type="Sprite3D" parent="mainMenu"]
+transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 2.69164, 0, -0.0847397)
+modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
+texture_filter = 0
+texture = ExtResource("151_138o5")
+region_enabled = true
+region_rect = Rect2(0, 0, 304, 400)
 
 [connection signal="exitOS" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_exit_os"]
 [connection signal="updatedProgress" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_updated_progress"]
