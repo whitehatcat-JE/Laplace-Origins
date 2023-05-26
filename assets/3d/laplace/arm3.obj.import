@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cj2trunkx0c6t"
+path="res://.godot/imported/arm3.obj-187f60e286ba33f89ad8e93e2b89dfc5.mesh"
+
+[deps]
+
+files=["res://.godot/imported/arm3.obj-187f60e286ba33f89ad8e93e2b89dfc5.mesh"]
+
+source_file="res://assets/3d/laplace/arm3.obj"
+dest_files=["res://.godot/imported/arm3.obj-187f60e286ba33f89ad8e93e2b89dfc5.mesh", "res://.godot/imported/arm3.obj-187f60e286ba33f89ad8e93e2b89dfc5.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

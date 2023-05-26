@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c7cm5si86s4g2"]
+[gd_scene load_steps=6 format=3 uid="uid://c7cm5si86s4g2"]
 
 [ext_resource type="Shader" path="res://scripts/shaders/crt.gdshader" id="1_jwunl"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="2_dlk15"]
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="3_0c3go"]
+[ext_resource type="Texture2D" uid="uid://cxdbhjbai6ktn" path="res://assets/2d/laplace/eye.png" id="4_au7lr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oybso"]
 shader = ExtResource("1_jwunl")
@@ -47,6 +48,11 @@ offset_bottom = 1732.0
 
 [node name="globalInformation" type="Node" parent="."]
 script = ExtResource("2_dlk15")
+
+[node name="eye" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.737255)
+position = Vector2(1441, 1447)
+texture = ExtResource("4_au7lr")
 
 [node name="terminal" type="RichTextLabel" parent="."]
 modulate = Color(0, 0, 0, 1)

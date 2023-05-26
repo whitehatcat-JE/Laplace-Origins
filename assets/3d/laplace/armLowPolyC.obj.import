@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c4v8lfh82bmww"
+path="res://.godot/imported/armLowPolyC.obj-cd600e2ad9e9a9a28057c25de7cc1423.mesh"
+
+[deps]
+
+files=["res://.godot/imported/armLowPolyC.obj-cd600e2ad9e9a9a28057c25de7cc1423.mesh"]
+
+source_file="res://assets/3d/laplace/armLowPolyC.obj"
+dest_files=["res://.godot/imported/armLowPolyC.obj-cd600e2ad9e9a9a28057c25de7cc1423.mesh", "res://.godot/imported/armLowPolyC.obj-cd600e2ad9e9a9a28057c25de7cc1423.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

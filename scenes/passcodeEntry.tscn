@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://smi13sggafqw"]
+[gd_scene load_steps=23 format=3 uid="uid://smi13sggafqw"]
 
 [ext_resource type="Script" path="res://scripts/passcodeEntry.gd" id="1_4011o"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_rukca"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dhbxv28wumo4r" path="res://assets/2d/UI/mousePointer.png" id="16_iven8"]
 [ext_resource type="Texture2D" uid="uid://1ybrvdjx2poq" path="res://assets/2d/UI/mouseInteract.png" id="17_l6t5q"]
 [ext_resource type="Texture2D" uid="uid://cfe408ssq7x8y" path="res://assets/2d/passcode/reloadButton.png" id="17_ulqad"]
+[ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="18_leebo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ou234"]
 shader = ExtResource("2_bbpvo")
@@ -50,7 +51,7 @@ scale = Vector2(1.19141, 1.58203)
 texture = ExtResource("3_7dh4e")
 
 [node name="b0" type="Sprite2D" parent="."]
-position = Vector2(742.4, 526.4)
+position = Vector2(742.4, 535.4)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("14_7trqs")
 
@@ -62,7 +63,7 @@ position = Vector2(-0.666748, -0.666656)
 shape = SubResource("RectangleShape2D_fd8tl")
 
 [node name="b1" type="Sprite2D" parent="."]
-position = Vector2(646.4, 238.4)
+position = Vector2(646.4, 247.4)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_id26b")
 
@@ -75,7 +76,7 @@ position = Vector2(-0.666748, -0.666656)
 shape = SubResource("RectangleShape2D_fd8tl")
 
 [node name="b2" type="Sprite2D" parent="."]
-position = Vector2(742.4, 238.4)
+position = Vector2(742.4, 247.4)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("5_7eqtp")
 
@@ -87,7 +88,7 @@ position = Vector2(-0.666748, -0.666656)
 shape = SubResource("RectangleShape2D_fd8tl")
 
 [node name="b3" type="Sprite2D" parent="."]
-position = Vector2(838.4, 238.4)
+position = Vector2(838.4, 247.4)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("6_551fu")
 
@@ -99,7 +100,7 @@ position = Vector2(-0.666748, -0.666656)
 shape = SubResource("RectangleShape2D_fd8tl")
 
 [node name="b4" type="Sprite2D" parent="."]
-position = Vector2(646.4, 334.4)
+position = Vector2(646.4, 343.4)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("7_i30e5")
 
@@ -111,7 +112,7 @@ position = Vector2(-0.666748, -0.666656)
 shape = SubResource("RectangleShape2D_fd8tl")
 
 [node name="b5" type="Sprite2D" parent="."]
-position = Vector2(742.4, 334.4)
+position = Vector2(742.4, 343.4)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("8_lkhb6")
 
@@ -123,7 +124,7 @@ position = Vector2(-0.666748, -0.666656)
 shape = SubResource("RectangleShape2D_fd8tl")
 
 [node name="b6" type="Sprite2D" parent="."]
-position = Vector2(838.4, 334.4)
+position = Vector2(838.4, 343.4)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_on8rk")
 
@@ -135,7 +136,7 @@ position = Vector2(-0.666748, -0.666656)
 shape = SubResource("RectangleShape2D_fd8tl")
 
 [node name="b7" type="Sprite2D" parent="."]
-position = Vector2(646.4, 430.4)
+position = Vector2(646.4, 439.4)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("10_vte2y")
 
@@ -147,7 +148,7 @@ position = Vector2(-0.666748, -0.666656)
 shape = SubResource("RectangleShape2D_fd8tl")
 
 [node name="b8" type="Sprite2D" parent="."]
-position = Vector2(742.4, 430.4)
+position = Vector2(742.4, 439.4)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("11_uimf0")
 
@@ -159,7 +160,7 @@ position = Vector2(-0.666748, -0.666656)
 shape = SubResource("RectangleShape2D_fd8tl")
 
 [node name="b9" type="Sprite2D" parent="."]
-position = Vector2(838.4, 430.4)
+position = Vector2(838.4, 439.4)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("12_4nh6a")
 
@@ -171,7 +172,7 @@ position = Vector2(-0.666748, -0.666656)
 shape = SubResource("RectangleShape2D_fd8tl")
 
 [node name="cancelButton" type="Sprite2D" parent="."]
-position = Vector2(646.4, 526.4)
+position = Vector2(646.4, 535.4)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("13_rl7gc")
 
@@ -184,7 +185,7 @@ position = Vector2(-0.666748, -0.666656)
 shape = SubResource("RectangleShape2D_fd8tl")
 
 [node name="reloadButton" type="Sprite2D" parent="."]
-position = Vector2(839, 526)
+position = Vector2(839, 535)
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("17_ulqad")
 
@@ -195,6 +196,19 @@ interactionName = "reload"
 [node name="hitbox" type="CollisionShape2D" parent="reloadButton/interact"]
 position = Vector2(-0.666748, -0.666656)
 shape = SubResource("RectangleShape2D_fd8tl")
+
+[node name="passcodeNumbers" type="Label" parent="."]
+offset_left = 593.0
+offset_top = 172.0
+offset_right = 1805.0
+offset_bottom = 336.0
+scale = Vector2(0.25, 0.25)
+theme_override_colors/font_color = Color(0, 0.792157, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.909804, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("18_leebo")
+theme_override_font_sizes/font_size = 128
+horizontal_alignment = 1
 
 [node name="mouse" type="Node2D" parent="."]
 z_index = 10

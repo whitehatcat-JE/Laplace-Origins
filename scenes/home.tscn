@@ -1,4 +1,4 @@
-[gd_scene load_steps=372 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=389 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -96,13 +96,17 @@
 [ext_resource type="Texture2D" uid="uid://c48jmvg5i3skx" path="res://assets/2d/3dSprites/vaseFlowers.png" id="83_ebpf2"]
 [ext_resource type="Texture2D" uid="uid://dn6utpaofeh2q" path="res://assets/2d/3dSprites/surrealArt/gates.jpg" id="84_51n62"]
 [ext_resource type="ArrayMesh" uid="uid://d264ieuhh7m1r" path="res://assets/3d/railing.obj" id="88_xed75"]
+[ext_resource type="Shader" path="res://scripts/shaders/glitch.gdshader" id="90_5slxb"]
 [ext_resource type="ArrayMesh" uid="uid://dcd7h4sfy0w1i" path="res://assets/3d/laplace/piano.obj" id="90_8g3wr"]
 [ext_resource type="Texture2D" uid="uid://3yox6ik6fmvm" path="res://assets/3d/laplace/eye.png" id="91_67n5f"]
+[ext_resource type="Shader" path="res://scripts/shaders/noise.gdshader" id="91_f8dsk"]
 [ext_resource type="Texture2D" uid="uid://b3koxxptk440r" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-albedo.png" id="91_sncg2"]
 [ext_resource type="ArrayMesh" uid="uid://2ndjhdmoends" path="res://assets/3d/shoe.obj" id="91_thord"]
+[ext_resource type="Texture2D" uid="uid://dcevbxxgqar76" path="res://assets/2d/laplace/backgroundNoise.png" id="92_8fxcv"]
 [ext_resource type="Texture2D" uid="uid://3arokunua8q1" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-height.png" id="92_pfgv4"]
 [ext_resource type="Texture2D" uid="uid://62smcextk4sx" path="res://assets/2d/3dSprites/doormat.png" id="92_skypr"]
 [ext_resource type="Texture2D" uid="uid://h4s4bpdavl5m" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-metallic.png" id="93_415v3"]
+[ext_resource type="Texture2D" uid="uid://cxdbhjbai6ktn" path="res://assets/2d/laplace/eye.png" id="93_a3ujf"]
 [ext_resource type="Texture2D" uid="uid://bxtlcvndle3vo" path="res://assets/2d/3dSprites/decals/wallE.png" id="93_jyaxq"]
 [ext_resource type="ArrayMesh" uid="uid://buxmmbr76mqx5" path="res://assets/3d/entranceDoorFrame.obj" id="94_2lyxu"]
 [ext_resource type="Texture2D" uid="uid://dqljkmoa6e70k" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-normal-ogl.png" id="94_pn373"]
@@ -149,8 +153,13 @@
 [ext_resource type="AudioStream" uid="uid://beehvo0hosw3j" path="res://assets/audio/music/nocturneDistorted.mp3" id="146_ifhja"]
 [ext_resource type="Texture2D" uid="uid://bpecj4jeahrox" path="res://assets/2d/menus/gameView.png" id="148_eln84"]
 [ext_resource type="Script" path="res://scripts/mainMenu.gd" id="148_kk8v6"]
+[ext_resource type="Material" uid="uid://cjx01qsa37itq" path="res://assets/3d/laplace/laplaceArms.tres" id="149_safq1"]
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="150_blp0k"]
+[ext_resource type="ArrayMesh" uid="uid://cfkd1dchiga5y" path="res://assets/3d/laplace/armLowPolyA.obj" id="150_py6wt"]
 [ext_resource type="Texture2D" uid="uid://ul2l14s1r7a" path="res://assets/2d/laplace/backgroundTrunk.png" id="151_138o5"]
+[ext_resource type="ArrayMesh" uid="uid://cuj6gq8j5obe3" path="res://assets/3d/laplace/armLowPolyB.obj" id="151_p1bd5"]
+[ext_resource type="ArrayMesh" uid="uid://c4v8lfh82bmww" path="res://assets/3d/laplace/armLowPolyC.obj" id="152_2orbl"]
+[ext_resource type="Texture2D" uid="uid://7bg41lmgbkb5" path="res://assets/2d/menus/viewFrame.png" id="159_2hxwc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4ojb"]
 sky_top_color = Color(0.0627451, 0.733333, 1, 1)
@@ -332,7 +341,7 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkoig"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic0rw"]
 cull_mode = 2
 albedo_texture = ExtResource("35_sflak")
 emission_enabled = true
@@ -460,6 +469,26 @@ emission = Color(1, 0.854902, 0.647059, 1)
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u07wd"]
 load_path = "res://.godot/imported/coarse-old-fabric_albedo.png-1b47e186a3cbf3d2c46e46c0972ab696.s3tc.ctex"
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe5fe"]
+cull_mode = 2
+albedo_texture = ExtResource("35_sflak")
+emission_enabled = true
+emission = Color(0.0666667, 0, 1, 1)
+emission_energy_multiplier = 0.1
+emission_texture = ExtResource("35_sflak")
+heightmap_texture = ExtResource("28_w1sg1")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlvr1"]
+cull_mode = 2
+albedo_texture = ExtResource("27_q6856")
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.1
+emission_texture = ExtResource("27_q6856")
+heightmap_texture = ExtResource("28_w1sg1")
+uv1_triplanar = true
+
 [sub_resource type="Animation" id="Animation_apeby"]
 resource_name = "red"
 length = 0.1
@@ -478,7 +507,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("bedroom/desk/lamp:surface_material_override/1:emission_texture")
+tracks/1/path = NodePath("bedroom/chair:surface_material_override/8:albedo_texture")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -490,26 +519,14 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("bedroom/desk/lamp:surface_material_override/1:emission")
+tracks/2/path = NodePath("bedroom/desk/lamp:surface_material_override/1")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Color(0.0666667, 0, 1, 1), Color(1, 0.00784314, 0.0156863, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("bedroom/desk/lamp:surface_material_override/1:albedo_texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [ExtResource("35_sflak"), ExtResource("27_q6856")]
+"values": [SubResource("StandardMaterial3D_xe5fe"), SubResource("StandardMaterial3D_xlvr1")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_asrhb"]
@@ -622,19 +639,37 @@ roughness = 0.0
 emission_enabled = true
 emission = Color(1, 0.764706, 0.529412, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pmhci"]
+shader = ExtResource("90_5slxb")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 50.0
+shader_parameter/shake_color_rate = 0.031
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hx5tn"]
+shader = ExtResource("91_f8dsk")
+shader_parameter/resolution = Vector2(512, 512)
+shader_parameter/noise = 0.08
+shader_parameter/distort = 0.06
+shader_parameter/offset = 0.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_us484"]
+blend_mode = 3
+
 [sub_resource type="Animation" id="Animation_nwmgs"]
 resource_name = "fadeOut"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("fade:modulate")
+tracks/0/path = NodePath("fade:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h1hmh"]
@@ -1030,16 +1065,6 @@ size = Vector3(1.07558, 1.12652, 1.03132)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7xngu"]
 size = Vector3(0.736938, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic0rw"]
-cull_mode = 2
-albedo_texture = ExtResource("35_sflak")
-emission_enabled = true
-emission = Color(0.0666667, 0, 1, 1)
-emission_energy_multiplier = 0.1
-emission_texture = ExtResource("35_sflak")
-heightmap_texture = ExtResource("28_w1sg1")
-uv1_triplanar = true
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7lab"]
 resource_local_to_scene = true
 shading_mode = 0
@@ -1137,7 +1162,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 2.8, 3, 4.2, 4.4, 4.6, 6.2, 6.4, 6.6, 9, 11),
 "transitions": PackedFloat32Array(1, 4, 1, 4, 0.25, 1, 4, 0.25, 1, -2, 1),
 "update": 0,
-"values": [Color(0.835294, 0.678431, 0.309804, 1), Color(0.835294, 0.678431, 0.309804, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.431373, 0.34902, 0.160784, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.431373, 0.34902, 0.160784, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.607843, 0.00784314, 0, 1)]
+"values": [Color(0.835294, 0.678431, 0.309804, 1), Color(0.835294, 0.678431, 0.309804, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.537255, 0, 0.0313726, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.537255, 0, 0.0313726, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.607843, 0.00784314, 0, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1149,7 +1174,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 2.8, 3, 5.5, 5.7, 5.9, 9, 11),
 "transitions": PackedFloat32Array(1, 4, 1, 4, 0.25, 1, -2, 1),
 "update": 0,
-"values": [Color(0.835294, 0.678431, 0.309804, 1), Color(0.835294, 0.678431, 0.309804, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.431373, 0.34902, 0.160784, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.607843, 0.00784314, 0, 1)]
+"values": [Color(0.835294, 0.678431, 0.309804, 1), Color(0.835294, 0.678431, 0.309804, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.537255, 0, 0.0313726, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.607843, 0.00784314, 0, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1254,7 +1279,7 @@ tracks/13/path = NodePath("hologramModule:surface_material_override/1")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(2.8, 17.2),
+"times": PackedFloat32Array(2.8, 13),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [SubResource("StandardMaterial3D_x7lab"), SubResource("StandardMaterial3D_yiq7l")]
@@ -1379,6 +1404,64 @@ tracks/23/keys = {
 "update": 1,
 "values": [SubResource("StandardMaterial3D_i8d5n"), SubResource("StandardMaterial3D_e3otq"), SubResource("StandardMaterial3D_i8d5n")]
 }
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("arms:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0.2, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("jumpscareEyeA:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0, 4.3, 4.5, 6.3, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("jumpscareEyeB:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 5.6, 5.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("crtScreen/crtInterface/eye:modulate")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0, 11),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkoig"]
+cull_mode = 2
+albedo_texture = ExtResource("35_sflak")
+emission_enabled = true
+emission = Color(0.0666667, 0, 1, 1)
+emission_energy_multiplier = 0.1
+emission_texture = ExtResource("35_sflak")
+heightmap_texture = ExtResource("28_w1sg1")
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_esm0k"]
 albedo_color = Color(0, 0, 0, 1)
@@ -1507,6 +1590,29 @@ _data = {
 "redAllLights": SubResource("Animation_cq1oh")
 }
 
+[sub_resource type="Animation" id="Animation_iutoe"]
+resource_name = "sway"
+length = 10.0
+loop_mode = 2
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("armMesh:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0.25268, -2.67794, 0.58355), Vector3(-1.83076e-08, -2.61799, 1.0472)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5jx1j"]
+_data = {
+"sway": SubResource("Animation_iutoe")
+}
+
 [sub_resource type="BoxMesh" id="BoxMesh_awokx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_thx6u"]
@@ -1546,6 +1652,27 @@ albedo_texture = ExtResource("91_67n5f")
 emission_enabled = true
 emission_texture = ExtResource("91_67n5f")
 
+[sub_resource type="Animation" id="Animation_lj6wg"]
+resource_name = "drawBack"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("eyes2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector3(-5.9745, 1.99502, 5.21795), Vector3(-8.0698, 1.99502, 5.21795)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_681lk"]
+_data = {
+"drawBack": SubResource("Animation_lj6wg")
+}
+
 [sub_resource type="Animation" id="Animation_tnk0c"]
 resource_name = "openDoor"
 length = 1.2
@@ -1575,16 +1702,6 @@ size = Vector3(2.13429, 0.976106, 2.19773)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nmduc"]
 size = Vector3(2.40508, 1.285, 2.53004)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe5fe"]
-cull_mode = 2
-albedo_texture = ExtResource("35_sflak")
-emission_enabled = true
-emission = Color(0.0666667, 0, 1, 1)
-emission_energy_multiplier = 0.1
-emission_texture = ExtResource("35_sflak")
-heightmap_texture = ExtResource("28_w1sg1")
-uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qi172"]
 cull_mode = 2
@@ -1775,7 +1892,7 @@ tracks/13/path = NodePath("bedroom/desk/monitorScreen/monitorImage:surface_mater
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(1.9, 5.5),
+"times": PackedFloat32Array(1.9, 14.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [SubResource("StandardMaterial3D_vk4p3"), SubResource("StandardMaterial3D_5rhmc")]
@@ -1795,103 +1912,103 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("pianoRoom/eyes2:visible")
+tracks/15/path = NodePath("hallway/voidDoor/Door:rotation")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 0.1, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, true, false]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("hallway/voidDoor/Door:rotation")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
 "times": PackedFloat32Array(1.5, 2.5),
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Vector3(0, -1.42109e-14, 0), Vector3(3.70147e-08, 0.213314, 3.96299e-09)]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("hallway/window:material_override")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("StandardMaterial3D_rdamv"), SubResource("StandardMaterial3D_gp4vs")]
+}
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("hallway/window:material_override")
+tracks/17/path = NodePath("hallway/SpotLight3D:light_color")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_rdamv"), SubResource("StandardMaterial3D_gp4vs")]
+"values": [Color(0.239216, 0.337255, 0.760784, 1), Color(1, 0, 0.0392157, 1)]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("hallway/SpotLight3D:light_color")
+tracks/18/path = NodePath("hallway/SpotLight3D:light_energy")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Color(0.239216, 0.337255, 0.760784, 1), Color(1, 0, 0.0392157, 1)]
+"values": [1.0, 4.0]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("hallway/SpotLight3D:light_energy")
+tracks/19/path = NodePath("hallway/CeilingLamp:surface_material_override/2")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1.0, 4.0]
+"values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_sjfwu")]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("hallway/CeilingLamp:surface_material_override/2")
+tracks/20/path = NodePath("hallway/CeilingLamp2:surface_material_override/2")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_sjfwu")]
+"values": [SubResource("StandardMaterial3D_a0p8n"), SubResource("StandardMaterial3D_sjfwu")]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("hallway/CeilingLamp2:surface_material_override/2")
+tracks/21/path = NodePath("bedroom/CeilingLamp:surface_material_override/2")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_a0p8n"), SubResource("StandardMaterial3D_sjfwu")]
+"values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_sjfwu")]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("bedroom/CeilingLamp:surface_material_override/2")
+tracks/22/path = NodePath("hallway/staircaseSpotlight:surface_material_override/2")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_sjfwu")]
+"values": [SubResource("StandardMaterial3D_arrrt"), SubResource("StandardMaterial3D_sjfwu")]
 }
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("hallway/staircaseSpotlight:surface_material_override/2")
+tracks/23/path = NodePath("walls/spotLight:surface_material_override/2")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
@@ -1903,7 +2020,7 @@ tracks/23/keys = {
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("walls/spotLight:surface_material_override/2")
+tracks/24/path = NodePath("hallway/staircaseSpotlight2:surface_material_override/2")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
@@ -1915,19 +2032,19 @@ tracks/24/keys = {
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("hallway/staircaseSpotlight2:surface_material_override/2")
+tracks/25/path = NodePath("basement/CeilingLamp2:surface_material_override/2")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_arrrt"), SubResource("StandardMaterial3D_sjfwu")]
+"values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_sjfwu")]
 }
 tracks/26/type = "value"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("basement/CeilingLamp2:surface_material_override/2")
+tracks/26/path = NodePath("basement/CeilingLamp:surface_material_override/2")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
@@ -1939,46 +2056,34 @@ tracks/26/keys = {
 tracks/27/type = "value"
 tracks/27/imported = false
 tracks/27/enabled = true
-tracks/27/path = NodePath("basement/CeilingLamp:surface_material_override/2")
+tracks/27/path = NodePath("hallway/window2:visible")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_sjfwu")]
+"values": [false, true]
 }
 tracks/28/type = "value"
 tracks/28/imported = false
 tracks/28/enabled = true
-tracks/28/path = NodePath("hallway/window2:visible")
+tracks/28/path = NodePath("walls/Router/routerLogo:modulate")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
 }
 tracks/29/type = "value"
 tracks/29/imported = false
 tracks/29/enabled = true
-tracks/29/path = NodePath("walls/Router/routerLogo:modulate")
+tracks/29/path = NodePath("basement/crt/crtLogos:modulate")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/keys = {
-"times": PackedFloat32Array(0, 1.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
-}
-tracks/30/type = "value"
-tracks/30/imported = false
-tracks/30/enabled = true
-tracks/30/path = NodePath("basement/crt/crtLogos:modulate")
-tracks/30/interp = 1
-tracks/30/loop_wrap = true
-tracks/30/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -2037,6 +2142,18 @@ tracks/2/keys = {
 "method": &"switchPauseState"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("screen/frame:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Color(0.356863, 0.356863, 0.356863, 1), Color(0, 0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jgsmf"]
 _data = {
@@ -2060,6 +2177,7 @@ light_energy = 0.05
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.866025, 0.5, 2.93063e-08, 0.12941, -0.224144, 0.965926, 0.482963, -0.836516, -0.258819, 0, 0, 0)
+visible = false
 shadow_opacity = 0.0
 editor_only = true
 
@@ -2645,7 +2763,7 @@ transform = Transform3D(-1.45479, 0, 1.09058, 0, 1.81818, 0, -1.09058, 0, -1.454
 mesh = ExtResource("22_6hn6n")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("37_n8rk8")
-surface_material_override/1 = SubResource("StandardMaterial3D_xkoig")
+surface_material_override/1 = SubResource("StandardMaterial3D_ic0rw")
 
 [node name="lampLight" type="OmniLight3D" parent="bedroom/desk/lamp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0638658, 0.810971, 0)
@@ -3348,7 +3466,7 @@ shaded = true
 texture = ExtResource("15_tc58i")
 
 [node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(-0.622214, 0, 0.782847, 0, 1, 0, -0.782847, 0, -0.622214, 1.25526, 1.4939, 0.814159)
+transform = Transform3D(-0.622214, 0, 0.782847, 0, 1, 0, -0.782847, 0, -0.622214, 1.25526, 1.40686, 0.814159)
 collision_layer = 4
 floor_constant_speed = true
 floor_block_on_wall = false
@@ -3390,13 +3508,48 @@ scale = Vector2(0.188636, 0.188636)
 texture = ExtResource("6_5fre7")
 
 [node name="fade" type="ColorRect" parent="player/HUD"]
-modulate = Color(1, 1, 1, 0)
+visible = false
+material = SubResource("ShaderMaterial_pmhci")
 layout_mode = 0
-offset_left = -1084.0
-offset_top = -596.0
-offset_right = 1276.0
-offset_bottom = 684.0
+offset_left = -1083.0
+offset_top = -604.0
+offset_right = 1277.0
+offset_bottom = 676.0
 color = Color(0.819608, 0, 0.00784314, 1)
+
+[node name="noise" type="Sprite2D" parent="player/HUD/fade"]
+modulate = Color(1, 0.0352941, 0, 1)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_hx5tn")
+position = Vector2(1109, 621.5)
+scale = Vector2(8.00781, 4.66016)
+texture = ExtResource("92_8fxcv")
+
+[node name="Eye" type="Sprite2D" parent="player/HUD/fade/noise"]
+visible = false
+material = SubResource("CanvasItemMaterial_us484")
+position = Vector2(-3.62146, -1.18021)
+scale = Vector2(0.25, 0.43)
+texture = ExtResource("93_a3ujf")
+
+[node name="text" type="RichTextLabel" parent="player/HUD/fade"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 197.0
+offset_top = 331.0
+offset_right = 2009.0
+offset_bottom = 1280.0
+theme_override_colors/default_color = Color(0.768627, 0, 0.00784314, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0.054902, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("150_blp0k")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]On this day
+
+Laplace is born
+
+And thus"
 
 [node name="fadeAnim" type="AnimationPlayer" parent="player/HUD"]
 libraries = {
@@ -3420,7 +3573,7 @@ mesh = SubResource("CapsuleMesh_1fq3r")
 skeleton = NodePath("../..")
 
 [node name="head" type="Node3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.678385, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
 [node name="cam" type="Camera3D" parent="player/head"]
 current = true
@@ -3998,7 +4151,10 @@ render_target_update_mode = 4
 
 [node name="crtInterface" parent="basement/crtScreen" instance=ExtResource("120_uli6q")]
 
-[node name="terminal" parent="basement/crtScreen/crtInterface" index="3"]
+[node name="eye" parent="basement/crtScreen/crtInterface" index="3"]
+modulate = Color(1, 1, 1, 0)
+
+[node name="terminal" parent="basement/crtScreen/crtInterface" index="4"]
 visible_characters = 0
 visible_ratio = 0.0
 
@@ -4308,45 +4464,6 @@ texture = ExtResource("130_vir3u")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="basement/serverRacks/rack18/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_oqqt8")
 
-[node name="moss" type="Sprite3D" parent="basement"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.0287, -2.48242, 0.506203)
-pixel_size = 0.0085
-shaded = true
-texture = ExtResource("131_awinp")
-
-[node name="moss2" type="Sprite3D" parent="basement"]
-transform = Transform3D(-4.37114e-08, 0, 1, -8.74228e-08, -1, -3.82137e-15, 1, -8.74228e-08, 4.37114e-08, -11.0287, -0.867718, 0.506203)
-pixel_size = 0.0085
-shaded = true
-texture = ExtResource("131_awinp")
-
-[node name="moss3" type="Sprite3D" parent="basement"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.82594, -2.48242, 0.506203)
-pixel_size = 0.0085
-shaded = true
-texture = ExtResource("131_awinp")
-
-[node name="moss4" type="Sprite3D" parent="basement"]
-transform = Transform3D(-4.37114e-08, 0, 1, -8.74228e-08, -1, -3.82137e-15, 1, -8.74228e-08, 4.37114e-08, 1.82594, -0.867718, 0.506203)
-pixel_size = 0.0085
-shaded = true
-texture = ExtResource("131_awinp")
-
-[node name="mossGround" type="Sprite3D" parent="basement"]
-transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, 1.58427, -3.38325, 0.50278)
-pixel_size = 0.003
-shaded = true
-texture = ExtResource("138_nccd0")
-
-[node name="mossGround2" type="Sprite3D" parent="basement"]
-transform = Transform3D(-1.74846e-07, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 1.74846e-07, -4.37114e-08, -10.728, -3.38325, 2.23291)
-flip_h = true
-flip_v = true
-pixel_size = 0.003
-shaded = true
-double_sided = false
-texture = ExtResource("138_nccd0")
-
 [node name="crt" type="MeshInstance3D" parent="basement"]
 transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, -10.4163, -2.89752, -0.651373)
 mesh = ExtResource("135_sofnr")
@@ -4489,68 +4606,327 @@ libraries = {
 "": SubResource("AnimationLibrary_dbgkk")
 }
 
-[node name="vines1" type="Sprite3D" parent="basement"]
+[node name="decals" type="Node3D" parent="basement"]
+
+[node name="vines1" type="Sprite3D" parent="basement/decals"]
 transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, 0, -0.234814, -1.16567)
 pixel_size = 0.001
 billboard = 2
 shaded = true
 texture = ExtResource("143_b8ogo")
 
-[node name="vines2" type="Sprite3D" parent="basement"]
+[node name="vines2" type="Sprite3D" parent="basement/decals"]
 transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, 0, -0.846818, -1.16567)
 pixel_size = 0.001
 billboard = 2
 shaded = true
 texture = ExtResource("143_b8ogo")
 
-[node name="vines3" type="Sprite3D" parent="basement"]
+[node name="vines3" type="Sprite3D" parent="basement/decals"]
 transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -0.25095, -0.168667, -1.60517)
 pixel_size = 0.001
 billboard = 2
 shaded = true
 texture = ExtResource("143_b8ogo")
 
-[node name="vines4" type="Sprite3D" parent="basement"]
+[node name="vines4" type="Sprite3D" parent="basement/decals"]
 transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -0.25095, 0.11068, -1.351)
 pixel_size = 0.001
 billboard = 2
 shaded = true
 texture = ExtResource("143_b8ogo")
 
-[node name="vines5" type="Sprite3D" parent="basement"]
+[node name="vines5" type="Sprite3D" parent="basement/decals"]
 transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -0.25095, -0.44912, -1.351)
 pixel_size = 0.001
 billboard = 2
 shaded = true
 texture = ExtResource("143_b8ogo")
 
-[node name="vines6" type="Sprite3D" parent="basement"]
+[node name="vines6" type="Sprite3D" parent="basement/decals"]
 transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -9.12049, -0.276912, 0.16563)
 pixel_size = 0.001
 billboard = 2
 shaded = true
 texture = ExtResource("143_b8ogo")
 
-[node name="vines9" type="Sprite3D" parent="basement"]
+[node name="vines9" type="Sprite3D" parent="basement/decals"]
 transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -3.55595, -0.276912, 2.28233)
 pixel_size = 0.001
 billboard = 2
 shaded = true
 texture = ExtResource("143_b8ogo")
 
-[node name="vines7" type="Sprite3D" parent="basement"]
+[node name="vines7" type="Sprite3D" parent="basement/decals"]
 transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -9.37144, -0.243534, -0.0197011)
 pixel_size = 0.001
 billboard = 2
 shaded = true
 texture = ExtResource("143_b8ogo")
 
-[node name="vines8" type="Sprite3D" parent="basement"]
+[node name="vines8" type="Sprite3D" parent="basement/decals"]
 transform = Transform3D(-0.5, 4.37114e-08, -0.866025, -8.74228e-08, -1, 0, -0.866025, 7.57103e-08, 0.5, -9.37144, -0.803334, -0.0197011)
 pixel_size = 0.001
 billboard = 2
 shaded = true
 texture = ExtResource("143_b8ogo")
+
+[node name="moss" type="Sprite3D" parent="basement/decals"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11.0287, -2.48242, 0.506203)
+pixel_size = 0.0085
+shaded = true
+texture = ExtResource("131_awinp")
+
+[node name="moss2" type="Sprite3D" parent="basement/decals"]
+transform = Transform3D(-4.37114e-08, 0, 1, -8.74228e-08, -1, -3.82137e-15, 1, -8.74228e-08, 4.37114e-08, -11.0287, -0.867718, 0.506203)
+pixel_size = 0.0085
+shaded = true
+texture = ExtResource("131_awinp")
+
+[node name="moss3" type="Sprite3D" parent="basement/decals"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.82594, -2.48242, 0.506203)
+pixel_size = 0.0085
+shaded = true
+texture = ExtResource("131_awinp")
+
+[node name="moss4" type="Sprite3D" parent="basement/decals"]
+transform = Transform3D(-4.37114e-08, 0, 1, -8.74228e-08, -1, -3.82137e-15, 1, -8.74228e-08, 4.37114e-08, 1.82594, -0.867718, 0.506203)
+pixel_size = 0.0085
+shaded = true
+texture = ExtResource("131_awinp")
+
+[node name="mossGround" type="Sprite3D" parent="basement/decals"]
+transform = Transform3D(1.91069e-15, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 0, -4.37114e-08, 1.58427, -3.38325, 0.50278)
+pixel_size = 0.003
+shaded = true
+texture = ExtResource("138_nccd0")
+
+[node name="mossGround2" type="Sprite3D" parent="basement/decals"]
+transform = Transform3D(-1.74846e-07, -1, -4.37114e-08, -4.37114e-08, -4.37114e-08, 1, -1, 1.74846e-07, -4.37114e-08, -10.728, -3.38325, 2.23291)
+flip_h = true
+flip_v = true
+pixel_size = 0.003
+shaded = true
+double_sided = false
+texture = ExtResource("138_nccd0")
+
+[node name="jumpscareEyeA" type="Sprite3D" parent="basement"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.648215, -1.52637, 0.435103)
+visible = false
+billboard = 1
+shaded = true
+texture = ExtResource("93_a3ujf")
+
+[node name="jumpscareEyeB" type="Sprite3D" parent="basement"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.96877, -1.52637, 0.435103)
+visible = false
+billboard = 1
+shaded = true
+texture = ExtResource("93_a3ujf")
+
+[node name="arms" type="Node3D" parent="basement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.59669, 0)
+visible = false
+
+[node name="arm1" type="Node3D" parent="basement/arms"]
+
+[node name="armMesh" type="MeshInstance3D" parent="basement/arms/arm1"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("149_safq1")
+cast_shadow = 0
+mesh = ExtResource("150_py6wt")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="basement/arms/arm1"]
+autoplay = "sway"
+speed_scale = 0.6
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+
+[node name="arm2" type="Node3D" parent="basement/arms"]
+transform = Transform3D(0.5, 0, 0.866025, -0.436921, 0.863404, 0.252256, -0.74773, -0.504513, 0.431702, -1.88271, 0, -0.952744)
+
+[node name="armMesh" type="MeshInstance3D" parent="basement/arms/arm2"]
+transform = Transform3D(-0.00642765, 0.00604295, -0.0047083, 0.00726124, 0.00676458, -0.00123073, 0.00244124, -0.00420988, -0.00873597, 0, 0, 0)
+material_override = ExtResource("149_safq1")
+cast_shadow = 0
+mesh = ExtResource("151_p1bd5")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="basement/arms/arm2"]
+autoplay = "sway"
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+
+[node name="arm3" type="Node3D" parent="basement/arms"]
+transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, -0.326346, 0, 0.663345)
+
+[node name="armMesh" type="MeshInstance3D" parent="basement/arms/arm3"]
+transform = Transform3D(-0.00433013, 0.0075, -0.005, 0.00866025, 0.005, 1.83076e-10, 0.0025, -0.00433013, -0.00866025, 0, 0, 0)
+material_override = ExtResource("149_safq1")
+cast_shadow = 0
+mesh = ExtResource("150_py6wt")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="basement/arms/arm3"]
+autoplay = "sway"
+speed_scale = 0.6
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+
+[node name="arm4" type="Node3D" parent="basement/arms"]
+transform = Transform3D(-0.5, 0, -0.866026, 0, 1, 0, 0.866026, 0, -0.5, -5.10434, 0, 2.6341)
+
+[node name="armMesh" type="MeshInstance3D" parent="basement/arms/arm4"]
+transform = Transform3D(-0.00642765, 0.00604295, -0.0047083, 0.00726124, 0.00676458, -0.00123073, 0.00244124, -0.00420988, -0.00873597, 0, 0, 0)
+material_override = ExtResource("149_safq1")
+cast_shadow = 0
+mesh = ExtResource("150_py6wt")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="basement/arms/arm4"]
+autoplay = "sway"
+speed_scale = 0.75
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+
+[node name="arm5" type="Node3D" parent="basement/arms"]
+transform = Transform3D(-2.08616e-07, 0, 1, 0, 1, 0, -1, 0, -2.08616e-07, -7.19216, 0, -0.332572)
+
+[node name="armMesh" type="MeshInstance3D" parent="basement/arms/arm5"]
+transform = Transform3D(0.000589443, 0.0090563, -0.00419953, 0.00967951, 0.000510272, 0.00245901, 0.00244124, -0.00420988, -0.00873597, 0, 0, 0)
+material_override = ExtResource("149_safq1")
+cast_shadow = 0
+mesh = ExtResource("151_p1bd5")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="basement/arms/arm5"]
+autoplay = "sway"
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+
+[node name="arm6" type="Node3D" parent="basement/arms"]
+transform = Transform3D(-0.612373, -0.707107, 0.353553, -0.612373, 0.707107, 0.353553, -0.5, 0, -0.866026, -8.19463, -0.117074, -1.08675)
+
+[node name="armMesh" type="MeshInstance3D" parent="basement/arms/arm6"]
+transform = Transform3D(-0.00642765, 0.00604295, -0.0047083, 0.00726124, 0.00676458, -0.00123073, 0.00244124, -0.00420988, -0.00873597, 0, 0, 0)
+material_override = ExtResource("149_safq1")
+cast_shadow = 0
+mesh = ExtResource("152_2orbl")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="basement/arms/arm6"]
+autoplay = "sway"
+speed_scale = 0.6
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+
+[node name="arm7" type="Node3D" parent="basement/arms"]
+transform = Transform3D(-0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, -8.19463, 0, 3.23769)
+
+[node name="armMesh" type="MeshInstance3D" parent="basement/arms/arm7"]
+transform = Transform3D(-0.00642765, 0.00604295, -0.0047083, 0.00726124, 0.00676458, -0.00123073, 0.00244124, -0.00420988, -0.00873597, 0, 0, 0)
+material_override = ExtResource("149_safq1")
+cast_shadow = 0
+mesh = ExtResource("150_py6wt")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="basement/arms/arm7"]
+autoplay = "sway"
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+
+[node name="arm8" type="Node3D" parent="basement/arms"]
+transform = Transform3D(-0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866026, -9.33342, 0, -0.984133)
+
+[node name="armMesh" type="MeshInstance3D" parent="basement/arms/arm8"]
+transform = Transform3D(-0.00433013, 0.0075, -0.005, 0.00866025, 0.005, 1.83076e-10, 0.0025, -0.00433013, -0.00866025, 0, -0.11554, 0)
+material_override = ExtResource("149_safq1")
+cast_shadow = 0
+mesh = ExtResource("152_2orbl")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="basement/arms/arm8"]
+autoplay = "sway"
+speed_scale = 1.1
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+
+[node name="arm9" type="Node3D" parent="basement/arms"]
+transform = Transform3D(-0.75, -0.5, 0.433012, -0.433013, 0.866025, 0.25, -0.5, 0, -0.866026, -9.6552, -0.0436525, 2.23761)
+
+[node name="armMesh" type="MeshInstance3D" parent="basement/arms/arm9"]
+transform = Transform3D(-0.00642765, 0.00604295, -0.0047083, 0.00726124, 0.00676458, -0.00123073, 0.00244124, -0.00420988, -0.00873597, 0, 0, 0)
+material_override = ExtResource("149_safq1")
+cast_shadow = 0
+mesh = ExtResource("151_p1bd5")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="basement/arms/arm9"]
+autoplay = "sway"
+speed_scale = 0.75
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+
+[node name="arm10" type="Node3D" parent="basement/arms"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -8.76189, 0, 7.6189)
+
+[node name="armMesh" type="MeshInstance3D" parent="basement/arms/arm10"]
+transform = Transform3D(-0.00642765, 0.00604295, -0.0047083, 0.00726124, 0.00676458, -0.00123073, 0.00244124, -0.00420988, -0.00873597, 0, 0, 0)
+material_override = ExtResource("149_safq1")
+cast_shadow = 0
+mesh = ExtResource("150_py6wt")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="basement/arms/arm10"]
+autoplay = "sway"
+speed_scale = 1.1
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+
+[node name="arm11" type="Node3D" parent="basement/arms"]
+transform = Transform3D(-0.25, -0.965926, -0.0669873, -0.968208, 0.25, 0.00851843, 0.00851868, 0.0669873, -0.997717, -8.05822, -0.0567653, 6.68164)
+
+[node name="armMesh" type="MeshInstance3D" parent="basement/arms/arm11"]
+transform = Transform3D(-0.00433013, 0.0075, -0.005, 0.00866025, 0.005, 1.83076e-10, 0.0025, -0.00433013, -0.00866025, 0, 0, 0)
+material_override = ExtResource("149_safq1")
+cast_shadow = 0
+mesh = ExtResource("152_2orbl")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="basement/arms/arm11"]
+autoplay = "sway"
+speed_scale = 0.75
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+
+[node name="arm12" type="Node3D" parent="basement/arms"]
+transform = Transform3D(-0.771811, -0.433013, -0.465625, -0.595035, 0.75, 0.288849, 0.224144, 0.5, -0.836516, -9.18786, -0.0311089, 5.40051)
+
+[node name="armMesh" type="MeshInstance3D" parent="basement/arms/arm12"]
+transform = Transform3D(-0.00433013, 0.0075, -0.005, 0.00866025, 0.005, 1.83076e-10, 0.0025, -0.00433013, -0.00866025, 0, 0, 0)
+material_override = ExtResource("149_safq1")
+cast_shadow = 0
+mesh = ExtResource("151_p1bd5")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="basement/arms/arm12"]
+autoplay = "sway"
+speed_scale = 0.6
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
 
 [node name="pianoRoom" type="Node3D" parent="."]
 
@@ -4593,6 +4969,18 @@ mesh = SubResource("SphereMesh_2p2ue")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
 
+[node name="eyes3" type="MeshInstance3D" parent="pianoRoom"]
+transform = Transform3D(0.0540338, -0.000262115, -0.0841443, 0.000671605, 0.0999977, 0.000119775, 0.084142, -0.000629836, 0.0540343, -7.0602, 2.54219, 5.47052)
+visible = false
+mesh = SubResource("SphereMesh_2p2ue")
+surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
+
+[node name="eye2" type="MeshInstance3D" parent="pianoRoom/eyes3"]
+transform = Transform3D(0.866032, 0.000300878, 0.499989, 0.00149863, 0.999994, -0.00319756, -0.499987, 0.00351849, 0.866025, 5.71355, -0.0310917, -6.07999)
+mesh = SubResource("SphereMesh_2p2ue")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
+
 [node name="eyes2" type="MeshInstance3D" parent="pianoRoom"]
 transform = Transform3D(-0.06729, 0.000540535, -0.0739713, 0.000671605, 0.0999977, 0.000119775, 0.0739702, -0.000416198, -0.0672921, -5.9745, 1.99502, 5.21795)
 visible = false
@@ -4604,6 +4992,12 @@ transform = Transform3D(0.866032, 0.00030088, 0.499989, 0.00149863, 0.999994, -0
 mesh = SubResource("SphereMesh_2p2ue")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
+
+[node name="eye2Anim" type="AnimationPlayer" parent="pianoRoom"]
+speed_scale = 2.0
+libraries = {
+"": SubResource("AnimationLibrary_681lk")
+}
 
 [node name="DoorFrame" type="MeshInstance3D" parent="pianoRoom"]
 transform = Transform3D(-2.51133e-07, -2.19548e-14, -0.8, -1.39876e-07, 0.8, 2.19548e-14, 0.8, 1.39876e-07, -2.51133e-07, -5.42944, 1.27501, 5.80213)
@@ -4638,6 +5032,16 @@ monitorable = false
 [node name="hitbox" type="CollisionShape3D" parent="pianoRoom/triggerField"]
 shape = SubResource("BoxShape3D_mispm")
 
+[node name="triggerField2" type="Area3D" parent="pianoRoom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.13766, 1.6308, 4.44324)
+collision_layer = 0
+collision_mask = 4
+monitoring = false
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="pianoRoom/triggerField2"]
+shape = SubResource("BoxShape3D_mispm")
+
 [node name="pianoSong" type="AudioStreamPlayer3D" parent="pianoRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.04104, 1.61245, -0.498765)
 stream = ExtResource("146_hevbh")
@@ -4662,6 +5066,7 @@ transform = Transform3D(0.817376, 0, 0.576104, 0, 1, 0, -0.576104, 0, 0.817376, 
 shape = SubResource("BoxShape3D_nmduc")
 
 [node name="powercutAnim" type="AnimationPlayer" parent="."]
+speed_scale = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_n2502")
 }
@@ -4676,6 +5081,14 @@ transform = Transform3D(0.216506, 3.26915e-08, -0.125, -3.7749e-08, 0.25, -8.343
 material_override = SubResource("StandardMaterial3D_nbo7j")
 mesh = SubResource("QuadMesh_6vii6")
 
+[node name="frame" type="Sprite3D" parent="mainMenu/screen"]
+transform = Transform3D(1, 2.4869e-14, 0, 0, 1, -1.42109e-14, 0, 0, 1, -8.39233e-05, 0, 0.00224304)
+cast_shadow = 0
+modulate = Color(0.356863, 0.356863, 0.356863, 1)
+pixel_size = 0.0125
+texture_filter = 0
+texture = ExtResource("159_2hxwc")
+
 [node name="menuCam" type="Camera3D" parent="mainMenu"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034, 0.258, 0.387)
 current = true
@@ -4687,6 +5100,7 @@ libraries = {
 }
 
 [node name="keybindsMenu" type="Node3D" parent="mainMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165359, 0)
 visible = false
 
 [node name="keybindsTitle" type="Label3D" parent="mainMenu/keybindsMenu"]
@@ -4779,10 +5193,117 @@ text = "Back"
 font = ExtResource("150_blp0k")
 font_size = 128
 
+[node name="puzzleMenu" type="Node3D" parent="mainMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165359, 0)
+visible = false
+
+[node name="puzzleTitle" type="Label3D" parent="mainMenu/puzzleMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.498248, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Puzzle Help"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="hintOption" type="Label3D" parent="mainMenu/puzzleMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.368717, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Hint"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="answerOption" type="Label3D" parent="mainMenu/puzzleMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.276929, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Answer"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="backOption" type="Label3D" parent="mainMenu/puzzleMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.18389, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0.568627, 0, 1)
+outline_modulate = Color(0.286275, 0.105882, 0, 1)
+text = "Back"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="hintMenu" type="Node3D" parent="mainMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165359, 0)
+visible = false
+
+[node name="hintTitle" type="Label3D" parent="mainMenu/hintMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.498248, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Hint"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="hintText" type="Label3D" parent="mainMenu/hintMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.335887, -0.240002)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "I seem to remember the circled numbers on my calendar having something to do with the passcode. Maybe I wrote down the order in my notebook? Guess I should check there first."
+font = ExtResource("150_blp0k")
+font_size = 64
+autowrap_mode = 2
+width = 800.0
+
+[node name="backOption" type="Label3D" parent="mainMenu/hintMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.18389, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0.568627, 0, 1)
+outline_modulate = Color(0.286275, 0.105882, 0, 1)
+text = "Back"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="answerMenu" type="Node3D" parent="mainMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165359, 0)
+visible = false
+
+[node name="answerTitle" type="Label3D" parent="mainMenu/answerMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.498248, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Answer"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="answerText" type="Label3D" parent="mainMenu/answerMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.335887, -0.240002)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "624754 or 0624070504 
+(Both are valid)"
+font = ExtResource("150_blp0k")
+font_size = 64
+autowrap_mode = 2
+width = 800.0
+
+[node name="backOption" type="Label3D" parent="mainMenu/answerMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.18389, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0.568627, 0, 1)
+outline_modulate = Color(0.286275, 0.105882, 0, 1)
+text = "Back"
+font = ExtResource("150_blp0k")
+font_size = 128
+
 [node name="navMenu" type="Node3D" parent="mainMenu"]
 
 [node name="startLabel" type="Label3D" parent="mainMenu/navMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.499655, -0.239532)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.560028, -0.239532)
 pixel_size = 0.0005
 modulate = Color(1, 0.439216, 0, 1)
 outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
@@ -4791,7 +5312,7 @@ font = ExtResource("150_blp0k")
 font_size = 128
 
 [node name="settingsLabel" type="Label3D" parent="mainMenu/navMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.377481, -0.239532)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.437854, -0.239532)
 pixel_size = 0.0005
 modulate = Color(1, 0, 0.0392157, 1)
 outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
@@ -4800,7 +5321,7 @@ font = ExtResource("150_blp0k")
 font_size = 128
 
 [node name="keybindsLabel" type="Label3D" parent="mainMenu/navMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.247068, -0.239532)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.307441, -0.239532)
 pixel_size = 0.0005
 modulate = Color(1, 0, 0.0392157, 1)
 outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
@@ -4808,8 +5329,17 @@ text = "Keybinds"
 font = ExtResource("150_blp0k")
 font_size = 128
 
+[node name="helpLabel" type="Label3D" parent="mainMenu/navMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.180733, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Puzzle Help"
+font = ExtResource("150_blp0k")
+font_size = 128
+
 [node name="quitLabel" type="Label3D" parent="mainMenu/navMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.12036, -0.239532)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.0602717, -0.239532)
 pixel_size = 0.0005
 modulate = Color(1, 0, 0.0392157, 1)
 outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
@@ -4848,5 +5378,6 @@ region_rect = Rect2(0, 0, 304, 400)
 [connection signal="exitPasscode" from="basement/passcode/passcodeEntry" to="." method="_on_passcode_entry_exit_passcode"]
 [connection signal="updatedProgress" from="basement/passcode/passcodeEntry" to="." method="_on_passcode_entry_updated_progress"]
 [connection signal="body_entered" from="pianoRoom/triggerField" to="." method="_on_trigger_field_body_entered"]
+[connection signal="body_entered" from="pianoRoom/triggerField2" to="." method="_on_trigger_field_2_body_entered"]
 
 [editable path="basement/crtScreen/crtInterface"]

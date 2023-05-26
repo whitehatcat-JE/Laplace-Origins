@@ -1,6 +1,7 @@
 extends Node3D
 
 var inPasscodeScreen:bool = false
+var redTransitionPlayed:bool = false
 
 @onready var player:Node = $player
 @onready var playerCam:Node = $player/head/cam
@@ -30,6 +31,8 @@ func _on_player_interacted(interactionName:String):
 			if GI.progress == 8:
 				player.unlockedInteractions.erase("monitor")
 				player.unlockedInteractions.append("exitHome")
+				$pianoRoom/triggerField2.set_deferred("monitoring", true)
+				$pianoRoom/eyes2.visible = true
 				$bedroom/easSFX.stop()
 				$hallway/sirenSFX.stop()
 				$pianoRoom/pianoSongGlitched.play()
@@ -45,6 +48,7 @@ func _on_player_interacted(interactionName:String):
 			if GI.progress == 6:
 				GI.progress = 7
 				$basement/crtAnim.play("redAllLights")
+				$bedroom/roomTransformations.play("red")
 				$pianoRoom/triggerField.set_deferred("monitoring", true)
 				$pianoRoom/DoorFrame/doorAnims.play("openDoor")
 				$walls/Router/routerLogo.visible = true
@@ -75,6 +79,8 @@ func _on_player_interacted(interactionName:String):
 			$bedroom/easSFX.play()
 			$hallway/sirenSFX.play()
 			$bedroom/pcWindow/pcOS/emergencyAlert.visible = true
+			$pianoRoom/eyes3.visible = true
+			$pianoRoom/triggerField.set_deferred("monitoring", true)
 			GI.progress = 8
 		"exitHome":
 			GI.progress = 9
@@ -93,7 +99,9 @@ func _on_pc_os_updated_progress():
 		1:
 			player.unlockedInteractions.append("router")
 		3:
-			if pcCam.current: $bedroom/roomTransformations.play("red");
+			if pcCam.current:
+				redTransitionPlayed = true
+				$bedroom/roomTransformations.play("red")
 			player.unlockedInteractions.append("usb")
 
 func _on_passcode_entry_updated_progress():
@@ -107,6 +115,9 @@ func _on_passcode_entry_exit_passcode():
 
 func _on_trigger_field_body_entered(body):
 	$pianoRoom/triggerField.set_deferred("monitoring", false)
+	if GI.progress == 8:
+		$pianoRoom/eyes3.visible = false
+		return
 	$pianoRoom/eyes.visible = false
 	$pianoRoom/SpotLight.visible = true
 	$pianoRoom/piano.visible = true
@@ -114,3 +125,7 @@ func _on_trigger_field_body_entered(body):
 
 func _on_fade_anim_animation_finished(anim_name):
 	get_tree().change_scene_to_file("res://scenes/outside.tscn")
+
+func _on_trigger_field_2_body_entered(body):
+	$pianoRoom/triggerField2.set_deferred("monitoring", false)
+	$pianoRoom/eye2Anim.play("drawBack")

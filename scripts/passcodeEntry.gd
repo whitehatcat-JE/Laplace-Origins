@@ -21,16 +21,14 @@ var userCode:String = ""
 
 func buttonPressed(num:String):
 	userCode += num
-	var userSize:int = len(userCode)
-	if userCode == passcode.substr(0, userSize) or userCode == zeroedPasscode.substr(0, userSize):
-		if userCode == passcode or userCode == zeroedPasscode:
-			modulate = "32ff00"
-			$backdrop.texture = load("res://assets/2d/passcode/backgroundNoiseGreen.png")
-			GI.progress = 5
-			emit_signal("updatedProgress")
-			emit_signal("exitPasscode")
-	else:
-		userCode = num
+	if len(userCode) > 15: userCode = num;
+	elif userCode == passcode or userCode == zeroedPasscode:
+		modulate = "32ff00"
+		$backdrop.texture = load("res://assets/2d/passcode/backgroundNoiseGreen.png")
+		GI.progress = 5
+		emit_signal("updatedProgress")
+		emit_signal("exitPasscode")
+	$passcodeNumbers.text = str(userCode)
 
 func eventTriggered(event):
 	if event is InputEventMouseMotion:
@@ -54,6 +52,7 @@ func eventTriggered(event):
 			"9": $b9.modulate = "5cff53";
 			"reload":
 				userCode = ""
+				$passcodeNumbers.text = str(userCode)
 				$reloadButton.modulate = "5cff53"
 			"quit":
 				$cancelButton.modulate = "ffffff"

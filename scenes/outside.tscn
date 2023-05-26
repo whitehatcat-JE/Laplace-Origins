@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://dcf34l30ctj4m"]
+[gd_scene load_steps=108 format=3 uid="uid://dcf34l30ctj4m"]
 
 [ext_resource type="Script" path="res://scripts/outside.gd" id="1_6fiwc"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_mu5ff"]
@@ -56,8 +56,12 @@
 [ext_resource type="ArrayMesh" uid="uid://dn10cns4aux76" path="res://assets/3d/rocks/rockB.obj" id="44_78clp"]
 [ext_resource type="ArrayMesh" uid="uid://lsigni1j6aa2" path="res://assets/3d/rocks/rockC.obj" id="45_ktltu"]
 [ext_resource type="Texture2D" uid="uid://2xe6pvfw0ehg" path="res://assets/2d/3dSprites/outside/mountains1.png" id="51_sevv8"]
+[ext_resource type="ArrayMesh" uid="uid://bbcne2t1lbmwk" path="res://assets/3d/laplace/arm1.obj" id="52_7i4v2"]
 [ext_resource type="Texture2D" uid="uid://dr18ktcfd1p13" path="res://assets/2d/3dSprites/outside/mountains2.png" id="52_it6j6"]
+[ext_resource type="Material" uid="uid://cjx01qsa37itq" path="res://assets/3d/laplace/laplaceArms.tres" id="52_vpc7n"]
 [ext_resource type="Texture2D" uid="uid://bfdk2vfidg3t7" path="res://assets/2d/3dSprites/outside/mountains3.png" id="52_wvbre"]
+[ext_resource type="ArrayMesh" uid="uid://byvrot08qm4yc" path="res://assets/3d/laplace/arm2.obj" id="54_p8ywg"]
+[ext_resource type="ArrayMesh" uid="uid://cj2trunkx0c6t" path="res://assets/3d/laplace/arm3.obj" id="55_x0a8k"]
 
 [sub_resource type="Gradient" id="Gradient_tsefn"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0.0578036, 1)
@@ -109,24 +113,32 @@ shader_parameter/offset = 0.0
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rrkyy"]
 blend_mode = 3
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yxcby"]
+shader = ExtResource("8_1pbpg")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 50.0
+shader_parameter/shake_color_rate = 0.031
+
 [sub_resource type="Animation" id="Animation_i7fsc"]
 resource_name = "fade"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("fade:modulate")
+tracks/0/path = NodePath("..:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"update": 1,
+"values": [true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("..:disabled")
+tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -171,17 +183,10 @@ height = 1.8
 radius = 0.3
 height = 1.8
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yxcby"]
-shader = ExtResource("8_1pbpg")
-shader_parameter/shake_power = 0.03
-shader_parameter/shake_rate = 0.2
-shader_parameter/shake_speed = 5.0
-shader_parameter/shake_block_size = 50.0
-shader_parameter/shake_color_rate = 0.031
-
 [sub_resource type="Animation" id="Animation_qbi6b"]
 resource_name = "camLookUp"
-length = 27.0
+length = 25.0
+step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -209,74 +214,42 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/fade:modulate")
+tracks/2/path = NodePath("HUD/noise/Eye:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/fade:material")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 14.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [null, SubResource("ShaderMaterial_yxcby")]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HUD/noise:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.1, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("HUD/text:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.1, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("HUD/noise/Eye:visible")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0.1, 15, 21.1, 22.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, false, true, false]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("HUD/text:text")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 15, 22.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HUD/text:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": ["End of recording.", "End of recording.", "More will follow."]
+"values": ["[center]On this day
+
+Laplace is born
+
+And thus", "[center]Creation Weeps"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HUD:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3uk8"]
@@ -383,6 +356,29 @@ emission = Color(1, 0.0196078, 0, 1)
 cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 0.0
+
+[sub_resource type="Animation" id="Animation_tiq3c"]
+resource_name = "sway"
+length = 10.0
+loop_mode = 2
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("armSway:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0.017421, -0.0136086, 0.148328), Vector3(-0.0358362, 0.0495034, -0.413885)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ng4f"]
+_data = {
+"sway": SubResource("Animation_tiq3c")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sjtxq"]
 size = Vector3(0.474579, 3.21349, 21.5123)
@@ -493,6 +489,54 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="noise" type="Sprite2D" parent="player/HUD"]
+modulate = Color(1, 0.0352941, 0, 1)
+material = SubResource("ShaderMaterial_racad")
+position = Vector2(25, 25.5)
+scale = Vector2(8.00781, 4.66016)
+texture = ExtResource("8_xt4jm")
+
+[node name="Eye" type="Sprite2D" parent="player/HUD/noise"]
+visible = false
+material = SubResource("CanvasItemMaterial_rrkyy")
+position = Vector2(-3.62146, -1.18021)
+scale = Vector2(0.25, 0.43)
+texture = ExtResource("9_ix76t")
+
+[node name="text" type="RichTextLabel" parent="player/HUD"]
+layout_mode = 0
+offset_left = -887.0
+offset_top = -265.0
+offset_right = 925.0
+offset_bottom = 684.0
+theme_override_colors/default_color = Color(0.768627, 0, 0.00784314, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0.054902, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("9_dxf73")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]On this day
+
+Laplace is born
+
+And thus"
+
+[node name="fade" type="ColorRect" parent="player/HUD"]
+material = SubResource("ShaderMaterial_yxcby")
+layout_mode = 0
+offset_left = -1084.0
+offset_top = -596.0
+offset_right = 1276.0
+offset_bottom = 684.0
+color = Color(0.819608, 0, 0.00784314, 1)
+
+[node name="fadeAnim" type="AnimationPlayer" parent="player/HUD"]
+autoplay = "fade"
+speed_scale = 0.15
+libraries = {
+"": SubResource("AnimationLibrary_x3k5n")
+}
+
 [node name="crosshair" type="Sprite2D" parent="player/HUD"]
 visible = false
 modulate = Color(1, 1, 1, 0.784314)
@@ -513,50 +557,6 @@ modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(4, 14)
 scale = Vector2(0.188636, 0.188636)
 texture = ExtResource("5_nrsfi")
-
-[node name="noise" type="Sprite2D" parent="player/HUD"]
-visible = false
-modulate = Color(1, 0.0352941, 0, 1)
-material = SubResource("ShaderMaterial_racad")
-position = Vector2(25, 25.5)
-scale = Vector2(8.00781, 4.66016)
-texture = ExtResource("8_xt4jm")
-
-[node name="Eye" type="Sprite2D" parent="player/HUD/noise"]
-visible = false
-material = SubResource("CanvasItemMaterial_rrkyy")
-position = Vector2(-3.62146, -1.18021)
-scale = Vector2(0.25, 0.43)
-texture = ExtResource("9_ix76t")
-
-[node name="text" type="RichTextLabel" parent="player/HUD"]
-visible = false
-layout_mode = 0
-offset_left = 267.0
-offset_top = 433.0
-offset_right = 2079.0
-offset_bottom = 1382.0
-theme_override_colors/default_color = Color(0.768627, 0, 0.00784314, 1)
-theme_override_colors/font_shadow_color = Color(1, 0, 0.054902, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_fonts/normal_font = ExtResource("9_dxf73")
-theme_override_font_sizes/normal_font_size = 100
-text = "End of recording."
-
-[node name="fade" type="ColorRect" parent="player/HUD"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 0
-offset_left = -1084.0
-offset_top = -596.0
-offset_right = 1276.0
-offset_bottom = 684.0
-color = Color(0.819608, 0, 0.00784314, 1)
-
-[node name="fadeAnim" type="AnimationPlayer" parent="player/HUD"]
-autoplay = "fade"
-libraries = {
-"": SubResource("AnimationLibrary_x3k5n")
-}
 
 [node name="bobAnim" type="AnimationPlayer" parent="player"]
 root_node = NodePath("../..")
@@ -2963,6 +2963,488 @@ mesh = ExtResource("45_ktltu")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("43_mfevg")
 
+[node name="arms" type="Node3D" parent="."]
+
+[node name="arm1" type="Node3D" parent="arms"]
+transform = Transform3D(-0.396266, 0.908196, 0.134736, 0.911626, 0.406641, -0.0598432, -0.109138, 0.0991151, -0.989073, 0, -14.3267, 86.3737)
+
+[node name="armSway" type="Node3D" parent="arms/arm1"]
+transform = Transform3D(0.991203, -0.131821, -0.011777, 0.131628, 0.991172, -0.0158762, 0.0137658, 0.0141864, 0.999804, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm1/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("52_7i4v2")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm1"]
+autoplay = "sway"
+speed_scale = 0.15
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm2" type="Node3D" parent="arms"]
+transform = Transform3D(0.112636, 0.989841, 0.0867633, 0.909877, -0.137837, 0.391311, 0.399295, 0.034868, -0.916159, -28.8843, -19.5088, 51.8062)
+
+[node name="armSway" type="Node3D" parent="arms/arm2"]
+transform = Transform3D(0.989205, -0.145926, -0.0133708, 0.14569, 0.98918, -0.0172216, 0.0157393, 0.0150877, 0.999762, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm2/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("54_p8ywg")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm2"]
+autoplay = "sway"
+speed_scale = 0.3
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm3" type="Node3D" parent="arms"]
+transform = Transform3D(0.168954, 1.48476, 0.130145, 1.36482, -0.206756, 0.586968, 0.598943, 0.0523021, -1.37424, -62.9201, -33.4719, 51.8305)
+
+[node name="armSway" type="Node3D" parent="arms/arm3"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm3/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("55_x0a8k")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm3"]
+autoplay = "sway"
+speed_scale = 0.1
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm4" type="Node3D" parent="arms"]
+transform = Transform3D(-0.178696, 0.463073, -0.0602583, 0.422147, 0.187775, 0.191134, 0.199648, 0.017434, -0.458079, -22.4622, -12.5834, 90.5999)
+
+[node name="armSway" type="Node3D" parent="arms/arm4"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm4/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("52_7i4v2")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm4"]
+autoplay = "sway"
+speed_scale = 0.1
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm5" type="Node3D" parent="arms"]
+transform = Transform3D(0.258219, 0.690329, 0.138814, 0.637291, -0.291997, 0.266642, 0.299472, 0.0261511, -0.687119, -86.8071, -27.0854, 90.5999)
+
+[node name="armSway" type="Node3D" parent="arms/arm5"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm5/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("55_x0a8k")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm5"]
+autoplay = "sway"
+speed_scale = 0.3
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm6" type="Node3D" parent="arms"]
+transform = Transform3D(-0.422801, 0.598042, -0.161511, 0.54227, 0.451843, 0.253538, 0.299472, 0.0261511, -0.687119, -57.3374, -27.0854, 58.8531)
+
+[node name="armSway" type="Node3D" parent="arms/arm6"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm6/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("52_7i4v2")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm6"]
+autoplay = "sway"
+speed_scale = 0.2
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm7" type="Node3D" parent="arms"]
+transform = Transform3D(-0.0950215, 0.743841, -0.0131039, 0.68102, 0.0922872, 0.300326, 0.299472, 0.0261511, -0.687119, 33.7919, -6.92253, 216.698)
+
+[node name="armSway" type="Node3D" parent="arms/arm7"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm7/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("54_p8ywg")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm7"]
+autoplay = "sway"
+speed_scale = 0.25
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm8" type="Node3D" parent="arms"]
+transform = Transform3D(-0.563734, 0.797389, -0.215348, 0.723026, 0.602458, 0.33805, 0.399296, 0.0348681, -0.916159, 126.369, 8.50286, 216.698)
+
+[node name="armSway" type="Node3D" parent="arms/arm8"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm8/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("52_7i4v2")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm8"]
+autoplay = "sway"
+speed_scale = 0.2
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm9" type="Node3D" parent="arms"]
+transform = Transform3D(0.344292, 0.920439, 0.185086, 0.849721, -0.38933, 0.355522, 0.399296, 0.0348681, -0.916159, 70.2501, -22.7917, 146.642)
+
+[node name="armSway" type="Node3D" parent="arms/arm9"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm9/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("55_x0a8k")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm9"]
+autoplay = "sway"
+speed_scale = 0.1
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm10" type="Node3D" parent="arms"]
+transform = Transform3D(-0.396266, 0.908196, 0.134736, 0.911626, 0.406641, -0.0598432, -0.109138, 0.0991151, -0.989073, 88.101, -14.3267, 86.3737)
+
+[node name="armSway" type="Node3D" parent="arms/arm10"]
+transform = Transform3D(0.984468, 0.174086, 0.0227194, -0.174412, 0.984584, 0.0132374, -0.0200647, -0.0169943, 0.999654, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm10/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("52_7i4v2")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm10"]
+autoplay = "sway"
+speed_scale = 0.2
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm11" type="Node3D" parent="arms"]
+transform = Transform3D(-0.146818, 0.982496, 0.114656, 0.983124, 0.157727, -0.0926763, -0.109138, 0.0991151, -0.989073, 184.092, 13.9118, 204.267)
+
+[node name="armSway" type="Node3D" parent="arms/arm11"]
+transform = Transform3D(0.984468, 0.174086, 0.0227194, -0.174412, 0.984584, 0.0132374, -0.0200647, -0.0169943, 0.999654, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm11/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("54_p8ywg")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm11"]
+autoplay = "sway"
+speed_scale = 0.15
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm14" type="Node3D" parent="arms"]
+transform = Transform3D(-0.357375, 0.712276, -0.604107, 0.933111, 0.244713, -0.263475, -0.0398343, -0.657859, -0.752087, -46.2994, -28.4698, -100.338)
+
+[node name="armSway" type="Node3D" parent="arms/arm14"]
+transform = Transform3D(0.915802, 0.398595, 0.0492711, -0.400439, 0.915629, 0.035676, -0.0308938, -0.0524022, 0.998148, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm14/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("52_7i4v2")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm14"]
+autoplay = "sway"
+speed_scale = 0.3
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm15" type="Node3D" parent="arms"]
+transform = Transform3D(0.146613, -0.171688, -0.974181, 0.931336, -0.307912, 0.19443, -0.333344, -0.935795, 0.114755, -206.303, -34.5154, -41.8462)
+
+[node name="armSway" type="Node3D" parent="arms/arm15"]
+transform = Transform3D(0.989745, -0.142251, -0.0129553, 0.142026, 0.989719, -0.0168708, 0.015222, 0.0148578, 0.999774, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm15/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("54_p8ywg")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm15"]
+autoplay = "sway"
+speed_scale = 0.15
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm16" type="Node3D" parent="arms"]
+transform = Transform3D(0.542986, 1.08687, -0.879707, 1.397, -0.461869, 0.291646, -0.0595525, -0.924876, -1.17943, 69.8391, -28.0199, -79.6849)
+
+[node name="armSway" type="Node3D" parent="arms/arm16"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm16/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("55_x0a8k")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm16"]
+autoplay = "sway"
+speed_scale = 0.3
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm17" type="Node3D" parent="arms"]
+transform = Transform3D(0.136579, -0.135802, -0.461415, 0.477005, 0.0998192, 0.111815, 0.0617469, -0.470738, 0.156823, -172.721, -21.9016, -59.3763)
+
+[node name="armSway" type="Node3D" parent="arms/arm17"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm17/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("52_7i4v2")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm17"]
+autoplay = "sway"
+speed_scale = 0.2
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm18" type="Node3D" parent="arms"]
+transform = Transform3D(0.394347, 0.506628, -0.38771, 0.623126, -0.403601, 0.1064, -0.136767, -0.378067, -0.633135, -104.693, -24.1335, -34.8586)
+
+[node name="armSway" type="Node3D" parent="arms/arm18"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm18/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("55_x0a8k")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm18"]
+autoplay = "sway"
+speed_scale = 0.2
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm19" type="Node3D" parent="arms"]
+transform = Transform3D(-0.0872069, 0.441371, -0.600072, 0.655977, 0.331784, 0.148706, 0.352972, -0.507554, -0.424617, -106.303, -35.3369, -76.6702)
+
+[node name="armSway" type="Node3D" parent="arms/arm19"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm19/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("52_7i4v2")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm19"]
+autoplay = "sway"
+speed_scale = 0.2
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm20" type="Node3D" parent="arms"]
+transform = Transform3D(0.144568, 0.544467, -0.495133, 0.730012, -0.0422038, 0.166739, 0.0931831, -0.514077, -0.538091, -269.575, -3.65122, 1.88555)
+
+[node name="armSway" type="Node3D" parent="arms/arm20"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm20/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("54_p8ywg")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm20"]
+autoplay = "sway"
+speed_scale = 0.2
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm21" type="Node3D" parent="arms"]
+transform = Transform3D(-0.116276, 0.588494, -0.800097, 0.874636, 0.442379, 0.198274, 0.470629, -0.676739, -0.566156, -307.001, -5.69418, 193.612)
+
+[node name="armSway" type="Node3D" parent="arms/arm21"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm21/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("52_7i4v2")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm21"]
+autoplay = "sway"
+speed_scale = 0.3
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm22" type="Node3D" parent="arms"]
+transform = Transform3D(0.525796, 0.675504, -0.516947, 0.830834, -0.538134, 0.141866, -0.182356, -0.50409, -0.84418, -396.22, -38.4733, 192.192)
+
+[node name="armSway" type="Node3D" parent="arms/arm22"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm22/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("55_x0a8k")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm22"]
+autoplay = "sway"
+speed_scale = 0.25
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm23" type="Node3D" parent="arms"]
+transform = Transform3D(-0.357375, 0.712276, -0.604107, 0.933111, 0.244713, -0.263475, -0.0398343, -0.657859, -0.752087, 15.9974, -44.5934, -89.7353)
+
+[node name="armSway" type="Node3D" parent="arms/arm23"]
+transform = Transform3D(0.984468, 0.174086, 0.0227194, -0.174412, 0.984584, 0.0132374, -0.0200647, -0.0169943, 0.999654, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm23/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("52_7i4v2")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm23"]
+autoplay = "sway"
+speed_scale = 0.2
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm24" type="Node3D" parent="arms"]
+transform = Transform3D(-0.180988, 0.764814, -0.618306, 0.956521, -0.00931747, -0.291515, -0.228716, -0.644183, -0.729875, 167.236, -13.3087, -82.0845)
+
+[node name="armSway" type="Node3D" parent="arms/arm24"]
+transform = Transform3D(0.984468, 0.174086, 0.0227194, -0.174412, 0.984584, 0.0132374, -0.0200647, -0.0169943, 0.999654, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm24/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("54_p8ywg")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm24"]
+autoplay = "sway"
+speed_scale = 0.3
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm12" type="Node3D" parent="arms"]
+transform = Transform3D(0.0763969, -1.16151, 1.62636, 1.97525, -0.203873, -0.238387, 0.304231, 1.61534, 1.13935, -282.265, -93.5197, 98.3912)
+
+[node name="armSway" type="Node3D" parent="arms/arm12"]
+transform = Transform3D(0.984468, 0.174086, 0.0227194, -0.174412, 0.984584, 0.0132374, -0.0200647, -0.0169943, 0.999654, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm12/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("55_x0a8k")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm12"]
+autoplay = "sway"
+speed_scale = 0.2
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
+[node name="arm13" type="Node3D" parent="arms"]
+transform = Transform3D(-0.0950215, 0.743841, -0.0131039, 0.68102, 0.0922872, 0.300326, 0.299472, 0.0261511, -0.687119, 93.4944, -6.92253, 17.1843)
+
+[node name="armSway" type="Node3D" parent="arms/arm13"]
+transform = Transform3D(0.99106, 0.132204, 0.0179457, -0.132383, 0.991156, 0.00920745, -0.0165697, -0.0115008, 0.999796, 0, 0, 0)
+
+[node name="armMesh" type="MeshInstance3D" parent="arms/arm13/armSway"]
+transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("54_p8ywg")
+skeleton = NodePath("../../..")
+
+[node name="armSwayAnim" type="AnimationPlayer" parent="arms/arm13"]
+autoplay = "sway"
+speed_scale = 0.1
+libraries = {
+"": SubResource("AnimationLibrary_6ng4f")
+}
+
 [node name="collisions" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2003, -0.775183, 14.0154)
 
@@ -3016,54 +3498,63 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2003, -0.775183, 14.0154)
 mesh = SubResource("BoxMesh_13pss")
 surface_material_override/0 = SubResource("StandardMaterial3D_kg7vw")
 
-[node name="road2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -102.545, -0.82019, 31.5484)
+[node name="road2" type="MeshInstance3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -70.3447, -0.045007, 17.533)
 mesh = SubResource("BoxMesh_u7tfw")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_0vgvk")
 
-[node name="road3" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 46.8508, -0.82019, 19.1073)
+[node name="road3" type="MeshInstance3D" parent="road"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 79.0511, -0.045007, 5.0919)
 mesh = SubResource("BoxMesh_u7tfw")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_0vgvk")
 
 [node name="LaplaceArms" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.258819, -0.965926, -4.2222e-08, 0, -4.37114e-08, 1, -0.965926, 0.258819, 1.13133e-08, -344.32, -1.22481, 166.881)
+visible = false
 material_override = SubResource("StandardMaterial3D_wg6rd")
 cast_shadow = 0
 mesh = ExtResource("6_l5kte")
 
 [node name="LaplaceArms2" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.872428, 0.488743, 2.13636e-08, 0, -4.37114e-08, 1, 0.488743, -0.872428, -3.8135e-08, -211.365, -1.22481, 421.409)
+visible = false
 material_override = SubResource("StandardMaterial3D_wg6rd")
 cast_shadow = 0
 mesh = ExtResource("6_l5kte")
 
 [node name="LaplaceArms3" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.258819, -0.965926, -4.2222e-08, 9.1951e-16, -4.37114e-08, 1, -0.965926, -0.258819, -1.13134e-08, 221.859, -35.5836, 762.467)
+visible = false
 material_override = SubResource("StandardMaterial3D_wg6rd")
 cast_shadow = 0
 mesh = ExtResource("6_l5kte")
 
 [node name="LaplaceArms4" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.5, 0.866025, 3.78552e-08, 0, -4.37114e-08, 1, 0.866025, 0.5, 2.18557e-08, -70.6955, -35.5836, 207.919)
+visible = false
 material_override = SubResource("StandardMaterial3D_wg6rd")
 cast_shadow = 0
 mesh = ExtResource("6_l5kte")
 
 [node name="LaplaceArms5" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.5, -0.866026, -3.78552e-08, 6.15953e-17, -4.37114e-08, 1, -0.866026, 0.5, 2.18557e-08, -35.0121, -29.3246, -6.74405)
+visible = false
 material_override = SubResource("StandardMaterial3D_wg6rd")
 cast_shadow = 0
 mesh = ExtResource("6_l5kte")
 
 [node name="LaplaceArms7" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.5, -0.866026, -3.78552e-08, 6.15953e-17, -4.37114e-08, 1, -0.866026, 0.5, 2.18557e-08, -174.427, -14.0256, 34.6897)
+visible = false
 material_override = SubResource("StandardMaterial3D_wg6rd")
 cast_shadow = 0
 mesh = ExtResource("6_l5kte")
 
 [node name="LaplaceArms6" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.258819, 0.965926, 4.2222e-08, -1.53837e-15, -4.37114e-08, 1, 0.965926, -0.258819, -1.13133e-08, -130.786, -29.3246, 22.5412)
+visible = false
 material_override = SubResource("StandardMaterial3D_wg6rd")
 cast_shadow = 0
 mesh = ExtResource("6_l5kte")
@@ -3116,4 +3607,5 @@ alpha_cut = 1
 alpha_antialiasing_mode = 2
 texture = ExtResource("52_wvbre")
 
+[connection signal="animation_finished" from="player/lookUpAnim" to="." method="_on_look_up_anim_animation_finished"]
 [connection signal="body_entered" from="revealTrigger" to="." method="_on_reveal_trigger_body_entered"]
