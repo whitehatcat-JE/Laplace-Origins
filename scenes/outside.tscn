@@ -2969,7 +2969,7 @@ surface_material_override/0 = ExtResource("43_mfevg")
 transform = Transform3D(-0.396266, 0.908196, 0.134736, 0.911626, 0.406641, -0.0598432, -0.109138, 0.0991151, -0.989073, 0, -14.3267, 86.3737)
 
 [node name="armSway" type="Node3D" parent="arms/arm1"]
-transform = Transform3D(0.991203, -0.131821, -0.011777, 0.131628, 0.991172, -0.0158762, 0.0137658, 0.0141864, 0.999804, 0, 0, 0)
+transform = Transform3D(0.915205, 0.399943, 0.0494377, -0.4018, 0.915027, 0.0358169, -0.0309121, -0.0526439, 0.998135, 0, 0, 0)
 
 [node name="armMesh" type="MeshInstance3D" parent="arms/arm1/armSway"]
 transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)
@@ -2989,7 +2989,7 @@ libraries = {
 transform = Transform3D(0.112636, 0.989841, 0.0867633, 0.909877, -0.137837, 0.391311, 0.399295, 0.034868, -0.916159, -28.8843, -19.5088, 51.8062)
 
 [node name="armSway" type="Node3D" parent="arms/arm2"]
-transform = Transform3D(0.989205, -0.145926, -0.0133708, 0.14569, 0.98918, -0.0172216, 0.0157393, 0.0150877, 0.999762, 0, 0, 0)
+transform = Transform3D(0.999987, -0.0043532, 0.00255243, 0.00436283, 0.999983, -0.00378349, -0.00253591, 0.00379458, 0.999989, 0, 0, 0)
 
 [node name="armMesh" type="MeshInstance3D" parent="arms/arm2/armSway"]
 transform = Transform3D(1, 1.67638e-08, 7.45058e-09, 2.6077e-08, 1, -7.45058e-09, 7.45058e-09, 0, 1, -13.941, -147.665, 541.95)

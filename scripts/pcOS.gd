@@ -38,6 +38,9 @@ var consoleOutputList = [
 
 @onready var mousePtr:Node = $mouse/pointerRay
 
+@onready var clickSFX:Node = $clickSFX
+@onready var deniedSFX:Node = $deniedSFX
+
 func _ready():
 	#return
 	$homeScreen.position.x = 100000
@@ -53,19 +56,23 @@ func eventTriggered(event):
 			"login":
 				$loginScreen.position.x = 10000
 				$homeScreen.position.x = 0
+				clickSFX.play()
 			"menu":
+				clickSFX.play()
 				if menuDisplaying:
 					$homeScreen/menuBar/menuAnims.play("disappear")
 				else:
 					$homeScreen/menuBar/menuAnims.play("appear")
 				menuDisplaying = !menuDisplaying
 			"logout":
+				clickSFX.play()
 				$homeScreen/menuBar/menuAnims.play("disappear")
 				menuDisplaying = false
 				$loginScreen.position.x = 0
 				$homeScreen.position.x = 10000
 				emit_signal("exitOS")
 			"emailOpen":
+				clickSFX.play()
 				if emailDisplaying:
 					$homeScreen/emailWindow/emailAnims.play("emailDisappear")
 				else:
@@ -74,48 +81,60 @@ func eventTriggered(event):
 					emit_signal("updatedProgress")
 				emailDisplaying = !emailDisplaying
 			"emailQuit":
+				clickSFX.play()
 				$homeScreen/emailWindow/emailAnims.play("emailDisappear")
 				emailDisplaying = false
 			"emailA":
+				clickSFX.play()
 				$homeScreen/emailWindow/emailA/description.visible = true
 				$homeScreen/emailWindow/emailB/description.visible = false
 				$homeScreen/emailWindow/emailC/description.visible = false
 			"emailB":
+				clickSFX.play()
 				$homeScreen/emailWindow/emailA/description.visible = false
 				$homeScreen/emailWindow/emailB/description.visible = true
 				$homeScreen/emailWindow/emailC/description.visible = false
 			"emailC":
+				clickSFX.play()
 				$homeScreen/emailWindow/emailA/description.visible = false
 				$homeScreen/emailWindow/emailB/description.visible = false
 				$homeScreen/emailWindow/emailC/description.visible = true
 			"filesOpen":
+				clickSFX.play()
 				if filesDisplaying:
 					$homeScreen/filesWindow/filesAnims.play("filesDisappear")
 				else:
 					$homeScreen/filesWindow/filesAnims.play("filesAppear")
 				filesDisplaying = !filesDisplaying
 			"filesQuit":
+				clickSFX.play()
 				$homeScreen/filesWindow/filesAnims.play("filesDisappear")
 				filesDisplaying = false
 			"laplaceExe":
 				if GI.progress < 2:
+					deniedSFX.play()
 					$homeScreen/errorWindow/backgroundShadow.color = "0000006a"
 					$homeScreen/errorWindow/errorAnims.play("errorAppear")
 					$homeScreen/errorWindow/errorMessage.text = "Please disable internet connection before running application."
 				elif cmdDisplaying:
+					deniedSFX.play()
 					$homeScreen/errorWindow/backgroundShadow.color = "0000006a"
 					$homeScreen/errorWindow/errorAnims.play("errorAppear")
 					$homeScreen/errorWindow/errorMessage.text = "Application already running."
 				else:
+					clickSFX.play()
 					$homeScreen/consoleWindow/consoleAnims.play("consoleAppear")
 					cmdDisplaying = true
 			"cmdQuit":
+				deniedSFX.play()
 				$homeScreen/errorWindow/backgroundShadow.color = "ff0800"
 				$homeScreen/errorWindow/errorAnims.play("errorAppear")
 				$homeScreen/errorWindow/errorMessage.text = "wN1bpgaHTlaLsGDkJTUHEyiF42dzL7M2wZI9q9sq8BshDi5GX1kTYWT40g8nhIBHkQRW8ELPFUYJePjUP6jztD1c70OFFDc9fpnP"
 			"errorQuit":
+				clickSFX.play()
 				$homeScreen/errorWindow/errorAnims.play("errorDisappear")
 			"errorOK":
+				clickSFX.play()
 				$homeScreen/errorWindow/errorAnims.play("errorDisappear")
 
 func _process(delta):
@@ -214,15 +233,14 @@ func _on_clock_timer_timeout():
 	
 	$homeScreen/clock.text = newText
 
-func _on_console_anims_animation_finished(anim_name):
-	if anim_name == "consoleAppear":
-		$homeScreen/consoleWindow/newLineTimer.start()
-		GI.progress = 3
-		$homeScreen/emailWindow/emailB.visible = true
-		$homeScreen/emailWindow/emailA/description.visible = false
-		$homeScreen/emailWindow/emailB/description.visible = true
-		$homeScreen/emailWindow/emailB/interact/hitbox.disabled = false
-		emit_signal("updatedProgress")
+func unlockUSB():
+	$homeScreen/consoleWindow/newLineTimer.start()
+	GI.progress = 3
+	$homeScreen/emailWindow/emailB.visible = true
+	$homeScreen/emailWindow/emailA/description.visible = false
+	$homeScreen/emailWindow/emailB/description.visible = true
+	$homeScreen/emailWindow/emailB/interact/hitbox.disabled = false
+	emit_signal("updatedProgress")
 
 func _on_new_line_timer_timeout():
 	consoleOutputList.append("C:/Users/Laplace>")

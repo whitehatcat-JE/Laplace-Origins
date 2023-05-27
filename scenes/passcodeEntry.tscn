@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://smi13sggafqw"]
+[gd_scene load_steps=25 format=3 uid="uid://smi13sggafqw"]
 
 [ext_resource type="Script" path="res://scripts/passcodeEntry.gd" id="1_4011o"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_rukca"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://1ybrvdjx2poq" path="res://assets/2d/UI/mouseInteract.png" id="17_l6t5q"]
 [ext_resource type="Texture2D" uid="uid://cfe408ssq7x8y" path="res://assets/2d/passcode/reloadButton.png" id="17_ulqad"]
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="18_leebo"]
+[ext_resource type="AudioStream" uid="uid://b87cl0r6qxkub" path="res://assets/audio/sfx/menus/pop.ogg" id="21_6bre3"]
+[ext_resource type="AudioStream" uid="uid://bg527jkj4wdce" path="res://assets/audio/sfx/menus/confirmation.mp3" id="22_t0aqo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ou234"]
 shader = ExtResource("2_bbpvo")
@@ -240,3 +242,10 @@ position = Vector2(592, 176)
 
 [node name="boundarySE" type="Node2D" parent="."]
 position = Vector2(896, 576)
+
+[node name="buttonSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_6bre3")
+pitch_scale = 0.5
+
+[node name="confirmationSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_t0aqo")

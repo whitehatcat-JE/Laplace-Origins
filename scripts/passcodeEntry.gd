@@ -19,6 +19,9 @@ var userCode:String = ""
 
 @onready var mousePtr:Node = $mouse/pointerRay
 
+@onready var buttonSFX:Node = $buttonSFX
+@onready var confirmationSFX:Node = $confirmationSFX
+
 func buttonPressed(num:String):
 	userCode += num
 	if len(userCode) > 15: userCode = num;
@@ -26,6 +29,7 @@ func buttonPressed(num:String):
 		modulate = "32ff00"
 		$backdrop.texture = load("res://assets/2d/passcode/backgroundNoiseGreen.png")
 		GI.progress = 5
+		confirmationSFX.play()
 		emit_signal("updatedProgress")
 		emit_signal("exitPasscode")
 	$passcodeNumbers.text = str(userCode)
@@ -38,6 +42,7 @@ func eventTriggered(event):
 		$mouse.position = newPos
 	elif Input.is_action_just_pressed("interact") and currentInteraction != "":
 		buttonHeld = currentInteraction
+		buttonSFX.play()
 		if currentInteraction in "0123456789": buttonPressed(currentInteraction);
 		match currentInteraction:
 			"0": $b0.modulate = "5cff53";

@@ -28,7 +28,10 @@ var unOutline:Color = Color(0.37109375, 0, 0.02198230475187)
 var sColor:Color = Color(1, 0.5686274766922, 0)
 var sOutline:Color = Color(0.28627452254295, 0.10588235408068, 0)
 
+@onready var clickSFX:Node = $clickSFX
+
 func _ready():
+	$"../audioManager".play("menu")
 	get_tree().paused = true
 
 func _process(delta):
@@ -40,18 +43,25 @@ func _process(delta):
 
 func _input(event):
 	if Input.is_action_just_pressed("menu"):
-		if menuOpen: $mainAnims.play("zoom");
-		else: $mainAnims.play_backwards("zoom");
+		clickSFX.play()
+		if menuOpen:
+			$mainAnims.play("zoom")
+			$closeMenu.play()
+		else:
+			$mainAnims.play_backwards("zoom")
+			$openMenu.play()
 		menuOpen = !menuOpen
 	if !menuOpen: return;
 	elif keybindsOpen:
 		if Input.is_action_just_pressed("interact"):
+			clickSFX.play()
 			$keybindsMenu.visible = false
 			$navMenu.visible = true
 			keybindsOpen = false
 		return
 	elif helpOpen:
 		if Input.is_action_just_pressed("interact"):
+			clickSFX.play()
 			if helpSubOpen:
 				helpSubOpen = false
 				$puzzleMenu.visible = true
@@ -101,9 +111,11 @@ func _input(event):
 			MENU.help: updateMainMenu(MENU.quit);
 			MENU.quit: updateMainMenu(MENU.start);
 	elif Input.is_action_just_pressed("interact"):
+		clickSFX.play()
 		match curMenu:
 			MENU.start:
 				$mainAnims.play("zoom")
+				$closeMenu.play()
 				menuOpen = false
 			MENU.keybinds:
 				$keybindsMenu.visible = true

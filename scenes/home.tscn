@@ -1,4 +1,4 @@
-[gd_scene load_steps=389 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=403 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -6,15 +6,19 @@
 [ext_resource type="Material" uid="uid://c6bd8j480mhl1" path="res://assets/3d/materials/lightPlanks.tres" id="2_wae18"]
 [ext_resource type="Material" uid="uid://d2m0d4dev2kg1" path="res://assets/3d/materials/darkPlanks.tres" id="2_xynmm"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="2_yyxee"]
+[ext_resource type="Script" path="res://scripts/audioManager.gd" id="3_d4tsq"]
 [ext_resource type="Texture2D" uid="uid://nogbc434txv1" path="res://assets/3d/textures/tiledCeiling/Ceiling_Drop_Tiles_001_basecolor.jpg" id="3_qurph"]
 [ext_resource type="Texture2D" uid="uid://hsvbx080dl40" path="res://assets/3d/textures/tiledCeiling/Ceiling_Drop_Tiles_001_ambientOcclusion.jpg" id="4_be0wj"]
+[ext_resource type="AudioStream" uid="uid://g3sr5s2mbhbv" path="res://assets/audio/music/menu.mp3" id="4_eyyti"]
 [ext_resource type="Material" uid="uid://cv76vwfwvvxvt" path="res://assets/3d/materials/concrete.tres" id="5_6kw2r"]
+[ext_resource type="AudioStream" uid="uid://bdo4wwwve61iy" path="res://assets/audio/music/ambienceA.mp3" id="5_g6dg6"]
 [ext_resource type="Texture2D" uid="uid://0tvexwu01dhi" path="res://assets/3d/textures/tiledCeiling/Ceiling_Drop_Tiles_001_normal.jpg" id="5_mxrdu"]
 [ext_resource type="Material" uid="uid://djscqebmxa2dj" path="res://assets/3d/materials/metal.tres" id="5_tn6ee"]
 [ext_resource type="Texture2D" uid="uid://cigjq25fsqn45" path="res://assets/2d/UI/interactIconLocked.png" id="6_5fre7"]
 [ext_resource type="Texture2D" uid="uid://6uwcmofiytw8" path="res://assets/3d/textures/tiledCeiling/Ceiling_Drop_Tiles_001_roughness.jpg" id="6_8k2c5"]
 [ext_resource type="PackedScene" uid="uid://csnnn1yw8ccgs" path="res://scenes/pcOS.tscn" id="6_wgccf"]
 [ext_resource type="ArrayMesh" uid="uid://drl6ksmb42nis" path="res://assets/3d/potPlant.obj" id="7_10o0d"]
+[ext_resource type="AudioStream" uid="uid://fh6dwkt7lotj" path="res://assets/audio/sfx/heartbeat.mp3" id="7_jbwer"]
 [ext_resource type="ArrayMesh" uid="uid://b6owxc40x6jeh" path="res://assets/3d/monitorImage.obj" id="8_nq4cd"]
 [ext_resource type="ArrayMesh" uid="uid://bff888blpslor" path="res://assets/3d/desk.obj" id="8_xy3sd"]
 [ext_resource type="Material" uid="uid://bak4i13bdfs7n" path="res://assets/3d/materials/greenWallpaper.tres" id="9_6pp1r"]
@@ -72,6 +76,7 @@
 [ext_resource type="Texture2D" uid="uid://w6wwwnf5xj2n" path="res://assets/2d/3dSprites/shirt.png" id="43_wa73e"]
 [ext_resource type="ArrayMesh" uid="uid://d358dn8ub81n" path="res://assets/3d/router.obj" id="45_1wmm1"]
 [ext_resource type="Texture2D" uid="uid://c7v3yyaterqns" path="res://assets/2d/3dSprites/router.png" id="46_7te8v"]
+[ext_resource type="AudioStream" uid="uid://c3r2wj08td3lc" path="res://assets/audio/sfx/unplug.mp3" id="46_tpxyb"]
 [ext_resource type="ArrayMesh" uid="uid://cc2ey0ew1n6bk" path="res://assets/3d/containerA.obj" id="50_5beer"]
 [ext_resource type="Texture2D" uid="uid://dqo8b7j8froex" path="res://assets/2d/3dSprites/books.png" id="51_dl1it"]
 [ext_resource type="Material" uid="uid://di68gyvikxw3q" path="res://assets/3d/materials/china.tres" id="51_hnvf7"]
@@ -91,6 +96,7 @@
 [ext_resource type="AudioStream" uid="uid://3xkxjvt2m245" path="res://assets/audio/sfx/siren.mp3" id="68_41ay2"]
 [ext_resource type="Texture2D" uid="uid://byasw2wllivf0" path="res://assets/2d/UI/crosshair.png" id="69_f72sw"]
 [ext_resource type="Texture2D" uid="uid://b4a1llenxad28" path="res://assets/2d/UI/interactIcon.png" id="70_jemre"]
+[ext_resource type="AudioStream" uid="uid://dymoomv7ymcyr" path="res://assets/audio/sfx/menus/glitch.mp3" id="72_ti5lq"]
 [ext_resource type="ArrayMesh" uid="uid://pequtjrrcglv" path="res://assets/3d/shelf.obj" id="80_df1xq"]
 [ext_resource type="ArrayMesh" uid="uid://c3amplcsn5ckt" path="res://assets/3d/vase.obj" id="82_ltldc"]
 [ext_resource type="Texture2D" uid="uid://c48jmvg5i3skx" path="res://assets/2d/3dSprites/vaseFlowers.png" id="83_ebpf2"]
@@ -120,11 +126,13 @@
 [ext_resource type="Texture2D" uid="uid://dgvv60635v0kl" path="res://assets/3d/textures/military-panel1-bl/military-panel1-ao.png" id="106_6anlg"]
 [ext_resource type="Texture2D" uid="uid://b4534qiy44fww" path="res://assets/3d/textures/modern-metal-wall1-bl/modern-metal-wall_normal-ogl.png" id="106_peijt"]
 [ext_resource type="Texture2D" uid="uid://d24ovtjwqbql5" path="res://assets/3d/textures/military-panel1-bl/military-panel1-emissive_power.png" id="107_0dgxt"]
+[ext_resource type="AudioStream" uid="uid://laj251jonk7y" path="res://assets/audio/sfx/doorOpen.mp3" id="107_4sdfv"]
 [ext_resource type="Texture2D" uid="uid://dckbrgw4x76ae" path="res://assets/3d/textures/modern-metal-wall1-bl/modern-metal-wall_roughness.png" id="107_05xsv"]
 [ext_resource type="Texture2D" uid="uid://pmwd7tk82x7h" path="res://assets/3d/textures/military-panel1-bl/military-panel1-height_.png" id="108_bmjjl"]
 [ext_resource type="Texture2D" uid="uid://dllgag6vq805t" path="res://assets/3d/textures/military-panel1-bl/military-panel1-metalness.png" id="109_p001i"]
 [ext_resource type="Texture2D" uid="uid://btwfetcqlgfc7" path="res://assets/3d/textures/military-panel1-bl/military-panel1-nmap-ogl.png" id="110_1gft0"]
 [ext_resource type="Material" uid="uid://o8lrfuqlp2w0" path="res://assets/3d/materials/greenBrick.tres" id="110_kucnh"]
+[ext_resource type="AudioStream" uid="uid://dyduf0r3rb8w6" path="res://assets/audio/sfx/button.mp3" id="110_mgfbc"]
 [ext_resource type="Texture2D" uid="uid://c4i6qx2cyxm65" path="res://assets/3d/textures/worn-factory-siding-bl/worn-factory-siding_albedo.png" id="111_6ordm"]
 [ext_resource type="Texture2D" uid="uid://b0ki2x4o72ixu" path="res://assets/3d/textures/military-panel1-bl/military-panel1-rough.png" id="111_xygbn"]
 [ext_resource type="Texture2D" uid="uid://dnip0y5flevsv" path="res://assets/3d/textures/worn-factory-siding-bl/worn-factory-siding_ao.png" id="112_4asdh"]
@@ -149,17 +157,23 @@
 [ext_resource type="Texture2D" uid="uid://p2q07wl4p4c8" path="res://assets/2d/3dSprites/crtLogos.png" id="136_kd2gh"]
 [ext_resource type="Texture2D" uid="uid://da76e3evduwti" path="res://assets/2d/3dSprites/decals/TexturesCom_DecalBottom0031_1_masked_S.png" id="138_nccd0"]
 [ext_resource type="Texture2D" uid="uid://c0rm0p86imx5j" path="res://assets/2d/3dSprites/vines.png" id="143_b8ogo"]
+[ext_resource type="AudioStream" uid="uid://d3k75xyvaydjg" path="res://assets/audio/sfx/rockGrinding.mp3" id="144_xag2p"]
 [ext_resource type="AudioStream" uid="uid://buv6wcekvl551" path="res://assets/audio/music/nocturne.mp3" id="146_hevbh"]
-[ext_resource type="AudioStream" uid="uid://beehvo0hosw3j" path="res://assets/audio/music/nocturneDistorted.mp3" id="146_ifhja"]
 [ext_resource type="Texture2D" uid="uid://bpecj4jeahrox" path="res://assets/2d/menus/gameView.png" id="148_eln84"]
 [ext_resource type="Script" path="res://scripts/mainMenu.gd" id="148_kk8v6"]
 [ext_resource type="Material" uid="uid://cjx01qsa37itq" path="res://assets/3d/laplace/laplaceArms.tres" id="149_safq1"]
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="150_blp0k"]
 [ext_resource type="ArrayMesh" uid="uid://cfkd1dchiga5y" path="res://assets/3d/laplace/armLowPolyA.obj" id="150_py6wt"]
 [ext_resource type="Texture2D" uid="uid://ul2l14s1r7a" path="res://assets/2d/laplace/backgroundTrunk.png" id="151_138o5"]
+[ext_resource type="AudioStream" uid="uid://by56x0nsowrpw" path="res://assets/audio/sfx/insert.mp3" id="151_idsbu"]
 [ext_resource type="ArrayMesh" uid="uid://cuj6gq8j5obe3" path="res://assets/3d/laplace/armLowPolyB.obj" id="151_p1bd5"]
 [ext_resource type="ArrayMesh" uid="uid://c4v8lfh82bmww" path="res://assets/3d/laplace/armLowPolyC.obj" id="152_2orbl"]
 [ext_resource type="Texture2D" uid="uid://7bg41lmgbkb5" path="res://assets/2d/menus/viewFrame.png" id="159_2hxwc"]
+[ext_resource type="AudioStream" uid="uid://da6rlttnlwkq0" path="res://assets/audio/sfx/screenInteract.mp3" id="166_lty44"]
+[ext_resource type="AudioStream" uid="uid://biipabva8sjck" path="res://assets/audio/sfx/menus/click.ogg" id="166_umgxd"]
+[ext_resource type="AudioStream" uid="uid://bic8hhf1jr3c2" path="res://assets/audio/sfx/menus/openMenu.mp3" id="170_h5y8n"]
+[ext_resource type="AudioStream" uid="uid://c7fyi8f3075ar" path="res://assets/audio/sfx/menus/closeMenu.mp3" id="171_7e0j7"]
+[ext_resource type="AudioStream" uid="uid://8n7rmuvjk4e1" path="res://assets/audio/sfx/powercut.mp3" id="174_qdmtb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4ojb"]
 sky_top_color = Color(0.0627451, 0.733333, 1, 1)
@@ -341,7 +355,7 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic0rw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe5fe"]
 cull_mode = 2
 albedo_texture = ExtResource("35_sflak")
 emission_enabled = true
@@ -468,16 +482,6 @@ emission = Color(1, 0.854902, 0.647059, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u07wd"]
 load_path = "res://.godot/imported/coarse-old-fabric_albedo.png-1b47e186a3cbf3d2c46e46c0972ab696.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe5fe"]
-cull_mode = 2
-albedo_texture = ExtResource("35_sflak")
-emission_enabled = true
-emission = Color(0.0666667, 0, 1, 1)
-emission_energy_multiplier = 0.1
-emission_texture = ExtResource("35_sflak")
-heightmap_texture = ExtResource("28_w1sg1")
-uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlvr1"]
 cull_mode = 2
@@ -768,6 +772,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, -1.42109e-14, 0), Vector3(0, 2.53073, 0), Vector3(0, 2.44346, 0), Vector3(0, 2.53073, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("doorSFX:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hl3l8"]
 _data = {
@@ -981,6 +997,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(-8.68389, -1.89046, 4.90725), Vector3(-8.68389, 0.385687, 4.90725), Vector3(-8.68389, 0.329201, 4.90725)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door/grindSFX:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m8vu7"]
 _data = {
@@ -1064,6 +1092,16 @@ size = Vector3(1.07558, 1.12652, 1.03132)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7xngu"]
 size = Vector3(0.736938, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic0rw"]
+cull_mode = 2
+albedo_texture = ExtResource("35_sflak")
+emission_enabled = true
+emission = Color(0.0666667, 0, 1, 1)
+emission_energy_multiplier = 0.1
+emission_texture = ExtResource("35_sflak")
+heightmap_texture = ExtResource("28_w1sg1")
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7lab"]
 resource_local_to_scene = true
@@ -1675,7 +1713,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_tnk0c"]
 resource_name = "openDoor"
-length = 1.2
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1683,10 +1721,22 @@ tracks/0/path = NodePath("Door:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.8, 1, 1.2),
+"times": PackedFloat32Array(0, 1.4, 1.7, 2),
 "transitions": PackedFloat32Array(2, -2, -2, 1),
 "update": 0,
-"values": [Vector3(0, -1.42109e-14, 0), Vector3(-1.68887e-07, 1.8326, -2.20098e-07), Vector3(0, 1.74533, 0), Vector3(-1.68887e-07, 1.8326, -2.20098e-07)]
+"values": [Vector3(0, -1.42109e-14, 0), Vector3(-1.68887e-07, 1.8326, -2.20098e-07), Vector3(0, 1.78024, 0), Vector3(-1.68887e-07, 1.8326, -2.20098e-07)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("doorSFX:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a3aar"]
@@ -2089,6 +2139,18 @@ tracks/29/keys = {
 "update": 1,
 "values": [Color(0.027451, 1, 0, 1), Color(0, 0, 0, 1)]
 }
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("powercutSFX:playing")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n2502"]
 _data = {
@@ -2165,6 +2227,25 @@ script = ExtResource("1_vrfjs")
 
 [node name="globalInformation" type="Node" parent="."]
 script = ExtResource("2_yyxee")
+
+[node name="audioManager" type="Node3D" parent="."]
+process_mode = 3
+script = ExtResource("3_d4tsq")
+
+[node name="menu" type="AudioStreamPlayer" parent="audioManager"]
+stream = ExtResource("4_eyyti")
+volume_db = -20.0
+
+[node name="ambienceA" type="AudioStreamPlayer" parent="audioManager"]
+stream = ExtResource("5_g6dg6")
+volume_db = -20.0
+
+[node name="piano" type="AudioStreamPlayer" parent="audioManager"]
+stream = ExtResource("146_hevbh")
+volume_db = -20.0
+
+[node name="heartbeat" type="AudioStreamPlayer" parent="audioManager"]
+stream = ExtResource("7_jbwer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_unycy")
@@ -2763,7 +2844,7 @@ transform = Transform3D(-1.45479, 0, 1.09058, 0, 1.81818, 0, -1.09058, 0, -1.454
 mesh = ExtResource("22_6hn6n")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("37_n8rk8")
-surface_material_override/1 = SubResource("StandardMaterial3D_ic0rw")
+surface_material_override/1 = SubResource("StandardMaterial3D_xe5fe")
 
 [node name="lampLight" type="OmniLight3D" parent="bedroom/desk/lamp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0638658, 0.810971, 0)
@@ -2807,6 +2888,10 @@ transform = Transform3D(-4.37114e-08, -1, 4.36014e-13, 1, -4.37114e-08, -4.36013
 flip_h = true
 pixel_size = 0.001
 texture = ExtResource("39_y3s7b")
+
+[node name="unplugSFX" type="AudioStreamPlayer3D" parent="bedroom/desk/Pc"]
+transform = Transform3D(2.27273, 0, 1.19262e-18, 0, 2.27273, 0, -1.19262e-18, 0, 2.27273, -0.128711, 0.772407, -0.577425)
+stream = ExtResource("46_tpxyb")
 
 [node name="Teacup" type="MeshInstance3D" parent="bedroom/desk"]
 transform = Transform3D(0.248536, 0, -0.112292, 0, 0.272727, 0, 0.112292, 0, 0.248536, -1.70186, 0.778773, 0.539642)
@@ -3076,6 +3161,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325403, 2.02126, 3.33922)
 stream = ExtResource("67_68f3e")
 max_db = 6.0
 pitch_scale = 0.7
+max_distance = 15.0
+attenuation_filter_db = -30.0
+
+[node name="glitchSFX" type="AudioStreamPlayer3D" parent="bedroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325403, 2.02126, 3.33922)
+stream = ExtResource("72_ti5lq")
+max_db = 6.0
+pitch_scale = 1.4
 max_distance = 15.0
 attenuation_filter_db = -30.0
 
@@ -3769,6 +3862,12 @@ libraries = {
 "": SubResource("AnimationLibrary_hl3l8")
 }
 
+[node name="doorSFX" type="AudioStreamPlayer3D" parent="walls/DoorFrame"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 1.02382, 0)
+stream = ExtResource("107_4sdfv")
+volume_db = -5.0
+pitch_scale = 2.2
+
 [node name="lightSwitch" type="Sprite3D" parent="walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58292, 1.68751, 3.83077)
 pixel_size = 0.0002
@@ -3814,6 +3913,10 @@ interactionName = "router"
 [node name="hitbox" type="CollisionShape3D" parent="walls/Router/routerInteraction"]
 transform = Transform3D(1, 0, 1.6263e-19, 0, 1, 0, -1.6263e-19, 0, 1, -0.0105379, 0.00968218, -0.0928049)
 shape = SubResource("BoxShape3D_kggb5")
+
+[node name="routerSFX" type="AudioStreamPlayer3D" parent="walls/Router"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.140341, -0.0650772)
+stream = ExtResource("110_mgfbc")
 
 [node name="woodTrims" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38419e-07, 0.00212)
@@ -4168,6 +4271,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_i8d5n")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="basement/door/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_otwgw")
 
+[node name="grindSFX" type="AudioStreamPlayer3D" parent="basement/door"]
+stream = ExtResource("144_xag2p")
+
 [node name="doorAnims" type="AnimationPlayer" parent="basement"]
 libraries = {
 "": SubResource("AnimationLibrary_m8vu7")
@@ -4492,7 +4598,7 @@ shape = SubResource("BoxShape3D_7xngu")
 
 [node name="crtLogos" type="Sprite3D" parent="basement/crt"]
 transform = Transform3D(-0.634906, 0, 0.772589, 0, 1, 0, -0.772589, 0, -0.634906, 0.32936, 1.05816, -0.17177)
-modulate = Color(1, 0, 0.0627451, 1)
+modulate = Color(0.027451, 1, 0, 1)
 pixel_size = 0.0008
 texture = ExtResource("136_kd2gh")
 
@@ -4513,6 +4619,10 @@ transform = Transform3D(-4.37114e-08, -1, 4.36014e-13, 1, -4.37114e-08, -4.36013
 flip_h = true
 pixel_size = 0.001
 texture = ExtResource("39_y3s7b")
+
+[node name="insertSFX" type="AudioStreamPlayer3D" parent="basement/crt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.367303, 0.663797, 0.489351)
+stream = ExtResource("151_idsbu")
 
 [node name="rocks" type="Node3D" parent="basement"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.32013, 0)
@@ -5023,6 +5133,12 @@ libraries = {
 "": SubResource("AnimationLibrary_a3aar")
 }
 
+[node name="doorSFX" type="AudioStreamPlayer3D" parent="pianoRoom/DoorFrame"]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 1.02382, 0)
+stream = ExtResource("107_4sdfv")
+volume_db = -5.0
+pitch_scale = 2.2
+
 [node name="triggerField" type="Area3D" parent="pianoRoom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.77776, 1.6308, 3.72708)
 collision_layer = 0
@@ -5041,14 +5157,6 @@ monitorable = false
 
 [node name="hitbox" type="CollisionShape3D" parent="pianoRoom/triggerField2"]
 shape = SubResource("BoxShape3D_mispm")
-
-[node name="pianoSong" type="AudioStreamPlayer3D" parent="pianoRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.04104, 1.61245, -0.498765)
-stream = ExtResource("146_hevbh")
-
-[node name="pianoSongGlitched" type="AudioStreamPlayer3D" parent="pianoRoom"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.21584, 1.61245, 5.61986)
-stream = ExtResource("146_ifhja")
 
 [node name="pianoCollisions" type="StaticBody3D" parent="pianoRoom"]
 
@@ -5370,6 +5478,22 @@ texture_filter = 0
 texture = ExtResource("151_138o5")
 region_enabled = true
 region_rect = Rect2(0, 0, 304, 400)
+
+[node name="clickSFX" type="AudioStreamPlayer" parent="mainMenu"]
+stream = ExtResource("166_umgxd")
+
+[node name="openMenu" type="AudioStreamPlayer" parent="mainMenu"]
+stream = ExtResource("170_h5y8n")
+
+[node name="closeMenu" type="AudioStreamPlayer" parent="mainMenu"]
+stream = ExtResource("171_7e0j7")
+
+[node name="screenInteractSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("166_lty44")
+volume_db = 5.0
+
+[node name="powercutSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("174_qdmtb")
 
 [connection signal="exitOS" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_exit_os"]
 [connection signal="updatedProgress" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_updated_progress"]
