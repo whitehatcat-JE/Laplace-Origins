@@ -569,7 +569,7 @@ script = ExtResource("1_xeigj")
 [node name="globalInformation" type="Node" parent="."]
 script = ExtResource("2_r5xwc")
 
-[node name="DropBackground" type="Sprite2D" parent="."]
+[node name="background" type="Sprite2D" parent="."]
 position = Vector2(1056, 410)
 scale = Vector2(0.516, 0.516)
 texture = ExtResource("2_j3svo")

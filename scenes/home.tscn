@@ -1,4 +1,4 @@
-[gd_scene load_steps=403 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=404 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://bdo4wwwve61iy" path="res://assets/audio/music/ambienceA.mp3" id="5_g6dg6"]
 [ext_resource type="Texture2D" uid="uid://0tvexwu01dhi" path="res://assets/3d/textures/tiledCeiling/Ceiling_Drop_Tiles_001_normal.jpg" id="5_mxrdu"]
 [ext_resource type="Material" uid="uid://djscqebmxa2dj" path="res://assets/3d/materials/metal.tres" id="5_tn6ee"]
+[ext_resource type="AudioStream" uid="uid://lmcy1qlw45v4" path="res://assets/audio/music/hallway.mp3" id="5_yj2lw"]
 [ext_resource type="Texture2D" uid="uid://cigjq25fsqn45" path="res://assets/2d/UI/interactIconLocked.png" id="6_5fre7"]
 [ext_resource type="Texture2D" uid="uid://6uwcmofiytw8" path="res://assets/3d/textures/tiledCeiling/Ceiling_Drop_Tiles_001_roughness.jpg" id="6_8k2c5"]
 [ext_resource type="PackedScene" uid="uid://csnnn1yw8ccgs" path="res://scenes/pcOS.tscn" id="6_wgccf"]
@@ -2234,6 +2235,10 @@ script = ExtResource("3_d4tsq")
 
 [node name="menu" type="AudioStreamPlayer" parent="audioManager"]
 stream = ExtResource("4_eyyti")
+volume_db = -20.0
+
+[node name="hallway" type="AudioStreamPlayer" parent="audioManager"]
+stream = ExtResource("5_yj2lw")
 volume_db = -20.0
 
 [node name="ambienceA" type="AudioStreamPlayer" parent="audioManager"]

@@ -68,6 +68,7 @@ func _on_player_interacted(interactionName:String):
 				$walls/Router/routerOffLogo.visible = true
 		"usb":
 			unplugSFX.play()
+			audioManager.play("hallway")
 			$bedroom/desk/Pc/usbStick.visible = false
 			player.unlockedInteractions.erase("usb")
 			$walls/DoorFrame/doorAnims.play("openDoor")

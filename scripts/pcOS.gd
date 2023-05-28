@@ -213,6 +213,7 @@ func _process(delta):
 		wifiEnabled = false
 		$homeScreen/wifiIcon.texture = load("res://assets/2d/pcOS/wifiOffIcon.png")
 	if GI.progress == 6 and !emailCDisplaying:
+		$background.texture = load("res://assets/2d/pcOS/dropBackgroundC.png")
 		emailCDisplaying = true
 		$homeScreen/emailWindow/emailC.visible = true
 		$homeScreen/emailWindow/emailA/description.visible = false
@@ -240,6 +241,7 @@ func unlockUSB():
 	$homeScreen/emailWindow/emailA/description.visible = false
 	$homeScreen/emailWindow/emailB/description.visible = true
 	$homeScreen/emailWindow/emailB/interact/hitbox.disabled = false
+	$background.texture = load("res://assets/2d/pcOS/dropBackgroundB.png")
 	emit_signal("updatedProgress")
 
 func _on_new_line_timer_timeout():
