@@ -1,4 +1,4 @@
-[gd_scene load_steps=404 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=420 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -89,10 +89,13 @@
 [ext_resource type="ArrayMesh" uid="uid://4e1e01fuau3w" path="res://assets/3d/door.obj" id="55_tvyxf"]
 [ext_resource type="ArrayMesh" uid="uid://cgbrv1hrewn51" path="res://assets/3d/bin.obj" id="57_ov2jb"]
 [ext_resource type="ArrayMesh" uid="uid://dp7od8s70u74a" path="res://assets/3d/ceilingLamp.obj" id="58_38w1i"]
+[ext_resource type="ArrayMesh" uid="uid://cvt3qllawjly1" path="res://assets/3d/cupboardAjar.obj" id="58_uymkn"]
+[ext_resource type="Texture2D" uid="uid://6y2ntwq5xs3k" path="res://assets/2d/laplace/eyesVertical.png" id="59_s2wdl"]
 [ext_resource type="Texture2D" uid="uid://dmeqc62r8as7t" path="res://assets/2d/3dSprites/surrealArt/theRoundTower.jpg" id="62_qo4d7"]
 [ext_resource type="ArrayMesh" uid="uid://dlctkaoujnt03" path="res://assets/3d/teacup.obj" id="62_vug04"]
 [ext_resource type="Texture2D" uid="uid://d0h73lblbjy8t" path="res://assets/3d/textures/china/Tiles101_1K_Color.jpg" id="63_ac7ad"]
 [ext_resource type="Texture2D" uid="uid://t2detg35r6t8" path="res://assets/2d/3dSprites/surrealArt/newtonDome.jpg" id="63_dc0rg"]
+[ext_resource type="ArrayMesh" uid="uid://chlgc1v32a7to" path="res://assets/3d/bedLump.obj" id="65_1l7cd"]
 [ext_resource type="AudioStream" uid="uid://dgd40lubefypy" path="res://assets/audio/sfx/eas.mp3" id="67_68f3e"]
 [ext_resource type="AudioStream" uid="uid://3xkxjvt2m245" path="res://assets/audio/sfx/siren.mp3" id="68_41ay2"]
 [ext_resource type="Texture2D" uid="uid://byasw2wllivf0" path="res://assets/2d/UI/crosshair.png" id="69_f72sw"]
@@ -125,10 +128,12 @@
 [ext_resource type="Texture2D" uid="uid://bivq443we8tj" path="res://assets/3d/textures/modern-metal-wall1-bl/modern-metal-wall_metallic.png" id="105_6bgtw"]
 [ext_resource type="Texture2D" uid="uid://cnw0j4xxciax" path="res://assets/3d/textures/military-panel1-bl/military-panel1-albedo.png" id="105_gbnr4"]
 [ext_resource type="Texture2D" uid="uid://dgvv60635v0kl" path="res://assets/3d/textures/military-panel1-bl/military-panel1-ao.png" id="106_6anlg"]
+[ext_resource type="AudioStream" uid="uid://c4d2w0yoaal37" path="res://assets/audio/sfx/footsteps/footstepsWood.mp3" id="106_jy4ai"]
 [ext_resource type="Texture2D" uid="uid://b4534qiy44fww" path="res://assets/3d/textures/modern-metal-wall1-bl/modern-metal-wall_normal-ogl.png" id="106_peijt"]
 [ext_resource type="Texture2D" uid="uid://d24ovtjwqbql5" path="res://assets/3d/textures/military-panel1-bl/military-panel1-emissive_power.png" id="107_0dgxt"]
 [ext_resource type="AudioStream" uid="uid://laj251jonk7y" path="res://assets/audio/sfx/doorOpen.mp3" id="107_4sdfv"]
 [ext_resource type="Texture2D" uid="uid://dckbrgw4x76ae" path="res://assets/3d/textures/modern-metal-wall1-bl/modern-metal-wall_roughness.png" id="107_05xsv"]
+[ext_resource type="AudioStream" uid="uid://bxpoaeanda02m" path="res://assets/audio/sfx/footsteps/footstepsGravelReverb.mp3" id="107_kwbdf"]
 [ext_resource type="Texture2D" uid="uid://pmwd7tk82x7h" path="res://assets/3d/textures/military-panel1-bl/military-panel1-height_.png" id="108_bmjjl"]
 [ext_resource type="Texture2D" uid="uid://dllgag6vq805t" path="res://assets/3d/textures/military-panel1-bl/military-panel1-metalness.png" id="109_p001i"]
 [ext_resource type="Texture2D" uid="uid://btwfetcqlgfc7" path="res://assets/3d/textures/military-panel1-bl/military-panel1-nmap-ogl.png" id="110_1gft0"]
@@ -174,6 +179,7 @@
 [ext_resource type="AudioStream" uid="uid://biipabva8sjck" path="res://assets/audio/sfx/menus/click.ogg" id="166_umgxd"]
 [ext_resource type="AudioStream" uid="uid://bic8hhf1jr3c2" path="res://assets/audio/sfx/menus/openMenu.mp3" id="170_h5y8n"]
 [ext_resource type="AudioStream" uid="uid://c7fyi8f3075ar" path="res://assets/audio/sfx/menus/closeMenu.mp3" id="171_7e0j7"]
+[ext_resource type="AudioStream" uid="uid://dhjt1wgsogur4" path="res://assets/audio/sfx/pianoThud.mp3" id="171_g1sq0"]
 [ext_resource type="AudioStream" uid="uid://8n7rmuvjk4e1" path="res://assets/audio/sfx/powercut.mp3" id="174_qdmtb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4ojb"]
@@ -191,11 +197,20 @@ sky = SubResource("Sky_7yfon")
 ambient_light_source = 2
 ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.0
+tonemap_mode = 2
+ssr_max_steps = 128
 ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
 sdfgi_read_sky_light = false
+sdfgi_y_scale = 0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="FogMaterial" id="FogMaterial_jgji8"]
+density = 0.5752
+albedo = Color(1, 0.94902, 0.815686, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2ukga"]
 size = Vector3(2.5, 0.8, 1)
@@ -426,6 +441,27 @@ _surfaces = [{
 "vertex_data": PackedByteArray(197, 145, 23, 190, 244, 21, 84, 62, 18, 78, 75, 189, 147, 152, 107, 231, 255, 255, 255, 191, 64, 76, 18, 190, 244, 21, 84, 62, 119, 132, 211, 187, 54, 142, 118, 186, 255, 255, 255, 63, 128, 71, 52, 190, 117, 116, 92, 62, 18, 78, 75, 189, 231, 184, 23, 199, 255, 255, 255, 191, 114, 222, 47, 190, 54, 145, 89, 62, 119, 132, 211, 187, 220, 151, 57, 170, 255, 255, 255, 63, 117, 120, 40, 190, 182, 105, 236, 61, 152, 219, 61, 187, 125, 104, 175, 75, 255, 255, 255, 63, 31, 45, 46, 190, 182, 105, 236, 61, 18, 78, 75, 189, 86, 88, 169, 39, 255, 255, 255, 191, 27, 217, 117, 190, 216, 44, 23, 62, 152, 219, 61, 187, 58, 85, 84, 91, 255, 255, 255, 63, 123, 159, 122, 190, 43, 77, 26, 62, 18, 78, 75, 189, 204, 56, 50, 71, 255, 255, 255, 191, 147, 223, 34, 190, 241, 16, 38, 62, 137, 181, 120, 187, 149, 129, 100, 132, 255, 255, 255, 63, 99, 242, 86, 190, 208, 37, 60, 62, 137, 181, 120, 187, 200, 126, 63, 138, 255, 255, 255, 63, 147, 223, 34, 190, 241, 16, 38, 62, 223, 135, 195, 189, 153, 251, 104, 254, 255, 255, 255, 191, 64, 76, 18, 190, 244, 21, 84, 62, 202, 21, 190, 189, 135, 197, 200, 241, 255, 255, 255, 191, 99, 242, 86, 190, 208, 37, 60, 62, 223, 135, 195, 189, 63, 10, 199, 254, 255, 255, 255, 191, 114, 222, 47, 190, 54, 145, 89, 62, 202, 21, 190, 189, 197, 213, 34, 232, 255, 255, 255, 191, 207, 192, 72, 190, 149, 239, 129, 62, 18, 78, 75, 189, 100, 171, 153, 212, 255, 255, 255, 191, 251, 144, 71, 190, 124, 239, 127, 62, 165, 192, 130, 188, 87, 159, 103, 183, 255, 255, 255, 63, 156, 83, 137, 190, 100, 90, 123, 62, 73, 14, 88, 188, 250, 75, 246, 160, 255, 255, 255, 63, 249, 247, 137, 190, 44, 157, 127, 62, 18, 78, 75, 189, 229, 55, 229, 183, 255, 255, 255, 191, 27, 217, 117, 190, 216, 44, 23, 62, 175, 94, 197, 189, 171, 36, 196, 42, 255, 255, 255, 191, 156, 83, 137, 190, 100, 90, 123, 62, 73, 76, 176, 189, 246, 32, 249, 203, 255, 255, 255, 191, 189, 168, 109, 190, 144, 249, 128, 62, 72, 221, 174, 189, 24, 67, 165, 250, 255, 255, 255, 191, 189, 168, 109, 190, 144, 249, 128, 62, 77, 134, 99, 188, 166, 122, 23, 195, 255, 255, 255, 63, 117, 120, 40, 190, 182, 105, 236, 61, 175, 94, 197, 189, 80, 52, 130, 23, 255, 255, 255, 191, 197, 145, 23, 190, 244, 21, 84, 62, 18, 78, 75, 189, 147, 152, 107, 231, 255, 255, 255, 191, 128, 71, 52, 190, 117, 116, 92, 62, 18, 78, 75, 189, 231, 184, 23, 199, 255, 255, 255, 191, 31, 45, 46, 190, 182, 105, 236, 61, 18, 78, 75, 189, 86, 88, 169, 39, 255, 255, 255, 191, 123, 159, 122, 190, 43, 77, 26, 62, 18, 78, 75, 189, 204, 56, 50, 71, 255, 255, 255, 191, 251, 144, 71, 190, 124, 239, 127, 62, 233, 157, 170, 189, 151, 200, 167, 224, 255, 255, 255, 191, 207, 192, 72, 190, 149, 239, 129, 62, 18, 78, 75, 189, 100, 171, 153, 212, 255, 255, 255, 191, 24, 179, 85, 190, 147, 82, 128, 62, 179, 66, 145, 189, 107, 98, 167, 202, 255, 255, 255, 63, 63, 115, 86, 190, 54, 145, 129, 62, 18, 78, 75, 189, 171, 60, 170, 188, 255, 255, 255, 191, 63, 115, 86, 190, 54, 145, 129, 62, 18, 78, 75, 189, 171, 60, 170, 188, 255, 255, 255, 191, 24, 179, 85, 190, 147, 82, 128, 62, 99, 43, 232, 188, 167, 74, 107, 226, 255, 255, 255, 191, 24, 151, 130, 190, 72, 191, 125, 62, 251, 204, 217, 188, 177, 171, 239, 236, 255, 255, 255, 191, 9, 255, 130, 190, 126, 56, 128, 62, 18, 78, 75, 189, 254, 183, 0, 200, 255, 255, 255, 191, 24, 151, 130, 190, 72, 191, 125, 62, 211, 218, 148, 189, 15, 147, 76, 212, 255, 255, 255, 63, 130, 201, 109, 190, 161, 245, 128, 62, 145, 242, 147, 189, 4, 122, 70, 191, 255, 255, 255, 63, 249, 247, 137, 190, 44, 157, 127, 62, 18, 78, 75, 189, 229, 55, 229, 183, 255, 255, 255, 191, 198, 167, 80, 190, 0, 112, 76, 62, 18, 78, 75, 189, 140, 60, 140, 188, 32, 123, 72, 189, 159, 231, 79, 190, 187, 242, 73, 62, 99, 43, 232, 188, 172, 44, 177, 210, 111, 94, 131, 204, 183, 98, 127, 190, 221, 12, 71, 62, 251, 204, 217, 188, 120, 204, 211, 220, 254, 159, 74, 207, 76, 25, 128, 190, 144, 190, 73, 62, 18, 78, 75, 189, 3, 186, 250, 197, 149, 136, 111, 188, 183, 98, 127, 190, 221, 12, 71, 62, 211, 218, 148, 189, 43, 163, 134, 179, 0, 96, 179, 176, 9, 254, 103, 190, 214, 56, 75, 62, 145, 242, 147, 189, 210, 121, 134, 189, 254, 130, 35, 161, 130, 201, 109, 190, 161, 245, 128, 62, 5, 110, 221, 188, 70, 63, 3, 250, 255, 255, 255, 191, 9, 254, 103, 190, 214, 56, 75, 62, 5, 110, 221, 188, 135, 61, 210, 249, 1, 125, 218, 222, 9, 255, 130, 190, 126, 56, 128, 62, 18, 78, 75, 189, 254, 183, 0, 200, 255, 255, 255, 191, 251, 201, 104, 190, 43, 221, 77, 62, 18, 78, 75, 189, 201, 120, 200, 248, 107, 131, 25, 192, 251, 201, 104, 190, 43, 221, 77, 62, 18, 78, 75, 189, 201, 120, 200, 248, 147, 124, 229, 191, 76, 25, 128, 190, 144, 190, 73, 62, 18, 78, 75, 189, 3, 186, 250, 197, 105, 119, 142, 195, 198, 167, 80, 190, 0, 112, 76, 62, 18, 78, 75, 189, 140, 60, 140, 188, 222, 132, 181, 194, 159, 231, 79, 190, 187, 242, 73, 62, 179, 66, 145, 189, 178, 82, 171, 172, 143, 161, 122, 179)
 }]
 
+[sub_resource type="QuadMesh" id="QuadMesh_cwpj5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hwou1"]
+albedo_color = Color(0, 0, 0, 1)
+metallic_specular = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6443"]
+albedo_color = Color(0.862745, 0.823529, 0.701961, 1)
+metallic_specular = 0.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g7k87"]
+load_path = "res://.godot/imported/coarse-old-fabric_height.png-19a9bf27130fd5b15906f0e297525d77.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4bh3y"]
+cull_mode = 2
+albedo_texture = ExtResource("35_sflak")
+emission = Color(0.0666667, 0, 1, 1)
+emission_texture = ExtResource("35_sflak")
+heightmap_texture = SubResource("CompressedTexture2D_g7k87")
+uv1_scale = Vector3(100, 100, 100)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_wbrd8"]
 size = Vector3(5.22083, 1.63483, 2.94036)
 
@@ -446,6 +482,14 @@ albedo_color = Color(0.545098, 0.0941176, 0.109804, 1)
 albedo_texture = ExtResource("51_kmcal")
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qndwv"]
+cull_mode = 2
+albedo_texture = ExtResource("35_sflak")
+emission = Color(0.0666667, 0, 1, 1)
+emission_texture = ExtResource("35_sflak")
+heightmap_texture = SubResource("CompressedTexture2D_g7k87")
+uv1_scale = Vector3(100, 100, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8an67"]
 size = Vector3(2.49766, 4.18784, 1.25024)
@@ -494,6 +538,22 @@ emission_texture = ExtResource("27_q6856")
 heightmap_texture = ExtResource("28_w1sg1")
 uv1_triplanar = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vnc82"]
+cull_mode = 2
+albedo_texture = ExtResource("27_q6856")
+emission = Color(0.0666667, 0, 1, 1)
+emission_texture = ExtResource("35_sflak")
+heightmap_texture = SubResource("CompressedTexture2D_g7k87")
+uv1_scale = Vector3(100, 100, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bxvw"]
+cull_mode = 2
+albedo_texture = ExtResource("27_q6856")
+emission = Color(0.0666667, 0, 1, 1)
+emission_texture = ExtResource("35_sflak")
+heightmap_texture = SubResource("CompressedTexture2D_g7k87")
+uv1_scale = Vector3(100, 100, 100)
+
 [sub_resource type="Animation" id="Animation_apeby"]
 resource_name = "red"
 length = 0.1
@@ -532,6 +592,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [SubResource("StandardMaterial3D_xe5fe"), SubResource("StandardMaterial3D_xlvr1")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("bedroom/Bed:surface_material_override/3")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("StandardMaterial3D_4bh3y"), SubResource("StandardMaterial3D_vnc82")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("bedroom/Bed/bedLump:surface_material_override/0")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("StandardMaterial3D_qndwv"), SubResource("StandardMaterial3D_3bxvw")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_asrhb"]
@@ -1667,13 +1751,13 @@ albedo_color = Color(1, 0.67451, 0, 1)
 metallic = 0.66
 roughness = 0.1
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_g7k87"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_27l7n"]
 load_path = "res://.godot/imported/coarse-old-fabric_height.png-19a9bf27130fd5b15906f0e297525d77.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aftrw"]
 cull_mode = 2
 albedo_texture = ExtResource("27_q6856")
-heightmap_texture = SubResource("CompressedTexture2D_g7k87")
+heightmap_texture = SubResource("CompressedTexture2D_27l7n")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mf3u8"]
 cull_mode = 2
@@ -2165,6 +2249,8 @@ albedo_texture = ExtResource("148_eln84")
 [sub_resource type="QuadMesh" id="QuadMesh_6vii6"]
 size = Vector2(2, 1.125)
 
+[sub_resource type="Environment" id="Environment_1shus"]
+
 [sub_resource type="Animation" id="Animation_ytsih"]
 resource_name = "zoom"
 tracks/0/type = "value"
@@ -2266,6 +2352,16 @@ transform = Transform3D(0.866025, 0.5, 2.93063e-08, 0.12941, -0.224144, 0.965926
 visible = false
 shadow_opacity = 0.0
 editor_only = true
+
+[node name="basementFog" type="FogVolume" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.50883, -2.98222, 2.84536)
+size = Vector3(13.2481, 0.741868, 11.6585)
+material = SubResource("FogMaterial_jgji8")
+
+[node name="pianoFog" type="FogVolume" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.0294, 0.817203, -0.584815)
+size = Vector3(1.91546, 0.633595, 2.03266)
+material = SubResource("FogMaterial_jgji8")
 
 [node name="tempLayout" type="Node3D" parent="."]
 
@@ -2428,22 +2524,25 @@ material_override = ExtResource("2_xynmm")
 mesh = SubResource("BoxMesh_0cjmf")
 skeleton = NodePath("../..")
 
-[node name="walls" type="Node3D" parent="tempLayout"]
+[node name="StaticBody3D" type="StaticBody3D" parent="tempLayout/stairs"]
+transform = Transform3D(-1, 4.37114e-08, 7.57104e-08, 0, 0.866026, -0.5, -8.74228e-08, -0.5, -0.866026, -1.3902, -1.93217, -4.26936)
+collision_layer = 9
 
-[node name="StaticBody3D" type="StaticBody3D" parent="tempLayout/walls"]
-transform = Transform3D(-4.37114e-08, -0.5, -0.866026, 0, 0.866026, -0.5, 1, -2.18557e-08, -3.78552e-08, -3.14737, -1.93217, 8.62937)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="tempLayout/walls/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tempLayout/stairs/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_v1tih")
+
+[node name="walls" type="Node3D" parent="tempLayout"]
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="tempLayout/walls"]
 transform = Transform3D(1, 0, 0, 0, -1, -1.50996e-07, 0, 1.50996e-07, -1, -1.27396, 3.97177, 3.1757)
+layers = 3
 mesh = SubResource("BoxMesh_l6haa")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_sycix")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="tempLayout/walls"]
 transform = Transform3D(0.999704, 0, 0, 0, -3.66591e-09, 0.999704, 0, -0.0838663, -4.36985e-08, 0.278812, 4.38246, 3.887)
+layers = 3
 material_override = ExtResource("1_01bfw")
 mesh = SubResource("BoxMesh_fucdx")
 skeleton = NodePath("../../..")
@@ -2456,6 +2555,7 @@ shape = SubResource("ConcavePolygonShape3D_nsbql")
 
 [node name="MeshInstance3D4" type="MeshInstance3D" parent="tempLayout/walls"]
 transform = Transform3D(1, 0, 0, 0, -3.667e-09, 1, 0, -0.0838911, -4.37114e-08, -4.2681, 4.38246, 3.887)
+layers = 3
 material_override = ExtResource("1_01bfw")
 mesh = SubResource("BoxMesh_wl53b")
 skeleton = NodePath("../../..")
@@ -2467,6 +2567,7 @@ shape = SubResource("ConcavePolygonShape3D_jr488")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="tempLayout/walls"]
 transform = Transform3D(0.878, 0, 0, 0, -3.667e-09, 1, 0, -0.0838911, -4.37114e-08, -2.922, 7.122, 3.887)
+layers = 3
 material_override = ExtResource("1_01bfw")
 mesh = SubResource("BoxMesh_7a0xq")
 skeleton = NodePath("../../..")
@@ -2478,6 +2579,7 @@ shape = SubResource("ConcavePolygonShape3D_ov7i6")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="tempLayout/walls"]
 transform = Transform3D(0.999704, 0, 0, 0, -3.66591e-09, 0.999704, 0, -0.0838663, -4.36985e-08, 0.483366, 4.37933, 3.89845)
+layers = 3
 material_override = ExtResource("9_6pp1r")
 mesh = SubResource("BoxMesh_8vtaf")
 skeleton = NodePath("../../..")
@@ -2569,6 +2671,7 @@ shape = SubResource("ConcavePolygonShape3D_udq8c")
 
 [node name="MeshInstance3D7" type="MeshInstance3D" parent="tempLayout/walls"]
 transform = Transform3D(1, 0, 0, 0, -3.667e-09, 1, 0, -0.0838911, -4.37114e-08, -4.51434, 4.38256, 3.89842)
+layers = 3
 material_override = ExtResource("9_6pp1r")
 mesh = SubResource("BoxMesh_x3s2b")
 skeleton = NodePath("../../..")
@@ -2580,6 +2683,7 @@ shape = SubResource("ConcavePolygonShape3D_l71gg")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="tempLayout/walls"]
 transform = Transform3D(0.878, 0, 0, 0, -3.667e-09, 1, 0, -0.0838911, -4.37114e-08, -2.922, 5.57865, 3.89845)
+layers = 3
 material_override = ExtResource("9_6pp1r")
 mesh = SubResource("BoxMesh_eo0ra")
 skeleton = NodePath("../../..")
@@ -2591,6 +2695,7 @@ shape = SubResource("ConcavePolygonShape3D_gi2rd")
 
 [node name="MeshInstance3D13" type="MeshInstance3D" parent="tempLayout/walls"]
 transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, -2.90315, -0.677513, 8.5542)
+layers = 3
 material_override = ExtResource("10_eqkec")
 mesh = SubResource("BoxMesh_bx2m0")
 skeleton = NodePath("../../..")
@@ -2602,6 +2707,7 @@ shape = SubResource("ConcavePolygonShape3D_jrvw0")
 
 [node name="MeshInstance3D17" type="MeshInstance3D" parent="tempLayout/walls"]
 transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, -3.71658, -3.78735, 5.79867)
+layers = 3
 material_override = ExtResource("10_eqkec")
 mesh = SubResource("BoxMesh_ln8oo")
 skeleton = NodePath("../../..")
@@ -2624,6 +2730,7 @@ shape = SubResource("ConcavePolygonShape3D_8g5t4")
 
 [node name="MeshInstance3D15" type="MeshInstance3D" parent="tempLayout/walls"]
 transform = Transform3D(-8.9407e-08, -0.0838662, -4.36985e-08, -6.1578e-17, -3.66591e-09, 0.999704, -0.999704, 1.30385e-08, 0, -5.41389, 4.51142, 7.35457)
+layers = 3
 material_override = ExtResource("9_6pp1r")
 mesh = SubResource("BoxMesh_wrofw")
 skeleton = NodePath("../../..")
@@ -2635,6 +2742,7 @@ shape = SubResource("ConcavePolygonShape3D_eacwg")
 
 [node name="MeshInstance3D16" type="MeshInstance3D" parent="tempLayout/walls"]
 transform = Transform3D(-8.9407e-08, -0.0838662, -4.36985e-08, -6.1578e-17, -3.66591e-09, 0.999704, -0.999704, 1.30385e-08, 0, -5.414, 7.125, 5.157)
+layers = 3
 material_override = ExtResource("9_6pp1r")
 mesh = SubResource("BoxMesh_1ylog")
 skeleton = NodePath("../../..")
@@ -2660,6 +2768,7 @@ light_energy = 0.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="tempLayout/hallway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49817, 2.1821, 3.63099)
+layers = 3
 mesh = SubResource("BoxMesh_oneou")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("9_6pp1r")
@@ -2671,6 +2780,7 @@ shape = SubResource("ConcavePolygonShape3D_fikci")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="tempLayout/hallway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49817, 2.1821, 9.53048)
+layers = 3
 mesh = SubResource("BoxMesh_oneou")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("9_6pp1r")
@@ -2682,6 +2792,7 @@ shape = SubResource("ConcavePolygonShape3D_fikci")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="tempLayout/hallway"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.49817, 0.629472, 6.58079)
+layers = 3
 mesh = SubResource("BoxMesh_7btvq")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("9_6pp1r")
@@ -2955,13 +3066,33 @@ pixel_size = 0.003
 shaded = true
 texture = ExtResource("28_6ie0h")
 
-[node name="Cupboard" type="MeshInstance3D" parent="bedroom"]
-transform = Transform3D(1.04907e-07, 0, -0.8, 0, 0.8, 0, 0.8, 0, 1.04907e-07, -3.29756, 1.25498, -0.593655)
+[node name="cupboard" type="MeshInstance3D" parent="bedroom"]
+transform = Transform3D(1.04907e-07, 0, -0.8, 0, 0.8, 0, 0.8, 0, 1.04907e-07, -3.33545, 0.509205, -0.520184)
 mesh = ExtResource("32_fwodt")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("1_01bfw")
 surface_material_override/1 = ExtResource("2_wae18")
 surface_material_override/2 = ExtResource("5_tn6ee")
+
+[node name="cupboardAjar" type="MeshInstance3D" parent="bedroom"]
+transform = Transform3D(1.04907e-07, 0, -0.8, 0, 0.8, 0, 0.8, 0, 1.04907e-07, -3.3829, 0.52631, -0.520184)
+visible = false
+mesh = ExtResource("58_uymkn")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("5_tn6ee")
+surface_material_override/1 = ExtResource("1_01bfw")
+surface_material_override/2 = ExtResource("2_wae18")
+
+[node name="cupboardBackdrop" type="MeshInstance3D" parent="bedroom/cupboardAjar"]
+transform = Transform3D(-1.80066, 0, -8.74228e-08, 0, 3.23439, 0, 1.57418e-07, 0, -1, 0.00695223, 1.56624, -0.0990348)
+mesh = SubResource("QuadMesh_cwpj5")
+surface_material_override/0 = SubResource("StandardMaterial3D_hwou1")
+
+[node name="eyes" type="Sprite3D" parent="bedroom/cupboardAjar"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 1.84618, -0.171628)
+flip_h = true
+pixel_size = 0.001
+texture = ExtResource("59_s2wdl")
 
 [node name="Curtains" type="MeshInstance3D" parent="bedroom"]
 transform = Transform3D(-3.0598e-08, 0, 0.7, 0, 0.7, 0, -0.7, 0, -3.0598e-08, 1.88832, 1.53021, 1.34495)
@@ -3004,37 +3135,43 @@ light_energy = 0.2
 light_size = 1.0
 
 [node name="Bed" type="MeshInstance3D" parent="bedroom"]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.459667, 0.761552, -0.514979)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.198362, 0.761552, -0.927093)
 mesh = ExtResource("36_mrx28")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("37_n8rk8")
-surface_material_override/1 = ExtResource("1_01bfw")
+surface_material_override/1 = SubResource("StandardMaterial3D_x6443")
 surface_material_override/2 = ExtResource("37_jq4xl")
-surface_material_override/3 = ExtResource("27_nncwi")
+surface_material_override/3 = SubResource("StandardMaterial3D_4bh3y")
 surface_material_override/4 = ExtResource("37_jq4xl")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="bedroom/Bed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.417388, 0, 0.71406)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="bedroom/Bed/StaticBody3D"]
 shape = SubResource("BoxShape3D_wbrd8")
 
 [node name="ContainerA" type="MeshInstance3D" parent="bedroom/Bed"]
-transform = Transform3D(0.485038, 0, -0.121401, 0, 0.5, 0, 0.121401, 0, 0.485038, 0.984031, -0.19503, 0.52731)
+transform = Transform3D(0.485038, 0, -0.121401, 0, 0.5, 0, 0.121401, 0, 0.485038, 1.40142, -0.19503, 1.24137)
 mesh = ExtResource("50_5beer")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_3f7xu")
 
 [node name="ContainerA2" type="MeshInstance3D" parent="bedroom/Bed"]
-transform = Transform3D(0.37959, 0, -0.32544, 0, 0.5, 0, 0.32544, 0, 0.37959, -0.541152, -0.19503, 0.272402)
+transform = Transform3D(0.37959, 0, -0.32544, 0, 0.5, 0, 0.32544, 0, 0.37959, -0.123764, -0.19503, 0.986462)
 mesh = ExtResource("50_5beer")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_qiqn0")
 
 [node name="ContainerA4" type="MeshInstance3D" parent="bedroom/Bed"]
-transform = Transform3D(0.205662, 0, -0.455745, 0, 0.5, 0, 0.455745, 0, 0.205662, -1.49284, -0.19503, -0.587524)
+transform = Transform3D(0.205662, 0, -0.455745, 0, 0.5, 0, 0.455745, 0, 0.205662, -1.07545, -0.19503, 0.126536)
 mesh = ExtResource("50_5beer")
 skeleton = NodePath("../../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_73ds2")
+
+[node name="bedLump" type="MeshInstance3D" parent="bedroom/Bed"]
+visible = false
+mesh = ExtResource("65_1l7cd")
+surface_material_override/0 = SubResource("StandardMaterial3D_qndwv")
 
 [node name="posterA" type="Sprite3D" parent="bedroom"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.73907, 2.49284, 2.97236)
@@ -3687,6 +3824,19 @@ collide_with_bodies = false
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 target_position = Vector3(0, -10, 0)
 
+[node name="floorCast" type="RayCast3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.61855, 0)
+target_position = Vector3(0, -0.5, 0)
+collision_mask = 24
+
+[node name="footstepsWood" type="AudioStreamPlayer3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
+stream = ExtResource("106_jy4ai")
+
+[node name="footstepsGravel" type="AudioStreamPlayer3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
+stream = ExtResource("107_kwbdf")
+
 [node name="walls" type="Node3D" parent="."]
 
 [node name="spotLight" type="MeshInstance3D" parent="walls"]
@@ -3707,11 +3857,13 @@ spot_range = 29.186
 
 [node name="plankFlooring" type="MeshInstance3D" parent="walls"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.69853, 0.447607, 0.342951)
+layers = 3
 material_override = SubResource("StandardMaterial3D_1iguy")
 mesh = SubResource("BoxMesh_wnl6e")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="walls/plankFlooring"]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/plankFlooring/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_hp5hv")
@@ -3727,6 +3879,7 @@ mesh = SubResource("BoxMesh_bc7vy")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="walls/plankFlooring8"]
+collision_layer = 9
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="walls/plankFlooring8/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_4sowb")
@@ -3739,6 +3892,7 @@ skeleton = NodePath("../..")
 
 [node name="sideWall" type="MeshInstance3D" parent="walls"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -1.19996, 3.03324, -2.00543)
+layers = 3
 mesh = SubResource("BoxMesh_p78fh")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("1_01bfw")
@@ -3761,6 +3915,7 @@ shape = SubResource("ConcavePolygonShape3D_hvkww")
 
 [node name="backWall" type="MeshInstance3D" parent="walls"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -4.81641, 2.99888, -0.103221)
+layers = 3
 material_override = ExtResource("1_01bfw")
 mesh = SubResource("BoxMesh_5b34l")
 skeleton = NodePath("../..")
@@ -3772,6 +3927,7 @@ shape = SubResource("ConcavePolygonShape3D_6cusr")
 
 [node name="frontWall" type="MeshInstance3D" parent="walls"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 2.45616, 2.99888, -0.0777664)
+layers = 3
 mesh = SubResource("BoxMesh_p78fh")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("1_01bfw")
@@ -4123,6 +4279,7 @@ surface_material_override/0 = ExtResource("2_xynmm")
 
 [node name="MeshInstance3D11" type="MeshInstance3D" parent="basement/walls"]
 transform = Transform3D(-1.88715e-08, 17.6202, 0, -0.431729, -7.70204e-07, 0, 0, 0, 8.867, -4.56442, 0.242498, 0.510259)
+layers = 3
 mesh = SubResource("BoxMesh_3eaon")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("104_o8wle")
@@ -4140,6 +4297,7 @@ shape = SubResource("ConcavePolygonShape3D_p3k0a")
 
 [node name="MeshInstance3D8" type="MeshInstance3D" parent="basement/walls"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.05211, -4.89788, 4.94773)
+layers = 3
 mesh = SubResource("BoxMesh_e3pqd")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("110_kucnh")
@@ -4151,6 +4309,7 @@ shape = SubResource("ConcavePolygonShape3D_xm44f")
 
 [node name="MeshInstance3D10" type="MeshInstance3D" parent="basement/walls"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.60427, -6.32645, -3.92396)
+layers = 3
 mesh = SubResource("BoxMesh_41j2s")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_nff6x")
@@ -4162,6 +4321,7 @@ shape = SubResource("ConcavePolygonShape3D_hayxe")
 
 [node name="MeshInstance3D9" type="MeshInstance3D" parent="basement/walls"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11.289, -1.74039, 4.94773)
+layers = 3
 mesh = SubResource("BoxMesh_djqir")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_ww4t4")
@@ -4173,6 +4333,7 @@ shape = SubResource("ConcavePolygonShape3D_autfl")
 
 [node name="MeshInstance3D12" type="MeshInstance3D" parent="basement/walls"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -11.1302, -4.89788, 0.925087)
+layers = 3
 mesh = SubResource("BoxMesh_e3pqd")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("110_kucnh")
@@ -4184,6 +4345,7 @@ shape = SubResource("ConcavePolygonShape3D_xm44f")
 
 [node name="MeshInstance3D13" type="MeshInstance3D" parent="basement/walls"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 1.93082, -4.89788, 0.925087)
+layers = 3
 mesh = SubResource("BoxMesh_e3pqd")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("110_kucnh")
@@ -4239,10 +4401,12 @@ omni_range = 12.0
 
 [node name="stoneFlooring" type="MeshInstance3D" parent="basement"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.82744, -3.88497, 2.88413)
+layers = 3
 mesh = SubResource("BoxMesh_e6l6c")
 surface_material_override/0 = SubResource("StandardMaterial3D_32a6a")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="basement/stoneFlooring"]
+collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="basement/stoneFlooring/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_jhygu")
@@ -5073,6 +5237,9 @@ surface_material_override/3 = SubResource("StandardMaterial3D_aftrw")
 surface_material_override/4 = ExtResource("2_wae18")
 surface_material_override/5 = SubResource("StandardMaterial3D_mf3u8")
 
+[node name="pianoSFX" type="AudioStreamPlayer3D" parent="pianoRoom/piano"]
+stream = ExtResource("171_g1sq0")
+
 [node name="eyes" type="MeshInstance3D" parent="pianoRoom"]
 transform = Transform3D(-0.099886, 0.000676512, -0.00472291, 0.000671605, 0.0999977, 0.000119775, 0.00472361, 8.79196e-05, -0.0998883, -8.28433, 1.99502, 0.148149)
 mesh = SubResource("SphereMesh_2p2ue")
@@ -5204,6 +5371,7 @@ texture = ExtResource("159_2hxwc")
 
 [node name="menuCam" type="Camera3D" parent="mainMenu"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034, 0.258, 0.387)
+environment = SubResource("Environment_1shus")
 current = true
 
 [node name="mainAnims" type="AnimationPlayer" parent="mainMenu"]

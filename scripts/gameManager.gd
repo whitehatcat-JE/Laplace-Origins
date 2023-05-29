@@ -36,6 +36,7 @@ func _on_player_interacted(interactionName:String):
 		"monitor":
 			screenSFX.play()
 			if GI.progress == 8:
+				$bedroom/Bed/bedLump.visible = false
 				player.unlockedInteractions.erase("monitor")
 				player.unlockedInteractions.append("exitHome")
 				$pianoRoom/triggerField2.set_deferred("monitoring", true)
@@ -54,6 +55,8 @@ func _on_player_interacted(interactionName:String):
 			player.unlockedInteractions.erase("router")
 			if GI.progress == 6:
 				GI.progress = 7
+				$bedroom/cupboard.visible = true
+				$bedroom/cupboardAjar.visible = false
 				$basement/crtAnim.play("redAllLights")
 				$bedroom/roomTransformations.play("red")
 				$pianoRoom/triggerField.set_deferred("monitoring", true)
@@ -79,6 +82,8 @@ func _on_player_interacted(interactionName:String):
 			player.get_node("HUD").visible = false
 			inPasscodeScreen = true
 		"crt":
+			$bedroom/cupboard.visible = false
+			$bedroom/cupboardAjar.visible = true
 			insertSFX.play()
 			$basement/crtAnim.play("displayMessage")
 			audioManager.play("ambienceA")
@@ -88,8 +93,10 @@ func _on_player_interacted(interactionName:String):
 			GI.progress = 6
 		"piano":
 			player.unlockedInteractions.erase("piano")
+			$bedroom/Bed/bedLump.visible = true
 			$bedroom/easSFX.play()
 			$hallway/sirenSFX.play()
+			$pianoRoom/piano/pianoSFX.play()
 			$bedroom/pcWindow/pcOS/emergencyAlert.visible = true
 			$pianoRoom/eyes3.visible = true
 			$pianoRoom/triggerField.set_deferred("monitoring", true)

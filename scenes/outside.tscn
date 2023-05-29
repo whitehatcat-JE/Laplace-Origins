@@ -1,4 +1,4 @@
-[gd_scene load_steps=109 format=3 uid="uid://dcf34l30ctj4m"]
+[gd_scene load_steps=112 format=3 uid="uid://dcf34l30ctj4m"]
 
 [ext_resource type="Script" path="res://scripts/outside.gd" id="1_6fiwc"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_mu5ff"]
@@ -26,8 +26,10 @@
 [ext_resource type="Texture2D" uid="uid://biqoa7cix1i7q" path="res://assets/3d/textures/concrete3-bl/concrete3-Metallic.png" id="10_txxf5"]
 [ext_resource type="Texture2D" uid="uid://c5uwc1c6sp08j" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-normal-ogl.png" id="11_80xpu"]
 [ext_resource type="Texture2D" uid="uid://gu6483e57qis" path="res://assets/3d/textures/concrete3-bl/concrete3-Normal-ogl.png" id="11_pnfx4"]
+[ext_resource type="AudioStream" uid="uid://c4d2w0yoaal37" path="res://assets/audio/sfx/footsteps/footstepsWood.mp3" id="12_7omlr"]
 [ext_resource type="Texture2D" uid="uid://sdrmsiy2xg2n" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-roughness.png" id="12_deyub"]
 [ext_resource type="Texture2D" uid="uid://u6gxfjjljuen" path="res://assets/3d/textures/concrete3-bl/concrete3-Roughness.png" id="12_djdy8"]
+[ext_resource type="AudioStream" uid="uid://lyuwjm80ebgo" path="res://assets/audio/sfx/footsteps/footstepsGravel.mp3" id="13_485a2"]
 [ext_resource type="Texture2D" uid="uid://rlt0injqeeck" path="res://assets/3d/textures/RoofingTiles001_2K-JPG/RoofingTiles001_2K_Color.jpg" id="13_s08ij"]
 [ext_resource type="Material" uid="uid://djscqebmxa2dj" path="res://assets/3d/materials/metal.tres" id="13_v8snw"]
 [ext_resource type="Texture2D" uid="uid://bq3bpilm5abxs" path="res://assets/3d/textures/RoofingTiles001_2K-JPG/RoofingTiles001_2K_Displacement.jpg" id="14_kehrv"]
@@ -63,6 +65,7 @@
 [ext_resource type="ArrayMesh" uid="uid://byvrot08qm4yc" path="res://assets/3d/laplace/arm2.obj" id="54_p8ywg"]
 [ext_resource type="ArrayMesh" uid="uid://cj2trunkx0c6t" path="res://assets/3d/laplace/arm3.obj" id="55_x0a8k"]
 [ext_resource type="AudioStream" uid="uid://b2hca4lxv4rfi" path="res://assets/audio/music/outdoors.mp3" id="63_y3pwj"]
+[ext_resource type="AudioStream" uid="uid://dk57886kw16ed" path="res://assets/audio/music/outdoorsDistorted.mp3" id="64_nkxij"]
 
 [sub_resource type="Gradient" id="Gradient_tsefn"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0.0578036, 1)
@@ -172,6 +175,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [-20.0, 0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../outdoorMusicDistorted:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x3k5n"]
 _data = {
@@ -243,7 +258,7 @@ tracks/2/path = NodePath("HUD/noise/Eye:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.1, 15, 21.1, 22.2),
+"times": PackedFloat32Array(0, 15, 21.1, 22.2),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [false, false, true, false]
@@ -275,6 +290,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../outdoorMusic:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 14, 15, 25),
+"transitions": PackedFloat32Array(2, 0, -2, 1),
+"update": 0,
+"values": [0.0, -80.0, -80.0, -20.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../outdoorMusicDistorted:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 14, 15),
+"transitions": PackedFloat32Array(0.5, 0, 1),
+"update": 0,
+"values": [-80.0, 0.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3uk8"]
@@ -359,7 +398,6 @@ normal_enabled = true
 normal_texture = ExtResource("29_jm6ky")
 ao_enabled = true
 ao_texture = ExtResource("27_bgmwr")
-heightmap_enabled = true
 heightmap_texture = ExtResource("28_toao8")
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
@@ -501,6 +539,7 @@ script = ExtResource("2_q1vue")
 lockYRot = true
 
 [node name="HUD" type="Control" parent="player"]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -621,6 +660,19 @@ target_position = Vector3(0, -10, 0)
 libraries = {
 "": SubResource("AnimationLibrary_f3uk8")
 }
+
+[node name="floorCast" type="RayCast3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.61855, 0)
+target_position = Vector3(0, -0.5, 0)
+collision_mask = 24
+
+[node name="footstepsWood" type="AudioStreamPlayer3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
+stream = ExtResource("12_7omlr")
+
+[node name="footstepsGravel" type="AudioStreamPlayer3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
+stream = ExtResource("13_485a2")
 
 [node name="HouseExterior" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 2.73226, 0.663679, 0.0211213)
@@ -3472,6 +3524,7 @@ libraries = {
 
 [node name="collisions" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2003, -0.775183, 14.0154)
+collision_layer = 17
 
 [node name="hitbox1" type="CollisionShape3D" parent="collisions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.6671, 0.95356, -1.33548)
@@ -3634,7 +3687,10 @@ texture = ExtResource("52_wvbre")
 
 [node name="outdoorMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("63_y3pwj")
-volume_db = -20.0
+
+[node name="outdoorMusicDistorted" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("64_nkxij")
+volume_db = -80.0
 
 [connection signal="animation_finished" from="player/lookUpAnim" to="." method="_on_look_up_anim_animation_finished"]
 [connection signal="body_entered" from="revealTrigger" to="." method="_on_reveal_trigger_body_entered"]

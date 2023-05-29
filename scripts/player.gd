@@ -11,7 +11,11 @@ var disabled:bool = false
 
 var unlockedInteractions = ["monitor", "passcode", "crt", "piano"]
 
+var currentGroundType:int = 0
+
 @export var lockYRot:bool = false
+
+@onready var groundTypes = {9:$footstepsWood, 17:$footstepsGravel}
 
 @onready var interactCast = $head/cam/interactCast
 @onready var collisionCast = $head/cam/collisionCast
@@ -39,7 +43,11 @@ func _input(event):
 func _physics_process(delta):
 	if disabled:
 		$bobAnim.speed_scale = 0.1
+		if currentGroundType != 0:
+			groundTypes[currentGroundType].stop()
+			currentGroundType = 0
 		return
+	
 	HUDinteract.visible = false
 	HUDcrosshair.visible = false
 	HUDlock.visible = false
@@ -74,3 +82,14 @@ func _physics_process(delta):
 		else: $bobAnim.speed_scale = 0.1
 		velocity = direction.normalized() * PLAYER_SPEED
 	move_and_slide()
+	
+	if $floorCast.is_colliding() and direction.dot(velocity) > 0:
+		var groundType:int = $floorCast.get_collider().get_collision_layer()
+		if groundType in groundTypes.keys():
+			if currentGroundType != groundType:
+				if currentGroundType != 0: groundTypes[currentGroundType].stop()
+				groundTypes[groundType].play()
+				currentGroundType = groundType
+	elif currentGroundType != 0:
+		groundTypes[currentGroundType].stop()
+		currentGroundType = 0

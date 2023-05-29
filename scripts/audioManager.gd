@@ -9,7 +9,7 @@ func play(songName:String):
 		fadeOutTween.tween_property(get_node(curSong), "volume_db", -20, 1).set_trans(Tween.TRANS_SINE)
 		fadeOutTween.tween_property(get_node(curSong), "playing", false, 0.1).set_trans(Tween.TRANS_SINE)
 	curSong = songName
-	if get_node_or_null(curSong) != null:
+	if get_node_or_null(curSong) != null: 
 		var fadeInTween = get_tree().create_tween()
 		fadeInTween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 		fadeInTween.tween_property(get_node(curSong), "playing", true, 0.1).set_trans(Tween.TRANS_SINE)
