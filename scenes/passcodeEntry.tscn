@@ -243,9 +243,9 @@ position = Vector2(592, 176)
 [node name="boundarySE" type="Node2D" parent="."]
 position = Vector2(896, 576)
 
-[node name="buttonSFX" type="AudioStreamPlayer" parent="."]
+[node name="buttonSFX" type="AudioStreamPlayer" parent="." groups=["sfx"]]
 stream = ExtResource("21_6bre3")
 pitch_scale = 0.5
 
-[node name="confirmationSFX" type="AudioStreamPlayer" parent="."]
+[node name="confirmationSFX" type="AudioStreamPlayer" parent="." groups=["sfx"]]
 stream = ExtResource("22_t0aqo")

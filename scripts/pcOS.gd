@@ -41,11 +41,11 @@ var consoleOutputList = [
 @onready var clickSFX:Node = $clickSFX
 @onready var deniedSFX:Node = $deniedSFX
 
-func _ready():
+func _ready() -> void:
 	#return
 	$homeScreen.position.x = 100000
 
-func eventTriggered(event):
+func eventTriggered(event) -> void:
 	if event is InputEventMouseMotion:
 		var newPos:Vector2 = $mouse.position + (event.relative * mouseSensitivity)
 		newPos.x = clamp(newPos.x, minX, maxX)
@@ -137,7 +137,7 @@ func eventTriggered(event):
 				clickSFX.play()
 				$homeScreen/errorWindow/errorAnims.play("errorDisappear")
 
-func _process(delta):
+func _process(delta) -> void:
 	$mouse/mousePointer.visible = false
 	$mouse/mouseInteract.visible = false
 	var interaction:String = ""
@@ -224,7 +224,7 @@ Just run   it immEdiate|y and let it do its thing."""
 		$homeScreen/emailWindow/emailC/description.visible = true
 		$homeScreen/emailWindow/emailC/interact/hitbox.disabled = false
 
-func _on_clock_timer_timeout():
+func _on_clock_timer_timeout() -> void:
 	time += 1
 	var hour:int = (time / 60) % 24
 	var sec:int = time % 60
@@ -234,7 +234,7 @@ func _on_clock_timer_timeout():
 	
 	$homeScreen/clock.text = newText
 
-func unlockUSB():
+func unlockUSB() -> void:
 	$homeScreen/consoleWindow/newLineTimer.start()
 	GI.progress = 3
 	$homeScreen/emailWindow/emailB.visible = true
@@ -244,7 +244,7 @@ func unlockUSB():
 	$background.texture = load("res://assets/2d/pcOS/dropBackgroundB.png")
 	emit_signal("updatedProgress")
 
-func _on_new_line_timer_timeout():
+func _on_new_line_timer_timeout() -> void:
 	consoleOutputList.append("C:/Users/Laplace>")
 	for letter in range(randi_range(40, 50)):
 		consoleOutputList[-1] += consoleCharacters[randi()% len(consoleCharacters)]
@@ -253,7 +253,7 @@ func _on_new_line_timer_timeout():
 	for output in consoleOutputList:
 		$homeScreen/consoleWindow/consoleOutput.text += output + "\n"
 
-func _on_alert_scroll_timer_timeout():
+func _on_alert_scroll_timer_timeout() -> void:
 	var currentText:String = $emergencyAlert/alertText.text
 	alertCharNum += 1
 	currentText = ("UNKNOWN "[7 - alertCharNum % 8] + currentText).substr(0, 300)

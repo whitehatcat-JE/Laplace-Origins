@@ -1471,10 +1471,10 @@ offset_right = 2035.0
 offset_bottom = 842.0
 color = Color(1, 0.0627451, 0, 1)
 
-[node name="clickSFX" type="AudioStreamPlayer" parent="."]
+[node name="clickSFX" type="AudioStreamPlayer" parent="." groups=["sfx"]]
 stream = ExtResource("15_0lrd5")
 
-[node name="deniedSFX" type="AudioStreamPlayer" parent="."]
+[node name="deniedSFX" type="AudioStreamPlayer" parent="." groups=["sfx"]]
 stream = ExtResource("16_4t7hq")
 
 [connection signal="timeout" from="homeScreen/consoleWindow/newLineTimer" to="." method="_on_new_line_timer_timeout"]

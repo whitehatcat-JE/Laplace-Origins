@@ -2319,23 +2319,23 @@ script = ExtResource("2_yyxee")
 process_mode = 3
 script = ExtResource("3_d4tsq")
 
-[node name="menu" type="AudioStreamPlayer" parent="audioManager"]
+[node name="menu" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("4_eyyti")
 volume_db = -20.0
 
-[node name="hallway" type="AudioStreamPlayer" parent="audioManager"]
+[node name="hallway" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("5_yj2lw")
 volume_db = -20.0
 
-[node name="ambienceA" type="AudioStreamPlayer" parent="audioManager"]
+[node name="ambienceA" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("5_g6dg6")
 volume_db = -20.0
 
-[node name="piano" type="AudioStreamPlayer" parent="audioManager"]
+[node name="piano" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("146_hevbh")
 volume_db = -20.0
 
-[node name="heartbeat" type="AudioStreamPlayer" parent="audioManager"]
+[node name="heartbeat" type="AudioStreamPlayer" parent="audioManager" groups=["sfx"]]
 stream = ExtResource("7_jbwer")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -3005,7 +3005,7 @@ flip_h = true
 pixel_size = 0.001
 texture = ExtResource("39_y3s7b")
 
-[node name="unplugSFX" type="AudioStreamPlayer3D" parent="bedroom/desk/Pc"]
+[node name="unplugSFX" type="AudioStreamPlayer3D" parent="bedroom/desk/Pc" groups=["sfx"]]
 transform = Transform3D(2.27273, 0, 1.19262e-18, 0, 2.27273, 0, -1.19262e-18, 0, 2.27273, -0.128711, 0.772407, -0.577425)
 stream = ExtResource("46_tpxyb")
 
@@ -3298,7 +3298,7 @@ libraries = {
 "": SubResource("AnimationLibrary_asrhb")
 }
 
-[node name="easSFX" type="AudioStreamPlayer3D" parent="bedroom"]
+[node name="easSFX" type="AudioStreamPlayer3D" parent="bedroom" groups=["sfx"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325403, 2.02126, 3.33922)
 stream = ExtResource("67_68f3e")
 max_db = 6.0
@@ -3306,7 +3306,7 @@ pitch_scale = 0.7
 max_distance = 15.0
 attenuation_filter_db = -30.0
 
-[node name="glitchSFX" type="AudioStreamPlayer3D" parent="bedroom"]
+[node name="glitchSFX" type="AudioStreamPlayer3D" parent="bedroom" groups=["sfx"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.325403, 2.02126, 3.33922)
 stream = ExtResource("72_ti5lq")
 max_db = 6.0
@@ -3325,7 +3325,7 @@ interactionName = "exitHome"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.482506, 0.361777)
 shape = SubResource("BoxShape3D_nrodv")
 
-[node name="sirenSFX" type="AudioStreamPlayer3D" parent="hallway"]
+[node name="sirenSFX" type="AudioStreamPlayer3D" parent="hallway" groups=["sfx"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.54185, 2.02126, 6.19733)
 stream = ExtResource("68_41ay2")
 max_db = -12.0
@@ -3829,11 +3829,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.61855, 0)
 target_position = Vector3(0, -0.5, 0)
 collision_mask = 24
 
-[node name="footstepsWood" type="AudioStreamPlayer3D" parent="player"]
+[node name="footstepsWood" type="AudioStreamPlayer3D" parent="player" groups=["sfx"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
 stream = ExtResource("106_jy4ai")
 
-[node name="footstepsGravel" type="AudioStreamPlayer3D" parent="player"]
+[node name="footstepsGravel" type="AudioStreamPlayer3D" parent="player" groups=["sfx"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
 stream = ExtResource("107_kwbdf")
 
@@ -4023,7 +4023,7 @@ libraries = {
 "": SubResource("AnimationLibrary_hl3l8")
 }
 
-[node name="doorSFX" type="AudioStreamPlayer3D" parent="walls/DoorFrame"]
+[node name="doorSFX" type="AudioStreamPlayer3D" parent="walls/DoorFrame" groups=["sfx"]]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 1.02382, 0)
 stream = ExtResource("107_4sdfv")
 volume_db = -5.0
@@ -4075,7 +4075,7 @@ interactionName = "router"
 transform = Transform3D(1, 0, 1.6263e-19, 0, 1, 0, -1.6263e-19, 0, 1, -0.0105379, 0.00968218, -0.0928049)
 shape = SubResource("BoxShape3D_kggb5")
 
-[node name="routerSFX" type="AudioStreamPlayer3D" parent="walls/Router"]
+[node name="routerSFX" type="AudioStreamPlayer3D" parent="walls/Router" groups=["sfx"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.140341, -0.0650772)
 stream = ExtResource("110_mgfbc")
 
@@ -4440,7 +4440,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_i8d5n")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="basement/door/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_otwgw")
 
-[node name="grindSFX" type="AudioStreamPlayer3D" parent="basement/door"]
+[node name="grindSFX" type="AudioStreamPlayer3D" parent="basement/door" groups=["sfx"]]
 stream = ExtResource("144_xag2p")
 
 [node name="doorAnims" type="AnimationPlayer" parent="basement"]
@@ -4789,7 +4789,7 @@ flip_h = true
 pixel_size = 0.001
 texture = ExtResource("39_y3s7b")
 
-[node name="insertSFX" type="AudioStreamPlayer3D" parent="basement/crt"]
+[node name="insertSFX" type="AudioStreamPlayer3D" parent="basement/crt" groups=["sfx"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.367303, 0.663797, 0.489351)
 stream = ExtResource("151_idsbu")
 
@@ -5237,7 +5237,7 @@ surface_material_override/3 = SubResource("StandardMaterial3D_aftrw")
 surface_material_override/4 = ExtResource("2_wae18")
 surface_material_override/5 = SubResource("StandardMaterial3D_mf3u8")
 
-[node name="pianoSFX" type="AudioStreamPlayer3D" parent="pianoRoom/piano"]
+[node name="pianoSFX" type="AudioStreamPlayer3D" parent="pianoRoom/piano" groups=["sfx"]]
 stream = ExtResource("171_g1sq0")
 
 [node name="eyes" type="MeshInstance3D" parent="pianoRoom"]
@@ -5305,7 +5305,7 @@ libraries = {
 "": SubResource("AnimationLibrary_a3aar")
 }
 
-[node name="doorSFX" type="AudioStreamPlayer3D" parent="pianoRoom/DoorFrame"]
+[node name="doorSFX" type="AudioStreamPlayer3D" parent="pianoRoom/DoorFrame" groups=["sfx"]]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 1.02382, 0)
 stream = ExtResource("107_4sdfv")
 volume_db = -5.0
@@ -5581,6 +5581,55 @@ text = "Back"
 font = ExtResource("150_blp0k")
 font_size = 128
 
+[node name="settingsMenu" type="Node3D" parent="mainMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165359, 0)
+visible = false
+
+[node name="settingsTitle" type="Label3D" parent="mainMenu/settingsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.498248, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Settings"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="musicOption" type="Label3D" parent="mainMenu/settingsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.440449, 0.402153, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Music <10>"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="sfxOption" type="Label3D" parent="mainMenu/settingsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.440449, 0.334813, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "SFX <10>"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="graphicsOption" type="Label3D" parent="mainMenu/settingsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.440449, 0.272583, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Graphics <High>"
+font = ExtResource("150_blp0k")
+font_size = 128
+
+[node name="backOption" type="Label3D" parent="mainMenu/settingsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.18389, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0.568627, 0, 1)
+outline_modulate = Color(0.286275, 0.105882, 0, 1)
+text = "Back"
+font = ExtResource("150_blp0k")
+font_size = 128
+
 [node name="navMenu" type="Node3D" parent="mainMenu"]
 
 [node name="startLabel" type="Label3D" parent="mainMenu/navMenu"]
@@ -5652,20 +5701,20 @@ texture = ExtResource("151_138o5")
 region_enabled = true
 region_rect = Rect2(0, 0, 304, 400)
 
-[node name="clickSFX" type="AudioStreamPlayer" parent="mainMenu"]
+[node name="clickSFX" type="AudioStreamPlayer" parent="mainMenu" groups=["sfx"]]
 stream = ExtResource("166_umgxd")
 
-[node name="openMenu" type="AudioStreamPlayer" parent="mainMenu"]
+[node name="openMenu" type="AudioStreamPlayer" parent="mainMenu" groups=["sfx"]]
 stream = ExtResource("170_h5y8n")
 
-[node name="closeMenu" type="AudioStreamPlayer" parent="mainMenu"]
+[node name="closeMenu" type="AudioStreamPlayer" parent="mainMenu" groups=["sfx"]]
 stream = ExtResource("171_7e0j7")
 
-[node name="screenInteractSFX" type="AudioStreamPlayer" parent="."]
+[node name="screenInteractSFX" type="AudioStreamPlayer" parent="." groups=["sfx"]]
 stream = ExtResource("166_lty44")
 volume_db = 5.0
 
-[node name="powercutSFX" type="AudioStreamPlayer" parent="."]
+[node name="powercutSFX" type="AudioStreamPlayer" parent="." groups=["sfx"]]
 stream = ExtResource("174_qdmtb")
 
 [connection signal="exitOS" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_exit_os"]

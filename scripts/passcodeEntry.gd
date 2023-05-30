@@ -22,7 +22,7 @@ var userCode:String = ""
 @onready var buttonSFX:Node = $buttonSFX
 @onready var confirmationSFX:Node = $confirmationSFX
 
-func buttonPressed(num:String):
+func buttonPressed(num:String) -> void:
 	userCode += num
 	if len(userCode) > 15: userCode = num;
 	elif userCode == passcode or userCode == zeroedPasscode:
@@ -34,7 +34,7 @@ func buttonPressed(num:String):
 		emit_signal("exitPasscode")
 	$passcodeNumbers.text = str(userCode)
 
-func eventTriggered(event):
+func eventTriggered(event) -> void:
 	if event is InputEventMouseMotion:
 		var newPos:Vector2 = $mouse.position + (event.relative * mouseSensitivity)
 		newPos.x = clamp(newPos.x, minX, maxX)
@@ -76,9 +76,8 @@ func eventTriggered(event):
 			"9": $b9.modulate = "59d3ff" if buttonHeld == currentInteraction else "ffffff";
 			"reload": $reloadButton.modulate = "59d3ff" if buttonHeld == currentInteraction else "ffffff";
 		buttonHeld = ""
-		
 
-func _process(delta):
+func _process(delta) -> void:
 	$mouse/mousePointer.visible = false
 	$mouse/mouseInteract.visible = false
 	var interaction:String = ""

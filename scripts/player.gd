@@ -15,20 +15,20 @@ var currentGroundType:int = 0
 
 @export var lockYRot:bool = false
 
-@onready var groundTypes = {9:$footstepsWood, 17:$footstepsGravel}
+@onready var groundTypes:Dictionary = {9:$footstepsWood, 17:$footstepsGravel}
 
-@onready var interactCast = $head/cam/interactCast
-@onready var collisionCast = $head/cam/collisionCast
-@onready var HUDcrosshair = $HUD/crosshair
-@onready var HUDinteract = $HUD/interact
-@onready var HUDlock = $HUD/lock
+@onready var interactCast:Node = $head/cam/interactCast
+@onready var collisionCast:Node = $head/cam/collisionCast
+@onready var HUDcrosshair:Node = $HUD/crosshair
+@onready var HUDinteract:Node = $HUD/interact
+@onready var HUDlock:Node = $HUD/lock
 
 # Called when the node enters the scene tree for the first time.
-func _ready():
+func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 #Used for mouse movement detection
-func _input(event):
+func _input(event) -> void:
 	if disabled: return;
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
@@ -40,7 +40,7 @@ func _input(event):
 	elif Input.is_action_just_pressed("interact") and HUDinteract.visible:
 		emit_signal("interacted", interactCast.get_collider().interactionName)
 
-func _physics_process(delta):
+func _physics_process(delta) -> void:
 	if disabled:
 		$bobAnim.speed_scale = 0.1
 		if currentGroundType != 0:

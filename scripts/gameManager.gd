@@ -14,7 +14,7 @@ var redTransitionPlayed:bool = false
 @onready var unplugSFX:Node = $bedroom/desk/Pc/unplugSFX
 @onready var insertSFX:Node = $basement/crt/insertSFX
 
-func _input(event):
+func _input(event) -> void:
 	if Input.is_action_just_pressed("back"):
 		if pcCam.current:
 			player.disabled = false
@@ -30,7 +30,7 @@ func _input(event):
 	elif inPasscodeScreen:
 		$basement/passcode/passcodeEntry.eventTriggered(event)
 
-func _on_player_interacted(interactionName:String):
+func _on_player_interacted(interactionName:String) -> void:
 	await get_tree().process_frame
 	match interactionName:
 		"monitor":
@@ -106,14 +106,14 @@ func _on_player_interacted(interactionName:String):
 			player.disabled = true
 			$player/HUD/fadeAnim.play("fadeOut")
 
-func _on_pc_os_exit_os():
+func _on_pc_os_exit_os() -> void:
 	if pcCam.current:
 		player.disabled = false
 		player.get_node("HUD").visible = true
 		playerCam.current = true
 		pcCam.current = false
 
-func _on_pc_os_updated_progress():
+func _on_pc_os_updated_progress() -> void:
 	match GI.progress:
 		1:
 			player.unlockedInteractions.append("router")
@@ -124,16 +124,16 @@ func _on_pc_os_updated_progress():
 				$bedroom/roomTransformations.play("red")
 			player.unlockedInteractions.append("usb")
 
-func _on_passcode_entry_updated_progress():
+func _on_passcode_entry_updated_progress() -> void:
 	player.unlockedInteractions.erase("passcode")
 	$basement/doorAnims.play("openDoor")
 
-func _on_passcode_entry_exit_passcode():
+func _on_passcode_entry_exit_passcode() -> void:
 	player.disabled = false
 	player.get_node("HUD").visible = true
 	inPasscodeScreen = false
 
-func _on_trigger_field_body_entered(body):
+func _on_trigger_field_body_entered(body) -> void:
 	$pianoRoom/triggerField.set_deferred("monitoring", false)
 	if GI.progress == 8:
 		$pianoRoom/eyes3.visible = false
@@ -145,9 +145,9 @@ func _on_trigger_field_body_entered(body):
 	$pianoRoom/SpotLight.visible = true
 	$pianoRoom/piano.visible = true
 
-func _on_fade_anim_animation_finished(anim_name):
+func _on_fade_anim_animation_finished(anim_name) -> void:
 	get_tree().change_scene_to_file("res://scenes/outside.tscn")
 
-func _on_trigger_field_2_body_entered(body):
+func _on_trigger_field_2_body_entered(body) -> void:
 	$pianoRoom/triggerField2.set_deferred("monitoring", false)
 	$pianoRoom/eye2Anim.play("drawBack")
