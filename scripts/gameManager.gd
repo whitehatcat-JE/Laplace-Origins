@@ -17,6 +17,7 @@ var redTransitionPlayed:bool = false
 func _input(event) -> void:
 	if Input.is_action_just_pressed("back"):
 		if pcCam.current:
+			GI.shooterActive = false
 			player.disabled = false
 			player.get_node("HUD").visible = true
 			playerCam.current = true
@@ -46,6 +47,7 @@ func _on_player_interacted(interactionName:String) -> void:
 				$bedroom/pcWindow/pcOS/safeMessage.visible = true
 				$powercutAnim.play("cutPower")
 			else:
+				GI.shooterActive = true
 				player.disabled = true
 				player.get_node("HUD").visible = false
 				playerCam.current = false

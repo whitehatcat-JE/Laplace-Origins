@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://bopk31ppo8sve"]
+
+[ext_resource type="Script" path="res://scripts/spiderRobot.gd" id="1_lfp03"]
+[ext_resource type="Texture2D" uid="uid://b2ydkf5njndxc" path="res://assets/2d/shooterMinigame/explosionSprite.png" id="2_84v2j"]
+[ext_resource type="Texture2D" uid="uid://b357s6nv3r7wl" path="res://assets/2d/shooterMinigame/spiderRobot.png" id="3_uwcrh"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8ahwp"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dxh08"]
+emission_shape = 1
+emission_sphere_radius = 26.34
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 4.0
+scale_max = 4.0
+anim_speed_min = 0.8
+anim_speed_max = 1.2
+attractor_interaction_enabled = false
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5ndme"]
+radius = 26.0768
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kxqjn"]
+size = Vector2(60, 56)
+
+[node name="spiderRobot" type="CharacterBody2D"]
+position = Vector2(1071, 278)
+collision_layer = 32
+collision_mask = 33
+script = ExtResource("1_lfp03")
+
+[node name="explosionParticles" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_8ahwp")
+position = Vector2(1, -1)
+emitting = false
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_dxh08")
+texture = ExtResource("2_84v2j")
+one_shot = true
+speed_scale = 4.0
+explosiveness = 1.0
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2, -4)
+scale = Vector2(4, 4)
+texture = ExtResource("3_uwcrh")
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_5ndme")
+disabled = true
+
+[node name="bulletScanner" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="hitbox" type="CollisionShape2D" parent="bulletScanner"]
+shape = SubResource("RectangleShape2D_kxqjn")
+disabled = true
+
+[node name="health" type="ColorRect" parent="."]
+visible = false
+offset_left = -22.0
+offset_top = -40.0
+offset_right = 26.0
+offset_bottom = -36.0
+color = Color(0.929412, 0.94902, 0.886275, 1)
+
+[connection signal="area_entered" from="bulletScanner" to="." method="_on_bullet_scanner_area_entered"]

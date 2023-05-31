@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://csnnn1yw8ccgs"]
+[gd_scene load_steps=39 format=3 uid="uid://csnnn1yw8ccgs"]
 
 [ext_resource type="Script" path="res://scripts/pcOS.gd" id="1_xeigj"]
 [ext_resource type="Texture2D" uid="uid://b8f2gr7p8vcd2" path="res://assets/2d/pcOS/dropBackground.png" id="2_j3svo"]
@@ -16,6 +16,7 @@
 [ext_resource type="Shader" path="res://scripts/shaders/glitch.gdshader" id="14_8bkd7"]
 [ext_resource type="AudioStream" uid="uid://biipabva8sjck" path="res://assets/audio/sfx/menus/click.ogg" id="15_0lrd5"]
 [ext_resource type="AudioStream" uid="uid://b4jakrr4um7fl" path="res://assets/audio/sfx/menus/denied.ogg" id="16_4t7hq"]
+[ext_resource type="PackedScene" uid="uid://bofptlnpouy2f" path="res://scenes/shooterMinigame.tscn" id="17_alprl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v6mo5"]
 shader = ExtResource("3_s1hks")
@@ -1128,7 +1129,7 @@ text = "laplace.exe"
 
 [node name="consoleWindow" type="Node2D" parent="homeScreen"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(1203, 317)
+position = Vector2(10000, 94)
 scale = Vector2(0.7, 0.7)
 
 [node name="windowBack" type="ColorRect" parent="homeScreen/consoleWindow"]
@@ -1476,6 +1477,8 @@ stream = ExtResource("15_0lrd5")
 
 [node name="deniedSFX" type="AudioStreamPlayer" parent="." groups=["sfx"]]
 stream = ExtResource("16_4t7hq")
+
+[node name="shooterMinigame" parent="." instance=ExtResource("17_alprl")]
 
 [connection signal="timeout" from="homeScreen/consoleWindow/newLineTimer" to="." method="_on_new_line_timer_timeout"]
 [connection signal="timeout" from="homeScreen/clockTimer" to="." method="_on_clock_timer_timeout"]
