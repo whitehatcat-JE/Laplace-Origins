@@ -42,7 +42,6 @@ var consoleOutputList = [
 @onready var deniedSFX:Node = $deniedSFX
 
 func _ready() -> void:
-	#return
 	$homeScreen.position.x = 100000
 
 func eventTriggered(event) -> void:
@@ -136,6 +135,18 @@ func eventTriggered(event) -> void:
 			"errorOK":
 				clickSFX.play()
 				$homeScreen/errorWindow/errorAnims.play("errorDisappear")
+			"shooterOpen":
+				$shooterMinigame.visible = true
+				$shooterMinigame.start()
+				$mouse/pointerRay.set_collision_mask_value(2, false)
+				$mouse/pointerRay.set_collision_mask_value(3, true)
+			"shooterQuit":
+				$shooterMinigame.visible = false
+				$shooterMinigame.stop()
+				$mouse/pointerRay.set_collision_mask_value(2, true)
+				$mouse/pointerRay.set_collision_mask_value(3, false)
+			"shooterBegin":
+				$shooterMinigame.begin()
 
 func _process(delta) -> void:
 	$mouse/mousePointer.visible = false
@@ -178,6 +189,12 @@ func _process(delta) -> void:
 				$homeScreen/errorWindow/continueBack.modulate = "393939d5"
 			"errorQuit":
 				$homeScreen/errorWindow/quit/quitBack.modulate = "ffffff00"
+			"shooterOpen":
+				$homeScreen/menuBar/shooter/shooterBack.modulate = "ffffff00"
+			"shooterQuit":
+				$shooterMinigame/HUD/quit/quitBack.modulate = "ffffff00"
+			"shooterBegin":
+				$shooterMinigame/HUD/beginButton.texture = load("res://assets/2d/shooterMinigame/singularityBegin.png")
 		match interaction:
 			"login":
 				$loginScreen/loginButton.modulate = "969696d5"
@@ -207,6 +224,12 @@ func _process(delta) -> void:
 				$homeScreen/errorWindow/continueBack.modulate = "969696d5"
 			"errorQuit":
 				$homeScreen/errorWindow/quit/quitBack.modulate = "969696d5"
+			"shooterOpen":
+				$homeScreen/menuBar/shooter/shooterBack.modulate = "969696d5"
+			"shooterQuit":
+				$shooterMinigame/HUD/quit/quitBack.modulate = "969696d5"
+			"shooterBegin":
+				$shooterMinigame/HUD/beginButton.texture = load("res://assets/2d/shooterMinigame/singularityHover.png")
 		currentInteraction = interaction
 	
 	if GI.progress == 2 and wifiEnabled:

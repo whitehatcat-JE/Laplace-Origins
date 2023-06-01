@@ -675,9 +675,10 @@ offset_bottom = 392.0
 scale = Vector2(0.4, 0.4)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("11_830h1")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 34
 text = "Email
 "
+vertical_alignment = 1
 
 [node name="emailBack" type="ColorRect" parent="homeScreen/menuBar/email"]
 modulate = Color(1, 1, 1, 0)
@@ -704,8 +705,9 @@ offset_bottom = 428.0
 scale = Vector2(0.4, 0.4)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("11_830h1")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 34
 text = "Files"
+vertical_alignment = 1
 
 [node name="fileBack" type="ColorRect" parent="homeScreen/menuBar/files"]
 modulate = Color(1, 1, 1, 0)
@@ -723,6 +725,34 @@ interactionName = "filesOpen"
 position = Vector2(115, 35)
 shape = SubResource("RectangleShape2D_8nfdd")
 
+[node name="shooter" type="Label" parent="homeScreen/menuBar"]
+offset_left = 554.0
+offset_top = 400.0
+offset_right = 817.0
+offset_bottom = 465.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 34
+text = "Singularity"
+vertical_alignment = 1
+
+[node name="shooterBack" type="ColorRect" parent="homeScreen/menuBar/shooter"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -18.0
+offset_top = -7.0
+offset_right = 247.0
+offset_bottom = 78.0
+
+[node name="interact" parent="homeScreen/menuBar/shooter" instance=ExtResource("8_kdwn3")]
+interactionName = "shooterOpen"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/menuBar/shooter/interact"]
+position = Vector2(115, 35)
+shape = SubResource("RectangleShape2D_8nfdd")
+
 [node name="logout" type="Label" parent="homeScreen/menuBar"]
 offset_left = 554.0
 offset_top = 517.0
@@ -731,8 +761,9 @@ offset_bottom = 582.0
 scale = Vector2(0.4, 0.4)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("11_830h1")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 34
 text = "Logout"
+vertical_alignment = 1
 
 [node name="logoutBack" type="ColorRect" parent="homeScreen/menuBar/logout"]
 modulate = Color(1, 1, 1, 0)
@@ -1479,7 +1510,10 @@ stream = ExtResource("15_0lrd5")
 stream = ExtResource("16_4t7hq")
 
 [node name="shooterMinigame" parent="." instance=ExtResource("17_alprl")]
+visible = false
 
 [connection signal="timeout" from="homeScreen/consoleWindow/newLineTimer" to="." method="_on_new_line_timer_timeout"]
 [connection signal="timeout" from="homeScreen/clockTimer" to="." method="_on_clock_timer_timeout"]
 [connection signal="timeout" from="emergencyAlert/alertScrollTimer" to="." method="_on_alert_scroll_timer_timeout"]
+
+[editable path="shooterMinigame"]

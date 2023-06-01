@@ -15,12 +15,15 @@ func kill():
 	$hitbox.set_deferred("disabled", true)
 	$bulletScanner/hitbox.set_deferred("disabled", true)
 	$sprite.visible = false
+	dead = true
 
 func _on_bullet_scanner_area_entered(area):
 	$healParticles.emitting = true
 	$hitbox.set_deferred("disabled", true)
 	$bulletScanner/hitbox.set_deferred("disabled", true)
 	$sprite.visible = false
+	dead = true
+	get_parent().score += 500
 	emit_signal("heal")
 
 func _on_decay_timer_timeout():

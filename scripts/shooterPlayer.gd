@@ -6,6 +6,7 @@ const SPEED:float = 200.0
 const FIRING_SPEED:float = 0.2
 
 var timeSinceLastBullet:float = 0.0
+var alive:bool = false
 
 @onready var bulletScene:PackedScene = preload("res://objects/bullet.tscn")
 
@@ -18,7 +19,7 @@ func spawnBullet():
 	bullet.direction = dir
 
 func _physics_process(delta):
-	if !GI.shooterActive: return;
+	if !GI.shooterActive or !GI.inOS or !alive: return;
 	timeSinceLastBullet += delta
 	var inputDir = Input.get_vector("shooterMoveLeft", "shooterMoveRight", "shooterMoveUp", "shooterMoveDown")
 	velocity = inputDir * SPEED
@@ -35,5 +36,11 @@ func _physics_process(delta):
 		spawnBullet()
 
 func _on_enemy_scanner_body_entered(body):
+	if !alive: return;
 	body.kill()
+	emit_signal("damage")
+
+func _on_enemy_scanner_area_entered(area):
+	if !alive: return;
+	area.kill()
 	emit_signal("damage")

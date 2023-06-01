@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const MAX_HEALTH:int = 5
+const MAX_HEALTH:int = 4
 var SPEED:float = 100.0 * randf_range(0.9, 1.1)
 
 var health:int = MAX_HEALTH
@@ -34,5 +34,7 @@ func _on_bullet_scanner_area_entered(area):
 	area.kill()
 	health -= 1
 	$health.visible = true
-	if health == 0: kill();
+	if health == 0:
+		get_parent().score += 25
+		kill()
 	$health.size.x = maxHealthSize * float(health) / float(MAX_HEALTH)
