@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bopk31ppo8sve"]
+[gd_scene load_steps=12 format=3 uid="uid://dyvrl120u3akr"]
 
-[ext_resource type="Script" path="res://scripts/spiderRobot.gd" id="1_lfp03"]
-[ext_resource type="Texture2D" uid="uid://b2ydkf5njndxc" path="res://assets/2d/shooterMinigame/explosionSprite.png" id="2_84v2j"]
-[ext_resource type="Texture2D" uid="uid://b357s6nv3r7wl" path="res://assets/2d/shooterMinigame/spiderRobot.png" id="3_uwcrh"]
+[ext_resource type="Script" path="res://scripts/spiderRobot.gd" id="1_rwd7l"]
+[ext_resource type="Texture2D" uid="uid://d26c0f8k5mv07" path="res://assets/2d/shooterMinigame/explosionSpriteCorrupt.png" id="2_jmc5l"]
+[ext_resource type="Texture2D" uid="uid://dkj2u20oxsqbg" path="res://assets/2d/shooterMinigame/spiderRobotCorrupt1.png" id="3_cmvcf"]
+[ext_resource type="Texture2D" uid="uid://df5g0i6t2y8sr" path="res://assets/2d/shooterMinigame/spiderRobotCorrupt2.png" id="4_vi461"]
+[ext_resource type="Texture2D" uid="uid://4m1f31xqgb2x" path="res://assets/2d/shooterMinigame/spiderRobotCorrupt3.png" id="5_ixfmx"]
+[ext_resource type="Texture2D" uid="uid://cntncwb1p5lin" path="res://assets/2d/shooterMinigame/spiderRobotCorrupt4.png" id="6_agv11"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8ahwp"]
 particles_animation = true
@@ -23,6 +26,26 @@ anim_speed_min = 0.8
 anim_speed_max = 1.2
 attractor_interaction_enabled = false
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_mjtsp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cmvcf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vi461")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ixfmx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_agv11")
+}],
+"loop": true,
+"name": &"glitch",
+"speed": 4.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_5ndme"]
 radius = 26.0768
 
@@ -32,7 +55,8 @@ size = Vector2(60, 56)
 [node name="spiderRobot" type="CharacterBody2D"]
 position = Vector2(1071, 278)
 collision_layer = 64
-script = ExtResource("1_lfp03")
+script = ExtResource("1_rwd7l")
+MAX_HEALTH = 6
 
 [node name="explosionParticles" type="GPUParticles2D" parent="."]
 texture_filter = 1
@@ -41,16 +65,19 @@ position = Vector2(1, -1)
 emitting = false
 amount = 3
 process_material = SubResource("ParticleProcessMaterial_dxh08")
-texture = ExtResource("2_84v2j")
+texture = ExtResource("2_jmc5l")
 one_shot = true
 speed_scale = 4.0
 explosiveness = 1.0
 
-[node name="sprite" type="Sprite2D" parent="."]
+[node name="sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(2, -4)
 scale = Vector2(4, 4)
-texture = ExtResource("3_uwcrh")
+sprite_frames = SubResource("SpriteFrames_mjtsp")
+animation = &"glitch"
+autoplay = "glitch"
+frame_progress = 0.0849061
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -72,6 +99,6 @@ offset_left = -22.0
 offset_top = -40.0
 offset_right = 26.0
 offset_bottom = -36.0
-color = Color(0.929412, 0.94902, 0.886275, 1)
+color = Color(0, 0, 0, 1)
 
 [connection signal="area_entered" from="bulletScanner" to="." method="_on_bullet_scanner_area_entered"]

@@ -1,0 +1,88 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2fhuf7yh3lug"]
+
+[ext_resource type="Script" path="res://scripts/babySlimeRobot.gd" id="1_t6eu3"]
+[ext_resource type="Texture2D" uid="uid://d26c0f8k5mv07" path="res://assets/2d/shooterMinigame/explosionSpriteCorrupt.png" id="2_cbdqs"]
+[ext_resource type="Texture2D" uid="uid://umqpcqfaw8wg" path="res://assets/2d/shooterMinigame/babySlimeCorrupt1.png" id="3_62t57"]
+[ext_resource type="Texture2D" uid="uid://clahxpavvbly3" path="res://assets/2d/shooterMinigame/babySlimeCorrupt2.png" id="4_2jsek"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_koujc"]
+particles_animation = true
+particles_anim_h_frames = 4
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_k12x3"]
+emission_shape = 1
+emission_sphere_radius = 26.34
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 4.0
+scale_max = 4.0
+anim_speed_min = 0.8
+anim_speed_max = 1.2
+attractor_interaction_enabled = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sm1lp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_62t57")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_2jsek")
+}],
+"loop": true,
+"name": &"glitch",
+"speed": 2.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kftdx"]
+radius = 13.0384
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wwco"]
+size = Vector2(32, 20)
+
+[node name="babySlimeRobot" type="CharacterBody2D"]
+position = Vector2(984, 312)
+collision_layer = 64
+script = ExtResource("1_t6eu3")
+
+[node name="explosionParticles" type="GPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_koujc")
+position = Vector2(1, -1)
+emitting = false
+amount = 3
+process_material = SubResource("ParticleProcessMaterial_k12x3")
+texture = ExtResource("2_cbdqs")
+one_shot = true
+speed_scale = 4.0
+explosiveness = 1.0
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(2, -4)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_sm1lp")
+animation = &"glitch"
+autoplay = "glitch"
+frame_progress = 0.681443
+
+[node name="hitbox" type="CollisionShape2D" parent="."]
+position = Vector2(2, 2)
+shape = SubResource("CircleShape2D_kftdx")
+disabled = true
+
+[node name="bulletScanner" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="hitbox" type="CollisionShape2D" parent="bulletScanner"]
+position = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_2wwco")
+disabled = true
+
+[connection signal="area_entered" from="bulletScanner" to="." method="_on_bullet_scanner_area_entered"]

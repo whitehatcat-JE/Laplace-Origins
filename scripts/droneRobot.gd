@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 signal heal
 
-var SPEED:float = 150.0 * randf_range(0.9, 1.1)
+@export var SPEED:float = 150.0
 var dead:bool = false
 
 func _physics_process(delta):

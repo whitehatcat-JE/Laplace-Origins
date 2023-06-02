@@ -1,8 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://da1572uw524am"]
+[gd_scene load_steps=12 format=3 uid="uid://lp3mp5hcpqni"]
 
-[ext_resource type="Script" path="res://scripts/slimeRobot.gd" id="1_v2prk"]
-[ext_resource type="Texture2D" uid="uid://cyvenb8tpp2eu" path="res://assets/2d/shooterMinigame/slime.png" id="2_l3it4"]
-[ext_resource type="Texture2D" uid="uid://b2ydkf5njndxc" path="res://assets/2d/shooterMinigame/explosionSprite.png" id="3_ljwb3"]
+[ext_resource type="Script" path="res://scripts/slimeRobotCorrupt.gd" id="1_05tyu"]
+[ext_resource type="Texture2D" uid="uid://cv2jksrsfqw2b" path="res://assets/2d/shooterMinigame/slimeCorrupt1.png" id="2_m1cwb"]
+[ext_resource type="Texture2D" uid="uid://pqrk7k85neub" path="res://assets/2d/shooterMinigame/slimeCorrupt2.png" id="3_egow8"]
+[ext_resource type="Texture2D" uid="uid://h1fcvl0piv5q" path="res://assets/2d/shooterMinigame/slimeCorrupt3.png" id="4_lwqaf"]
+[ext_resource type="Texture2D" uid="uid://lfqfds0cel1r" path="res://assets/2d/shooterMinigame/slimeCorrupt4.png" id="5_wcwap"]
+[ext_resource type="Texture2D" uid="uid://d26c0f8k5mv07" path="res://assets/2d/shooterMinigame/explosionSpriteCorrupt.png" id="6_0p14h"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wsyvx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_m1cwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_egow8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lwqaf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wcwap")
+}],
+"loop": true,
+"name": &"glitch",
+"speed": 2.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hy4td"]
 size = Vector2(56, 36)
@@ -33,13 +56,16 @@ attractor_interaction_enabled = false
 z_index = 1
 position = Vector2(975, 342)
 collision_layer = 64
-script = ExtResource("1_v2prk")
+script = ExtResource("1_05tyu")
 
-[node name="sprite" type="Sprite2D" parent="."]
+[node name="sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -14)
 scale = Vector2(4, 4)
-texture = ExtResource("2_l3it4")
+sprite_frames = SubResource("SpriteFrames_wsyvx")
+animation = &"glitch"
+autoplay = "glitch"
+frame_progress = 0.175428
 
 [node name="bulletScanner" type="Area2D" parent="."]
 position = Vector2(-2, -10)
@@ -58,7 +84,7 @@ offset_left = -24.0
 offset_top = -30.0
 offset_right = 24.0
 offset_bottom = -26.0
-color = Color(0.929412, 0.94902, 0.886275, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_oujyi")
@@ -71,13 +97,13 @@ position = Vector2(1, -1)
 emitting = false
 amount = 3
 process_material = SubResource("ParticleProcessMaterial_72kh4")
-texture = ExtResource("3_ljwb3")
+texture = ExtResource("6_0p14h")
 one_shot = true
 speed_scale = 4.0
 explosiveness = 1.0
 
 [node name="babySpawnTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.5
 
 [connection signal="area_entered" from="bulletScanner" to="." method="_on_bullet_scanner_area_entered"]
 [connection signal="timeout" from="babySpawnTimer" to="." method="_on_baby_spawn_timer_timeout"]

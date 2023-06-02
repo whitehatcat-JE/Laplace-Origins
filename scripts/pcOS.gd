@@ -194,7 +194,7 @@ func _process(delta) -> void:
 			"shooterQuit":
 				$shooterMinigame/HUD/quit/quitBack.modulate = "ffffff00"
 			"shooterBegin":
-				$shooterMinigame/HUD/beginButton.texture = load("res://assets/2d/shooterMinigame/singularityBegin.png")
+				$shooterMinigame/HUD/beginButton.texture = $shooterMinigame.beginTexture
 		match interaction:
 			"login":
 				$loginScreen/loginButton.modulate = "969696d5"
@@ -229,7 +229,7 @@ func _process(delta) -> void:
 			"shooterQuit":
 				$shooterMinigame/HUD/quit/quitBack.modulate = "969696d5"
 			"shooterBegin":
-				$shooterMinigame/HUD/beginButton.texture = load("res://assets/2d/shooterMinigame/singularityHover.png")
+				$shooterMinigame/HUD/beginButton.texture = $shooterMinigame.hoverTexture
 		currentInteraction = interaction
 	
 	if GI.progress == 2 and wifiEnabled:
