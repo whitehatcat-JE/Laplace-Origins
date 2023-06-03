@@ -1,0 +1,728 @@
+[gd_scene load_steps=42 format=3 uid="uid://coqwihkas3njv"]
+
+[ext_resource type="Texture2D" uid="uid://bxjoe45irxao5" path="res://assets/city/facade1.png" id="1_21jck"]
+[ext_resource type="Texture2D" uid="uid://dm43ppjpnqd3w" path="res://assets/3d/textures/broken-down-stonework1-bl/broken-down-stonework_albedo.png" id="1_spys0"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_egrqs"]
+[ext_resource type="Texture2D" uid="uid://d324o6jqxyi3l" path="res://assets/3d/textures/broken-down-stonework1-bl/broken-down-stonework_metallic.png" id="2_wm2fv"]
+[ext_resource type="Texture2D" uid="uid://ii8bo0fh4y7u" path="res://assets/3d/textures/broken-down-stonework1-bl/broken-down-stonework_normal-ogl.png" id="3_dnxv2"]
+[ext_resource type="Texture2D" uid="uid://byasw2wllivf0" path="res://assets/2d/UI/crosshair.png" id="3_o5hbp"]
+[ext_resource type="Texture2D" uid="uid://bfp30fvpiae72" path="res://assets/3d/textures/concrete3-bl/concrete3-albedo.png" id="4_5goak"]
+[ext_resource type="Texture2D" uid="uid://b4a1llenxad28" path="res://assets/2d/UI/interactIcon.png" id="4_w0vqt"]
+[ext_resource type="Texture2D" uid="uid://cigjq25fsqn45" path="res://assets/2d/UI/interactIconLocked.png" id="5_cc1j6"]
+[ext_resource type="Texture2D" uid="uid://biqoa7cix1i7q" path="res://assets/3d/textures/concrete3-bl/concrete3-Metallic.png" id="5_lifa5"]
+[ext_resource type="Shader" path="res://scripts/shaders/glitch.gdshader" id="6_iedvu"]
+[ext_resource type="Texture2D" uid="uid://gu6483e57qis" path="res://assets/3d/textures/concrete3-bl/concrete3-Normal-ogl.png" id="6_s2qm1"]
+[ext_resource type="Texture2D" uid="uid://u6gxfjjljuen" path="res://assets/3d/textures/concrete3-bl/concrete3-Roughness.png" id="7_5cetg"]
+[ext_resource type="Shader" path="res://scripts/shaders/noise.gdshader" id="7_6wgwt"]
+[ext_resource type="Texture2D" uid="uid://dcevbxxgqar76" path="res://assets/2d/laplace/backgroundNoise.png" id="8_5q85c"]
+[ext_resource type="Texture2D" uid="uid://cxdbhjbai6ktn" path="res://assets/2d/laplace/eye.png" id="9_f7slg"]
+[ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="10_k8nij"]
+[ext_resource type="AudioStream" uid="uid://c4d2w0yoaal37" path="res://assets/audio/sfx/footsteps/footstepsWood.mp3" id="11_vcntb"]
+[ext_resource type="AudioStream" uid="uid://bxpoaeanda02m" path="res://assets/audio/sfx/footsteps/footstepsGravelReverb.mp3" id="12_o00ln"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_j426g"]
+size = Vector3(25, 100, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n7pps"]
+albedo_texture = ExtResource("1_spys0")
+metallic = 1.0
+metallic_specular = 0.42
+metallic_texture = ExtResource("2_wm2fv")
+normal_enabled = true
+normal_texture = ExtResource("3_dnxv2")
+uv1_scale = Vector3(5, 20, 0.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wbs0a"]
+size = Vector3(10, 100, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aev7a"]
+albedo_color = Color(0.72549, 0.47451, 0.270588, 1)
+albedo_texture = ExtResource("4_5goak")
+metallic = 1.0
+metallic_specular = 0.42
+metallic_texture = ExtResource("5_lifa5")
+roughness_texture = ExtResource("7_5cetg")
+normal_enabled = true
+normal_texture = ExtResource("6_s2qm1")
+uv1_scale = Vector3(1, 10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7iqk"]
+albedo_texture = ExtResource("1_21jck")
+metallic = 0.15
+metallic_specular = 0.0
+roughness = 0.93
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oljxv"]
+shader = ExtResource("6_iedvu")
+shader_parameter/shake_power = 0.03
+shader_parameter/shake_rate = 0.2
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 50.0
+shader_parameter/shake_color_rate = 0.031
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e37by"]
+shader = ExtResource("7_6wgwt")
+shader_parameter/resolution = Vector2(512, 512)
+shader_parameter/noise = 0.08
+shader_parameter/distort = 0.06
+shader_parameter/offset = 0.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f64w7"]
+blend_mode = 3
+
+[sub_resource type="Animation" id="Animation_nwmgs"]
+resource_name = "fadeOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h1hmh"]
+_data = {
+"fadeOut": SubResource("Animation_nwmgs")
+}
+
+[sub_resource type="Animation" id="Animation_47qjq"]
+resource_name = "bob"
+length = 0.2
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player/head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0, 0.678385, 0), Vector3(0, 0.7, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pb6fc"]
+_data = {
+"bob": SubResource("Animation_47qjq")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ilfv1"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_36p33"]
+radius = 0.3
+height = 1.8
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5o3mn"]
+sky_top_color = Color(0.235294, 0, 0.00392157, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_cover_modulate = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_we4yh"]
+sky_material = SubResource("ProceduralSkyMaterial_5o3mn")
+
+[sub_resource type="Environment" id="Environment_m5qal"]
+background_mode = 2
+sky = SubResource("Sky_we4yh")
+ambient_light_source = 2
+ambient_light_color = Color(0.388235, 0.270588, 0.254902, 1)
+tonemap_mode = 3
+ssao_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.368627, 0.00392157, 0, 1)
+volumetric_fog_density = 0.1029
+volumetric_fog_albedo = Color(1, 0.0235294, 0, 1)
+volumetric_fog_emission = Color(0.152941, 0, 0, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_e1bl6"]
+data = PackedVector3Array(-12.5, 50, 0.5, 12.5, 50, 0.5, -12.5, -50, 0.5, 12.5, 50, 0.5, 12.5, -50, 0.5, -12.5, -50, 0.5, 12.5, 50, -0.5, -12.5, 50, -0.5, 12.5, -50, -0.5, -12.5, 50, -0.5, -12.5, -50, -0.5, 12.5, -50, -0.5, 12.5, 50, 0.5, 12.5, 50, -0.5, 12.5, -50, 0.5, 12.5, 50, -0.5, 12.5, -50, -0.5, 12.5, -50, 0.5, -12.5, 50, -0.5, -12.5, 50, 0.5, -12.5, -50, -0.5, -12.5, 50, 0.5, -12.5, -50, 0.5, -12.5, -50, -0.5, 12.5, 50, 0.5, -12.5, 50, 0.5, 12.5, 50, -0.5, -12.5, 50, 0.5, -12.5, 50, -0.5, 12.5, 50, -0.5, -12.5, -50, 0.5, 12.5, -50, 0.5, -12.5, -50, -0.5, 12.5, -50, 0.5, 12.5, -50, -0.5, -12.5, -50, -0.5)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_f06kc"]
+data = PackedVector3Array(-12.5, 50, 0.5, 12.5, 50, 0.5, -12.5, -50, 0.5, 12.5, 50, 0.5, 12.5, -50, 0.5, -12.5, -50, 0.5, 12.5, 50, -0.5, -12.5, 50, -0.5, 12.5, -50, -0.5, -12.5, 50, -0.5, -12.5, -50, -0.5, 12.5, -50, -0.5, 12.5, 50, 0.5, 12.5, 50, -0.5, 12.5, -50, 0.5, 12.5, 50, -0.5, 12.5, -50, -0.5, 12.5, -50, 0.5, -12.5, 50, -0.5, -12.5, 50, 0.5, -12.5, -50, -0.5, -12.5, 50, 0.5, -12.5, -50, 0.5, -12.5, -50, -0.5, 12.5, 50, 0.5, -12.5, 50, 0.5, 12.5, 50, -0.5, -12.5, 50, 0.5, -12.5, 50, -0.5, 12.5, 50, -0.5, -12.5, -50, 0.5, 12.5, -50, 0.5, -12.5, -50, -0.5, 12.5, -50, 0.5, 12.5, -50, -0.5, -12.5, -50, -0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5vmxa"]
+size = Vector3(7.9977, 1, 102.54)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vfp6p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhtga"]
+cull_mode = 1
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="city" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.4357, 0, -41.6985)
+mesh = SubResource("BoxMesh_j426g")
+surface_material_override/0 = SubResource("StandardMaterial3D_n7pps")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21.879, 0, -41.6985)
+mesh = SubResource("BoxMesh_j426g")
+surface_material_override/0 = SubResource("StandardMaterial3D_n7pps")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 21.879, 0, 20.8)
+mesh = SubResource("BoxMesh_j426g")
+surface_material_override/0 = SubResource("StandardMaterial3D_n7pps")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.44239, -0.0823755, -41.6732)
+mesh = SubResource("BoxMesh_wbs0a")
+surface_material_override/0 = SubResource("StandardMaterial3D_aev7a")
+
+[node name="building1" type="Node3D" parent="."]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -5.47946, -6.74399, 1.56112)
+
+[node name="Sprite3D" type="Sprite3D" parent="building1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231018, 19.8113, 3.10066)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D2" type="Sprite3D" parent="building1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.1637, 19.8113, -0.0578892)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D4" type="Sprite3D" parent="building1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0.0231018, 19.8113, -9.52732)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D5" type="Sprite3D" parent="building1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 3.1637, 19.8113, -6.36877)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D7" type="Sprite3D" parent="building1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, -7.13775, 19.8113, -10.2854)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="building2" type="Node3D" parent="."]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -5.47946, -6.74399, -23.7611)
+
+[node name="Sprite3D" type="Sprite3D" parent="building2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231018, 19.8113, 3.10066)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D2" type="Sprite3D" parent="building2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.1637, 19.8113, -0.0578892)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D4" type="Sprite3D" parent="building2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0.0231018, 19.8113, -9.52732)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D5" type="Sprite3D" parent="building2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 3.1637, 19.8113, -6.36877)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D7" type="Sprite3D" parent="building2"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, -7.13775, 19.8113, -10.2854)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="building3" type="Node3D" parent="."]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -5.47946, -6.74399, -48.7706)
+
+[node name="Sprite3D" type="Sprite3D" parent="building3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231018, 19.8113, 3.10066)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D2" type="Sprite3D" parent="building3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.1637, 19.8113, -0.0578892)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D4" type="Sprite3D" parent="building3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0.0231018, 19.8113, -9.52732)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D5" type="Sprite3D" parent="building3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 3.1637, 19.8113, -6.36877)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D7" type="Sprite3D" parent="building3"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, -7.13775, 19.8113, -10.2854)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="building4" type="Node3D" parent="."]
+transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, -5.47946, -6.74399, -73.6712)
+
+[node name="Sprite3D" type="Sprite3D" parent="building4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231018, 19.8113, 3.10066)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D2" type="Sprite3D" parent="building4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.1637, 19.8113, -0.0578892)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D4" type="Sprite3D" parent="building4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0.0231018, 19.8113, -9.52732)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D5" type="Sprite3D" parent="building4"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 3.1637, 19.8113, -6.36877)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="building5" type="Node3D" parent="."]
+transform = Transform3D(-1.75, 0, -1.5299e-07, 0, 1.75, 0, 1.5299e-07, 0, -1.75, 16.8661, -6.74399, -84.8025)
+
+[node name="Sprite3D" type="Sprite3D" parent="building5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231018, 19.8113, 3.10066)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D2" type="Sprite3D" parent="building5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.1637, 19.8113, -0.0578892)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D4" type="Sprite3D" parent="building5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0.0231018, 19.8113, -9.52732)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D5" type="Sprite3D" parent="building5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 3.1637, 19.8113, -6.36877)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D7" type="Sprite3D" parent="building5"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, -7.13775, 19.8113, -10.2854)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="building6" type="Node3D" parent="."]
+transform = Transform3D(-1.75, 0, -1.5299e-07, 0, 1.75, 0, 1.5299e-07, 0, -1.75, 16.8661, -6.74399, -59.4803)
+
+[node name="Sprite3D" type="Sprite3D" parent="building6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231018, 19.8113, 3.10066)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D2" type="Sprite3D" parent="building6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.1637, 19.8113, -0.0578892)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D4" type="Sprite3D" parent="building6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0.0231018, 19.8113, -9.52732)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D5" type="Sprite3D" parent="building6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 3.1637, 19.8113, -6.36877)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D7" type="Sprite3D" parent="building6"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, -7.13775, 19.8113, -10.2854)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="building7" type="Node3D" parent="."]
+transform = Transform3D(-1.75, 0, -1.5299e-07, 0, 1.75, 0, 1.5299e-07, 0, -1.75, 16.8661, -6.74399, -34.4708)
+
+[node name="Sprite3D" type="Sprite3D" parent="building7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231018, 19.8113, 3.10066)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D2" type="Sprite3D" parent="building7"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.1637, 19.8113, -0.0578892)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D4" type="Sprite3D" parent="building7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0.0231018, 19.8113, -9.52732)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D5" type="Sprite3D" parent="building7"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 3.1637, 19.8113, -6.36877)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D7" type="Sprite3D" parent="building7"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, -7.13775, 19.8113, -10.2854)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="building8" type="Node3D" parent="."]
+transform = Transform3D(-1.75, 0, -1.5299e-07, 0, 1.75, 0, 1.5299e-07, 0, -1.75, 16.8661, -6.74399, -9.57024)
+
+[node name="Sprite3D" type="Sprite3D" parent="building8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231018, 19.8113, 3.10066)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D2" type="Sprite3D" parent="building8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.1637, 19.8113, -0.0578892)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D4" type="Sprite3D" parent="building8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0.0231018, 19.8113, -9.52732)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D5" type="Sprite3D" parent="building8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 3.1637, 19.8113, -6.36877)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D7" type="Sprite3D" parent="building8"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, -7.13775, 19.8113, -12.1363)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D8" type="Sprite3D" parent="building8"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, -1, 0, 4.37114e-08, 17.146, 19.8113, -12.5)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="building11" type="Node3D" parent="."]
+transform = Transform3D(-7.64949e-08, 0, 1.75, 0, 1.75, 0, -1.75, 0, -7.64949e-08, 12.3532, -6.74399, 16.1207)
+
+[node name="Sprite3D2" type="Sprite3D" parent="building11"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.1637, 19.8113, -0.0578892)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="Sprite3D5" type="Sprite3D" parent="building11"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, 1, 0, 4.37114e-08, 3.1637, 19.8113, -6.36877)
+material_override = SubResource("StandardMaterial3D_i7iqk")
+flip_h = true
+shaded = true
+double_sided = false
+texture = ExtResource("1_21jck")
+
+[node name="player" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.989073, 0, 0.14743, 0, 1, 0, -0.14743, 0, 0.989073, 5.51457, 1.3293, 0.814159)
+collision_layer = 4
+axis_lock_linear_y = true
+floor_constant_speed = true
+floor_block_on_wall = false
+script = ExtResource("2_egrqs")
+
+[node name="HUD" type="Control" parent="player"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="crosshair" type="Sprite2D" parent="player/HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(0, 2)
+scale = Vector2(0.175532, 0.175532)
+texture = ExtResource("3_o5hbp")
+
+[node name="interact" type="Sprite2D" parent="player/HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(4, 14)
+scale = Vector2(0.188636, 0.188636)
+texture = ExtResource("4_w0vqt")
+
+[node name="lock" type="Sprite2D" parent="player/HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(4, 14)
+scale = Vector2(0.188636, 0.188636)
+texture = ExtResource("5_cc1j6")
+
+[node name="fade" type="ColorRect" parent="player/HUD"]
+visible = false
+material = SubResource("ShaderMaterial_oljxv")
+layout_mode = 0
+offset_left = -1083.0
+offset_top = -604.0
+offset_right = 1277.0
+offset_bottom = 676.0
+color = Color(0.819608, 0, 0.00784314, 1)
+
+[node name="noise" type="Sprite2D" parent="player/HUD/fade"]
+modulate = Color(1, 0.0352941, 0, 1)
+show_behind_parent = true
+material = SubResource("ShaderMaterial_e37by")
+position = Vector2(1109, 621.5)
+scale = Vector2(8.00781, 4.66016)
+texture = ExtResource("8_5q85c")
+
+[node name="Eye" type="Sprite2D" parent="player/HUD/fade/noise"]
+visible = false
+material = SubResource("CanvasItemMaterial_f64w7")
+position = Vector2(-3.62146, -1.18021)
+scale = Vector2(0.25, 0.43)
+texture = ExtResource("9_f7slg")
+
+[node name="text" type="RichTextLabel" parent="player/HUD/fade"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = 197.0
+offset_top = 331.0
+offset_right = 2009.0
+offset_bottom = 1280.0
+theme_override_colors/default_color = Color(0.768627, 0, 0.00784314, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0.054902, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("10_k8nij")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]On this day
+
+Laplace is born
+
+And thus"
+
+[node name="lightsOut" type="ColorRect" parent="player/HUD"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -1083.0
+offset_top = -604.0
+offset_right = 1277.0
+offset_bottom = 676.0
+color = Color(0, 0, 0, 1)
+
+[node name="text" type="RichTextLabel" parent="player/HUD/lightsOut"]
+modulate = Color(0.466667, 0.466667, 0.466667, 1)
+layout_mode = 0
+offset_left = 163.0
+offset_top = 1091.0
+offset_right = 1975.0
+offset_bottom = 1213.0
+theme_override_colors/default_color = Color(0.768627, 0, 0.00784314, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0.054902, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("10_k8nij")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Loading..."
+
+[node name="fadeAnim" type="AnimationPlayer" parent="player/HUD"]
+libraries = {
+"": SubResource("AnimationLibrary_h1hmh")
+}
+
+[node name="bobAnim" type="AnimationPlayer" parent="player"]
+root_node = NodePath("../..")
+autoplay = "bob"
+libraries = {
+"": SubResource("AnimationLibrary_pb6fc")
+}
+
+[node name="hitbox" type="CollisionShape3D" parent="player"]
+shape = SubResource("CapsuleShape3D_ilfv1")
+
+[node name="playerScale" type="MeshInstance3D" parent="player"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_36p33")
+skeleton = NodePath("../..")
+
+[node name="head" type="Node3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+
+[node name="cam" type="Camera3D" parent="player/head"]
+current = true
+
+[node name="interactCast" type="RayCast3D" parent="player/head/cam"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -10, 0)
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="collisionCast" type="RayCast3D" parent="player/head/cam"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -10, 0)
+
+[node name="floorCast" type="RayCast3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.61855, 0)
+target_position = Vector3(0, -0.5, 0)
+collision_mask = 24
+
+[node name="footstepsWood" type="AudioStreamPlayer3D" parent="player" groups=["sfx"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
+stream = ExtResource("11_vcntb")
+
+[node name="footstepsGravel" type="AudioStreamPlayer3D" parent="player" groups=["sfx"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
+stream = ExtResource("12_o00ln")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_m5qal")
+
+[node name="sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.866025, 0.5, 0, -0.5, -0.866025, 3.37842, 2.1179, 0)
+light_color = Color(1, 0.0392157, 0, 1)
+light_energy = 0.2
+shadow_enabled = true
+
+[node name="floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.4357, 0.887194, -41.6985)
+shape = SubResource("ConcavePolygonShape3D_e1bl6")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 21.879, 0.887194, -41.6985)
+shape = SubResource("ConcavePolygonShape3D_f06kc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 21.879, 0.887194, 20.8)
+shape = SubResource("ConcavePolygonShape3D_f06kc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.69474, -0.0694116, -42.8848)
+shape = SubResource("BoxShape3D_5vmxa")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.16105, 0, 0, 0, 1, 5.43914, 1.5157, 0.779517)
+mesh = SubResource("BoxMesh_vfp6p")
+surface_material_override/0 = SubResource("StandardMaterial3D_hhtga")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 10, 0, 0, 0, 1, 5.439, -0.618416, 0.78)
+mesh = SubResource("BoxMesh_vfp6p")
+surface_material_override/0 = SubResource("StandardMaterial3D_hhtga")
