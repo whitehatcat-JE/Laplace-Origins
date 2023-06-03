@@ -2030,7 +2030,7 @@ tracks/13/path = NodePath("bedroom/desk/monitorScreen/monitorImage:surface_mater
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(1.9, 14.2),
+"times": PackedFloat32Array(1.9, 12),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [SubResource("StandardMaterial3D_vk4p3"), SubResource("StandardMaterial3D_5rhmc")]
@@ -2038,103 +2038,103 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("WorldEnvironment/ambientLight:visible")
+tracks/14/path = NodePath("hallway/voidDoor/Door:rotation")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("hallway/voidDoor/Door:rotation")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(1.5, 2.5),
+"times": PackedFloat32Array(1.5, 2.4),
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Vector3(0, -1.42109e-14, 0), Vector3(3.70147e-08, 0.213314, 3.96299e-09)]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("hallway/window:material_override")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("StandardMaterial3D_rdamv"), SubResource("StandardMaterial3D_gp4vs")]
+}
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("hallway/window:material_override")
+tracks/16/path = NodePath("hallway/SpotLight3D:light_color")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_rdamv"), SubResource("StandardMaterial3D_gp4vs")]
+"values": [Color(0.239216, 0.337255, 0.760784, 1), Color(1, 0, 0.0392157, 1)]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("hallway/SpotLight3D:light_color")
+tracks/17/path = NodePath("hallway/SpotLight3D:light_energy")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Color(0.239216, 0.337255, 0.760784, 1), Color(1, 0, 0.0392157, 1)]
+"values": [1.0, 4.0]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("hallway/SpotLight3D:light_energy")
+tracks/18/path = NodePath("hallway/CeilingLamp:surface_material_override/2")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1.0, 4.0]
+"values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_sjfwu")]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("hallway/CeilingLamp:surface_material_override/2")
+tracks/19/path = NodePath("hallway/CeilingLamp2:surface_material_override/2")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_sjfwu")]
+"values": [SubResource("StandardMaterial3D_a0p8n"), SubResource("StandardMaterial3D_sjfwu")]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("hallway/CeilingLamp2:surface_material_override/2")
+tracks/20/path = NodePath("bedroom/CeilingLamp:surface_material_override/2")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_a0p8n"), SubResource("StandardMaterial3D_sjfwu")]
+"values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_sjfwu")]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("bedroom/CeilingLamp:surface_material_override/2")
+tracks/21/path = NodePath("hallway/staircaseSpotlight:surface_material_override/2")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_sjfwu")]
+"values": [SubResource("StandardMaterial3D_arrrt"), SubResource("StandardMaterial3D_sjfwu")]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("hallway/staircaseSpotlight:surface_material_override/2")
+tracks/22/path = NodePath("walls/spotLight:surface_material_override/2")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
@@ -2146,7 +2146,7 @@ tracks/22/keys = {
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("walls/spotLight:surface_material_override/2")
+tracks/23/path = NodePath("hallway/staircaseSpotlight2:surface_material_override/2")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
@@ -2158,19 +2158,19 @@ tracks/23/keys = {
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("hallway/staircaseSpotlight2:surface_material_override/2")
+tracks/24/path = NodePath("basement/CeilingLamp2:surface_material_override/2")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_arrrt"), SubResource("StandardMaterial3D_sjfwu")]
+"values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_sjfwu")]
 }
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("basement/CeilingLamp2:surface_material_override/2")
+tracks/25/path = NodePath("basement/CeilingLamp:surface_material_override/2")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
@@ -2182,62 +2182,74 @@ tracks/25/keys = {
 tracks/26/type = "value"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("basement/CeilingLamp:surface_material_override/2")
+tracks/26/path = NodePath("hallway/window2:visible")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_sjfwu")]
+"values": [false, true]
 }
 tracks/27/type = "value"
 tracks/27/imported = false
 tracks/27/enabled = true
-tracks/27/path = NodePath("hallway/window2:visible")
+tracks/27/path = NodePath("walls/Router/routerLogo:modulate")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false, true]
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
 }
 tracks/28/type = "value"
 tracks/28/imported = false
 tracks/28/enabled = true
-tracks/28/path = NodePath("walls/Router/routerLogo:modulate")
+tracks/28/path = NodePath("basement/crt/crtLogos:modulate")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+"values": [Color(0.027451, 1, 0, 1), Color(0, 0, 0, 1)]
 }
 tracks/29/type = "value"
 tracks/29/imported = false
 tracks/29/enabled = true
-tracks/29/path = NodePath("basement/crt/crtLogos:modulate")
+tracks/29/path = NodePath("powercutSFX:playing")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/keys = {
-"times": PackedFloat32Array(0, 1.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Color(0.027451, 1, 0, 1), Color(0, 0, 0, 1)]
-}
-tracks/30/type = "value"
-tracks/30/imported = false
-tracks/30/enabled = true
-tracks/30/path = NodePath("powercutSFX:playing")
-tracks/30/interp = 1
-tracks/30/loop_wrap = true
-tracks/30/keys = {
 "times": PackedFloat32Array(1.8),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("WorldEnvironment/ambientLight:light_color")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(0, 0, 0, 1), Color(1, 0.0117647, 0, 1)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("player/HUD/lightsOut:modulate")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0, 1.8, 2.2, 2.5),
+"transitions": PackedFloat32Array(0, 1, 2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n2502"]
@@ -2256,6 +2268,7 @@ size = Vector2(2, 1.125)
 
 [sub_resource type="Animation" id="Animation_ytsih"]
 resource_name = "zoom"
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2287,9 +2300,15 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.9, 0.91, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
+"args": [false],
+"method": &"toggleLoading"
+}, {
+"args": [true],
+"method": &"toggleLoading"
+}, {
 "args": [],
 "method": &"switchPauseState"
 }]
@@ -2346,8 +2365,7 @@ environment = SubResource("Environment_unycy")
 
 [node name="ambientLight" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.03625, 0)
-visible = false
-light_color = Color(1, 0.0117647, 0, 1)
+light_color = Color(0, 0, 0, 1)
 light_energy = 0.05
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
@@ -3788,6 +3806,30 @@ text = "[center]On this day
 Laplace is born
 
 And thus"
+
+[node name="lightsOut" type="ColorRect" parent="player/HUD"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -1083.0
+offset_top = -604.0
+offset_right = 1277.0
+offset_bottom = 676.0
+color = Color(0, 0, 0, 1)
+
+[node name="text" type="RichTextLabel" parent="player/HUD/lightsOut"]
+modulate = Color(0.466667, 0.466667, 0.466667, 1)
+layout_mode = 0
+offset_left = 163.0
+offset_top = 1091.0
+offset_right = 1975.0
+offset_bottom = 1213.0
+theme_override_colors/default_color = Color(0.768627, 0, 0.00784314, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0.054902, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("150_blp0k")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Loading..."
 
 [node name="fadeAnim" type="AnimationPlayer" parent="player/HUD"]
 libraries = {
@@ -5372,6 +5414,14 @@ modulate = Color(0.356863, 0.356863, 0.356863, 1)
 pixel_size = 0.0125
 texture_filter = 0
 texture = ExtResource("159_2hxwc")
+
+[node name="loadingLabel" type="Label3D" parent="mainMenu/screen"]
+transform = Transform3D(1, 2.06057e-13, 0, 0, 1, -9.9476e-14, 0, -2.84217e-14, 1, 0.84919, -0.514215, 0.0108261)
+visible = false
+pixel_size = 0.0005
+text = "Loading..."
+font = ExtResource("150_blp0k")
+font_size = 128
 
 [node name="menuCam" type="Camera3D" parent="mainMenu"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034, 0.258, 0.387)

@@ -93,6 +93,7 @@ func _on_player_interacted(interactionName:String) -> void:
 			player.unlockedInteractions.append("router")
 			$basement/crt/usbStick.visible = true
 			GI.progress = 6
+			$bedroom/pcWindow/pcOS/homeScreen/menuBar/menuAnims.play("glitchShooter")
 		"piano":
 			player.unlockedInteractions.erase("piano")
 			$bedroom/Bed/bedLump.visible = true

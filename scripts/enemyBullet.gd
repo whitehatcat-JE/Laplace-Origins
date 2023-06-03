@@ -9,12 +9,14 @@ var dead:bool = false
 func _process(delta):
 	if dead:
 		if !$explosionParticles.emitting: queue_free();
+		return
 	position += direction * delta * SPEED
 
 func kill():
 	$explosionParticles.emitting = true
 	$sprite.visible = false
 	$hitbox.set_deferred("disabled", true)
+	dead = true
 
 func _on_decay_timer_timeout():
 	kill()

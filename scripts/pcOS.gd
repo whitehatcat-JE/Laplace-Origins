@@ -76,8 +76,9 @@ func eventTriggered(event) -> void:
 					$homeScreen/emailWindow/emailAnims.play("emailDisappear")
 				else:
 					$homeScreen/emailWindow/emailAnims.play("emailAppear")
-					GI.progress = 1
-					emit_signal("updatedProgress")
+					if GI.progress == 0:
+						GI.progress = 1
+						emit_signal("updatedProgress")
 				emailDisplaying = !emailDisplaying
 			"emailQuit":
 				clickSFX.play()

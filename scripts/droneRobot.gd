@@ -8,6 +8,7 @@ var dead:bool = false
 func _physics_process(delta):
 	if dead:
 		if !$explosionParticles.emitting and !$healParticles.emitting: queue_free();
+		return
 	move_and_slide()
 
 func kill():

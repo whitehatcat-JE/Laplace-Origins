@@ -1,4 +1,4 @@
-[gd_scene load_steps=122 format=3 uid="uid://dcf34l30ctj4m"]
+[gd_scene load_steps=115 format=3 uid="uid://dcf34l30ctj4m"]
 
 [ext_resource type="Script" path="res://scripts/outside.gd" id="1_6fiwc"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_mu5ff"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://b4a1llenxad28" path="res://assets/2d/UI/interactIcon.png" id="4_u8r2v"]
 [ext_resource type="Texture2D" uid="uid://cigjq25fsqn45" path="res://assets/2d/UI/interactIconLocked.png" id="5_nrsfi"]
 [ext_resource type="ArrayMesh" uid="uid://df4qa2heyeu4s" path="res://assets/3d/laplace/houseExterior.obj" id="6_706m6"]
-[ext_resource type="ArrayMesh" uid="uid://b1esmpe2hanes" path="res://assets/3d/laplace/laplaceArms.obj" id="6_l5kte"]
 [ext_resource type="Shader" path="res://scripts/shaders/noise.gdshader" id="7_7tol6"]
 [ext_resource type="Texture2D" uid="uid://bfp30fvpiae72" path="res://assets/3d/textures/concrete3-bl/concrete3-albedo.png" id="7_l0syg"]
 [ext_resource type="Texture2D" uid="uid://c47pdqpchx4d8" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-albedo.png" id="7_vduld"]
@@ -260,14 +259,14 @@ tracks/3/path = NodePath("HUD/text:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 15, 21),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["[center]On this day
 
 Laplace is born
 
-And thus", "[center]Creation Weeps"]
+And thus", "[center]Creation Weeps", "[center]End of recording"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -329,14 +328,14 @@ tracks/3/path = NodePath("HUD/text:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 15, 21),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["[center]On this day
 
 Laplace is born
 
-And thus", "[center]Creation Weeps"]
+And thus", "[center]Creation Weeps", "[center]End of recording"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -422,14 +421,14 @@ tracks/3/path = NodePath("HUD/text:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 15, 21),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["[center]On this day
 
 Laplace is born
 
-And thus", "[center]Creation Weeps"]
+And thus", "[center]Creation Weeps", "[center]End of recording"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -515,14 +514,14 @@ tracks/3/path = NodePath("HUD/text:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 15, 21),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["[center]On this day
 
 Laplace is born
 
-And thus", "[center]Creation Weeps"]
+And thus", "[center]Creation Weeps", "[center]End of recording"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -608,14 +607,14 @@ tracks/3/path = NodePath("HUD/text:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 15, 21),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["[center]On this day
 
 Laplace is born
 
-And thus", "[center]Creation Weeps"]
+And thus", "[center]Creation Weeps", "[center]End of recording"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -701,14 +700,15 @@ tracks/3/path = NodePath("HUD/text:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 15, 21),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["[center]On this day
 
 Laplace is born
 
-And thus", "[center]Creation Weeps"]
+And thus", "[center]Creation Weeps", "[center]End of recording
+"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -794,14 +794,14 @@ tracks/3/path = NodePath("HUD/text:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 15, 21),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["[center]On this day
 
 Laplace is born
 
-And thus", "[center]Creation Weeps"]
+And thus", "[center]Creation Weeps", "[center]End of recording"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -887,14 +887,14 @@ tracks/3/path = NodePath("HUD/text:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 15, 21),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["[center]On this day
 
 Laplace is born
 
-And thus", "[center]Creation Weeps"]
+And thus", "[center]Creation Weeps", "[center]End of recording"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -980,14 +980,14 @@ tracks/3/path = NodePath("HUD/text:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 15, 21),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["[center]On this day
 
 Laplace is born
 
-And thus", "[center]Creation Weeps"]
+And thus", "[center]Creation Weeps", "[center]End of recording"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1073,14 +1073,14 @@ tracks/3/path = NodePath("HUD/text:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 15, 21),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["[center]On this day
 
 Laplace is born
 
-And thus", "[center]Creation Weeps"]
+And thus", "[center]Creation Weeps", "[center]End of recording"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1166,14 +1166,14 @@ tracks/3/path = NodePath("HUD/text:text")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 15, 21),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["[center]On this day
 
 Laplace is born
 
-And thus", "[center]Creation Weeps"]
+And thus", "[center]Creation Weeps", "[center]End of recording"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1385,29 +1385,6 @@ size = Vector3(50, 0.531, 12.089)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vgvk"]
 albedo_color = Color(0.34902, 0.34902, 0.34902, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_pv2mi"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3khem"]
-seamless = true
-noise = SubResource("FastNoiseLite_pv2mi")
-
-[sub_resource type="Gradient" id="Gradient_fa654"]
-colors = PackedColorArray(0.203125, 0.00562075, 0, 1, 1, 0, 0.0529971, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_86jju"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vc6s3"]
-seamless = true
-color_ramp = SubResource("Gradient_fa654")
-noise = SubResource("FastNoiseLite_86jju")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wg6rd"]
-albedo_texture = SubResource("NoiseTexture2D_3khem")
-emission_enabled = true
-emission = Color(0.435294, 0, 0, 1)
-emission_energy_multiplier = 0.5
-emission_texture = SubResource("NoiseTexture2D_vc6s3")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogbp6"]
 cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
@@ -1435,7 +1412,7 @@ sky_mode = 1
 
 [node name="outdoor" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("63_y3pwj")
-volume_db = -20.0
+volume_db = -2.0
 
 [node name="outdoorDistorted" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("64_nkxij")
@@ -1453,6 +1430,7 @@ script = ExtResource("2_q1vue")
 lockYRot = true
 
 [node name="HUD" type="Control" parent="player"]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -4500,55 +4478,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 79.051
 mesh = SubResource("BoxMesh_u7tfw")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_0vgvk")
-
-[node name="LaplaceArms" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.258819, -0.965926, -4.2222e-08, 0, -4.37114e-08, 1, -0.965926, 0.258819, 1.13133e-08, -344.32, -1.22481, 166.881)
-visible = false
-material_override = SubResource("StandardMaterial3D_wg6rd")
-cast_shadow = 0
-mesh = ExtResource("6_l5kte")
-
-[node name="LaplaceArms2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.872428, 0.488743, 2.13636e-08, 0, -4.37114e-08, 1, 0.488743, -0.872428, -3.8135e-08, -211.365, -1.22481, 421.409)
-visible = false
-material_override = SubResource("StandardMaterial3D_wg6rd")
-cast_shadow = 0
-mesh = ExtResource("6_l5kte")
-
-[node name="LaplaceArms3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.258819, -0.965926, -4.2222e-08, 9.1951e-16, -4.37114e-08, 1, -0.965926, -0.258819, -1.13134e-08, 221.859, -35.5836, 762.467)
-visible = false
-material_override = SubResource("StandardMaterial3D_wg6rd")
-cast_shadow = 0
-mesh = ExtResource("6_l5kte")
-
-[node name="LaplaceArms4" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.5, 0.866025, 3.78552e-08, 0, -4.37114e-08, 1, 0.866025, 0.5, 2.18557e-08, -70.6955, -35.5836, 207.919)
-visible = false
-material_override = SubResource("StandardMaterial3D_wg6rd")
-cast_shadow = 0
-mesh = ExtResource("6_l5kte")
-
-[node name="LaplaceArms5" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.5, -0.866026, -3.78552e-08, 6.15953e-17, -4.37114e-08, 1, -0.866026, 0.5, 2.18557e-08, -35.0121, -29.3246, -6.74405)
-visible = false
-material_override = SubResource("StandardMaterial3D_wg6rd")
-cast_shadow = 0
-mesh = ExtResource("6_l5kte")
-
-[node name="LaplaceArms7" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.5, -0.866026, -3.78552e-08, 6.15953e-17, -4.37114e-08, 1, -0.866026, 0.5, 2.18557e-08, -174.427, -14.0256, 34.6897)
-visible = false
-material_override = SubResource("StandardMaterial3D_wg6rd")
-cast_shadow = 0
-mesh = ExtResource("6_l5kte")
-
-[node name="LaplaceArms6" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.258819, 0.965926, 4.2222e-08, -1.53837e-15, -4.37114e-08, 1, 0.965926, -0.258819, -1.13133e-08, -130.786, -29.3246, 22.5412)
-visible = false
-material_override = SubResource("StandardMaterial3D_wg6rd")
-cast_shadow = 0
-mesh = ExtResource("6_l5kte")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.89778, 4.47035e-08, -0.776456, -0.254404, 2.8344, 0.949448, 0.733596, 0.982941, -2.73782, -552.955, 230, -33.147)

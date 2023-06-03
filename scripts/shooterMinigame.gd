@@ -11,6 +11,7 @@ var score:int = 0
 
 var corrupted:bool = false
 var laplaceDescended:bool = false
+var laplaceBulletSpeed = 1.0
 
 @onready var brokenHeartTexture:Texture = preload("res://assets/2d/shooterMinigame/heartBroken.png")
 @onready var fullHeartTexture:Texture = preload("res://assets/2d/shooterMinigame/heartFull.png")
@@ -21,10 +22,7 @@ var laplaceDescended:bool = false
 @onready var slimeRobot:PackedScene = preload("res://objects/slimeRobot.tscn")
 @onready var droneRobot:PackedScene = preload("res://objects/droneRobot.tscn")
 @onready var motherfish:PackedScene = preload("res://objects/motherfish.tscn")
-
-
-func _ready():
-	corrupt()
+@onready var corruptBullet:PackedScene = preload("res://objects/enemyBulletCorrupt.tscn")
 
 func corrupt():
 	$arenaTilemap.visible = false
@@ -67,8 +65,8 @@ func begin():
 	$player.alive = true
 	$HUD/beginButton.visible = false
 	$HUD/beginButton/interact/hitbox.set_deferred("disabled", true)
-	_on_spawn_timer_timeout()
 	timeSinceStarted = 120.0 if corrupted else 0.0
+	_on_spawn_timer_timeout()
 
 func _process(delta):
 	if !GI.shooterActive: return;
@@ -90,7 +88,6 @@ func _on_player_damage():
 		2: $HUD/heartC.texture = brokenHeartTexture;
 		1: $HUD/heartB.texture = brokenHeartTexture;
 		0:
-			print(timeSinceStarted)
 			$HUD/heartA.texture = brokenHeartTexture
 			$player.alive = false
 			$spawnTimer.stop()
@@ -108,7 +105,7 @@ func _on_player_damage():
 
 func _on_spawn_timer_timeout():
 	if !$player.alive: return;
-	if timeSinceStarted > 240.0:
+	if timeSinceStarted > 210.0 and corrupted:
 		while len(allEnemies) > 0:
 			var nextEnemy = allEnemies.pop_front()
 			if nextEnemy != null: nextEnemy.kill()
@@ -149,3 +146,22 @@ func _on_spawn_timer_timeout():
 		spawnTween.tween_property(newRobot, "position", chosenSpawnpoint.get_node("activationPoint").global_position, 0.5)
 		spawnTween.tween_callback(newRobot.activate)
 	$spawnTimer.start()
+
+func _on_laplace_bullet_timer_timeout():
+	if $laplace/laplaceBulletTimer.wait_time > 0.05:
+		$laplace/laplaceBulletTimer.wait_time *= 0.95
+	else:
+		laplaceBulletSpeed += 0.0025
+	$laplace/bulletPivot.look_at(GI.playerPos2D)
+	for dir in $laplace/bulletPivot.get_children():
+		var newBullet:Node = corruptBullet.instantiate()
+		get_parent().add_child(newBullet)
+		newBullet.position = $laplace/bulletPivot.global_position
+		newBullet.direction = Vector2(laplaceBulletSpeed, 0).rotated(
+			newBullet.position.angle_to_point(dir.global_position))
+
+func toggleLaplaceBullets(enable:bool) -> void:
+	$laplace/laplaceBulletTimer.wait_time = 1.0
+	laplaceBulletSpeed = 1.0
+	if enable: $laplace/laplaceBulletTimer.start();
+	else: $laplace/laplaceBulletTimer.stop();

@@ -17,6 +17,8 @@ enum MENU {
 const SCROLL_SPEED:float = 1.0
 var scrollPos:float = 0.0
 
+var firstLoad:bool = true
+
 var menuOpen:bool = true
 var keybindsOpen:bool = false
 var helpOpen:bool = false
@@ -66,7 +68,6 @@ func _ready() -> void:
 	$settingsMenu/sfxOption.text = "SFX <" + str(sfxSetting) + ">"
 	for sfx in get_tree().get_nodes_in_group("sfx"):
 		sfx.volume_db = sfxVolumes[sfx] - (10 - sfxSetting) * 2 if sfxSetting > 0 else -80
-	
 	get_tree().paused = true
 
 func _process(delta) -> void:
@@ -252,3 +253,11 @@ func switchPauseState() -> void:
 		else:
 			get_parent().playerCam.current = true
 		get_parent().get_node("player/HUD").modulate = "ffffff"
+		if firstLoad:
+			firstLoad = false
+			$screen/loadingLabel.visible = false
+
+func toggleLoading(enable:bool) -> void:
+	if !firstLoad: return;
+	if enable: $screen/loadingLabel.visible = true
+	else: $screen/loadingLabel.visible = false

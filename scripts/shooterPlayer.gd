@@ -37,10 +37,12 @@ func _physics_process(delta):
 
 func _on_enemy_scanner_body_entered(body):
 	if !alive: return;
+	print(body)
 	body.kill()
 	emit_signal("damage")
 
 func _on_enemy_scanner_area_entered(area):
 	if !alive: return;
+	print(area)
 	area.kill()
 	emit_signal("damage")

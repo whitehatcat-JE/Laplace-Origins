@@ -4,6 +4,7 @@ var curSong:String = "none"
 var maxVolume:float = 0
 
 func play(songName:String) -> void:
+	if curSong == songName: return;
 	if get_node_or_null(curSong) != null:
 		var fadeOutTween:Tween = get_tree().create_tween()
 		fadeOutTween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)

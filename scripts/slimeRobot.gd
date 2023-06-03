@@ -22,6 +22,7 @@ func _physics_process(delta):
 	if !active: return;
 	if dead:
 		if !$explosionParticles.emitting: queue_free();
+		return
 	if velocity.length() < 10.0:
 		velocity = Vector2(JUMP_SPEED, 0).rotated(randf_range(-PI, PI))
 	velocity -= velocity * delta * DRAG

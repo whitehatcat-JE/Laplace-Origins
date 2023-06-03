@@ -13,6 +13,7 @@ func _physics_process(delta):
 	if !active: return;
 	if dead:
 		if !$explosionParticles.emitting: queue_free();
+		return
 	velocity = Vector2(SPEED, 0).rotated(position.angle_to_point(GI.playerPos2D))
 
 	move_and_slide()
