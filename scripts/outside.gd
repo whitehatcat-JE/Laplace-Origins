@@ -10,6 +10,9 @@ func _ready() -> void:
 		enviro.get_environment().set_ssil_enabled(false)
 		enviro.get_environment().set_ssao_enabled(false)
 		enviro.get_environment().set_volumetric_fog_enabled(false)
+	$player/HUD/fadeAnim.play("fade")
+	if GI.previousScreen != null:
+		GI.previousScreen.call_deferred("free")
 
 func playOutdoors():
 	if GI.musicVolume == 0: return;

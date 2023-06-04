@@ -70,6 +70,7 @@ func _ready() -> void:
 		sfx.volume_db = sfxVolumes[sfx] - (10 - sfxSetting) * 2 if sfxSetting > 0 else -80
 	get_tree().paused = true
 
+
 func _process(delta) -> void:
 	if menuOpen:
 		scrollPos += SCROLL_SPEED * delta

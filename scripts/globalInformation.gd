@@ -9,3 +9,5 @@ var graphics:String = "High"
 var playerPos2D:Vector2 = Vector2()
 var shooterActive:bool = true
 var inOS:bool = false
+
+var previousScreen

@@ -7,7 +7,7 @@ const MOUSE_SENSITIVITY:float = 0.15
 const DECELERATION:float = 20.0
 
 var cameraAngle:float = 0
-var disabled:bool = false
+@export var disabled:bool = false
 
 var unlockedInteractions = ["monitor", "passcode", "crt", "piano"]
 

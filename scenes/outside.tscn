@@ -98,10 +98,10 @@ ambient_light_color = Color(1, 0.0196078, 0, 1)
 ambient_light_energy = 0.06
 ssao_enabled = true
 sdfgi_enabled = true
+fog_enabled = true
 fog_light_color = Color(0.372549, 0.0313726, 0, 1)
 fog_sky_affect = 0.0
 fog_height_density = 1.8824
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
 volumetric_fog_albedo = Color(1, 0, 0.0196078, 1)
 volumetric_fog_length = 48.0
@@ -1236,7 +1236,6 @@ normal_enabled = true
 normal_texture = ExtResource("11_80xpu")
 ao_enabled = true
 ao_texture = ExtResource("8_r08oy")
-heightmap_enabled = true
 heightmap_texture = ExtResource("9_iacf1")
 uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true
@@ -1427,10 +1426,10 @@ collision_layer = 4
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("2_q1vue")
+disabled = true
 lockYRot = true
 
 [node name="HUD" type="Control" parent="player"]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -1486,8 +1485,7 @@ offset_bottom = 684.0
 color = Color(0.819608, 0, 0.00784314, 1)
 
 [node name="fadeAnim" type="AnimationPlayer" parent="player/HUD"]
-autoplay = "fade"
-speed_scale = 0.15
+speed_scale = 0.2
 libraries = {
 "": SubResource("AnimationLibrary_x3k5n")
 }

@@ -39,13 +39,13 @@ func _on_player_interacted(interactionName:String) -> void:
 			if GI.progress == 8:
 				$bedroom/Bed/bedLump.visible = false
 				player.unlockedInteractions.erase("monitor")
-				player.unlockedInteractions.append("exitHome")
 				$pianoRoom/triggerField2.set_deferred("monitoring", true)
 				$bedroom/easSFX.stop()
 				$hallway/sirenSFX.stop()
 				audioManager.play("none")
 				$bedroom/pcWindow/pcOS/safeMessage.visible = true
 				$powercutAnim.play("cutPower")
+				$pianoRoom/SpotLight.visible = false
 			else:
 				GI.inOS = true
 				player.disabled = true
@@ -129,6 +129,7 @@ func _on_pc_os_updated_progress() -> void:
 
 func _on_passcode_entry_updated_progress() -> void:
 	player.unlockedInteractions.erase("passcode")
+	$hallway/clock/clockTimer.start()
 	$basement/doorAnims.play("openDoor")
 
 func _on_passcode_entry_exit_passcode() -> void:
@@ -154,3 +155,21 @@ func _on_fade_anim_animation_finished(anim_name) -> void:
 func _on_trigger_field_2_body_entered(body) -> void:
 	$pianoRoom/triggerField2.set_deferred("monitoring", false)
 	$pianoRoom/eye2Anim.play("drawBack")
+
+func _on_city_trigger_field_body_entered(body) -> void:
+	$basement/cityTriggerField.set_deferred("monitoring", false)
+	player.look_at($basement/cityFacePos.global_position)
+	player.rotation_degrees = Vector3(0.0, player.rotation_degrees.y, 0.0)
+	var root = get_node("/root")
+	var homeScene = get_node("/root/home")
+	GI.previousScreen = homeScene
+	root.call_deferred("remove_child", homeScene)
+	var cityScene = load("res://scenes/city.tscn")
+	cityScene = cityScene.instantiate()
+	root.add_child(cityScene)
+
+func _on_city_exit_trigger_field_body_entered(body) -> void:
+	$basement/cityTriggerField.set_deferred("monitoring", true)
+	
+func unlockOutdoors() -> void:
+	player.unlockedInteractions.append("exitHome")
