@@ -3137,6 +3137,7 @@ surface_material_override/2 = ExtResource("33_1rvxh")
 
 [node name="calender" type="Sprite3D" parent="bedroom"]
 transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -2.68709, 1.96131, -1.47857)
+visible = false
 flip_h = true
 pixel_size = 0.0005
 shaded = true
@@ -5686,7 +5687,7 @@ font = ExtResource("150_blp0k")
 font_size = 64
 
 [node name="interactLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.274656, -0.240002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.257793, -0.240002)
 pixel_size = 0.0005
 modulate = Color(1, 0, 0.0392157, 1)
 outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
@@ -5695,7 +5696,7 @@ font = ExtResource("150_blp0k")
 font_size = 64
 
 [node name="unfocusLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.232565, -0.240002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.215702, -0.240002)
 pixel_size = 0.0005
 modulate = Color(1, 0, 0.0392157, 1)
 outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
@@ -5704,7 +5705,7 @@ font = ExtResource("150_blp0k")
 font_size = 64
 
 [node name="unfocusNote" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.205574, -0.240002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.188711, -0.240002)
 pixel_size = 0.0005
 modulate = Color(1, 0, 0.0392157, 1)
 outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
@@ -5712,8 +5713,17 @@ text = "(Used to stop interacting with screens)"
 font = ExtResource("150_blp0k")
 font_size = 48
 
+[node name="shooterNote" type="Label3D" parent="mainMenu/keybindsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.288537, -0.240002)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "(Minigame uses WASD for movement and Arrows for shooting)"
+font = ExtResource("150_blp0k")
+font_size = 48
+
 [node name="menuLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.171096, -0.240002)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.154233, -0.240002)
 pixel_size = 0.0005
 modulate = Color(1, 0, 0.0392157, 1)
 outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
@@ -5722,7 +5732,7 @@ font = ExtResource("150_blp0k")
 font_size = 64
 
 [node name="backOption" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.114618, -0.239532)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.0977547, -0.239532)
 pixel_size = 0.0005
 modulate = Color(1, 0.568627, 0, 1)
 outline_modulate = Color(0.286275, 0.105882, 0, 1)
@@ -5788,7 +5798,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.335887, -0.240002)
 pixel_size = 0.0005
 modulate = Color(1, 0, 0.0392157, 1)
 outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "I seem to remember the circled numbers on my calendar having something to do with the passcode. Maybe I wrote down the order in my notebook? Guess I should check there first."
+text = "I seem to remember writing down the passcode somewhere in my notebook."
 font = ExtResource("150_blp0k")
 font_size = 64
 autowrap_mode = 2
@@ -5821,8 +5831,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.335887, -0.240002)
 pixel_size = 0.0005
 modulate = Color(1, 0, 0.0392157, 1)
 outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "624754 or 0624070504 
-(Both are valid)"
+text = "912346"
 font = ExtResource("150_blp0k")
 font_size = 64
 autowrap_mode = 2
@@ -5838,7 +5847,7 @@ font = ExtResource("150_blp0k")
 font_size = 128
 
 [node name="settingsMenu" type="Node3D" parent="mainMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165359, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00501426, 0)
 visible = false
 
 [node name="settingsTitle" type="Label3D" parent="mainMenu/settingsMenu"]
@@ -5877,8 +5886,17 @@ text = "Graphics <High>"
 font = ExtResource("150_blp0k")
 font_size = 128
 
+[node name="invertOption" type="Label3D" parent="mainMenu/settingsMenu"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.440449, 0.20422, -0.239532)
+pixel_size = 0.0005
+modulate = Color(1, 0, 0.0392157, 1)
+outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
+text = "Invert Y Axis <No>"
+font = ExtResource("150_blp0k")
+font_size = 128
+
 [node name="backOption" type="Label3D" parent="mainMenu/settingsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.18389, -0.239532)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.115527, -0.239532)
 pixel_size = 0.0005
 modulate = Color(1, 0.568627, 0, 1)
 outline_modulate = Color(0.286275, 0.105882, 0, 1)

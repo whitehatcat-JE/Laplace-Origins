@@ -1,5 +1,7 @@
 extends Node2D
 
+signal laplaceSpawned
+
 const STARTING_HEALTH:int = 3
 const STARTING_SPAWN_TIME:float = 3.0
 var playerHealth:int = STARTING_HEALTH
@@ -110,6 +112,7 @@ func _on_spawn_timer_timeout():
 			var nextEnemy = allEnemies.pop_front()
 			if nextEnemy != null: nextEnemy.kill()
 		$corruptGame.play("laplaceDescend")
+		emit_signal("laplaceSpawned")
 		laplaceDescended = true
 		return
 	

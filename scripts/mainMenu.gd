@@ -11,6 +11,7 @@ enum MENU {
 	music,
 	sfx,
 	graphics,
+	invert,
 	quit
 }
 
@@ -60,6 +61,8 @@ func _ready() -> void:
 		enviro.get_environment().set_ssao_enabled(false)
 		enviro.get_environment().set_volumetric_fog_enabled(false)
 		$settingsMenu/graphicsOption.text = "Graphics <" + graphicsSetting + ">"
+	
+	if GI.invertY: $settingsMenu/invertOption.text = "Invert Y Axis <Yes>";
 	
 	$settingsMenu/musicOption.text = "Music <" + str(musicSetting) + ">"
 	$"../audioManager".changeVolume(-20 + musicSetting * 2)
@@ -168,12 +171,18 @@ func _input(event) -> void:
 					for sfx in get_tree().get_nodes_in_group("sfx"):
 						sfx.volume_db = sfxVolumes[sfx] - (10 - sfxSetting) * 2 if sfxSetting > 0 else -80
 					GI.sfxVolume = sfxSetting
+				MENU.invert:
+					GI.invertY = !GI.invertY
+					if GI.invertY: $settingsMenu/invertOption.text = "Invert Y Axis <Yes>";
+					else: $settingsMenu/invertOption.text = "Invert Y Axis <No>";
 		elif (Input.is_action_just_pressed("moveForward") or Input.is_action_just_pressed("moveBackward")):
-			var menuNames = {MENU.back:"back", MENU.music:"music", MENU.sfx:"sfx", MENU.graphics:"graphics"}
+			var menuNames = {MENU.back:"back", MENU.music:"music", MENU.sfx:"sfx",
+				MENU.graphics:"graphics", MENU.invert:"invert"}
 			colorLabel(get_node("settingsMenu/" + menuNames[settingsMenu] + "Option"), unColor, unOutline)
 			if Input.is_action_just_pressed("moveForward"):
 				match settingsMenu:
-					MENU.back: settingsMenu = MENU.graphics;
+					MENU.back: settingsMenu = MENU.invert;
+					MENU.invert: settingsMenu = MENU.graphics;
 					MENU.music: settingsMenu = MENU.back;
 					MENU.sfx: settingsMenu = MENU.music;
 					MENU.graphics: settingsMenu = MENU.sfx;
@@ -182,7 +191,8 @@ func _input(event) -> void:
 					MENU.back: settingsMenu = MENU.music;
 					MENU.music: settingsMenu = MENU.sfx;
 					MENU.sfx: settingsMenu = MENU.graphics;
-					MENU.graphics: settingsMenu = MENU.back;
+					MENU.graphics: settingsMenu = MENU.invert;
+					MENU.invert: settingsMenu = MENU.back;
 			colorLabel(get_node("settingsMenu/" + menuNames[settingsMenu] + "Option"), sColor, sOutline)
 		return
 	if Input.is_action_just_pressed("moveForward"):

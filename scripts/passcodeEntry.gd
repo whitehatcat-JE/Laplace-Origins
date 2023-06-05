@@ -8,8 +8,8 @@ var mouseSensitivity:float = 0.5
 var currentInteraction:String = ""
 
 var buttonHeld:String = ""
-var passcode:String = "624754"
-var zeroedPasscode:String = "0624070504"
+var passcode:String = "912346"
+var zeroedPasscode:String = "912346"
 var userCode:String = ""
 
 @onready var minX:float = $boundaryNW.position.x

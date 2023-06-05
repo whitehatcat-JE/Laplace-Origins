@@ -33,7 +33,7 @@ func _input(event) -> void:
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
 		
-		var change = -event.relative.y * MOUSE_SENSITIVITY
+		var change = (1 if GI.invertY else -1) * event.relative.y * MOUSE_SENSITIVITY
 		if change + cameraAngle < 85 and change + cameraAngle > -85 and !lockYRot:
 			$head/cam.rotate_x(deg_to_rad(change))
 			cameraAngle += change

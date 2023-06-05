@@ -1,10 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://csnnn1yw8ccgs"]
+[gd_scene load_steps=43 format=3 uid="uid://csnnn1yw8ccgs"]
 
 [ext_resource type="Script" path="res://scripts/pcOS.gd" id="1_xeigj"]
 [ext_resource type="Texture2D" uid="uid://b8f2gr7p8vcd2" path="res://assets/2d/pcOS/dropBackground.png" id="2_j3svo"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="2_r5xwc"]
 [ext_resource type="Texture2D" uid="uid://dhbxv28wumo4r" path="res://assets/2d/UI/mousePointer.png" id="2_wtwt2"]
 [ext_resource type="Shader" path="res://scripts/shaders/blur.gdshader" id="3_s1hks"]
+[ext_resource type="Texture2D" uid="uid://5c58n8bo023d" path="res://assets/2d/pcOS/backgroundLaplace.jpg" id="4_tfwpu"]
 [ext_resource type="Texture2D" uid="uid://db3h652iy8rqm" path="res://assets/2d/UI/infinityLogoText.png" id="5_15xv0"]
 [ext_resource type="Texture2D" uid="uid://1ybrvdjx2poq" path="res://assets/2d/UI/mouseInteract.png" id="5_qgg84"]
 [ext_resource type="Texture2D" uid="uid://d02hm25iumb2l" path="res://assets/2d/pcOS/buttonSmall.png" id="6_rpg4f"]
@@ -590,6 +591,58 @@ _data = {
 "filesDisappear": SubResource("Animation_cb47g")
 }
 
+[sub_resource type="Animation" id="Animation_tthgl"]
+resource_name = "abyss"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("emailB/title:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["Data transfer();", "Contact attempt X87"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("emailB/sender:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["Anne", "Unknown"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("emailB/description:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["Congratu lations       ass0ciate!
+   Now take the USB $tick [color=orange][outline_color=red][font_size=45](Location Data: Attached to PC)[color=white][outline_color=white][font_size=32] and     p|ug it into the 
+
+server termin@l. [color=orange][outline_color=red][font_size=30](Location Data: Basement)", "After careful observation of the zeroed abyss, certain fluctuations in its data structure have led us to conclude that an as yet unexplored dimension must lie beyond.
+
+Unfortunately, our influence still cannot cross said abyss. Instead, we have decided on another avenue of experimentation; artificial worlds.
+
+By creating realms in the abyss akin to those used to birth singularities, we can allow entities from the beyond to interface with these realms, and hence observe their movements. "]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_83m2e"]
+_data = {
+"abyss": SubResource("Animation_tthgl")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkom"]
 size = Vector2(60, 60)
 
@@ -617,6 +670,12 @@ script = ExtResource("2_r5xwc")
 position = Vector2(1056, 410)
 scale = Vector2(0.516, 0.516)
 texture = ExtResource("2_j3svo")
+
+[node name="backgroundLaplace" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1057, 294)
+scale = Vector2(0.321739, 0.321739)
+texture = ExtResource("4_tfwpu")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(542, 328)
@@ -929,6 +988,8 @@ First I’m gonna need you to switch off the router near your wardrobe. Can’t 
 
 Then just run the .exe file and let it do its thing. Oh, and MAKE SURE you shut down the program before re-connecting your router. I’d like to avoid getting fired right after Christmas."
 autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="emailB" type="Node2D" parent="homeScreen/emailWindow"]
 visible = false
@@ -995,6 +1056,8 @@ text = "Congratu lations       ass0ciate!
 
 server termin@l. [color=orange][outline_color=red][font_size=30](Location Data: Basement)"
 autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="emailC" type="Node2D" parent="homeScreen/emailWindow"]
 visible = false
@@ -1051,6 +1114,8 @@ theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "Excellent job! Now just switch back on the router, and your assignment will be complete [color=red]: [color=white]]"
 autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
 
 [node name="quit" type="Label" parent="homeScreen/emailWindow"]
 offset_left = 466.0
@@ -1082,6 +1147,11 @@ shape = SubResource("RectangleShape2D_d85xy")
 [node name="emailAnims" type="AnimationPlayer" parent="homeScreen/emailWindow"]
 libraries = {
 "": SubResource("AnimationLibrary_86od8")
+}
+
+[node name="abyssMessageAnim" type="AnimationPlayer" parent="homeScreen/emailWindow"]
+libraries = {
+"": SubResource("AnimationLibrary_83m2e")
 }
 
 [node name="filesWindow" type="Node2D" parent="homeScreen"]
@@ -1558,5 +1628,6 @@ visible = false
 [connection signal="timeout" from="homeScreen/consoleWindow/newLineTimer" to="." method="_on_new_line_timer_timeout"]
 [connection signal="timeout" from="homeScreen/clockTimer" to="." method="_on_clock_timer_timeout"]
 [connection signal="timeout" from="emergencyAlert/alertScrollTimer" to="." method="_on_alert_scroll_timer_timeout"]
+[connection signal="laplaceSpawned" from="shooterMinigame" to="." method="_on_shooter_minigame_laplace_spawned"]
 
 [editable path="shooterMinigame"]

@@ -170,6 +170,7 @@ func _on_city_trigger_field_body_entered(body) -> void:
 
 func _on_city_exit_trigger_field_body_entered(body) -> void:
 	$basement/cityTriggerField.set_deferred("monitoring", true)
+	$bedroom/pcWindow/pcOS/homeScreen/emailWindow/abyssMessageAnim.play("abyss")
 	
 func unlockOutdoors() -> void:
 	player.unlockedInteractions.append("exitHome")

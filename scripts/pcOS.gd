@@ -282,3 +282,8 @@ func _on_alert_scroll_timer_timeout() -> void:
 	alertCharNum += 1
 	currentText = ("UNKNOWN "[7 - alertCharNum % 8] + currentText).substr(0, 300)
 	$emergencyAlert/alertText.text = currentText
+
+
+func _on_shooter_minigame_laplace_spawned():
+	$background.visible = false
+	$backgroundLaplace.visible = true
