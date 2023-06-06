@@ -101,7 +101,7 @@ func _on_player_interacted(interactionName:String) -> void:
 			$hallway/sirenSFX.play()
 			$pianoRoom/piano/pianoSFX.play()
 			$bedroom/pcWindow/pcOS/emergencyAlert.visible = true
-			$pianoRoom/eyes3.visible = true
+			$pianoRoom/arms.visible = true
 			$pianoRoom/triggerField.set_deferred("monitoring", true)
 			GI.progress = 8
 		"exitHome":
@@ -140,7 +140,7 @@ func _on_passcode_entry_exit_passcode() -> void:
 func _on_trigger_field_body_entered(body) -> void:
 	$pianoRoom/triggerField.set_deferred("monitoring", false)
 	if GI.progress == 8:
-		$pianoRoom/eyes3.visible = false
+		$pianoRoom/arms.visible = false
 		$audioManager/heartbeat.pitch_scale = 1.5
 		return
 	else:

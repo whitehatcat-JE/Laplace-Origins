@@ -18,7 +18,7 @@ func playOutdoors():
 	if GI.musicVolume == 0: return;
 	$outdoor.play()
 	var tween:Tween = get_tree().create_tween()
-	tween.tween_property($outdoor, "volume_db", -(10 - GI.musicVolume) * 2, 2).set_trans(Tween.TRANS_SINE)
+	tween.tween_property($outdoor, "volume_db", -(10 - GI.musicVolume) * 2, 5).set_trans(Tween.TRANS_SINE)
 
 func _on_reveal_trigger_body_entered(body) -> void:
 	$player.disabled = true

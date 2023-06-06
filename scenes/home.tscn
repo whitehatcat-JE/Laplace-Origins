@@ -1,4 +1,4 @@
-[gd_scene load_steps=436 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=442 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -23,6 +23,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b6owxc40x6jeh" path="res://assets/3d/monitorImage.obj" id="8_nq4cd"]
 [ext_resource type="ArrayMesh" uid="uid://bff888blpslor" path="res://assets/3d/desk.obj" id="8_xy3sd"]
 [ext_resource type="Material" uid="uid://bak4i13bdfs7n" path="res://assets/3d/materials/greenWallpaper.tres" id="9_6pp1r"]
+[ext_resource type="AudioStream" uid="uid://vne8x3iohh10" path="res://assets/audio/music/singularity.mp3" id="9_dcaq8"]
 [ext_resource type="Texture2D" uid="uid://c47pdqpchx4d8" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-albedo.png" id="10_b1uw2"]
 [ext_resource type="Material" uid="uid://cgusg8smqn8wc" path="res://assets/3d/materials/bricks.tres" id="10_eqkec"]
 [ext_resource type="ArrayMesh" uid="uid://bfqtupg7aqnqw" path="res://assets/3d/monitorScreen.obj" id="11_ftqtj"]
@@ -182,9 +183,13 @@
 [ext_resource type="AudioStream" uid="uid://da6rlttnlwkq0" path="res://assets/audio/sfx/screenInteract.mp3" id="166_lty44"]
 [ext_resource type="AudioStream" uid="uid://biipabva8sjck" path="res://assets/audio/sfx/menus/click.ogg" id="166_umgxd"]
 [ext_resource type="AudioStream" uid="uid://bic8hhf1jr3c2" path="res://assets/audio/sfx/menus/openMenu.mp3" id="170_h5y8n"]
+[ext_resource type="Texture2D" uid="uid://bxgx46a4bcvr4" path="res://assets/2d/laplace/eyesHorizontal.png" id="170_w1bso"]
 [ext_resource type="AudioStream" uid="uid://c7fyi8f3075ar" path="res://assets/audio/sfx/menus/closeMenu.mp3" id="171_7e0j7"]
+[ext_resource type="Texture2D" uid="uid://r7neg4je06ve" path="res://assets/2d/laplace/eyeHorizontal.png" id="171_chgct"]
 [ext_resource type="AudioStream" uid="uid://dhjt1wgsogur4" path="res://assets/audio/sfx/pianoThud.mp3" id="171_g1sq0"]
 [ext_resource type="AudioStream" uid="uid://8n7rmuvjk4e1" path="res://assets/audio/sfx/powercut.mp3" id="174_qdmtb"]
+[ext_resource type="ArrayMesh" uid="uid://b1esmpe2hanes" path="res://assets/3d/laplace/laplaceArms.obj" id="177_dhw84"]
+[ext_resource type="Texture2D" uid="uid://cg2pc10rbvf8k" path="res://assets/2d/shooterMinigame/laplace.png" id="178_ig8bl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4ojb"]
 sky_top_color = Color(0.0627451, 0.733333, 1, 1)
@@ -1850,6 +1855,10 @@ albedo_texture = ExtResource("91_67n5f")
 emission_enabled = true
 emission_texture = ExtResource("91_67n5f")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bpx5"]
+shading_mode = 0
+albedo_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Animation" id="Animation_lj6wg"]
 resource_name = "drawBack"
 length = 3.0
@@ -2448,6 +2457,9 @@ volume_db = -20.0
 
 [node name="heartbeat" type="AudioStreamPlayer" parent="audioManager" groups=["sfx"]]
 stream = ExtResource("7_jbwer")
+
+[node name="singularity" type="AudioStreamPlayer" parent="audioManager" groups=["sfx"]]
+stream = ExtResource("9_dcaq8")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_unycy")
@@ -5178,16 +5190,18 @@ texture = ExtResource("138_nccd0")
 [node name="jumpscareEyeA" type="Sprite3D" parent="basement"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.648215, -1.52637, 0.435103)
 visible = false
+pixel_size = 0.003
 billboard = 1
 shaded = true
-texture = ExtResource("93_a3ujf")
+texture = ExtResource("170_w1bso")
 
 [node name="jumpscareEyeB" type="Sprite3D" parent="basement"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.96877, -1.52637, 0.435103)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.96877, -2.50084, 0.733888)
 visible = false
+pixel_size = 0.02
 billboard = 1
 shaded = true
-texture = ExtResource("93_a3ujf")
+texture = ExtResource("171_chgct")
 
 [node name="arms" type="Node3D" parent="basement"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.59669, 0)
@@ -5499,17 +5513,31 @@ mesh = SubResource("SphereMesh_2p2ue")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
 
-[node name="eyes3" type="MeshInstance3D" parent="pianoRoom"]
-transform = Transform3D(0.0540338, -0.000262115, -0.0841443, 0.000671605, 0.0999977, 0.000119775, 0.084142, -0.000629836, 0.0540343, -7.0602, 2.54219, 5.47052)
+[node name="arms" type="MeshInstance3D" parent="pianoRoom"]
+transform = Transform3D(-0.00463055, -0.0182475, -0.00675176, 0.0193856, -0.00491934, 0, -0.00166071, -0.00654434, 0.0188259, -2.44679, -0.172155, 5.64114)
 visible = false
-mesh = SubResource("SphereMesh_2p2ue")
-surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
-
-[node name="eye2" type="MeshInstance3D" parent="pianoRoom/eyes3"]
-transform = Transform3D(0.866032, 0.000300878, 0.499989, 0.00149863, 0.999994, -0.00319756, -0.499987, 0.00351849, 0.866025, 5.71355, -0.0310917, -6.07999)
-mesh = SubResource("SphereMesh_2p2ue")
+material_override = SubResource("StandardMaterial3D_2bpx5")
+mesh = ExtResource("177_dhw84")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
+
+[node name="body" type="Sprite3D" parent="pianoRoom/arms"]
+transform = Transform3D(0.0369308, 0.984294, -0.172635, 0.165089, -0.17639, -0.970378, -0.985588, 0.0073367, -0.169011, 127.9, 89.3732, 27.0793)
+modulate = Color(0, 0, 0, 1)
+pixel_size = 1.0
+billboard = 1
+texture = ExtResource("178_ig8bl")
+
+[node name="body5" type="Sprite3D" parent="pianoRoom/arms"]
+transform = Transform3D(0.0369308, 0.984294, -0.172635, 0.165089, -0.17639, -0.970378, -0.98559, 0.00733668, -0.169011, 134.758, 88.9429, 15.9863)
+modulate = Color(0.345098, 0.345098, 0.345098, 1)
+billboard = 1
+texture = ExtResource("93_a3ujf")
+
+[node name="body6" type="Sprite3D" parent="pianoRoom/arms"]
+transform = Transform3D(0.0369308, 0.984294, -0.172635, 0.165089, -0.17639, -0.970378, -0.98559, 0.00733668, -0.169011, 137.15, 97.8887, 33.4988)
+modulate = Color(0.345098, 0.345098, 0.345098, 1)
+billboard = 1
+texture = ExtResource("93_a3ujf")
 
 [node name="eyes2" type="MeshInstance3D" parent="pianoRoom"]
 transform = Transform3D(-0.06729, 0.000540535, -0.0739713, 0.000671605, 0.0999977, 0.000119775, 0.0739702, -0.000416198, -0.0672921, -5.9745, 1.99502, 5.21795)
