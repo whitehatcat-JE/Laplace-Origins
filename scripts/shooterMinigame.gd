@@ -75,6 +75,7 @@ func _process(delta):
 	timeSinceStarted += delta
 
 func playerHealed():
+	$player/heal.play()
 	if playerHealth >= 3:
 		score += 500
 		return
@@ -85,10 +86,14 @@ func playerHealed():
 		1: $HUD/heartA.texture = fullHeartTexture;
 
 func _on_player_damage():
-	if playerHealth > 0: playerHealth -= 1
+	if playerHealth > 0: playerHealth -= 1;
 	match playerHealth:
-		2: $HUD/heartC.texture = brokenHeartTexture;
-		1: $HUD/heartB.texture = brokenHeartTexture;
+		2:
+			$HUD/heartC.texture = brokenHeartTexture
+			$player/hit.play()
+		1:
+			$HUD/heartB.texture = brokenHeartTexture
+			$player/hit.play()
 		0:
 			$HUD/heartA.texture = brokenHeartTexture
 			$player.alive = false
@@ -96,21 +101,29 @@ func _on_player_damage():
 			$HUD/beginButton.visible = true
 			$player.visible = false
 			$HUD/beginButton/interact/hitbox.set_deferred("disabled", false)
+			$player/die.play()
 			if score == 0: $HUD/beginButton/score.text = "";
 			else: $HUD/beginButton/score.text = "Score: " + str(score);
+			var previousSFXVolume:int = GI.sfxVolume
+			GI.sfxVolume = 0
 			while len(allEnemies) > 0:
 				var nextEnemy = allEnemies.pop_front()
 				if nextEnemy != null: nextEnemy.kill()
+			GI.sfxVolume = previousSFXVolume
 			if laplaceDescended:
+				$laplace/shotContinuousSFX.stop()
 				laplaceDescended = false
 				$corruptGame.play("laplaceAscend")
 
 func _on_spawn_timer_timeout():
 	if !$player.alive: return;
 	if timeSinceStarted > 210.0 and corrupted:
+		var previousSFXVolume:int = GI.sfxVolume
+		GI.sfxVolume = 0
 		while len(allEnemies) > 0:
 			var nextEnemy = allEnemies.pop_front()
 			if nextEnemy != null: nextEnemy.kill()
+		GI.sfxVolume = previousSFXVolume
 		$corruptGame.play("laplaceDescend")
 		emit_signal("laplaceSpawned")
 		laplaceDescended = true
@@ -151,6 +164,10 @@ func _on_spawn_timer_timeout():
 	$spawnTimer.start()
 
 func _on_laplace_bullet_timer_timeout():
+	if $laplace/laplaceBulletTimer.wait_time > 0.3:
+		$laplace/shotSFX.play()
+	elif !$laplace/shotContinuousSFX.is_playing():
+		$laplace/shotContinuousSFX.play()
 	if $laplace/laplaceBulletTimer.wait_time > 0.05:
 		$laplace/laplaceBulletTimer.wait_time *= 0.95
 	else:

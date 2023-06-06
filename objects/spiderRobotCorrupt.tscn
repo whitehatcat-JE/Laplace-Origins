@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dyvrl120u3akr"]
+[gd_scene load_steps=13 format=3 uid="uid://dyvrl120u3akr"]
 
 [ext_resource type="Script" path="res://scripts/spiderRobot.gd" id="1_rwd7l"]
 [ext_resource type="Texture2D" uid="uid://d26c0f8k5mv07" path="res://assets/2d/shooterMinigame/explosionSpriteCorrupt.png" id="2_jmc5l"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://df5g0i6t2y8sr" path="res://assets/2d/shooterMinigame/spiderRobotCorrupt2.png" id="4_vi461"]
 [ext_resource type="Texture2D" uid="uid://4m1f31xqgb2x" path="res://assets/2d/shooterMinigame/spiderRobotCorrupt3.png" id="5_ixfmx"]
 [ext_resource type="Texture2D" uid="uid://cntncwb1p5lin" path="res://assets/2d/shooterMinigame/spiderRobotCorrupt4.png" id="6_agv11"]
+[ext_resource type="AudioStream" uid="uid://dinyinb3glr0r" path="res://assets/audio/sfx/shooter/smallEnemyDie.mp3" id="7_xkbsn"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8ahwp"]
 particles_animation = true
@@ -100,5 +101,8 @@ offset_top = -40.0
 offset_right = 26.0
 offset_bottom = -36.0
 color = Color(0, 0, 0, 1)
+
+[node name="die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_xkbsn")
 
 [connection signal="area_entered" from="bulletScanner" to="." method="_on_bullet_scanner_area_entered"]

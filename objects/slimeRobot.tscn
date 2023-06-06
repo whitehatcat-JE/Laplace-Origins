@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://da1572uw524am"]
+[gd_scene load_steps=9 format=3 uid="uid://da1572uw524am"]
 
 [ext_resource type="Script" path="res://scripts/slimeRobot.gd" id="1_v2prk"]
 [ext_resource type="Texture2D" uid="uid://cyvenb8tpp2eu" path="res://assets/2d/shooterMinigame/slime.png" id="2_l3it4"]
 [ext_resource type="Texture2D" uid="uid://b2ydkf5njndxc" path="res://assets/2d/shooterMinigame/explosionSprite.png" id="3_ljwb3"]
+[ext_resource type="AudioStream" uid="uid://dinyinb3glr0r" path="res://assets/audio/sfx/shooter/smallEnemyDie.mp3" id="4_wd086"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hy4td"]
 size = Vector2(56, 36)
@@ -78,6 +79,9 @@ explosiveness = 1.0
 
 [node name="babySpawnTimer" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wd086")
 
 [connection signal="area_entered" from="bulletScanner" to="." method="_on_bullet_scanner_area_entered"]
 [connection signal="timeout" from="babySpawnTimer" to="." method="_on_baby_spawn_timer_timeout"]

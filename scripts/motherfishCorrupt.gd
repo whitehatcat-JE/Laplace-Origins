@@ -10,7 +10,7 @@ var active:bool = false
 @onready var bullet:PackedScene = preload("res://objects/enemyBulletCorrupt.tscn")
 
 func _physics_process(delta) -> void:
-	if dead and !$explosionParticles.emitting: queue_free();
+	if dead and !$explosionParticles.emitting and !$die.is_playing(): queue_free();
 	$bulletPivot.look_at(GI.playerPos2D)
 
 func kill() -> void:
@@ -20,6 +20,8 @@ func kill() -> void:
 	$sprite.visible = false
 	$explosionParticles.emitting = true
 	$bulletTimer.stop()
+	$die.volume_db = (10 - GI.sfxVolume) * 2 if GI.sfxVolume > 0 else -80
+	$die.play()
 
 func activate() -> void:
 	$bulletTimer.start()
@@ -45,6 +47,8 @@ func applyVelocity(subject, targetDir) -> void:
 
 func _on_bullet_timer_timeout() -> void:
 	if dead: return;
+	$shot.volume_db = (10 - GI.sfxVolume) * 2 if GI.sfxVolume > 0 else -80
+	$shot.play()
 	if randf_range(0, 1) < 0.33:
 		$bulletPivot.rotation_degrees = 0.0
 		for dir in $bulletPivot.get_children():

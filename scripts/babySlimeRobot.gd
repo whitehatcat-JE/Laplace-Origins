@@ -25,6 +25,9 @@ func kill():
 	$bulletScanner/hitbox.set_deferred("disabled", true)
 	$sprite.visible = false
 	$explosionParticles.emitting = true
+	$die.volume_db = (10 - GI.sfxVolume) * 2 if GI.sfxVolume > 0 else -80
+	$die.pitch_scale *= randf_range(0.8, 1.2)
+	$die.play()
 
 func activate():
 	active = true

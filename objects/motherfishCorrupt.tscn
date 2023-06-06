@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctdn3admfvmsi"]
+[gd_scene load_steps=16 format=3 uid="uid://ctdn3admfvmsi"]
 
 [ext_resource type="Script" path="res://scripts/motherfishCorrupt.gd" id="1_k5fg8"]
 [ext_resource type="Texture2D" uid="uid://d26c0f8k5mv07" path="res://assets/2d/shooterMinigame/explosionSpriteCorrupt.png" id="2_y86ie"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cskurehnqd5nn" path="res://assets/2d/shooterMinigame/motherfishCorrupt2.png" id="4_txvd1"]
 [ext_resource type="Texture2D" uid="uid://drllqy6xoieb4" path="res://assets/2d/shooterMinigame/motherfishCorrupt3.png" id="5_1pmfv"]
 [ext_resource type="Texture2D" uid="uid://cx66q8cgx2tno" path="res://assets/2d/shooterMinigame/motherfishCorrupt4.png" id="6_lyj46"]
+[ext_resource type="AudioStream" uid="uid://3mgmpm5np6cy" path="res://assets/audio/sfx/shooter/largeEnemyDie.mp3" id="7_qwv27"]
+[ext_resource type="AudioStream" uid="uid://drgj4ghmgepy8" path="res://assets/audio/sfx/shooter/enemyShot.mp3" id="8_coj6k"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ldh3o"]
 particles_animation = true
@@ -164,6 +166,12 @@ libraries = {
 
 [node name="bulletTimer" type="Timer" parent="."]
 wait_time = 0.8
+
+[node name="die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qwv27")
+
+[node name="shot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_coj6k")
 
 [connection signal="area_entered" from="bulletScanner" to="." method="_on_bullet_scanner_area_entered"]
 [connection signal="timeout" from="bulletTimer" to="." method="_on_bullet_timer_timeout"]

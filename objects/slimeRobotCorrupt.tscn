@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://lp3mp5hcpqni"]
+[gd_scene load_steps=13 format=3 uid="uid://lp3mp5hcpqni"]
 
 [ext_resource type="Script" path="res://scripts/slimeRobotCorrupt.gd" id="1_05tyu"]
 [ext_resource type="Texture2D" uid="uid://cv2jksrsfqw2b" path="res://assets/2d/shooterMinigame/slimeCorrupt1.png" id="2_m1cwb"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://h1fcvl0piv5q" path="res://assets/2d/shooterMinigame/slimeCorrupt3.png" id="4_lwqaf"]
 [ext_resource type="Texture2D" uid="uid://lfqfds0cel1r" path="res://assets/2d/shooterMinigame/slimeCorrupt4.png" id="5_wcwap"]
 [ext_resource type="Texture2D" uid="uid://d26c0f8k5mv07" path="res://assets/2d/shooterMinigame/explosionSpriteCorrupt.png" id="6_0p14h"]
+[ext_resource type="AudioStream" uid="uid://dinyinb3glr0r" path="res://assets/audio/sfx/shooter/smallEnemyDie.mp3" id="7_eudin"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wsyvx"]
 animations = [{
@@ -104,6 +105,9 @@ explosiveness = 1.0
 
 [node name="babySpawnTimer" type="Timer" parent="."]
 wait_time = 2.5
+
+[node name="die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_eudin")
 
 [connection signal="area_entered" from="bulletScanner" to="." method="_on_bullet_scanner_area_entered"]
 [connection signal="timeout" from="babySpawnTimer" to="." method="_on_baby_spawn_timer_timeout"]

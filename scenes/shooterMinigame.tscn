@@ -1,11 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://bofptlnpouy2f"]
+[gd_scene load_steps=32 format=3 uid="uid://bofptlnpouy2f"]
 
 [ext_resource type="Script" path="res://scripts/shooterMinigame.gd" id="1_2loep"]
 [ext_resource type="Texture2D" uid="uid://b6gke7dlju7qm" path="res://assets/2d/shooterMinigame/tilemap.png" id="2_k247b"]
 [ext_resource type="Script" path="res://scripts/shooterPlayer.gd" id="3_esawc"]
 [ext_resource type="Texture2D" uid="uid://dphcvpl3h6ee7" path="res://assets/2d/shooterMinigame/player.png" id="4_cqty2"]
+[ext_resource type="AudioStream" uid="uid://kr6tbxg4qy2v" path="res://assets/audio/sfx/shooter/playerHit.mp3" id="5_5n1by"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="5_6pa4o"]
+[ext_resource type="AudioStream" uid="uid://hh6fi78ndl7j" path="res://assets/audio/sfx/shooter/playerHeal.mp3" id="6_82hvu"]
 [ext_resource type="Texture2D" uid="uid://b7nbupl0tomjo" path="res://assets/2d/shooterMinigame/heartFull.png" id="7_bofi1"]
+[ext_resource type="AudioStream" uid="uid://22ape8t10mla" path="res://assets/audio/sfx/shooter/playerDie.mp3" id="7_ow8wh"]
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="8_f77vb"]
 [ext_resource type="PackedScene" uid="uid://g15p8sneaum5" path="res://objects/interaction2D.tscn" id="9_2iewp"]
 [ext_resource type="Texture2D" uid="uid://3ggo3kr5glcp" path="res://assets/2d/shooterMinigame/singularityBegin.png" id="9_g3853"]
@@ -13,6 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://bucha4s4imhmy" path="res://assets/2d/shooterMinigame/arenaCorrupt.png" id="11_otbwg"]
 [ext_resource type="Texture2D" uid="uid://cg2pc10rbvf8k" path="res://assets/2d/shooterMinigame/laplace.png" id="12_nv70s"]
 [ext_resource type="Texture2D" uid="uid://c3wj0u3lpcyw" path="res://assets/2d/shooterMinigame/laplaceCore.png" id="13_fvfcx"]
+[ext_resource type="AudioStream" uid="uid://drgj4ghmgepy8" path="res://assets/audio/sfx/shooter/enemyShot.mp3" id="17_gd4gk"]
+[ext_resource type="AudioStream" uid="uid://dr0joc7jcfb66" path="res://assets/audio/music/laplaceShooter.mp3" id="17_pgbd4"]
+[ext_resource type="AudioStream" uid="uid://dc22i14iyvq11" path="res://assets/audio/sfx/shooter/enemyShotContinuous.mp3" id="18_xtr3c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5vsf"]
 texture = ExtResource("2_k247b")
@@ -385,6 +391,30 @@ tracks/1/keys = {
 "method": &"toggleLaplaceBullets"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("laplaceSFX:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("laplaceSFX:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_x7xrm"]
 resource_name = "laplaceDescend"
@@ -414,6 +444,30 @@ tracks/1/keys = {
 "args": [true],
 "method": &"toggleLaplaceBullets"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("laplaceSFX:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("laplaceSFX:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jyb04"]
@@ -466,6 +520,15 @@ monitorable = false
 
 [node name="hitbox" type="CollisionShape2D" parent="player/enemyScanner"]
 shape = SubResource("RectangleShape2D_dhp0o")
+
+[node name="hit" type="AudioStreamPlayer" parent="player" groups=["sfx"]]
+stream = ExtResource("5_5n1by")
+
+[node name="heal" type="AudioStreamPlayer" parent="player" groups=["sfx"]]
+stream = ExtResource("6_82hvu")
+
+[node name="die" type="AudioStreamPlayer" parent="player" groups=["sfx"]]
+stream = ExtResource("7_ow8wh")
 
 [node name="globalInformation" type="Node" parent="."]
 script = ExtResource("5_6pa4o")
@@ -733,6 +796,18 @@ position = Vector2(0, -5)
 [node name="nwTarget" type="Node2D" parent="laplace/bulletPivot"]
 position = Vector2(3.53552, -3.53555)
 rotation = 0.785388
+
+[node name="shotSFX" type="AudioStreamPlayer" parent="laplace" groups=["sfx"]]
+stream = ExtResource("17_gd4gk")
+
+[node name="shotContinuousSFX" type="AudioStreamPlayer" parent="laplace" groups=["sfx"]]
+stream = ExtResource("18_xtr3c")
+volume_db = 5.0
+
+[node name="laplaceSFX" type="AudioStreamPlayer" parent="." groups=["sfx"]]
+stream = ExtResource("17_pgbd4")
+volume_db = -80.0
+pitch_scale = 0.7
 
 [connection signal="timeout" from="spawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="damage" from="player" to="." method="_on_player_damage"]

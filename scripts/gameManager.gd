@@ -94,6 +94,7 @@ func _on_player_interacted(interactionName:String) -> void:
 			$basement/crt/usbStick.visible = true
 			GI.progress = 6
 			$bedroom/pcWindow/pcOS/homeScreen/menuBar/menuAnims.play("glitchShooter")
+			$audioManager/singularity.stream = load("res://assets/audio/music/fate.mp3")
 		"piano":
 			player.unlockedInteractions.erase("piano")
 			$bedroom/Bed/bedLump.visible = true

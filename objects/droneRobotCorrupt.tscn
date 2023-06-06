@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c583g3mlv1juv"]
+[gd_scene load_steps=16 format=3 uid="uid://c583g3mlv1juv"]
 
 [ext_resource type="Script" path="res://scripts/droneRobot.gd" id="1_u7bl3"]
 [ext_resource type="Texture2D" uid="uid://isg8s1dgwnu0" path="res://assets/2d/shooterMinigame/healSpriteCorrupt.png" id="2_ufbkh"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b3gbovucchger" path="res://assets/2d/shooterMinigame/droneCorrupt2.png" id="5_dm2w0"]
 [ext_resource type="Texture2D" uid="uid://bdyw0ytx82p0a" path="res://assets/2d/shooterMinigame/droneCorrupt3.png" id="6_mxpue"]
 [ext_resource type="Texture2D" uid="uid://b4t8x2652acc8" path="res://assets/2d/shooterMinigame/droneCorrupt4.png" id="7_ldufm"]
+[ext_resource type="AudioStream" uid="uid://dinyinb3glr0r" path="res://assets/audio/sfx/shooter/smallEnemyDie.mp3" id="8_4rj64"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qafqr"]
 particles_animation = true
@@ -127,6 +128,9 @@ shape = SubResource("RectangleShape2D_u0i1b")
 wait_time = 10.0
 one_shot = true
 autostart = true
+
+[node name="die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_4rj64")
 
 [connection signal="area_entered" from="bulletScanner" to="." method="_on_bullet_scanner_area_entered"]
 [connection signal="timeout" from="decayTimer" to="." method="_on_decay_timer_timeout"]

@@ -2458,7 +2458,7 @@ volume_db = -20.0
 [node name="heartbeat" type="AudioStreamPlayer" parent="audioManager" groups=["sfx"]]
 stream = ExtResource("7_jbwer")
 
-[node name="singularity" type="AudioStreamPlayer" parent="audioManager" groups=["sfx"]]
+[node name="singularity" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("9_dcaq8")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

@@ -17,6 +17,8 @@ func kill():
 	$bulletScanner/hitbox.set_deferred("disabled", true)
 	$sprite.visible = false
 	dead = true
+	$die.volume_db = (10 - GI.sfxVolume) * 2 if GI.sfxVolume > 0 else -80
+	$die.play()
 
 func _on_bullet_scanner_area_entered(area):
 	$healParticles.emitting = true

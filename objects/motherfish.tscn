@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://crstkgfgxi5pv"]
+[gd_scene load_steps=12 format=3 uid="uid://crstkgfgxi5pv"]
 
 [ext_resource type="Script" path="res://scripts/motherfish.gd" id="1_xbitc"]
 [ext_resource type="Texture2D" uid="uid://b2ydkf5njndxc" path="res://assets/2d/shooterMinigame/explosionSprite.png" id="2_q2d7m"]
 [ext_resource type="Texture2D" uid="uid://u3yjtlytdn1l" path="res://assets/2d/shooterMinigame/motherfish.png" id="3_q6mk5"]
+[ext_resource type="AudioStream" uid="uid://3mgmpm5np6cy" path="res://assets/audio/sfx/shooter/largeEnemyDie.mp3" id="4_gb6ad"]
+[ext_resource type="AudioStream" uid="uid://drgj4ghmgepy8" path="res://assets/audio/sfx/shooter/enemyShot.mp3" id="5_ybcx8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ldh3o"]
 particles_animation = true
@@ -138,6 +140,12 @@ libraries = {
 }
 
 [node name="bulletTimer" type="Timer" parent="."]
+
+[node name="die" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gb6ad")
+
+[node name="shot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ybcx8")
 
 [connection signal="area_entered" from="bulletScanner" to="." method="_on_bullet_scanner_area_entered"]
 [connection signal="timeout" from="bulletTimer" to="." method="_on_bullet_timer_timeout"]
