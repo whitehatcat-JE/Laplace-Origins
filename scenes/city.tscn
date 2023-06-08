@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://coqwihkas3njv"]
+[gd_scene load_steps=56 format=3 uid="uid://coqwihkas3njv"]
 
 [ext_resource type="Texture2D" uid="uid://bxjoe45irxao5" path="res://assets/city/facade1.png" id="1_21jck"]
 [ext_resource type="Script" path="res://scripts/city.gd" id="1_hsebj"]
@@ -22,6 +22,8 @@
 [ext_resource type="AudioStream" uid="uid://bxpoaeanda02m" path="res://assets/audio/sfx/footsteps/footstepsGravelReverb.mp3" id="12_o00ln"]
 [ext_resource type="Material" uid="uid://cjx01qsa37itq" path="res://assets/3d/laplace/laplaceArms.tres" id="21_lq2x0"]
 [ext_resource type="ArrayMesh" uid="uid://byvrot08qm4yc" path="res://assets/3d/laplace/arm2.obj" id="22_4fqpb"]
+[ext_resource type="AudioStream" uid="uid://c2vmxej71sj2h" path="res://assets/audio/music/city.mp3" id="23_acsdr"]
+[ext_resource type="Script" path="res://scripts/globalInformation.gd" id="24_1flj2"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j426g"]
 size = Vector3(25, 100, 1)
@@ -749,6 +751,7 @@ stream = ExtResource("11_vcntb")
 [node name="footstepsGravel" type="AudioStreamPlayer3D" parent="player" groups=["sfx"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
 stream = ExtResource("12_o00ln")
+volume_db = -30.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 process_priority = 1
@@ -761,6 +764,7 @@ light_energy = 0.2
 shadow_enabled = true
 
 [node name="floor" type="StaticBody3D" parent="."]
+collision_layer = 17
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="floor"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -10.4357, 0.887194, -41.6985)
@@ -1132,6 +1136,13 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_pyyvl")
 }
+
+[node name="cityAmbience" type="AudioStreamPlayer" parent="." groups=["music"]]
+stream = ExtResource("23_acsdr")
+autoplay = true
+
+[node name="globalInformation" type="Node" parent="."]
+script = ExtResource("24_1flj2")
 
 [connection signal="body_entered" from="cityTriggerField" to="." method="_on_city_trigger_field_body_entered"]
 [connection signal="body_entered" from="kneelTriggerField" to="." method="_on_kneel_trigger_field_body_entered"]

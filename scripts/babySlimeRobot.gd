@@ -23,6 +23,8 @@ func kill():
 	dead = true
 	$hitbox.set_deferred("disabled", true)
 	$bulletScanner/hitbox.set_deferred("disabled", true)
+	set_collision_layer_value(7, false)
+	set_collision_mask_value(1, false)
 	$sprite.visible = false
 	$explosionParticles.emitting = true
 	$die.volume_db = (10 - GI.sfxVolume) * 2 if GI.sfxVolume > 0 else -80

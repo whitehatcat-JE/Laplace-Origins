@@ -36,7 +36,7 @@ func _physics_process(delta):
 		spawnBullet()
 
 func _on_enemy_scanner_body_entered(body):
-	if !alive: return;
+	if !alive or body.dead: return;
 	print(body)
 	body.kill()
 	emit_signal("damage")

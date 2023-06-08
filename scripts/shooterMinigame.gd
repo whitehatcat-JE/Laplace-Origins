@@ -111,7 +111,6 @@ func _on_player_damage():
 				if nextEnemy != null: nextEnemy.kill()
 			GI.sfxVolume = previousSFXVolume
 			if laplaceDescended:
-				$laplace/shotContinuousSFX.stop()
 				laplaceDescended = false
 				$corruptGame.play("laplaceAscend")
 
@@ -134,7 +133,7 @@ func _on_spawn_timer_timeout():
 		var newDrone:Node = droneRobot.instantiate()
 		add_child(newDrone)
 		var chosenSpawnpoint:Node = $spawnpoints.get_child(randi_range(0, 12))
-		newDrone.position = chosenSpawnpoint.position
+		newDrone.position = chosenSpawnpoint.global_position
 		newDrone.velocity = Vector2(newDrone.SPEED, 0).rotated(newDrone.position.angle_to_point(
 				chosenSpawnpoint.get_node("activationPoint").global_position))
 		newDrone.heal.connect(playerHealed)
@@ -144,9 +143,9 @@ func _on_spawn_timer_timeout():
 		allEnemies.append(newBoss)
 		add_child(newBoss)
 		var chosenSpawnpoint:Node = $spawnpoints.get_child(randi_range(0, 12))
-		var moveAngle:float = chosenSpawnpoint.position.angle_to_point(
+		var moveAngle:float = chosenSpawnpoint.global_position.angle_to_point(
 			chosenSpawnpoint.get_node("activationPoint").global_position)
-		newBoss.position = chosenSpawnpoint.position - Vector2(100, 0).rotated(moveAngle)
+		newBoss.position = chosenSpawnpoint.global_position - Vector2(100, 0).rotated(moveAngle)
 		var spawnTween:Tween = get_tree().create_tween()
 		spawnTween.tween_property(newBoss, "position", 
 			chosenSpawnpoint.get_node("activationPoint").global_position + Vector2(
@@ -157,7 +156,7 @@ func _on_spawn_timer_timeout():
 		allEnemies.append(newRobot)
 		add_child(newRobot)
 		var chosenSpawnpoint:Node = $spawnpoints.get_child(randi_range(0, 12))
-		newRobot.position = chosenSpawnpoint.position
+		newRobot.position = chosenSpawnpoint.global_position
 		var spawnTween:Tween = get_tree().create_tween()
 		spawnTween.tween_property(newRobot, "position", chosenSpawnpoint.get_node("activationPoint").global_position, 0.5)
 		spawnTween.tween_callback(newRobot.activate)
@@ -185,3 +184,26 @@ func toggleLaplaceBullets(enable:bool) -> void:
 	laplaceBulletSpeed = 1.0
 	if enable: $laplace/laplaceBulletTimer.start();
 	else: $laplace/laplaceBulletTimer.stop();
+
+func killGame() -> void:
+	playerHealth = 0
+	$HUD/heartA.texture = brokenHeartTexture
+	$HUD/heartB.texture = brokenHeartTexture
+	$HUD/heartC.texture = brokenHeartTexture
+	$player.alive = false
+	$spawnTimer.stop()
+	$HUD/beginButton.visible = true
+	$player.visible = false
+	$HUD/beginButton/interact/hitbox.set_deferred("disabled", false)
+	if score == 0: $HUD/beginButton/score.text = "";
+	else: $HUD/beginButton/score.text = "Score: " + str(score);
+	var previousSFXVolume:int = GI.sfxVolume
+	GI.sfxVolume = 0
+	while len(allEnemies) > 0:
+		var nextEnemy = allEnemies.pop_front()
+		if nextEnemy != null: nextEnemy.kill()
+	GI.sfxVolume = previousSFXVolume
+	if laplaceDescended:
+		$laplace/shotContinuousSFX.stop()
+		laplaceDescended = false
+		$corruptGame.play("laplaceAscend")

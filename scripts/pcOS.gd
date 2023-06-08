@@ -137,16 +137,20 @@ func eventTriggered(event) -> void:
 				clickSFX.play()
 				$homeScreen/errorWindow/errorAnims.play("errorDisappear")
 			"shooterOpen":
+				clickSFX.play()
 				$shooterMinigame.visible = true
 				$shooterMinigame.start()
 				$mouse/pointerRay.set_collision_mask_value(2, false)
 				$mouse/pointerRay.set_collision_mask_value(3, true)
 			"shooterQuit":
+				clickSFX.play()
+				$shooterMinigame.killGame()
 				$shooterMinigame.visible = false
 				$shooterMinigame.stop()
 				$mouse/pointerRay.set_collision_mask_value(2, true)
 				$mouse/pointerRay.set_collision_mask_value(3, false)
 			"shooterBegin":
+				$clickRetroSFX.play()
 				$shooterMinigame.begin()
 
 func _process(delta) -> void:

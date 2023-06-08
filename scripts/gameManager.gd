@@ -37,6 +37,7 @@ func _on_player_interacted(interactionName:String) -> void:
 		"monitor":
 			screenSFX.play()
 			if GI.progress == 8:
+				$hallway/windowEyes.visible = false
 				$bedroom/Bed/bedLump.visible = false
 				player.unlockedInteractions.erase("monitor")
 				$pianoRoom/triggerField2.set_deferred("monitoring", true)
@@ -142,6 +143,8 @@ func _on_trigger_field_body_entered(body) -> void:
 	$pianoRoom/triggerField.set_deferred("monitoring", false)
 	if GI.progress == 8:
 		$pianoRoom/arms.visible = false
+		$hallway/windowEyes.visible = true
+		$powercutAnim.play("lightWindow")
 		$audioManager/heartbeat.pitch_scale = 1.5
 		return
 	else:
