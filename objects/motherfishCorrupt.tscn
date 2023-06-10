@@ -146,6 +146,7 @@ color = Color(0, 0, 0, 1)
 [node name="hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(3, -86)
 shape = SubResource("CircleShape2D_ps4up")
+disabled = true
 
 [node name="bulletScanner" type="Area2D" parent="."]
 position = Vector2(0, -40)
@@ -156,6 +157,7 @@ monitorable = false
 [node name="hitbox" type="CollisionShape2D" parent="bulletScanner"]
 position = Vector2(2, -46)
 shape = SubResource("RectangleShape2D_u22jb")
+disabled = true
 
 [node name="floatAnim" type="AnimationPlayer" parent="."]
 autoplay = "float"

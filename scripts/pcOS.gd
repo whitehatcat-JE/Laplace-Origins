@@ -2,6 +2,7 @@ extends Node2D
 
 signal exitOS
 signal updatedProgress
+signal showLaplaceWall
 
 var mouseSensitivity:float = 0.5
 var time:int = 0
@@ -291,3 +292,4 @@ func _on_alert_scroll_timer_timeout() -> void:
 func _on_shooter_minigame_laplace_spawned():
 	$background.visible = false
 	$backgroundLaplace.visible = true
+	emit_signal("showLaplaceWall")

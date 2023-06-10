@@ -178,3 +178,6 @@ func _on_city_exit_trigger_field_body_entered(body) -> void:
 	
 func unlockOutdoors() -> void:
 	player.unlockedInteractions.append("exitHome")
+
+func _on_pc_os_show_laplace_wall():
+	$bedroom/laplaceWall.visible = true

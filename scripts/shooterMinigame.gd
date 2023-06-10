@@ -3,7 +3,7 @@ extends Node2D
 signal laplaceSpawned
 
 const STARTING_HEALTH:int = 3
-const STARTING_SPAWN_TIME:float = 3.0
+const STARTING_SPAWN_TIME:float = 2.5
 var playerHealth:int = STARTING_HEALTH
 
 var timeSinceStarted:float = 0.0
@@ -112,6 +112,8 @@ func _on_player_damage():
 			GI.sfxVolume = previousSFXVolume
 			if laplaceDescended:
 				laplaceDescended = false
+				$laplace/laplaceBulletTimer.stop()
+				$laplace/shotContinuousSFX.stop()
 				$corruptGame.play("laplaceAscend")
 
 func _on_spawn_timer_timeout():
@@ -163,6 +165,7 @@ func _on_spawn_timer_timeout():
 	$spawnTimer.start()
 
 func _on_laplace_bullet_timer_timeout():
+	if !$player.alive: return;
 	if $laplace/laplaceBulletTimer.wait_time > 0.3:
 		$laplace/shotSFX.play()
 	elif !$laplace/shotContinuousSFX.is_playing():
@@ -174,7 +177,8 @@ func _on_laplace_bullet_timer_timeout():
 	$laplace/bulletPivot.look_at(GI.playerPos2D)
 	for dir in $laplace/bulletPivot.get_children():
 		var newBullet:Node = corruptBullet.instantiate()
-		get_parent().add_child(newBullet)
+		add_child(newBullet)
+		allEnemies.append(newBullet)
 		newBullet.position = $laplace/bulletPivot.global_position
 		newBullet.direction = Vector2(laplaceBulletSpeed, 0).rotated(
 			newBullet.position.angle_to_point(dir.global_position))
@@ -204,6 +208,7 @@ func killGame() -> void:
 		if nextEnemy != null: nextEnemy.kill()
 	GI.sfxVolume = previousSFXVolume
 	if laplaceDescended:
+		$laplace/laplaceBulletTimer.stop()
 		$laplace/shotContinuousSFX.stop()
 		laplaceDescended = false
 		$corruptGame.play("laplaceAscend")

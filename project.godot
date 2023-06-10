@@ -10,9 +10,15 @@ config_version=5
 
 [application]
 
-config/name="Laplace-origins"
+config/name="sunset-humanity"
 run/main_scene="res://scenes/home.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://assets/2d/menus/sunsetHumanityLayoutTest.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+config/windows_native_icon="res://assets/2d/menus/exeIcon.ico"
+boot_splash/minimum_display_time=2000
 
 [autoload]
 
@@ -24,6 +30,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="viewport"
+
+[editor]
+
+movie_writer/movie_file="C:/Users/ccporirua/Documents/laplaceOrigins/storeAssets/gameplay.avi"
 
 [input]
 

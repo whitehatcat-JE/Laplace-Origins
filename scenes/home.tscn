@@ -1,4 +1,4 @@
-[gd_scene load_steps=447 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=449 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -192,6 +192,7 @@
 [ext_resource type="Texture2D" uid="uid://8dlq58dsdsag" path="res://assets/2d/3dSprites/triangleweb.png" id="177_ju6er"]
 [ext_resource type="Texture2D" uid="uid://bdw4yv8pq28e8" path="res://assets/2d/3dSprites/cockroach.png" id="178_hfa77"]
 [ext_resource type="Texture2D" uid="uid://cg2pc10rbvf8k" path="res://assets/2d/shooterMinigame/laplace.png" id="178_ig8bl"]
+[ext_resource type="Texture2D" uid="uid://5c58n8bo023d" path="res://assets/2d/pcOS/backgroundLaplace.jpg" id="193_t8w1n"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4ojb"]
 sky_top_color = Color(0.0627451, 0.733333, 1, 1)
@@ -319,6 +320,17 @@ data = PackedVector3Array(-0.5, 2.5, 2.5, 0.5, 2.5, 2.5, -0.5, -2.5, 2.5, 0.5, 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_7btvq"]
 size = Vector3(1, 0.9, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqgce"]
+albedo_texture = ExtResource("193_t8w1n")
+emission_energy_multiplier = 0.0
+emission_texture = ExtResource("193_t8w1n")
+heightmap_enabled = true
+heightmap_scale = 16.0
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("193_t8w1n")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_aa2sa"]
 viewport_path = NodePath("bedroom/pcWindow")
@@ -2984,6 +2996,44 @@ size = Vector2i(4098, 4098)
 render_target_update_mode = 4
 
 [node name="pcOS" parent="bedroom/pcWindow" instance=ExtResource("6_wgccf")]
+
+[node name="laplaceWall" type="Sprite3D" parent="bedroom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.727293, 1.93702, -1.46898)
+visible = false
+material_override = SubResource("StandardMaterial3D_xqgce")
+pixel_size = 0.0017
+shaded = true
+texture = ExtResource("193_t8w1n")
+
+[node name="eye" type="Sprite3D" parent="bedroom/laplaceWall"]
+transform = Transform3D(0.861035, 0.508546, -2.22292e-08, 0, -4.37114e-08, -1, -0.508546, 0.861035, -3.7637e-08, -1.65777, 1.5347, 0.557472)
+pixel_size = 0.001
+shaded = true
+texture = ExtResource("93_a3ujf")
+
+[node name="eye2" type="Sprite3D" parent="bedroom/laplaceWall"]
+transform = Transform3D(0.815906, -0.578185, 2.52733e-08, 0, -4.37114e-08, -1, 0.578185, 0.815906, -3.56644e-08, -1.11531, 1.5347, 0.400509)
+pixel_size = 0.0005
+shaded = true
+texture = ExtResource("93_a3ujf")
+
+[node name="eye3" type="Sprite3D" parent="bedroom/laplaceWall"]
+transform = Transform3D(0.815906, -0.578185, 2.52733e-08, 0, -4.37114e-08, -1, 0.578185, 0.815906, -3.56644e-08, 1.47995, 1.5347, 0.400509)
+pixel_size = 0.001
+shaded = true
+texture = ExtResource("93_a3ujf")
+
+[node name="eye4" type="Sprite3D" parent="bedroom/laplaceWall"]
+transform = Transform3D(0.923699, -0.383119, 1.67467e-08, -1.44934e-15, -4.37114e-08, -1, 0.383119, 0.923699, -4.03762e-08, 0.5471, 1.5347, 0.72013)
+pixel_size = 0.003
+shaded = true
+texture = ExtResource("93_a3ujf")
+
+[node name="eye5" type="Sprite3D" parent="bedroom/laplaceWall"]
+transform = Transform3D(0.923699, -0.383119, 1.67467e-08, -1.44934e-15, -4.37114e-08, -1, 0.383119, 0.923699, -4.03762e-08, -2.2947, 1.5347, 0.363806)
+pixel_size = 0.0007
+shaded = true
+texture = ExtResource("93_a3ujf")
 
 [node name="desk" type="MeshInstance3D" parent="bedroom"]
 transform = Transform3D(-0.55, 0, -8.30477e-08, 0, 0.55, 0, 8.30477e-08, 0, -0.55, 0.106782, 0.846775, 3.16816)
@@ -6101,6 +6151,7 @@ volume_db = 5.0
 stream = ExtResource("174_qdmtb")
 
 [connection signal="exitOS" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_exit_os"]
+[connection signal="showLaplaceWall" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_show_laplace_wall"]
 [connection signal="updatedProgress" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_updated_progress"]
 [connection signal="timeout" from="hallway/clock/clockTimer" to="hallway/clock" method="_on_clock_timer_timeout"]
 [connection signal="interacted" from="player" to="." method="_on_player_interacted"]

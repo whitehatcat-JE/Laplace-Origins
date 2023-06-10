@@ -9,6 +9,11 @@ var active:bool = false
 @onready var maxHealthSize:float = $sprite/health.size.x
 @onready var bullet:PackedScene = preload("res://objects/enemyBullet.tscn")
 
+func _ready():
+	await get_tree().create_timer(0.1).timeout
+	$hitbox.set_deferred("disabled", false)
+	$bulletScanner/hitbox.set_deferred("disabled", false)
+
 func _physics_process(delta) -> void:
 	if dead and !$explosionParticles.emitting and !$die.is_playing(): queue_free();
 	$bulletPivot.look_at(GI.playerPos2D)
@@ -38,6 +43,7 @@ func _on_bullet_scanner_area_entered(area) -> void:
 func createBullet() -> Node:
 	var newBullet:Node = bullet.instantiate()
 	get_parent().add_child(newBullet)
+	get_parent().allEnemies.append(newBullet)
 	newBullet.position = $bulletPivot.global_position
 	return newBullet
 
