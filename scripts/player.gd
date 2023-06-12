@@ -78,8 +78,8 @@ func _physics_process(delta) -> void:
 	if direction.dot(velocity) == 0 and velocity.length() > 0.1:
 		velocity -= velocity * DECELERATION * delta
 	else:
-		if direction.dot(velocity) > 0: $bobAnim.speed_scale = 1.0
-		else: $bobAnim.speed_scale = 0.1
+		if direction.dot(velocity) > 0: $bobAnim.speed_scale = 1.0;
+		else: $bobAnim.speed_scale = 0.1;
 		velocity = direction.normalized() * PLAYER_SPEED
 	move_and_slide()
 	
@@ -87,7 +87,7 @@ func _physics_process(delta) -> void:
 		var groundType:int = $floorCast.get_collider().get_collision_layer()
 		if groundType in groundTypes.keys():
 			if currentGroundType != groundType:
-				if currentGroundType != 0: groundTypes[currentGroundType].stop()
+				if currentGroundType != 0: groundTypes[currentGroundType].stop();
 				groundTypes[groundType].play()
 				currentGroundType = groundType
 	elif currentGroundType != 0:

@@ -33,6 +33,7 @@ func kill():
 
 func activate():
 	active = true
+	await get_tree().create_timer(0.1).timeout
 	$hitbox.set_deferred("disabled", false)
 	$bulletScanner/hitbox.set_deferred("disabled", false)
 

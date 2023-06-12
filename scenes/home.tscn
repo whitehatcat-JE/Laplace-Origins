@@ -1,4 +1,4 @@
-[gd_scene load_steps=449 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=451 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -839,6 +839,27 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h1hmh"]
 _data = {
 "fadeOut": SubResource("Animation_nwmgs")
+}
+
+[sub_resource type="Animation" id="Animation_vjxbb"]
+resource_name = "fadeIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fadeIn:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g6j4n"]
+_data = {
+"fadeIn": SubResource("Animation_vjxbb")
 }
 
 [sub_resource type="Animation" id="Animation_47qjq"]
@@ -3194,7 +3215,7 @@ texture = ExtResource("29_t6lnm")
 
 [node name="usbInteraction" parent="bedroom/desk/Pc" instance=ExtResource("13_pkg5h")]
 transform = Transform3D(1, 0, 1.0842e-19, 0, 1, 0, -1.0842e-19, 0, 1, 0, 0, 0)
-minDistance = 1.5
+minDistance = 2.0
 interactionName = "usb"
 
 [node name="hitbox" type="CollisionShape3D" parent="bedroom/desk/Pc/usbInteraction"]
@@ -4057,6 +4078,21 @@ Laplace is born
 
 And thus"
 
+[node name="loadingText" type="RichTextLabel" parent="player/HUD/fade"]
+modulate = Color(0.466667, 0.466667, 0.466667, 1)
+layout_mode = 0
+offset_left = 163.0
+offset_top = 1091.0
+offset_right = 1975.0
+offset_bottom = 1213.0
+theme_override_colors/default_color = Color(0.768627, 0, 0.00784314, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0.054902, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("150_blp0k")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "Loading..."
+
 [node name="lightsOut" type="ColorRect" parent="player/HUD"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
@@ -4081,9 +4117,23 @@ theme_override_font_sizes/normal_font_size = 50
 bbcode_enabled = true
 text = "Loading..."
 
+[node name="fadeIn" type="ColorRect" parent="player/HUD"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -1083.0
+offset_top = -604.0
+offset_right = 1277.0
+offset_bottom = 676.0
+color = Color(0, 0, 0, 1)
+
 [node name="fadeAnim" type="AnimationPlayer" parent="player/HUD"]
 libraries = {
 "": SubResource("AnimationLibrary_h1hmh")
+}
+
+[node name="cityReentry" type="AnimationPlayer" parent="player/HUD"]
+libraries = {
+"": SubResource("AnimationLibrary_g6j4n")
 }
 
 [node name="bobAnim" type="AnimationPlayer" parent="player"]
@@ -5552,7 +5602,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.105383)
 shape = SubResource("BoxShape3D_jh318")
 
 [node name="cityExitTriggerField" type="Area3D" parent="basement"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91801, -2.17224, -2.98341)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91801, -2.17224, -1.4593)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
@@ -5562,10 +5612,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.105383)
 shape = SubResource("BoxShape3D_jh318")
 
 [node name="citySpawnPos" type="Node3D" parent="basement"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61098, -1.58639, -4.59994)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61098, -2.4378, -2.07401)
 
 [node name="cityFacePos" type="Node3D" parent="basement"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66252, -1.77947, -2.28101)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.68595, -1.99832, -0.652624)
 
 [node name="web" type="Sprite3D" parent="basement"]
 transform = Transform3D(0.78547, 0.491482, -0.376141, -0.150377, 0.741103, 0.654334, 0.600352, -0.457397, 0.656022, -9.1135, -1.22189, 7.88606)

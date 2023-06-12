@@ -29,6 +29,7 @@ var laplaceBulletSpeed = 1.0
 func corrupt():
 	$arenaTilemap.visible = false
 	$corruptArena.visible = true
+	$HUD/beginButton/keybinds.visible = false
 	corrupted = true
 	
 	brokenHeartTexture = load("res://assets/2d/shooterMinigame/heartBrokenCorrupt.png")

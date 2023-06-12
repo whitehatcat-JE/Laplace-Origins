@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bofptlnpouy2f"]
+[gd_scene load_steps=33 format=3 uid="uid://bofptlnpouy2f"]
 
 [ext_resource type="Script" path="res://scripts/shooterMinigame.gd" id="1_2loep"]
 [ext_resource type="Texture2D" uid="uid://b6gke7dlju7qm" path="res://assets/2d/shooterMinigame/tilemap.png" id="2_k247b"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://bucha4s4imhmy" path="res://assets/2d/shooterMinigame/arenaCorrupt.png" id="11_otbwg"]
 [ext_resource type="Texture2D" uid="uid://cg2pc10rbvf8k" path="res://assets/2d/shooterMinigame/laplace.png" id="12_nv70s"]
 [ext_resource type="Texture2D" uid="uid://c3wj0u3lpcyw" path="res://assets/2d/shooterMinigame/laplaceCore.png" id="13_fvfcx"]
+[ext_resource type="Texture2D" uid="uid://bs16k0yleyi6r" path="res://assets/2d/shooterMinigame/controls.png" id="14_6akow"]
 [ext_resource type="AudioStream" uid="uid://drgj4ghmgepy8" path="res://assets/audio/sfx/shooter/enemyShot.mp3" id="17_gd4gk"]
 [ext_resource type="AudioStream" uid="uid://dr0joc7jcfb66" path="res://assets/audio/music/laplaceShooter.mp3" id="17_pgbd4"]
 [ext_resource type="AudioStream" uid="uid://dc22i14iyvq11" path="res://assets/audio/sfx/shooter/enemyShotContinuous.mp3" id="18_xtr3c"]
@@ -716,6 +717,10 @@ theme_override_colors/font_color = Color(0.929412, 0.94902, 0.886275, 1)
 theme_override_fonts/font = ExtResource("10_msjsu")
 theme_override_font_sizes/font_size = 128
 horizontal_alignment = 1
+
+[node name="keybinds" type="Sprite2D" parent="HUD/beginButton"]
+position = Vector2(-0.25, 39)
+texture = ExtResource("14_6akow")
 
 [node name="quit" type="Label" parent="HUD"]
 offset_left = 1540.0

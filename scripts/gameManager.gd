@@ -162,8 +162,10 @@ func _on_trigger_field_2_body_entered(body) -> void:
 
 func _on_city_trigger_field_body_entered(body) -> void:
 	$basement/cityTriggerField.set_deferred("monitoring", false)
+	player.position = $basement/citySpawnPos.global_position
 	player.look_at($basement/cityFacePos.global_position)
 	player.rotation_degrees = Vector3(0.0, player.rotation_degrees.y, 0.0)
+	$player/HUD/cityReentry.play("fadeIn")
 	var root = get_node("/root")
 	var homeScene = get_node("/root/home")
 	GI.previousScreen = homeScene

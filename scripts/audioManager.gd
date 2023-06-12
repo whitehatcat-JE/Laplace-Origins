@@ -1,17 +1,17 @@
 extends Node3D
-
+# State variables
 var curSong:String = "none"
 var previousSong:String = "none"
 var maxVolume:float = 0
-
+# Audio transition tweens
 var fadeOutTween:Tween
 var fadeInTween:Tween
-
-func _process(delta):
-	if (GI.shooterActive and GI.inOS) and curSong != "singularity":
+# Check if player currently in minigame
+func _process(delta) -> void:
+	if (GI.shooterActive and GI.inOS) and curSong != "singularity": # Play minigame music
 		previousSong = curSong
 		play("singularity")
-	elif !(GI.shooterActive and GI.inOS) and curSong == "singularity":
+	elif !(GI.shooterActive and GI.inOS) and curSong == "singularity": # Stop minigame music
 		play(previousSong)
 
 func play(songName:String) -> void:
