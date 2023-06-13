@@ -1,42 +1,35 @@
 extends Node3D
-
+# State variables
 var inPasscodeScreen:bool = false
-var redTransitionPlayed:bool = false
-
+# Nodes
 @onready var player:Node = $player
 @onready var playerCam:Node = $player/head/cam
 
 @onready var pcCam:Node = $bedroom/desk/monitorScreen/cam
+@onready var pcOS:Node = $bedroom/pcWindow/pcOS
 
 @onready var audioManager:Node = $audioManager
 @onready var routerSFX:Node = $walls/Router/routerSFX
 @onready var screenSFX:Node = $screenInteractSFX
 @onready var unplugSFX:Node = $bedroom/desk/Pc/unplugSFX
 @onready var insertSFX:Node = $basement/crt/insertSFX
-
+# Screen interactions
 func _input(event) -> void:
-	if Input.is_action_just_pressed("back"):
-		if pcCam.current:
-			GI.inOS = false
-			player.disabled = false
-			player.get_node("HUD").visible = true
-			playerCam.current = true
-			pcCam.current = false
-		elif inPasscodeScreen:
-			player.disabled = false
-			player.get_node("HUD").visible = true
-			inPasscodeScreen = false
-	elif pcCam.current:
-		$bedroom/pcWindow/pcOS.eventTriggered(event)
-	elif inPasscodeScreen:
-		$basement/passcode/passcodeEntry.eventTriggered(event)
-
+	if Input.is_action_just_pressed("back") and (pcCam.current or inPasscodeScreen): # Stops focusing on screen
+		player.disabled = false
+		player.get_node("HUD").visible = true
+		GI.inOS = false
+		inPasscodeScreen = false
+		if pcCam.current: playerCam.current = true;
+	elif pcCam.current: pcOS.eventTriggered(event); # Sends player input to pcOS viewport
+	elif inPasscodeScreen: $basement/passcode/passcodeEntry.eventTriggered(event); # Sends player input to passcodeEntry viewport
+# In-world player interactions
 func _on_player_interacted(interactionName:String) -> void:
-	await get_tree().process_frame
-	match interactionName:
+	await get_tree().process_frame # Prevents inputs from being processed during load-in
+	match interactionName: # Executes code based off interaction name
 		"monitor":
 			screenSFX.play()
-			if GI.progress == 8:
+			if GI.progress == 8: # Powercut
 				$hallway/windowEyes.visible = false
 				$bedroom/Bed/bedLump.visible = false
 				player.unlockedInteractions.erase("monitor")
@@ -47,16 +40,15 @@ func _on_player_interacted(interactionName:String) -> void:
 				$bedroom/pcWindow/pcOS/safeMessage.visible = true
 				$powercutAnim.play("cutPower")
 				$pianoRoom/SpotLight.visible = false
-			else:
+			else: # PC focus
 				GI.inOS = true
 				player.disabled = true
 				player.get_node("HUD").visible = false
-				playerCam.current = false
 				pcCam.current = true
 		"router":
 			routerSFX.play()
 			player.unlockedInteractions.erase("router")
-			if GI.progress == 6:
+			if GI.progress == 6: # Router switch on
 				GI.progress = 7
 				$bedroom/cupboard.visible = true
 				$bedroom/cupboardAjar.visible = false
@@ -68,23 +60,23 @@ func _on_player_interacted(interactionName:String) -> void:
 				$walls/Router/routerOffLogo.visible = false
 				$pianoRoom/piano.visible = false
 				audioManager.play("piano")
-			else:
+			else: # Router switch off
 				GI.progress = 2
 				$walls/Router/routerLogo.visible = false
 				$walls/Router/routerOffLogo.visible = true
-		"usb":
+		"usb": # Grab usb stick from PC
 			unplugSFX.play()
 			audioManager.play("hallway")
 			$bedroom/desk/Pc/usbStick.visible = false
 			player.unlockedInteractions.erase("usb")
 			$walls/DoorFrame/doorAnims.play("openDoor")
 			GI.progress = 4
-		"passcode":
+		"passcode": # Passcode focus
 			screenSFX.play()
 			player.disabled = true
 			player.get_node("HUD").visible = false
 			inPasscodeScreen = true
-		"crt":
+		"crt": # Plug usb stick into CRT
 			$bedroom/cupboard.visible = false
 			$bedroom/cupboardAjar.visible = true
 			insertSFX.play()
@@ -94,92 +86,88 @@ func _on_player_interacted(interactionName:String) -> void:
 			player.unlockedInteractions.append("router")
 			$basement/crt/usbStick.visible = true
 			GI.progress = 6
-			$bedroom/pcWindow/pcOS/homeScreen/menuBar/menuAnims.play("glitchShooter")
+			pcOS.get_node("homeScreen/menuBar/menuAnims").play("glitchShooter")
 			$audioManager/singularity.stream = load("res://assets/audio/music/fate.mp3")
-		"piano":
+		"piano": # Piano thud
 			player.unlockedInteractions.erase("piano")
 			$bedroom/Bed/bedLump.visible = true
 			$bedroom/easSFX.play()
 			$hallway/sirenSFX.play()
 			$pianoRoom/piano/pianoSFX.play()
-			$bedroom/pcWindow/pcOS/emergencyAlert.visible = true
+			pcOS.get_node("emergencyAlert").visible = true
 			$pianoRoom/arms.visible = true
 			$pianoRoom/triggerField.set_deferred("monitoring", true)
 			GI.progress = 8
-		"exitHome":
+		"exitHome": # Transition to outdoors scene
 			GI.progress = 9
 			player.disabled = true
 			$player/HUD/fadeAnim.play("fadeOut")
-
+# PC unfocus
 func _on_pc_os_exit_os() -> void:
-	if pcCam.current:
-		player.disabled = false
-		player.get_node("HUD").visible = true
-		playerCam.current = true
-		pcCam.current = false
-
+	if !pcCam.current: return; # Checks PC is currently being focused
+	player.disabled = false
+	player.get_node("HUD").visible = true
+	playerCam.current = true
+	pcCam.current = false
+# Events triggered during pcOS interactions
 func _on_pc_os_updated_progress() -> void:
 	match GI.progress:
-		1:
-			player.unlockedInteractions.append("router")
-		3:
+		1: player.unlockedInteractions.append("router"); # Allow router to be switched off
+		3: # Allow usb stick to be grabbed from PC
 			$bedroom/glitchSFX.play()
-			if pcCam.current:
-				redTransitionPlayed = true
-				$bedroom/roomTransformations.play("red")
 			player.unlockedInteractions.append("usb")
-
+			if pcCam.current: $bedroom/roomTransformations.play("red");
+# Open basement
 func _on_passcode_entry_updated_progress() -> void:
 	player.unlockedInteractions.erase("passcode")
 	$hallway/clock/clockTimer.start()
 	$basement/doorAnims.play("openDoor")
-
+# Passcode unfocus
 func _on_passcode_entry_exit_passcode() -> void:
 	player.disabled = false
 	player.get_node("HUD").visible = true
 	inPasscodeScreen = false
-
-func _on_trigger_field_body_entered(body) -> void:
+# Piano room jumpscare triggers
+func _on_trigger_field_body_entered(_body) -> void:
 	$pianoRoom/triggerField.set_deferred("monitoring", false)
-	if GI.progress == 8:
+	if GI.progress == 8: # Hide laplace jumpscare
 		$pianoRoom/arms.visible = false
 		$hallway/windowEyes.visible = true
 		$powercutAnim.play("lightWindow")
 		$audioManager/heartbeat.pitch_scale = 1.5
 		return
-	else:
-		audioManager.play("heartbeat")
+	# Hide eyes jumpscare
+	audioManager.play("heartbeat")
 	$pianoRoom/eyes.visible = false
 	$pianoRoom/SpotLight.visible = true
 	$pianoRoom/piano.visible = true
-
-func _on_fade_anim_animation_finished(anim_name) -> void:
+# Change scene to outdoors
+func _on_fade_anim_animation_finished(_anim_name) -> void:
 	get_tree().change_scene_to_file("res://scenes/outside.tscn")
-
-func _on_trigger_field_2_body_entered(body) -> void:
+# Disable piano room jumpscares
+func _on_trigger_field_2_body_entered(_body) -> void:
 	$pianoRoom/triggerField2.set_deferred("monitoring", false)
 	$pianoRoom/eye2Anim.play("drawBack")
-
-func _on_city_trigger_field_body_entered(body) -> void:
+# Change scene to city
+func _on_city_trigger_field_body_entered(_body) -> void:
+	# Reposition player to outside of trigger field, so when basement is reloaded, doesn't trigger this function again instantly
 	$basement/cityTriggerField.set_deferred("monitoring", false)
 	player.position = $basement/citySpawnPos.global_position
 	player.look_at($basement/cityFacePos.global_position)
 	player.rotation_degrees = Vector3(0.0, player.rotation_degrees.y, 0.0)
 	$player/HUD/cityReentry.play("fadeIn")
-	var root = get_node("/root")
-	var homeScene = get_node("/root/home")
+	# Saves current scene, to reload once player exits city
+	var root:Node = get_node("/root")
+	var homeScene:Node = get_node("/root/home")
 	GI.previousScreen = homeScene
+	# Change current scene to city
 	root.call_deferred("remove_child", homeScene)
-	var cityScene = load("res://scenes/city.tscn")
-	cityScene = cityScene.instantiate()
-	root.add_child(cityScene)
-
-func _on_city_exit_trigger_field_body_entered(body) -> void:
+	var cityScene:Resource = load("res://scenes/city.tscn")
+	root.add_child(cityScene.instantiate())
+# Basement re-entry from city
+func _on_city_exit_trigger_field_body_entered(_body) -> void:
 	$basement/cityTriggerField.set_deferred("monitoring", true)
-	$bedroom/pcWindow/pcOS/homeScreen/emailWindow/abyssMessageAnim.play("abyss")
-	
-func unlockOutdoors() -> void:
-	player.unlockedInteractions.append("exitHome")
+	pcOS.get_node("homeScreen/emailWindow/abyssMessageAnim").play("abyss")
 
-func _on_pc_os_show_laplace_wall():
-	$bedroom/laplaceWall.visible = true
+func unlockOutdoors() -> void: player.unlockedInteractions.append("exitHome"); # Unlocks exit door
+func _on_pc_os_show_laplace_wall() -> void: $bedroom/laplaceWall.visible = true; # Display laplace wall in bedroom
