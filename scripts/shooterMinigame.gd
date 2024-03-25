@@ -10,10 +10,14 @@ var timeSinceStarted:float = 0.0
 
 var allEnemies:Array[Node] = []
 var score:int = 0
+var timeSinceLastMother:int = 0
 
 var corrupted:bool = false
 var laplaceDescended:bool = false
 var laplaceBulletSpeed = 1.0
+
+var healingDroneChance:float = 0.98
+
 # Textures
 @onready var brokenHeartTexture:Texture = preload("res://assets/2d/shooterMinigame/heartBroken.png")
 @onready var fullHeartTexture:Texture = preload("res://assets/2d/shooterMinigame/heartFull.png")
@@ -51,6 +55,8 @@ func corrupt():
 	slimeRobot = load("res://objects/slimeRobotCorrupt.tscn")
 	droneRobot = load("res://objects/droneRobotCorrupt.tscn")
 	motherfish = load("res://objects/motherfishCorrupt.tscn")
+	
+	healingDroneChance = 0.9
 # Enter / exit shooter minigame
 func start(): GI.shooterActive = true;
 func stop(): GI.shooterActive = false;
@@ -62,11 +68,12 @@ func begin():
 	playerHealth = STARTING_HEALTH
 	$player.visible = true
 	$player.alive = true
+	$player.position = Vector2(1053, 353)
 	# Disable menu
 	$HUD/beginButton.visible = false
 	$HUD/beginButton/interact/hitbox.set_deferred("disabled", true)
 	# Start timers
-	timeSinceStarted = 120.0 if corrupted else 0.0
+	timeSinceStarted = 60.0 if corrupted else 0.0
 	_on_spawn_timer_timeout()
 # Increase round time if game active
 func _process(delta):
@@ -119,7 +126,7 @@ func _on_player_damage():
 # Spawn new enemy
 func _on_spawn_timer_timeout():
 	if !$player.alive: return;
-	if timeSinceStarted > 210.0 and corrupted: # Spawn laplace
+	if timeSinceStarted > 115.0 and corrupted: # Spawn laplace
 		var previousSFXVolume:int = GI.sfxVolume
 		GI.sfxVolume = 0
 		while len(allEnemies) > 0:
@@ -130,9 +137,10 @@ func _on_spawn_timer_timeout():
 		emit_signal("laplaceSpawned")
 		laplaceDescended = true
 		return
+	timeSinceLastMother += 1
 	# Decrease spawn time for next enemy
-	$spawnTimer.wait_time = STARTING_SPAWN_TIME * pow(0.995, timeSinceStarted + 1.0)
-	if randf() > 0.98: # Spawn healer drone
+	$spawnTimer.wait_time = STARTING_SPAWN_TIME * pow(0.99, timeSinceStarted + 1.0)
+	if randf() > healingDroneChance: # Spawn healer drone
 		var newDrone:Node = droneRobot.instantiate()
 		# Append drone to self
 		add_child(newDrone)
@@ -144,7 +152,8 @@ func _on_spawn_timer_timeout():
 				chosenSpawnpoint.get_node("activationPoint").global_position))
 		# Connect drone to self
 		newDrone.heal.connect(playerHealed)
-	elif randf() > 0.95 and timeSinceStarted > 60.0: # Spawn motherfish
+	elif randf() > 0.95 and timeSinceStarted > 60.0 and timeSinceLastMother > 8: # Spawn motherfish
+		timeSinceLastMother = 0
 		var newBoss:Node = motherfish.instantiate()
 		# Append motherfish to self
 		allEnemies.append(newBoss)

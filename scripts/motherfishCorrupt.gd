@@ -1,6 +1,6 @@
 extends CharacterBody2D
 # Constants
-const MAX_HEALTH:int = 15
+const MAX_HEALTH:int = 12
 # State variables
 var health:int = MAX_HEALTH
 var dead:bool = false

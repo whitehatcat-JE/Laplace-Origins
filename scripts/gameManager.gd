@@ -20,7 +20,7 @@ func _input(event) -> void:
 		player.get_node("HUD").visible = true
 		GI.inOS = false
 		inPasscodeScreen = false
-		if pcCam.current: playerCam.current = true;
+		playerCam.current = true
 	elif pcCam.current: pcOS.eventTriggered(event); # Sends player input to pcOS viewport
 	elif inPasscodeScreen: $basement/passcode/passcodeEntry.eventTriggered(event); # Sends player input to passcodeEntry viewport
 # In-world player interactions
@@ -74,6 +74,7 @@ func _on_player_interacted(interactionName:String) -> void:
 		"passcode": # Passcode focus
 			screenSFX.play()
 			player.disabled = true
+			$basement/hologramModule/hologramCam.current = true
 			player.get_node("HUD").visible = false
 			inPasscodeScreen = true
 		"crt": # Plug usb stick into CRT
@@ -122,16 +123,18 @@ func _on_passcode_entry_updated_progress() -> void:
 	player.unlockedInteractions.erase("passcode")
 	$hallway/clock/clockTimer.start()
 	$basement/doorAnims.play("openDoor")
+	playerCam.current = true
 # Passcode unfocus
 func _on_passcode_entry_exit_passcode() -> void:
 	player.disabled = false
 	player.get_node("HUD").visible = true
 	inPasscodeScreen = false
+	playerCam.current = true
 # Piano room jumpscare triggers
 func _on_trigger_field_body_entered(_body) -> void:
 	$pianoRoom/triggerField.set_deferred("monitoring", false)
 	if GI.progress == 8: # Hide laplace jumpscare
-		$pianoRoom/arms.visible = false
+		$pianoRoom/wingedHideAnim.play("hide")
 		$hallway/windowEyes.visible = true
 		$powercutAnim.play("lightWindow")
 		$audioManager/heartbeat.pitch_scale = 1.5
@@ -150,6 +153,7 @@ func _on_trigger_field_2_body_entered(_body) -> void:
 	$pianoRoom/eye2Anim.play("drawBack")
 # Change scene to city
 func _on_city_trigger_field_body_entered(_body) -> void:
+	$basement/eyes.visible = false
 	# Reposition player to outside of trigger field, so when basement is reloaded, doesn't trigger this function again instantly
 	$basement/cityTriggerField.set_deferred("monitoring", false)
 	player.position = $basement/citySpawnPos.global_position

@@ -30,9 +30,16 @@ func _input(event) -> void:
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
 		
 		var change:float = (1 if GI.invertY else -1) * event.relative.y * MOUSE_SENSITIVITY
-		if change + cameraAngle < 85 and change + cameraAngle > -85 and !lockYRot:
-			$head/cam.rotate_x(deg_to_rad(change))
-			cameraAngle += change
+		if !lockYRot:
+			if change + cameraAngle > 85:
+				$head/cam.rotate_x(deg_to_rad(85 - cameraAngle))
+				cameraAngle = 85
+			elif change + cameraAngle < -85:
+				$head/cam.rotate_x(deg_to_rad(-(85 + cameraAngle)))
+				cameraAngle = -85
+			else:
+				$head/cam.rotate_x(deg_to_rad(change))
+				cameraAngle += change
 	elif Input.is_action_just_pressed("interact") and HUDinteract.visible: # Interact with object looking at
 		emit_signal("interacted", interactCast.get_collider().interactionName)
 # Player movement & interaction updates

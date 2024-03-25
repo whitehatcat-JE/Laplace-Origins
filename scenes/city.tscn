@@ -59,11 +59,11 @@ roughness = 0.93
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oljxv"]
 shader = ExtResource("6_iedvu")
-shader_parameter/shake_power = 0.03
+shader_parameter/shake_power = 0.0
 shader_parameter/shake_rate = 0.2
 shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 50.0
-shader_parameter/shake_color_rate = 0.031
+shader_parameter/shake_color_rate = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_e37by"]
 shader = ExtResource("7_6wgwt")
@@ -708,10 +708,10 @@ libraries = {
 
 [node name="bobAnim" type="AnimationPlayer" parent="player"]
 root_node = NodePath("../..")
-autoplay = "bob"
 libraries = {
 "": SubResource("AnimationLibrary_pb6fc")
 }
+autoplay = "bob"
 
 [node name="hitbox" type="CollisionShape3D" parent="player"]
 shape = SubResource("CapsuleShape3D_ilfv1")
@@ -846,11 +846,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm2"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm3" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(-0.344292, -0.920438, -0.185086, -0.717423, 0.385088, -0.580527, 0.605613, -0.0670861, -0.792926, -53.8876, 3.82996, -209.383)
@@ -866,11 +866,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm3"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm4" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(0.825772, -0.561987, 0.0476711, -0.518243, -0.789407, -0.32903, 0.222543, 0.246999, -0.943115, 34.5475, 3.82996, -209.383)
@@ -886,11 +886,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm4"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm5" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(-0.00123419, -0.384035, 0.923317, -0.518243, -0.789407, -0.32903, 0.855233, -0.478909, -0.198049, 8.43396, 8.85397, -209.383)
@@ -906,11 +906,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm5"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm6" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(-0.222543, -0.246999, 0.943115, -0.518243, -0.789407, -0.32903, 0.825772, -0.561987, 0.0476711, -25.2152, -18.0408, -287.89)
@@ -926,11 +926,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm6"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm7" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(-0.222543, -0.246999, 0.943115, -0.518243, -0.789407, -0.32903, 0.825772, -0.561987, 0.0476711, -27.7952, 68.7666, -185.97)
@@ -946,11 +946,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm7"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm8" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(-0.33754, -0.560147, -0.756506, 0.270256, 0.712169, -0.647901, 0.901681, -0.423144, -0.0890029, 67.8787, 27.494, -194.143)
@@ -966,11 +966,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm8"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm9" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(0.402819, 0.89683, -0.182846, 0.15719, 0.129017, 0.979105, 0.901681, -0.423144, -0.0890029, 43.7028, 91.3779, -194.143)
@@ -986,11 +986,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm9"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm10" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(-0.765965, 0.217456, 0.604988, 0.623738, 0.0234277, 0.781282, 0.155721, 0.975789, -0.15358, -53.1793, 91.3779, -194.143)
@@ -1006,11 +1006,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm10"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm11" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(-0.356476, 0.913658, -0.195333, -0.10057, 0.170331, 0.980241, 0.928876, 0.369077, 0.0311676, -45.1292, 50.4453, -206.419)
@@ -1026,11 +1026,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm11"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm12" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(0.982668, -0.137199, 0.124659, -0.10057, 0.170331, 0.980241, -0.155721, -0.975789, 0.15358, 67.5078, 62.4514, -206.419)
@@ -1046,11 +1046,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm12"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm13" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(0.972657, 0.224135, 0.060845, -0.10057, 0.170331, 0.980241, 0.209343, -0.959558, 0.188214, 39.5104, 22.0333, -185.855)
@@ -1066,11 +1066,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm13"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm14" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(-0.348885, 0.106516, 0.931093, -0.913485, -0.260583, -0.312477, 0.209343, -0.959558, 0.188214, 39.7078, 1.90095, -185.855)
@@ -1086,11 +1086,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm14"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm15" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(0.160524, 0.47488, -0.865286, -0.913485, -0.260583, -0.312477, -0.373868, 0.840587, 0.391966, -8.06743, -6.85277, -204.117)
@@ -1106,11 +1106,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm15"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="arm16" type="Node3D" parent="planet/planetArms"]
 transform = Transform3D(-0.840812, -0.128795, -0.525782, -0.391482, -0.526142, 0.754927, -0.373868, 0.840587, 0.391966, -56.1075, 18.5246, -204.117)
@@ -1126,11 +1126,11 @@ mesh = ExtResource("22_4fqpb")
 skeleton = NodePath("../../../../..")
 
 [node name="armSwayAnim" type="AnimationPlayer" parent="planet/planetArms/arm16"]
-autoplay = "sway"
-speed_scale = 0.3
 libraries = {
 "": SubResource("AnimationLibrary_6ng4f")
 }
+autoplay = "sway"
+speed_scale = 0.3
 
 [node name="kneelAnim" type="AnimationPlayer" parent="."]
 libraries = {
