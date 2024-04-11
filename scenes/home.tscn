@@ -1,4 +1,4 @@
-[gd_scene load_steps=453 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=454 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -340,7 +340,7 @@ resource_local_to_scene = true
 shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_aa2sa")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_84r30"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_uni65"]
 size = Vector3(2.00439, 1, 0.310298)
 
 [sub_resource type="BoxMesh" id="BoxMesh_7ewhp"]
@@ -393,6 +393,9 @@ animations = [{
 "name": &"RGB",
 "speed": 2.0
 }]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xbrwv"]
+size = Vector3(0.996917, 0.52241, 0.287886)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe5fe"]
 cull_mode = 2
@@ -3122,7 +3125,7 @@ interactionName = "monitor"
 
 [node name="hitbox" type="CollisionShape3D" parent="bedroom/desk/monitorScreen/monitorInteraction"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0928049)
-shape = SubResource("BoxShape3D_84r30")
+shape = SubResource("BoxShape3D_uni65")
 
 [node name="cam" type="Camera3D" parent="bedroom/desk/monitorScreen"]
 transform = Transform3D(-1.25, 0, -1.09278e-07, 0, 1.25, 0, 1.09278e-07, 0, -1.25, 0, 0, -1.02107)
@@ -3224,6 +3227,18 @@ flip_v = true
 pixel_size = 0.001
 shaded = true
 texture = ExtResource("15_tc58i")
+
+[node name="notepadCam" type="Camera3D" parent="bedroom/desk/notepad"]
+transform = Transform3D(2, 5.96046e-07, 3.01992e-07, 5.96046e-07, -2, -1.74845e-07, 3.01992e-07, 1.74846e-07, -2, 0.0235672, 0.0315719, -0.555506)
+
+[node name="notepadInteraction" parent="bedroom/desk/notepad" instance=ExtResource("13_pkg5h")]
+transform = Transform3D(1, 0, 1.0842e-19, 0, 1, 0, -1.0842e-19, 0, 1, 0, 0, 0)
+minDistance = 2.0
+interactionName = "notepad"
+
+[node name="hitbox" type="CollisionShape3D" parent="bedroom/desk/notepad/notepadInteraction"]
+transform = Transform3D(1, 7.45058e-07, -9.9476e-14, -7.45058e-07, 1, -5.7554e-13, -3.28626e-13, 7.21201e-13, 1, 0.0485477, 0.0559869, -0.00969243)
+shape = SubResource("BoxShape3D_xbrwv")
 
 [node name="lamp" type="MeshInstance3D" parent="bedroom/desk"]
 transform = Transform3D(-1.45479, 0, 1.09058, 0, 1.81818, 0, -1.09058, 0, -1.45479, 2.08021, 0.639896, 0.26513)
@@ -4004,27 +4019,6 @@ light_energy = 1.5
 shadow_enabled = true
 shadow_opacity = 0.88
 omni_range = 12.0
-
-[node name="notepad2" type="Sprite3D" parent="hallway"]
-transform = Transform3D(-0.90909, -8.41476e-30, -1.77636e-15, -1.0326e-15, -0.878114, -0.23529, 3.85372e-15, -0.23529, 0.878115, 1.87095, 1.72455, 7.98572)
-flip_v = true
-pixel_size = 0.0006
-shaded = true
-texture = ExtResource("15_tc58i")
-
-[node name="notepad2" type="Sprite3D" parent="hallway/notepad2"]
-transform = Transform3D(1, 2.98023e-08, 1.77636e-15, -2.98023e-08, 1, 3.55271e-15, -1.77636e-15, -3.55271e-15, 1, 0, 0, 0.0125206)
-flip_v = true
-pixel_size = 0.0006
-shaded = true
-texture = ExtResource("15_tc58i")
-
-[node name="notepad3" type="Sprite3D" parent="hallway/notepad2"]
-transform = Transform3D(1, 1.19209e-07, 7.10543e-15, -1.19209e-07, 1, 1.06581e-14, -7.10543e-15, -1.06581e-14, 1, 0, 0, 0.0242894)
-flip_v = true
-pixel_size = 0.0006
-shaded = true
-texture = ExtResource("15_tc58i")
 
 [node name="player" type="CharacterBody3D" parent="."]
 transform = Transform3D(-0.622214, 0, 0.782847, 0, 1, 0, -0.782847, 0, -0.622214, 1.25526, 1.40686, 0.814159)

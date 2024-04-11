@@ -12,6 +12,9 @@ var menuDisplaying:bool = false
 var filesDisplaying:bool = false
 var cmdDisplaying:bool = false
 
+var displayingArticle1:bool = false
+var displayingArticle2:bool = false
+
 var emailDisplaying:bool = false
 var emailCDisplaying:bool = false
 
@@ -133,6 +136,36 @@ func eventTriggered(event) -> void:
 				playDefaultClickSFX = false
 				$clickRetroSFX.play()
 				$shooterMinigame.begin()
+			"internetOpen":
+				$internetBrowser.visible = true
+				$mouse/pointerRay.set_collision_mask_value(2, false)
+				$mouse/pointerRay.set_collision_mask_value(4, true)
+			"internetQuit":
+				$internetBrowser.visible = false
+				$mouse/pointerRay.set_collision_mask_value(2, true)
+				$mouse/pointerRay.set_collision_mask_value(4, false)
+			"search":
+				if $internetBrowser/homepage/results.position.y > 1000:
+					$internetBrowser/homepage/homepageAnims.play("showResults")
+				else:
+					$internetBrowser/homepage/homepageAnims.play("hideResults")
+			"newsResultsBack":
+				if displayingArticle1:
+					displayingArticle1 = false
+					$internetBrowser/newsResults/newsAnims.play("hideArticle1")
+				elif displayingArticle2:
+					displayingArticle2 = false
+					$internetBrowser/newsResults/newsAnims.play("hideArticle2")
+				else:
+					$internetBrowser/newsResults/newsAnims.play("hideNews")
+			"newsSearch":
+				$internetBrowser/newsResults/newsAnims.play("showNews")
+			"newsArticle1":
+				displayingArticle1 = true
+				$internetBrowser/newsResults/newsAnims.play("showArticle1")
+			"newsArticle2":
+				displayingArticle2 = true
+				$internetBrowser/newsResults/newsAnims.play("showArticle2")
 		if playDefaultClickSFX: clickSFX.play();
 # Checks if mouse currently hovered over button
 func _process(delta) -> void:
@@ -165,6 +198,10 @@ func _process(delta) -> void:
 			"shooterOpen": $homeScreen/menuBar/shooter/shooterBack.modulate = "ffffff00";
 			"shooterQuit": $shooterMinigame/HUD/quit/quitBack.modulate = "ffffff00";
 			"shooterBegin": $shooterMinigame/HUD/beginButton.texture = $shooterMinigame.beginTexture;
+			"internetOpen": $homeScreen/menuBar/internet/internetBack.modulate = "ffffff00";
+			"internetQuit": $internetBrowser/quit/quitBack.modulate = "ffffff00";
+			"newsArticle1": $internetBrowser/newsResults/article1/hoverAnims.play("unhover");
+			"newsArticle2": $internetBrowser/newsResults/article2/hoverAnims.play("unhover");
 		# Changes color of button currently hovered
 		match interaction:
 			"login": $loginScreen/loginButton.modulate = "969696d5";
@@ -184,6 +221,10 @@ func _process(delta) -> void:
 			"shooterOpen": $homeScreen/menuBar/shooter/shooterBack.modulate = "969696d5";
 			"shooterQuit": $shooterMinigame/HUD/quit/quitBack.modulate = "969696d5";
 			"shooterBegin": $shooterMinigame/HUD/beginButton.texture = $shooterMinigame.hoverTexture;
+			"internetOpen": $homeScreen/menuBar/internet/internetBack.modulate = "969696d5";
+			"internetQuit": $internetBrowser/quit/quitBack.modulate = "969696d5";
+			"newsArticle1": $internetBrowser/newsResults/article1/hoverAnims.play("hover");
+			"newsArticle2": $internetBrowser/newsResults/article2/hoverAnims.play("hover");
 		currentInteraction = interaction  # Stores currently hovered button
 	
 	if GI.progress == 2 and wifiEnabled: # Updates wifi icon if internet off

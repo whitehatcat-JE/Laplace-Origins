@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://csnnn1yw8ccgs"]
+[gd_scene load_steps=45 format=3 uid="uid://csnnn1yw8ccgs"]
 
 [ext_resource type="Script" path="res://scripts/pcOS.gd" id="1_xeigj"]
 [ext_resource type="Texture2D" uid="uid://b8f2gr7p8vcd2" path="res://assets/2d/pcOS/dropBackground.png" id="2_j3svo"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://b4jakrr4um7fl" path="res://assets/audio/sfx/menus/denied.ogg" id="16_4t7hq"]
 [ext_resource type="AudioStream" uid="uid://kr6tbxg4qy2v" path="res://assets/audio/sfx/shooter/playerHit.mp3" id="17_5bjig"]
 [ext_resource type="PackedScene" uid="uid://bofptlnpouy2f" path="res://scenes/shooterMinigame.tscn" id="17_alprl"]
+[ext_resource type="PackedScene" uid="uid://2dbuwxwcysa4" path="res://scenes/internetBrowser.tscn" id="20_xce36"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v6mo5"]
 shader = ExtResource("3_s1hks")
@@ -802,9 +803,9 @@ shape = SubResource("RectangleShape2D_8nfdd")
 
 [node name="files" type="Label" parent="homeScreen/menuBar"]
 offset_left = 554.0
-offset_top = 363.0
+offset_top = 364.0
 offset_right = 817.0
-offset_bottom = 428.0
+offset_bottom = 429.0
 scale = Vector2(0.4, 0.4)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("11_830h1")
@@ -828,11 +829,39 @@ interactionName = "filesOpen"
 position = Vector2(115, 35)
 shape = SubResource("RectangleShape2D_8nfdd")
 
+[node name="internet" type="Label" parent="homeScreen/menuBar"]
+offset_left = 554.0
+offset_top = 401.0
+offset_right = 817.0
+offset_bottom = 466.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 34
+text = "Internet"
+vertical_alignment = 1
+
+[node name="internetBack" type="ColorRect" parent="homeScreen/menuBar/internet"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -18.0
+offset_top = -7.0
+offset_right = 247.0
+offset_bottom = 78.0
+
+[node name="interact" parent="homeScreen/menuBar/internet" instance=ExtResource("8_kdwn3")]
+interactionName = "internetOpen"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/menuBar/internet/interact"]
+position = Vector2(115, 35)
+shape = SubResource("RectangleShape2D_8nfdd")
+
 [node name="shooter" type="Label" parent="homeScreen/menuBar"]
 offset_left = 554.0
-offset_top = 400.0
+offset_top = 438.0
 offset_right = 817.0
-offset_bottom = 465.0
+offset_bottom = 503.0
 scale = Vector2(0.4, 0.4)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("11_830h1")
@@ -1629,6 +1658,10 @@ stream = ExtResource("16_4t7hq")
 
 [node name="shooterMinigame" parent="." instance=ExtResource("17_alprl")]
 visible = false
+
+[node name="internetBrowser" parent="." instance=ExtResource("20_xce36")]
+visible = false
+position = Vector2(0, 20)
 
 [connection signal="timeout" from="homeScreen/consoleWindow/newLineTimer" to="." method="_on_new_line_timer_timeout"]
 [connection signal="timeout" from="homeScreen/clockTimer" to="." method="_on_clock_timer_timeout"]

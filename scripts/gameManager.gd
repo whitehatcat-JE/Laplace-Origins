@@ -1,6 +1,7 @@
 extends Node3D
 # State variables
 var inPasscodeScreen:bool = false
+var inNotepad:bool = false
 # Nodes
 @onready var player:Node = $player
 @onready var playerCam:Node = $player/head/cam
@@ -15,11 +16,12 @@ var inPasscodeScreen:bool = false
 @onready var insertSFX:Node = $basement/crt/insertSFX
 # Screen interactions
 func _input(event) -> void:
-	if Input.is_action_just_pressed("back") and (pcCam.current or inPasscodeScreen): # Stops focusing on screen
+	if Input.is_action_just_pressed("back") and (pcCam.current or inPasscodeScreen or inNotepad): # Stops focusing on screen
 		player.disabled = false
 		player.get_node("HUD").visible = true
 		GI.inOS = false
 		inPasscodeScreen = false
+		inNotepad = false
 		playerCam.current = true
 	elif pcCam.current: pcOS.eventTriggered(event); # Sends player input to pcOS viewport
 	elif inPasscodeScreen: $basement/passcode/passcodeEntry.eventTriggered(event); # Sends player input to passcodeEntry viewport
@@ -77,6 +79,11 @@ func _on_player_interacted(interactionName:String) -> void:
 			$basement/hologramModule/hologramCam.current = true
 			player.get_node("HUD").visible = false
 			inPasscodeScreen = true
+		"notepad":
+			player.disabled = true
+			inNotepad = true
+			$bedroom/desk/notepad/notepadCam.current = true
+			player.get_node("HUD").visible = false
 		"crt": # Plug usb stick into CRT
 			$bedroom/cupboard.visible = false
 			$bedroom/cupboardAjar.visible = true

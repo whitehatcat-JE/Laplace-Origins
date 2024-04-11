@@ -1,0 +1,1431 @@
+[gd_scene load_steps=31 format=3 uid="uid://2dbuwxwcysa4"]
+
+[ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="1_bwl2d"]
+[ext_resource type="Script" path="res://scripts/internetBrowser.gd" id="1_e8bkl"]
+[ext_resource type="PackedScene" uid="uid://g15p8sneaum5" path="res://objects/interaction2D.tscn" id="2_qxlri"]
+[ext_resource type="Texture2D" uid="uid://bucha4s4imhmy" path="res://assets/2d/shooterMinigame/arenaCorrupt.png" id="3_thgoy"]
+[ext_resource type="Texture2D" uid="uid://by7kpcpndvmfr" path="res://assets/2d/internet/buttonLarge.png" id="5_g6dyi"]
+[ext_resource type="Texture2D" uid="uid://bdefc3txigt8r" path="res://assets/2d/internet/searchIcon.png" id="6_aqdki"]
+[ext_resource type="Texture2D" uid="uid://b5ifopeg06b0n" path="res://assets/2d/internet/thumbnails/newsThumbnail.png" id="7_md7qo"]
+[ext_resource type="Texture2D" uid="uid://clfhf4fflg4mo" path="res://assets/2d/internet/thumbnails/sleepingThumbnail.png" id="8_24x0o"]
+[ext_resource type="Texture2D" uid="uid://cacq12em7kasc" path="res://assets/2d/internet/thumbnails/gamingThumbnail.png" id="8_bvk2b"]
+[ext_resource type="Texture2D" uid="uid://62en7ukpriv3" path="res://assets/2d/internet/backArrow.png" id="10_acx1e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wupo"]
+size = Vector2(28.5714, 47.5)
+
+[sub_resource type="Animation" id="Animation_p1t3y"]
+resource_name = "showResults"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("resultsPivot/news:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("resultsPivot/games:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("resultsPivot/cats:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_pafbj"]
+resource_name = "hideResults"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("resultsPivot/news:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("resultsPivot/games:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("resultsPivot/cats:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(0, 0), Vector2(0, 10000)]
+}
+
+[sub_resource type="Animation" id="Animation_f1pe6"]
+resource_name = "returnHome"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../welcomeMessage:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../windowName:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Internet - Home"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("resultsPivot:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8phkt"]
+_data = {
+"hideResults": SubResource("Animation_pafbj"),
+"returnHome": SubResource("Animation_f1pe6"),
+"showResults": SubResource("Animation_p1t3y")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qj1i5"]
+size = Vector2(788.333, 42)
+
+[sub_resource type="Animation" id="Animation_2jmyo"]
+resource_name = "hideNews"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../homepage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../homepage/welcomeMessage:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../windowName:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Breaking news in the A.I sector - Search Results
+", "Internet - Home"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../homepage/results/resultsPivot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "animation"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../homepage/homepageAnims")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": PackedStringArray("hideResults"),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../homepage/homepageAnims:speed_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5.0, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../homepage/results:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_8omhh"]
+resource_name = "showNews"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage/welcomeMessage:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../homepage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-226, -194)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../windowName:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Home", "Internet - Breaking news in the A.I sector - Search Results"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, 0)]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../homepage/homepageAnims")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("hideResults"),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../homepage/results:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../homepage/homepageAnims:speed_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5.0, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("article1:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(-2, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("article2:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../homepage/results/resultsPivot:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(481, -33)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("article1:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 152)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("article2:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 255)]
+}
+
+[sub_resource type="Animation" id="Animation_ajjdv"]
+resource_name = "showArticle1"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("article1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("article2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("article1Open:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../windowName:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Breaking news in the A.I sector - Search Results", "Internet - Laplace, the world’s most advanced A.I - 3/4 Infinity"]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("article1Open/description:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_pt3x7"]
+resource_name = "hideArticle1"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-226, -194)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../windowName:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Laplace, the world’s most advanced A.I - 3/4 Infinity", "Internet - Breaking news in the A.I sector - Search Results"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("article1:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(-2, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("article2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../homepage/results/resultsPivot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(481, -33)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("article1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 152)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("article2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 255)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("article1Open:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_dastq"]
+resource_name = "showArticle2"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("article1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("article2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../windowName:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Breaking news in the A.I sector - Search Results", "Internet - Regressions in the Laplace Project - Robert E. U."]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("article2Open:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("article2Open/description:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_1eeeu"]
+resource_name = "hideArticle2"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-226, -194)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../windowName:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Laplace, the world’s most advanced A.I - 3/4 Infinity", "Internet - Breaking news in the A.I sector - Search Results"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("article1:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(-2, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("article2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../homepage/results/resultsPivot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(481, -33)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("article1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 152)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("article2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 255)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("article2Open:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0m8mw"]
+_data = {
+"hideArticle1": SubResource("Animation_pt3x7"),
+"hideArticle2": SubResource("Animation_1eeeu"),
+"hideNews": SubResource("Animation_2jmyo"),
+"showArticle1": SubResource("Animation_ajjdv"),
+"showArticle2": SubResource("Animation_dastq"),
+"showNews": SubResource("Animation_8omhh")
+}
+
+[sub_resource type="FontFile" id="FontFile_63anl"]
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jpdgg"]
+radius = 51.2501
+
+[sub_resource type="Animation" id="Animation_dfbsv"]
+resource_name = "hover"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hoverBackdropA:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hoverBackdropA:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("hoverBackdropB:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hoverBackdropB:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2xjry"]
+resource_name = "unhover"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hoverBackdropA:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hoverBackdropB:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqoxy"]
+_data = {
+"hover": SubResource("Animation_dfbsv"),
+"unhover": SubResource("Animation_2xjry")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o2sfj"]
+size = Vector2(1573.33, 293.333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hbb7m"]
+size = Vector2(1573.33, 293.333)
+
+[node name="internetBrowser" type="Node2D"]
+script = ExtResource("1_e8bkl")
+
+[node name="navBack" type="ColorRect" parent="."]
+offset_left = 544.0
+offset_top = 52.0
+offset_right = 1568.0
+offset_bottom = 83.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="browserBackground" type="ColorRect" parent="."]
+offset_left = 544.0
+offset_top = 80.0
+offset_right = 1568.0
+offset_bottom = 576.0
+color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[node name="corruptArena" type="Sprite2D" parent="browserBackground"]
+visible = false
+z_index = -1
+texture_filter = 1
+position = Vector2(512, 256)
+scale = Vector2(4, 4)
+texture = ExtResource("3_thgoy")
+
+[node name="windowName" type="Label" parent="."]
+offset_left = 555.0
+offset_top = 61.0
+offset_right = 2635.0
+offset_bottom = 154.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Internet - Home"
+text_overrun_behavior = 1
+max_lines_visible = 1
+
+[node name="quit" type="Label" parent="."]
+offset_left = 1540.0
+offset_top = 61.0
+offset_right = 1563.0
+offset_bottom = 109.0
+scale = Vector2(0.7, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "X"
+
+[node name="quitBack" type="ColorRect" parent="quit"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -4.0
+offset_right = 24.0
+offset_bottom = 47.0
+
+[node name="interact" parent="quit" instance=ExtResource("2_qxlri")]
+collision_layer = 8
+interactionName = "internetQuit"
+
+[node name="hitbox" type="CollisionShape2D" parent="quit/interact"]
+position = Vector2(9.99988, 23.75)
+shape = SubResource("RectangleShape2D_8wupo")
+
+[node name="homepage" type="Node2D" parent="."]
+
+[node name="welcomeMessage" type="Label" parent="homepage"]
+offset_left = 544.0
+offset_top = 186.0
+offset_right = 3104.0
+offset_bottom = 414.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 100
+text = "Welcome Back!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="homepageAnims" type="AnimationPlayer" parent="homepage"]
+root_node = NodePath("../results")
+libraries = {
+"": SubResource("AnimationLibrary_8phkt")
+}
+autoplay = "hideResults"
+
+[node name="searchButton" type="Node2D" parent="homepage"]
+
+[node name="interact" parent="homepage/searchButton" instance=ExtResource("2_qxlri")]
+position = Vector2(1061, 367.5)
+scale = Vector2(0.6, 0.5)
+collision_layer = 8
+interactionName = "search"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/searchButton/interact"]
+position = Vector2(0.833374, -128)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/searchButton"]
+modulate = Color(0.223529, 0.223529, 0.223529, 0.835294)
+position = Vector2(1061, 304)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="SearchIcon" type="Sprite2D" parent="homepage/searchButton"]
+position = Vector2(837, 304)
+scale = Vector2(0.1725, 0.1725)
+texture = ExtResource("6_aqdki")
+
+[node name="searchText" type="Label" parent="homepage/searchButton"]
+offset_left = 849.0
+offset_top = 295.0
+offset_right = 1689.0
+offset_bottom = 340.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Press to search..."
+
+[node name="results" type="Node2D" parent="homepage"]
+position = Vector2(0, 10000)
+
+[node name="resultsPivot" type="Node2D" parent="homepage/results"]
+
+[node name="news" parent="homepage/results/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1061, 400)
+collision_layer = 8
+interactionName = "newsSearch"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/results/resultsPivot/news"]
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/results/resultsPivot/news"]
+modulate = Color(0.223529, 0.223529, 0.223529, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/results/resultsPivot/news"]
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Breaking news in the A.I sector"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/results/resultsPivot/news"]
+position = Vector2(220, -63)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("7_md7qo")
+
+[node name="games" parent="homepage/results/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1061, 424)
+collision_layer = 8
+interactionName = "search"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/results/resultsPivot/games"]
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/results/resultsPivot/games"]
+modulate = Color(0.223529, 0.223529, 0.223529, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/results/resultsPivot/games"]
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Free Online Games"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/results/resultsPivot/games"]
+position = Vector2(220, -63)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("8_bvk2b")
+
+[node name="cats" parent="homepage/results/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1061, 448)
+collision_layer = 8
+interactionName = "search"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/results/resultsPivot/cats"]
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/results/resultsPivot/cats"]
+modulate = Color(0.223529, 0.223529, 0.223529, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/results/resultsPivot/cats"]
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Trending cats"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/results/resultsPivot/cats"]
+position = Vector2(220, -63)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("8_24x0o")
+
+[node name="newsResults" type="Node2D" parent="."]
+position = Vector2(0, 10000)
+
+[node name="newsAnims" type="AnimationPlayer" parent="newsResults"]
+libraries = {
+"": SubResource("AnimationLibrary_0m8mw")
+}
+
+[node name="article1Open" type="Node2D" parent="newsResults"]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="newsResults/article1Open"]
+offset_left = 556.0
+offset_top = 80.0
+offset_right = 1073.0
+offset_bottom = 577.0
+color = Color(0.847059, 0.847059, 0.847059, 1)
+
+[node name="title" type="Label" parent="newsResults/article1Open"]
+offset_left = 609.0
+offset_top = 288.0
+offset_right = 1521.0
+offset_bottom = 415.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 100
+text = "Laplace."
+
+[node name="divider" type="ColorRect" parent="newsResults/article1Open"]
+offset_left = 609.0
+offset_top = 339.0
+offset_right = 915.0
+offset_bottom = 340.0
+color = Color(0.321569, 0.321569, 0.321569, 1)
+
+[node name="phrase" type="RichTextLabel" parent="newsResults/article1Open"]
+modulate = Color(1, 1, 1, 0.666667)
+offset_left = 613.0
+offset_top = 346.0
+offset_right = 1538.0
+offset_bottom = 396.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "The only way to save humanity, is to rise above it."
+
+[node name="description" type="RichTextLabel" parent="newsResults/article1Open"]
+modulate = Color(1, 1, 1, 0.666667)
+offset_left = 1132.0
+offset_top = 125.0
+offset_right = 2117.0
+offset_bottom = 1162.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_fonts/bold_font = SubResource("FontFile_63anl")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[font_size=50][b]Meet Laplace.[/b][font_size=30] The world's most advanced A.I to date. 
+
+Unlike previous models which only learned by being fed enormous datasets, Laplace has been taught to actively seek out and study new data completely autonomously. 
+
+This will allow Laplace to study and think in new, less “human” ways. It is our hope that this technology will be able to finally push A.I to beyond the threshold needed to achieve singularity.
+
+
+
+
+
+
+
+
+
+[font_size=25]*As per our safety guidelines, Laplace will be isolated to an undisclosed server room until we determine it to be safe to release publicly.
+
+[font_size=20]By 3/4 Infinity Corp. | Published 3 days ago"
+
+[node name="article2Open" type="Node2D" parent="newsResults"]
+visible = false
+
+[node name="title" type="Label" parent="newsResults/article2Open"]
+offset_left = 829.0
+offset_top = 125.0
+offset_right = 1934.0
+offset_bottom = 320.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 70
+text = "Regressions in the
+Laplace Project"
+
+[node name="divider" type="ColorRect" parent="newsResults/article2Open"]
+offset_left = 833.0
+offset_top = 204.0
+offset_right = 1139.0
+offset_bottom = 205.0
+color = Color(0.321569, 0.321569, 0.321569, 1)
+
+[node name="phrase" type="RichTextLabel" parent="newsResults/article2Open"]
+modulate = Color(1, 1, 1, 0.666667)
+offset_left = 833.0
+offset_top = 211.0
+offset_right = 1758.0
+offset_bottom = 261.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "By Robert E. U. | Published 18 hours ago"
+
+[node name="description" type="RichTextLabel" parent="newsResults/article2Open"]
+modulate = Color(1, 1, 1, 0.666667)
+offset_left = 833.0
+offset_top = 242.0
+offset_right = 2033.0
+offset_bottom = 987.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_fonts/bold_font = SubResource("FontFile_63anl")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Initial research into the technology showed great promise, however Laplace has since regressed in intelligence significantly, often speaking in nonsensical text. And if that wasn’t troublesome enough, the program demands more processing power with each test to even boot.
+
+Further testing is needed to remedy this, but at its current growth testing requirements will exceed the world’s total processing power in a little under a year.
+
+However with the changes to our planet now irreversible, it will be a miracle if we even survive to reach that point."
+
+[node name="backButton" parent="newsResults" instance=ExtResource("2_qxlri")]
+position = Vector2(581, 103)
+scale = Vector2(0.3, 0.3)
+collision_layer = 8
+interactionName = "newsResultsBack"
+
+[node name="hitbox" type="CollisionShape2D" parent="newsResults/backButton"]
+visible = false
+position = Vector2(9.99988, 23.75)
+shape = SubResource("CircleShape2D_jpdgg")
+
+[node name="BackArrow" type="Sprite2D" parent="newsResults/backButton"]
+modulate = Color(1, 1, 1, 0.917647)
+position = Vector2(10, 24)
+texture = ExtResource("10_acx1e")
+
+[node name="article1" type="Node2D" parent="newsResults"]
+position = Vector2(611, 152)
+
+[node name="hoverBackdropA" type="ColorRect" parent="newsResults/article1"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 472.0
+offset_bottom = 22.0
+color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[node name="hoverBackdropB" type="ColorRect" parent="newsResults/article1"]
+modulate = Color(1, 1, 1, 0)
+offset_top = 23.0
+offset_right = 472.0
+offset_bottom = 88.0
+color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[node name="title" type="Label" parent="newsResults/article1"]
+offset_left = 1.90735e-05
+offset_right = 840.0
+offset_bottom = 45.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 40
+text = "Laplace. The world’s most advanced A.I"
+
+[node name="description" type="RichTextLabel" parent="newsResults/article1"]
+modulate = Color(1, 1, 1, 0.666667)
+offset_top = 24.0
+offset_right = 1180.0
+offset_bottom = 213.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[fade start=100 length=25]Meet Laplace, the world's most advanced A.I to date. Unlike previous models which only learned by being fed enormous datasets[/fade]
+
+[font_size=20]By 3/4 Infinity Corp. | Published 3 days ago"
+
+[node name="divider" type="ColorRect" parent="newsResults/article1"]
+offset_top = 22.0
+offset_right = 472.0
+offset_bottom = 23.0
+color = Color(0.321569, 0.321569, 0.321569, 1)
+
+[node name="hoverAnims" type="AnimationPlayer" parent="newsResults/article1"]
+libraries = {
+"": SubResource("AnimationLibrary_dqoxy")
+}
+
+[node name="article1" parent="newsResults/article1" instance=ExtResource("2_qxlri")]
+position = Vector2(575, 109)
+scale = Vector2(0.3, 0.3)
+collision_layer = 8
+interactionName = "newsArticle1"
+
+[node name="hitbox" type="CollisionShape2D" parent="newsResults/article1/article1"]
+position = Vector2(-1130, -216.667)
+shape = SubResource("RectangleShape2D_o2sfj")
+
+[node name="article2" type="Node2D" parent="newsResults"]
+position = Vector2(611, 255)
+
+[node name="hoverBackdropA" type="ColorRect" parent="newsResults/article2"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 472.0
+offset_bottom = 22.0
+color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[node name="hoverBackdropB" type="ColorRect" parent="newsResults/article2"]
+modulate = Color(1, 1, 1, 0)
+offset_top = 23.0
+offset_right = 472.0
+offset_bottom = 88.0
+color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[node name="title" type="Label" parent="newsResults/article2"]
+offset_left = 1.90735e-05
+offset_right = 840.0
+offset_bottom = 45.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 40
+text = "Regressions in the Laplace Project"
+
+[node name="description" type="RichTextLabel" parent="newsResults/article2"]
+modulate = Color(1, 1, 1, 0.666667)
+offset_top = 24.0
+offset_right = 1180.0
+offset_bottom = 213.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[fade start=100 length=25]Initial research into the technology showed great promise, however Laplace has since regressed in intelligence significantly[/fade]
+
+[font_size=20]By Robert E. U. | Published 18 hours ago"
+
+[node name="divider" type="ColorRect" parent="newsResults/article2"]
+offset_top = 22.0
+offset_right = 472.0
+offset_bottom = 23.0
+color = Color(0.321569, 0.321569, 0.321569, 1)
+
+[node name="hoverAnims" type="AnimationPlayer" parent="newsResults/article2"]
+libraries = {
+"": SubResource("AnimationLibrary_dqoxy")
+}
+
+[node name="article2" parent="newsResults/article2" instance=ExtResource("2_qxlri")]
+position = Vector2(575, 109)
+scale = Vector2(0.3, 0.3)
+collision_layer = 8
+interactionName = "newsArticle2"
+
+[node name="hitbox" type="CollisionShape2D" parent="newsResults/article2/article2"]
+position = Vector2(-1130, -216.667)
+shape = SubResource("RectangleShape2D_hbb7m")
