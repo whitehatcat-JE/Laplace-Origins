@@ -217,6 +217,12 @@ sdfgi_enabled = true
 sdfgi_use_occlusion = true
 sdfgi_read_sky_light = false
 sdfgi_y_scale = 0
+glow_enabled = true
+glow_levels/1 = 0.46
+glow_levels/2 = 0.74
+glow_levels/3 = 1.66
+glow_levels/5 = 0.0
+glow_bloom = 0.07
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
 
@@ -553,6 +559,7 @@ metallic_specular = 1.0
 roughness = 0.0
 emission_enabled = true
 emission = Color(1, 0.854902, 0.647059, 1)
+emission_energy_multiplier = 7.07
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u07wd"]
 load_path = "res://.godot/imported/coarse-old-fabric_albedo.png-1b47e186a3cbf3d2c46e46c0972ab696.s3tc.ctex"

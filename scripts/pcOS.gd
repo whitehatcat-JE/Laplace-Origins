@@ -159,6 +159,8 @@ func eventTriggered(event) -> void:
 				else:
 					$internetBrowser/newsResults/newsAnims.play("hideNews")
 			"newsSearch":
+				$internetBrowser/weatherResults/weatherAnims.play("hideWeather")
+				$internetBrowser/weatherResults/weatherAnims.advance(2.0)
 				$internetBrowser/newsResults/newsAnims.play("showNews")
 			"newsArticle1":
 				displayingArticle1 = true
@@ -166,6 +168,19 @@ func eventTriggered(event) -> void:
 			"newsArticle2":
 				displayingArticle2 = true
 				$internetBrowser/newsResults/newsAnims.play("showArticle2")
+			"weatherResultsBack":
+				if displayingArticle1:
+					displayingArticle1 = false
+					$internetBrowser/weatherResults/weatherAnims.play("hideArticle1")
+				else:
+					$internetBrowser/weatherResults/weatherAnims.play("hideWeather")
+			"weatherSearch":
+				$internetBrowser/newsResults/newsAnims.play("hideNews")
+				$internetBrowser/newsResults/newsAnims.advance(2.0)
+				$internetBrowser/weatherResults/weatherAnims.play("showWeather")
+			"weatherArticle1":
+				displayingArticle1 = true
+				$internetBrowser/weatherResults/weatherAnims.play("showArticle1")
 		if playDefaultClickSFX: clickSFX.play();
 # Checks if mouse currently hovered over button
 func _process(delta) -> void:
@@ -202,6 +217,7 @@ func _process(delta) -> void:
 			"internetQuit": $internetBrowser/quit/quitBack.modulate = "ffffff00";
 			"newsArticle1": $internetBrowser/newsResults/article1/hoverAnims.play("unhover");
 			"newsArticle2": $internetBrowser/newsResults/article2/hoverAnims.play("unhover");
+			"weatherArticle1": $internetBrowser/weatherResults/article1/hoverAnims.play("unhover");
 		# Changes color of button currently hovered
 		match interaction:
 			"login": $loginScreen/loginButton.modulate = "969696d5";
@@ -225,6 +241,7 @@ func _process(delta) -> void:
 			"internetQuit": $internetBrowser/quit/quitBack.modulate = "969696d5";
 			"newsArticle1": $internetBrowser/newsResults/article1/hoverAnims.play("hover");
 			"newsArticle2": $internetBrowser/newsResults/article2/hoverAnims.play("hover");
+			"weatherArticle1": $internetBrowser/weatherResults/article1/hoverAnims.play("hover");
 		currentInteraction = interaction  # Stores currently hovered button
 	
 	if GI.progress == 2 and wifiEnabled: # Updates wifi icon if internet off

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://2dbuwxwcysa4"]
+[gd_scene load_steps=43 format=3 uid="uid://2dbuwxwcysa4"]
 
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="1_bwl2d"]
 [ext_resource type="Script" path="res://scripts/internetBrowser.gd" id="1_e8bkl"]
@@ -7,64 +7,19 @@
 [ext_resource type="Texture2D" uid="uid://by7kpcpndvmfr" path="res://assets/2d/internet/buttonLarge.png" id="5_g6dyi"]
 [ext_resource type="Texture2D" uid="uid://bdefc3txigt8r" path="res://assets/2d/internet/searchIcon.png" id="6_aqdki"]
 [ext_resource type="Texture2D" uid="uid://b5ifopeg06b0n" path="res://assets/2d/internet/thumbnails/newsThumbnail.png" id="7_md7qo"]
-[ext_resource type="Texture2D" uid="uid://clfhf4fflg4mo" path="res://assets/2d/internet/thumbnails/sleepingThumbnail.png" id="8_24x0o"]
 [ext_resource type="Texture2D" uid="uid://cacq12em7kasc" path="res://assets/2d/internet/thumbnails/gamingThumbnail.png" id="8_bvk2b"]
+[ext_resource type="Texture2D" uid="uid://bn3bssqmatn8r" path="res://assets/2d/internet/thumbnails/weatherThumbnail.png" id="9_rkpjh"]
 [ext_resource type="Texture2D" uid="uid://62en7ukpriv3" path="res://assets/2d/internet/backArrow.png" id="10_acx1e"]
+[ext_resource type="Texture2D" uid="uid://c83rx334otvww" path="res://assets/2d/internet/hexagonPattern.png" id="11_1i1t1"]
+[ext_resource type="Texture2D" uid="uid://dn7vujayyc76r" path="res://assets/2d/internet/weatherLine.png" id="11_stnlb"]
+[ext_resource type="Texture2D" uid="uid://bnr1oqw82fqe4" path="res://assets/2d/internet/futureTalkzLogo.png" id="12_5opns"]
+[ext_resource type="Texture2D" uid="uid://dthe7pw2obxey" path="res://assets/2d/internet/weatherIcons/sleet-night.svg" id="14_wc3iv"]
+[ext_resource type="Texture2D" uid="uid://cia366snvprdu" path="res://assets/2d/internet/weatherIcons/snow-sun.svg" id="15_rh6qq"]
+[ext_resource type="Texture2D" uid="uid://l06l5gl2i5fw" path="res://assets/2d/internet/weatherIcons/snow.svg" id="16_quyvq"]
+[ext_resource type="Texture2D" uid="uid://cm3oir54wfh1d" path="res://assets/2d/internet/weatherIcons/sleet-thunder.svg" id="17_07e3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wupo"]
 size = Vector2(28.5714, 47.5)
-
-[sub_resource type="Animation" id="Animation_p1t3y"]
-resource_name = "showResults"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("resultsPivot/news:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("resultsPivot/games:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3),
-"transitions": PackedFloat32Array(1, -2, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("resultsPivot/cats:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, -2, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_pafbj"]
 resource_name = "hideResults"
@@ -96,7 +51,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("resultsPivot/cats:modulate")
+tracks/2/path = NodePath("resultsPivot/weather:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -170,6 +125,58 @@ tracks/3/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_p1t3y"]
+resource_name = "showResults"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("resultsPivot/news:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("resultsPivot/games:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("resultsPivot/weather:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8phkt"]
 _data = {
 "hideResults": SubResource("Animation_pafbj"),
@@ -179,6 +186,232 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qj1i5"]
 size = Vector2(788.333, 42)
+
+[sub_resource type="Animation" id="Animation_pt3x7"]
+resource_name = "hideArticle1"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-226, -194)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../windowName:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Laplace, the world’s most advanced A.I - 3/4 Infinity", "Internet - Breaking news in the A.I sector - Search Results"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("article1:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(-2, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("article2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../homepage/results/resultsPivot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(481, -33)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("article1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 152)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("article2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 255)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("article1Open:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1eeeu"]
+resource_name = "hideArticle2"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-226, -194)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../windowName:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Laplace, the world’s most advanced A.I - 3/4 Infinity", "Internet - Breaking news in the A.I sector - Search Results"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("article1:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(-2, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("article2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../homepage/results/resultsPivot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(481, -33)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("article1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 152)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("article2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 255)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("article2Open:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_2jmyo"]
 resource_name = "hideNews"
@@ -277,6 +510,158 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ajjdv"]
+resource_name = "showArticle1"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("article1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("article2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("article1Open/description:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("article1Open:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../windowName:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Breaking news in the A.I sector - Search Results", "Internet - Laplace, the world’s most advanced A.I - 3/4 Infinity"]
+}
+
+[sub_resource type="Animation" id="Animation_dastq"]
+resource_name = "showArticle2"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("article1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("article2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../windowName:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Breaking news in the A.I sector - Search Results", "Internet - Regressions in the Laplace Project - Robert E. U."]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("article2Open:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("article2Open/description:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_8omhh"]
@@ -426,384 +811,6 @@ tracks/11/keys = {
 "values": [Vector2(611, 255)]
 }
 
-[sub_resource type="Animation" id="Animation_ajjdv"]
-resource_name = "showArticle1"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../homepage:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 10000)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("article1:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 10000)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("article2:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 10000)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("article1Open:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../windowName:text")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": ["Internet - Breaking news in the A.I sector - Search Results", "Internet - Laplace, the world’s most advanced A.I - 3/4 Infinity"]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("article1Open/description:visible_ratio")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_pt3x7"]
-resource_name = "hideArticle1"
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../homepage:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-226, -194)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../windowName:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": ["Internet - Laplace, the world’s most advanced A.I - 3/4 Infinity", "Internet - Breaking news in the A.I sector - Search Results"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-12, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("article1:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(-2, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("article2:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, -2, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../homepage/results/resultsPivot:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(481, -33)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("article1:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(611, 152)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("article2:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(611, 255)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("article1Open:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_dastq"]
-resource_name = "showArticle2"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../homepage:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 10000)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("article1:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 10000)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("article2:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 10000)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../windowName:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": ["Internet - Breaking news in the A.I sector - Search Results", "Internet - Regressions in the Laplace Project - Robert E. U."]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("article2Open:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("article2Open/description:visible_ratio")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
-[sub_resource type="Animation" id="Animation_1eeeu"]
-resource_name = "hideArticle2"
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../homepage:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-226, -194)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../windowName:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": ["Internet - Laplace, the world’s most advanced A.I - 3/4 Infinity", "Internet - Breaking news in the A.I sector - Search Results"]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-12, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("article1:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(-2, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("article2:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, -2, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../homepage/results/resultsPivot:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(481, -33)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("article1:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(611, 152)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("article2:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(611, 255)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("article2Open:visible")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0m8mw"]
 _data = {
 "hideArticle1": SubResource("Animation_pt3x7"),
@@ -924,6 +931,449 @@ size = Vector2(1573.33, 293.333)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hbb7m"]
 size = Vector2(1573.33, 293.333)
+
+[sub_resource type="Animation" id="Animation_4ugl7"]
+resource_name = "hideArticle1"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-226, -194)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../windowName:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Laplace, the world’s most advanced A.I - 3/4 Infinity", "Internet - Weather Forecast"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("weatherReport:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(-2, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("article1:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../homepage/results/resultsPivot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(481, -33)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("weatherReport:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 152)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("article1:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 377)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("article1Open:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fqanx"]
+resource_name = "hideWeather"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../homepage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../homepage/welcomeMessage:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../windowName:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Weather Forecast
+", "Internet - Home"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../homepage/results/resultsPivot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "animation"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../homepage/homepageAnims")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": PackedStringArray("hideResults"),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../homepage/homepageAnims:speed_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5.0, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../homepage/results:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_d0enu"]
+resource_name = "showArticle1"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("weatherReport:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("article1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../windowName:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Weather Forecast", "Internet - UN to fund new geoengineering research program - FutureTalkz"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("article1Open:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("article1Open/description:visible_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_qssyw"]
+resource_name = "showWeather"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage/welcomeMessage:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../homepage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-226, -194)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../windowName:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Home", "Internet - Weather Forecast"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, 0)]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../homepage/homepageAnims")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("hideResults"),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../homepage/results:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../homepage/homepageAnims:speed_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5.0, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("weatherReport:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(-2, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("article1:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../homepage/results/resultsPivot:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(481, -33)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("weatherReport:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 152)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("article1:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 377)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k4eqe"]
+_data = {
+"hideArticle1": SubResource("Animation_4ugl7"),
+"hideWeather": SubResource("Animation_fqanx"),
+"showArticle1": SubResource("Animation_d0enu"),
+"showWeather": SubResource("Animation_qssyw")
+}
 
 [node name="internetBrowser" type="Node2D"]
 script = ExtResource("1_e8bkl")
@@ -1117,24 +1567,24 @@ position = Vector2(220, -63)
 scale = Vector2(0.28125, 0.28125)
 texture = ExtResource("8_bvk2b")
 
-[node name="cats" parent="homepage/results/resultsPivot" instance=ExtResource("2_qxlri")]
+[node name="weather" parent="homepage/results/resultsPivot" instance=ExtResource("2_qxlri")]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(1061, 448)
 collision_layer = 8
-interactionName = "search"
+interactionName = "weatherSearch"
 
-[node name="hitbox" type="CollisionShape2D" parent="homepage/results/resultsPivot/cats"]
+[node name="hitbox" type="CollisionShape2D" parent="homepage/results/resultsPivot/weather"]
 position = Vector2(0.5, -64)
 scale = Vector2(0.6, 0.5)
 shape = SubResource("RectangleShape2D_qj1i5")
 
-[node name="backdrop" type="Sprite2D" parent="homepage/results/resultsPivot/cats"]
+[node name="backdrop" type="Sprite2D" parent="homepage/results/resultsPivot/weather"]
 modulate = Color(0.223529, 0.223529, 0.223529, 0.835294)
 position = Vector2(0, -63.5)
 scale = Vector2(0.6, 0.5)
 texture = ExtResource("5_g6dyi")
 
-[node name="resultText" type="Label" parent="homepage/results/resultsPivot/cats"]
+[node name="resultText" type="Label" parent="homepage/results/resultsPivot/weather"]
 offset_left = -212.0
 offset_top = -72.5
 offset_right = 628.0
@@ -1143,12 +1593,12 @@ scale = Vector2(0.4, 0.4)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
-text = "Trending cats"
+text = "Weather Forecast"
 
-[node name="thumbnail" type="Sprite2D" parent="homepage/results/resultsPivot/cats"]
+[node name="thumbnail" type="Sprite2D" parent="homepage/results/resultsPivot/weather"]
 position = Vector2(220, -63)
 scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("8_24x0o")
+texture = ExtResource("9_rkpjh")
 
 [node name="newsResults" type="Node2D" parent="."]
 position = Vector2(0, 10000)
@@ -1427,5 +1877,609 @@ collision_layer = 8
 interactionName = "newsArticle2"
 
 [node name="hitbox" type="CollisionShape2D" parent="newsResults/article2/article2"]
+position = Vector2(-1130, -216.667)
+shape = SubResource("RectangleShape2D_hbb7m")
+
+[node name="weatherResults" type="Node2D" parent="."]
+position = Vector2(0, 10000)
+
+[node name="weatherAnims" type="AnimationPlayer" parent="weatherResults"]
+libraries = {
+"": SubResource("AnimationLibrary_k4eqe")
+}
+
+[node name="article1Open" type="Node2D" parent="weatherResults"]
+visible = false
+
+[node name="background" type="ColorRect" parent="weatherResults/article1Open"]
+offset_left = 556.0
+offset_top = 80.0
+offset_right = 1580.0
+offset_bottom = 576.0
+color = Color(0.972549, 0.972549, 0.972549, 1)
+
+[node name="navBar" type="ColorRect" parent="weatherResults/article1Open"]
+offset_left = 556.0
+offset_top = 80.0
+offset_right = 1580.0
+offset_bottom = 140.0
+
+[node name="navBar2" type="ColorRect" parent="weatherResults/article1Open"]
+offset_left = 556.0
+offset_top = 140.0
+offset_right = 1580.0
+offset_bottom = 142.0
+color = Color(0.847059, 0.847059, 0.847059, 1)
+
+[node name="title" type="Label" parent="weatherResults/article1Open"]
+offset_left = 556.0
+offset_top = 164.0
+offset_right = 3116.0
+offset_bottom = 359.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 70
+text = "UN to fund new geoengineering
+research program"
+horizontal_alignment = 1
+
+[node name="divider" type="ColorRect" parent="weatherResults/article1Open"]
+offset_left = 833.0
+offset_top = 264.0
+offset_right = 1308.0
+offset_bottom = 265.0
+color = Color(0.847059, 0.847059, 0.847059, 1)
+
+[node name="phrase" type="RichTextLabel" parent="weatherResults/article1Open"]
+modulate = Color(1, 1, 1, 0.666667)
+offset_left = 556.0
+offset_top = 242.0
+offset_right = 3116.0
+offset_bottom = 292.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_colors/font_outline_color = Color(0.4, 0.4, 0.4, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[p align=center]Last Modified 7 months ago"
+
+[node name="description" type="RichTextLabel" parent="weatherResults/article1Open"]
+modulate = Color(1, 1, 1, 0.666667)
+offset_left = 833.0
+offset_top = 272.0
+offset_right = 2033.0
+offset_bottom = 1017.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_fonts/bold_font = SubResource("FontFile_63anl")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "UN representatives met privately with a selection of high profile companies last month to discuss possible solutions to the climate crisis.
+
+One such solution that gained unanimous approval was an as-yet untested form of geo-engineering called SNOW. For those of you out of the loop, here’s a brief rundown of how SNOW works.
+
+First, certain particles are introduced into the atmosphere which are specially made to bond with greenhouse gasses. Once bonded, the additional weight of these particles causes them to drift out of our atmosphere and back down to the ground. 
+
+If initial tests prove successful, you can expect this technology to start rolling out in the next few months.
+"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="HexagonPattern" type="Sprite2D" parent="weatherResults/article1Open"]
+modulate = Color(0, 0.654902, 1, 1)
+position = Vector2(1498, 522)
+scale = Vector2(0.753456, 0.753456)
+texture = ExtResource("11_1i1t1")
+
+[node name="FutureTalkzLogo" type="Sprite2D" parent="weatherResults/article1Open"]
+position = Vector2(1073, 110)
+scale = Vector2(0.332061, 0.332061)
+texture = ExtResource("12_5opns")
+
+[node name="backButton" parent="weatherResults" instance=ExtResource("2_qxlri")]
+position = Vector2(581, 103)
+scale = Vector2(0.3, 0.3)
+collision_layer = 8
+interactionName = "weatherResultsBack"
+
+[node name="hitbox" type="CollisionShape2D" parent="weatherResults/backButton"]
+visible = false
+position = Vector2(9.99988, 23.75)
+shape = SubResource("CircleShape2D_jpdgg")
+
+[node name="BackArrow" type="Sprite2D" parent="weatherResults/backButton"]
+modulate = Color(1, 1, 1, 0.917647)
+position = Vector2(10, 24)
+texture = ExtResource("10_acx1e")
+
+[node name="weatherReport" type="Node2D" parent="weatherResults"]
+position = Vector2(611, 152)
+
+[node name="hoverBackdropA" type="ColorRect" parent="weatherResults/weatherReport"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 472.0
+offset_bottom = 22.0
+scale = Vector2(1e-05, 1)
+color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[node name="hoverBackdropB" type="ColorRect" parent="weatherResults/weatherReport"]
+modulate = Color(1, 1, 1, 0)
+offset_top = 23.0
+offset_right = 472.0
+offset_bottom = 88.0
+scale = Vector2(1e-05, 1)
+color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[node name="description" type="RichTextLabel" parent="weatherResults/weatherReport"]
+offset_right = 1180.0
+offset_bottom = 257.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[font_size=24][color=gray][outline_color=gray]Live results for [color=white][outline_color=white]Your Location
+[font_size=48]   -2[font_size=24]°c[font_size=32]                                           Light Hail
+[font_size=24]Temperature | Precipitation | Wind[color=gray][outline_color=gray]                               Saturday - Midnight
+[font_size=22][color=00fffe][outline_color=00fffe]￣￣￣￣￣￣￣
+[font_size=24]"
+
+[node name="divider" type="ColorRect" parent="weatherResults/weatherReport"]
+visible = false
+offset_top = 22.0
+offset_right = 472.0
+offset_bottom = 23.0
+color = Color(0.321569, 0.321569, 0.321569, 1)
+
+[node name="WeatherLine" type="Sprite2D" parent="weatherResults/weatherReport"]
+self_modulate = Color(0, 1, 0.996078, 1)
+position = Vector2(234.94, 95.5)
+scale = Vector2(0.626506, 0.379518)
+texture = ExtResource("11_stnlb")
+
+[node name="point1" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
+offset_left = -375.0
+offset_top = -9.22222
+offset_right = -347.0
+offset_bottom = 39.7778
+scale = Vector2(0.4, 0.7)
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[font_size=24][color=gray][outline_color=gray]-2"
+
+[node name="point9" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
+offset_left = -375.0
+offset_top = 101.444
+offset_right = 1500.0
+offset_bottom = 150.444
+scale = Vector2(0.4, 0.7)
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[font_size=24][color=gray][outline_color=gray]12am              1am              2am               3am               4am               5am               6am              7am"
+
+[node name="point2" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
+offset_left = -271.25
+offset_top = -9.22222
+offset_right = -243.25
+offset_bottom = 39.7778
+scale = Vector2(0.4, 0.7)
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[font_size=24][color=gray][outline_color=gray]-2"
+
+[node name="point3" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
+offset_left = -74.9231
+offset_top = -43.4762
+offset_right = -46.9231
+offset_bottom = 5.52382
+scale = Vector2(0.4, 0.7)
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[font_size=24][color=gray][outline_color=gray]0"
+
+[node name="point8" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
+offset_left = -175.481
+offset_top = -19.7619
+offset_right = -147.481
+offset_bottom = 29.2381
+scale = Vector2(0.4, 0.7)
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[font_size=24][color=gray][outline_color=gray]-1"
+
+[node name="point4" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
+offset_left = 21.0
+offset_top = -80.0
+offset_right = 72.0
+offset_bottom = -31.0
+scale = Vector2(0.4, 0.7)
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[font_size=24][color=gray][outline_color=gray]1"
+
+[node name="point5" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
+offset_left = 123.0
+offset_top = -96.0
+offset_right = 175.0
+offset_bottom = -47.0
+scale = Vector2(0.4, 0.7)
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[font_size=24][color=gray][outline_color=gray]2"
+
+[node name="point6" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
+offset_left = 224.0
+offset_top = -96.0
+offset_right = 260.0
+offset_bottom = -47.0
+scale = Vector2(0.4, 0.7)
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[font_size=24][color=gray][outline_color=gray]2"
+
+[node name="point7" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
+offset_left = 318.0
+offset_top = -115.0
+offset_right = 358.0
+offset_bottom = -66.0
+scale = Vector2(0.4, 0.7)
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[font_size=24][color=gray][outline_color=gray]3"
+
+[node name="Sleet-night" type="Sprite2D" parent="weatherResults/weatherReport"]
+position = Vector2(13, 26)
+scale = Vector2(0.473958, 0.473958)
+texture = ExtResource("14_wc3iv")
+
+[node name="GridContainer" type="GridContainer" parent="weatherResults/weatherReport"]
+offset_top = 147.0
+offset_right = 469.0
+offset_bottom = 187.0
+columns = 8
+
+[node name="point1" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[font_size=8][color=gray][p align=center][outline_color=gray]Sat"
+
+[node name="point2" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[font_size=8][color=gray][p align=center][outline_color=gray]Sun"
+
+[node name="point3" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[font_size=8][color=gray][p align=center][outline_color=gray]Mon"
+
+[node name="point4" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[font_size=8][color=gray][p align=center][outline_color=gray]Tue"
+
+[node name="point5" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[font_size=8][color=gray][p align=center][outline_color=gray]Wed"
+
+[node name="point6" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[font_size=8][color=gray][p align=center][outline_color=gray]Thu"
+
+[node name="point7" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[font_size=8][color=gray][p align=center][outline_color=gray]Fri"
+
+[node name="point8" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[font_size=8][color=gray][p align=center][outline_color=gray]Sat"
+
+[node name="icon1" type="Control" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Snow-sun" type="Sprite2D" parent="weatherResults/weatherReport/GridContainer/icon1"]
+position = Vector2(27, 14)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("15_rh6qq")
+
+[node name="icon2" type="Control" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Snow-sun" type="Sprite2D" parent="weatherResults/weatherReport/GridContainer/icon2"]
+position = Vector2(27, 14)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("16_quyvq")
+
+[node name="icon3" type="Control" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Snow-sun" type="Sprite2D" parent="weatherResults/weatherReport/GridContainer/icon3"]
+position = Vector2(27, 14)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("16_quyvq")
+
+[node name="icon4" type="Control" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Snow-sun" type="Sprite2D" parent="weatherResults/weatherReport/GridContainer/icon4"]
+position = Vector2(27, 14)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("16_quyvq")
+
+[node name="icon5" type="Control" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Snow-sun" type="Sprite2D" parent="weatherResults/weatherReport/GridContainer/icon5"]
+position = Vector2(27, 14)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("17_07e3x")
+
+[node name="icon6" type="Control" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Snow-sun" type="Sprite2D" parent="weatherResults/weatherReport/GridContainer/icon6"]
+position = Vector2(27, 14)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("17_07e3x")
+
+[node name="icon7" type="Control" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Snow-sun" type="Sprite2D" parent="weatherResults/weatherReport/GridContainer/icon7"]
+position = Vector2(27, 14)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("17_07e3x")
+
+[node name="icon8" type="Control" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+
+[node name="Snow-sun" type="Sprite2D" parent="weatherResults/weatherReport/GridContainer/icon8"]
+position = Vector2(27, 14)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("17_07e3x")
+
+[node name="point9" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[p align=center]3°[font_size=8][color=gray][outline_color=gray] -2°"
+
+[node name="point10" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[p align=center]1°[font_size=8][color=gray][outline_color=gray] -4°"
+
+[node name="point11" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[p align=center]0°[font_size=8][color=gray][outline_color=gray] -4°"
+
+[node name="point12" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[p align=center]2°[font_size=8][color=gray][outline_color=gray] -1°"
+
+[node name="point13" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[p align=center]-2°[font_size=8][color=gray][outline_color=gray] -5°"
+
+[node name="point14" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[p align=center]-2°[font_size=8][color=gray][outline_color=gray] -7°"
+
+[node name="point15" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[p align=center]-6°[font_size=8][color=gray][outline_color=gray] -12°"
+
+[node name="point16" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
+custom_minimum_size = Vector2(0, 12)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/line_separation = 0
+theme_override_constants/outline_size = 1
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "[p align=center]-9°[font_size=8][color=gray][outline_color=gray] -17°"
+
+[node name="article1" type="Node2D" parent="weatherResults"]
+position = Vector2(611, 377)
+
+[node name="hoverBackdropA" type="ColorRect" parent="weatherResults/article1"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 472.0
+offset_bottom = 22.0
+color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[node name="hoverBackdropB" type="ColorRect" parent="weatherResults/article1"]
+modulate = Color(1, 1, 1, 0)
+offset_top = 23.0
+offset_right = 472.0
+offset_bottom = 88.0
+color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[node name="title" type="Label" parent="weatherResults/article1"]
+offset_left = 1.90735e-05
+offset_right = 840.0
+offset_bottom = 45.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 40
+text = "UN to fund new geoengineering research program"
+
+[node name="description" type="RichTextLabel" parent="weatherResults/article1"]
+modulate = Color(1, 1, 1, 0.666667)
+offset_top = 24.0
+offset_right = 1180.0
+offset_bottom = 213.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[fade start=100 length=25]UN representatives met privately with a selection of high profile companies last month to discuss possible solutions to the[/fade]
+
+[font_size=20]By FutureTalkz | Published 7 Months ago"
+
+[node name="divider" type="ColorRect" parent="weatherResults/article1"]
+offset_top = 22.0
+offset_right = 472.0
+offset_bottom = 23.0
+color = Color(0.321569, 0.321569, 0.321569, 1)
+
+[node name="hoverAnims" type="AnimationPlayer" parent="weatherResults/article1"]
+libraries = {
+"": SubResource("AnimationLibrary_dqoxy")
+}
+
+[node name="article1" parent="weatherResults/article1" instance=ExtResource("2_qxlri")]
+position = Vector2(575, 109)
+scale = Vector2(0.3, 0.3)
+collision_layer = 8
+interactionName = "weatherArticle1"
+
+[node name="hitbox" type="CollisionShape2D" parent="weatherResults/article1/article1"]
 position = Vector2(-1130, -216.667)
 shape = SubResource("RectangleShape2D_hbb7m")

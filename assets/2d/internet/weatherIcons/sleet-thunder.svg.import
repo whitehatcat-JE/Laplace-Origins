@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clfhf4fflg4mo"
-path="res://.godot/imported/sleepingThumbnail.png-54662271004677c4ce3a321b9ab68ae4.ctex"
+uid="uid://cm3oir54wfh1d"
+path="res://.godot/imported/sleet-thunder.svg-277fe1dd423bbd1d7b33bcf9bdd52a86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/2d/internet/thumbnails/sleepingThumbnail.png"
-dest_files=["res://.godot/imported/sleepingThumbnail.png-54662271004677c4ce3a321b9ab68ae4.ctex"]
+source_file="res://assets/2d/internet/weatherIcons/sleet-thunder.svg"
+dest_files=["res://.godot/imported/sleet-thunder.svg-277fe1dd423bbd1d7b33bcf9bdd52a86.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
