@@ -121,7 +121,7 @@ func eventTriggered(event) -> void:
 				$homeScreen/errorWindow/errorMessage.text = "wN1bpgaHTlaLsGDkJTUHEyiF42dzL7M2wZI9q9sq8BshDi5GX1kTYWT40g8nhIBHkQRW8ELPFUYJePjUP6jztD1c70OFFDc9fpnP"
 			"errorQuit": $homeScreen/errorWindow/errorAnims.play("errorDisappear"); # Error message exit button
 			"errorOK": $homeScreen/errorWindow/errorAnims.play("errorDisappear"); # Error message ok button
-			"shooterOpen": # Open shooter minigame
+			"singularityExe": # Open shooter minigame
 				$shooterMinigame.visible = true
 				$shooterMinigame.start()
 				$mouse/pointerRay.set_collision_mask_value(2, false)
@@ -161,6 +161,8 @@ func eventTriggered(event) -> void:
 			"newsSearch":
 				$internetBrowser/weatherResults/weatherAnims.play("hideWeather")
 				$internetBrowser/weatherResults/weatherAnims.advance(2.0)
+				$internetBrowser/gameResults/gameAnims.play("hideGames")
+				$internetBrowser/gameResults/gameAnims.advance(2.0)
 				$internetBrowser/newsResults/newsAnims.play("showNews")
 			"newsArticle1":
 				displayingArticle1 = true
@@ -177,10 +179,36 @@ func eventTriggered(event) -> void:
 			"weatherSearch":
 				$internetBrowser/newsResults/newsAnims.play("hideNews")
 				$internetBrowser/newsResults/newsAnims.advance(2.0)
+				$internetBrowser/gameResults/gameAnims.play("hideGames")
+				$internetBrowser/gameResults/gameAnims.advance(2.0)
 				$internetBrowser/weatherResults/weatherAnims.play("showWeather")
 			"weatherArticle1":
 				displayingArticle1 = true
 				$internetBrowser/weatherResults/weatherAnims.play("showArticle1")
+			"gameResultsBack":
+				if displayingArticle1:
+					displayingArticle1 = false
+					$internetBrowser/gameResults/gameAnims.play("hideArticle1")
+				elif displayingArticle2:
+					displayingArticle2 = false
+					$internetBrowser/gameResults/gameAnims.play("hideArticle2")
+				else:
+					$internetBrowser/gameResults/gameAnims.play("hideGames")
+			"gameSearch":
+				$internetBrowser/weatherResults/weatherAnims.play("hideWeather")
+				$internetBrowser/weatherResults/weatherAnims.advance(2.0)
+				$internetBrowser/newsResults/newsAnims.play("hideNews")
+				$internetBrowser/newsResults/newsAnims.advance(2.0)
+				$internetBrowser/gameResults/gameAnims.play("showGames")
+				$internetBrowser/gameResults/article1/description/descriptionAnim.play("flickerDate")
+			"gameArticle1":
+				displayingArticle1 = true
+				$internetBrowser/gameResults/gameAnims.play("showArticle1")
+			"gameArticle2":
+				displayingArticle2 = true
+				$internetBrowser/gameResults/gameAnims.play("showArticle2")
+			"downloadSingularity":
+				$internetBrowser/download/downloadAnim.play("download")
 		if playDefaultClickSFX: clickSFX.play();
 # Checks if mouse currently hovered over button
 func _process(delta) -> void:
@@ -202,6 +230,7 @@ func _process(delta) -> void:
 			"filesOpen": $homeScreen/menuBar/files/fileBack.modulate = "ffffff00";
 			"filesQuit": $homeScreen/filesWindow/quit/quitBack.modulate = "ffffff00";
 			"laplaceExe": $homeScreen/filesWindow/laplaceBack.modulate = "ffffff00";
+			"singularityExe": $homeScreen/filesWindow/singularityBack.modulate = "ffffff00";
 			"cmdQuit": $homeScreen/consoleWindow/quit/quitBack.modulate = "ffffff00";
 			"emailOpen": $homeScreen/menuBar/email/emailBack.modulate = "ffffff00";
 			"emailQuit": $homeScreen/emailWindow/quit/quitBack.modulate = "ffffff00";
@@ -210,7 +239,6 @@ func _process(delta) -> void:
 			"emailC": $homeScreen/emailWindow/emailC/emailCBack.modulate = "ffffff00";
 			"errorOK": $homeScreen/errorWindow/continueBack.modulate = "393939d5";
 			"errorQuit": $homeScreen/errorWindow/quit/quitBack.modulate = "ffffff00";
-			"shooterOpen": $homeScreen/menuBar/shooter/shooterBack.modulate = "ffffff00";
 			"shooterQuit": $shooterMinigame/HUD/quit/quitBack.modulate = "ffffff00";
 			"shooterBegin": $shooterMinigame/HUD/beginButton.texture = $shooterMinigame.beginTexture;
 			"internetOpen": $homeScreen/menuBar/internet/internetBack.modulate = "ffffff00";
@@ -218,6 +246,8 @@ func _process(delta) -> void:
 			"newsArticle1": $internetBrowser/newsResults/article1/hoverAnims.play("unhover");
 			"newsArticle2": $internetBrowser/newsResults/article2/hoverAnims.play("unhover");
 			"weatherArticle1": $internetBrowser/weatherResults/article1/hoverAnims.play("unhover");
+			"gameArticle1": $internetBrowser/gameResults/article1/hoverAnims.play("unhover");
+			"gameArticle2": $internetBrowser/gameResults/article2/hoverAnims.play("unhover");
 		# Changes color of button currently hovered
 		match interaction:
 			"login": $loginScreen/loginButton.modulate = "969696d5";
@@ -226,6 +256,7 @@ func _process(delta) -> void:
 			"filesOpen": $homeScreen/menuBar/files/fileBack.modulate = "969696d5";
 			"filesQuit": $homeScreen/filesWindow/quit/quitBack.modulate = "969696d5";
 			"laplaceExe": $homeScreen/filesWindow/laplaceBack.modulate = "969696d5";
+			"singularityExe": $homeScreen/filesWindow/singularityBack.modulate = "969696d5";
 			"cmdQuit": $homeScreen/consoleWindow/quit/quitBack.modulate = "969696d5";
 			"emailOpen": $homeScreen/menuBar/email/emailBack.modulate = "969696d5";
 			"emailQuit": $homeScreen/emailWindow/quit/quitBack.modulate = "969696d5";
@@ -234,7 +265,6 @@ func _process(delta) -> void:
 			"emailC": $homeScreen/emailWindow/emailC/emailCBack.modulate = "969696d5";
 			"errorOK": $homeScreen/errorWindow/continueBack.modulate = "969696d5";
 			"errorQuit": $homeScreen/errorWindow/quit/quitBack.modulate = "969696d5";
-			"shooterOpen": $homeScreen/menuBar/shooter/shooterBack.modulate = "969696d5";
 			"shooterQuit": $shooterMinigame/HUD/quit/quitBack.modulate = "969696d5";
 			"shooterBegin": $shooterMinigame/HUD/beginButton.texture = $shooterMinigame.hoverTexture;
 			"internetOpen": $homeScreen/menuBar/internet/internetBack.modulate = "969696d5";
@@ -242,6 +272,8 @@ func _process(delta) -> void:
 			"newsArticle1": $internetBrowser/newsResults/article1/hoverAnims.play("hover");
 			"newsArticle2": $internetBrowser/newsResults/article2/hoverAnims.play("hover");
 			"weatherArticle1": $internetBrowser/weatherResults/article1/hoverAnims.play("hover");
+			"gameArticle1": $internetBrowser/gameResults/article1/hoverAnims.play("hover");
+			"gameArticle2": $internetBrowser/gameResults/article2/hoverAnims.play("hover");
 		currentInteraction = interaction  # Stores currently hovered button
 	
 	if GI.progress == 2 and wifiEnabled: # Updates wifi icon if internet off
@@ -299,3 +331,6 @@ func _on_shooter_minigame_laplace_spawned():
 	$background.visible = false
 	$backgroundLaplace.visible = true
 	emit_signal("showLaplaceWall")
+
+func _on_internet_browser_downloaded_singularity():
+	$homeScreen/filesWindow/singularityExe.position.x = 0

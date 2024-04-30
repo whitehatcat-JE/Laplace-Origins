@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://csnnn1yw8ccgs"]
+[gd_scene load_steps=46 format=3 uid="uid://csnnn1yw8ccgs"]
 
 [ext_resource type="Script" path="res://scripts/pcOS.gd" id="1_xeigj"]
 [ext_resource type="Texture2D" uid="uid://b8f2gr7p8vcd2" path="res://assets/2d/pcOS/dropBackground.png" id="2_j3svo"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://vt6sk807soog" path="res://assets/2d/UI/3-4thInfinityLogo.png" id="10_3u8fc"]
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="11_830h1"]
 [ext_resource type="Texture2D" uid="uid://bnyoikpnj3qpy" path="res://assets/2d/pcOS/wifiIcon.png" id="11_g7mk2"]
+[ext_resource type="Texture2D" uid="uid://dphcvpl3h6ee7" path="res://assets/2d/shooterMinigame/player.png" id="14_6iou8"]
 [ext_resource type="Shader" path="res://scripts/shaders/glitch.gdshader" id="14_8bkd7"]
 [ext_resource type="AudioStream" uid="uid://biipabva8sjck" path="res://assets/audio/sfx/menus/click.ogg" id="15_0lrd5"]
 [ext_resource type="AudioStream" uid="uid://b4jakrr4um7fl" path="res://assets/audio/sfx/menus/denied.ogg" id="16_4t7hq"]
@@ -114,37 +115,13 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_var4c"]
 resource_name = "glitchShooter"
 length = 0.1
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("shooter:text")
+tracks/0/path = NodePath("../../shooterMinigame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": ["Singularity", "Fate"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("shooter:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 0.00784314, 0, 1)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../shooterMinigame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -857,34 +834,6 @@ interactionName = "internetOpen"
 position = Vector2(115, 35)
 shape = SubResource("RectangleShape2D_8nfdd")
 
-[node name="shooter" type="Label" parent="homeScreen/menuBar"]
-offset_left = 554.0
-offset_top = 438.0
-offset_right = 817.0
-offset_bottom = 503.0
-scale = Vector2(0.4, 0.4)
-theme_override_constants/outline_size = 3
-theme_override_fonts/font = ExtResource("11_830h1")
-theme_override_font_sizes/font_size = 34
-text = "Singularity"
-vertical_alignment = 1
-
-[node name="shooterBack" type="ColorRect" parent="homeScreen/menuBar/shooter"]
-modulate = Color(1, 1, 1, 0)
-show_behind_parent = true
-layout_mode = 0
-offset_left = -18.0
-offset_top = -7.0
-offset_right = 247.0
-offset_bottom = 78.0
-
-[node name="interact" parent="homeScreen/menuBar/shooter" instance=ExtResource("8_kdwn3")]
-interactionName = "shooterOpen"
-
-[node name="hitbox" type="CollisionShape2D" parent="homeScreen/menuBar/shooter/interact"]
-position = Vector2(115, 35)
-shape = SubResource("RectangleShape2D_8nfdd")
-
 [node name="logout" type="Label" parent="homeScreen/menuBar"]
 offset_left = 554.0
 offset_top = 517.0
@@ -1276,10 +1225,10 @@ offset_top = 48.0
 offset_right = 67.0
 offset_bottom = 108.0
 
-[node name="interact" parent="homeScreen/filesWindow" instance=ExtResource("8_kdwn3")]
+[node name="laplaceInteract" parent="homeScreen/filesWindow" instance=ExtResource("8_kdwn3")]
 interactionName = "laplaceExe"
 
-[node name="hitbox" type="CollisionShape2D" parent="homeScreen/filesWindow/interact"]
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/filesWindow/laplaceInteract"]
 position = Vector2(36.9999, 78)
 shape = SubResource("RectangleShape2D_cpkom")
 
@@ -1292,14 +1241,51 @@ texture = ExtResource("10_3u8fc")
 
 [node name="laplaceName" type="Label" parent="homeScreen/filesWindow"]
 offset_left = 10.0
-offset_top = 92.0
+offset_top = 96.0
 offset_right = 148.0
-offset_bottom = 127.0
+offset_bottom = 131.0
 scale = Vector2(0.4, 0.4)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("11_830h1")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 15
 text = "laplace.exe"
+horizontal_alignment = 1
+
+[node name="singularityBack" type="ColorRect" parent="homeScreen/filesWindow"]
+modulate = Color(0.333333, 0.333333, 0.333333, 0)
+offset_left = 68.0
+offset_top = 48.0
+offset_right = 128.0
+offset_bottom = 108.0
+
+[node name="singularityExe" type="Node2D" parent="homeScreen/filesWindow"]
+position = Vector2(10000, 0)
+
+[node name="singularityInteract" parent="homeScreen/filesWindow/singularityExe" instance=ExtResource("8_kdwn3")]
+position = Vector2(61, 0)
+scale = Vector2(1, 1)
+interactionName = "singularityExe"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/filesWindow/singularityExe/singularityInteract"]
+position = Vector2(36.9999, 78)
+shape = SubResource("RectangleShape2D_cpkom")
+
+[node name="singularityIcon" type="Sprite2D" parent="homeScreen/filesWindow/singularityExe"]
+texture_filter = 1
+position = Vector2(97.999, 72)
+scale = Vector2(5.0761, 5.0761)
+texture = ExtResource("14_6iou8")
+
+[node name="singularityName" type="Label" parent="homeScreen/filesWindow/singularityExe"]
+offset_left = 71.0
+offset_top = 96.0
+offset_right = 209.0
+offset_bottom = 131.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 15
+text = "singularity.exe"
 
 [node name="consoleWindow" type="Node2D" parent="homeScreen"]
 modulate = Color(1, 1, 1, 0)
@@ -1667,5 +1653,6 @@ position = Vector2(0, 20)
 [connection signal="timeout" from="homeScreen/clockTimer" to="." method="_on_clock_timer_timeout"]
 [connection signal="timeout" from="emergencyAlert/alertScrollTimer" to="." method="_on_alert_scroll_timer_timeout"]
 [connection signal="laplaceSpawned" from="shooterMinigame" to="." method="_on_shooter_minigame_laplace_spawned"]
+[connection signal="downloadedSingularity" from="internetBrowser" to="." method="_on_internet_browser_downloaded_singularity"]
 
 [editable path="shooterMinigame"]
