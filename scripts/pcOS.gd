@@ -209,6 +209,8 @@ func eventTriggered(event) -> void:
 				$internetBrowser/gameResults/gameAnims.play("showArticle2")
 			"downloadSingularity":
 				$internetBrowser/download/downloadAnim.play("download")
+			"slimyBirdStart":
+				$internetBrowser/gameResults/article2Open/slimyBirdGame.start()
 		if playDefaultClickSFX: clickSFX.play();
 # Checks if mouse currently hovered over button
 func _process(delta) -> void:
@@ -248,6 +250,7 @@ func _process(delta) -> void:
 			"weatherArticle1": $internetBrowser/weatherResults/article1/hoverAnims.play("unhover");
 			"gameArticle1": $internetBrowser/gameResults/article1/hoverAnims.play("unhover");
 			"gameArticle2": $internetBrowser/gameResults/article2/hoverAnims.play("unhover");
+			"slimyBirdStart": $internetBrowser/gameResults/article2Open/slimyBirdGame/startButton/startButtonHovered.visible = false;
 		# Changes color of button currently hovered
 		match interaction:
 			"login": $loginScreen/loginButton.modulate = "969696d5";
@@ -274,6 +277,7 @@ func _process(delta) -> void:
 			"weatherArticle1": $internetBrowser/weatherResults/article1/hoverAnims.play("hover");
 			"gameArticle1": $internetBrowser/gameResults/article1/hoverAnims.play("hover");
 			"gameArticle2": $internetBrowser/gameResults/article2/hoverAnims.play("hover");
+			"slimyBirdStart": $internetBrowser/gameResults/article2Open/slimyBirdGame/startButton/startButtonHovered.visible = true;
 		currentInteraction = interaction  # Stores currently hovered button
 	
 	if GI.progress == 2 and wifiEnabled: # Updates wifi icon if internet off

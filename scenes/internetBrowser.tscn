@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://2dbuwxwcysa4"]
+[gd_scene load_steps=77 format=3 uid="uid://2dbuwxwcysa4"]
 
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="1_bwl2d"]
 [ext_resource type="Script" path="res://scripts/internetBrowser.gd" id="1_e8bkl"]
@@ -22,7 +22,19 @@
 [ext_resource type="Texture2D" uid="uid://bwxwah8ndvih1" path="res://assets/2d/internet/gameScreenshot2.png" id="19_y7hdu"]
 [ext_resource type="Texture2D" uid="uid://m6xwab056fav" path="res://assets/2d/internet/pacellaLogo.png" id="21_fsdho"]
 [ext_resource type="Texture2D" uid="uid://d02hm25iumb2l" path="res://assets/2d/pcOS/buttonSmall.png" id="22_pror4"]
+[ext_resource type="Texture2D" uid="uid://hgr5q6bcbc8h" path="res://assets/2d/internet/minigames/101Games.png" id="23_o3g1w"]
 [ext_resource type="Texture2D" uid="uid://bap8p34ni36g3" path="res://assets/2d/internet/downloadIcon.png" id="23_px4ai"]
+[ext_resource type="Script" path="res://scripts/minigames/slimyBirdGame.gd" id="23_rqwat"]
+[ext_resource type="Texture2D" uid="uid://j8lvb4hirnud" path="res://assets/2d/internet/minigames/slimyBird/background.png" id="24_ychbu"]
+[ext_resource type="Texture2D" uid="uid://cwwubjpqdbkyg" path="res://assets/2d/internet/minigames/slimyBird/cloudsB.png" id="25_i2srl"]
+[ext_resource type="Texture2D" uid="uid://dwh2o7vuemlgc" path="res://assets/2d/internet/minigames/slimyBird/cloudsA.png" id="26_qryee"]
+[ext_resource type="Texture2D" uid="uid://d2pf1d0gueg68" path="res://assets/2d/internet/minigames/slimyBird/slime.png" id="27_1c03f"]
+[ext_resource type="Texture2D" uid="uid://ktx8us0h35vi" path="res://assets/2d/internet/minigames/slimyBird/startButton.png" id="27_ltl1l"]
+[ext_resource type="Texture2D" uid="uid://04bp8fyjxio0" path="res://assets/2d/internet/minigames/slimyBird/floor.png" id="27_yqey0"]
+[ext_resource type="Texture2D" uid="uid://b5eduvqy80int" path="res://assets/2d/internet/minigames/slimyBird/startButtonHovered.png" id="28_3t5nv"]
+[ext_resource type="Texture2D" uid="uid://2mvig5grldo6" path="res://assets/2d/internet/minigames/slimyBird/backgroundBorder.png" id="29_d5o78"]
+[ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="32_s8xmp"]
+[ext_resource type="Texture2D" uid="uid://cdkw857er77xk" path="res://assets/2d/internet/minigames/slimyBird/logo.png" id="34_lcadv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wupo"]
 size = Vector2(28.5714, 47.5)
@@ -1554,7 +1566,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": ["Internet - Laplace, the world’s most advanced A.I - 3/4 Infinity", "Internet - Free Online Games - Search Results"]
+"values": ["Internet - 101 Cool Slime Games - Schrodinger", "Internet - Free Online Games - Search Results"]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1639,6 +1651,20 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("article2Open/slimyBirdGame")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_sifig"]
@@ -1865,7 +1891,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": ["Internet - Free Online Games - Search Results", "Internet - Regressions in the Laplace Project - Robert E. U."]
+"values": ["Internet - Free Online Games - Search Results", "Internet - 101 Cool Slime Games - Schrodinger"]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1878,18 +1904,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("article2Open/description:visible_ratio")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_um6y4"]
@@ -2053,6 +2067,15 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvgag"]
 size = Vector2(191.667, 46)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jqapp"]
+size = Vector2(190, 17.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6jx4"]
+radius = 5.91016
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ehlo"]
+size = Vector2(137.5, 42)
+
 [sub_resource type="Animation" id="Animation_vjg2r"]
 resource_name = "flickerDate"
 length = 2.25
@@ -2090,6 +2113,117 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_meb02"]
 _data = {
 "flickerDate": SubResource("Animation_vjg2r")
+}
+
+[sub_resource type="Animation" id="Animation_7x44g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../gameResults/article1Open/downloadButton/downloadButtonText:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[font_size=48][b][p align=center]Download Now"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("downloadBack2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("progressText:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["1 In Progress"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("progressBarFront:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(196, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("progressName:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Downloading..."]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../gameResults/article1Open/downloadButton:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.133333, 0.164706, 0.239216, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../gameResults/article1Open/downloadButton/interact:monitorable")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../gameResults/article1Open/downloadButton/interact:collision_layer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
 }
 
 [sub_resource type="Animation" id="Animation_s2bnh"]
@@ -2221,117 +2355,6 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_7x44g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../gameResults/article1Open/downloadButton/downloadButtonText:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["[font_size=48][b][p align=center]Download Now"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("downloadBack2:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("progressText:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["1 In Progress"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("progressBarFront:size")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(196, 16)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("progressName:text")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["Downloading..."]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../gameResults/article1Open/downloadButton:self_modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.133333, 0.164706, 0.239216, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../gameResults/article1Open/downloadButton/interact:monitorable")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("../gameResults/article1Open/downloadButton/interact:collision_layer")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_is7og"]
@@ -3565,64 +3588,169 @@ shape = SubResource("RectangleShape2D_dvgag")
 
 [node name="article2Open" type="Node2D" parent="gameResults"]
 visible = false
+z_index = 1
+
+[node name="background" type="ColorRect" parent="gameResults/article2Open"]
+z_index = -1
+offset_left = 556.0
+offset_top = 80.0
+offset_right = 1580.0
+offset_bottom = 576.0
+color = Color(0.258824, 0.74902, 0.909804, 1)
+
+[node name="navBar" type="ColorRect" parent="gameResults/article2Open"]
+offset_left = 556.0
+offset_top = 80.0
+offset_right = 1580.0
+offset_bottom = 140.0
+color = Color(0.988235, 0.968627, 0.745098, 1)
+
+[node name="navBar2" type="ColorRect" parent="gameResults/article2Open"]
+offset_left = 556.0
+offset_top = 140.0
+offset_right = 1580.0
+offset_bottom = 142.0
+color = Color(0, 0, 0, 1)
+
+[node name="101GamesLogo" type="Sprite2D" parent="gameResults/article2Open"]
+modulate = Color(0.380392, 0.152941, 0.129412, 1)
+position = Vector2(869, 112)
+scale = Vector2(0.332061, 0.332061)
+texture = ExtResource("23_o3g1w")
 
 [node name="title" type="Label" parent="gameResults/article2Open"]
-offset_left = 829.0
-offset_top = 125.0
-offset_right = 1934.0
-offset_bottom = 320.0
+modulate = Color(0.0784314, 0.0705882, 0.113725, 1)
+offset_left = 556.0
+offset_top = 142.0
+offset_right = 3116.0
+offset_bottom = 255.0
 scale = Vector2(0.4, 0.4)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_fonts/font = ExtResource("32_s8xmp")
 theme_override_font_sizes/font_size = 70
-text = "Regressions in the
-Laplace Project"
+text = "Game of the day - Slimy Bird"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="divider" type="ColorRect" parent="gameResults/article2Open"]
-offset_left = 833.0
-offset_top = 204.0
-offset_right = 1139.0
-offset_bottom = 205.0
-color = Color(0.321569, 0.321569, 0.321569, 1)
+[node name="slimyBirdGame" type="Node2D" parent="gameResults/article2Open"]
+script = ExtResource("23_rqwat")
 
-[node name="phrase" type="RichTextLabel" parent="gameResults/article2Open"]
-modulate = Color(1, 1, 1, 0.666667)
-offset_left = 833.0
-offset_top = 211.0
-offset_right = 1758.0
-offset_bottom = 261.0
+[node name="backdrop" type="Sprite2D" parent="gameResults/article2Open/slimyBirdGame"]
+clip_children = 2
+texture_filter = 1
+position = Vector2(1071.22, 322)
+scale = Vector2(2, 2)
+texture = ExtResource("24_ychbu")
+
+[node name="CloudsB" type="Sprite2D" parent="gameResults/article2Open/slimyBirdGame/backdrop"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(57.889, 1.5)
+texture = ExtResource("25_i2srl")
+region_enabled = true
+region_rect = Rect2(0, 0, 436, 132)
+
+[node name="CloudsA" type="Sprite2D" parent="gameResults/article2Open/slimyBirdGame/backdrop"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(89.889, 37)
+texture = ExtResource("26_qryee")
+region_enabled = true
+region_rect = Rect2(0, 0, 500, 61)
+
+[node name="pillars" type="Node2D" parent="gameResults/article2Open/slimyBirdGame/backdrop"]
+position = Vector2(180.389, 0)
+
+[node name="floor" type="Sprite2D" parent="gameResults/article2Open/slimyBirdGame/backdrop"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(19.889, 64.5)
+texture = ExtResource("27_yqey0")
+region_enabled = true
+region_rect = Rect2(0, 0, 360, 16)
+
+[node name="floorBody" type="StaticBody2D" parent="gameResults/article2Open/slimyBirdGame/backdrop/floor"]
+position = Vector2(0, 10000)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gameResults/article2Open/slimyBirdGame/backdrop/floor/floorBody"]
+position = Vector2(-85, 1.25)
+shape = SubResource("RectangleShape2D_jqapp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="gameResults/article2Open/slimyBirdGame/backdrop/floor/floorBody"]
+position = Vector2(-85, -140.5)
+shape = SubResource("RectangleShape2D_jqapp")
+
+[node name="character" type="CharacterBody2D" parent="gameResults/article2Open/slimyBirdGame/backdrop"]
+position = Vector2(-100, 0)
+
+[node name="slime" type="Sprite2D" parent="gameResults/article2Open/slimyBirdGame/backdrop/character"]
+texture = ExtResource("27_1c03f")
+
+[node name="hitbox" type="CollisionShape2D" parent="gameResults/article2Open/slimyBirdGame/backdrop/character"]
+shape = SubResource("CircleShape2D_i6jx4")
+disabled = true
+
+[node name="pillarScanner" type="Area2D" parent="gameResults/article2Open/slimyBirdGame/backdrop/character"]
+collision_layer = 0
+collision_mask = 32
+monitorable = false
+
+[node name="hitbox2" type="CollisionShape2D" parent="gameResults/article2Open/slimyBirdGame/backdrop/character/pillarScanner"]
+shape = SubResource("CircleShape2D_i6jx4")
+
+[node name="border" type="Sprite2D" parent="gameResults/article2Open/slimyBirdGame"]
+clip_children = 2
+texture_filter = 1
+position = Vector2(1071.22, 322)
+scale = Vector2(2, 2)
+texture = ExtResource("29_d5o78")
+
+[node name="startButton" type="Sprite2D" parent="gameResults/article2Open/slimyBirdGame"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1071.22, 322)
+scale = Vector2(2, 2)
+texture = ExtResource("27_ltl1l")
+
+[node name="startButtonHovered" type="Sprite2D" parent="gameResults/article2Open/slimyBirdGame/startButton"]
+visible = false
+z_index = 1
+texture_filter = 1
+texture = ExtResource("28_3t5nv")
+
+[node name="interact" parent="gameResults/article2Open/slimyBirdGame/startButton" instance=ExtResource("2_qxlri")]
+position = Vector2(-10.611, -2)
+scale = Vector2(0.6, 0.5)
+collision_layer = 8
+interactionName = "slimyBirdStart"
+
+[node name="hitbox" type="CollisionShape2D" parent="gameResults/article2Open/slimyBirdGame/startButton/interact"]
+position = Vector2(17.9166, 4)
+shape = SubResource("RectangleShape2D_6ehlo")
+
+[node name="score" type="Label" parent="gameResults/article2Open/slimyBirdGame/startButton"]
+offset_left = -511.611
+offset_top = -47.5
+offset_right = 2048.39
+offset_bottom = 65.5
 scale = Vector2(0.4, 0.4)
-theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 3
-theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 30
-bbcode_enabled = true
-text = "By Robert E. U. | Published 18 hours ago"
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("32_s8xmp")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="description" type="RichTextLabel" parent="gameResults/article2Open"]
-modulate = Color(1, 1, 1, 0.666667)
-offset_left = 833.0
-offset_top = 242.0
-offset_right = 2033.0
-offset_bottom = 987.0
-scale = Vector2(0.4, 0.4)
-theme_override_constants/outline_size = 3
-theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_fonts/bold_font = SubResource("FontFile_63anl")
-theme_override_font_sizes/normal_font_size = 30
-bbcode_enabled = true
-text = "Initial research into the technology showed great promise, however Laplace has since regressed in intelligence significantly, often speaking in nonsensical text. And if that wasn’t troublesome enough, the program demands more processing power with each test to even boot.
-
-Further testing is needed to remedy this, but at its current growth testing requirements will exceed the world’s total processing power in a little under a year.
-
-However with the changes to our planet now irreversible, it will be a miracle if we even survive to reach that point."
-visible_characters = 0
-visible_ratio = 0.0
+[node name="Logo" type="Sprite2D" parent="gameResults/article2Open/slimyBirdGame"]
+position = Vector2(1063, 505)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("34_lcadv")
 
 [node name="backButton" parent="gameResults" instance=ExtResource("2_qxlri")]
+z_index = 2
 position = Vector2(581, 103)
 scale = Vector2(0.3, 0.3)
 collision_layer = 8
@@ -3747,9 +3875,9 @@ theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[fade start=100 length=25]Initial research into the technology showed great promise, however Laplace has since regressed in intelligence significantly[/fade]
+text = "[fade start=100 length=25]Jumping games, sports games, clicker games. You name it, we have it here at 101 Cool Slime Games. Great fun for all ages, play[/fade]
 
-[font_size=20]By Schrodinger| Published 18 hours ago"
+[font_size=20]By Schrodinger | Published 18 hours ago"
 
 [node name="divider" type="ColorRect" parent="gameResults/article2"]
 offset_top = 22.0
@@ -3856,3 +3984,5 @@ max_lines_visible = 1
 libraries = {
 "": SubResource("AnimationLibrary_is7og")
 }
+
+[connection signal="area_entered" from="gameResults/article2Open/slimyBirdGame/backdrop/character/pillarScanner" to="gameResults/article2Open/slimyBirdGame" method="_on_pillar_scanner_area_entered"]

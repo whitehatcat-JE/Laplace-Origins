@@ -1263,7 +1263,6 @@ position = Vector2(10000, 0)
 
 [node name="singularityInteract" parent="homeScreen/filesWindow/singularityExe" instance=ExtResource("8_kdwn3")]
 position = Vector2(61, 0)
-scale = Vector2(1, 1)
 interactionName = "singularityExe"
 
 [node name="hitbox" type="CollisionShape2D" parent="homeScreen/filesWindow/singularityExe/singularityInteract"]

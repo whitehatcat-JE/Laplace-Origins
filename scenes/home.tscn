@@ -1,4 +1,4 @@
-[gd_scene load_steps=454 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=455 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -26,6 +26,7 @@
 [ext_resource type="AudioStream" uid="uid://vne8x3iohh10" path="res://assets/audio/music/singularity.mp3" id="9_dcaq8"]
 [ext_resource type="Texture2D" uid="uid://c47pdqpchx4d8" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-albedo.png" id="10_b1uw2"]
 [ext_resource type="Material" uid="uid://cgusg8smqn8wc" path="res://assets/3d/materials/bricks.tres" id="10_eqkec"]
+[ext_resource type="Environment" uid="uid://b0ok513seha2x" path="res://objects/homeEnvironment.tres" id="10_nrkjx"]
 [ext_resource type="ArrayMesh" uid="uid://bfqtupg7aqnqw" path="res://assets/3d/monitorScreen.obj" id="11_ftqtj"]
 [ext_resource type="Texture2D" uid="uid://bijuw13o6gyl2" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-ao.png" id="11_pet04"]
 [ext_resource type="ArrayMesh" uid="uid://buq1uso8urd3a" path="res://assets/3d/monitorStand.obj" id="12_lpolo"]
@@ -194,38 +195,6 @@
 [ext_resource type="Texture2D" uid="uid://cg2pc10rbvf8k" path="res://assets/2d/shooterMinigame/laplace.png" id="178_ig8bl"]
 [ext_resource type="Texture2D" uid="uid://5c58n8bo023d" path="res://assets/2d/pcOS/backgroundLaplace.jpg" id="193_t8w1n"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4ojb"]
-sky_top_color = Color(0.0627451, 0.733333, 1, 1)
-sky_horizon_color = Color(0.34902, 0.529412, 0.670588, 1)
-ground_bottom_color = Color(0.298039, 0.278431, 0.27451, 1)
-ground_horizon_color = Color(0.568627, 0.576471, 0.588235, 1)
-
-[sub_resource type="Sky" id="Sky_7yfon"]
-sky_material = SubResource("ProceduralSkyMaterial_u4ojb")
-
-[sub_resource type="Environment" id="Environment_unycy"]
-background_mode = 1
-sky = SubResource("Sky_7yfon")
-ambient_light_source = 2
-ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.0
-tonemap_mode = 2
-ssr_max_steps = 128
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_enabled = true
-sdfgi_use_occlusion = true
-sdfgi_read_sky_light = false
-sdfgi_y_scale = 0
-glow_enabled = true
-glow_levels/1 = 0.46
-glow_levels/2 = 0.74
-glow_levels/3 = 1.66
-glow_levels/5 = 0.0
-glow_bloom = 0.07
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
-
 [sub_resource type="FogMaterial" id="FogMaterial_jgji8"]
 density = 0.5752
 albedo = Color(1, 0.94902, 0.815686, 1)
@@ -348,6 +317,37 @@ albedo_texture = SubResource("ViewportTexture_aa2sa")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uni65"]
 size = Vector3(2.00439, 1, 0.310298)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4ojb"]
+sky_top_color = Color(0.0627451, 0.733333, 1, 1)
+sky_horizon_color = Color(0.34902, 0.529412, 0.670588, 1)
+ground_bottom_color = Color(0.298039, 0.278431, 0.27451, 1)
+ground_horizon_color = Color(0.568627, 0.576471, 0.588235, 1)
+
+[sub_resource type="Sky" id="Sky_7yfon"]
+sky_material = SubResource("ProceduralSkyMaterial_u4ojb")
+
+[sub_resource type="Environment" id="Environment_df272"]
+background_mode = 1
+sky = SubResource("Sky_7yfon")
+ambient_light_source = 2
+ambient_light_sky_contribution = 0.0
+ambient_light_energy = 0.0
+tonemap_mode = 2
+ssr_max_steps = 128
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+sdfgi_y_scale = 0
+glow_levels/1 = 0.46
+glow_levels/2 = 0.74
+glow_levels/3 = 1.66
+glow_levels/5 = 0.0
+glow_bloom = 0.07
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_7ewhp"]
 size = Vector3(0.3, 0.05, 0.1)
@@ -2582,7 +2582,7 @@ stream = ExtResource("7_jbwer")
 stream = ExtResource("9_dcaq8")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_unycy")
+environment = ExtResource("10_nrkjx")
 
 [node name="ambientLight" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 9.03625, 0)
@@ -3136,6 +3136,7 @@ shape = SubResource("BoxShape3D_uni65")
 
 [node name="cam" type="Camera3D" parent="bedroom/desk/monitorScreen"]
 transform = Transform3D(-1.25, 0, -1.09278e-07, 0, 1.25, 0, 1.09278e-07, 0, -1.25, 0, 0, -1.02107)
+environment = SubResource("Environment_df272")
 current = true
 
 [node name="drawerHandleA" type="MeshInstance3D" parent="bedroom/desk"]
