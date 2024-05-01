@@ -61,9 +61,11 @@ func _on_player_interacted(interactionName:String) -> void:
 				$walls/Router/routerLogo.visible = true
 				$walls/Router/routerOffLogo.visible = false
 				$pianoRoom/piano.visible = false
+				pcOS.get_node("internetBrowser").enableInternet()
 				audioManager.play("piano")
 			else: # Router switch off
 				GI.progress = 2
+				pcOS.get_node("internetBrowser").disableInternet()
 				$walls/Router/routerLogo.visible = false
 				$walls/Router/routerOffLogo.visible = true
 		"usb": # Grab usb stick from PC
@@ -94,7 +96,7 @@ func _on_player_interacted(interactionName:String) -> void:
 			player.unlockedInteractions.append("router")
 			$basement/crt/usbStick.visible = true
 			GI.progress = 6
-			pcOS.get_node("homeScreen/menuBar/menuAnims").play("glitchShooter")
+			pcOS.unlockFate()
 			$audioManager/singularity.stream = load("res://assets/audio/music/fate.mp3")
 		"piano": # Piano thud
 			player.unlockedInteractions.erase("piano")
@@ -179,6 +181,7 @@ func _on_city_trigger_field_body_entered(_body) -> void:
 func _on_city_exit_trigger_field_body_entered(_body) -> void:
 	$basement/cityTriggerField.set_deferred("monitoring", true)
 	pcOS.get_node("homeScreen/emailWindow/abyssMessageAnim").play("abyss")
+	pcOS.emailBViewed = false
 
 func unlockOutdoors() -> void: player.unlockedInteractions.append("exitHome"); # Unlocks exit door
 func _on_pc_os_show_laplace_wall() -> void: $bedroom/laplaceWall.visible = true; # Display laplace wall in bedroom

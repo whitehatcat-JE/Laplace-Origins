@@ -1,9 +1,8 @@
-[gd_scene load_steps=77 format=3 uid="uid://2dbuwxwcysa4"]
+[gd_scene load_steps=82 format=3 uid="uid://2dbuwxwcysa4"]
 
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="1_bwl2d"]
 [ext_resource type="Script" path="res://scripts/internetBrowser.gd" id="1_e8bkl"]
 [ext_resource type="PackedScene" uid="uid://g15p8sneaum5" path="res://objects/interaction2D.tscn" id="2_qxlri"]
-[ext_resource type="Texture2D" uid="uid://bucha4s4imhmy" path="res://assets/2d/shooterMinigame/arenaCorrupt.png" id="3_thgoy"]
 [ext_resource type="Texture2D" uid="uid://by7kpcpndvmfr" path="res://assets/2d/internet/buttonLarge.png" id="5_g6dyi"]
 [ext_resource type="Texture2D" uid="uid://bdefc3txigt8r" path="res://assets/2d/internet/searchIcon.png" id="6_aqdki"]
 [ext_resource type="Texture2D" uid="uid://b5ifopeg06b0n" path="res://assets/2d/internet/thumbnails/newsThumbnail.png" id="7_md7qo"]
@@ -35,6 +34,12 @@
 [ext_resource type="Texture2D" uid="uid://2mvig5grldo6" path="res://assets/2d/internet/minigames/slimyBird/backgroundBorder.png" id="29_d5o78"]
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="32_s8xmp"]
 [ext_resource type="Texture2D" uid="uid://cdkw857er77xk" path="res://assets/2d/internet/minigames/slimyBird/logo.png" id="34_lcadv"]
+[ext_resource type="Texture2D" uid="uid://bx1iqupg8bghy" path="res://assets/2d/internet/minigames/chess-knight-icon.png" id="35_m30n4"]
+[ext_resource type="Texture2D" uid="uid://ckpw7p0mr53tb" path="res://assets/2d/internet/minigames/gaming-gamepad-icon.png" id="36_fye1y"]
+[ext_resource type="Texture2D" uid="uid://cdw58cq2ul3ku" path="res://assets/2d/internet/minigames/playing-cards-icon.png" id="37_wpbff"]
+[ext_resource type="Texture2D" uid="uid://dpoxd4y0i1yo8" path="res://assets/2d/internet/minigames/portableConsoleIcon.png" id="38_1tm8n"]
+[ext_resource type="Texture2D" uid="uid://bwq660jmpscbf" path="res://assets/2d/internet/minigames/puzzle-icon.png" id="39_jsqro"]
+[ext_resource type="Texture2D" uid="uid://b1exxbroyb38v" path="res://assets/2d/internet/minigames/table-tennis-icon.png" id="40_tmv1l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wupo"]
 size = Vector2(28.5714, 47.5)
@@ -2380,14 +2385,6 @@ offset_right = 1568.0
 offset_bottom = 576.0
 color = Color(0.133333, 0.133333, 0.133333, 1)
 
-[node name="corruptArena" type="Sprite2D" parent="browserBackground"]
-visible = false
-z_index = -1
-texture_filter = 1
-position = Vector2(512, 256)
-scale = Vector2(4, 4)
-texture = ExtResource("3_thgoy")
-
 [node name="windowName" type="Label" parent="."]
 offset_left = 555.0
 offset_top = 61.0
@@ -3613,26 +3610,24 @@ offset_bottom = 142.0
 color = Color(0, 0, 0, 1)
 
 [node name="101GamesLogo" type="Sprite2D" parent="gameResults/article2Open"]
-modulate = Color(0.380392, 0.152941, 0.129412, 1)
+modulate = Color(0, 0.152941, 1, 0.741176)
 position = Vector2(869, 112)
 scale = Vector2(0.332061, 0.332061)
 texture = ExtResource("23_o3g1w")
 
-[node name="title" type="Label" parent="gameResults/article2Open"]
-modulate = Color(0.0784314, 0.0705882, 0.113725, 1)
+[node name="title" type="RichTextLabel" parent="gameResults/article2Open"]
+modulate = Color(1, 0.972549, 0.94902, 1)
 offset_left = 556.0
 offset_top = 142.0
 offset_right = 3116.0
 offset_bottom = 255.0
 scale = Vector2(0.4, 0.4)
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("32_s8xmp")
-theme_override_font_sizes/font_size = 70
-text = "Game of the day - Slimy Bird"
-horizontal_alignment = 1
-vertical_alignment = 1
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/normal_font = ExtResource("32_s8xmp")
+theme_override_font_sizes/normal_font_size = 98
+bbcode_enabled = true
+text = "[p align=center][wave]Game of the day - [rainbow val=4]Slimy Bird"
 
 [node name="slimyBirdGame" type="Node2D" parent="gameResults/article2Open"]
 script = ExtResource("23_rqwat")
@@ -3748,6 +3743,46 @@ vertical_alignment = 1
 position = Vector2(1063, 505)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("34_lcadv")
+
+[node name="Chess-knight-icon" type="Sprite2D" parent="gameResults/article2Open"]
+modulate = Color(1, 1, 1, 0.403922)
+position = Vector2(1490, 225)
+rotation = 0.261799
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("35_m30n4")
+
+[node name="Gaming-gamepad-icon" type="Sprite2D" parent="gameResults/article2Open"]
+modulate = Color(1, 1, 1, 0.403922)
+position = Vector2(1493, 362)
+rotation = -0.523598
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("36_fye1y")
+
+[node name="Playing-cards-icon" type="Sprite2D" parent="gameResults/article2Open"]
+modulate = Color(1, 1, 1, 0.403922)
+position = Vector2(1496, 494)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("37_wpbff")
+
+[node name="Chess-knight-icon2" type="Sprite2D" parent="gameResults/article2Open"]
+modulate = Color(1, 1, 1, 0.403922)
+position = Vector2(642.277, 216.893)
+rotation = 0.261799
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("38_1tm8n")
+
+[node name="Gaming-gamepad-icon2" type="Sprite2D" parent="gameResults/article2Open"]
+modulate = Color(1, 1, 1, 0.403922)
+position = Vector2(645.277, 353.893)
+rotation = -0.523598
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("39_jsqro")
+
+[node name="Playing-cards-icon2" type="Sprite2D" parent="gameResults/article2Open"]
+modulate = Color(1, 1, 1, 0.403922)
+position = Vector2(648.277, 485.893)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("40_tmv1l")
 
 [node name="backButton" parent="gameResults" instance=ExtResource("2_qxlri")]
 z_index = 2
@@ -3984,5 +4019,38 @@ max_lines_visible = 1
 libraries = {
 "": SubResource("AnimationLibrary_is7og")
 }
+
+[node name="offlineMessage" type="ColorRect" parent="."]
+visible = false
+offset_left = 635.0
+offset_top = 132.0
+offset_right = 1485.0
+offset_bottom = 368.0
+color = Color(0.215686, 0.215686, 0.215686, 1)
+
+[node name="welcomeMessage" type="Label" parent="offlineMessage"]
+offset_left = 20.0
+offset_right = 2085.0
+offset_bottom = 228.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 100
+text = "Internet Unavailable"
+vertical_alignment = 1
+
+[node name="welcomeMessage2" type="Label" parent="offlineMessage"]
+offset_left = 20.0
+offset_top = 91.0
+offset_right = 1995.0
+offset_bottom = 319.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 50
+text = "It appears you have been disconnected from the internet. Please check your wifi settings or try turning your router off and on.
+
+ERR_INTERNET_DISCONNECTED"
+autowrap_mode = 2
 
 [connection signal="area_entered" from="gameResults/article2Open/slimyBirdGame/backdrop/character/pillarScanner" to="gameResults/article2Open/slimyBirdGame" method="_on_pillar_scanner_area_entered"]

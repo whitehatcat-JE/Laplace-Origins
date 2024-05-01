@@ -18,6 +18,10 @@ var displayingArticle2:bool = false
 var emailDisplaying:bool = false
 var emailCDisplaying:bool = false
 
+var emailAViewed:bool = false
+var emailBViewed:bool = false
+var emailCViewed:bool = false
+
 var wifiEnabled:bool = true
 
 var alertCharNum:int = 0
@@ -60,6 +64,7 @@ func eventTriggered(event) -> void:
 				$loginScreen.position.x = 10000
 				$homeScreen.position.x = 0
 			"menu": # Open / close navigation menu
+				updateEmailCount()
 				$homeScreen/menuBar/menuAnims.play(
 					"disappear" if menuDisplaying else "appear")
 				menuDisplaying = !menuDisplaying
@@ -76,6 +81,13 @@ func eventTriggered(event) -> void:
 					GI.progress = 1
 					emit_signal("updatedProgress")
 				emailDisplaying = !emailDisplaying
+				if $homeScreen/emailWindow/emailA/description.visible:
+					emailAViewed = true
+				elif $homeScreen/emailWindow/emailB/description.visible:
+					emailBViewed = true
+				elif $homeScreen/emailWindow/emailC/description.visible:
+					emailCViewed = true
+				updateEmailCount()
 			"emailQuit": # Close email window
 				$homeScreen/emailWindow/emailAnims.play("emailDisappear")
 				emailDisplaying = false
@@ -83,14 +95,20 @@ func eventTriggered(event) -> void:
 				$homeScreen/emailWindow/emailA/description.visible = true
 				$homeScreen/emailWindow/emailB/description.visible = false
 				$homeScreen/emailWindow/emailC/description.visible = false
+				emailAViewed = true
+				updateEmailCount()
 			"emailB": # Show email B
 				$homeScreen/emailWindow/emailA/description.visible = false
 				$homeScreen/emailWindow/emailB/description.visible = true
 				$homeScreen/emailWindow/emailC/description.visible = false
+				emailBViewed = true
+				updateEmailCount()
 			"emailC": # Show email C
 				$homeScreen/emailWindow/emailA/description.visible = false
 				$homeScreen/emailWindow/emailB/description.visible = false
 				$homeScreen/emailWindow/emailC/description.visible = true
+				emailCViewed = true
+				updateEmailCount()
 			"filesOpen": # Open / close file window
 				$homeScreen/filesWindow/filesAnims.play(
 					"filesDisappear" if filesDisplaying else "filesAppear")
@@ -294,6 +312,7 @@ Just run   it immEdiate|y and let it do its thing."""
 		$homeScreen/emailWindow/emailB/description.visible = false
 		$homeScreen/emailWindow/emailC/description.visible = true
 		$homeScreen/emailWindow/emailC/interact/hitbox.disabled = false
+		updateEmailCount()
 # Increment time displayed
 func _on_clock_timer_timeout() -> void:
 	time += 1 # Increment time
@@ -315,6 +334,7 @@ func unlockUSB() -> void:
 	$homeScreen/emailWindow/emailB/interact/hitbox.disabled = false
 	$background.texture = load("res://assets/2d/pcOS/dropBackgroundB.png")
 	emit_signal("updatedProgress") # Allows player to interact with USB stick in PC
+	updateEmailCount()
 # Draw new line of random characters to console
 func _on_new_line_timer_timeout() -> void:
 	consoleOutputList.append("C:/Users/Laplace>")
@@ -338,3 +358,23 @@ func _on_shooter_minigame_laplace_spawned():
 
 func _on_internet_browser_downloaded_singularity():
 	$homeScreen/filesWindow/singularityExe.position.x = 0
+
+func updateEmailCount():
+	var totalUnreadEmails = 0
+	if !emailAViewed: totalUnreadEmails += 1
+	if !emailBViewed and $homeScreen/emailWindow/emailB.visible and $homeScreen/emailWindow.position.x > 1000: totalUnreadEmails += 1
+	if !emailCViewed and $homeScreen/emailWindow/emailC.visible and $homeScreen/emailWindow.position.x > 1000: totalUnreadEmails += 1
+	if totalUnreadEmails > 0:
+		$homeScreen/menuBar/email/notificationDot.visible = true
+		$homeScreen/menuBar/email/notificationDot/notificationCount.text = str(totalUnreadEmails)
+	else:
+		$homeScreen/menuBar/email/notificationDot.visible = false
+
+func _on_internet_browser_enable_wifi():
+	$homeScreen/wifiIcon.texture = load("res://assets/2d/pcOS/wifiIcon.png")
+
+func unlockFate():
+	$homeScreen/menuBar/menuAnims.play("glitchShooter")
+	$homeScreen/filesWindow/singularityExe/singularityIcon.texture = load("res://assets/2d/shooterMinigame/playerCorrupt.png")
+	$homeScreen/filesWindow/singularityExe/singularityName.text = "   fate.exe"
+	$homeScreen/filesWindow/singularityExe/singularityName.modulate = Color.RED

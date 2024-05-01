@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://csnnn1yw8ccgs"]
+[gd_scene load_steps=47 format=3 uid="uid://csnnn1yw8ccgs"]
 
 [ext_resource type="Script" path="res://scripts/pcOS.gd" id="1_xeigj"]
 [ext_resource type="Texture2D" uid="uid://b8f2gr7p8vcd2" path="res://assets/2d/pcOS/dropBackground.png" id="2_j3svo"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://vt6sk807soog" path="res://assets/2d/UI/3-4thInfinityLogo.png" id="10_3u8fc"]
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="11_830h1"]
 [ext_resource type="Texture2D" uid="uid://bnyoikpnj3qpy" path="res://assets/2d/pcOS/wifiIcon.png" id="11_g7mk2"]
+[ext_resource type="Texture2D" uid="uid://bmygw81llopyk" path="res://assets/2d/pcOS/circle.png" id="13_188bo"]
 [ext_resource type="Texture2D" uid="uid://dphcvpl3h6ee7" path="res://assets/2d/shooterMinigame/player.png" id="14_6iou8"]
 [ext_resource type="Shader" path="res://scripts/shaders/glitch.gdshader" id="14_8bkd7"]
 [ext_resource type="AudioStream" uid="uid://biipabva8sjck" path="res://assets/audio/sfx/menus/click.ogg" id="15_0lrd5"]
@@ -771,12 +772,32 @@ offset_right = 250.0
 offset_bottom = 77.4999
 
 [node name="interact" parent="homeScreen/menuBar/email" instance=ExtResource("8_kdwn3")]
+visible = false
 position = Vector2(2.49988, -6.10352e-05)
 interactionName = "emailOpen"
 
 [node name="hitbox" type="CollisionShape2D" parent="homeScreen/menuBar/email/interact"]
 position = Vector2(115, 35)
 shape = SubResource("RectangleShape2D_8nfdd")
+
+[node name="notificationDot" type="Sprite2D" parent="homeScreen/menuBar/email"]
+visible = false
+self_modulate = Color(1, 0.282353, 0.0470588, 1)
+position = Vector2(205, 37.5)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("13_188bo")
+
+[node name="notificationCount" type="Label" parent="homeScreen/menuBar/email/notificationDot"]
+offset_left = -50.0
+offset_top = -125.0
+offset_right = 250.0
+offset_bottom = 504.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 75
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 400
+text = "1"
+vertical_alignment = 1
 
 [node name="files" type="Label" parent="homeScreen/menuBar"]
 offset_left = 554.0
@@ -1653,5 +1674,6 @@ position = Vector2(0, 20)
 [connection signal="timeout" from="emergencyAlert/alertScrollTimer" to="." method="_on_alert_scroll_timer_timeout"]
 [connection signal="laplaceSpawned" from="shooterMinigame" to="." method="_on_shooter_minigame_laplace_spawned"]
 [connection signal="downloadedSingularity" from="internetBrowser" to="." method="_on_internet_browser_downloaded_singularity"]
+[connection signal="enableWifi" from="internetBrowser" to="." method="_on_internet_browser_enable_wifi"]
 
 [editable path="shooterMinigame"]
