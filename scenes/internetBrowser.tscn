@@ -1,15 +1,17 @@
-[gd_scene load_steps=95 format=3 uid="uid://2dbuwxwcysa4"]
+[gd_scene load_steps=113 format=3 uid="uid://2dbuwxwcysa4"]
 
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="1_bwl2d"]
 [ext_resource type="Script" path="res://scripts/internetBrowser.gd" id="1_e8bkl"]
 [ext_resource type="Texture2D" uid="uid://2pgc1xtsv12d" path="res://assets/2d/internet/weep/eyes.jpg" id="2_7jldi"]
 [ext_resource type="PackedScene" uid="uid://g15p8sneaum5" path="res://objects/interaction2D.tscn" id="2_qxlri"]
+[ext_resource type="Texture2D" uid="uid://dl80nnchclsac" path="res://assets/2d/3dSprites/decals/TexturesCom_DecalLeakingMossy0008_1_masked_S.png" id="3_aw2ae"]
 [ext_resource type="Texture2D" uid="uid://by7kpcpndvmfr" path="res://assets/2d/internet/buttonLarge.png" id="5_g6dyi"]
 [ext_resource type="Texture2D" uid="uid://bdefc3txigt8r" path="res://assets/2d/internet/searchIcon.png" id="6_aqdki"]
 [ext_resource type="Texture2D" uid="uid://b5ifopeg06b0n" path="res://assets/2d/internet/thumbnails/newsThumbnail.png" id="7_md7qo"]
 [ext_resource type="Texture2D" uid="uid://cacq12em7kasc" path="res://assets/2d/internet/thumbnails/gamingThumbnail.png" id="8_bvk2b"]
 [ext_resource type="Texture2D" uid="uid://bn3bssqmatn8r" path="res://assets/2d/internet/thumbnails/weatherThumbnail.png" id="9_rkpjh"]
 [ext_resource type="Texture2D" uid="uid://62en7ukpriv3" path="res://assets/2d/internet/backArrow.png" id="10_acx1e"]
+[ext_resource type="Texture2D" uid="uid://c56bb87yodwc" path="res://assets/2d/internet/weep/bodyCorrupted.png" id="10_pjc8d"]
 [ext_resource type="Texture2D" uid="uid://c83rx334otvww" path="res://assets/2d/internet/hexagonPattern.png" id="11_1i1t1"]
 [ext_resource type="Texture2D" uid="uid://dn7vujayyc76r" path="res://assets/2d/internet/weatherLine.png" id="11_stnlb"]
 [ext_resource type="Texture2D" uid="uid://bnr1oqw82fqe4" path="res://assets/2d/internet/futureTalkzLogo.png" id="12_5opns"]
@@ -46,6 +48,17 @@
 [ext_resource type="Texture2D" uid="uid://b6v4hn8s6l57x" path="res://assets/2d/internet/projectSlingshotScreenshots/wastelands.png" id="42_viaut"]
 [ext_resource type="Texture2D" uid="uid://d8lai25iq20k" path="res://assets/2d/internet/projectSlingshotScreenshots/lilt.png" id="43_0i4mt"]
 [ext_resource type="Texture2D" uid="uid://cc8v083pvj6i4" path="res://assets/2d/internet/projectSlingshotScreenshots/gradient.png" id="44_mp7e2"]
+[ext_resource type="Texture2D" uid="uid://chs8qnhaj1vni" path="res://assets/2d/internet/homeCamera/cityEntrance.png" id="47_26oy0"]
+[ext_resource type="Texture2D" uid="uid://q0535hkvyb3s" path="res://assets/2d/internet/buttonLargeBroken.png" id="48_s40q3"]
+[ext_resource type="Texture2D" uid="uid://c8lqxyw8tq7c1" path="res://assets/2d/internet/homeCamera/basement.png" id="48_wj68f"]
+[ext_resource type="Texture2D" uid="uid://0cygf7pphxxh" path="res://assets/2d/internet/backArrowDirty.png" id="49_qqme8"]
+[ext_resource type="Texture2D" uid="uid://ckth3a7y4iey5" path="res://assets/2d/internet/homeCamera/eyes.png" id="49_vdqi6"]
+[ext_resource type="Texture2D" uid="uid://vrdeg0n3yqmt" path="res://assets/2d/internet/homeCamera/clock.png" id="50_bntxr"]
+[ext_resource type="Texture2D" uid="uid://vwatlu2nqj5q" path="res://assets/2d/internet/homeCamera/doorway.png" id="51_tn3d8"]
+[ext_resource type="Texture2D" uid="uid://cv7i8wmljptti" path="res://assets/2d/internet/homeCamera/pianoRoom.png" id="52_ap7kb"]
+[ext_resource type="Texture2D" uid="uid://bxlgbthnevcgc" path="res://assets/2d/internet/homeCamera/room.png" id="53_qs6mt"]
+[ext_resource type="Texture2D" uid="uid://na58yrxtopda" path="res://assets/2d/internet/homeCamera/underbed.png" id="54_x42r0"]
+[ext_resource type="Texture2D" uid="uid://0uyc0fvdrtdw" path="res://assets/2d/internet/homeCamera/waredrobe.png" id="55_8xy34"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wupo"]
 size = Vector2(28.5714, 47.5)
@@ -135,7 +148,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": ["He has awoken."]
+"values": ["Reality Kneels"]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -160,6 +173,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 0.247059, 0.294118, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("dirtBackdrop:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_crv8t"]
@@ -271,6 +296,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("dirtBackdrop:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mqsle"]
@@ -435,11 +472,309 @@ tracks/3/keys = {
 "values": [Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_6ufu0"]
+resource_name = "showResultsWeep"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../resultsWeep/resultsPivot/image1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../resultsWeep/resultsPivot/image2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../resultsWeep/resultsPivot/image3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../resultsWeep/resultsPivot/image4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../resultsWeep/resultsPivot/image5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../resultsWeep/resultsPivot/image6:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../resultsWeep/resultsPivot/image7:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../resultsWeep/resultsPivot/image8:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../resultsWeep/resultsPivot/image9:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../resultsWeep/resultsPivot/image10:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.9, 1),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../resultsWeep/resultsPivot/image11:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1, 1.1),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../resultsWeep:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3lxdn"]
+resource_name = "hideResultsWeep"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../resultsWeep/resultsPivot/image1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../resultsWeep/resultsPivot/image2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../resultsWeep/resultsPivot/image3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../resultsWeep/resultsPivot/image4:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../resultsWeep/resultsPivot/image5:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../resultsWeep/resultsPivot/image6:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../resultsWeep/resultsPivot/image7:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../resultsWeep/resultsPivot/image8:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../resultsWeep/resultsPivot/image9:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../resultsWeep/resultsPivot/image10:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../resultsWeep/resultsPivot/image11:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../resultsWeep:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 10000)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8phkt"]
 _data = {
 "hideResults": SubResource("Animation_pafbj"),
+"hideResultsWeep": SubResource("Animation_3lxdn"),
 "returnHome": SubResource("Animation_f1pe6"),
-"showResults": SubResource("Animation_p1t3y")
+"showResults": SubResource("Animation_p1t3y"),
+"showResultsWeep": SubResource("Animation_6ufu0")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qj1i5"]
@@ -2749,6 +3084,437 @@ _data = {
 "flickerDate": SubResource("Animation_vjg2r")
 }
 
+[sub_resource type="Animation" id="Animation_lsko5"]
+resource_name = "showImages"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage/welcomeMessage:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../homepage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-226, -194)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../windowName:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Reality Kneels", "Creation weeps"]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, 0)]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../homepage/homepageAnims")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("hideResults"),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../homepage/results:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../homepage/homepageAnims:speed_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5.0, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../homepage/results/resultsPivot:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(481, -33)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../homepage/searchButton/searchText:text")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["He has arisen.", "Creation weeps."]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("CityEntrance:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Basement:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Eyes:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Clock:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Doorway:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("PianoRoom:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Room:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Underbed:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Waredrobe:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("../homepage/searchButton/interact:monitorable")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("../homepage/searchButton/interact:position")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1061, 10000)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("../homepage/searchButton/backdrop:texture")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("48_s40q3")]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("backButton/BackArrow:texture")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("49_qqme8")]
+}
+
+[sub_resource type="Animation" id="Animation_vr323"]
+resource_name = "hideImages"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../homepage:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../homepage/welcomeMessage:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../windowName:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Creation weeps", "Reality Kneels"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../homepage/results/resultsPivot:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "animation"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../homepage/homepageAnims")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": PackedStringArray("hideResults"),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../homepage/homepageAnims:speed_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [5.0, 1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../homepage/results:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../homepage/searchButton/searchText:text")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Creation weeps.", "He has arisen."]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../homepage/searchButton/interact:monitorable")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../homepage/searchButton/interact:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1061, 367.5)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../homepage/searchButton/backdrop:texture")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_g6dyi")]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("backButton/BackArrow:texture")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_acx1e")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wgiyd"]
+_data = {
+"hideImages": SubResource("Animation_vr323"),
+"showImages": SubResource("Animation_lsko5")
+}
+
 [sub_resource type="Animation" id="Animation_7x44g"]
 length = 0.001
 tracks/0/type = "value"
@@ -3000,13 +3766,6 @@ _data = {
 [node name="internetBrowser" type="Node2D"]
 script = ExtResource("1_e8bkl")
 
-[node name="navBack" type="ColorRect" parent="."]
-offset_left = 544.0
-offset_top = 52.0
-offset_right = 1568.0
-offset_bottom = 83.0
-color = Color(0.4, 0.4, 0.4, 1)
-
 [node name="browserBackground" type="ColorRect" parent="."]
 clip_children = 2
 offset_left = 544.0
@@ -3022,6 +3781,20 @@ clip_children = 2
 position = Vector2(529, 383)
 scale = Vector2(0.681004, 0.681004)
 texture = ExtResource("2_7jldi")
+
+[node name="dirtBackdrop" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.760784, 0, 0, 1)
+position = Vector2(1055, 155)
+rotation = -3.14159
+texture = ExtResource("3_aw2ae")
+
+[node name="navBack" type="ColorRect" parent="."]
+offset_left = 544.0
+offset_top = 52.0
+offset_right = 1568.0
+offset_bottom = 83.0
+color = Color(0.4, 0.4, 0.4, 1)
 
 [node name="windowName" type="Label" parent="."]
 offset_left = 555.0
@@ -3230,26 +4003,31 @@ scale = Vector2(0.28125, 0.28125)
 texture = ExtResource("9_rkpjh")
 
 [node name="resultsWeep" type="Node2D" parent="homepage"]
+modulate = Color(1, 0, 0.0666667, 1)
+position = Vector2(0, 10000)
 
 [node name="resultsPivot" type="Node2D" parent="homepage/resultsWeep"]
 
-[node name="news" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+[node name="image1" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(1061, 400)
 collision_layer = 8
-interactionName = "newsSearch"
+interactionName = "imageSearch"
 
-[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/news"]
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/image1"]
+visible = false
 position = Vector2(0.5, -64)
 scale = Vector2(0.6, 0.5)
 shape = SubResource("RectangleShape2D_qj1i5")
 
-[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/news"]
-modulate = Color(0.223529, 0.223529, 0.223529, 0.835294)
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image1"]
+modulate = Color(1, 1, 1, 0.835294)
 position = Vector2(0, -63.5)
 scale = Vector2(0.6, 0.5)
 texture = ExtResource("5_g6dyi")
 
-[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/news"]
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/image1"]
+modulate = Color(0, 0, 0, 1)
 offset_left = -212.0
 offset_top = -72.5
 offset_right = 628.0
@@ -3258,30 +4036,33 @@ scale = Vector2(0.4, 0.4)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
-text = "Breaking news in the A.I sector"
+text = "Creation Weeps"
 
-[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/news"]
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image1"]
 position = Vector2(220, -63)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("7_md7qo")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_pjc8d")
 
-[node name="games" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+[node name="image2" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(1061, 424)
 collision_layer = 8
-interactionName = "gameSearch"
+interactionName = "imageSearch"
 
-[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/games"]
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/image2"]
+visible = false
 position = Vector2(0.5, -64)
 scale = Vector2(0.6, 0.5)
 shape = SubResource("RectangleShape2D_qj1i5")
 
-[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/games"]
-modulate = Color(0.223529, 0.223529, 0.223529, 0.835294)
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image2"]
+modulate = Color(1, 1, 1, 0.835294)
 position = Vector2(0, -63.5)
 scale = Vector2(0.6, 0.5)
 texture = ExtResource("5_g6dyi")
 
-[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/games"]
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/image2"]
+modulate = Color(0, 0, 0, 1)
 offset_left = -212.0
 offset_top = -72.5
 offset_right = 628.0
@@ -3290,30 +4071,33 @@ scale = Vector2(0.4, 0.4)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
-text = "Free Online Games"
+text = "Creation Weeps"
 
-[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/games"]
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image2"]
 position = Vector2(220, -63)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("8_bvk2b")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_pjc8d")
 
-[node name="weather" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+[node name="image3" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(1061, 448)
 collision_layer = 8
-interactionName = "weatherSearch"
+interactionName = "imageSearch"
 
-[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/weather"]
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/image3"]
+visible = false
 position = Vector2(0.5, -64)
 scale = Vector2(0.6, 0.5)
 shape = SubResource("RectangleShape2D_qj1i5")
 
-[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/weather"]
-modulate = Color(0.223529, 0.223529, 0.223529, 0.835294)
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image3"]
+modulate = Color(1, 1, 1, 0.835294)
 position = Vector2(0, -63.5)
 scale = Vector2(0.6, 0.5)
 texture = ExtResource("5_g6dyi")
 
-[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/weather"]
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/image3"]
+modulate = Color(0, 0, 0, 1)
 offset_left = -212.0
 offset_top = -72.5
 offset_right = 628.0
@@ -3322,12 +4106,292 @@ scale = Vector2(0.4, 0.4)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
-text = "Weather Forecast"
+text = "Creation Weeps"
 
-[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/weather"]
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image3"]
 position = Vector2(220, -63)
-scale = Vector2(0.28125, 0.28125)
-texture = ExtResource("9_rkpjh")
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_pjc8d")
+
+[node name="image4" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1061, 472)
+collision_layer = 8
+interactionName = "imageSearch"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/image4"]
+visible = false
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image4"]
+modulate = Color(1, 1, 1, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/image4"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Creation Weeps"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image4"]
+position = Vector2(220, -63)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_pjc8d")
+
+[node name="image5" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1061, 496)
+collision_layer = 8
+interactionName = "imageSearch"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/image5"]
+visible = false
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image5"]
+modulate = Color(1, 1, 1, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/image5"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Creation Weeps"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image5"]
+position = Vector2(220, -63)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_pjc8d")
+
+[node name="image6" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1061, 520)
+collision_layer = 8
+interactionName = "imageSearch"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/image6"]
+visible = false
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image6"]
+modulate = Color(1, 1, 1, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/image6"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Creation Weeps"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image6"]
+position = Vector2(220, -63)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_pjc8d")
+
+[node name="image7" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1061, 544)
+collision_layer = 8
+interactionName = "imageSearch"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/image7"]
+visible = false
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image7"]
+modulate = Color(1, 1, 1, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/image7"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Creation Weeps"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image7"]
+position = Vector2(220, -63)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_pjc8d")
+
+[node name="image8" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1061, 568)
+collision_layer = 8
+interactionName = "imageSearch"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/image8"]
+visible = false
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image8"]
+modulate = Color(1, 1, 1, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/image8"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Creation Weeps"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image8"]
+position = Vector2(220, -63)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_pjc8d")
+
+[node name="image9" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1061, 592)
+collision_layer = 8
+interactionName = "imageSearch"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/image9"]
+visible = false
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image9"]
+modulate = Color(1, 1, 1, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/image9"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Creation Weeps"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image9"]
+position = Vector2(220, -63)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_pjc8d")
+
+[node name="image10" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1061, 616)
+collision_layer = 8
+interactionName = "imageSearch"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/image10"]
+visible = false
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image10"]
+modulate = Color(1, 1, 1, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/image10"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Creation Weeps"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image10"]
+position = Vector2(220, -63)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_pjc8d")
+
+[node name="image11" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1061, 640)
+collision_layer = 8
+interactionName = "imageSearch"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/image11"]
+visible = false
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image11"]
+modulate = Color(1, 1, 1, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/image11"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Creation Weeps"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/image11"]
+position = Vector2(220, -63)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("10_pjc8d")
 
 [node name="newsResults" type="Node2D" parent="."]
 position = Vector2(0, 10000)
@@ -4540,17 +5604,17 @@ offset_bottom = 405.0
 color = Color(0, 0, 0, 1)
 
 [node name="IslesOfSolitude" type="Sprite2D" parent="gameResults/article3Open/slideshowFrame"]
-position = Vector2(462.743, 58.4)
+position = Vector2(-187.387, 58.4)
 scale = Vector2(0.56, 0.56)
 texture = ExtResource("40_lqtni")
 
 [node name="Singularity" type="Sprite2D" parent="gameResults/article3Open/slideshowFrame"]
-position = Vector2(1544, 58.4)
+position = Vector2(511.48, 58.4)
 scale = Vector2(0.56, 0.56)
 texture = ExtResource("41_jbndn")
 
 [node name="Wastelands" type="Sprite2D" parent="gameResults/article3Open/slideshowFrame"]
-position = Vector2(511.48, 58.4)
+position = Vector2(1544, 58.4)
 scale = Vector2(0.56, 0.56)
 texture = ExtResource("42_viaut")
 
@@ -4583,7 +5647,7 @@ theme_override_constants/outline_size = 14
 theme_override_fonts/normal_font = ExtResource("32_s8xmp")
 theme_override_font_sizes/normal_font_size = 52
 bbcode_enabled = true
-text = "[p align=center][wave]Wastelands"
+text = "[p align=center][wave]Singularity"
 
 [node name="Gradient" type="Sprite2D" parent="gameResults/article3Open"]
 position = Vector2(1068, 443.5)
@@ -4857,6 +5921,76 @@ interactionName = "gameArticle3"
 [node name="hitbox" type="CollisionShape2D" parent="gameResults/article3/article3"]
 position = Vector2(-1130, -216.667)
 shape = SubResource("RectangleShape2D_hbb7m")
+
+[node name="imageResults" type="Node2D" parent="."]
+position = Vector2(0, 10000)
+
+[node name="imageAnims" type="AnimationPlayer" parent="imageResults"]
+libraries = {
+"": SubResource("AnimationLibrary_wgiyd")
+}
+
+[node name="backButton" parent="imageResults" instance=ExtResource("2_qxlri")]
+z_index = 2
+position = Vector2(581, 103)
+scale = Vector2(0.3, 0.3)
+collision_layer = 8
+interactionName = "imageResultsBack"
+
+[node name="hitbox" type="CollisionShape2D" parent="imageResults/backButton"]
+visible = false
+position = Vector2(9.99988, 23.75)
+shape = SubResource("CircleShape2D_jpdgg")
+
+[node name="BackArrow" type="Sprite2D" parent="imageResults/backButton"]
+modulate = Color(1, 0.0235294, 0, 0.917647)
+position = Vector2(10, 24)
+texture = ExtResource("10_acx1e")
+
+[node name="CityEntrance" type="Sprite2D" parent="imageResults"]
+position = Vector2(707.3, 200.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("47_26oy0")
+
+[node name="Basement" type="Sprite2D" parent="imageResults"]
+position = Vector2(908.3, 200.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("48_wj68f")
+
+[node name="Eyes" type="Sprite2D" parent="imageResults"]
+position = Vector2(706.3, 327.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("49_vdqi6")
+
+[node name="Clock" type="Sprite2D" parent="imageResults"]
+position = Vector2(908.3, 327.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("50_bntxr")
+
+[node name="Doorway" type="Sprite2D" parent="imageResults"]
+position = Vector2(1213.3, 263.8)
+scale = Vector2(0.21, 0.21)
+texture = ExtResource("51_tn3d8")
+
+[node name="PianoRoom" type="Sprite2D" parent="imageResults"]
+position = Vector2(706.3, 449.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("52_ap7kb")
+
+[node name="Room" type="Sprite2D" parent="imageResults"]
+position = Vector2(908.3, 449.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("53_qs6mt")
+
+[node name="Underbed" type="Sprite2D" parent="imageResults"]
+position = Vector2(1111.3, 449.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("54_x42r0")
+
+[node name="Waredrobe" type="Sprite2D" parent="imageResults"]
+position = Vector2(1315.3, 449.8)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("55_8xy34")
 
 [node name="download" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)

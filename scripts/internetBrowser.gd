@@ -19,11 +19,22 @@ func disableInternet():
 	$newsResults/newsAnims.advance(2.0)
 	$gameResults/gameAnims.play("hideGames")
 	$gameResults/gameAnims.advance(2.0)
+	$homepage/homepageAnims.play("hideResults")
+	$homepage/homepageAnims.advance(1.0)
 	$homepage.position.x = 10000.0
 	$offlineMessage.visible = true
 	$windowName.text = "Internet - Offline"
 
 func enableInternet():
+	$weatherResults/weatherAnims.play("hideWeather")
+	$weatherResults/weatherAnims.advance(2.0)
+	$newsResults/newsAnims.play("hideNews")
+	$newsResults/newsAnims.advance(2.0)
+	$gameResults/gameAnims.play("hideGames")
+	$gameResults/gameAnims.advance(2.0)
+	$homepage/homepageAnims.play("hideResults")
+	$homepage/homepageAnims.advance(1.0)
 	$homepage.position.x = 0.0
 	$offlineMessage.visible = false
 	emit_signal("enableWifi")
+	$internetAnims.play("weep")

@@ -41,6 +41,7 @@ func _input(event) -> void:
 				$head/cam.rotate_x(deg_to_rad(change))
 				cameraAngle += change
 	elif Input.is_action_just_pressed("interact") and HUDinteract.visible: # Interact with object looking at
+		if interactCast.get_collider() == null: return;
 		emit_signal("interacted", interactCast.get_collider().interactionName)
 # Player movement & interaction updates
 func _physics_process(delta) -> void:

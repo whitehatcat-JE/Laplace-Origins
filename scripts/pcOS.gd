@@ -164,10 +164,16 @@ func eventTriggered(event) -> void:
 				$mouse/pointerRay.set_collision_mask_value(2, true)
 				$mouse/pointerRay.set_collision_mask_value(4, false)
 			"search":
-				if $internetBrowser/homepage/results.position.y > 1000:
-					$internetBrowser/homepage/homepageAnims.play("showResults")
+				if GI.progress > 2:
+					if $internetBrowser/homepage/resultsWeep.position.y > 1000:
+						$internetBrowser/homepage/homepageAnims.play("showResultsWeep")
+					else:
+						$internetBrowser/homepage/homepageAnims.play("hideResultsWeep")
 				else:
-					$internetBrowser/homepage/homepageAnims.play("hideResults")
+					if $internetBrowser/homepage/results.position.y > 1000:
+						$internetBrowser/homepage/homepageAnims.play("showResults")
+					else:
+						$internetBrowser/homepage/homepageAnims.play("hideResults")
 			"newsResultsBack":
 				if displayingArticle1:
 					displayingArticle1 = false
@@ -236,6 +242,18 @@ func eventTriggered(event) -> void:
 				$internetBrowser/download/downloadAnim.play("download")
 			"slimyBirdStart":
 				$internetBrowser/gameResults/article2Open/slimyBirdGame.start()
+			"imageResultsBack":
+				$internetBrowser/imageResults/imageAnims.play("hideImages")
+			"imageSearch":
+				$internetBrowser/weatherResults/weatherAnims.play("hideWeather")
+				$internetBrowser/weatherResults/weatherAnims.advance(2.0)
+				$internetBrowser/newsResults/newsAnims.play("hideNews")
+				$internetBrowser/newsResults/newsAnims.advance(2.0)
+				$internetBrowser/gameResults/gameAnims.play("hideGames")
+				$internetBrowser/gameResults/gameAnims.advance(2.0)
+				$internetBrowser/homepage/homepageAnims.play("hideResultsWeep")
+				$internetBrowser/homepage/homepageAnims.advance(2.0)
+				$internetBrowser/imageResults/imageAnims.play("showImages")
 		if playDefaultClickSFX: clickSFX.play();
 # Checks if mouse currently hovered over button
 func _process(delta) -> void:
@@ -381,6 +399,7 @@ func updateEmailCount():
 
 func _on_internet_browser_enable_wifi():
 	$homeScreen/wifiIcon.texture = load("res://assets/2d/pcOS/wifiIcon.png")
+	$homeScreen/menuBar/internet/glitchedInternet.play("glitch")
 
 func unlockFate():
 	$homeScreen/menuBar/menuAnims.play("glitchShooter")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://csnnn1yw8ccgs"]
+[gd_scene load_steps=49 format=3 uid="uid://csnnn1yw8ccgs"]
 
 [ext_resource type="Script" path="res://scripts/pcOS.gd" id="1_xeigj"]
 [ext_resource type="Texture2D" uid="uid://b8f2gr7p8vcd2" path="res://assets/2d/pcOS/dropBackground.png" id="2_j3svo"]
@@ -32,6 +32,40 @@ size = Vector2(191.667, 46)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8nfdd"]
 size = Vector2(265, 85)
+
+[sub_resource type="Animation" id="Animation_yew1x"]
+resource_name = "glitch"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": ["Internet", "
+"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("internet:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yeaj3"]
+_data = {
+"glitch": SubResource("Animation_yew1x")
+}
 
 [sub_resource type="Animation" id="Animation_y873e"]
 resource_name = "appear"
@@ -849,11 +883,31 @@ offset_right = 247.0
 offset_bottom = 78.0
 
 [node name="interact" parent="homeScreen/menuBar/internet" instance=ExtResource("8_kdwn3")]
+visible = false
 interactionName = "internetOpen"
 
 [node name="hitbox" type="CollisionShape2D" parent="homeScreen/menuBar/internet/interact"]
 position = Vector2(115, 35)
 shape = SubResource("RectangleShape2D_8nfdd")
+
+[node name="internet" type="RichTextLabel" parent="homeScreen/menuBar/internet"]
+visible = false
+layout_mode = 0
+offset_left = -2.5
+offset_top = 10.0
+offset_right = 597.5
+offset_bottom = 191.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("11_830h1")
+theme_override_font_sizes/normal_font_size = 86
+bbcode_enabled = true
+text = "[shake rate=100.0 level=30][color=red][outline_color=red]Internet"
+
+[node name="glitchedInternet" type="AnimationPlayer" parent="homeScreen/menuBar/internet"]
+libraries = {
+"": SubResource("AnimationLibrary_yeaj3")
+}
 
 [node name="logout" type="Label" parent="homeScreen/menuBar"]
 offset_left = 554.0
