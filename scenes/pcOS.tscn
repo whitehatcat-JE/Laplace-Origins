@@ -986,7 +986,7 @@ text = "Looks like the stakeholders have finally given us the go-ahead to do ano
 
 First I’m gonna need you to switch off the router near your wardrobe. Can’t have the program accidentally scraping un-filtered data from the internet, can we?
 
-Then just run the .exe file and let it do its thing. Oh, and MAKE SURE you shut down the program before re-connecting your router. I’d like to avoid getting fired right after Christmas."
+Then just run the laplace.exe file and let it do its thing. Oh, and MAKE SURE you shut down the program before re-connecting your router. I’d like to avoid getting fired right after Christmas."
 autowrap_mode = 2
 visible_characters = 0
 visible_ratio = 0.0

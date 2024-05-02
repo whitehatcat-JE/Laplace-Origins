@@ -14,6 +14,7 @@ var cmdDisplaying:bool = false
 
 var displayingArticle1:bool = false
 var displayingArticle2:bool = false
+var displayingArticle3:bool = false
 
 var emailDisplaying:bool = false
 var emailCDisplaying:bool = false
@@ -210,6 +211,9 @@ func eventTriggered(event) -> void:
 				elif displayingArticle2:
 					displayingArticle2 = false
 					$internetBrowser/gameResults/gameAnims.play("hideArticle2")
+				elif displayingArticle3:
+					displayingArticle3 = false
+					$internetBrowser/gameResults/gameAnims.play("hideArticle3")
 				else:
 					$internetBrowser/gameResults/gameAnims.play("hideGames")
 			"gameSearch":
@@ -225,6 +229,9 @@ func eventTriggered(event) -> void:
 			"gameArticle2":
 				displayingArticle2 = true
 				$internetBrowser/gameResults/gameAnims.play("showArticle2")
+			"gameArticle3":
+				displayingArticle3 = true
+				$internetBrowser/gameResults/gameAnims.play("showArticle3")
 			"downloadSingularity":
 				$internetBrowser/download/downloadAnim.play("download")
 			"slimyBirdStart":
@@ -268,6 +275,7 @@ func _process(delta) -> void:
 			"weatherArticle1": $internetBrowser/weatherResults/article1/hoverAnims.play("unhover");
 			"gameArticle1": $internetBrowser/gameResults/article1/hoverAnims.play("unhover");
 			"gameArticle2": $internetBrowser/gameResults/article2/hoverAnims.play("unhover");
+			"gameArticle3": $internetBrowser/gameResults/article3/hoverAnims.play("unhover");
 			"slimyBirdStart": $internetBrowser/gameResults/article2Open/slimyBirdGame/startButton/startButtonHovered.visible = false;
 		# Changes color of button currently hovered
 		match interaction:
@@ -295,6 +303,7 @@ func _process(delta) -> void:
 			"weatherArticle1": $internetBrowser/weatherResults/article1/hoverAnims.play("hover");
 			"gameArticle1": $internetBrowser/gameResults/article1/hoverAnims.play("hover");
 			"gameArticle2": $internetBrowser/gameResults/article2/hoverAnims.play("hover");
+			"gameArticle3": $internetBrowser/gameResults/article3/hoverAnims.play("hover");
 			"slimyBirdStart": $internetBrowser/gameResults/article2Open/slimyBirdGame/startButton/startButtonHovered.visible = true;
 		currentInteraction = interaction  # Stores currently hovered button
 	

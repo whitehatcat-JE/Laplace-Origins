@@ -1,7 +1,8 @@
-[gd_scene load_steps=82 format=3 uid="uid://2dbuwxwcysa4"]
+[gd_scene load_steps=95 format=3 uid="uid://2dbuwxwcysa4"]
 
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="1_bwl2d"]
 [ext_resource type="Script" path="res://scripts/internetBrowser.gd" id="1_e8bkl"]
+[ext_resource type="Texture2D" uid="uid://2pgc1xtsv12d" path="res://assets/2d/internet/weep/eyes.jpg" id="2_7jldi"]
 [ext_resource type="PackedScene" uid="uid://g15p8sneaum5" path="res://objects/interaction2D.tscn" id="2_qxlri"]
 [ext_resource type="Texture2D" uid="uid://by7kpcpndvmfr" path="res://assets/2d/internet/buttonLarge.png" id="5_g6dyi"]
 [ext_resource type="Texture2D" uid="uid://bdefc3txigt8r" path="res://assets/2d/internet/searchIcon.png" id="6_aqdki"]
@@ -39,10 +40,244 @@
 [ext_resource type="Texture2D" uid="uid://cdw58cq2ul3ku" path="res://assets/2d/internet/minigames/playing-cards-icon.png" id="37_wpbff"]
 [ext_resource type="Texture2D" uid="uid://dpoxd4y0i1yo8" path="res://assets/2d/internet/minigames/portableConsoleIcon.png" id="38_1tm8n"]
 [ext_resource type="Texture2D" uid="uid://bwq660jmpscbf" path="res://assets/2d/internet/minigames/puzzle-icon.png" id="39_jsqro"]
+[ext_resource type="Texture2D" uid="uid://ysjevd8edyn1" path="res://assets/2d/internet/projectSlingshotScreenshots/islesOfSolitude.png" id="40_lqtni"]
 [ext_resource type="Texture2D" uid="uid://b1exxbroyb38v" path="res://assets/2d/internet/minigames/table-tennis-icon.png" id="40_tmv1l"]
+[ext_resource type="Texture2D" uid="uid://4cuhy40hp4la" path="res://assets/2d/internet/projectSlingshotScreenshots/singularity.png" id="41_jbndn"]
+[ext_resource type="Texture2D" uid="uid://b6v4hn8s6l57x" path="res://assets/2d/internet/projectSlingshotScreenshots/wastelands.png" id="42_viaut"]
+[ext_resource type="Texture2D" uid="uid://d8lai25iq20k" path="res://assets/2d/internet/projectSlingshotScreenshots/lilt.png" id="43_0i4mt"]
+[ext_resource type="Texture2D" uid="uid://cc8v083pvj6i4" path="res://assets/2d/internet/projectSlingshotScreenshots/gradient.png" id="44_mp7e2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8wupo"]
 size = Vector2(28.5714, 47.5)
+
+[sub_resource type="Animation" id="Animation_doky6"]
+resource_name = "weep"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("homepage/welcomeMessage:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Creation Weeps"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("homepage/welcomeMessage:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0.027451, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("homepage/searchButton/searchText:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["He has arisen."]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("browserBackground:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.109804, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("browserBackground/Eyes:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("navBack:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.4, 0, 0, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("windowName:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["He has awoken."]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("windowName:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.0352941, 0, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("homepage/searchButton:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.247059, 0.294118, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_crv8t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("homepage/welcomeMessage:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Welcome Back!"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("homepage/welcomeMessage:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("homepage/searchButton/searchText:text")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Press to search..."]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("browserBackground:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.133333, 0.133333, 0.133333, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("browserBackground/Eyes:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("navBack:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.4, 0.4, 0.4, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("windowName:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Internet - Home"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("windowName:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("homepage/searchButton:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mqsle"]
+_data = {
+"RESET": SubResource("Animation_crv8t"),
+"weep": SubResource("Animation_doky6")
+}
 
 [sub_resource type="Animation" id="Animation_pafbj"]
 resource_name = "hideResults"
@@ -1434,7 +1669,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_fog3p"]
 resource_name = "hideArticle1"
-length = 0.2
+length = 0.3
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1479,7 +1714,7 @@ tracks/3/path = NodePath("article1:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(-2, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
@@ -1491,10 +1726,10 @@ tracks/4/path = NodePath("article2:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, -2, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, -2, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1544,10 +1779,34 @@ tracks/8/keys = {
 "update": 0,
 "values": [false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("article3:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("article3:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 360)]
+}
 
 [sub_resource type="Animation" id="Animation_o5ec4"]
 resource_name = "hideArticle2"
-length = 0.2
+length = 0.3
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1592,7 +1851,7 @@ tracks/3/path = NodePath("article1:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(-2, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
@@ -1604,10 +1863,10 @@ tracks/4/path = NodePath("article2:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, -2, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, -2, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1670,6 +1929,30 @@ tracks/9/keys = {
 "args": [],
 "method": &"stop"
 }]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("article3:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("article3:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 360)]
 }
 
 [sub_resource type="Animation" id="Animation_sifig"]
@@ -1846,6 +2129,18 @@ tracks/5/keys = {
 "update": 0,
 "values": ["Internet - Free Online Games - Search Results", "Internet - Free Download Games - Play Singularity Now! - Pacella Realms"]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("article3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 10000)]
+}
 
 [sub_resource type="Animation" id="Animation_r11pe"]
 resource_name = "showArticle2"
@@ -1910,10 +2205,22 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("article3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 10000)]
+}
 
 [sub_resource type="Animation" id="Animation_um6y4"]
 resource_name = "showGames"
-length = 0.2
+length = 0.3
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2005,7 +2312,7 @@ tracks/7/path = NodePath("article1:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
+"times": PackedFloat32Array(0, 0.1, 0.3),
 "transitions": PackedFloat32Array(-2, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
@@ -2017,10 +2324,10 @@ tracks/8/path = NodePath("article2:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, -2, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, -2, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -2058,14 +2365,265 @@ tracks/11/keys = {
 "update": 0,
 "values": [Vector2(611, 255)]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("article3:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("article3:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 360)]
+}
+
+[sub_resource type="Animation" id="Animation_cntt1"]
+resource_name = "showArticle3"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("article1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("article2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 10000)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("article3Open/description:visible_ratio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("article3Open:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../windowName:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Free Online Games - Search Results", "Internet - Project Slingshot - An upcoming action-adventure game - Jayden Everest"]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("article3:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 10000)]
+}
+
+[sub_resource type="Animation" id="Animation_m4bf4"]
+resource_name = "hideArticle3"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../homepage:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-226, -194)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../windowName:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Internet - Project Slingshot - An upcoming action-adventure game - Jayden Everest", "Internet - Free Online Games - Search Results"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-12, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("article1:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(-2, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("article2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, -2, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../homepage/results/resultsPivot:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(481, -33)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("article1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 152)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("article2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 255)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("article3Open:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("article3:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("article3:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(611, 360)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_llw6k"]
 _data = {
 "hideArticle1": SubResource("Animation_fog3p"),
 "hideArticle2": SubResource("Animation_o5ec4"),
+"hideArticle3": SubResource("Animation_m4bf4"),
 "hideGames": SubResource("Animation_sifig"),
 "showArticle1": SubResource("Animation_rt0p4"),
 "showArticle2": SubResource("Animation_r11pe"),
+"showArticle3": SubResource("Animation_cntt1"),
 "showGames": SubResource("Animation_um6y4")
 }
 
@@ -2080,6 +2638,77 @@ radius = 5.91016
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ehlo"]
 size = Vector2(137.5, 42)
+
+[sub_resource type="Animation" id="Animation_1fnkp"]
+resource_name = "slideshow"
+length = 24.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("IslesOfSolitude:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 6, 23, 24),
+"transitions": PackedFloat32Array(1, -2, 1, -2, 1),
+"update": 0,
+"values": [Vector2(511.48, 58.4), Vector2(511.48, 58.4), Vector2(-500, 58.4), Vector2(1544, 58.4), Vector2(511.48, 58.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Singularity:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 6, 11, 12, 13),
+"transitions": PackedFloat32Array(1, -2, 1, -2, 0, 1),
+"update": 0,
+"values": [Vector2(1544, 58.4), Vector2(1544, 58.4), Vector2(511.48, 58.4), Vector2(511.48, 58.4), Vector2(-500, 58.4), Vector2(1544, 58.4)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Wastelands:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 11, 12, 17, 18, 19),
+"transitions": PackedFloat32Array(1, -2, 1, -2, 0, 1),
+"update": 0,
+"values": [Vector2(1544, 58.4), Vector2(1544, 58.4), Vector2(511.48, 58.4), Vector2(511.48, 58.4), Vector2(-500, 58.4), Vector2(1544, 58.4)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Lilt:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 17, 18, 23, 24),
+"transitions": PackedFloat32Array(1, -2, 1, -2, 1),
+"update": 0,
+"values": [Vector2(1544, 58.4), Vector2(1544, 58.4), Vector2(511.48, 58.4), Vector2(511.48, 58.4), Vector2(-525, 58.4)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("title:text")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5, 6, 11, 12, 17, 18, 23, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": ["[p align=center][wave]Isles of Solitude", "[p align=center][wave]Isles of Solitude", "[p align=center][wave]Singularity", "[p align=center][wave]Singularity", "[p align=center][wave]Wastelands", "[p align=center][wave]Wastelands", "[p align=center][wave]Lilt", "[p align=center][wave]Lilt", "[p align=center][wave]Isles of Solitude"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1agwb"]
+_data = {
+"slideshow": SubResource("Animation_1fnkp")
+}
 
 [sub_resource type="Animation" id="Animation_vjg2r"]
 resource_name = "flickerDate"
@@ -2379,11 +3008,20 @@ offset_bottom = 83.0
 color = Color(0.4, 0.4, 0.4, 1)
 
 [node name="browserBackground" type="ColorRect" parent="."]
+clip_children = 2
 offset_left = 544.0
 offset_top = 80.0
 offset_right = 1568.0
 offset_bottom = 576.0
 color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[node name="Eyes" type="Sprite2D" parent="browserBackground"]
+visible = false
+modulate = Color(1, 1, 1, 0.219608)
+clip_children = 2
+position = Vector2(529, 383)
+scale = Vector2(0.681004, 0.681004)
+texture = ExtResource("2_7jldi")
 
 [node name="windowName" type="Label" parent="."]
 offset_left = 555.0
@@ -2425,6 +3063,11 @@ interactionName = "internetQuit"
 position = Vector2(9.99988, 23.75)
 shape = SubResource("RectangleShape2D_8wupo")
 
+[node name="internetAnims" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_mqsle")
+}
+
 [node name="homepage" type="Node2D" parent="."]
 
 [node name="welcomeMessage" type="Label" parent="homepage"]
@@ -2450,6 +3093,7 @@ autoplay = "hideResults"
 [node name="searchButton" type="Node2D" parent="homepage"]
 
 [node name="interact" parent="homepage/searchButton" instance=ExtResource("2_qxlri")]
+visible = false
 position = Vector2(1061, 367.5)
 scale = Vector2(0.6, 0.5)
 collision_layer = 8
@@ -2581,6 +3225,106 @@ theme_override_font_sizes/font_size = 35
 text = "Weather Forecast"
 
 [node name="thumbnail" type="Sprite2D" parent="homepage/results/resultsPivot/weather"]
+position = Vector2(220, -63)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("9_rkpjh")
+
+[node name="resultsWeep" type="Node2D" parent="homepage"]
+
+[node name="resultsPivot" type="Node2D" parent="homepage/resultsWeep"]
+
+[node name="news" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+position = Vector2(1061, 400)
+collision_layer = 8
+interactionName = "newsSearch"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/news"]
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/news"]
+modulate = Color(0.223529, 0.223529, 0.223529, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/news"]
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Breaking news in the A.I sector"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/news"]
+position = Vector2(220, -63)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("7_md7qo")
+
+[node name="games" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+position = Vector2(1061, 424)
+collision_layer = 8
+interactionName = "gameSearch"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/games"]
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/games"]
+modulate = Color(0.223529, 0.223529, 0.223529, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/games"]
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Free Online Games"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/games"]
+position = Vector2(220, -63)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("8_bvk2b")
+
+[node name="weather" parent="homepage/resultsWeep/resultsPivot" instance=ExtResource("2_qxlri")]
+position = Vector2(1061, 448)
+collision_layer = 8
+interactionName = "weatherSearch"
+
+[node name="hitbox" type="CollisionShape2D" parent="homepage/resultsWeep/resultsPivot/weather"]
+position = Vector2(0.5, -64)
+scale = Vector2(0.6, 0.5)
+shape = SubResource("RectangleShape2D_qj1i5")
+
+[node name="backdrop" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/weather"]
+modulate = Color(0.223529, 0.223529, 0.223529, 0.835294)
+position = Vector2(0, -63.5)
+scale = Vector2(0.6, 0.5)
+texture = ExtResource("5_g6dyi")
+
+[node name="resultText" type="Label" parent="homepage/resultsWeep/resultsPivot/weather"]
+offset_left = -212.0
+offset_top = -72.5
+offset_right = 628.0
+offset_bottom = -27.5
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Weather Forecast"
+
+[node name="thumbnail" type="Sprite2D" parent="homepage/resultsWeep/resultsPivot/weather"]
 position = Vector2(220, -63)
 scale = Vector2(0.28125, 0.28125)
 texture = ExtResource("9_rkpjh")
@@ -3784,6 +4528,121 @@ position = Vector2(648.277, 485.893)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("40_tmv1l")
 
+[node name="article3Open" type="Node2D" parent="gameResults"]
+visible = false
+
+[node name="slideshowFrame" type="ColorRect" parent="gameResults/article3Open"]
+clip_children = 1
+offset_left = 556.0
+offset_top = 79.0
+offset_right = 1580.0
+offset_bottom = 405.0
+color = Color(0, 0, 0, 1)
+
+[node name="IslesOfSolitude" type="Sprite2D" parent="gameResults/article3Open/slideshowFrame"]
+position = Vector2(462.743, 58.4)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("40_lqtni")
+
+[node name="Singularity" type="Sprite2D" parent="gameResults/article3Open/slideshowFrame"]
+position = Vector2(1544, 58.4)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("41_jbndn")
+
+[node name="Wastelands" type="Sprite2D" parent="gameResults/article3Open/slideshowFrame"]
+position = Vector2(511.48, 58.4)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("42_viaut")
+
+[node name="Lilt" type="Sprite2D" parent="gameResults/article3Open/slideshowFrame"]
+position = Vector2(1544, 58.4)
+scale = Vector2(0.56, 0.56)
+texture = ExtResource("43_0i4mt")
+
+[node name="slideshowAnim" type="AnimationPlayer" parent="gameResults/article3Open/slideshowFrame"]
+libraries = {
+"": SubResource("AnimationLibrary_1agwb")
+}
+autoplay = "slideshow"
+
+[node name="background2" type="ColorRect" parent="gameResults/article3Open/slideshowFrame"]
+offset_left = 866.0
+offset_right = 1024.0
+offset_bottom = 32.0
+color = Color(0, 0, 0, 0.513726)
+
+[node name="title" type="RichTextLabel" parent="gameResults/article3Open/slideshowFrame"]
+modulate = Color(1, 0.972549, 0.94902, 1)
+offset_left = 866.0
+offset_top = 6.0
+offset_right = 1254.0
+offset_bottom = 119.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/normal_font = ExtResource("32_s8xmp")
+theme_override_font_sizes/normal_font_size = 52
+bbcode_enabled = true
+text = "[p align=center][wave]Wastelands"
+
+[node name="Gradient" type="Sprite2D" parent="gameResults/article3Open"]
+position = Vector2(1068, 443.5)
+scale = Vector2(1024, 0.441667)
+texture = ExtResource("44_mp7e2")
+
+[node name="name" type="RichTextLabel" parent="gameResults/article3Open"]
+modulate = Color(1, 0.972549, 0.94902, 1)
+offset_left = 567.0
+offset_top = 356.0
+offset_right = 1819.0
+offset_bottom = 469.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/default_color = Color(1, 0.0235294, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_fonts/normal_font = ExtResource("32_s8xmp")
+theme_override_font_sizes/normal_font_size = 98
+bbcode_enabled = true
+text = "Project Slingshot"
+
+[node name="name2" type="RichTextLabel" parent="gameResults/article3Open"]
+modulate = Color(1, 0.972549, 0.94902, 1)
+offset_left = 556.0
+offset_top = 405.0
+offset_right = 3108.0
+offset_bottom = 553.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 14
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 98
+bbcode_enabled = true
+text = "[p align=center]One Weapon. One Life. [color=red][outline_color=red]One God."
+
+[node name="background2" type="ColorRect" parent="gameResults/article3Open"]
+offset_left = 949.0
+offset_top = 464.0
+offset_right = 1169.0
+offset_bottom = 468.0
+color = Color(1, 0.0117647, 0, 1)
+
+[node name="description" type="RichTextLabel" parent="gameResults/article3Open"]
+modulate = Color(1, 1, 1, 0.666667)
+offset_left = 698.0
+offset_top = 479.0
+offset_right = 2523.0
+offset_bottom = 714.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_fonts/bold_font = SubResource("FontFile_63anl")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[font_size=30][p align=center]Fight your way through 7 diverse worlds, with only a half-broken slingshot to your name. And be careful not to get hit, as a single hit will kill you instantly.
+
+More will follow."
+
 [node name="backButton" parent="gameResults" instance=ExtResource("2_qxlri")]
 z_index = 2
 position = Vector2(581, 103)
@@ -3935,6 +4794,70 @@ interactionName = "gameArticle2"
 position = Vector2(-1130, -216.667)
 shape = SubResource("RectangleShape2D_hbb7m")
 
+[node name="article3" type="Node2D" parent="gameResults"]
+position = Vector2(611, 360)
+
+[node name="hoverBackdropA" type="ColorRect" parent="gameResults/article3"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 472.0
+offset_bottom = 22.0
+scale = Vector2(1e-05, 1)
+color = Color(0.431373, 0.431373, 0.431373, 1)
+
+[node name="hoverBackdropB" type="ColorRect" parent="gameResults/article3"]
+modulate = Color(1, 1, 1, 0)
+offset_top = 23.0
+offset_right = 472.0
+offset_bottom = 88.0
+scale = Vector2(1e-05, 1)
+color = Color(0.184314, 0.184314, 0.184314, 1)
+
+[node name="title" type="Label" parent="gameResults/article3"]
+offset_left = 1.90735e-05
+offset_right = 840.0
+offset_bottom = 45.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 40
+text = "Project Slingshot - An Upcoming Action-Adventure"
+
+[node name="description" type="RichTextLabel" parent="gameResults/article3"]
+modulate = Color(1, 1, 1, 0.666667)
+offset_top = 24.0
+offset_right = 1180.0
+offset_bottom = 213.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("1_bwl2d")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[fade start=100 length=25]Project Slingshot, a recently announced game from the creator of Sunset Humanity, will be coming to PC next year. In it, you
+[/fade]
+[font_size=20]By Jayden Everest | Published 1 month ago"
+
+[node name="divider" type="ColorRect" parent="gameResults/article3"]
+offset_top = 22.0
+offset_right = 472.0
+offset_bottom = 23.0
+color = Color(0.321569, 0.321569, 0.321569, 1)
+
+[node name="hoverAnims" type="AnimationPlayer" parent="gameResults/article3"]
+libraries = {
+"": SubResource("AnimationLibrary_dqoxy")
+}
+
+[node name="article3" parent="gameResults/article3" instance=ExtResource("2_qxlri")]
+position = Vector2(575, 109)
+scale = Vector2(0.3, 0.3)
+collision_layer = 8
+interactionName = "gameArticle3"
+
+[node name="hitbox" type="CollisionShape2D" parent="gameResults/article3/article3"]
+position = Vector2(-1130, -216.667)
+shape = SubResource("RectangleShape2D_hbb7m")
+
 [node name="download" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 
@@ -4029,6 +4952,7 @@ offset_bottom = 368.0
 color = Color(0.215686, 0.215686, 0.215686, 1)
 
 [node name="welcomeMessage" type="Label" parent="offlineMessage"]
+layout_mode = 0
 offset_left = 20.0
 offset_right = 2085.0
 offset_bottom = 228.0
@@ -4040,6 +4964,7 @@ text = "Internet Unavailable"
 vertical_alignment = 1
 
 [node name="welcomeMessage2" type="Label" parent="offlineMessage"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 91.0
 offset_right = 1995.0
