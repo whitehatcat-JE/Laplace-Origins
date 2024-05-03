@@ -50,7 +50,9 @@ var consoleOutputList = [
 @onready var clickSFX:Node = $clickSFX
 @onready var deniedSFX:Node = $deniedSFX
 # Hides homescreen while login screen visible
-func _ready() -> void: $homeScreen.position.x = 100000;
+func _ready() -> void:
+	$homeScreen.position.x = 100000
+	_on_internet_browser_downloaded_singularity()
 # Player inputs
 func eventTriggered(event) -> void:
 	if event is InputEventMouseMotion: # Move mouse
@@ -406,3 +408,12 @@ func unlockFate():
 	$homeScreen/filesWindow/singularityExe/singularityIcon.texture = load("res://assets/2d/shooterMinigame/playerCorrupt.png")
 	$homeScreen/filesWindow/singularityExe/singularityName.text = "   fate.exe"
 	$homeScreen/filesWindow/singularityExe/singularityName.modulate = Color.RED
+
+
+func _on_shooter_minigame_show_mouse():
+	$mouse.visible = true
+	$mouse/pointerRay.enabled = true
+
+func _on_shooter_minigame_hide_mouse():
+	$mouse.visible = false
+	$mouse/pointerRay.enabled = false

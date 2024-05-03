@@ -1,6 +1,7 @@
 extends CharacterBody3D
 # Signals
 signal interacted(interactionName:String)
+signal droppedEvent(event:InputEvent)
 # Constants
 const PLAYER_SPEED:float = 4
 const MOUSE_SENSITIVITY:float = 0.15
@@ -25,7 +26,9 @@ var currentGroundType:int = 0
 func _ready() -> void: Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
 # Input manager
 func _input(event) -> void:
-	if disabled: return;
+	if disabled:
+		emit_signal("droppedEvent", event)
+		return
 	if event is InputEventMouseMotion: # Used for mouse movement detection
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
 		

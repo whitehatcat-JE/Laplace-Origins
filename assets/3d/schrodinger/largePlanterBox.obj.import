@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://kk35kd22pwpc"
+path="res://.godot/imported/largePlanterBox.obj-4baf5329e8c392da7b829ae91297df84.mesh"
+
+[deps]
+
+files=["res://.godot/imported/largePlanterBox.obj-4baf5329e8c392da7b829ae91297df84.mesh"]
+
+source_file="res://assets/3d/schrodinger/largePlanterBox.obj"
+dest_files=["res://.godot/imported/largePlanterBox.obj-4baf5329e8c392da7b829ae91297df84.mesh", "res://.godot/imported/largePlanterBox.obj-4baf5329e8c392da7b829ae91297df84.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bofptlnpouy2f"]
+[gd_scene load_steps=35 format=3 uid="uid://bofptlnpouy2f"]
 
 [ext_resource type="Script" path="res://scripts/shooterMinigame.gd" id="1_2loep"]
 [ext_resource type="Texture2D" uid="uid://b6gke7dlju7qm" path="res://assets/2d/shooterMinigame/tilemap.png" id="2_k247b"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://drgj4ghmgepy8" path="res://assets/audio/sfx/shooter/enemyShot.mp3" id="17_gd4gk"]
 [ext_resource type="AudioStream" uid="uid://dr0joc7jcfb66" path="res://assets/audio/music/laplaceShooter.mp3" id="17_pgbd4"]
 [ext_resource type="AudioStream" uid="uid://dc22i14iyvq11" path="res://assets/audio/sfx/shooter/enemyShotContinuous.mp3" id="18_xtr3c"]
+[ext_resource type="PackedScene" uid="uid://ca0p6p4ae2vwp" path="res://scenes/schrodinger.tscn" id="21_6ahgg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5vsf"]
 texture = ExtResource("2_k247b")
@@ -490,6 +491,9 @@ _data = {
 "laplaceDescend": SubResource("Animation_x7xrm")
 }
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_nqubc"]
+viewport_path = NodePath("schrodingerView/schrodingerViewport")
+
 [node name="shooterMinigame" type="Node2D"]
 z_index = 1
 script = ExtResource("1_2loep")
@@ -826,8 +830,23 @@ stream = ExtResource("17_pgbd4")
 volume_db = -80.0
 pitch_scale = 0.7
 
+[node name="schrodingerView" type="Sprite2D" parent="."]
+z_index = 7
+z_as_relative = false
+position = Vector2(1056, 349)
+texture = SubResource("ViewportTexture_nqubc")
+
+[node name="schrodingerViewport" type="SubViewport" parent="schrodingerView"]
+own_world_3d = true
+size = Vector2i(1024, 500)
+render_target_update_mode = 4
+
+[node name="schrodinger" parent="schrodingerView/schrodingerViewport" instance=ExtResource("21_6ahgg")]
+
 [connection signal="timeout" from="spawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="damage" from="player" to="." method="_on_player_damage"]
 [connection signal="area_entered" from="player/enemyScanner" to="player" method="_on_enemy_scanner_area_entered"]
 [connection signal="body_entered" from="player/enemyScanner" to="player" method="_on_enemy_scanner_body_entered"]
 [connection signal="timeout" from="laplace/laplaceBulletTimer" to="." method="_on_laplace_bullet_timer_timeout"]
+
+[editable path="schrodingerView/schrodingerViewport/schrodinger"]

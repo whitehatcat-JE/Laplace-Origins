@@ -1,6 +1,8 @@
 extends Node2D
 # Signals
 signal laplaceSpawned
+signal hideMouse
+signal showMouse
 # Constants
 const STARTING_HEALTH:int = 3
 const STARTING_SPAWN_TIME:float = 2.5
@@ -17,6 +19,7 @@ var laplaceDescended:bool = false
 var laplaceBulletSpeed = 1.0
 
 var healingDroneChance:float = 0.98
+var schrodingerActive:bool = false
 
 # Textures
 @onready var brokenHeartTexture:Texture = preload("res://assets/2d/shooterMinigame/heartBroken.png")
@@ -29,6 +32,10 @@ var healingDroneChance:float = 0.98
 @onready var droneRobot:PackedScene = preload("res://objects/droneRobot.tscn")
 @onready var motherfish:PackedScene = preload("res://objects/motherfish.tscn")
 @onready var corruptBullet:PackedScene = preload("res://objects/enemyBulletCorrupt.tscn")
+
+func _ready():
+	enterSchrodinger()
+
 # Change game from singularity to fate
 func corrupt():
 	$arenaTilemap.visible = false
@@ -58,8 +65,16 @@ func corrupt():
 	
 	healingDroneChance = 0.9
 # Enter / exit shooter minigame
-func start(): GI.shooterActive = true;
-func stop(): GI.shooterActive = false;
+func start():
+	GI.shooterActive = true
+	$schrodingerView/schrodingerViewport.set_update_mode(4)
+	if schrodingerActive:
+		emit_signal("hideMouse")
+func stop():
+	GI.shooterActive = false
+	$schrodingerView/schrodingerViewport.set_update_mode(0)
+	if schrodingerActive:
+		emit_signal("showMouse")
 # Start round of minigame
 func begin():
 	for hID in "ABC": get_node("HUD/heart" + hID).texture = fullHeartTexture; # Reset heart textures
@@ -77,7 +92,7 @@ func begin():
 	_on_spawn_timer_timeout()
 # Increase round time if game active
 func _process(delta):
-	if !GI.shooterActive: return;
+	if !GI.shooterActive or schrodingerActive: return;
 	timeSinceStarted += delta
 # Heal player
 func playerHealed():
@@ -234,3 +249,9 @@ func killGame() -> void:
 		$laplace/shotContinuousSFX.stop()
 		laplaceDescended = false
 		$corruptGame.play("laplaceAscend")
+
+func enterSchrodinger():
+	$schrodingerView.texture = $schrodingerView/schrodingerViewport.get_texture()
+	schrodingerActive = true
+	$schrodingerView.visible = true
+	$schrodingerView/schrodingerViewport/schrodinger.isFocused = true

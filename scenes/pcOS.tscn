@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://csnnn1yw8ccgs"]
+[gd_scene load_steps=50 format=3 uid="uid://csnnn1yw8ccgs"]
 
 [ext_resource type="Script" path="res://scripts/pcOS.gd" id="1_xeigj"]
 [ext_resource type="Texture2D" uid="uid://b8f2gr7p8vcd2" path="res://assets/2d/pcOS/dropBackground.png" id="2_j3svo"]
@@ -673,6 +673,9 @@ shader_parameter/shake_rate = 1.0
 shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 30.5
 shader_parameter/shake_color_rate = 0.123
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_474pj"]
+viewport_path = NodePath("schrodingerView/schrodingerViewport")
 
 [node name="pcOS" type="Node2D"]
 script = ExtResource("1_xeigj")
@@ -1719,6 +1722,9 @@ stream = ExtResource("16_4t7hq")
 [node name="shooterMinigame" parent="." instance=ExtResource("17_alprl")]
 visible = false
 
+[node name="schrodingerView" parent="shooterMinigame" index="11"]
+texture = SubResource("ViewportTexture_474pj")
+
 [node name="internetBrowser" parent="." instance=ExtResource("20_xce36")]
 visible = false
 position = Vector2(0, 20)
@@ -1726,8 +1732,11 @@ position = Vector2(0, 20)
 [connection signal="timeout" from="homeScreen/consoleWindow/newLineTimer" to="." method="_on_new_line_timer_timeout"]
 [connection signal="timeout" from="homeScreen/clockTimer" to="." method="_on_clock_timer_timeout"]
 [connection signal="timeout" from="emergencyAlert/alertScrollTimer" to="." method="_on_alert_scroll_timer_timeout"]
+[connection signal="hideMouse" from="shooterMinigame" to="." method="_on_shooter_minigame_hide_mouse"]
 [connection signal="laplaceSpawned" from="shooterMinigame" to="." method="_on_shooter_minigame_laplace_spawned"]
+[connection signal="showMouse" from="shooterMinigame" to="." method="_on_shooter_minigame_show_mouse"]
 [connection signal="downloadedSingularity" from="internetBrowser" to="." method="_on_internet_browser_downloaded_singularity"]
 [connection signal="enableWifi" from="internetBrowser" to="." method="_on_internet_browser_enable_wifi"]
 
 [editable path="shooterMinigame"]
+[editable path="shooterMinigame/schrodingerView/schrodingerViewport/schrodinger"]
