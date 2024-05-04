@@ -52,7 +52,7 @@ var consoleOutputList = [
 # Hides homescreen while login screen visible
 func _ready() -> void:
 	$homeScreen.position.x = 100000
-	_on_internet_browser_downloaded_singularity()
+	#_on_internet_browser_downloaded_singularity()
 # Player inputs
 func eventTriggered(event) -> void:
 	if event is InputEventMouseMotion: # Move mouse

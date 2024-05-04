@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bofptlnpouy2f"]
+[gd_scene load_steps=57 format=3 uid="uid://bofptlnpouy2f"]
 
 [ext_resource type="Script" path="res://scripts/shooterMinigame.gd" id="1_2loep"]
 [ext_resource type="Texture2D" uid="uid://b6gke7dlju7qm" path="res://assets/2d/shooterMinigame/tilemap.png" id="2_k247b"]
@@ -7,12 +7,17 @@
 [ext_resource type="AudioStream" uid="uid://kr6tbxg4qy2v" path="res://assets/audio/sfx/shooter/playerHit.mp3" id="5_5n1by"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="5_6pa4o"]
 [ext_resource type="AudioStream" uid="uid://hh6fi78ndl7j" path="res://assets/audio/sfx/shooter/playerHeal.mp3" id="6_82hvu"]
+[ext_resource type="Texture2D" uid="uid://cvx7r2w0d3qis" path="res://assets/2d/shooterMinigame/eyeBubbleBranch1.png" id="7_bkiok"]
 [ext_resource type="Texture2D" uid="uid://b7nbupl0tomjo" path="res://assets/2d/shooterMinigame/heartFull.png" id="7_bofi1"]
 [ext_resource type="AudioStream" uid="uid://22ape8t10mla" path="res://assets/audio/sfx/shooter/playerDie.mp3" id="7_ow8wh"]
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="8_f77vb"]
+[ext_resource type="Texture2D" uid="uid://b4scffune7qga" path="res://assets/2d/shooterMinigame/eyeBubbleBranch2.png" id="8_uwlbc"]
 [ext_resource type="PackedScene" uid="uid://g15p8sneaum5" path="res://objects/interaction2D.tscn" id="9_2iewp"]
+[ext_resource type="Texture2D" uid="uid://c6uuik3prosx8" path="res://assets/2d/shooterMinigame/eyeBubbleBranch3.png" id="9_2uyv6"]
 [ext_resource type="Texture2D" uid="uid://3ggo3kr5glcp" path="res://assets/2d/shooterMinigame/singularityBegin.png" id="9_g3853"]
+[ext_resource type="Texture2D" uid="uid://dolodoy5rxrdg" path="res://assets/2d/shooterMinigame/eyeBubbleBranch4.png" id="10_alu5i"]
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="10_msjsu"]
+[ext_resource type="Texture2D" uid="uid://ddej3d0hv27b1" path="res://assets/2d/shooterMinigame/eyeBubble.png" id="11_5go6e"]
 [ext_resource type="Texture2D" uid="uid://bucha4s4imhmy" path="res://assets/2d/shooterMinigame/arenaCorrupt.png" id="11_otbwg"]
 [ext_resource type="Texture2D" uid="uid://cg2pc10rbvf8k" path="res://assets/2d/shooterMinigame/laplace.png" id="12_nv70s"]
 [ext_resource type="Texture2D" uid="uid://c3wj0u3lpcyw" path="res://assets/2d/shooterMinigame/laplaceCore.png" id="13_fvfcx"]
@@ -21,6 +26,10 @@
 [ext_resource type="AudioStream" uid="uid://dr0joc7jcfb66" path="res://assets/audio/music/laplaceShooter.mp3" id="17_pgbd4"]
 [ext_resource type="AudioStream" uid="uid://dc22i14iyvq11" path="res://assets/audio/sfx/shooter/enemyShotContinuous.mp3" id="18_xtr3c"]
 [ext_resource type="PackedScene" uid="uid://ca0p6p4ae2vwp" path="res://scenes/schrodinger.tscn" id="21_6ahgg"]
+[ext_resource type="Texture2D" uid="uid://cbfshvxp0cqca" path="res://assets/2d/shooterMinigame/collectableEye1.png" id="22_uuox3"]
+[ext_resource type="Texture2D" uid="uid://cc4j3h8guun3o" path="res://assets/2d/shooterMinigame/collectableEye2.png" id="23_is7em"]
+[ext_resource type="Texture2D" uid="uid://bwcu1d86qw163" path="res://assets/2d/shooterMinigame/collectableEye3.png" id="24_86wy8"]
+[ext_resource type="Texture2D" uid="uid://si4g25pgtyf" path="res://assets/2d/shooterMinigame/collectableEye4.png" id="25_xk3ea"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v5vsf"]
 texture = ExtResource("2_k247b")
@@ -254,6 +263,134 @@ texture_region_size = Vector2i(8, 8)
 tile_size = Vector2i(8, 8)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_v5vsf")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jltj4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_xk3ea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_86wy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_is7em")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_uuox3")
+}],
+"loop": false,
+"name": &"close",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_uuox3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_is7em")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_86wy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_xk3ea")
+}],
+"loop": false,
+"name": &"open",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvsy6"]
+size = Vector2(56, 32)
+
+[sub_resource type="Animation" id="Animation_7bjiu"]
+resource_name = "breath"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0.121569), Color(1, 1, 1, 0.537255)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rc5jf"]
+_data = {
+"breath": SubResource("Animation_7bjiu")
+}
+
+[sub_resource type="Animation" id="Animation_ajnsb"]
+resource_name = "breath"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4, 1.9),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0.121569), Color(1, 1, 1, 0.537255)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3xh80"]
+_data = {
+"breath": SubResource("Animation_ajnsb")
+}
+
+[sub_resource type="Animation" id="Animation_njga1"]
+resource_name = "breath"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.8, 2.3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0.121569), Color(1, 1, 1, 0.537255)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u032d"]
+_data = {
+"breath": SubResource("Animation_njga1")
+}
+
+[sub_resource type="Animation" id="Animation_2i33j"]
+resource_name = "breath"
+length = 3.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.4, 2.9),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Color(1, 1, 1, 0.121569), Color(1, 1, 1, 0.537255)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pnmtp"]
+_data = {
+"breath": SubResource("Animation_2i33j")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmt6r"]
 size = Vector2(32, 32)
@@ -494,12 +631,48 @@ _data = {
 [sub_resource type="ViewportTexture" id="ViewportTexture_nqubc"]
 viewport_path = NodePath("schrodingerView/schrodingerViewport")
 
+[sub_resource type="Environment" id="Environment_4v8d0"]
+background_mode = 3
+adjustment_enabled = true
+
+[sub_resource type="Animation" id="Animation_2q2vt"]
+resource_name = "glitch"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WorldEnvironment:environment:adjustment_contrast")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [4.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("eyeData/centerEye:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4w8ko"]
+_data = {
+"glitch": SubResource("Animation_2q2vt")
+}
+
 [node name="shooterMinigame" type="Node2D"]
 z_index = 1
 script = ExtResource("1_2loep")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(1050, 341)
 zoom = Vector2(1.9, 1.9)
@@ -516,6 +689,112 @@ layer_0/tile_data = PackedInt32Array(196634, 196608, 0, 196633, 131072, 0, 19663
 [node name="spawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="eyeData" type="Node2D" parent="."]
+
+[node name="eye" type="Node2D" parent="eyeData"]
+
+[node name="eyeSprite" type="AnimatedSprite2D" parent="eyeData/eye"]
+texture_filter = 1
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_jltj4")
+animation = &"open"
+frame = 3
+frame_progress = 1.0
+
+[node name="playerScanner" type="Area2D" parent="eyeData/eye"]
+collision_layer = 0
+collision_mask = 8
+monitoring = false
+monitorable = false
+
+[node name="hitbox" type="CollisionShape2D" parent="eyeData/eye/playerScanner"]
+position = Vector2(-8, 0)
+shape = SubResource("RectangleShape2D_gvsy6")
+
+[node name="eyePositions" type="Node2D" parent="eyeData"]
+
+[node name="eyePos1" type="Node2D" parent="eyeData/eyePositions"]
+position = Vector2(713, 239)
+
+[node name="eyePos2" type="Node2D" parent="eyeData/eyePositions"]
+position = Vector2(1340, 423)
+
+[node name="eyePos3" type="Node2D" parent="eyeData/eyePositions"]
+position = Vector2(866, 400)
+
+[node name="eyePos4" type="Node2D" parent="eyeData/eyePositions"]
+position = Vector2(1363, 224)
+
+[node name="eyePos5" type="Node2D" parent="eyeData/eyePositions"]
+position = Vector2(704, 442)
+
+[node name="eyeSpawnTime" type="Timer" parent="eyeData"]
+wait_time = 7.0
+one_shot = true
+
+[node name="centerEye" type="CanvasGroup" parent="eyeData"]
+modulate = Color(1, 1, 1, 0)
+clip_children = 2
+position = Vector2(1053, 353)
+
+[node name="eyeBubbleBranch1" type="Sprite2D" parent="eyeData/centerEye"]
+modulate = Color(1, 1, 1, 0.127278)
+texture_filter = 1
+position = Vector2(0, -1)
+scale = Vector2(4, 4)
+texture = ExtResource("7_bkiok")
+
+[node name="breathAnim" type="AnimationPlayer" parent="eyeData/centerEye/eyeBubbleBranch1"]
+libraries = {
+"": SubResource("AnimationLibrary_rc5jf")
+}
+autoplay = "breath"
+
+[node name="eyeBubbleBranch2" type="Sprite2D" parent="eyeData/centerEye"]
+modulate = Color(1, 1, 1, 0.532323)
+texture_filter = 1
+position = Vector2(0, -1)
+scale = Vector2(4, 4)
+texture = ExtResource("8_uwlbc")
+
+[node name="breathAnim" type="AnimationPlayer" parent="eyeData/centerEye/eyeBubbleBranch2"]
+libraries = {
+"": SubResource("AnimationLibrary_3xh80")
+}
+autoplay = "breath"
+
+[node name="eyeBubbleBranch3" type="Sprite2D" parent="eyeData/centerEye"]
+modulate = Color(1, 1, 1, 0.1549)
+texture_filter = 1
+position = Vector2(0, -1)
+scale = Vector2(4, 4)
+texture = ExtResource("9_2uyv6")
+
+[node name="breathAnim" type="AnimationPlayer" parent="eyeData/centerEye/eyeBubbleBranch3"]
+libraries = {
+"": SubResource("AnimationLibrary_u032d")
+}
+autoplay = "breath"
+
+[node name="eyeBubbleBranch4" type="Sprite2D" parent="eyeData/centerEye"]
+modulate = Color(1, 1, 1, 0.126146)
+texture_filter = 1
+position = Vector2(0, -1)
+scale = Vector2(4, 4)
+texture = ExtResource("10_alu5i")
+
+[node name="breathAnim" type="AnimationPlayer" parent="eyeData/centerEye/eyeBubbleBranch4"]
+libraries = {
+"": SubResource("AnimationLibrary_pnmtp")
+}
+autoplay = "breath"
+
+[node name="eyeBubble" type="Sprite2D" parent="eyeData/centerEye"]
+texture_filter = 1
+position = Vector2(0, -1)
+scale = Vector2(4, 4)
+texture = ExtResource("11_5go6e")
 
 [node name="player" type="CharacterBody2D" parent="."]
 position = Vector2(1053, 353)
@@ -831,6 +1110,7 @@ volume_db = -80.0
 pitch_scale = 0.7
 
 [node name="schrodingerView" type="Sprite2D" parent="."]
+visible = false
 z_index = 7
 z_as_relative = false
 position = Vector2(1056, 349)
@@ -843,7 +1123,20 @@ render_target_update_mode = 4
 
 [node name="schrodinger" parent="schrodingerView/schrodingerViewport" instance=ExtResource("21_6ahgg")]
 
+[node name="Camera3D" parent="schrodingerView/schrodingerViewport/schrodinger" index="19"]
+transform = Transform3D(1, 0, 0, 0, 0.915613, -0.402059, 0, 0.402059, 0.915613, -0.736414, 12.0824, 14.0832)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4v8d0")
+
+[node name="glitchAnim" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4w8ko")
+}
+
 [connection signal="timeout" from="spawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="eyeData/eye/playerScanner" to="." method="_on_player_scanner_body_entered"]
+[connection signal="timeout" from="eyeData/eyeSpawnTime" to="." method="_on_eye_spawn_time_timeout"]
 [connection signal="damage" from="player" to="." method="_on_player_damage"]
 [connection signal="area_entered" from="player/enemyScanner" to="player" method="_on_enemy_scanner_area_entered"]
 [connection signal="body_entered" from="player/enemyScanner" to="player" method="_on_enemy_scanner_body_entered"]

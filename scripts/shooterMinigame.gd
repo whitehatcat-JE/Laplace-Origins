@@ -3,9 +3,11 @@ extends Node2D
 signal laplaceSpawned
 signal hideMouse
 signal showMouse
+signal schrodingerTransition
 # Constants
 const STARTING_HEALTH:int = 3
 const STARTING_SPAWN_TIME:float = 2.5
+const EYE_AMT:float = 5
 # State variables
 var playerHealth:int = STARTING_HEALTH
 var timeSinceStarted:float = 0.0
@@ -20,6 +22,9 @@ var laplaceBulletSpeed = 1.0
 
 var healingDroneChance:float = 0.98
 var schrodingerActive:bool = false
+var schrodingerDisabled:bool = false
+
+var eyesCollected:int = 0
 
 # Textures
 @onready var brokenHeartTexture:Texture = preload("res://assets/2d/shooterMinigame/heartBroken.png")
@@ -32,9 +37,6 @@ var schrodingerActive:bool = false
 @onready var droneRobot:PackedScene = preload("res://objects/droneRobot.tscn")
 @onready var motherfish:PackedScene = preload("res://objects/motherfish.tscn")
 @onready var corruptBullet:PackedScene = preload("res://objects/enemyBulletCorrupt.tscn")
-
-func _ready():
-	enterSchrodinger()
 
 # Change game from singularity to fate
 func corrupt():
@@ -67,13 +69,13 @@ func corrupt():
 # Enter / exit shooter minigame
 func start():
 	GI.shooterActive = true
-	$schrodingerView/schrodingerViewport.set_update_mode(4)
 	if schrodingerActive:
+		$schrodingerView/schrodingerViewport.set_update_mode(4)
 		emit_signal("hideMouse")
 func stop():
 	GI.shooterActive = false
-	$schrodingerView/schrodingerViewport.set_update_mode(0)
 	if schrodingerActive:
+		$schrodingerView/schrodingerViewport.set_update_mode(0)
 		emit_signal("showMouse")
 # Start round of minigame
 func begin():
@@ -89,6 +91,8 @@ func begin():
 	$HUD/beginButton/interact/hitbox.set_deferred("disabled", true)
 	# Start timers
 	timeSinceStarted = 60.0 if corrupted else 0.0
+	if !corrupted and !schrodingerDisabled:
+		$eyeData/eyeSpawnTime.start()
 	_on_spawn_timer_timeout()
 # Increase round time if game active
 func _process(delta):
@@ -104,6 +108,7 @@ func playerHealed():
 	get_node("HUD/heart" + "ABC"[playerHealth - 1]).texture = fullHeartTexture;
 # Damage player
 func _on_player_damage():
+	if schrodingerActive: return;
 	if playerHealth > 0: playerHealth -= 1;
 	match playerHealth: # Update game with new health
 		2:
@@ -113,34 +118,10 @@ func _on_player_damage():
 			$HUD/heartB.texture = brokenHeartTexture
 			$player/hit.play()
 		0: # Player death
-			$HUD/heartA.texture = brokenHeartTexture
-			# Stop player
-			$player.alive = false
-			$spawnTimer.stop()
-			$player.visible = false
-			$player/die.play()
-			# Kill all entities
-			var previousSFXVolume:int = GI.sfxVolume
-			GI.sfxVolume = 0
-			while len(allEnemies) > 0:
-				var nextEnemy = allEnemies.pop_front()
-				if nextEnemy != null: nextEnemy.kill();
-			GI.sfxVolume = previousSFXVolume
-			# Withdraw laplace
-			if laplaceDescended:
-				laplaceDescended = false
-				$laplace/laplaceBulletTimer.stop()
-				$laplace/shotContinuousSFX.stop()
-				$corruptGame.play("laplaceAscend")
-			# Show menu
-			$HUD/beginButton.visible = true
-			$HUD/beginButton/interact/hitbox.set_deferred("disabled", false)
-			# Show score
-			if score == 0: $HUD/beginButton/score.text = "";
-			else: $HUD/beginButton/score.text = "Score: " + str(score);
+			killGame()
 # Spawn new enemy
 func _on_spawn_timer_timeout():
-	if !$player.alive: return;
+	if !$player.alive or schrodingerActive: return;
 	if timeSinceStarted > 115.0 and corrupted: # Spawn laplace
 		var previousSFXVolume:int = GI.sfxVolume
 		GI.sfxVolume = 0
@@ -230,6 +211,11 @@ func killGame() -> void:
 	$player.visible = false
 	# Disable enemy spawning
 	$spawnTimer.stop()
+	$eyeData/eyeSpawnTime.stop()
+	$eyeData/eye/playerScanner.set_deferred("monitoring", false)
+	$eyeData/eye/eyeSprite.play("close")
+	$eyeData/eye/eyeSprite.frame = 3
+	eyesCollected = 0
 	# Show menu
 	$HUD/beginButton.visible = true
 	$HUD/beginButton/interact/hitbox.set_deferred("disabled", false)
@@ -251,7 +237,38 @@ func killGame() -> void:
 		$corruptGame.play("laplaceAscend")
 
 func enterSchrodinger():
+	killGame()
 	$schrodingerView.texture = $schrodingerView/schrodingerViewport.get_texture()
-	schrodingerActive = true
 	$schrodingerView.visible = true
 	$schrodingerView/schrodingerViewport/schrodinger.isFocused = true
+
+func exitSchrodinger():
+	$schrodingerView.visible = false
+	$schrodingerView/schrodingerViewport/schrodinger.isFocused = false
+	emit_signal("showMouse")
+	schrodingerDisabled = true
+
+func _on_player_scanner_body_entered(body):
+	$eyeData/eye/playerScanner.set_deferred("monitoring", false)
+	$eyeData/eye/eyeSprite.play("close")
+	eyesCollected += 1
+	$glitchAnim.play("glitch")
+	$glitchAnim.speed_scale = 1.0 - (float(eyesCollected) / 10.0)
+	if eyesCollected == EYE_AMT:
+		emit_signal("schrodingerTransition")
+		emit_signal("hideMouse")
+		schrodingerActive = true
+		var previousSFXVolume:int = GI.sfxVolume
+		GI.sfxVolume = 0
+		while len(allEnemies) > 0:
+			var nextEnemy = allEnemies.pop_front()
+			if nextEnemy != null: nextEnemy.kill();
+		GI.sfxVolume = previousSFXVolume
+	else:
+		$eyeData/eyeSpawnTime.start()
+
+func _on_eye_spawn_time_timeout():
+	if !$player.alive: return;
+	$eyeData/eye.position = $eyeData/eyePositions.get_child(eyesCollected).position
+	$eyeData/eye/playerScanner.set_deferred("monitoring", true)
+	$eyeData/eye/eyeSprite.play("open")

@@ -1722,7 +1722,7 @@ stream = ExtResource("16_4t7hq")
 [node name="shooterMinigame" parent="." instance=ExtResource("17_alprl")]
 visible = false
 
-[node name="schrodingerView" parent="shooterMinigame" index="11"]
+[node name="schrodingerView" parent="shooterMinigame" index="12"]
 texture = SubResource("ViewportTexture_474pj")
 
 [node name="internetBrowser" parent="." instance=ExtResource("20_xce36")]

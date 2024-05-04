@@ -185,3 +185,9 @@ func _on_city_exit_trigger_field_body_entered(_body) -> void:
 
 func unlockOutdoors() -> void: player.unlockedInteractions.append("exitHome"); # Unlocks exit door
 func _on_pc_os_show_laplace_wall() -> void: $bedroom/laplaceWall.visible = true; # Display laplace wall in bedroom
+
+func _on_shooter_minigame_schrodinger_transition():
+	$bedroom/desk/monitorScreen/eyeAnim.play("emergeEyes")
+
+func _on_schrodinger_exit_schrodinger():
+	$bedroom/desk/monitorScreen/eyeAnim.play("hideEyes")

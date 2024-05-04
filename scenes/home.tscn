@@ -1,4 +1,4 @@
-[gd_scene load_steps=456 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=462 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -57,7 +57,9 @@
 [ext_resource type="Texture2D" uid="uid://jacpbr2cm6ab" path="res://assets/2d/3dSprites/rug.png" id="28_6ie0h"]
 [ext_resource type="ArrayMesh" uid="uid://dw0kyte8fkm6o" path="res://assets/3d/pc.obj" id="28_7ul0a"]
 [ext_resource type="Texture2D" uid="uid://bl2aqsue8l4xr" path="res://assets/3d/textures/coarse-old-fabric-bl/coarse-old-fabric_height.png" id="28_w1sg1"]
+[ext_resource type="Texture2D" uid="uid://de3svhneig4tk" path="res://assets/3d/schrodinger/lowPolyEyeTexture.png" id="29_fmgts"]
 [ext_resource type="Texture2D" uid="uid://bdabadwqe3dqb" path="res://assets/2d/3dSprites/aiSticker.png" id="29_t6lnm"]
+[ext_resource type="ArrayMesh" uid="uid://nd8t8ecymksy" path="res://assets/3d/schrodinger/eyeLowPoly.obj" id="30_3r4q1"]
 [ext_resource type="ArrayMesh" uid="uid://pvo70gklt6mx" path="res://assets/3d/spotLight.obj" id="30_462y7"]
 [ext_resource type="Texture2D" uid="uid://4lgydr74lr2t" path="res://assets/2d/3dSprites/wallSocket.png" id="31_3045x"]
 [ext_resource type="Texture2D" uid="uid://b8d03655spyey" path="res://assets/2d/3dSprites/decals/wallA.png" id="32_57aa4"]
@@ -351,6 +353,198 @@ glow_levels/5 = 0.0
 glow_bloom = 0.07
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.0
+
+[sub_resource type="Animation" id="Animation_kog63"]
+resource_name = "emergeEyes"
+length = 7.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("monitorScreen/eyes/eyeMain:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(-3, -3, 1),
+"update": 0,
+"values": [Vector3(0.0485159, -0.0925701, 0.0051651), Vector3(0.0485159, -0.0925701, -0.642424), Vector3(0.0485159, -0.0925701, 0.0051651)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("monitorScreen/eyes/eyeGroup1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.6, 3.2, 6),
+"transitions": PackedFloat32Array(-3.5, 1, -3.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.148495), Vector3(0, 0, -0.144352), Vector3(0, 0, -0.144352), Vector3(0, 0, 0.148495)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("monitorScreen/eyes/eyeGroup2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.8, 3.4, 6),
+"transitions": PackedFloat32Array(-2.5, 1, -2.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.148495), Vector3(0, 0, -0.144352), Vector3(0, 0, -0.144352), Vector3(0, 0, 0.148495)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("monitorScreen/eyes/eyeGroup3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3, 3.6, 6),
+"transitions": PackedFloat32Array(-4, 1, -4, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.148495), Vector3(0, 0, -0.144352), Vector3(0, 0, -0.144352), Vector3(0, 0, 0.148495)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("monitorScreen/eyes:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 7, 7.2),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../pcWindow/pcOS/shooterMinigame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"enterSchrodinger"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("monitorScreen/eyes:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 6, 7),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0.7)]
+}
+
+[sub_resource type="Animation" id="Animation_6vb7l"]
+resource_name = "hideEyes"
+length = 7.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("monitorScreen/eyes/eyeMain:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(-3, -3, 1),
+"update": 0,
+"values": [Vector3(0.0485159, -0.0925701, 0.0051651), Vector3(0.0485159, -0.0925701, -0.642424), Vector3(0.0485159, -0.0925701, 0.0051651)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("monitorScreen/eyes/eyeGroup1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.6, 3.2, 6),
+"transitions": PackedFloat32Array(-3.5, 1, -3.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.148495), Vector3(0, 0, -0.144352), Vector3(0, 0, -0.144352), Vector3(0, 0, 0.148495)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("monitorScreen/eyes/eyeGroup2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.8, 3.4, 6),
+"transitions": PackedFloat32Array(-2.5, 1, -2.5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.148495), Vector3(0, 0, -0.144352), Vector3(0, 0, -0.144352), Vector3(0, 0, 0.148495)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("monitorScreen/eyes/eyeGroup3:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3, 3.6, 6),
+"transitions": PackedFloat32Array(-4, 1, -4, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.148495), Vector3(0, 0, -0.144352), Vector3(0, 0, -0.144352), Vector3(0, 0, 0.148495)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("monitorScreen/eyes:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 7, 7.2),
+"transitions": PackedFloat32Array(0.5, -2, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../pcWindow/pcOS/shooterMinigame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"exitSchrodinger"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("monitorScreen/eyes:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 6, 7),
+"transitions": PackedFloat32Array(1, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0.7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lf7ff"]
+_data = {
+"emergeEyes": SubResource("Animation_kog63"),
+"hideEyes": SubResource("Animation_6vb7l")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j7m8i"]
+albedo_texture = ExtResource("29_fmgts")
+emission_enabled = true
+emission_texture = ExtResource("29_fmgts")
+texture_filter = 0
 
 [sub_resource type="BoxMesh" id="BoxMesh_7ewhp"]
 size = Vector3(0.3, 0.05, 0.1)
@@ -3062,12 +3256,13 @@ shape = SubResource("ConcavePolygonShape3D_fikci")
 
 [node name="pcWindow" type="SubViewport" parent="bedroom"]
 disable_3d = true
+own_world_3d = true
 size = Vector2i(4098, 4098)
 render_target_update_mode = 4
 
 [node name="pcOS" parent="bedroom/pcWindow" instance=ExtResource("6_wgccf")]
 
-[node name="schrodingerView" parent="bedroom/pcWindow/pcOS/shooterMinigame" index="11"]
+[node name="schrodingerView" parent="bedroom/pcWindow/pcOS/shooterMinigame" index="12"]
 texture = SubResource("ViewportTexture_y0ea5")
 
 [node name="laplaceWall" type="Sprite3D" parent="bedroom"]
@@ -3144,6 +3339,372 @@ shape = SubResource("BoxShape3D_uni65")
 transform = Transform3D(-1.25, 0, -1.09278e-07, 0, 1.25, 0, 1.09278e-07, 0, -1.25, 0, 0, -1.02107)
 environment = SubResource("Environment_df272")
 current = true
+
+[node name="eyeAnim" type="AnimationPlayer" parent="bedroom/desk/monitorScreen"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_lf7ff")
+}
+
+[node name="eyes" type="Node3D" parent="bedroom/desk/monitorScreen"]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.7)
+
+[node name="eyeMain" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes"]
+transform = Transform3D(-0.25, 0, -3.7749e-08, 0, 0.25, 0, 3.7749e-08, 0, -0.25, 0.0485159, -0.0925701, 0.0051651)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../..")
+
+[node name="eyeGroup1" type="Node3D" parent="bedroom/desk/monitorScreen/eyes"]
+transform = Transform3D(1, 0, 1.6263e-19, 0, 1, 0, -1.6263e-19, 0, 1, 0, 0, 0.148495)
+
+[node name="eyeSmall1" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup1"]
+transform = Transform3D(-0.2, 0, -3.01992e-08, 0, 0.2, 0, 3.01992e-08, 0, -0.2, 0.121063, -0.0925701, 0.0178995)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall2" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup1"]
+transform = Transform3D(-0.2, 0, -3.01992e-08, 0, 0.2, 0, 3.01992e-08, 0, -0.2, 0.663118, -0.304115, 0.0178995)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall3" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup1"]
+transform = Transform3D(-0.2, 0, -3.01992e-08, 0, 0.2, 0, 3.01992e-08, 0, -0.2, 0.480919, 0.23131, 0.0172515)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall4" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup1"]
+transform = Transform3D(-0.2, 0, -3.01992e-08, 0, 0.2, 0, 3.01992e-08, 0, -0.2, 0.499571, -0.164405, 0.0172515)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall5" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup1"]
+transform = Transform3D(-0.173205, 0, 0.1, 0, 0.2, 0, -0.1, 0, -0.173205, -0.78701, -0.454083, 0.0172515)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall6" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup1"]
+transform = Transform3D(-0.193185, 0, 0.0517638, 0, 0.2, 0, -0.0517638, 0, -0.193185, -0.264231, -0.37477, 0.0172515)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall7" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup1"]
+transform = Transform3D(-0.193185, 0, 0.0517638, 0, 0.2, 0, -0.0517638, 0, -0.193185, -0.0796916, 0.125228, 0.0172515)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall8" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup1"]
+transform = Transform3D(-0.193185, 0, -0.0517638, 0, 0.2, 0, 0.0517638, 0, -0.193185, 0.946523, 0.36694, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall9" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup1"]
+transform = Transform3D(-0.193185, 0, -0.0517638, 0, 0.2, 0, 0.0517638, 0, -0.193185, 0.946523, -0.429965, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall10" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup1"]
+transform = Transform3D(-0.193185, 0, -0.0517638, 0, 0.2, 0, 0.0517638, 0, -0.193185, 0.586564, -0.429965, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall11" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup1"]
+transform = Transform3D(-0.193185, 0, -0.0517638, 0, 0.2, 0, 0.0517638, 0, -0.193185, 0.0674416, -0.257468, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall12" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup1"]
+transform = Transform3D(-0.193185, 0, -0.0517638, 0, 0.2, 0, 0.0517638, 0, -0.193185, -0.25535, -0.257468, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeGroup2" type="Node3D" parent="bedroom/desk/monitorScreen/eyes"]
+transform = Transform3D(1, 0, 1.6263e-19, 0, 1, 0, -1.6263e-19, 0, 1, 0, 0, 0.148495)
+
+[node name="eyeSmall1" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.25, 0, -3.7749e-08, 0, 0.25, 0, 3.7749e-08, 0, -0.25, 0.688013, -0.0925701, 0.0178995)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall24" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.25, 0, -3.7749e-08, 0, 0.25, 0, 3.7749e-08, 0, -0.25, 1.01012, 0.0496328, -0.183908)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall25" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.221721, 0, 0.115499, 0, 0.25, 0, -0.115499, 0, -0.221721, -0.630001, -0.0719485, -0.0972161)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall2" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.241481, 0, -0.0647048, 0, 0.25, 0, 0.0647048, 0, -0.241481, 0.858045, -0.304115, -0.0625675)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall3" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.241481, 0, -0.0647048, 0, 0.25, 0, 0.0647048, 0, -0.241481, 0.815005, 0.145145, -0.0497215)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall4" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.25, 0, -3.7749e-08, 0, 0.25, 0, 3.7749e-08, 0, -0.25, 0.324873, -0.186424, 0.0172515)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall5" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.216506, 0, 0.125, 0, 0.25, 0, -0.125, 0, -0.216506, -0.507347, -0.454083, 0.0172515)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall6" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.241481, 0, 0.0647047, 0, 0.25, 0, -0.0647047, 0, -0.241481, 0.0145856, -0.452895, 0.0172515)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall7" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.24826, 0, -0.029445, 0, 0.25, 0, 0.029445, 0, -0.24826, 0.470958, 0.0189192, -0.0826161)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall8" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.241481, 0, -0.0647048, 0, 0.25, 0, 0.0647048, 0, -0.241481, 0.676227, 0.201376, -0.0569918)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall9" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.241481, 0, -0.0647048, 0, 0.25, 0, 0.0647048, 0, -0.241481, 0.41983, -0.429965, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall10" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.218965, 0, 0.120641, 0, 0.25, 0, -0.120641, 0, -0.218965, -0.496669, 0.295218, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall11" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.218965, 0, 0.120641, 0, 0.25, 0, -0.120641, 0, -0.218965, -0.731428, -0.298257, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall12" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.23052, 0, 0.0967502, 0, 0.25, 0, -0.0967502, 0, -0.23052, -0.224597, -0.00321865, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall13" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.247706, 0, 0.0337906, 0, 0.25, 0, -0.0337906, 0, -0.247706, 0.256279, 0.290763, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall14" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.247706, 0, 0.0337906, 0, 0.25, 0, -0.0337906, 0, -0.247706, 0.0362346, 0.349252, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall15" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.235746, 0, 0.083209, 0, 0.25, 0, -0.083209, 0, -0.235746, -0.758688, 0.349252, -0.0642409)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall16" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.235746, 0, 0.083209, 0, 0.25, 0, -0.083209, 0, -0.235746, -0.456249, -0.208081, -0.0642409)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall17" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.249977, 0, 0.00342511, 0, 0.25, 0, -0.00342511, 0, -0.249977, -0.0396717, -0.158343, -0.0365198)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall18" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.249977, 0, 0.00342511, 0, 0.25, 0, -0.00342511, 0, -0.249977, 0.217022, -0.44091, -0.0365198)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall19" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.243059, 0, -0.0585013, 0, 0.25, 0, 0.0585013, 0, -0.243059, 0.764608, -0.44091, -0.0365198)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall20" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.243059, 0, -0.0585013, 0, 0.25, 0, 0.0585013, 0, -0.243059, 0.990691, -0.149146, -0.0365198)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall21" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.243059, 0, -0.0585013, 0, 0.25, 0, 0.0585013, 0, -0.243059, 0.730342, 0.378123, -0.0365198)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall22" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.244648, 0, 0.0514529, 0, 0.25, 0, -0.0514529, 0, -0.244648, -0.22579, 0.219567, -0.0365198)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall23" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup2"]
+transform = Transform3D(-0.244648, 0, 0.0514529, 0, 0.25, 0, -0.0514529, 0, -0.244648, -0.462008, 0.0625517, -0.0365198)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeGroup3" type="Node3D" parent="bedroom/desk/monitorScreen/eyes"]
+transform = Transform3D(1, 0, 1.6263e-19, 0, 1, 0, -1.6263e-19, 0, 1, 0, 0, 0.148495)
+
+[node name="eyeSmall1" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0.25011, 0.0653448, 0.0178995)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall2" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0.315931, 0.163812, 0.0178995)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall3" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0.377413, 0.376958, 0.0172515)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall4" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.15, 0, -2.26494e-08, 0, 0.15, 0, 2.26494e-08, 0, -0.15, 0.834604, -0.0627944, 0.0172515)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall5" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.129904, 0, 0.075, 0, 0.15, 0, -0.075, 0, -0.129904, -0.351248, -0.500324, 0.0723929)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall6" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.144889, 0, 0.0388228, 0, 0.15, 0, -0.0388228, 0, -0.144889, -0.886281, -0.104699, -0.0515165)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall18" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.144889, 0, 0.0388228, 0, 0.15, 0, -0.0388228, 0, -0.144889, -0.886281, 0.0642653, -0.0515165)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall19" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.144889, 0, 0.0388228, 0, 0.15, 0, -0.0388228, 0, -0.144889, -0.791363, 0.141145, -0.0515165)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall20" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.144889, 0, 0.0388228, 0, 0.15, 0, -0.0388228, 0, -0.144889, -0.924117, 0.194576, -0.0515165)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall7" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.149949, 0, 0.00392129, 0, 0.15, 0, -0.00392129, 0, -0.149949, 0.132434, 0.125228, 0.0172515)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall8" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.144889, 0, -0.0388229, 0, 0.15, 0, 0.0388229, 0, -0.144889, 0.0105567, 0.195736, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall10" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.144889, 0, -0.0388229, 0, 0.15, 0, 0.0388229, 0, -0.144889, 0.0105567, 0.059571, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall11" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.144889, 0, -0.0388229, 0, 0.15, 0, 0.0388229, 0, -0.144889, 0.48398, 0.37718, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall12" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.144889, 0, -0.0388229, 0, 0.15, 0, 0.0388229, 0, -0.144889, 0.927914, 0.227992, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall9" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.144889, 0, -0.0388229, 0, 0.15, 0, 0.0388229, 0, -0.144889, -0.458684, -0.332123, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall13" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.144889, 0, -0.0388229, 0, 0.15, 0, 0.0388229, 0, -0.144889, -0.388776, -0.195494, -0.00836992)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall14" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.138935, 0, 0.0565428, 0, 0.15, 0, -0.0565428, 0, -0.138935, -0.193006, -0.460703, 0.0414271)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall15" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.138935, 0, 0.0565428, 0, 0.15, 0, -0.0565428, 0, -0.138935, -0.193006, 0.399368, 0.0414271)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall16" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.149899, 0, -0.00550964, 0, 0.15, 0, 0.00550964, 0, -0.149899, -0.407452, 0.399368, 0.000765324)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
+
+[node name="eyeSmall17" type="MeshInstance3D" parent="bedroom/desk/monitorScreen/eyes/eyeGroup3"]
+transform = Transform3D(-0.149899, 0, -0.00550964, 0, 0.15, 0, 0.00550964, 0, -0.149899, -0.723531, 0.168546, -0.0177207)
+material_override = SubResource("StandardMaterial3D_j7m8i")
+mesh = ExtResource("30_3r4q1")
+skeleton = NodePath("../../..")
 
 [node name="drawerHandleA" type="MeshInstance3D" parent="bedroom/desk"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.926272, 0.319634, 0.866864)
@@ -6266,6 +6827,8 @@ stream = ExtResource("174_qdmtb")
 [connection signal="exitOS" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_exit_os"]
 [connection signal="showLaplaceWall" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_show_laplace_wall"]
 [connection signal="updatedProgress" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_updated_progress"]
+[connection signal="schrodingerTransition" from="bedroom/pcWindow/pcOS/shooterMinigame" to="." method="_on_shooter_minigame_schrodinger_transition"]
+[connection signal="exitSchrodinger" from="bedroom/pcWindow/pcOS/shooterMinigame/schrodingerView/schrodingerViewport/schrodinger" to="." method="_on_schrodinger_exit_schrodinger"]
 [connection signal="timeout" from="hallway/clock/clockTimer" to="hallway/clock" method="_on_clock_timer_timeout"]
 [connection signal="droppedEvent" from="player" to="bedroom/pcWindow/pcOS/shooterMinigame/schrodingerView/schrodingerViewport/schrodinger/player" method="_on_player_dropped_event"]
 [connection signal="interacted" from="player" to="." method="_on_player_interacted"]
