@@ -1,4 +1,4 @@
-[gd_scene load_steps=462 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=464 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -600,7 +600,7 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_xbrwv"]
 size = Vector3(0.996917, 0.52241, 0.287886)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe5fe"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic0rw"]
 cull_mode = 2
 albedo_texture = ExtResource("35_sflak")
 emission_enabled = true
@@ -760,6 +760,16 @@ emission_energy_multiplier = 7.07
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_u07wd"]
 load_path = "res://.godot/imported/coarse-old-fabric_albedo.png-1b47e186a3cbf3d2c46e46c0972ab696.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe5fe"]
+cull_mode = 2
+albedo_texture = ExtResource("35_sflak")
+emission_enabled = true
+emission = Color(0.0666667, 0, 1, 1)
+emission_energy_multiplier = 0.1
+emission_texture = ExtResource("35_sflak")
+heightmap_texture = ExtResource("28_w1sg1")
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xlvr1"]
 cull_mode = 2
@@ -1329,9 +1339,10 @@ data = PackedVector3Array(-0.1, 5, 5, 0.1, 5, 5, -0.1, -5, 5, 0.1, 5, 5, 0.1, -5
 [sub_resource type="ViewportTexture" id="ViewportTexture_yt274"]
 viewport_path = NodePath("basement/passcode")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yiq7l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7lab"]
 resource_local_to_scene = true
 shading_mode = 0
+albedo_color = Color(1, 0, 0.0392157, 1)
 albedo_texture = SubResource("ViewportTexture_yt274")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8hirw"]
@@ -1487,20 +1498,9 @@ size = Vector3(1.07558, 1.12652, 1.03132)
 [sub_resource type="BoxShape3D" id="BoxShape3D_7xngu"]
 size = Vector3(0.736938, 1, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic0rw"]
-cull_mode = 2
-albedo_texture = ExtResource("35_sflak")
-emission_enabled = true
-emission = Color(0.0666667, 0, 1, 1)
-emission_energy_multiplier = 0.1
-emission_texture = ExtResource("35_sflak")
-heightmap_texture = ExtResource("28_w1sg1")
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7lab"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yiq7l"]
 resource_local_to_scene = true
 shading_mode = 0
-albedo_color = Color(1, 0, 0.0392157, 1)
 albedo_texture = SubResource("ViewportTexture_yt274")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjm4n"]
@@ -1895,6 +1895,30 @@ tracks/28/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("stoneFlooring:position")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector3(-4.82744, -3.88497, 2.88413), Vector3(-4.82744, -10.5861, 2.88413)]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("stoneFlooringHole:position")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0, 9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector3(-4.82744, -10.4139, 2.88413), Vector3(-4.827, -3.885, 2.884)]
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkoig"]
@@ -2746,6 +2770,11 @@ _data = {
 "zoom": SubResource("Animation_ytsih")
 }
 
+[sub_resource type="BoxMesh" id="BoxMesh_r37jm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rx8t8"]
+size = Vector3(7.4801, 1, 7.38525)
+
 [node name="home" type="Node3D"]
 script = ExtResource("1_vrfjs")
 
@@ -3264,6 +3293,9 @@ render_target_update_mode = 4
 
 [node name="schrodingerView" parent="bedroom/pcWindow/pcOS/shooterMinigame" index="12"]
 texture = SubResource("ViewportTexture_y0ea5")
+
+[node name="Camera3D" parent="bedroom/pcWindow/pcOS/shooterMinigame/schrodingerView/schrodingerViewport/schrodinger" index="19"]
+transform = Transform3D(1, 0, 0, 0, 0.915613, -0.402059, 0, 0.402059, 0.915613, -0.736414, 12.0824, 14.0832)
 
 [node name="laplaceWall" type="Sprite3D" parent="bedroom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.727293, 1.93702, -1.46898)
@@ -3820,7 +3852,7 @@ transform = Transform3D(-1.45479, 0, 1.09058, 0, 1.81818, 0, -1.09058, 0, -1.454
 mesh = ExtResource("22_6hn6n")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("37_n8rk8")
-surface_material_override/1 = SubResource("StandardMaterial3D_xe5fe")
+surface_material_override/1 = SubResource("StandardMaterial3D_ic0rw")
 
 [node name="lampLight" type="OmniLight3D" parent="bedroom/desk/lamp"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0638658, 0.810971, 0)
@@ -5311,7 +5343,7 @@ transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, 
 mesh = ExtResource("103_eirby")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("5_tn6ee")
-surface_material_override/1 = SubResource("StandardMaterial3D_yiq7l")
+surface_material_override/1 = SubResource("StandardMaterial3D_x7lab")
 
 [node name="interaction" parent="basement/hologramModule" instance=ExtResource("13_pkg5h")]
 minDistance = 1.0
@@ -5363,6 +5395,57 @@ surface_material_override/0 = SubResource("StandardMaterial3D_32a6a")
 collision_layer = 17
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="basement/stoneFlooring/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_jhygu")
+
+[node name="stoneFlooringHole" type="MeshInstance3D" parent="basement"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.82744, -10.4139, 2.88413)
+layers = 3
+
+[node name="stoneFlooringHole2" type="MeshInstance3D" parent="basement/stoneFlooringHole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.418762, 0, 0, -6.72702)
+layers = 3
+mesh = SubResource("BoxMesh_e6l6c")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_32a6a")
+
+[node name="stoneFlooringHole4" type="MeshInstance3D" parent="basement/stoneFlooringHole"]
+transform = Transform3D(0.555559, 0, 0, 0, 1, 0, 0, 0, 0.226399, -3.3363, 0, -2.22607)
+layers = 3
+mesh = SubResource("BoxMesh_e6l6c")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_32a6a")
+
+[node name="stoneFlooringHole5" type="MeshInstance3D" parent="basement/stoneFlooringHole"]
+transform = Transform3D(0.555559, 0, 0, 0, 1, 0, 0, 0, 0.226399, 7.29894, 0, -2.22607)
+layers = 3
+mesh = SubResource("BoxMesh_e6l6c")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_32a6a")
+
+[node name="stoneFlooringHole3" type="MeshInstance3D" parent="basement/stoneFlooringHole"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.486144, 0, 0, 2.73143)
+layers = 3
+mesh = SubResource("BoxMesh_e6l6c")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_32a6a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="basement/stoneFlooringHole"]
+collision_layer = 17
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="basement/stoneFlooringHole/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.33321)
+shape = SubResource("ConcavePolygonShape3D_jhygu")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="basement/stoneFlooringHole/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4035, 0, -1.96771)
+shape = SubResource("ConcavePolygonShape3D_jhygu")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="basement/stoneFlooringHole/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.45433, 0, -1.96771)
+shape = SubResource("ConcavePolygonShape3D_jhygu")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="basement/stoneFlooringHole/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.7952)
 shape = SubResource("ConcavePolygonShape3D_jhygu")
 
 [node name="passcode" type="SubViewport" parent="basement"]
@@ -5811,7 +5894,7 @@ skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("5_6kw2r")
 
 [node name="RockC2" type="MeshInstance3D" parent="basement/rocks"]
-transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -2.12284, -0.114724, -0.255588)
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -1.35041, -0.114724, -0.255588)
 mesh = ExtResource("134_q2vt5")
 skeleton = NodePath("../../..")
 surface_material_override/0 = ExtResource("5_6kw2r")
@@ -6824,6 +6907,38 @@ volume_db = 5.0
 [node name="powercutSFX" type="AudioStreamPlayer" parent="." groups=["sfx"]]
 stream = ExtResource("174_qdmtb")
 
+[node name="hands" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32.3291)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="hands"]
+transform = Transform3D(7.45836, 0, 0, 0, 1, 0, 0, 0, 7.35744, 0, -1.51464, 8.02215)
+mesh = SubResource("BoxMesh_r37jm")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.61576)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="hands/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0183716, -1.51449, 0.4021)
+shape = SubResource("BoxShape3D_rx8t8")
+
+[node name="handsSpawnPos" type="Node3D" parent="hands"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.89508)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="hands"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94475, 0, 7.59647)
+light_color = Color(0, 0.588235, 1, 1)
+
+[node name="handsHoleTriggerField" type="Area3D" parent="hands"]
+transform = Transform3D(2.74342, 0, 0, 0, -6.81082e-08, -1, 0, 1.14267, -5.96046e-08, -3.26714, -8.62558, -31.4356)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="hands/handsHoleTriggerField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.105383)
+shape = SubResource("BoxShape3D_jh318")
+
 [connection signal="exitOS" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_exit_os"]
 [connection signal="showLaplaceWall" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_show_laplace_wall"]
 [connection signal="updatedProgress" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_updated_progress"]
@@ -6839,6 +6954,7 @@ stream = ExtResource("174_qdmtb")
 [connection signal="body_entered" from="basement/cityExitTriggerField" to="." method="_on_city_exit_trigger_field_body_entered"]
 [connection signal="body_entered" from="pianoRoom/triggerField" to="." method="_on_trigger_field_body_entered"]
 [connection signal="body_entered" from="pianoRoom/triggerField2" to="." method="_on_trigger_field_2_body_entered"]
+[connection signal="body_entered" from="hands/handsHoleTriggerField" to="." method="_on_hands_hole_trigger_field_body_entered"]
 
 [editable path="bedroom/pcWindow/pcOS"]
 [editable path="bedroom/pcWindow/pcOS/shooterMinigame"]

@@ -14,6 +14,7 @@ var inNotepad:bool = false
 @onready var screenSFX:Node = $screenInteractSFX
 @onready var unplugSFX:Node = $bedroom/desk/Pc/unplugSFX
 @onready var insertSFX:Node = $basement/crt/insertSFX
+
 # Screen interactions
 func _input(event) -> void:
 	if Input.is_action_just_pressed("back") and (pcCam.current or inPasscodeScreen or inNotepad): # Stops focusing on screen
@@ -191,3 +192,6 @@ func _on_shooter_minigame_schrodinger_transition():
 
 func _on_schrodinger_exit_schrodinger():
 	$bedroom/desk/monitorScreen/eyeAnim.play("hideEyes")
+
+func _on_hands_hole_trigger_field_body_entered(body):
+	player.global_position = %handsSpawnPos.global_position
