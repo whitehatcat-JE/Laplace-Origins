@@ -13,6 +13,7 @@ var currentGroundType:int = 0
 # Export variables
 @export var lockYRot:bool = false
 @export var disabled:bool = false
+@export var canMove:bool = true
 # Nodes
 @onready var groundTypes:Dictionary = {9:$footstepsWood, 17:$footstepsGravel}
 
@@ -48,16 +49,16 @@ func _input(event) -> void:
 		emit_signal("interacted", interactCast.get_collider().interactionName)
 # Player movement & interaction updates
 func _physics_process(delta) -> void:
-	if disabled: # Prevents player from moving when disabled
+	# Update interaction state
+	HUDinteract.visible = false
+	HUDcrosshair.visible = false
+	HUDlock.visible = false
+	if disabled or !canMove: # Prevents player from moving when disabled
 		$bobAnim.speed_scale = 0.1
 		if currentGroundType != 0:
 			groundTypes[currentGroundType].stop()
 			currentGroundType = 0
 		return
-	# Update interaction state
-	HUDinteract.visible = false
-	HUDcrosshair.visible = false
-	HUDlock.visible = false
 	if interactCast.is_colliding(): # Check if player is looking at interactable object
 		# Calculate distance to object from player
 		var curPos:Vector3 = interactCast.global_transform.origin

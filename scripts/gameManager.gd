@@ -95,6 +95,7 @@ func _on_player_interacted(interactionName:String) -> void:
 			audioManager.play("ambienceA")
 			player.unlockedInteractions.erase("crt")
 			player.unlockedInteractions.append("router")
+			player.canMove = false
 			$basement/crt/usbStick.visible = true
 			GI.progress = 6
 			pcOS.unlockFate()
@@ -155,8 +156,9 @@ func _on_trigger_field_body_entered(_body) -> void:
 	$pianoRoom/SpotLight.visible = true
 	$pianoRoom/piano.visible = true
 # Change scene to outdoors
-func _on_fade_anim_animation_finished(_anim_name) -> void:
-	get_tree().change_scene_to_file("res://scenes/outside.tscn")
+func _on_fade_anim_animation_finished(anim_name) -> void:
+	if anim_name == "fadeOut":
+		get_tree().change_scene_to_file("res://scenes/outside.tscn")
 # Disable piano room jumpscares
 func _on_trigger_field_2_body_entered(_body) -> void:
 	$pianoRoom/triggerField2.set_deferred("monitoring", false)
@@ -194,4 +196,10 @@ func _on_schrodinger_exit_schrodinger():
 	$bedroom/desk/monitorScreen/eyeAnim.play("hideEyes")
 
 func _on_hands_hole_trigger_field_body_entered(body):
+	$player/HUD/fadeAnim.play("fadeToHands")
+
+func teleportToHands():
 	player.global_position = %handsSpawnPos.global_position
+
+func unlockPlayer():
+	player.canMove = true
