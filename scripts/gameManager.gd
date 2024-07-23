@@ -203,3 +203,6 @@ func teleportToHands():
 
 func unlockPlayer():
 	player.canMove = true
+
+func _on_hands_exit_body_entered(body):
+	player.global_position = %basementReentryPos.global_position

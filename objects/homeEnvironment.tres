@@ -1,17 +1,18 @@
-[gd_resource type="Environment" load_steps=3 format=3 uid="uid://b0ok513seha2x"]
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://b0ok513seha2x"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_u4ojb"]
-sky_top_color = Color(0.0627451, 0.733333, 1, 1)
-sky_horizon_color = Color(0.34902, 0.529412, 0.670588, 1)
-ground_bottom_color = Color(0.298039, 0.278431, 0.27451, 1)
-ground_horizon_color = Color(0.568627, 0.576471, 0.588235, 1)
+[ext_resource type="Texture2D" uid="uid://dyptycrvt7hmc" path="res://assets/3d/hands/space.jpg" id="1_dmdbk"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_01mha"]
+panorama = ExtResource("1_dmdbk")
 
 [sub_resource type="Sky" id="Sky_7yfon"]
-sky_material = SubResource("ProceduralSkyMaterial_u4ojb")
+sky_material = SubResource("PanoramaSkyMaterial_01mha")
 
 [resource]
-background_mode = 1
+background_mode = 2
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_7yfon")
+sky_rotation = Vector3(-1.5708, -1.5708, 1.5708)
 ambient_light_source = 2
 ambient_light_sky_contribution = 0.0
 ambient_light_energy = 0.0
@@ -21,7 +22,6 @@ ssao_enabled = true
 ssil_enabled = true
 sdfgi_enabled = true
 sdfgi_use_occlusion = true
-sdfgi_read_sky_light = false
 sdfgi_y_scale = 0
 glow_enabled = true
 glow_levels/1 = 0.46
