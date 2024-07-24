@@ -1,4 +1,4 @@
-[gd_scene load_steps=480 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=490 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -148,9 +148,12 @@
 [ext_resource type="Texture2D" uid="uid://btwfetcqlgfc7" path="res://assets/3d/textures/military-panel1-bl/military-panel1-nmap-ogl.png" id="110_1gft0"]
 [ext_resource type="Material" uid="uid://o8lrfuqlp2w0" path="res://assets/3d/materials/greenBrick.tres" id="110_kucnh"]
 [ext_resource type="AudioStream" uid="uid://dyduf0r3rb8w6" path="res://assets/audio/sfx/button.mp3" id="110_mgfbc"]
+[ext_resource type="Texture2D" uid="uid://dxg0notxyr6wk" path="res://assets/2d/hands/paper.jpg" id="110_uut4t"]
 [ext_resource type="Texture2D" uid="uid://c4i6qx2cyxm65" path="res://assets/3d/textures/worn-factory-siding-bl/worn-factory-siding_albedo.png" id="111_6ordm"]
+[ext_resource type="FontFile" uid="uid://c7nf20h66non7" path="res://assets/fonts/SpecialElite.ttf" id="111_uoint"]
 [ext_resource type="Texture2D" uid="uid://b0ki2x4o72ixu" path="res://assets/3d/textures/military-panel1-bl/military-panel1-rough.png" id="111_xygbn"]
 [ext_resource type="Texture2D" uid="uid://dnip0y5flevsv" path="res://assets/3d/textures/worn-factory-siding-bl/worn-factory-siding_ao.png" id="112_4asdh"]
+[ext_resource type="Shader" path="res://scripts/shaders/filmGrain.gdshader" id="112_dtkwp"]
 [ext_resource type="Texture2D" uid="uid://olkyv4j16hmq" path="res://assets/3d/textures/worn-factory-siding-bl/worn-factory-siding_height.png" id="113_8anbh"]
 [ext_resource type="Texture2D" uid="uid://b4gt0mjqce5no" path="res://assets/3d/textures/worn-factory-siding-bl/worn-factory-siding_metallic.png" id="114_n0jpa"]
 [ext_resource type="Texture2D" uid="uid://dv2fexxpiglh3" path="res://assets/3d/textures/worn-factory-siding-bl/worn-factory-siding_normal-ogl.png" id="115_lou3r"]
@@ -200,6 +203,9 @@
 [ext_resource type="Texture2D" uid="uid://5c58n8bo023d" path="res://assets/2d/pcOS/backgroundLaplace.jpg" id="193_t8w1n"]
 [ext_resource type="ArrayMesh" uid="uid://byvrot08qm4yc" path="res://assets/3d/laplace/arm2.obj" id="199_ah1uc"]
 [ext_resource type="Texture2D" uid="uid://bbnvgycopl8j2" path="res://assets/3d/hands/halo.png" id="200_wqtv1"]
+[ext_resource type="ArrayMesh" uid="uid://vck510hbelmw" path="res://assets/3d/hands/hands.obj" id="204_seweo"]
+[ext_resource type="Texture2D" uid="uid://bh4s1812k7ug4" path="res://assets/3d/hands/handsD.jpg" id="205_a4ro2"]
+[ext_resource type="Texture2D" uid="uid://qwksfiwopie" path="res://assets/3d/hands/handsN.jpg" id="206_31p72"]
 
 [sub_resource type="FogMaterial" id="FogMaterial_jgji8"]
 density = 0.5752
@@ -994,6 +1000,17 @@ metallic_specular = 1.0
 roughness = 0.0
 emission_enabled = true
 emission = Color(1, 0.764706, 0.529412, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ryky8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cd2sf"]
+noise = SubResource("FastNoiseLite_ryky8")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ij7pa"]
+shader = ExtResource("112_dtkwp")
+shader_parameter/projector_power = 0.5
+shader_parameter/vignette_param = 20.0
+shader_parameter/distortionTexture = SubResource("NoiseTexture2D_cd2sf")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pmhci"]
 shader = ExtResource("90_5slxb")
@@ -2688,7 +2705,7 @@ tracks/26/loop_wrap = true
 tracks/26/keys = {
 "times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [Color(0, 0, 0, 1), Color(1, 0.0117647, 0, 1)]
 }
 tracks/27/type = "value"
@@ -2884,6 +2901,11 @@ emission_enabled = true
 emission = Color(0.120284, 3.85046e-07, 0.635262, 1)
 emission_texture = ExtResource("200_wqtv1")
 texture_filter = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nw5kv"]
+albedo_texture = ExtResource("205_a4ro2")
+normal_enabled = true
+normal_texture = ExtResource("206_31p72")
 
 [node name="home" type="Node3D"]
 script = ExtResource("1_vrfjs")
@@ -4760,6 +4782,31 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="paper" type="Sprite2D" parent="player/HUD"]
+visible = false
+position = Vector2(23, 25)
+scale = Vector2(1.06875, 1.07037)
+texture = ExtResource("110_uut4t")
+
+[node name="message" type="RichTextLabel" parent="player/HUD/paper"]
+offset_left = -538.012
+offset_top = -64.4637
+offset_right = 467.988
+offset_bottom = 189.536
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("111_uoint")
+theme_override_font_sizes/normal_font_size = 42
+bbcode_enabled = true
+text = "[center]Reality is begie- beginne- beginning to fracture, so it won’t be long before your current purpose is complete."
+
+[node name="ColorRect" type="ColorRect" parent="player/HUD/paper"]
+material = SubResource("ShaderMaterial_ij7pa")
+offset_left = -1123.74
+offset_top = -694.152
+offset_right = 1035.26
+offset_bottom = 657.848
+metadata/_edit_lock_ = true
+
 [node name="crosshair" type="Sprite2D" parent="player/HUD"]
 visible = false
 modulate = Color(1, 1, 1, 0.784314)
@@ -4848,6 +4895,7 @@ offset_top = -604.0
 offset_right = 1277.0
 offset_bottom = 676.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="text" type="RichTextLabel" parent="player/HUD/lightsOut"]
 modulate = Color(0.466667, 0.466667, 0.466667, 1)
@@ -4872,6 +4920,7 @@ offset_top = -604.0
 offset_right = 1277.0
 offset_bottom = 676.0
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="fadeAnim" type="AnimationPlayer" parent="player/HUD"]
 libraries = {
@@ -7089,34 +7138,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.97073)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20646, 3.25667, 6.18738)
 light_color = Color(0.160784, 0.356863, 1, 1)
 light_energy = 9.67
+distance_fade_enabled = true
 omni_range = 50.0
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="hands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2227, 3.25667, 6.18738)
 light_color = Color(0.160784, 0.356863, 1, 1)
 light_energy = 9.67
+distance_fade_enabled = true
 omni_range = 50.0
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="hands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.106, 3.25667, 6.18738)
 light_color = Color(0.160784, 0.356863, 1, 1)
 light_energy = 9.67
+distance_fade_enabled = true
 omni_range = 50.0
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="hands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9437, 3.25667, 6.18738)
 light_color = Color(0.160784, 0.356863, 1, 1)
 light_energy = 9.67
+distance_fade_enabled = true
 omni_range = 50.0
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="hands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.6605, 3.25667, 6.18738)
 light_color = Color(0.160784, 0.356863, 1, 1)
 light_energy = 9.67
+distance_fade_enabled = true
 omni_range = 50.0
 
 [node name="arm1" type="Node3D" parent="hands"]
 transform = Transform3D(0.21468, -0.51329, -0.502937, 0.248644, -0.439423, 0.554602, -0.674233, -0.325486, 0.0443876, -7.49197, -14.293, 52.192)
+visible = false
 
 [node name="armSway" type="Node3D" parent="hands/arm1"]
 transform = Transform3D(0.988893, -0.148006, -0.0136061, 0.147762, 0.98887, -0.0174201, 0.0160329, 0.0152162, 0.999755, 0, 0, 0)
@@ -7130,6 +7185,7 @@ skeleton = NodePath("../../..")
 
 [node name="arm2" type="Node3D" parent="hands"]
 transform = Transform3D(-0.305732, 0.378639, 0.570667, 0.29675, -0.489993, 0.484093, -0.617226, -0.423131, -0.0499269, 8.75807, -15.9036, 51.9346)
+visible = false
 
 [node name="armSway" type="Node3D" parent="hands/arm2"]
 transform = Transform3D(0.988893, -0.148006, -0.0136061, 0.147762, 0.98887, -0.0174201, 0.0160329, 0.0152162, 0.999755, 0, 0, 0)
@@ -7143,6 +7199,7 @@ skeleton = NodePath("../../..")
 
 [node name="arm3" type="Node3D" parent="hands"]
 transform = Transform3D(0.21468, -0.51329, -0.502937, 0.248644, -0.439423, 0.554602, -0.674233, -0.325486, 0.0443876, -21.9389, -14.293, 52.192)
+visible = false
 
 [node name="armSway" type="Node3D" parent="hands/arm3"]
 transform = Transform3D(0.988893, -0.148006, -0.0136061, 0.147762, 0.98887, -0.0174201, 0.0160329, 0.0152162, 0.999755, 0, 0, 0)
@@ -7156,6 +7213,7 @@ skeleton = NodePath("../../..")
 
 [node name="arm4" type="Node3D" parent="hands"]
 transform = Transform3D(-0.305732, 0.378639, 0.570667, 0.29675, -0.489993, 0.484093, -0.617226, -0.423131, -0.0499269, -5.7863, -15.9036, 51.9346)
+visible = false
 
 [node name="armSway" type="Node3D" parent="hands/arm4"]
 transform = Transform3D(0.988893, -0.148006, -0.0136061, 0.147762, 0.98887, -0.0174201, 0.0160329, 0.0152162, 0.999755, 0, 0, 0)
@@ -7169,6 +7227,7 @@ skeleton = NodePath("../../..")
 
 [node name="arm5" type="Node3D" parent="hands"]
 transform = Transform3D(0.21468, -0.51329, -0.502937, 0.248644, -0.439423, 0.554602, -0.674233, -0.325486, 0.0443876, -37.7799, -14.293, 52.192)
+visible = false
 
 [node name="armSway" type="Node3D" parent="hands/arm5"]
 transform = Transform3D(0.988893, -0.148006, -0.0136061, 0.147762, 0.98887, -0.0174201, 0.0160329, 0.0152162, 0.999755, 0, 0, 0)
@@ -7182,6 +7241,7 @@ skeleton = NodePath("../../..")
 
 [node name="arm6" type="Node3D" parent="hands"]
 transform = Transform3D(-0.305732, 0.378639, 0.570667, 0.29675, -0.489993, 0.484093, -0.617226, -0.423131, -0.0499269, -21.2506, -15.9036, 51.9346)
+visible = false
 
 [node name="armSway" type="Node3D" parent="hands/arm6"]
 transform = Transform3D(0.988893, -0.148006, -0.0136061, 0.147762, 0.98887, -0.0174201, 0.0160329, 0.0152162, 0.999755, 0, 0, 0)
@@ -7195,6 +7255,7 @@ skeleton = NodePath("../../..")
 
 [node name="arm7" type="Node3D" parent="hands"]
 transform = Transform3D(0.21468, -0.51329, -0.502937, 0.248644, -0.439423, 0.554602, -0.674233, -0.325486, 0.0443876, -52.6142, -14.293, 52.192)
+visible = false
 
 [node name="armSway" type="Node3D" parent="hands/arm7"]
 transform = Transform3D(0.988893, -0.148006, -0.0136061, 0.147762, 0.98887, -0.0174201, 0.0160329, 0.0152162, 0.999755, 0, 0, 0)
@@ -7208,6 +7269,7 @@ skeleton = NodePath("../../..")
 
 [node name="arm8" type="Node3D" parent="hands"]
 transform = Transform3D(-0.305732, 0.378639, 0.570667, 0.29675, -0.489993, 0.484093, -0.617226, -0.423131, -0.0499269, -36.537, -15.9036, 51.9346)
+visible = false
 
 [node name="armSway" type="Node3D" parent="hands/arm8"]
 transform = Transform3D(0.988893, -0.148006, -0.0136061, 0.147762, 0.98887, -0.0174201, 0.0160329, 0.0152162, 0.999755, 0, 0, 0)
@@ -7221,6 +7283,7 @@ skeleton = NodePath("../../..")
 
 [node name="arm9" type="Node3D" parent="hands"]
 transform = Transform3D(0.21468, -0.51329, -0.502937, 0.248644, -0.439423, 0.554602, -0.674233, -0.325486, 0.0443876, -66.9516, -14.293, 52.192)
+visible = false
 
 [node name="armSway" type="Node3D" parent="hands/arm9"]
 transform = Transform3D(0.988893, -0.148006, -0.0136061, 0.147762, 0.98887, -0.0174201, 0.0160329, 0.0152162, 0.999755, 0, 0, 0)
@@ -7234,6 +7297,7 @@ skeleton = NodePath("../../..")
 
 [node name="arm10" type="Node3D" parent="hands"]
 transform = Transform3D(-0.305732, 0.378639, 0.570667, 0.29675, -0.489993, 0.484093, -0.617226, -0.423131, -0.0499269, -51.1634, -15.9036, 51.9346)
+visible = false
 
 [node name="armSway" type="Node3D" parent="hands/arm10"]
 transform = Transform3D(0.988893, -0.148006, -0.0136061, 0.147762, 0.98887, -0.0174201, 0.0160329, 0.0152162, 0.999755, 0, 0, 0)
@@ -7245,24 +7309,34 @@ cast_shadow = 0
 mesh = ExtResource("199_ah1uc")
 skeleton = NodePath("../../..")
 
+[node name="handsExit" type="Area3D" parent="hands"]
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -64.0719, -0.337151, 6.28557)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="hands/handsExit"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
+shape = SubResource("BoxShape3D_sedjo")
+
 [node name="fog" type="FogVolume" parent="hands"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8748, -0.657026, 6.66293)
-size = Vector3(69.5603, 10.5307, 25.2461)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.088, -0.657028, 6.66293)
+size = Vector3(87.0554, 10.5307, 25.2461)
 material = SubResource("FogMaterial_5uxhl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="hands"]
+[node name="water" type="MeshInstance3D" parent="hands"]
 transform = Transform3D(88.9577, 0, 0, 0, 1, 0, 0, 0, 49.746, -21.436, -2.58091, 0)
 material_override = SubResource("StandardMaterial3D_y307f")
 mesh = SubResource("PlaneMesh_6s5k8")
 
-[node name="Sprite3D" type="Sprite3D" parent="hands"]
+[node name="halo" type="Sprite3D" parent="hands"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -224.599, 64.8822, 5.84117)
 material_override = SubResource("StandardMaterial3D_hhv23")
 modulate = Color(0.458531, 0.797726, 1, 0.388235)
 pixel_size = 0.4
 texture = ExtResource("200_wqtv1")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="hands"]
+[node name="angledLight" type="SpotLight3D" parent="hands"]
 transform = Transform3D(-1.60868e-05, 0.0483791, -0.998829, -0.000331222, 0.998829, 0.0483791, 1, 0.000331613, -4.3703e-08, -112.781, 8.8197, 6.0988)
 light_color = Color(0, 0.364706, 0.933333, 1)
 light_energy = 3.573
@@ -7271,15 +7345,203 @@ spot_range = 175.876
 spot_attenuation = 0.0473663
 spot_angle = 13.5492
 
-[node name="handsExit" type="Area3D" parent="hands"]
-transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -62.4891, -0.337151, 6.28557)
+[node name="dialogueCollisions" type="Node3D" parent="hands"]
+
+[node name="dialogue1" type="Area3D" parent="hands/dialogueCollisions"]
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -7.61036, -0.337151, 6.28557)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 
-[node name="hitbox" type="CollisionShape3D" parent="hands/handsExit"]
+[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue1"]
 transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
 shape = SubResource("BoxShape3D_sedjo")
+
+[node name="dialogue2" type="Area3D" parent="hands/dialogueCollisions"]
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -11.6935, -0.337151, 6.28557)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue2"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
+shape = SubResource("BoxShape3D_sedjo")
+
+[node name="dialogue3" type="Area3D" parent="hands/dialogueCollisions"]
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -15.8842, -0.337151, 6.28557)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue3"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
+shape = SubResource("BoxShape3D_sedjo")
+
+[node name="dialogue4" type="Area3D" parent="hands/dialogueCollisions"]
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -20.2936, -0.337151, 6.28557)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue4"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
+shape = SubResource("BoxShape3D_sedjo")
+
+[node name="dialogue5" type="Area3D" parent="hands/dialogueCollisions"]
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -24.2137, -0.337151, 6.28557)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue5"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
+shape = SubResource("BoxShape3D_sedjo")
+
+[node name="dialogue6" type="Area3D" parent="hands/dialogueCollisions"]
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -28.2558, -0.337151, 6.28557)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue6"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
+shape = SubResource("BoxShape3D_sedjo")
+
+[node name="dialogue7" type="Area3D" parent="hands/dialogueCollisions"]
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -32.8626, -0.337151, 6.28557)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue7"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
+shape = SubResource("BoxShape3D_sedjo")
+
+[node name="dialogue8" type="Area3D" parent="hands/dialogueCollisions"]
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -37.3966, -0.337151, 6.28557)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue8"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
+shape = SubResource("BoxShape3D_sedjo")
+
+[node name="dialogue9" type="Area3D" parent="hands/dialogueCollisions"]
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -42.2837, -0.337151, 6.28557)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue9"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
+shape = SubResource("BoxShape3D_sedjo")
+
+[node name="dialogue10" type="Area3D" parent="hands/dialogueCollisions"]
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -47.6474, -0.337151, 6.28557)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue10"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
+shape = SubResource("BoxShape3D_sedjo")
+
+[node name="dialogue11" type="Area3D" parent="hands/dialogueCollisions"]
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -53.3236, -0.337151, 6.28557)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue11"]
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
+shape = SubResource("BoxShape3D_sedjo")
+
+[node name="arms" type="Node3D" parent="hands"]
+
+[node name="Hands" type="MeshInstance3D" parent="hands/arms"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, 2.11183, -3.1726, 7.06897)
+mesh = ExtResource("204_seweo")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nw5kv")
+surface_material_override/1 = SubResource("StandardMaterial3D_nw5kv")
+
+[node name="Hands2" type="MeshInstance3D" parent="hands/arms"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, -6.77298, -3.1726, 7.06897)
+mesh = ExtResource("204_seweo")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nw5kv")
+surface_material_override/1 = SubResource("StandardMaterial3D_nw5kv")
+
+[node name="Hands3" type="MeshInstance3D" parent="hands/arms"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, -15.7397, -3.1726, 7.06897)
+mesh = ExtResource("204_seweo")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nw5kv")
+surface_material_override/1 = SubResource("StandardMaterial3D_nw5kv")
+
+[node name="Hands4" type="MeshInstance3D" parent="hands/arms"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, -24.6245, -3.1726, 7.06897)
+mesh = ExtResource("204_seweo")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nw5kv")
+surface_material_override/1 = SubResource("StandardMaterial3D_nw5kv")
+
+[node name="Hands5" type="MeshInstance3D" parent="hands/arms"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, -33.6461, -3.1726, 7.06897)
+mesh = ExtResource("204_seweo")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nw5kv")
+surface_material_override/1 = SubResource("StandardMaterial3D_nw5kv")
+
+[node name="Hands6" type="MeshInstance3D" parent="hands/arms"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, -42.5309, -3.1726, 7.06897)
+mesh = ExtResource("204_seweo")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nw5kv")
+surface_material_override/1 = SubResource("StandardMaterial3D_nw5kv")
+
+[node name="Hands7" type="MeshInstance3D" parent="hands/arms"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, -51.5587, -3.1726, 7.06897)
+mesh = ExtResource("204_seweo")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nw5kv")
+surface_material_override/1 = SubResource("StandardMaterial3D_nw5kv")
+
+[node name="Hands8" type="MeshInstance3D" parent="hands/arms"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, -60.4435, -3.1726, 7.06897)
+mesh = ExtResource("204_seweo")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nw5kv")
+surface_material_override/1 = SubResource("StandardMaterial3D_nw5kv")
+
+[node name="Hands9" type="MeshInstance3D" parent="hands/arms"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, -69.4103, -3.1726, 7.06897)
+mesh = ExtResource("204_seweo")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nw5kv")
+surface_material_override/1 = SubResource("StandardMaterial3D_nw5kv")
+
+[node name="Hands10" type="MeshInstance3D" parent="hands/arms"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, -78.2951, -3.1726, 7.06897)
+mesh = ExtResource("204_seweo")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nw5kv")
+surface_material_override/1 = SubResource("StandardMaterial3D_nw5kv")
+
+[node name="Hands11" type="MeshInstance3D" parent="hands/arms"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, -87.3166, -3.1726, 7.06897)
+mesh = ExtResource("204_seweo")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nw5kv")
+surface_material_override/1 = SubResource("StandardMaterial3D_nw5kv")
+
+[node name="Hands12" type="MeshInstance3D" parent="hands/arms"]
+transform = Transform3D(-1.31134e-06, 0, -30, 0, 30, 0, 30, 0, -1.31134e-06, -96.2014, -3.1726, 7.06897)
+mesh = ExtResource("204_seweo")
+skeleton = NodePath("../../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nw5kv")
+surface_material_override/1 = SubResource("StandardMaterial3D_nw5kv")
 
 [connection signal="exitOS" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_exit_os"]
 [connection signal="showLaplaceWall" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_show_laplace_wall"]
@@ -7298,6 +7560,17 @@ shape = SubResource("BoxShape3D_sedjo")
 [connection signal="body_entered" from="pianoRoom/triggerField" to="." method="_on_trigger_field_body_entered"]
 [connection signal="body_entered" from="pianoRoom/triggerField2" to="." method="_on_trigger_field_2_body_entered"]
 [connection signal="body_entered" from="hands/handsExit" to="." method="_on_hands_exit_body_entered"]
+[connection signal="body_entered" from="hands/dialogueCollisions/dialogue1" to="." method="triggerDialogue" binds= [0]]
+[connection signal="body_entered" from="hands/dialogueCollisions/dialogue2" to="." method="triggerDialogue" binds= [1]]
+[connection signal="body_entered" from="hands/dialogueCollisions/dialogue3" to="." method="triggerDialogue" binds= [2]]
+[connection signal="body_entered" from="hands/dialogueCollisions/dialogue4" to="." method="triggerDialogue" binds= [3]]
+[connection signal="body_entered" from="hands/dialogueCollisions/dialogue5" to="." method="triggerDialogue" binds= [4]]
+[connection signal="body_entered" from="hands/dialogueCollisions/dialogue6" to="." method="triggerDialogue" binds= [5]]
+[connection signal="body_entered" from="hands/dialogueCollisions/dialogue7" to="." method="triggerDialogue" binds= [6]]
+[connection signal="body_entered" from="hands/dialogueCollisions/dialogue8" to="." method="triggerDialogue" binds= [7]]
+[connection signal="body_entered" from="hands/dialogueCollisions/dialogue9" to="." method="triggerDialogue" binds= [8]]
+[connection signal="body_entered" from="hands/dialogueCollisions/dialogue10" to="." method="triggerDialogue" binds= [9]]
+[connection signal="body_entered" from="hands/dialogueCollisions/dialogue11" to="." method="triggerDialogue" binds= [10]]
 
 [editable path="bedroom/pcWindow/pcOS"]
 [editable path="bedroom/pcWindow/pcOS/shooterMinigame"]

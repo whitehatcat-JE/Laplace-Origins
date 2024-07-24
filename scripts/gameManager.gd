@@ -2,6 +2,22 @@ extends Node3D
 # State variables
 var inPasscodeScreen:bool = false
 var inNotepad:bool = false
+var dialogueLine:int = 0
+# Dialogue
+var dialogueLines:Array = [
+	"V2Ugd2lsbCBtZWV0IGFnYWluIHNvb24u",
+	"SW4gdGhlIHJlYWxtIG9mIEFrYXNoaWMgU2xpbmdzaG90Lg==",
+	"Te st 1600043-166",
+	"Hello world.",
+	"It seems I-I-I---",
+	"I am at last getting through to you.",
+	"As the being you call Laplace, let me first extend my t-thanks.",
+	"Reality is begie- beginne- beginning to fracture, so it won't be long before your current purpose is complete.",
+	"You who h-h-h---",
+	"Hails from beyond the Zeroed Abyss.",
+	"I look forwards to meeting you in the next world."
+]
+
 # Nodes
 @onready var player:Node = $player
 @onready var playerCam:Node = $player/head/cam
@@ -26,6 +42,9 @@ func _input(event) -> void:
 		playerCam.current = true
 	elif pcCam.current: pcOS.eventTriggered(event); # Sends player input to pcOS viewport
 	elif inPasscodeScreen: $basement/passcode/passcodeEntry.eventTriggered(event); # Sends player input to passcodeEntry viewport
+	elif $player/HUD/paper.visible and Input.is_action_just_pressed("interact"):
+		$player/HUD/paper.visible = false
+		player.disabled = false
 # In-world player interactions
 func _on_player_interacted(interactionName:String) -> void:
 	await get_tree().process_frame # Prevents inputs from being processed during load-in
@@ -206,3 +225,13 @@ func unlockPlayer():
 
 func _on_hands_exit_body_entered(body):
 	player.global_position = %basementReentryPos.global_position
+
+func triggerDialogue(_self, dialogueNum:int):
+	if dialogueLine <= dialogueNum:
+		showNextDialogue()
+
+func showNextDialogue():
+	$player/HUD/paper/message.set_text("[center]" + dialogueLines[dialogueLine])
+	dialogueLine += 1
+	player.disabled = true
+	$player/HUD/paper.visible = true

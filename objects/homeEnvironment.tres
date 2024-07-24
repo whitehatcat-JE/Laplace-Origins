@@ -1,21 +1,28 @@
 [gd_resource type="Environment" load_steps=4 format=3 uid="uid://b0ok513seha2x"]
 
-[ext_resource type="Texture2D" uid="uid://dyptycrvt7hmc" path="res://assets/3d/hands/space.jpg" id="1_dmdbk"]
+[ext_resource type="Shader" path="res://scripts/shaders/sky.gdshader" id="1_xd1ff"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_01mha"]
-panorama = ExtResource("1_dmdbk")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_20d6j"]
+shader = ExtResource("1_xd1ff")
+shader_parameter/sky_color = Color(0.03, 0.05, 0.11, 1)
+shader_parameter/star_base_color = Color(1, 0.729412, 0.560784, 1)
+shader_parameter/star_hue_offset = 0.35
+shader_parameter/star_intensity = 0.08
+shader_parameter/star_twinkle_speed = 0.8
+shader_parameter/star_twinkle_intensity = 0.2
+shader_parameter/layer_scale = 20.0
+shader_parameter/layer_scale_step = 10.0
+shader_parameter/layers_count = 3
 
-[sub_resource type="Sky" id="Sky_7yfon"]
-sky_material = SubResource("PanoramaSkyMaterial_01mha")
+[sub_resource type="Sky" id="Sky_dodt2"]
+sky_material = SubResource("ShaderMaterial_20d6j")
 
 [resource]
 background_mode = 2
-background_energy_multiplier = 0.5
-sky = SubResource("Sky_7yfon")
-sky_rotation = Vector3(-1.5708, -1.5708, 1.5708)
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_dodt2")
 ambient_light_source = 2
 ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.0
 tonemap_mode = 2
 ssr_max_steps = 128
 ssao_enabled = true
