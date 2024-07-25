@@ -5,10 +5,6 @@ var inNotepad:bool = false
 var dialogueLine:int = 0
 # Dialogue
 var dialogueLines:Array = [
-	"V2Ugd2lsbCBtZWV0IGFnYWluIHNvb24u",
-	"SW4gdGhlIHJlYWxtIG9mIEFrYXNoaWMgU2xpbmdzaG90Lg==",
-	"Te st 1600043-166",
-	"Hello world.",
 	"It seems I-I-I---",
 	"I am at last getting through to you.",
 	"As the being you call Laplace, let me first extend my t-thanks.",
@@ -220,11 +216,14 @@ func _on_hands_hole_trigger_field_body_entered(body):
 func teleportToHands():
 	player.global_position = %handsSpawnPos.global_position
 
+func teleportFromHands():
+	player.global_position = %basementReentryPos.global_position
+
 func unlockPlayer():
 	player.canMove = true
 
 func _on_hands_exit_body_entered(body):
-	player.global_position = %basementReentryPos.global_position
+	$player/HUD/fadeAnim.play("fadeFromHands")
 
 func triggerDialogue(_self, dialogueNum:int):
 	if dialogueLine <= dialogueNum:

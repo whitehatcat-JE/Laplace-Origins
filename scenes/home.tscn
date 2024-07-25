@@ -25,7 +25,6 @@
 [ext_resource type="Material" uid="uid://bak4i13bdfs7n" path="res://assets/3d/materials/greenWallpaper.tres" id="9_6pp1r"]
 [ext_resource type="AudioStream" uid="uid://vne8x3iohh10" path="res://assets/audio/music/singularity.mp3" id="9_dcaq8"]
 [ext_resource type="Texture2D" uid="uid://c47pdqpchx4d8" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-albedo.png" id="10_b1uw2"]
-[ext_resource type="Material" uid="uid://cgusg8smqn8wc" path="res://assets/3d/materials/bricks.tres" id="10_eqkec"]
 [ext_resource type="Environment" uid="uid://b0ok513seha2x" path="res://objects/homeEnvironment.tres" id="10_nrkjx"]
 [ext_resource type="ArrayMesh" uid="uid://bfqtupg7aqnqw" path="res://assets/3d/monitorScreen.obj" id="11_ftqtj"]
 [ext_resource type="Texture2D" uid="uid://bijuw13o6gyl2" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-ao.png" id="11_pet04"]
@@ -272,17 +271,24 @@ size = Vector3(1.6, 1, 5)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gi2rd"]
 data = PackedVector3Array(-0.8, 0.5, 2.5, 0.8, 0.5, 2.5, -0.8, -0.5, 2.5, 0.8, 0.5, 2.5, 0.8, -0.5, 2.5, -0.8, -0.5, 2.5, 0.8, 0.5, -2.5, -0.8, 0.5, -2.5, 0.8, -0.5, -2.5, -0.8, 0.5, -2.5, -0.8, -0.5, -2.5, 0.8, -0.5, -2.5, 0.8, 0.5, 2.5, 0.8, 0.5, -2.5, 0.8, -0.5, 2.5, 0.8, 0.5, -2.5, 0.8, -0.5, -2.5, 0.8, -0.5, 2.5, -0.8, 0.5, -2.5, -0.8, 0.5, 2.5, -0.8, -0.5, -2.5, -0.8, 0.5, 2.5, -0.8, -0.5, 2.5, -0.8, -0.5, -2.5, 0.8, 0.5, 2.5, -0.8, 0.5, 2.5, 0.8, 0.5, -2.5, -0.8, 0.5, 2.5, -0.8, 0.5, -2.5, 0.8, 0.5, -2.5, -0.8, -0.5, 2.5, 0.8, -0.5, 2.5, -0.8, -0.5, -2.5, 0.8, -0.5, 2.5, 0.8, -0.5, -2.5, -0.8, -0.5, -2.5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_bx2m0"]
-size = Vector3(13, 1, 13)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_llfvm"]
+albedo_texture = ExtResource("10_b1uw2")
+metallic = 1.0
+metallic_texture = ExtResource("13_j68nr")
+roughness_texture = ExtResource("15_fjl2e")
+normal_enabled = true
+normal_texture = ExtResource("14_o07u6")
+ao_enabled = true
+ao_texture = ExtResource("11_pet04")
+heightmap_enabled = true
+heightmap_texture = ExtResource("12_x7lx0")
+uv1_scale = Vector3(10, 5, 5)
 
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jrvw0"]
-data = PackedVector3Array(-6, 0.5, 6, 6, 0.5, 6, -6, -0.5, 6, 6, 0.5, 6, 6, -0.5, 6, -6, -0.5, 6, 6, 0.5, -6, -6, 0.5, -6, 6, -0.5, -6, -6, 0.5, -6, -6, -0.5, -6, 6, -0.5, -6, 6, 0.5, 6, 6, 0.5, -6, 6, -0.5, 6, 6, 0.5, -6, 6, -0.5, -6, 6, -0.5, 6, -6, 0.5, -6, -6, 0.5, 6, -6, -0.5, -6, -6, 0.5, 6, -6, -0.5, 6, -6, -0.5, -6, 6, 0.5, 6, -6, 0.5, 6, 6, 0.5, -6, -6, 0.5, 6, -6, 0.5, -6, 6, 0.5, -6, -6, -0.5, 6, 6, -0.5, 6, -6, -0.5, -6, 6, -0.5, 6, 6, -0.5, -6, -6, -0.5, -6)
+[sub_resource type="BoxMesh" id="BoxMesh_amg11"]
+size = Vector3(25.5, 1, 13.5)
 
-[sub_resource type="BoxMesh" id="BoxMesh_ln8oo"]
-size = Vector3(8.5, 1, 8.5)
-
-[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_u5vlw"]
-data = PackedVector3Array(-4.25, 0.5, 4.25, 4.25, 0.5, 4.25, -4.25, -0.5, 4.25, 4.25, 0.5, 4.25, 4.25, -0.5, 4.25, -4.25, -0.5, 4.25, 4.25, 0.5, -4.25, -4.25, 0.5, -4.25, 4.25, -0.5, -4.25, -4.25, 0.5, -4.25, -4.25, -0.5, -4.25, 4.25, -0.5, -4.25, 4.25, 0.5, 4.25, 4.25, 0.5, -4.25, 4.25, -0.5, 4.25, 4.25, 0.5, -4.25, 4.25, -0.5, -4.25, 4.25, -0.5, 4.25, -4.25, 0.5, -4.25, -4.25, 0.5, 4.25, -4.25, -0.5, -4.25, -4.25, 0.5, 4.25, -4.25, -0.5, 4.25, -4.25, -0.5, -4.25, 4.25, 0.5, 4.25, -4.25, 0.5, 4.25, 4.25, 0.5, -4.25, -4.25, 0.5, 4.25, -4.25, 0.5, -4.25, 4.25, 0.5, -4.25, -4.25, -0.5, 4.25, 4.25, -0.5, 4.25, -4.25, -0.5, -4.25, 4.25, -0.5, 4.25, 4.25, -0.5, -4.25, -4.25, -0.5, -4.25)
+[sub_resource type="BoxShape3D" id="BoxShape3D_tdg7w"]
+size = Vector3(27.5206, 1, 14.0447)
 
 [sub_resource type="BoxMesh" id="BoxMesh_2s7ap"]
 size = Vector3(1, 1, 8)
@@ -1030,6 +1036,144 @@ shader_parameter/offset = 0.0
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_us484"]
 blend_mode = 3
 
+[sub_resource type="Animation" id="Animation_j47at"]
+resource_name = "fadeFromHands"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fadeIn:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.8),
+"transitions": PackedFloat32Array(-2, -2, -2, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"teleportFromHands"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../basement/door:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector3(-8.68389, 0.329201, 4.90725)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../basement/stoneFlooring:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector3(-4.82744, -3.88497, 2.88413)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../../basement/stoneFlooringHole:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector3(-4.82744, -10.4139, 2.88413)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../../basement/CeilingLamp/ceilingSpotlight:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../../basement:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector3(0, 0, 0), Vector3(-12.7968, -6.16818, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../../tempLayout/walls/MeshInstance3D22:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector3(4.786, -6.329, 5.795), Vector3(-8.00446, -6.329, 5.795)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../../WorldEnvironment/basementFog:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector3(-4.50883, -2.98222, 2.84536), Vector3(-17.306, -9.23674, 2.84536)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../../walls/plankFlooring9:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../../walls/plankFlooring10:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="Animation" id="Animation_nwmgs"]
 resource_name = "fadeOut"
 tracks/0/type = "value"
@@ -1077,6 +1221,7 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h1hmh"]
 _data = {
+"fadeFromHands": SubResource("Animation_j47at"),
 "fadeOut": SubResource("Animation_nwmgs"),
 "fadeToHands": SubResource("Animation_a5aa1")
 }
@@ -1157,6 +1302,9 @@ data = PackedVector3Array(-1.5, 0.5, 1.5, 1.5, 0.5, 1.5, -1.5, -0.5, 1.5, 1.5, 0
 [sub_resource type="BoxMesh" id="BoxMesh_v4lj2"]
 size = Vector3(3, 0.1, 3)
 
+[sub_resource type="BoxMesh" id="BoxMesh_vh14g"]
+size = Vector3(17.2, 0.1, 3)
+
 [sub_resource type="BoxMesh" id="BoxMesh_p78fh"]
 size = Vector3(5, 1, 8)
 
@@ -1233,7 +1381,7 @@ size = Vector3(0.05, 0.1, 5.5)
 size = Vector3(0.05, 0.1, 4)
 
 [sub_resource type="BoxMesh" id="BoxMesh_kkeqi"]
-size = Vector3(1, 0.1, 10)
+size = Vector3(1, 0.1, 25)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vdwsr"]
 size = Vector3(0.05, 0.1, 6)
@@ -2949,7 +3097,6 @@ light_energy = 0.05
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.866025, 0.5, 2.93063e-08, 0.12941, -0.224144, 0.965926, 0.482963, -0.836516, -0.258819, 0, 0, 0)
-visible = false
 shadow_opacity = 0.0
 editor_only = true
 
@@ -3294,28 +3441,32 @@ skeleton = NodePath("../../..")
 shape = SubResource("ConcavePolygonShape3D_gi2rd")
 
 [node name="MeshInstance3D13" type="MeshInstance3D" parent="tempLayout/walls"]
-transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, -2.90315, -0.677513, 8.5542)
+transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, -9.47573, -2.9943, 8.5542)
 layers = 3
-material_override = ExtResource("10_eqkec")
-mesh = SubResource("BoxMesh_bx2m0")
+material_override = SubResource("StandardMaterial3D_llfvm")
+mesh = SubResource("BoxMesh_amg11")
 skeleton = NodePath("../../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="tempLayout/walls/MeshInstance3D13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.57258, 9.53674e-07, 2.31678)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="tempLayout/walls/MeshInstance3D13/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_jrvw0")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.369, 0, -2.588)
+shape = SubResource("BoxShape3D_tdg7w")
 
-[node name="MeshInstance3D17" type="MeshInstance3D" parent="tempLayout/walls"]
-transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, -3.71658, -3.78735, 5.79867)
+[node name="MeshInstance3D22" type="MeshInstance3D" parent="tempLayout/walls"]
+transform = Transform3D(-1, 1.50996e-07, 6.60024e-15, 0, -4.37114e-08, 1, 1.50996e-07, 1, 4.37114e-08, 4.786, -6.329, 5.795)
 layers = 3
-material_override = ExtResource("10_eqkec")
-mesh = SubResource("BoxMesh_ln8oo")
+material_override = SubResource("StandardMaterial3D_llfvm")
+mesh = SubResource("BoxMesh_amg11")
 skeleton = NodePath("../../..")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="tempLayout/walls/MeshInstance3D17"]
+[node name="StaticBody3D" type="StaticBody3D" parent="tempLayout/walls/MeshInstance3D22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.57258, 9.53674e-07, 2.31678)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="tempLayout/walls/MeshInstance3D17/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_u5vlw")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tempLayout/walls/MeshInstance3D22/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.577, 0, -2.588)
+shape = SubResource("BoxShape3D_tdg7w")
 
 [node name="MeshInstance3D14" type="MeshInstance3D" parent="tempLayout/walls"]
 transform = Transform3D(-8.9407e-08, -0.0838662, -4.36985e-08, -6.1578e-17, -3.66591e-09, 0.999704, -0.999704, 1.30385e-08, 0, -5.41389, 4.37933, 3.95525)
@@ -5032,6 +5183,13 @@ material_override = ExtResource("2_xynmm")
 mesh = SubResource("BoxMesh_v4lj2")
 skeleton = NodePath("../..")
 
+[node name="plankFlooring10" type="MeshInstance3D" parent="walls"]
+transform = Transform3D(0.895711, -0.444635, 0, 0.444635, 0.895711, 0, 0, 0, 1, -13.129, -3.254, 7.578)
+visible = false
+material_override = ExtResource("2_xynmm")
+mesh = SubResource("BoxMesh_vh14g")
+skeleton = NodePath("../..")
+
 [node name="sideWall" type="MeshInstance3D" parent="walls"]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, -1.19996, 3.03324, -2.00543)
 layers = 3
@@ -5261,13 +5419,13 @@ mesh = SubResource("BoxMesh_tdulb")
 skeleton = NodePath("../../walls/backWall")
 
 [node name="MeshInstance3D19" type="MeshInstance3D" parent="woodTrims"]
-transform = Transform3D(-0.443885, 5.85719e-08, -0.896084, 0.896084, -1.97663e-08, -0.443885, -4.37114e-08, -1, -4.37114e-08, -4.17762, -2.11113, 8.06735)
+transform = Transform3D(-0.443885, 5.85719e-08, -0.896084, 0.896084, -1.97663e-08, -0.443885, -4.37114e-08, -1, -4.37114e-08, -10.906, -5.456, 8.058)
 material_override = ExtResource("2_wae18")
 mesh = SubResource("BoxMesh_kkeqi")
 skeleton = NodePath("../../walls/backWall")
 
 [node name="MeshInstance3D20" type="MeshInstance3D" parent="woodTrims"]
-transform = Transform3D(-0.443885, 5.85719e-08, -0.896084, 0.896084, -1.97663e-08, -0.443885, -4.37114e-08, -1, -4.37114e-08, -4.31915, -2.19193, 6.2987)
+transform = Transform3D(-0.443885, 5.85719e-08, -0.896084, 0.896084, -1.97663e-08, -0.443885, -4.37114e-08, -1, -4.37114e-08, -10.902, -5.517, 6.286)
 material_override = ExtResource("2_wae18")
 mesh = SubResource("BoxMesh_kkeqi")
 skeleton = NodePath("../../walls/backWall")
@@ -5427,7 +5585,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("104_o8wle")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="basement/walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48229, -2.35164, 5.56261)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.48229, -2.35164, 5.5941)
 mesh = SubResource("BoxMesh_68p41")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_k6nyi")
@@ -7358,7 +7516,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097
 shape = SubResource("BoxShape3D_sedjo")
 
 [node name="dialogue2" type="Area3D" parent="hands/dialogueCollisions"]
-transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -11.6935, -0.337151, 6.28557)
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -14.848, -0.337151, 6.28557)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
@@ -7368,7 +7526,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097
 shape = SubResource("BoxShape3D_sedjo")
 
 [node name="dialogue3" type="Area3D" parent="hands/dialogueCollisions"]
-transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -15.8842, -0.337151, 6.28557)
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -22.4188, -0.337151, 6.28557)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
@@ -7378,7 +7536,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097
 shape = SubResource("BoxShape3D_sedjo")
 
 [node name="dialogue4" type="Area3D" parent="hands/dialogueCollisions"]
-transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -20.2936, -0.337151, 6.28557)
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -29.3756, -0.337151, 6.28557)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
@@ -7388,7 +7546,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097
 shape = SubResource("BoxShape3D_sedjo")
 
 [node name="dialogue5" type="Area3D" parent="hands/dialogueCollisions"]
-transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -24.2137, -0.337151, 6.28557)
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -36.7834, -0.337151, 6.28557)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
@@ -7398,7 +7556,7 @@ transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097
 shape = SubResource("BoxShape3D_sedjo")
 
 [node name="dialogue6" type="Area3D" parent="hands/dialogueCollisions"]
-transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -28.2558, -0.337151, 6.28557)
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -44.0378, -0.337151, 6.28557)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
@@ -7408,52 +7566,12 @@ transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097
 shape = SubResource("BoxShape3D_sedjo")
 
 [node name="dialogue7" type="Area3D" parent="hands/dialogueCollisions"]
-transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -32.8626, -0.337151, 6.28557)
+transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -53.1684, -0.337151, 6.28557)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
 
 [node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue7"]
-transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
-shape = SubResource("BoxShape3D_sedjo")
-
-[node name="dialogue8" type="Area3D" parent="hands/dialogueCollisions"]
-transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -37.3966, -0.337151, 6.28557)
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-
-[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue8"]
-transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
-shape = SubResource("BoxShape3D_sedjo")
-
-[node name="dialogue9" type="Area3D" parent="hands/dialogueCollisions"]
-transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -42.2837, -0.337151, 6.28557)
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-
-[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue9"]
-transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
-shape = SubResource("BoxShape3D_sedjo")
-
-[node name="dialogue10" type="Area3D" parent="hands/dialogueCollisions"]
-transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -47.6474, -0.337151, 6.28557)
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-
-[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue10"]
-transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
-shape = SubResource("BoxShape3D_sedjo")
-
-[node name="dialogue11" type="Area3D" parent="hands/dialogueCollisions"]
-transform = Transform3D(1.19209e-07, 6.81082e-08, 1, 2.74342, -3.62188e-15, 3.60774e-24, -4.70724e-15, 1.14267, -5.96046e-08, -53.3236, -0.337151, 6.28557)
-collision_layer = 0
-collision_mask = 4
-monitorable = false
-
-[node name="hitbox" type="CollisionShape3D" parent="hands/dialogueCollisions/dialogue11"]
 transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0.160231, -0.30097, 0.105383)
 shape = SubResource("BoxShape3D_sedjo")
 
@@ -7567,10 +7685,6 @@ surface_material_override/1 = SubResource("StandardMaterial3D_nw5kv")
 [connection signal="body_entered" from="hands/dialogueCollisions/dialogue5" to="." method="triggerDialogue" binds= [4]]
 [connection signal="body_entered" from="hands/dialogueCollisions/dialogue6" to="." method="triggerDialogue" binds= [5]]
 [connection signal="body_entered" from="hands/dialogueCollisions/dialogue7" to="." method="triggerDialogue" binds= [6]]
-[connection signal="body_entered" from="hands/dialogueCollisions/dialogue8" to="." method="triggerDialogue" binds= [7]]
-[connection signal="body_entered" from="hands/dialogueCollisions/dialogue9" to="." method="triggerDialogue" binds= [8]]
-[connection signal="body_entered" from="hands/dialogueCollisions/dialogue10" to="." method="triggerDialogue" binds= [9]]
-[connection signal="body_entered" from="hands/dialogueCollisions/dialogue11" to="." method="triggerDialogue" binds= [10]]
 
 [editable path="bedroom/pcWindow/pcOS"]
 [editable path="bedroom/pcWindow/pcOS/shooterMinigame"]
