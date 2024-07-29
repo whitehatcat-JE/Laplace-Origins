@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://c7ud43mdcfxfl"]
+
+[ext_resource type="Texture2D" uid="uid://2pgc1xtsv12d" path="res://assets/2d/internet/weep/eyes.jpg" id="1_q1w26"]
+[ext_resource type="Texture2D" uid="uid://dl80nnchclsac" path="res://assets/2d/3dSprites/decals/TexturesCom_DecalLeakingMossy0008_1_masked_S.png" id="2_bbut2"]
+[ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="3_uvlop"]
+[ext_resource type="PackedScene" uid="uid://g15p8sneaum5" path="res://objects/interaction2D.tscn" id="4_r3r3c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r8ehe"]
+size = Vector2(28.5714, 47.5)
+
+[node name="freeVirus" type="Node2D"]
+
+[node name="browserBackground" type="ColorRect" parent="."]
+clip_children = 2
+offset_left = 544.0
+offset_top = 80.0
+offset_right = 1568.0
+offset_bottom = 576.0
+color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[node name="Eyes" type="Sprite2D" parent="browserBackground"]
+visible = false
+modulate = Color(1, 1, 1, 0.219608)
+clip_children = 2
+position = Vector2(529, 383)
+scale = Vector2(0.681004, 0.681004)
+texture = ExtResource("1_q1w26")
+
+[node name="dirtBackdrop" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.760784, 0, 0, 1)
+position = Vector2(1055, 155)
+rotation = -3.14159
+texture = ExtResource("2_bbut2")
+
+[node name="navBack" type="ColorRect" parent="."]
+offset_left = 544.0
+offset_top = 52.0
+offset_right = 1568.0
+offset_bottom = 83.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="windowName" type="Label" parent="."]
+offset_left = 555.0
+offset_top = 61.0
+offset_right = 2635.0
+offset_bottom = 154.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_uvlop")
+theme_override_font_sizes/font_size = 35
+text = "Free"
+text_overrun_behavior = 1
+max_lines_visible = 1
+
+[node name="quit" type="Label" parent="."]
+offset_left = 1540.0
+offset_top = 61.0
+offset_right = 1563.0
+offset_bottom = 109.0
+scale = Vector2(0.7, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_uvlop")
+theme_override_font_sizes/font_size = 35
+text = "X"
+
+[node name="quitBack" type="ColorRect" parent="quit"]
+modulate = Color(1, 1, 1, 0)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -4.0
+offset_right = 24.0
+offset_bottom = 47.0
+
+[node name="interact" parent="quit" instance=ExtResource("4_r3r3c")]
+collision_layer = 16
+interactionName = "freeQuit"
+
+[node name="hitbox" type="CollisionShape2D" parent="quit/interact"]
+position = Vector2(9.99988, 23.75)
+shape = SubResource("RectangleShape2D_r8ehe")

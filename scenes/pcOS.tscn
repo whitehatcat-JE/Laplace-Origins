@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://csnnn1yw8ccgs"]
+[gd_scene load_steps=51 format=3 uid="uid://csnnn1yw8ccgs"]
 
 [ext_resource type="Script" path="res://scripts/pcOS.gd" id="1_xeigj"]
 [ext_resource type="Texture2D" uid="uid://b8f2gr7p8vcd2" path="res://assets/2d/pcOS/dropBackground.png" id="2_j3svo"]
@@ -22,6 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://kr6tbxg4qy2v" path="res://assets/audio/sfx/shooter/playerHit.mp3" id="17_5bjig"]
 [ext_resource type="PackedScene" uid="uid://bofptlnpouy2f" path="res://scenes/shooterMinigame.tscn" id="17_alprl"]
 [ext_resource type="PackedScene" uid="uid://2dbuwxwcysa4" path="res://scenes/internetBrowser.tscn" id="20_xce36"]
+[ext_resource type="PackedScene" uid="uid://c7ud43mdcfxfl" path="res://scenes/freeVirus.tscn" id="23_lcex6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v6mo5"]
 shader = ExtResource("3_s1hks")
@@ -1329,6 +1330,43 @@ theme_override_font_sizes/font_size = 15
 text = "laplace.exe"
 horizontal_alignment = 1
 
+[node name="free" type="Node2D" parent="homeScreen/filesWindow"]
+position = Vector2(0, 10000)
+
+[node name="freeBack" type="ColorRect" parent="homeScreen/filesWindow/free"]
+modulate = Color(0.333333, 0.333333, 0.333333, 0)
+offset_left = 67.0
+offset_top = 48.0
+offset_right = 127.0
+offset_bottom = 108.0
+
+[node name="freeInteract" parent="homeScreen/filesWindow/free" instance=ExtResource("8_kdwn3")]
+position = Vector2(60, 0)
+interactionName = "freeOpen"
+
+[node name="hitbox" type="CollisionShape2D" parent="homeScreen/filesWindow/free/freeInteract"]
+position = Vector2(36.9999, 78)
+shape = SubResource("RectangleShape2D_cpkom")
+
+[node name="freeIcon" type="Sprite2D" parent="homeScreen/filesWindow/free"]
+modulate = Color(1, 0, 0.027451, 1)
+position = Vector2(96, 73)
+rotation = -0.523598
+scale = Vector2(0.216418, 0.216418)
+texture = ExtResource("10_3u8fc")
+
+[node name="freeName" type="Label" parent="homeScreen/filesWindow/free"]
+offset_left = 70.0
+offset_top = 96.0
+offset_right = 208.0
+offset_bottom = 131.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("11_830h1")
+theme_override_font_sizes/font_size = 15
+text = "free.exe"
+horizontal_alignment = 1
+
 [node name="singularityBack" type="ColorRect" parent="homeScreen/filesWindow"]
 modulate = Color(0.333333, 0.333333, 0.333333, 0)
 offset_left = 68.0
@@ -1729,6 +1767,10 @@ texture = SubResource("ViewportTexture_474pj")
 transform = Transform3D(1, 0, 0, 0, 0.915613, -0.402059, 0, 0.402059, 0.915613, -0.736414, 12.0824, 14.0832)
 
 [node name="internetBrowser" parent="." instance=ExtResource("20_xce36")]
+visible = false
+position = Vector2(0, 20)
+
+[node name="freeVirus" parent="." instance=ExtResource("23_lcex6")]
 visible = false
 position = Vector2(0, 20)
 

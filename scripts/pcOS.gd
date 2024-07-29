@@ -165,6 +165,14 @@ func eventTriggered(event) -> void:
 				$internetBrowser.visible = false
 				$mouse/pointerRay.set_collision_mask_value(2, true)
 				$mouse/pointerRay.set_collision_mask_value(4, false)
+			"freeOpen":
+				$freeVirus.visible = true
+				$mouse/pointerRay.set_collision_mask_value(2, false)
+				$mouse/pointerRay.set_collision_mask_value(5, true)
+			"freeQuit":
+				$freeVirus.visible = false
+				$mouse/pointerRay.set_collision_mask_value(2, true)
+				$mouse/pointerRay.set_collision_mask_value(5, false)
 			"search":
 				if GI.progress > 2:
 					if $internetBrowser/homepage/resultsWeep.position.y > 1000:
@@ -256,6 +264,7 @@ func eventTriggered(event) -> void:
 				$internetBrowser/homepage/homepageAnims.play("hideResultsWeep")
 				$internetBrowser/homepage/homepageAnims.advance(2.0)
 				$internetBrowser/imageResults/imageAnims.play("showImages")
+				$homeScreen/filesWindow/free.position.y = 0
 		if playDefaultClickSFX: clickSFX.play();
 # Checks if mouse currently hovered over button
 func _process(delta) -> void:
@@ -387,6 +396,7 @@ func _on_shooter_minigame_laplace_spawned():
 
 func _on_internet_browser_downloaded_singularity():
 	$homeScreen/filesWindow/singularityExe.position.x = 0
+	$homeScreen/filesWindow/free.position.x = 62
 
 func updateEmailCount():
 	var totalUnreadEmails = 0
