@@ -9,6 +9,7 @@ var invertY:bool = false
 # pcOS
 var playerPos2D:Vector2 = Vector2()
 var shooterActive:bool = false
+var freeActive:bool = false
 var inOS:bool = false
 # Stored basement scene location for when player is in city
 var previousScreen:Node

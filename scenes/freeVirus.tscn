@@ -1,14 +1,52 @@
-[gd_scene load_steps=6 format=3 uid="uid://c7ud43mdcfxfl"]
+[gd_scene load_steps=23 format=3 uid="uid://c7ud43mdcfxfl"]
 
+[ext_resource type="Script" path="res://scripts/freeVirus.gd" id="1_n1ott"]
 [ext_resource type="Texture2D" uid="uid://2pgc1xtsv12d" path="res://assets/2d/internet/weep/eyes.jpg" id="1_q1w26"]
 [ext_resource type="Texture2D" uid="uid://dl80nnchclsac" path="res://assets/2d/3dSprites/decals/TexturesCom_DecalLeakingMossy0008_1_masked_S.png" id="2_bbut2"]
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="3_uvlop"]
 [ext_resource type="PackedScene" uid="uid://g15p8sneaum5" path="res://objects/interaction2D.tscn" id="4_r3r3c"]
+[ext_resource type="Texture2D" uid="uid://o14t7301aibx" path="res://assets/2d/free/groundFloor.png" id="5_xy4h8"]
+[ext_resource type="Script" path="res://scripts/freePlayer.gd" id="7_bx2v0"]
+[ext_resource type="Texture2D" uid="uid://dphcvpl3h6ee7" path="res://assets/2d/shooterMinigame/player.png" id="8_ixwec"]
+[ext_resource type="AudioStream" uid="uid://kr6tbxg4qy2v" path="res://assets/audio/sfx/shooter/playerHit.mp3" id="9_2mevl"]
+[ext_resource type="AudioStream" uid="uid://hh6fi78ndl7j" path="res://assets/audio/sfx/shooter/playerHeal.mp3" id="10_e8ood"]
+[ext_resource type="AudioStream" uid="uid://22ape8t10mla" path="res://assets/audio/sfx/shooter/playerDie.mp3" id="11_vhkvr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8ehe"]
 size = Vector2(28.5714, 47.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a0cwg"]
+size = Vector2(56, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgtg8"]
+size = Vector2(58.1875, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i4t8"]
+size = Vector2(58.1875, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8j07x"]
+size = Vector2(58.1875, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kr2cl"]
+size = Vector2(58.1875, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jolmh"]
+size = Vector2(7.04688, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_467og"]
+size = Vector2(64.7734, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p006u"]
+size = Vector2(58.0938, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yi1rh"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ceal"]
+size = Vector2(24, 24)
+
 [node name="freeVirus" type="Node2D"]
+script = ExtResource("1_n1ott")
 
 [node name="browserBackground" type="ColorRect" parent="."]
 clip_children = 2
@@ -16,7 +54,8 @@ offset_left = 544.0
 offset_top = 80.0
 offset_right = 1568.0
 offset_bottom = 576.0
-color = Color(0.133333, 0.133333, 0.133333, 1)
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="Eyes" type="Sprite2D" parent="browserBackground"]
 visible = false
@@ -38,9 +77,10 @@ offset_left = 544.0
 offset_top = 52.0
 offset_right = 1568.0
 offset_bottom = 83.0
-color = Color(0.4, 0.4, 0.4, 1)
+color = Color(0.4, 0, 0, 1)
 
 [node name="windowName" type="Label" parent="."]
+modulate = Color(1, 0.0352941, 0, 1)
 offset_left = 555.0
 offset_top = 61.0
 offset_right = 2635.0
@@ -54,6 +94,7 @@ text_overrun_behavior = 1
 max_lines_visible = 1
 
 [node name="quit" type="Label" parent="."]
+modulate = Color(1, 0.0352941, 0, 1)
 offset_left = 1540.0
 offset_top = 61.0
 offset_right = 1563.0
@@ -79,3 +120,114 @@ interactionName = "freeQuit"
 [node name="hitbox" type="CollisionShape2D" parent="quit/interact"]
 position = Vector2(9.99988, 23.75)
 shape = SubResource("RectangleShape2D_r8ehe")
+
+[node name="groundFloorLevel" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1045, 331)
+scale = Vector2(4, 4)
+texture = ExtResource("5_xy4h8")
+
+[node name="walls" type="StaticBody2D" parent="groundFloorLevel"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(-16, -7.5)
+shape = SubResource("RectangleShape2D_a0cwg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(-43.5, -32.75)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_a0cwg")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(-36.25, -52.5)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_a0cwg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(-4, 50.5)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_a0cwg")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(-32.5, 22.125)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_fgtg8")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(24.5, 57.0938)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_fgtg8")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(34, 22)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_0i4t8")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(-17, -0.500008)
+shape = SubResource("RectangleShape2D_8j07x")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(-28, 40)
+shape = SubResource("RectangleShape2D_kr2cl")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(-16.5234, 8.5)
+shape = SubResource("RectangleShape2D_jolmh")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(14.3633, -32)
+shape = SubResource("RectangleShape2D_467og")
+
+[node name="CollisionShape2D15" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(-46.25, -51)
+shape = SubResource("RectangleShape2D_467og")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(53.1875, 28.5)
+shape = SubResource("RectangleShape2D_fgtg8")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(57.0469, -7.5)
+shape = SubResource("RectangleShape2D_p006u")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(46.5, -3.75)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_p006u")
+
+[node name="player" type="CharacterBody2D" parent="."]
+position = Vector2(978, 395)
+collision_layer = 16
+collision_mask = 16
+script = ExtResource("7_bx2v0")
+
+[node name="sprite" type="Sprite2D" parent="player"]
+texture_filter = 1
+scale = Vector2(4, 4)
+texture = ExtResource("8_ixwec")
+
+[node name="hitbox" type="CollisionShape2D" parent="player"]
+shape = SubResource("RectangleShape2D_yi1rh")
+
+[node name="enemyScanner" type="Area2D" parent="player"]
+collision_layer = 0
+collision_mask = 96
+monitorable = false
+
+[node name="hitbox" type="CollisionShape2D" parent="player/enemyScanner"]
+shape = SubResource("RectangleShape2D_2ceal")
+
+[node name="hit" type="AudioStreamPlayer" parent="player" groups=["sfx"]]
+stream = ExtResource("9_2mevl")
+
+[node name="heal" type="AudioStreamPlayer" parent="player" groups=["sfx"]]
+stream = ExtResource("10_e8ood")
+
+[node name="die" type="AudioStreamPlayer" parent="player" groups=["sfx"]]
+stream = ExtResource("11_vhkvr")
+
+[connection signal="area_entered" from="player/enemyScanner" to="player" method="_on_enemy_scanner_area_entered"]
+[connection signal="body_entered" from="player/enemyScanner" to="player" method="_on_enemy_scanner_body_entered"]

@@ -3810,6 +3810,7 @@ text_overrun_behavior = 1
 max_lines_visible = 1
 
 [node name="quit" type="Label" parent="."]
+modulate = Color(1, 0.0352941, 0, 1)
 offset_left = 1540.0
 offset_top = 61.0
 offset_right = 1563.0

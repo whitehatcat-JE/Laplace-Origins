@@ -166,10 +166,12 @@ func eventTriggered(event) -> void:
 				$mouse/pointerRay.set_collision_mask_value(2, true)
 				$mouse/pointerRay.set_collision_mask_value(4, false)
 			"freeOpen":
+				GI.freeActive = true
 				$freeVirus.visible = true
 				$mouse/pointerRay.set_collision_mask_value(2, false)
 				$mouse/pointerRay.set_collision_mask_value(5, true)
 			"freeQuit":
+				GI.freeActive = false
 				$freeVirus.visible = false
 				$mouse/pointerRay.set_collision_mask_value(2, true)
 				$mouse/pointerRay.set_collision_mask_value(5, false)
@@ -286,6 +288,8 @@ func _process(delta) -> void:
 			"filesOpen": $homeScreen/menuBar/files/fileBack.modulate = "ffffff00";
 			"filesQuit": $homeScreen/filesWindow/quit/quitBack.modulate = "ffffff00";
 			"laplaceExe": $homeScreen/filesWindow/laplaceBack.modulate = "ffffff00";
+			"freeOpen": $homeScreen/filesWindow/free/freeBack.modulate = "ffffff00";
+			"freeQuit": $freeVirus/quit/quitBack.modulate = "ffffff00";
 			"singularityExe": $homeScreen/filesWindow/singularityBack.modulate = "ffffff00";
 			"cmdQuit": $homeScreen/consoleWindow/quit/quitBack.modulate = "ffffff00";
 			"emailOpen": $homeScreen/menuBar/email/emailBack.modulate = "ffffff00";
@@ -314,6 +318,8 @@ func _process(delta) -> void:
 			"filesOpen": $homeScreen/menuBar/files/fileBack.modulate = "969696d5";
 			"filesQuit": $homeScreen/filesWindow/quit/quitBack.modulate = "969696d5";
 			"laplaceExe": $homeScreen/filesWindow/laplaceBack.modulate = "969696d5";
+			"freeOpen": $homeScreen/filesWindow/free/freeBack.modulate = "969696d5";
+			"freeQuit": $freeVirus/quit/quitBack.modulate = "969696d5";
 			"singularityExe": $homeScreen/filesWindow/singularityBack.modulate = "969696d5";
 			"cmdQuit": $homeScreen/consoleWindow/quit/quitBack.modulate = "969696d5";
 			"emailOpen": $homeScreen/menuBar/email/emailBack.modulate = "969696d5";
