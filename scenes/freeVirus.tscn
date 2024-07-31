@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c7ud43mdcfxfl"]
+[gd_scene load_steps=34 format=3 uid="uid://c7ud43mdcfxfl"]
 
 [ext_resource type="Script" path="res://scripts/freeVirus.gd" id="1_n1ott"]
 [ext_resource type="Texture2D" uid="uid://2pgc1xtsv12d" path="res://assets/2d/internet/weep/eyes.jpg" id="1_q1w26"]
@@ -11,6 +11,10 @@
 [ext_resource type="AudioStream" uid="uid://kr6tbxg4qy2v" path="res://assets/audio/sfx/shooter/playerHit.mp3" id="9_2mevl"]
 [ext_resource type="AudioStream" uid="uid://hh6fi78ndl7j" path="res://assets/audio/sfx/shooter/playerHeal.mp3" id="10_e8ood"]
 [ext_resource type="AudioStream" uid="uid://22ape8t10mla" path="res://assets/audio/sfx/shooter/playerDie.mp3" id="11_vhkvr"]
+[ext_resource type="Texture2D" uid="uid://cv5ro42smq6hu" path="res://assets/2d/free/dialogueBox.png" id="12_dfqfr"]
+[ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="13_66unh"]
+[ext_resource type="Texture2D" uid="uid://cpxqixc4oihlr" path="res://assets/2d/free/interactBox.png" id="14_f283o"]
+[ext_resource type="Texture2D" uid="uid://cqdgik44c4rba" path="res://assets/2d/free/interactHovered.png" id="15_ruut4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8ehe"]
 size = Vector2(28.5714, 47.5)
@@ -24,14 +28,14 @@ size = Vector2(58.1875, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i4t8"]
 size = Vector2(58.1875, 12)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8j07x"]
-size = Vector2(58.1875, 13)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2ghi"]
+size = Vector2(49.0938, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kr5fs"]
+size = Vector2(6, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kr2cl"]
 size = Vector2(58.1875, 20)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jolmh"]
-size = Vector2(7.04688, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_467og"]
 size = Vector2(64.7734, 2)
@@ -44,6 +48,120 @@ size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ceal"]
 size = Vector2(24, 24)
+
+[sub_resource type="Animation" id="Animation_ikoxa"]
+resource_name = "appear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dialogueBox:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 4), Vector2(4, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dialogueText:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.8, 2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xyx3h"]
+_data = {
+"appear": SubResource("Animation_ikoxa")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y6t30"]
+size = Vector2(128.286, 40)
+
+[sub_resource type="Animation" id="Animation_o27t7"]
+resource_name = "hide"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("interact:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10000, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j0rlr"]
+resource_name = "show"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0.2, 0), Vector2(0.2, 1.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("interact:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8skas"]
+_data = {
+"hide": SubResource("Animation_o27t7"),
+"show": SubResource("Animation_j0rlr")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayt6x"]
+size = Vector2(36, 92)
 
 [node name="freeVirus" type="Node2D"]
 script = ExtResource("1_n1ott")
@@ -166,16 +284,16 @@ rotation = -1.5708
 shape = SubResource("RectangleShape2D_0i4t8")
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="groundFloorLevel/walls"]
-position = Vector2(-17, -0.500008)
-shape = SubResource("RectangleShape2D_8j07x")
+position = Vector2(-21.5469, -0.500008)
+shape = SubResource("RectangleShape2D_e2ghi")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="groundFloorLevel/walls"]
+position = Vector2(5, -3.5)
+shape = SubResource("RectangleShape2D_kr5fs")
 
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="groundFloorLevel/walls"]
 position = Vector2(-28, 40)
 shape = SubResource("RectangleShape2D_kr2cl")
-
-[node name="CollisionShape2D13" type="CollisionShape2D" parent="groundFloorLevel/walls"]
-position = Vector2(-16.5234, 8.5)
-shape = SubResource("RectangleShape2D_jolmh")
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="groundFloorLevel/walls"]
 position = Vector2(14.3633, -32)
@@ -200,7 +318,7 @@ shape = SubResource("RectangleShape2D_p006u")
 
 [node name="player" type="CharacterBody2D" parent="."]
 position = Vector2(978, 395)
-collision_layer = 16
+collision_layer = 144
 collision_mask = 16
 script = ExtResource("7_bx2v0")
 
@@ -229,5 +347,93 @@ stream = ExtResource("10_e8ood")
 [node name="die" type="AudioStreamPlayer" parent="player" groups=["sfx"]]
 stream = ExtResource("11_vhkvr")
 
+[node name="dialoguePopup" type="Node2D" parent="."]
+position = Vector2(1036, 303)
+scale = Vector2(1, 1e-05)
+
+[node name="dialogueBox" type="Sprite2D" parent="dialoguePopup"]
+texture_filter = 1
+position = Vector2(24, -2)
+scale = Vector2(4, 4)
+texture = ExtResource("12_dfqfr")
+
+[node name="dialogueText" type="Label" parent="dialoguePopup"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+texture_filter = 1
+offset_left = -319.0
+offset_top = -34.0
+offset_right = 3116.0
+offset_bottom = 286.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("13_66unh")
+theme_override_font_sizes/font_size = 300
+text = "Missing Key"
+horizontal_alignment = 1
+
+[node name="dialogueAnim" type="AnimationPlayer" parent="dialoguePopup"]
+libraries = {
+"": SubResource("AnimationLibrary_xyx3h")
+}
+
+[node name="groundInteractionButtons" type="Node2D" parent="."]
+
+[node name="door" type="Node2D" parent="groundInteractionButtons"]
+position = Vector2(1309, 251)
+scale = Vector2(1, 1e-05)
+
+[node name="interactBox" type="Sprite2D" parent="groundInteractionButtons/door"]
+texture_filter = 1
+position = Vector2(0, -2)
+scale = Vector2(4, 4)
+texture = ExtResource("14_f283o")
+
+[node name="interactHovered" type="Sprite2D" parent="groundInteractionButtons/door"]
+visible = false
+texture_filter = 1
+position = Vector2(0, -2)
+scale = Vector2(4, 4)
+texture = ExtResource("15_ruut4")
+
+[node name="interact" parent="groundInteractionButtons/door" instance=ExtResource("4_r3r3c")]
+position = Vector2(10000, 0)
+collision_layer = 16
+interactionName = "doorInteract"
+
+[node name="hitbox" type="CollisionShape2D" parent="groundInteractionButtons/door/interact"]
+position = Vector2(-0.142944, -2)
+shape = SubResource("RectangleShape2D_y6t30")
+
+[node name="interactText" type="Label" parent="groundInteractionButtons/door"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+texture_filter = 1
+offset_left = -60.0
+offset_top = -18.0
+offset_right = 540.0
+offset_bottom = 142.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("13_66unh")
+theme_override_font_sizes/font_size = 150
+text = "Interact"
+horizontal_alignment = 1
+
+[node name="buttonAnims" type="AnimationPlayer" parent="groundInteractionButtons/door"]
+libraries = {
+"": SubResource("AnimationLibrary_8skas")
+}
+
+[node name="groundInteractionPoints" type="Node2D" parent="."]
+
+[node name="door" type="Area2D" parent="groundInteractionPoints"]
+position = Vector2(1210, 251)
+collision_layer = 0
+collision_mask = 128
+
+[node name="hitbox" type="CollisionShape2D" parent="groundInteractionPoints/door"]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_ayt6x")
+
 [connection signal="area_entered" from="player/enemyScanner" to="player" method="_on_enemy_scanner_area_entered"]
 [connection signal="body_entered" from="player/enemyScanner" to="player" method="_on_enemy_scanner_body_entered"]
+[connection signal="animation_finished" from="dialoguePopup/dialogueAnim" to="." method="_on_dialogue_anim_animation_finished"]
+[connection signal="body_entered" from="groundInteractionPoints/door" to="." method="_on_door_body_entered"]
+[connection signal="body_exited" from="groundInteractionPoints/door" to="." method="_on_door_body_exited"]

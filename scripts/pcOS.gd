@@ -158,6 +158,7 @@ func eventTriggered(event) -> void:
 				$clickRetroSFX.play()
 				$shooterMinigame.begin()
 			"internetOpen":
+				$homeScreen/filesWindow/free.position.y = 0
 				$internetBrowser.visible = true
 				$mouse/pointerRay.set_collision_mask_value(2, false)
 				$mouse/pointerRay.set_collision_mask_value(4, true)
@@ -175,6 +176,8 @@ func eventTriggered(event) -> void:
 				$freeVirus.visible = false
 				$mouse/pointerRay.set_collision_mask_value(2, true)
 				$mouse/pointerRay.set_collision_mask_value(5, false)
+			"doorInteract":
+				$freeVirus.showDialogue("door")
 			"search":
 				if GI.progress > 2:
 					if $internetBrowser/homepage/resultsWeep.position.y > 1000:
@@ -290,6 +293,7 @@ func _process(delta) -> void:
 			"laplaceExe": $homeScreen/filesWindow/laplaceBack.modulate = "ffffff00";
 			"freeOpen": $homeScreen/filesWindow/free/freeBack.modulate = "ffffff00";
 			"freeQuit": $freeVirus/quit/quitBack.modulate = "ffffff00";
+			"doorInteract": $freeVirus/groundInteractionButtons/door/interactHovered.visible = false
 			"singularityExe": $homeScreen/filesWindow/singularityBack.modulate = "ffffff00";
 			"cmdQuit": $homeScreen/consoleWindow/quit/quitBack.modulate = "ffffff00";
 			"emailOpen": $homeScreen/menuBar/email/emailBack.modulate = "ffffff00";
@@ -320,6 +324,7 @@ func _process(delta) -> void:
 			"laplaceExe": $homeScreen/filesWindow/laplaceBack.modulate = "969696d5";
 			"freeOpen": $homeScreen/filesWindow/free/freeBack.modulate = "969696d5";
 			"freeQuit": $freeVirus/quit/quitBack.modulate = "969696d5";
+			"doorInteract": $freeVirus/groundInteractionButtons/door/interactHovered.visible = true
 			"singularityExe": $homeScreen/filesWindow/singularityBack.modulate = "969696d5";
 			"cmdQuit": $homeScreen/consoleWindow/quit/quitBack.modulate = "969696d5";
 			"emailOpen": $homeScreen/menuBar/email/emailBack.modulate = "969696d5";
