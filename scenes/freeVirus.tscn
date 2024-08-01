@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c7ud43mdcfxfl"]
+[gd_scene load_steps=46 format=3 uid="uid://c7ud43mdcfxfl"]
 
 [ext_resource type="Script" path="res://scripts/freeVirus.gd" id="1_n1ott"]
 [ext_resource type="Texture2D" uid="uid://2pgc1xtsv12d" path="res://assets/2d/internet/weep/eyes.jpg" id="1_q1w26"]
@@ -8,10 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://o14t7301aibx" path="res://assets/2d/free/groundFloor.png" id="5_xy4h8"]
 [ext_resource type="Script" path="res://scripts/freePlayer.gd" id="7_bx2v0"]
 [ext_resource type="Texture2D" uid="uid://dl221lxaen0tn" path="res://assets/2d/free/basement.png" id="7_dlpe1"]
-[ext_resource type="Texture2D" uid="uid://dphcvpl3h6ee7" path="res://assets/2d/shooterMinigame/player.png" id="8_ixwec"]
 [ext_resource type="Texture2D" uid="uid://c05aufysx3oyn" path="res://assets/2d/free/basementKey.png" id="8_nwdic"]
 [ext_resource type="AudioStream" uid="uid://kr6tbxg4qy2v" path="res://assets/audio/sfx/shooter/playerHit.mp3" id="9_2mevl"]
 [ext_resource type="AudioStream" uid="uid://hh6fi78ndl7j" path="res://assets/audio/sfx/shooter/playerHeal.mp3" id="10_e8ood"]
+[ext_resource type="Shader" path="res://scripts/shaders/cartridgeError.gdshader" id="10_ilkc1"]
+[ext_resource type="Texture2D" uid="uid://cfrdsaupybk6t" path="res://assets/2d/shooterMinigame/playerCorrupt.png" id="11_0tpyg"]
 [ext_resource type="AudioStream" uid="uid://22ape8t10mla" path="res://assets/audio/sfx/shooter/playerDie.mp3" id="11_vhkvr"]
 [ext_resource type="Texture2D" uid="uid://cv5ro42smq6hu" path="res://assets/2d/free/dialogueBox.png" id="12_dfqfr"]
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="13_66unh"]
@@ -65,6 +66,76 @@ size = Vector2(9.99994, 9.99986)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esbmd"]
 size = Vector2(13, 14)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yplhu"]
+shader = ExtResource("10_ilkc1")
+shader_parameter/red_displacement = 0.0
+shader_parameter/green_displacement = 0.0
+shader_parameter/blue_displacement = 0.0
+shader_parameter/ghost = 0.0
+shader_parameter/intensity = 0.0
+shader_parameter/scan_effect = 0.0
+shader_parameter/distortion_effect = 0.0
+shader_parameter/negative_effect = 0.0
+
+[sub_resource type="Animation" id="Animation_bodfp"]
+resource_name = "distort"
+length = 3.0
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/distortion_effect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.2, 1.9, 1.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.2, 0.0, 0.5, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/scan_effect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.65, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 0, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:material:shader_parameter/red_displacement")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, 0.4, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:material:shader_parameter/ghost")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iial6"]
+_data = {
+"distort": SubResource("Animation_bodfp")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yi1rh"]
 size = Vector2(32, 32)
@@ -447,13 +518,23 @@ script = ExtResource("7_bx2v0")
 
 [node name="sprite" type="Sprite2D" parent="player"]
 texture_filter = 1
+material = SubResource("ShaderMaterial_yplhu")
 scale = Vector2(4, 4)
-texture = ExtResource("8_ixwec")
+texture = ExtResource("11_0tpyg")
+
+[node name="distortAnim" type="AnimationPlayer" parent="player/sprite"]
+libraries = {
+"": SubResource("AnimationLibrary_iial6")
+}
+autoplay = "distort"
+speed_scale = 0.5
 
 [node name="hitbox" type="CollisionShape2D" parent="player"]
+visible = false
 shape = SubResource("RectangleShape2D_yi1rh")
 
 [node name="enemyScanner" type="Area2D" parent="player"]
+visible = false
 collision_layer = 0
 collision_mask = 96
 monitorable = false

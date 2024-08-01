@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://2dbuwxwcysa4"]
+[gd_scene load_steps=114 format=3 uid="uid://2dbuwxwcysa4"]
 
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="1_bwl2d"]
 [ext_resource type="Script" path="res://scripts/internetBrowser.gd" id="1_e8bkl"]
@@ -320,6 +320,18 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("quit:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0.0431373, 0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mqsle"]
@@ -3769,10 +3781,142 @@ tracks/9/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_hja1x"]
+resource_name = "downloadFree"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../gameResults/article1Open/downloadButton/downloadButtonText:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["[font_size=48][b][p align=center]Downloaded!"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 3.6, 4),
+"transitions": PackedFloat32Array(-2, 1, 2, 1),
+"update": 0,
+"values": [Color(1, 0, 0.00784314, 0), Color(1, 0.156863, 0.156863, 1), Color(1, 0.156863, 0.156863, 1), Color(1, 0, 0.00784314, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("downloadBack2:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 3.4, 3.6),
+"transitions": PackedFloat32Array(1, -2, 1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, -1.19209e-07), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("progressText:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 3, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": ["", "1 In Progress", "1 In Progress", "Completed!"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("progressBarFront:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 16), Vector2(196, 16)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("progressName:text")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.9, 1, 1.8, 1.9, 2.2, 2.3, 3, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": ["Initializing...
+", "Initializing...
+", "Downloading...", "Downloading...", "Overriding Admin...", "Overriding Admin...", "I see you.", "I see you.", "Installing...", "Installing...", "Done."]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 3.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [3.0],
+"method": &"increaseFreeProgressCount"
+}, {
+"args": [],
+"method": &"installFree"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../gameResults/article1Open/downloadButton:self_modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.203922, 0.25098, 0.364706, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../gameResults/article1Open/downloadButton/interact:monitorable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../gameResults/article1Open/downloadButton/interact:collision_layer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_is7og"]
 _data = {
 "RESET": SubResource("Animation_7x44g"),
-"download": SubResource("Animation_s2bnh")
+"download": SubResource("Animation_s2bnh"),
+"downloadFree": SubResource("Animation_hja1x")
 }
 
 [node name="internetBrowser" type="Node2D"]
@@ -5739,6 +5883,7 @@ position = Vector2(10, 24)
 texture = ExtResource("10_acx1e")
 
 [node name="article1" type="Node2D" parent="gameResults"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(611, 152)
 
 [node name="hoverBackdropA" type="ColorRect" parent="gameResults/article1"]
@@ -5809,6 +5954,7 @@ position = Vector2(-1130, -216.667)
 shape = SubResource("RectangleShape2D_o2sfj")
 
 [node name="article2" type="Node2D" parent="gameResults"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(611, 255)
 
 [node name="hoverBackdropA" type="ColorRect" parent="gameResults/article2"]
@@ -5873,6 +6019,7 @@ position = Vector2(-1130, -216.667)
 shape = SubResource("RectangleShape2D_hbb7m")
 
 [node name="article3" type="Node2D" parent="gameResults"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(611, 360)
 
 [node name="hoverBackdropA" type="ColorRect" parent="gameResults/article3"]
@@ -6087,6 +6234,91 @@ text_overrun_behavior = 1
 max_lines_visible = 1
 
 [node name="downloadAnim" type="AnimationPlayer" parent="download"]
+libraries = {
+"": SubResource("AnimationLibrary_is7og")
+}
+
+[node name="downloadFree" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="DownloadIcon" type="Sprite2D" parent="downloadFree"]
+position = Vector2(1521, 71)
+scale = Vector2(0.121095, 0.121095)
+texture = ExtResource("23_px4ai")
+
+[node name="progressText" type="Label" parent="downloadFree"]
+offset_left = 1399.0
+offset_top = 61.0
+offset_right = 1687.0
+offset_bottom = 154.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "1 In Progress"
+horizontal_alignment = 2
+text_overrun_behavior = 1
+max_lines_visible = 1
+
+[node name="downloadBack" type="ColorRect" parent="downloadFree"]
+offset_left = 1346.0
+offset_top = 87.0
+offset_right = 1561.0
+offset_bottom = 132.0
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="downloadBack2" type="ColorRect" parent="downloadFree"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 1521.0
+offset_top = 79.0
+offset_right = 1552.0
+offset_bottom = 107.0
+rotation = 0.785397
+color = Color(0.4, 0.4, 0.4, 1)
+
+[node name="progressBarBack" type="ColorRect" parent="downloadFree"]
+offset_left = 1355.0
+offset_top = 95.0
+offset_right = 1551.0
+offset_bottom = 111.0
+color = Color(0.133333, 0.164706, 0.239216, 1)
+
+[node name="progressBarFront" type="ColorRect" parent="downloadFree"]
+offset_left = 1355.0
+offset_top = 95.0
+offset_right = 1551.0
+offset_bottom = 111.0
+color = Color(0.972549, 0.972549, 0.972549, 1)
+
+[node name="progressName" type="Label" parent="downloadFree"]
+offset_left = 1355.0
+offset_top = 111.0
+offset_right = 1783.0
+offset_bottom = 204.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "Downloading..."
+text_overrun_behavior = 1
+max_lines_visible = 1
+
+[node name="freeProgressCount" type="Label" parent="downloadFree"]
+unique_name_in_owner = true
+offset_left = 1425.0
+offset_top = 111.0
+offset_right = 1740.0
+offset_bottom = 204.0
+scale = Vector2(0.4, 0.4)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("1_bwl2d")
+theme_override_font_sizes/font_size = 35
+text = "0%"
+horizontal_alignment = 2
+text_overrun_behavior = 1
+max_lines_visible = 1
+
+[node name="downloadAnim" type="AnimationPlayer" parent="downloadFree"]
 libraries = {
 "": SubResource("AnimationLibrary_is7og")
 }

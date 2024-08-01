@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://csnnn1yw8ccgs"]
+[gd_scene load_steps=54 format=3 uid="uid://csnnn1yw8ccgs"]
 
 [ext_resource type="Script" path="res://scripts/pcOS.gd" id="1_xeigj"]
 [ext_resource type="Texture2D" uid="uid://b8f2gr7p8vcd2" path="res://assets/2d/pcOS/dropBackground.png" id="2_j3svo"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://dphcvpl3h6ee7" path="res://assets/2d/shooterMinigame/player.png" id="14_6iou8"]
 [ext_resource type="Shader" path="res://scripts/shaders/glitch.gdshader" id="14_8bkd7"]
 [ext_resource type="AudioStream" uid="uid://biipabva8sjck" path="res://assets/audio/sfx/menus/click.ogg" id="15_0lrd5"]
+[ext_resource type="Texture2D" uid="uid://fi6y0urn75jp" path="res://assets/2d/free/freeIcon.png" id="15_3xxxy"]
 [ext_resource type="AudioStream" uid="uid://b4jakrr4um7fl" path="res://assets/audio/sfx/menus/denied.ogg" id="16_4t7hq"]
 [ext_resource type="AudioStream" uid="uid://kr6tbxg4qy2v" path="res://assets/audio/sfx/shooter/playerHit.mp3" id="17_5bjig"]
 [ext_resource type="PackedScene" uid="uid://bofptlnpouy2f" path="res://scenes/shooterMinigame.tscn" id="17_alprl"]
@@ -660,6 +661,40 @@ _data = {
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpkom"]
 size = Vector2(60, 60)
+
+[sub_resource type="Animation" id="Animation_moxm5"]
+resource_name = "alternateText"
+length = 1.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.9, 0.9001, 0.9002, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": ["free.exe", "free.exe", "me.exe", "me.exe", "me.exe", "me.exe", "me.ex e", "me.exe", "free.exe"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0.027451, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f8jhj"]
+_data = {
+"alternateText": SubResource("Animation_moxm5")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xewah"]
 size = Vector2(190, 44)
@@ -1349,11 +1384,10 @@ position = Vector2(36.9999, 78)
 shape = SubResource("RectangleShape2D_cpkom")
 
 [node name="freeIcon" type="Sprite2D" parent="homeScreen/filesWindow/free"]
-modulate = Color(1, 0, 0.027451, 1)
-position = Vector2(96, 73)
-rotation = -0.523598
-scale = Vector2(0.216418, 0.216418)
-texture = ExtResource("10_3u8fc")
+modulate = Color(1, 0.313726, 0.333333, 1)
+position = Vector2(97, 72)
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("15_3xxxy")
 
 [node name="freeName" type="Label" parent="homeScreen/filesWindow/free"]
 offset_left = 70.0
@@ -1366,6 +1400,13 @@ theme_override_fonts/font = ExtResource("11_830h1")
 theme_override_font_sizes/font_size = 15
 text = "free.exe"
 horizontal_alignment = 1
+
+[node name="freeTextAnim" type="AnimationPlayer" parent="homeScreen/filesWindow/free/freeName"]
+libraries = {
+"": SubResource("AnimationLibrary_f8jhj")
+}
+autoplay = "alternateText"
+speed_scale = 0.2
 
 [node name="singularityBack" type="ColorRect" parent="homeScreen/filesWindow"]
 modulate = Color(0.333333, 0.333333, 0.333333, 0)
@@ -1780,6 +1821,7 @@ position = Vector2(0, 20)
 [connection signal="hideMouse" from="shooterMinigame" to="." method="_on_shooter_minigame_hide_mouse"]
 [connection signal="laplaceSpawned" from="shooterMinigame" to="." method="_on_shooter_minigame_laplace_spawned"]
 [connection signal="showMouse" from="shooterMinigame" to="." method="_on_shooter_minigame_show_mouse"]
+[connection signal="downloadedFree" from="internetBrowser" to="." method="_on_internet_browser_downloaded_free"]
 [connection signal="downloadedSingularity" from="internetBrowser" to="." method="_on_internet_browser_downloaded_singularity"]
 [connection signal="enableWifi" from="internetBrowser" to="." method="_on_internet_browser_enable_wifi"]
 

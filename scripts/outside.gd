@@ -28,4 +28,7 @@ func _on_reveal_trigger_body_entered(body) -> void:
 # Restarts game once ending played
 func _on_look_up_anim_animation_finished(anim_name) -> void:
 	GI.progress = 0
+	GI.hasFreeKey = false
+	GI.pianoDoorUnlocked = false
+	GI.freeDownloaded = false
 	get_tree().change_scene_to_file("res://scenes/home.tscn")

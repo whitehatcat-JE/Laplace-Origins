@@ -1,4 +1,4 @@
-[gd_scene load_steps=498 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=504 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -176,6 +176,7 @@
 [ext_resource type="Texture2D" uid="uid://c0rm0p86imx5j" path="res://assets/2d/3dSprites/vines.png" id="143_b8ogo"]
 [ext_resource type="AudioStream" uid="uid://d3k75xyvaydjg" path="res://assets/audio/sfx/rockGrinding.mp3" id="144_xag2p"]
 [ext_resource type="AudioStream" uid="uid://buv6wcekvl551" path="res://assets/audio/music/nocturne.mp3" id="146_hevbh"]
+[ext_resource type="ArrayMesh" uid="uid://cnlwt7d7gdegt" path="res://assets/3d/free/key.obj" id="147_32n83"]
 [ext_resource type="Texture2D" uid="uid://bpecj4jeahrox" path="res://assets/2d/menus/gameView.png" id="148_eln84"]
 [ext_resource type="Script" path="res://scripts/mainMenu.gd" id="148_kk8v6"]
 [ext_resource type="Material" uid="uid://cjx01qsa37itq" path="res://assets/3d/laplace/laplaceArms.tres" id="149_safq1"]
@@ -1824,6 +1825,25 @@ shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_nej1a"]
+
+[sub_resource type="Gradient" id="Gradient_puivf"]
+colors = PackedColorArray(0.839844, 0.605751, 0.369441, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5l7ds"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b6b7s"]
+color_ramp = SubResource("Gradient_puivf")
+noise = SubResource("FastNoiseLite_5l7ds")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8o7w"]
+albedo_color = Color(0.0509804, 0.0470588, 0.0313726, 1)
+albedo_texture = SubResource("NoiseTexture2D_b6b7s")
+metallic = 0.71
+metallic_specular = 0.58
+roughness = 0.36
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o4k3m"]
+size = Vector3(7.9907, 1.12652, 8.63566)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_yt274"]
 viewport_path = NodePath("basement/passcode")
@@ -6534,6 +6554,21 @@ transform = Transform3D(1.05211e-06, 0, -1, 0, 16.2749, 0, 8.02314, 0, 1.31134e-
 material_override = SubResource("StandardMaterial3D_a5xvb")
 mesh = SubResource("BoxMesh_nej1a")
 
+[node name="key" type="MeshInstance3D" parent="basement"]
+transform = Transform3D(0.0433013, 0, -0.025, 0, 0.05, 0, 0.025, 0, 0.0433013, -0.167, -103.379, 0.609)
+mesh = ExtResource("147_32n83")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_o8o7w")
+
+[node name="interaction" parent="basement/key" instance=ExtResource("13_pkg5h")]
+transform = Transform3D(0, 0, 1, 0, 1, 0, -1, 0, 0, 0.203036, 1.10896, -0.0386257)
+minDistance = 2.0
+interactionName = "freeKey"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="basement/key/interaction"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 0.999988, 0, 0.707107, 0, 0.707107, -1.39184, -0.849586, -0.481502)
+shape = SubResource("BoxShape3D_o4k3m")
+
 [node name="hologramModule" type="MeshInstance3D" parent="basement"]
 transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, -9.41294, -1.87007, 6.09937)
 mesh = ExtResource("103_eirby")
@@ -8371,6 +8406,7 @@ speed_scale = 0.2
 
 [connection signal="exitOS" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_exit_os"]
 [connection signal="showLaplaceWall" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_show_laplace_wall"]
+[connection signal="spawnKey" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_spawn_key"]
 [connection signal="updatedProgress" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_updated_progress"]
 [connection signal="schrodingerTransition" from="bedroom/pcWindow/pcOS/shooterMinigame" to="." method="_on_shooter_minigame_schrodinger_transition"]
 [connection signal="exitSchrodinger" from="bedroom/pcWindow/pcOS/shooterMinigame/schrodingerView/schrodingerViewport/schrodinger" to="." method="_on_schrodinger_exit_schrodinger"]

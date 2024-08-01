@@ -2,6 +2,11 @@ extends Node2D
 
 signal unlockDoor
 
+func hideKey():
+	$basementInteractionButtons/key.position.y = 10000
+	$basementLevel/basementInteractionPoints/basementKeyInteraction.position.y = 10000
+	$basementLevel/basementKey.visible = false
+
 func showDialogue(dialogueName:String):
 	match dialogueName:
 		"door":
@@ -11,7 +16,6 @@ func showDialogue(dialogueName:String):
 				$dialoguePopup/dialogueText.text = "Door Unlocked"
 				emit_signal("unlockDoor")
 			else:
-				GI.hasFreeKey = true
 				$dialoguePopup/dialogueText.text = "Missing Key"
 		"key":
 			$dialoguePopup/dialogueText.text = "Wrong Dimension"

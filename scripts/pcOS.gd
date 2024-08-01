@@ -3,6 +3,7 @@ extends Node2D
 signal exitOS
 signal updatedProgress
 signal showLaplaceWall
+signal spawnKey
 # State variables
 var mouseSensitivity:float = 0.5
 var time:int = 0
@@ -271,7 +272,9 @@ func eventTriggered(event) -> void:
 				$internetBrowser/homepage/homepageAnims.play("hideResultsWeep")
 				$internetBrowser/homepage/homepageAnims.advance(2.0)
 				$internetBrowser/imageResults/imageAnims.play("showImages")
-				$homeScreen/filesWindow/free.position.y = 0
+				if !GI.freeDownloaded:
+					GI.freeDownloaded = true
+					$internetBrowser/downloadFree/downloadAnim.play("downloadFree")
 		if playDefaultClickSFX: clickSFX.play();
 # Checks if mouse currently hovered over button
 func _process(delta) -> void:
@@ -434,7 +437,6 @@ func unlockFate():
 	$homeScreen/filesWindow/singularityExe/singularityName.text = "   fate.exe"
 	$homeScreen/filesWindow/singularityExe/singularityName.modulate = Color.RED
 
-
 func _on_shooter_minigame_show_mouse():
 	$mouse.visible = true
 	$mouse/pointerRay.enabled = true
@@ -442,3 +444,7 @@ func _on_shooter_minigame_show_mouse():
 func _on_shooter_minigame_hide_mouse():
 	$mouse.visible = false
 	$mouse/pointerRay.enabled = false
+
+func _on_internet_browser_downloaded_free():
+	$homeScreen/filesWindow/free.position.y = 0
+	emit_signal("spawnKey")

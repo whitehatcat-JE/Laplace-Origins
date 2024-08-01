@@ -1,6 +1,7 @@
 extends Node2D
 
 signal downloadedSingularity
+signal downloadedFree
 signal enableWifi
 
 func increaseProgressCount(time:float):
@@ -9,8 +10,14 @@ func increaseProgressCount(time:float):
 		%progressCount.text = str(num) + "%"
 		await get_tree().create_timer(pauseTime).timeout
 
-func installSingularity():
-	emit_signal("downloadedSingularity")
+func increaseFreeProgressCount(time:float):
+	var pauseTime:float = time / 101.0
+	for num in range(101):
+		%freeProgressCount.text = str(num) + "%"
+		await get_tree().create_timer(pauseTime).timeout
+
+func installSingularity(): emit_signal("downloadedSingularity");
+func installFree(): emit_signal("downloadedFree");
 
 func disableInternet():
 	$weatherResults/weatherAnims.play("hideWeather")

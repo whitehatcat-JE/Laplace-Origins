@@ -8,7 +8,7 @@ const MOUSE_SENSITIVITY:float = 0.15
 const DECELERATION:float = 20.0
 # State variables
 var cameraAngle:float = 0
-var unlockedInteractions:Array[String] = ["monitor", "passcode", "crt", "piano", "notepad"]
+var unlockedInteractions:Array[String] = ["monitor", "passcode", "crt", "piano", "notepad", "freeKey"]
 var currentGroundType:int = 0
 # Export variables
 @export var lockYRot:bool = false

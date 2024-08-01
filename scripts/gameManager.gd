@@ -127,6 +127,10 @@ func _on_player_interacted(interactionName:String) -> void:
 			GI.progress = 9
 			player.disabled = true
 			$player/HUD/fadeAnim.play("fadeOut")
+		"freeKey":
+			GI.hasFreeKey = true
+			$basement/key.position.y -= 100.0
+			$bedroom/pcWindow/pcOS/freeVirus.hideKey()
 # PC unfocus
 func _on_pc_os_exit_os() -> void:
 	if !pcCam.current: return; # Checks PC is currently being focused
@@ -238,3 +242,6 @@ func _on_free_virus_unlock_door():
 	$pianoRoom/triggerField.set_deferred("monitoring", true)
 	$pianoRoom/DoorFrame/doorAnims.play("openDoor")
 	audioManager.play("piano")
+
+func _on_pc_os_spawn_key():
+	$basement/key.position.y = -3.379
