@@ -4366,9 +4366,6 @@ render_target_update_mode = 4
 [node name="schrodingerView" parent="bedroom/pcWindow/pcOS/shooterMinigame" index="12"]
 texture = SubResource("ViewportTexture_y0ea5")
 
-[node name="Camera3D" parent="bedroom/pcWindow/pcOS/shooterMinigame/schrodingerView/schrodingerViewport/schrodinger" index="19"]
-transform = Transform3D(1, 0, 0, 0, 0.915613, -0.402059, 0, 0.402059, 0.915613, -0.736414, 12.0824, 14.0832)
-
 [node name="laplaceWall" type="Sprite3D" parent="bedroom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.727293, 1.93702, -1.46898)
 visible = false
@@ -8377,6 +8374,7 @@ speed_scale = 0.2
 [connection signal="updatedProgress" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_updated_progress"]
 [connection signal="schrodingerTransition" from="bedroom/pcWindow/pcOS/shooterMinigame" to="." method="_on_shooter_minigame_schrodinger_transition"]
 [connection signal="exitSchrodinger" from="bedroom/pcWindow/pcOS/shooterMinigame/schrodingerView/schrodingerViewport/schrodinger" to="." method="_on_schrodinger_exit_schrodinger"]
+[connection signal="unlockDoor" from="bedroom/pcWindow/pcOS/freeVirus" to="." method="_on_free_virus_unlock_door"]
 [connection signal="timeout" from="hallway/clock/clockTimer" to="hallway/clock" method="_on_clock_timer_timeout"]
 [connection signal="droppedEvent" from="player" to="bedroom/pcWindow/pcOS/shooterMinigame/schrodingerView/schrodingerViewport/schrodinger/player" method="_on_player_dropped_event"]
 [connection signal="interacted" from="player" to="." method="_on_player_interacted"]

@@ -1,18 +1,17 @@
 extends Node2D
 
-var hasKey:bool = false
-var doorUnlocked:bool = false
+signal unlockDoor
 
 func showDialogue(dialogueName:String):
 	match dialogueName:
 		"door":
-			if doorUnlocked:
+			if GI.pianoDoorUnlocked:
 				$dialoguePopup/dialogueText.text = "Wrong Dimension"
-			elif hasKey:
-				doorUnlocked = true
+			elif GI.hasFreeKey:
 				$dialoguePopup/dialogueText.text = "Door Unlocked"
+				emit_signal("unlockDoor")
 			else:
-				hasKey = true
+				GI.hasFreeKey = true
 				$dialoguePopup/dialogueText.text = "Missing Key"
 		"key":
 			$dialoguePopup/dialogueText.text = "Wrong Dimension"
@@ -27,7 +26,6 @@ func getAllChildren(startingNode, currentChildren:Array = []):
 		currentChildren.append_array(getAllChildren(child))
 		currentChildren.append(child)
 	return currentChildren
-	
 
 func _on_dialogue_anim_animation_finished(anim_name):
 	$player.playerUnlocked = true
@@ -39,3 +37,20 @@ func _on_door_body_entered(body):
 	$groundInteractionButtons/door/buttonAnims.play("show")
 func _on_door_body_exited(body):
 	$groundInteractionButtons/door/buttonAnims.play("hide")
+
+func _on_staircase_down_body_entered(body):
+	$groundFloorLevel.position.y += 10000
+	$groundInteractionButtons.position.y += 10000
+	$basementLevel.position.y -= 10000
+	$basementInteractionButtons.position.y -= 10000
+
+func _on_staircase_up_body_entered(body):
+	$groundFloorLevel.position.y -= 10000
+	$groundInteractionButtons.position.y -= 10000
+	$basementLevel.position.y += 10000
+	$basementInteractionButtons.position.y += 10000
+
+func _on_basement_key_interaction_body_entered(body):
+	$basementInteractionButtons/key/buttonAnims.play("show")
+func _on_basement_key_interaction_body_exited(body):
+	$basementInteractionButtons/key/buttonAnims.play("hide")

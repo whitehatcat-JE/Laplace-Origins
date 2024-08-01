@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://c7ud43mdcfxfl"]
+[gd_scene load_steps=42 format=3 uid="uid://c7ud43mdcfxfl"]
 
 [ext_resource type="Script" path="res://scripts/freeVirus.gd" id="1_n1ott"]
 [ext_resource type="Texture2D" uid="uid://2pgc1xtsv12d" path="res://assets/2d/internet/weep/eyes.jpg" id="1_q1w26"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://g15p8sneaum5" path="res://objects/interaction2D.tscn" id="4_r3r3c"]
 [ext_resource type="Texture2D" uid="uid://o14t7301aibx" path="res://assets/2d/free/groundFloor.png" id="5_xy4h8"]
 [ext_resource type="Script" path="res://scripts/freePlayer.gd" id="7_bx2v0"]
+[ext_resource type="Texture2D" uid="uid://dl221lxaen0tn" path="res://assets/2d/free/basement.png" id="7_dlpe1"]
 [ext_resource type="Texture2D" uid="uid://dphcvpl3h6ee7" path="res://assets/2d/shooterMinigame/player.png" id="8_ixwec"]
+[ext_resource type="Texture2D" uid="uid://c05aufysx3oyn" path="res://assets/2d/free/basementKey.png" id="8_nwdic"]
 [ext_resource type="AudioStream" uid="uid://kr6tbxg4qy2v" path="res://assets/audio/sfx/shooter/playerHit.mp3" id="9_2mevl"]
 [ext_resource type="AudioStream" uid="uid://hh6fi78ndl7j" path="res://assets/audio/sfx/shooter/playerHeal.mp3" id="10_e8ood"]
 [ext_resource type="AudioStream" uid="uid://22ape8t10mla" path="res://assets/audio/sfx/shooter/playerDie.mp3" id="11_vhkvr"]
@@ -21,6 +23,9 @@ size = Vector2(28.5714, 47.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a0cwg"]
 size = Vector2(56, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afw1c"]
+size = Vector2(83.25, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgtg8"]
 size = Vector2(58.1875, 1)
@@ -42,6 +47,24 @@ size = Vector2(64.7734, 2)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p006u"]
 size = Vector2(58.0938, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayt6x"]
+size = Vector2(36, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_njm5l"]
+size = Vector2(85, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_if3l6"]
+size = Vector2(115, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hcjkt"]
+size = Vector2(80.9999, 8.00035)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pu7um"]
+size = Vector2(9.99994, 9.99986)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esbmd"]
+size = Vector2(13, 14)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yi1rh"]
 size = Vector2(32, 32)
@@ -160,9 +183,6 @@ _data = {
 "show": SubResource("Animation_j0rlr")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ayt6x"]
-size = Vector2(36, 92)
-
 [node name="freeVirus" type="Node2D"]
 script = ExtResource("1_n1ott")
 
@@ -259,9 +279,9 @@ rotation = 1.57079
 shape = SubResource("RectangleShape2D_a0cwg")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="groundFloorLevel/walls"]
-position = Vector2(-36.25, -52.5)
+position = Vector2(-22.625, -52.5)
 rotation = 3.14159
-shape = SubResource("RectangleShape2D_a0cwg")
+shape = SubResource("RectangleShape2D_afw1c")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="groundFloorLevel/walls"]
 position = Vector2(-4, 50.5)
@@ -315,6 +335,109 @@ shape = SubResource("RectangleShape2D_p006u")
 position = Vector2(46.5, -3.75)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_p006u")
+
+[node name="groundInteractionPoints" type="Node2D" parent="groundFloorLevel"]
+position = Vector2(-261.25, -82.75)
+scale = Vector2(0.25, 0.25)
+
+[node name="door" type="Area2D" parent="groundFloorLevel/groundInteractionPoints"]
+position = Vector2(1210, 251)
+collision_layer = 0
+collision_mask = 128
+
+[node name="hitbox" type="CollisionShape2D" parent="groundFloorLevel/groundInteractionPoints/door"]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_ayt6x")
+
+[node name="staircaseDown" type="Area2D" parent="groundFloorLevel/groundInteractionPoints"]
+position = Vector2(1138, 155)
+collision_layer = 0
+collision_mask = 128
+
+[node name="hitbox" type="CollisionShape2D" parent="groundFloorLevel/groundInteractionPoints/staircaseDown"]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_ayt6x")
+
+[node name="basementLevel" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1137, 10327)
+scale = Vector2(4, 4)
+texture = ExtResource("7_dlpe1")
+
+[node name="basementKey" type="Sprite2D" parent="basementLevel"]
+position = Vector2(-41, 14)
+texture = ExtResource("8_nwdic")
+
+[node name="walls" type="StaticBody2D" parent="basementLevel"]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="basementLevel/walls"]
+position = Vector2(-12.5, -15.5)
+shape = SubResource("RectangleShape2D_njm5l")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="basementLevel/walls"]
+position = Vector2(-63.5, 17.5)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_njm5l")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="basementLevel/walls"]
+position = Vector2(4.5, -60.5)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_njm5l")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="basementLevel/walls"]
+position = Vector2(55.5, -66.5)
+rotation = 4.71238
+shape = SubResource("RectangleShape2D_njm5l")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="basementLevel/walls"]
+position = Vector2(69.5, 17.5)
+rotation = 4.71238
+shape = SubResource("RectangleShape2D_njm5l")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="basementLevel/walls"]
+position = Vector2(3.5, 43.5001)
+shape = SubResource("RectangleShape2D_if3l6")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="basementLevel/walls"]
+position = Vector2(105.5, -15.5)
+shape = SubResource("RectangleShape2D_if3l6")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="basementLevel/walls"]
+position = Vector2(-8.50002, -27.9998)
+shape = SubResource("RectangleShape2D_hcjkt")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="basementLevel/walls"]
+position = Vector2(55, 23.0001)
+shape = SubResource("RectangleShape2D_pu7um")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="basementLevel/walls"]
+position = Vector2(49, -51)
+shape = SubResource("RectangleShape2D_pu7um")
+
+[node name="basementInteractionPoints" type="Node2D" parent="basementLevel"]
+position = Vector2(-261.25, -82.75)
+scale = Vector2(0.25, 0.25)
+
+[node name="basementKeyInteraction" type="Area2D" parent="basementLevel/basementInteractionPoints"]
+position = Vector2(903, 334)
+scale = Vector2(4, 4)
+collision_layer = 0
+collision_mask = 128
+
+[node name="hitbox" type="CollisionShape2D" parent="basementLevel/basementInteractionPoints/basementKeyInteraction"]
+position = Vector2(-5.5, 13.25)
+shape = SubResource("RectangleShape2D_esbmd")
+
+[node name="staircaseUp" type="Area2D" parent="basementLevel/basementInteractionPoints"]
+position = Vector2(933, 161)
+collision_layer = 0
+collision_mask = 128
+
+[node name="hitbox" type="CollisionShape2D" parent="basementLevel/basementInteractionPoints/staircaseUp"]
+position = Vector2(1, 2)
+shape = SubResource("RectangleShape2D_ayt6x")
 
 [node name="player" type="CharacterBody2D" parent="."]
 position = Vector2(978, 395)
@@ -421,19 +544,59 @@ libraries = {
 "": SubResource("AnimationLibrary_8skas")
 }
 
-[node name="groundInteractionPoints" type="Node2D" parent="."]
+[node name="basementInteractionButtons" type="Node2D" parent="."]
+position = Vector2(0, 10000)
 
-[node name="door" type="Area2D" parent="groundInteractionPoints"]
-position = Vector2(1210, 251)
-collision_layer = 0
-collision_mask = 128
+[node name="key" type="Node2D" parent="basementInteractionButtons"]
+position = Vector2(844, 382)
+scale = Vector2(1, 1e-05)
 
-[node name="hitbox" type="CollisionShape2D" parent="groundInteractionPoints/door"]
-position = Vector2(1, 2)
-shape = SubResource("RectangleShape2D_ayt6x")
+[node name="interactBox" type="Sprite2D" parent="basementInteractionButtons/key"]
+texture_filter = 1
+position = Vector2(0, -2)
+scale = Vector2(4, 4)
+texture = ExtResource("14_f283o")
 
+[node name="interactHovered" type="Sprite2D" parent="basementInteractionButtons/key"]
+visible = false
+texture_filter = 1
+position = Vector2(0, -2)
+scale = Vector2(4, 4)
+texture = ExtResource("15_ruut4")
+
+[node name="interact" parent="basementInteractionButtons/key" instance=ExtResource("4_r3r3c")]
+position = Vector2(10000, 0)
+collision_layer = 16
+interactionName = "keyInteract"
+
+[node name="hitbox" type="CollisionShape2D" parent="basementInteractionButtons/key/interact"]
+position = Vector2(-0.142944, -2)
+shape = SubResource("RectangleShape2D_y6t30")
+
+[node name="interactText" type="Label" parent="basementInteractionButtons/key"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+texture_filter = 1
+offset_left = -60.0
+offset_top = -18.0
+offset_right = 540.0
+offset_bottom = 142.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("13_66unh")
+theme_override_font_sizes/font_size = 150
+text = "Interact"
+horizontal_alignment = 1
+
+[node name="buttonAnims" type="AnimationPlayer" parent="basementInteractionButtons/key"]
+libraries = {
+"": SubResource("AnimationLibrary_8skas")
+}
+
+[connection signal="body_entered" from="groundFloorLevel/groundInteractionPoints/door" to="." method="_on_door_body_entered"]
+[connection signal="body_exited" from="groundFloorLevel/groundInteractionPoints/door" to="." method="_on_door_body_exited"]
+[connection signal="body_entered" from="groundFloorLevel/groundInteractionPoints/staircaseDown" to="." method="_on_staircase_down_body_entered"]
+[connection signal="body_entered" from="basementLevel/basementInteractionPoints/basementKeyInteraction" to="." method="_on_basement_key_interaction_body_entered"]
+[connection signal="body_exited" from="basementLevel/basementInteractionPoints/basementKeyInteraction" to="." method="_on_basement_key_interaction_body_exited"]
+[connection signal="body_entered" from="basementLevel/basementInteractionPoints/staircaseUp" to="." method="_on_staircase_up_body_entered"]
 [connection signal="area_entered" from="player/enemyScanner" to="player" method="_on_enemy_scanner_area_entered"]
 [connection signal="body_entered" from="player/enemyScanner" to="player" method="_on_enemy_scanner_body_entered"]
 [connection signal="animation_finished" from="dialoguePopup/dialogueAnim" to="." method="_on_dialogue_anim_animation_finished"]
-[connection signal="body_entered" from="groundInteractionPoints/door" to="." method="_on_door_body_entered"]
-[connection signal="body_exited" from="groundInteractionPoints/door" to="." method="_on_door_body_exited"]

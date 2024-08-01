@@ -72,13 +72,11 @@ func _on_player_interacted(interactionName:String) -> void:
 				$bedroom/cupboardAjar.visible = false
 				$basement/crtAnim.play("redAllLights")
 				$bedroom/roomTransformations.play("red")
-				$pianoRoom/triggerField.set_deferred("monitoring", true)
-				$pianoRoom/DoorFrame/doorAnims.play("openDoor")
 				$walls/Router/routerLogo.visible = true
 				$walls/Router/routerOffLogo.visible = false
-				$pianoRoom/piano.visible = false
 				pcOS.get_node("internetBrowser").enableInternet()
 				audioManager.play("piano")
+				$pianoRoom/piano.visible = false
 			else: # Router switch off
 				GI.progress = 2
 				pcOS.get_node("internetBrowser").disableInternet()
@@ -234,3 +232,9 @@ func showNextDialogue():
 	dialogueLine += 1
 	player.disabled = true
 	$player/HUD/paper.visible = true
+
+func _on_free_virus_unlock_door():
+	GI.pianoDoorUnlocked = true
+	$pianoRoom/triggerField.set_deferred("monitoring", true)
+	$pianoRoom/DoorFrame/doorAnims.play("openDoor")
+	audioManager.play("piano")
