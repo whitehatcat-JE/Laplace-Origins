@@ -1006,14 +1006,14 @@ emission = Color(1, 0.764706, 0.529412, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ryky8"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cd2sf"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pdoxb"]
 noise = SubResource("FastNoiseLite_ryky8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ij7pa"]
 shader = ExtResource("112_dtkwp")
 shader_parameter/projector_power = 0.5
 shader_parameter/vignette_param = 20.0
-shader_parameter/distortionTexture = SubResource("NoiseTexture2D_cd2sf")
+shader_parameter/distortionTexture = SubResource("NoiseTexture2D_pdoxb")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pmhci"]
 shader = ExtResource("90_5slxb")
@@ -4385,6 +4385,9 @@ render_target_update_mode = 4
 
 [node name="schrodingerView" parent="bedroom/pcWindow/pcOS/shooterMinigame" index="12"]
 texture = SubResource("ViewportTexture_y0ea5")
+
+[node name="Camera3D" parent="bedroom/pcWindow/pcOS/shooterMinigame/schrodingerView/schrodingerViewport/schrodinger" index="19"]
+transform = Transform3D(1, 0, 0, 0, 0.915613, -0.402059, 0, 0.402059, 0.915613, -0.736414, 12.0824, 14.0832)
 
 [node name="laplaceWall" type="Sprite3D" parent="bedroom"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.727293, 1.93702, -1.46898)
