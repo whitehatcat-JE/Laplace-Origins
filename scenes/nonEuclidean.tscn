@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dppv4w5r1jusc"]
+[gd_scene load_steps=39 format=3 uid="uid://dppv4w5r1jusc"]
 
 [ext_resource type="Script" path="res://scenes/nonEuclideanSpace.gd" id="1_gkibj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_scmjs"]
@@ -17,24 +17,11 @@
 [ext_resource type="AudioStream" uid="uid://c4d2w0yoaal37" path="res://assets/audio/sfx/footsteps/footstepsWood.mp3" id="10_mwoq6"]
 [ext_resource type="AudioStream" uid="uid://bxpoaeanda02m" path="res://assets/audio/sfx/footsteps/footstepsGravelReverb.mp3" id="14_aqwl4"]
 
-[sub_resource type="Gradient" id="Gradient_r4r0f"]
-colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0.0578036, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_p80nu"]
-frequency = 0.015
-domain_warp_fractal_octaves = 1
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mglo8"]
-seamless = true
-color_ramp = SubResource("Gradient_r4r0f")
-noise = SubResource("FastNoiseLite_p80nu")
-
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7brgt"]
-sky_top_color = Color(0.266667, 0, 0.00784314, 1)
-sky_horizon_color = Color(0.152941, 0, 0.00392157, 1)
-sky_cover = SubResource("NoiseTexture2D_mglo8")
-ground_bottom_color = Color(0.866667, 0.0196078, 0.164706, 1)
-ground_horizon_color = Color(0.960784, 0, 0.0627451, 1)
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
 sun_angle_max = 360.0
 sun_curve = 0.0132582
 
@@ -49,11 +36,19 @@ ambient_light_color = Color(1, 0.0196078, 0, 1)
 ambient_light_energy = 0.06
 ssao_enabled = true
 sdfgi_enabled = true
-fog_light_color = Color(0.372549, 0.0313726, 0, 1)
-fog_height_density = 1.8824
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(1, 0.00784314, 0, 1)
+fog_light_energy = 0.2
+fog_density = 0.0243
+fog_height = 58.51
+fog_height_density = -0.1
+volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
 volumetric_fog_albedo = Color(1, 0, 0.0196078, 1)
 volumetric_fog_length = 48.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35qqq"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_bq1lo"]
 
@@ -148,19 +143,562 @@ script = ExtResource("1_gkibj")
 [node name="worldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ywxfd")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="worldEnvironment"]
-transform = Transform3D(0.616088, 0.537557, -0.575733, 4.39672e-08, 0.730925, 0.682458, 0.787678, -0.420454, 0.450314, 0, 0, 12.3939)
-light_color = Color(1, 0.0196078, 0, 1)
-light_energy = 11.222
-shadow_enabled = true
-sky_mode = 2
-
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="worldEnvironment"]
 transform = Transform3D(0.616088, 0.537557, -0.575733, 4.39672e-08, 0.730925, 0.682458, 0.787678, -0.420454, 0.450314, 0, 0, 12.3939)
 light_color = Color(1, 0.201748, 0.246535, 1)
 light_energy = 1.222
 shadow_enabled = true
 sky_mode = 1
+
+[node name="pillarsLeft" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.64, -34.0521)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.64, -92.6238)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.64, -151.923)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.7813, 55.64, -34.0521)
+cast_shadow = 0
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.7813, 55.64, -92.6238)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.7813, 55.64, -151.923)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.022, 55.64, 25.247)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.022, 55.64, -34.0521)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.022, 55.64, -92.6238)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.022, 55.64, -151.923)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.022, 55.64, 86.6385)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D19" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.164, 55.64, 25.247)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D20" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.164, 55.64, -34.0521)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.164, 55.64, -92.6238)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.164, 55.64, -151.923)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D24" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.164, 55.64, 86.6385)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D25" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.383, 55.64, 25.247)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D26" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.383, 55.64, -34.0521)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D27" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.383, 55.64, -92.6238)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D28" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.383, 55.64, -151.923)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D30" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.383, 55.64, 86.6385)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D31" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1417, 55.64, 25.247)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D32" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1417, 55.64, -34.0521)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D33" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1417, 55.64, -92.6238)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D34" type="CSGCylinder3D" parent="pillarsLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1417, 55.64, -151.923)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="pillarsRight" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.64, 25.247)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.64, 145.938)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.64, 86.6385)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.7813, 55.64, 25.247)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.7813, 55.64, 145.938)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.7813, 55.64, 86.6385)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D17" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.022, 55.64, 145.938)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -195.687, 55.64, 25.247)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D19" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -195.687, 55.64, -34.0521)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D20" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -195.687, 55.64, -92.6238)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -195.687, 55.64, -151.923)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D24" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -195.687, 55.64, 86.6385)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -195.687, 55.64, 145.938)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D25" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 252.7, 55.64, 25.247)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D26" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 252.7, 55.64, -34.0521)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D27" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 252.7, 55.64, -92.6238)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D28" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 252.7, 55.64, -151.923)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D30" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 252.7, 55.64, 86.6385)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+material = SubResource("StandardMaterial3D_35qqq")
+
+[node name="CSGCylinder3D31" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 252.7, 55.64, 145.938)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D29" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.383, 55.64, 145.938)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D35" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1417, 55.64, 145.938)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D36" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1417, 55.64, 86.6385)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D23" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.164, 55.64, 145.938)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.64, 216.218)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.7813, 55.64, 216.218)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D32" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.022, 55.64, 216.218)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D33" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -195.687, 55.64, 216.218)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D34" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 252.7, 55.64, 216.218)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D37" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.383, 55.64, 216.218)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D38" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1417, 55.64, 216.218)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D39" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.164, 55.64, 216.218)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 55.64, -216.473)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.7813, 55.64, -216.473)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D40" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.022, 55.64, -216.473)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D41" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -195.687, 55.64, -216.473)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D42" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 252.7, 55.64, -216.473)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D43" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 122.383, 55.64, -216.473)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D44" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.1417, 55.64, -216.473)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
+
+[node name="CSGCylinder3D45" type="CSGCylinder3D" parent="pillarsRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 182.164, 55.64, -216.473)
+cast_shadow = 0
+use_collision = true
+radius = 1.52892
+height = 100.0
+sides = 16
 
 [node name="dimension1" type="Node3D" parent="."]
 
@@ -253,6 +791,26 @@ collision_mask = 4
 monitorable = false
 
 [node name="hitbox" type="CollisionShape3D" parent="dimension2/secondStoryEntranceField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.120764)
+shape = SubResource("BoxShape3D_d8u1y")
+
+[node name="secondStoryTunnelEntranceField" type="Area3D" parent="dimension2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.427493, 3.03103, -2.63162)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="dimension2/secondStoryTunnelEntranceField"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.120764)
+shape = SubResource("BoxShape3D_d8u1y")
+
+[node name="secondStoryExitField" type="Area3D" parent="dimension2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.719486, 3.03103, -2.63162)
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="hitbox" type="CollisionShape3D" parent="dimension2/secondStoryExitField"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.120764)
 shape = SubResource("BoxShape3D_d8u1y")
 
@@ -620,5 +1178,7 @@ stream = ExtResource("14_aqwl4")
 [connection signal="screen_exited" from="dimension2/dimension2TransitionBoundary" to="." method="_on_dimension_2_transition_boundary_screen_exited"]
 [connection signal="body_entered" from="dimension2/firstStoryEntranceField" to="." method="_on_first_story_entrance_field_body_entered"]
 [connection signal="body_entered" from="dimension2/secondStoryEntranceField" to="." method="_on_second_story_entrance_field_body_entered"]
+[connection signal="body_entered" from="dimension2/secondStoryTunnelEntranceField" to="." method="_on_second_story_tunnel_entrance_field_body_entered"]
+[connection signal="body_entered" from="dimension2/secondStoryExitField" to="." method="_on_second_story_exit_field_body_entered"]
 [connection signal="body_entered" from="dimension3/thirdStoryEntranceField" to="." method="_on_third_story_entrance_field_body_entered"]
 [connection signal="body_entered" from="dimension3/forthStoryEntranceField" to="." method="_on_forth_story_entrance_field_body_entered"]
