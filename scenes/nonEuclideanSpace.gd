@@ -18,9 +18,6 @@ func _on_dimension_1_transition_boundary_screen_exited():
 		nextDimensionQueued = false
 		$dimension1/doorway.visible = false
 		$dimension2.position.y = 0
-	elif dimensionNum >= 2 and $player.position.z < 5 and story == 1:
-		$player.position.z += randf_range(1.0, 15.0)
-		
 
 func _on_dimension_1_seen_boundary_screen_entered():
 	if dimensionNum == 1:

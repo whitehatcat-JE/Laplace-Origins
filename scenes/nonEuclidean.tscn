@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://dppv4w5r1jusc"]
+[gd_scene load_steps=53 format=3 uid="uid://dppv4w5r1jusc"]
 
 [ext_resource type="Script" path="res://scenes/nonEuclideanSpace.gd" id="1_gkibj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_scmjs"]
@@ -16,6 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://cigjq25fsqn45" path="res://assets/2d/UI/interactIconLocked.png" id="9_ib75f"]
 [ext_resource type="AudioStream" uid="uid://c4d2w0yoaal37" path="res://assets/audio/sfx/footsteps/footstepsWood.mp3" id="10_mwoq6"]
 [ext_resource type="AudioStream" uid="uid://bxpoaeanda02m" path="res://assets/audio/sfx/footsteps/footstepsGravelReverb.mp3" id="14_aqwl4"]
+[ext_resource type="Terrain3DStorage" uid="uid://dfh4iof5073rd" path="res://assets/3d/nonEuclidean/terrainStorage.res" id="17_qyokg"]
+[ext_resource type="Texture2D" uid="uid://bnwomlwgrwh5m" path="res://assets/2d/3dSprites/outside/plant_36.png" id="18_r0br4"]
+[ext_resource type="Texture2D" uid="uid://b48mtqrf3h2k7" path="res://assets/3d/textures/Grass001_2K-JPG/Grass001_2K_Color.jpg" id="18_wlvvl"]
+[ext_resource type="Texture2D" uid="uid://c3kr0iae66inr" path="res://assets/3d/textures/Grass001_2K-JPG/Grass001_2K_NormalDX.jpg" id="19_vl2wv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7brgt"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -33,7 +37,8 @@ background_mode = 2
 sky = SubResource("Sky_1qnge")
 ambient_light_source = 2
 ambient_light_color = Color(1, 0.0196078, 0, 1)
-ambient_light_energy = 0.06
+ambient_light_energy = 0.17
+tonemap_mode = 2
 ssao_enabled = true
 sdfgi_enabled = true
 glow_enabled = true
@@ -58,6 +63,9 @@ size = Vector3(2.06117, 5.16695, 0.520264)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d8u1y"]
 size = Vector3(2.06117, 5.16695, 0.317871)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8qtg5"]
+size = Vector3(115.862, 1, 66.8151)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajkyp"]
 cull_mode = 1
 shading_mode = 0
@@ -74,9 +82,6 @@ albedo_color = Color(1, 0, 0.0352941, 1)
 emission_enabled = true
 emission = Color(1, 0, 0.0117647, 1)
 emission_energy_multiplier = 9.83
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_8ea2j"]
-size = Vector3(71, 1, 47)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_bx3tx"]
 
@@ -136,6 +141,81 @@ height = 1.8
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nqssr"]
 radius = 0.3
 height = 1.8
+
+[sub_resource type="Gradient" id="Gradient_e7pp7"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_np7rp"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lday2"]
+seamless = true
+color_ramp = SubResource("Gradient_e7pp7")
+noise = SubResource("FastNoiseLite_np7rp")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_u3rad"]
+_shader_parameters = {
+"blend_sharpness": 0.87,
+"height_blending": true,
+"macro_variation1": Color(1, 1, 1, 1),
+"macro_variation2": Color(1, 1, 1, 1),
+"noise1_angle": 0.0,
+"noise1_offset": Vector2(0.5, 0.5),
+"noise1_scale": 0.04,
+"noise2_scale": 0.076,
+"noise3_scale": 0.225,
+"noise_texture": SubResource("NoiseTexture2D_lday2"),
+"vertex_normals_distance": 128.0
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h4r1l"]
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_ale11"]
+height_offset = 0.5
+density = 10.0
+material_override = SubResource("StandardMaterial3D_h4r1l")
+generated_type = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j247f"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+cull_mode = 2
+albedo_texture = ExtResource("18_r0br4")
+backlight_enabled = true
+backlight = Color(0.625, 0.625, 0.625, 1)
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_lwcpw"]
+id = 1
+height_offset = 0.5
+density = 10.0
+material_override = SubResource("StandardMaterial3D_j247f")
+generated_type = 1
+generated_size = Vector2(0.75, 0.75)
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_qbdpi"]
+name = "grassTexture"
+albedo_texture = ExtResource("18_wlvvl")
+normal_texture = ExtResource("19_vl2wv")
+uv_scale = 0.2
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_8dvjq"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_ale11"), SubResource("Terrain3DMeshAsset_lwcpw")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_qbdpi")])
 
 [node name="nonEuclidean" type="Node3D"]
 script = ExtResource("1_gkibj")
@@ -703,7 +783,7 @@ sides = 16
 [node name="dimension1" type="Node3D" parent="."]
 
 [node name="doorway" type="Sprite3D" parent="dimension1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 2.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4, 2.37229, 0)
 pixel_size = 0.003
 shaded = true
 alpha_cut = 1
@@ -813,6 +893,24 @@ monitorable = false
 [node name="hitbox" type="CollisionShape3D" parent="dimension2/secondStoryExitField"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.120764)
 shape = SubResource("BoxShape3D_d8u1y")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="dimension2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="dimension2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.113, 5.27499, 0.431999)
+shape = SubResource("BoxShape3D_8qtg5")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="dimension2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88097, 5.27499, 32.7662)
+shape = SubResource("BoxShape3D_8qtg5")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="dimension2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88097, 5.27499, -38.052)
+shape = SubResource("BoxShape3D_8qtg5")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="dimension2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8461, 5.27499, -5.73746)
+shape = SubResource("BoxShape3D_8qtg5")
 
 [node name="dimension3" type="Node3D" parent="."]
 
@@ -935,33 +1033,6 @@ size = Vector3(1.95349, 0.367065, 6.52648)
 material = SubResource("StandardMaterial3D_v4dlb")
 
 [node name="tempMeshes" type="Node3D" parent="."]
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="tempMeshes"]
-transform = Transform3D(0.999985, 0, 2.98019e-08, 0, 1, 0, -2.98019e-08, 0, 0.999985, 12.4997, 0, -10.4997)
-use_collision = true
-size = Vector3(409, 1, 357)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="tempMeshes"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="tempMeshes/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -3)
-shape = SubResource("BoxShape3D_8ea2j")
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="tempMeshes/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.62866, 5.27842, 23.8961)
-shape = SubResource("BoxShape3D_8ea2j")
-
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="tempMeshes/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.2252, 5.27842, 6.12388)
-shape = SubResource("BoxShape3D_8ea2j")
-
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="tempMeshes/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.12041, 5.27842, -27.6248)
-shape = SubResource("BoxShape3D_8ea2j")
-
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="tempMeshes/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.4783, 5.27842, -7.00911)
-shape = SubResource("BoxShape3D_8ea2j")
 
 [node name="player" type="CharacterBody3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.25526, 1.40686, 7.05064)
@@ -1172,6 +1243,12 @@ stream = ExtResource("10_mwoq6")
 [node name="footstepsGravel" type="AudioStreamPlayer3D" parent="player" groups=["sfx"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
 stream = ExtResource("14_aqwl4")
+
+[node name="bottomTerrain" type="Terrain3D" parent="."]
+storage = ExtResource("17_qyokg")
+material = SubResource("Terrain3DMaterial_u3rad")
+assets = SubResource("Terrain3DAssets_8dvjq")
+mesh_size = 8
 
 [connection signal="screen_exited" from="dimension1/dimension1TransitionBoundary" to="." method="_on_dimension_1_transition_boundary_screen_exited"]
 [connection signal="screen_entered" from="dimension1/dimension1SeenBoundary" to="." method="_on_dimension_1_seen_boundary_screen_entered"]
