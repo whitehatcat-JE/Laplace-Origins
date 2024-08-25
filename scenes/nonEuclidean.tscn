@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dppv4w5r1jusc"]
+[gd_scene load_steps=64 format=3 uid="uid://dppv4w5r1jusc"]
 
 [ext_resource type="Script" path="res://scenes/nonEuclideanSpace.gd" id="1_gkibj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_scmjs"]
@@ -7,13 +7,21 @@
 [ext_resource type="Texture2D" uid="uid://dlx1c4j6ftpjk" path="res://assets/2d/laplace/doorway.png" id="2_f8hfn"]
 [ext_resource type="FontFile" uid="uid://c7nf20h66non7" path="res://assets/fonts/SpecialElite.ttf" id="3_2tgpc"]
 [ext_resource type="Texture2D" uid="uid://dcevbxxgqar76" path="res://assets/2d/laplace/backgroundNoise.png" id="3_fyruq"]
+[ext_resource type="PackedScene" uid="uid://beb00hj3p7xxj" path="res://assets/3d/nonEuclidean/romanHouse.blend" id="3_ta0m3"]
+[ext_resource type="Texture2D" uid="uid://c47pdqpchx4d8" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-albedo.png" id="4_4geko"]
 [ext_resource type="Texture2D" uid="uid://cxdbhjbai6ktn" path="res://assets/2d/laplace/eye.png" id="4_b2kae"]
 [ext_resource type="Shader" path="res://scripts/shaders/filmGrain.gdshader" id="4_rwn6q"]
+[ext_resource type="Texture2D" uid="uid://bijuw13o6gyl2" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-ao.png" id="5_4s6x1"]
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="5_qrto8"]
 [ext_resource type="Shader" path="res://scripts/shaders/glitch.gdshader" id="6_d3gey"]
+[ext_resource type="Texture2D" uid="uid://b6ksegnyj52v6" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-height.png" id="6_plaj2"]
+[ext_resource type="Texture2D" uid="uid://6i1137wcqu1q" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-metallic.png" id="7_lupgs"]
 [ext_resource type="Texture2D" uid="uid://byasw2wllivf0" path="res://assets/2d/UI/crosshair.png" id="7_y5i7t"]
 [ext_resource type="Texture2D" uid="uid://b4a1llenxad28" path="res://assets/2d/UI/interactIcon.png" id="8_n3cij"]
+[ext_resource type="Texture2D" uid="uid://c5uwc1c6sp08j" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-normal-ogl.png" id="8_qiwhu"]
 [ext_resource type="Texture2D" uid="uid://cigjq25fsqn45" path="res://assets/2d/UI/interactIconLocked.png" id="9_ib75f"]
+[ext_resource type="Texture2D" uid="uid://sdrmsiy2xg2n" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-roughness.png" id="9_y2hdi"]
+[ext_resource type="Material" uid="uid://cgusg8smqn8wc" path="res://assets/3d/materials/bricks.tres" id="10_evajs"]
 [ext_resource type="AudioStream" uid="uid://c4d2w0yoaal37" path="res://assets/audio/sfx/footsteps/footstepsWood.mp3" id="10_mwoq6"]
 [ext_resource type="AudioStream" uid="uid://bxpoaeanda02m" path="res://assets/audio/sfx/footsteps/footstepsGravelReverb.mp3" id="14_aqwl4"]
 [ext_resource type="Terrain3DStorage" uid="uid://dfh4iof5073rd" path="res://assets/3d/nonEuclidean/terrainStorage.res" id="17_qyokg"]
@@ -65,6 +73,23 @@ size = Vector3(2.06117, 5.16695, 0.317871)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8qtg5"]
 size = Vector3(115.862, 1, 66.8151)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gte7u"]
+size = Vector3(11.6231, 1, 1.87738)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vdoo"]
+albedo_texture = ExtResource("4_4geko")
+metallic = 1.0
+metallic_texture = ExtResource("7_lupgs")
+roughness_texture = ExtResource("9_y2hdi")
+normal_enabled = true
+normal_texture = ExtResource("8_qiwhu")
+ao_enabled = true
+ao_texture = ExtResource("5_4s6x1")
+heightmap_enabled = true
+heightmap_texture = ExtResource("6_plaj2")
+uv1_scale = Vector3(3.72, 3.72, 3.72)
+uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajkyp"]
 cull_mode = 1
@@ -141,6 +166,10 @@ height = 1.8
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nqssr"]
 radius = 0.3
 height = 1.8
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_wj0pj"]
+auto_exposure_scale = 0.2
+dof_blur_far_transition = 356.13
 
 [sub_resource type="Gradient" id="Gradient_e7pp7"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -224,7 +253,7 @@ script = ExtResource("1_gkibj")
 environment = SubResource("Environment_ywxfd")
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="worldEnvironment"]
-transform = Transform3D(0.616088, 0.537557, -0.575733, 4.39672e-08, 0.730925, 0.682458, 0.787678, -0.420454, 0.450314, 0, 0, 12.3939)
+transform = Transform3D(0.798961, 0.410419, -0.439566, 7.25556e-08, 0.730925, 0.682458, 0.601383, -0.545257, 0.58398, 0, 0, 12.3939)
 light_color = Color(1, 0.201748, 0.246535, 1)
 light_energy = 1.222
 shadow_enabled = true
@@ -800,7 +829,7 @@ aabb = AABB(-0.200145, -2.61213, 0.0716665, 0.400291, 5.22426, 0.652565)
 [node name="dimension2" type="Node3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="dimension2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85565, 3.11411, -2.43311)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85565, -6.68099, -2.43311)
 use_collision = true
 size = Vector3(12.7767, 5.27686, 5.86621)
 
@@ -911,6 +940,28 @@ shape = SubResource("BoxShape3D_8qtg5")
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="dimension2/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.8461, 5.27499, -5.73746)
 shape = SubResource("BoxShape3D_8qtg5")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="dimension2/StaticBody3D"]
+transform = Transform3D(0.806156, -0.591704, 0, 0.591704, 0.806156, 0, 0, 0, 1, 4.59128, 3.21338, -3.92565)
+shape = SubResource("BoxShape3D_gte7u")
+
+[node name="romanHouse" parent="dimension2" instance=ExtResource("3_ta0m3")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 2.19594, 0.484777, -1.9332)
+
+[node name="Cube_001" parent="dimension2/romanHouse" index="0"]
+material_override = SubResource("StandardMaterial3D_1vdoo")
+
+[node name="Cube" parent="dimension2/romanHouse" index="2"]
+material_override = ExtResource("10_evajs")
+
+[node name="Cube_003" parent="dimension2/romanHouse" index="3"]
+material_override = ExtResource("10_evajs")
+
+[node name="Cube_004" parent="dimension2/romanHouse" index="4"]
+material_override = ExtResource("10_evajs")
+
+[node name="Cube_005" parent="dimension2/romanHouse" index="5"]
+material_override = ExtResource("10_evajs")
 
 [node name="dimension3" type="Node3D" parent="."]
 
@@ -1218,6 +1269,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 
 [node name="cam" type="Camera3D" parent="player/head"]
 transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0, 0, 0)
+attributes = SubResource("CameraAttributesPractical_wj0pj")
 current = true
 
 [node name="interactCast" type="RayCast3D" parent="player/head/cam"]
@@ -1244,6 +1296,12 @@ stream = ExtResource("10_mwoq6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
 stream = ExtResource("14_aqwl4")
 
+[node name="light" type="OmniLight3D" parent="player"]
+light_color = Color(1, 0.0517226, 0, 1)
+light_energy = 0.2
+light_specular = 0.0
+omni_attenuation = 0.5
+
 [node name="bottomTerrain" type="Terrain3D" parent="."]
 storage = ExtResource("17_qyokg")
 material = SubResource("Terrain3DMaterial_u3rad")
@@ -1259,3 +1317,5 @@ mesh_size = 8
 [connection signal="body_entered" from="dimension2/secondStoryExitField" to="." method="_on_second_story_exit_field_body_entered"]
 [connection signal="body_entered" from="dimension3/thirdStoryEntranceField" to="." method="_on_third_story_entrance_field_body_entered"]
 [connection signal="body_entered" from="dimension3/forthStoryEntranceField" to="." method="_on_forth_story_entrance_field_body_entered"]
+
+[editable path="dimension2/romanHouse"]

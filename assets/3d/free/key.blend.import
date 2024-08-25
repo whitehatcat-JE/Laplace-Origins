@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b6kv7k5up8d8v"
-path="res://.godot/imported/householdModels.blend-18d7ebee7979a266cc463e61840d7fc8.scn"
+uid="uid://wjeh5byx4n1f"
+path="res://.godot/imported/key.blend-feefd15b87cb1be846383cc0cba8f9cd.scn"
 
 [deps]
 
-source_file="res://assets/3d/householdModels.blend"
-dest_files=["res://.godot/imported/householdModels.blend-18d7ebee7979a266cc463e61840d7fc8.scn"]
+source_file="res://assets/3d/free/key.blend"
+dest_files=["res://.godot/imported/key.blend-feefd15b87cb1be846383cc0cba8f9cd.scn"]
 
 [params]
 
