@@ -24,17 +24,12 @@ boot_splash/minimum_display_time=2000
 
 GI="*res://scripts/globalInformation.gd"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="viewport"
-window/vsync/vsync_mode=0
 
 [editor]
 

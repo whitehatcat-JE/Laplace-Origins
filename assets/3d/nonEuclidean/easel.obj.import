@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ct0oujsqp01pg"
+path="res://.godot/imported/easel.obj-487f06efbb330991a4d0f89a27250f25.mesh"
+
+[deps]
+
+files=["res://.godot/imported/easel.obj-487f06efbb330991a4d0f89a27250f25.mesh"]
+
+source_file="res://assets/3d/nonEuclidean/easel.obj"
+dest_files=["res://.godot/imported/easel.obj-487f06efbb330991a4d0f89a27250f25.mesh", "res://.godot/imported/easel.obj-487f06efbb330991a4d0f89a27250f25.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
