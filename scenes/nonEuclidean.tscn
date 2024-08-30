@@ -1,4 +1,4 @@
-[gd_scene load_steps=133 format=3 uid="uid://dppv4w5r1jusc"]
+[gd_scene load_steps=134 format=3 uid="uid://dppv4w5r1jusc"]
 
 [ext_resource type="Script" path="res://scenes/nonEuclideanSpace.gd" id="1_gkibj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_scmjs"]
@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://biqoa7cix1i7q" path="res://assets/3d/textures/concrete3-bl/concrete3-Metallic.png" id="15_s2vt4"]
 [ext_resource type="Texture2D" uid="uid://gu6483e57qis" path="res://assets/3d/textures/concrete3-bl/concrete3-Normal-ogl.png" id="16_r4o0m"]
 [ext_resource type="Texture2D" uid="uid://u6gxfjjljuen" path="res://assets/3d/textures/concrete3-bl/concrete3-Roughness.png" id="17_1bday"]
-[ext_resource type="Terrain3DStorage" uid="uid://dfh4iof5073rd" path="res://assets/3d/nonEuclidean/terrainStorage.res" id="17_qyokg"]
+[ext_resource type="Terrain3DStorage" uid="uid://dp73uu10i1xbj" path="res://assets/3d/nonEuclidean/terrainStorage.res" id="17_qyokg"]
 [ext_resource type="Texture2D" uid="uid://erogdu4smrtk" path="res://assets/3d/textures/PavingStones123_1K-JPG/PavingStones123_1K-JPG_Color.jpg" id="18_ngxll"]
 [ext_resource type="Texture2D" uid="uid://bnwomlwgrwh5m" path="res://assets/2d/3dSprites/outside/plant_36.png" id="18_r0br4"]
 [ext_resource type="Material" uid="uid://bg1ntsqnbxur7" path="res://assets/3d/materials/pavedStone.tres" id="18_vyjly"]
@@ -53,6 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://e1olanx5gje2" path="res://assets/3d/textures/RoofingTiles012B_1K-JPG/RoofingTiles012B_1K-JPG_Color.jpg" id="25_tyb1h"]
 [ext_resource type="Texture2D" uid="uid://bgc8nr6w5wfhx" path="res://assets/3d/textures/RoofingTiles012B_1K-JPG/RoofingTiles012B_1K-JPG_NormalDX.jpg" id="26_komip"]
 [ext_resource type="Texture2D" uid="uid://c54och7bvdfie" path="res://assets/3d/textures/RoofingTiles012B_1K-JPG/RoofingTiles012B_1K-JPG_Roughness.jpg" id="27_cy5w5"]
+[ext_resource type="PackedScene" uid="uid://dubgkevkltw4y" path="res://assets/3d/nonEuclidean/tower.blend" id="36_fvk6q"]
 [ext_resource type="ArrayMesh" uid="uid://ct0oujsqp01pg" path="res://assets/3d/nonEuclidean/easel.obj" id="50_eeb47"]
 [ext_resource type="Texture2D" uid="uid://b3koxxptk440r" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-albedo.png" id="50_vl3xx"]
 [ext_resource type="Texture2D" uid="uid://omi2etfctumo" path="res://assets/2d/3dSprites/outside/laplaceSky.jpg" id="50_w0v2a"]
@@ -1146,75 +1147,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_t7hd3")
 
 [node name="dimension3" type="Node3D" parent="."]
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="dimension3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7551, 17.3347, -2.55725)
-use_collision = true
-radius = 5.88924
-height = 23.8895
-sides = 32
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="dimension3"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 32.7551, 34.1445, -2.55725)
-use_collision = true
-radius = 2.78554
-height = 6.77976
-sides = 32
-
-[node name="CSGBox3D" type="CSGBox3D" parent="dimension3/CSGCylinder3D2"]
-transform = Transform3D(0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0, 1, -1.91063, -1.10512, 0.0147476)
-operation = 2
-size = Vector3(3.78336, 3.03149, 1.1758)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="dimension3/CSGCylinder3D2"]
-transform = Transform3D(-3.78552e-08, 2.18557e-08, -1, 0.5, 0.866025, 0, 0.866025, -0.5, -4.37114e-08, 0.282061, 0.583096, 2.11171)
-operation = 2
-size = Vector3(4.75504, 3.03149, 1.13454)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="dimension3/CSGCylinder3D2"]
-transform = Transform3D(-3.78552e-08, 2.18557e-08, -1, 0, 1, 2.18557e-08, 1, 0, -3.78552e-08, -0.16161, -0.405731, -0.00275469)
-operation = 2
-size = Vector3(1.85221, 3.03149, 2.03288)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="dimension3"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 25.0015, 8.7925, -2.17773)
-use_collision = true
-size = Vector3(3.06348, 1, 13.9048)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="dimension3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0015, 12.1783, 5.35735)
-use_collision = true
-size = Vector3(3.06348, 1, 3.58461)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="dimension3"]
-transform = Transform3D(-4.37114e-08, -0.5, 0.866025, 0, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 32.09, 15.6201, 5.62693)
-use_collision = true
-size = Vector3(3.06348, 1, 13.9048)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="dimension3"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 39.6251, 19.0059, 5.62693)
-use_collision = true
-size = Vector3(3.06348, 1, 3.58461)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="dimension3"]
-transform = Transform3D(-1, -4.37114e-08, 7.57103e-08, 0, 0.866025, 0.5, -8.74228e-08, 0.5, -0.866025, 39.9144, 22.2198, -1.50939)
-use_collision = true
-size = Vector3(3.06348, 1, 13.9048)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="dimension3"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 39.9144, 25.6056, -9.04447)
-use_collision = true
-size = Vector3(3.06348, 1, 3.58461)
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="dimension3"]
-transform = Transform3D(-4.37114e-08, 0.5, -0.866025, 0, 0.866025, 0.5, 1, 2.18557e-08, -3.78552e-08, 36.0142, 27.2066, -9.31405)
-use_collision = true
-size = Vector3(3.06348, 1, 6.54164)
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="dimension3"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.6395, 28.7736, -9.31405)
-use_collision = true
-size = Vector3(3.06348, 1, 3.58461)
-
 [node name="thirdStoryEntranceField" type="Area3D" parent="dimension3"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29.4832, 32.0145, -2.40527)
 collision_layer = 0
@@ -1234,6 +1166,9 @@ monitorable = false
 [node name="hitbox" type="CollisionShape3D" parent="dimension3/forthStoryEntranceField"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.120764)
 shape = SubResource("BoxShape3D_d8u1y")
+
+[node name="tower" parent="dimension3" instance=ExtResource("36_fvk6q")]
+transform = Transform3D(0.042647, 0, 0.1954, 0, 0.2, 0, -0.1954, 0, 0.042647, 113.213, 7.09313, 6.93249)
 
 [node name="dimension4" type="Node3D" parent="."]
 
