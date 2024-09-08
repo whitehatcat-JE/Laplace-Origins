@@ -3961,6 +3961,7 @@ offset_top = 61.0
 offset_right = 2635.0
 offset_bottom = 154.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -3974,6 +3975,7 @@ offset_top = 61.0
 offset_right = 1563.0
 offset_bottom = 109.0
 scale = Vector2(0.7, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4008,6 +4010,7 @@ offset_top = 186.0
 offset_right = 3104.0
 offset_bottom = 414.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 100
@@ -4052,6 +4055,7 @@ offset_top = 295.0
 offset_right = 1689.0
 offset_bottom = 340.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4085,6 +4089,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4118,6 +4123,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4151,6 +4157,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4192,6 +4199,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4227,6 +4235,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4262,6 +4271,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4297,6 +4307,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4332,6 +4343,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4367,6 +4379,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4402,6 +4415,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4437,6 +4451,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4472,6 +4487,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4507,6 +4523,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4542,6 +4559,7 @@ offset_top = -72.5
 offset_right = 628.0
 offset_bottom = -27.5
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -4612,6 +4630,7 @@ offset_top = 125.0
 offset_right = 2117.0
 offset_bottom = 1162.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_fonts/bold_font = SubResource("FontFile_63anl")
@@ -4681,6 +4700,7 @@ offset_top = 242.0
 offset_right = 2033.0
 offset_bottom = 987.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_fonts/bold_font = SubResource("FontFile_63anl")
@@ -4741,6 +4761,7 @@ offset_top = 24.0
 offset_right = 1180.0
 offset_bottom = 213.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -4803,6 +4824,7 @@ offset_top = 24.0
 offset_right = 1180.0
 offset_bottom = 213.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -4894,9 +4916,9 @@ offset_bottom = 292.0
 scale = Vector2(0.4, 0.4)
 theme_override_colors/default_color = Color(0.4, 0.4, 0.4, 1)
 theme_override_colors/font_outline_color = Color(0.4, 0.4, 0.4, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[p align=center]Last Modified 7 months ago"
 
@@ -4909,7 +4931,7 @@ offset_bottom = 1017.0
 scale = Vector2(0.4, 0.4)
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_fonts/bold_font = SubResource("FontFile_63anl")
 theme_override_font_sizes/normal_font_size = 30
@@ -4975,14 +4997,14 @@ color = Color(0.184314, 0.184314, 0.184314, 1)
 offset_right = 1180.0
 offset_bottom = 257.0
 scale = Vector2(0.4, 0.4)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[font_size=24][color=gray][outline_color=gray]Live results for [color=white][outline_color=white]Your Location
-[font_size=48]   -2[font_size=24]°c[font_size=32]                                           Light Hail
-[font_size=24]Temperature | Precipitation | Wind[color=gray][outline_color=gray]                               Saturday - Midnight
+[font_size=48]   -2[font_size=24]°c[font_size=32]                                          Light Hail
+[font_size=24]Temperature | Precipitation | Wind[color=gray][outline_color=gray]                            Saturday - Midnight
 [font_size=22][color=00fffe][outline_color=00fffe]￣￣￣￣￣￣￣
 [font_size=24]"
 
@@ -5001,11 +5023,11 @@ texture = ExtResource("11_stnlb")
 
 [node name="point1" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
 offset_left = -375.0
-offset_top = -9.22222
-offset_right = -347.0
-offset_bottom = 39.7778
+offset_top = -9.0
+offset_right = -299.0
+offset_bottom = 40.0
 scale = Vector2(0.4, 0.7)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -5018,7 +5040,7 @@ offset_top = 101.444
 offset_right = 1500.0
 offset_bottom = 150.444
 scale = Vector2(0.4, 0.7)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -5026,12 +5048,12 @@ bbcode_enabled = true
 text = "[font_size=24][color=gray][outline_color=gray]12am              1am              2am               3am               4am               5am               6am              7am"
 
 [node name="point2" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
-offset_left = -271.25
-offset_top = -9.22222
-offset_right = -243.25
-offset_bottom = 39.7778
+offset_left = -271.0
+offset_top = -9.0
+offset_right = -183.0
+offset_bottom = 40.0
 scale = Vector2(0.4, 0.7)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -5039,12 +5061,12 @@ bbcode_enabled = true
 text = "[font_size=24][color=gray][outline_color=gray]-2"
 
 [node name="point3" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
-offset_left = -74.9231
-offset_top = -43.4762
-offset_right = -46.9231
-offset_bottom = 5.52382
+offset_left = -75.0
+offset_top = -43.0
+offset_right = 13.0
+offset_bottom = 6.0
 scale = Vector2(0.4, 0.7)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -5052,12 +5074,12 @@ bbcode_enabled = true
 text = "[font_size=24][color=gray][outline_color=gray]0"
 
 [node name="point8" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
-offset_left = -175.481
-offset_top = -19.7619
-offset_right = -147.481
-offset_bottom = 29.2381
+offset_left = -175.0
+offset_top = -20.0
+offset_right = -83.0
+offset_bottom = 29.0
 scale = Vector2(0.4, 0.7)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -5067,10 +5089,10 @@ text = "[font_size=24][color=gray][outline_color=gray]-1"
 [node name="point4" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
 offset_left = 21.0
 offset_top = -80.0
-offset_right = 72.0
+offset_right = 152.0
 offset_bottom = -31.0
 scale = Vector2(0.4, 0.7)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -5080,10 +5102,10 @@ text = "[font_size=24][color=gray][outline_color=gray]1"
 [node name="point5" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
 offset_left = 123.0
 offset_top = -96.0
-offset_right = 175.0
+offset_right = 295.0
 offset_bottom = -47.0
 scale = Vector2(0.4, 0.7)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -5093,10 +5115,10 @@ text = "[font_size=24][color=gray][outline_color=gray]2"
 [node name="point6" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
 offset_left = 224.0
 offset_top = -96.0
-offset_right = 260.0
+offset_right = 355.0
 offset_bottom = -47.0
 scale = Vector2(0.4, 0.7)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -5106,10 +5128,10 @@ text = "[font_size=24][color=gray][outline_color=gray]2"
 [node name="point7" type="RichTextLabel" parent="weatherResults/weatherReport/WeatherLine"]
 offset_left = 318.0
 offset_top = -115.0
-offset_right = 358.0
+offset_right = 429.0
 offset_bottom = -66.0
 scale = Vector2(0.4, 0.7)
-theme_override_constants/outline_size = 4
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -5124,17 +5146,17 @@ texture = ExtResource("14_wc3iv")
 [node name="GridContainer" type="GridContainer" parent="weatherResults/weatherReport"]
 offset_top = 147.0
 offset_right = 469.0
-offset_bottom = 187.0
+offset_bottom = 256.0
 columns = 8
 
 [node name="point1" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[font_size=8][color=gray][p align=center][outline_color=gray]Sat"
 
@@ -5142,10 +5164,10 @@ text = "[font_size=8][color=gray][p align=center][outline_color=gray]Sat"
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[font_size=8][color=gray][p align=center][outline_color=gray]Sun"
 
@@ -5153,10 +5175,10 @@ text = "[font_size=8][color=gray][p align=center][outline_color=gray]Sun"
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[font_size=8][color=gray][p align=center][outline_color=gray]Mon"
 
@@ -5164,10 +5186,10 @@ text = "[font_size=8][color=gray][p align=center][outline_color=gray]Mon"
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[font_size=8][color=gray][p align=center][outline_color=gray]Tue"
 
@@ -5175,10 +5197,10 @@ text = "[font_size=8][color=gray][p align=center][outline_color=gray]Tue"
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[font_size=8][color=gray][p align=center][outline_color=gray]Wed"
 
@@ -5186,10 +5208,10 @@ text = "[font_size=8][color=gray][p align=center][outline_color=gray]Wed"
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[font_size=8][color=gray][p align=center][outline_color=gray]Thu"
 
@@ -5197,10 +5219,10 @@ text = "[font_size=8][color=gray][p align=center][outline_color=gray]Thu"
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[font_size=8][color=gray][p align=center][outline_color=gray]Fri"
 
@@ -5208,10 +5230,10 @@ text = "[font_size=8][color=gray][p align=center][outline_color=gray]Fri"
 custom_minimum_size = Vector2(0, 12)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
 text = "[font_size=8][color=gray][p align=center][outline_color=gray]Sat"
 
@@ -5288,92 +5310,100 @@ scale = Vector2(0.7, 0.7)
 texture = ExtResource("17_07e3x")
 
 [node name="point9" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[p align=center]3°[font_size=8][color=gray][outline_color=gray] -2°"
+text = "[p align=center]3°[font_size=10][color=gray]
+[outline_color=gray][outline_size=1]-2°"
 
 [node name="point10" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[p align=center]1°[font_size=8][color=gray][outline_color=gray] -4°"
+text = "[p align=center]1°[font_size=10][color=gray]
+[outline_color=gray][outline_size=1]-4°"
 
 [node name="point11" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[p align=center]0°[font_size=8][color=gray][outline_color=gray] -4°"
+text = "[p align=center]0°[font_size=10][color=gray]
+[outline_color=gray][outline_size=1]-4°"
 
 [node name="point12" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[p align=center]2°[font_size=8][color=gray][outline_color=gray] -1°"
+text = "[p align=center]2°[font_size=10][color=gray]
+[outline_color=gray][outline_size=1]-1°"
 
 [node name="point13" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[p align=center]-2°[font_size=8][color=gray][outline_color=gray] -5°"
+text = "[p align=center]-2°[font_size=10][color=gray]
+[outline_color=gray][outline_size=1]-5°"
 
 [node name="point14" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[p align=center]-2°[font_size=8][color=gray][outline_color=gray] -7°"
+text = "[p align=center]-2°[font_size=10][color=gray]
+[outline_color=gray][outline_size=1]-7°"
 
 [node name="point15" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[p align=center]-6°[font_size=8][color=gray][outline_color=gray] -12°"
+text = "[p align=center]-6°[font_size=10][color=gray]
+[outline_color=gray][outline_size=1]-12°"
 
 [node name="point16" type="RichTextLabel" parent="weatherResults/weatherReport/GridContainer"]
-custom_minimum_size = Vector2(0, 12)
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/outline_size = 1
+theme_override_constants/outline_size = 3
 theme_override_constants/line_separation = 0
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
-theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/normal_font_size = 20
 bbcode_enabled = true
-text = "[p align=center]-9°[font_size=8][color=gray][outline_color=gray] -17°"
+text = "[p align=center]-9°[font_size=10][color=gray]
+[outline_color=gray][outline_size=1]-17°"
 
 [node name="article1" type="Node2D" parent="weatherResults"]
 modulate = Color(1, 1, 1, 0)
@@ -5381,21 +5411,23 @@ position = Vector2(611, 377)
 
 [node name="hoverBackdropA" type="ColorRect" parent="weatherResults/article1"]
 modulate = Color(1, 1, 1, 0)
+offset_top = 24.0
 offset_right = 472.0
-offset_bottom = 22.0
+offset_bottom = 46.0
 color = Color(0.431373, 0.431373, 0.431373, 1)
 
 [node name="hoverBackdropB" type="ColorRect" parent="weatherResults/article1"]
 modulate = Color(1, 1, 1, 0)
-offset_top = 23.0
+offset_top = 47.0
 offset_right = 472.0
-offset_bottom = 88.0
+offset_bottom = 112.0
 color = Color(0.184314, 0.184314, 0.184314, 1)
 
 [node name="title" type="Label" parent="weatherResults/article1"]
 offset_left = 1.90735e-05
-offset_right = 840.0
-offset_bottom = 45.0
+offset_top = 24.0
+offset_right = 1104.0
+offset_bottom = 75.0
 scale = Vector2(0.4, 0.4)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 4
@@ -5405,10 +5437,11 @@ text = "UN to fund new geoengineering research program"
 
 [node name="description" type="RichTextLabel" parent="weatherResults/article1"]
 modulate = Color(1, 1, 1, 0.666667)
-offset_top = 24.0
+offset_top = 48.0
 offset_right = 1180.0
-offset_bottom = 213.0
+offset_bottom = 237.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -5418,9 +5451,9 @@ text = "[fade start=100 length=25]UN representatives met privately with a select
 [font_size=20]By FutureTalkz | Published 7 Months ago"
 
 [node name="divider" type="ColorRect" parent="weatherResults/article1"]
-offset_top = 22.0
+offset_top = 46.0
 offset_right = 472.0
-offset_bottom = 23.0
+offset_bottom = 47.0
 color = Color(0.321569, 0.321569, 0.321569, 1)
 
 [node name="hoverAnims" type="AnimationPlayer" parent="weatherResults/article1"]
@@ -5429,7 +5462,7 @@ libraries = {
 }
 
 [node name="article1" parent="weatherResults/article1" instance=ExtResource("2_qxlri")]
-position = Vector2(575, 109)
+position = Vector2(575, 133)
 scale = Vector2(0.3, 0.3)
 collision_layer = 8
 interactionName = "weatherArticle1"
@@ -5921,6 +5954,7 @@ offset_top = 24.0
 offset_right = 1180.0
 offset_bottom = 213.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -5992,6 +6026,7 @@ offset_top = 24.0
 offset_right = 1180.0
 offset_bottom = 213.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -6057,6 +6092,7 @@ offset_top = 24.0
 offset_right = 1180.0
 offset_bottom = 213.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
@@ -6170,6 +6206,7 @@ offset_top = 61.0
 offset_right = 1687.0
 offset_bottom = 154.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -6214,6 +6251,7 @@ offset_top = 111.0
 offset_right = 1670.0
 offset_bottom = 204.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -6228,6 +6266,7 @@ offset_top = 111.0
 offset_right = 1740.0
 offset_bottom = 204.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -6255,6 +6294,7 @@ offset_top = 61.0
 offset_right = 1687.0
 offset_bottom = 154.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -6299,6 +6339,7 @@ offset_top = 111.0
 offset_right = 1783.0
 offset_bottom = 204.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -6313,6 +6354,7 @@ offset_top = 111.0
 offset_right = 1740.0
 offset_bottom = 204.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 35
@@ -6353,6 +6395,7 @@ offset_top = 91.0
 offset_right = 1995.0
 offset_bottom = 319.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 50

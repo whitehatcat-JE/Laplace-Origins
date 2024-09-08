@@ -1,7 +1,7 @@
 extends Node3D
 
 const MAX_DISTANCE_BOTTOM:float = 60.0
-const MAX_DISTANCE_TOP:float = 30.0
+const MAX_DISTANCE_TOP:float = 300.0
 
 var story:int = 1
 var nextDimensionQueued:bool = false
