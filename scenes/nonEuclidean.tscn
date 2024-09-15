@@ -104,7 +104,7 @@ size = Vector3(122.186, 0.24231, 66.8151)
 size = Vector3(11.6913, 1, 1.87738)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0dis1"]
-size = Vector3(91.114, 1, 8.90026)
+size = Vector3(95.1888, 1, 8.90026)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppjos"]
 size = Vector3(7.53224, 5.57227, 0.702202)
@@ -1017,7 +1017,7 @@ transform = Transform3D(0.806156, -0.591704, 0, 0.591704, 0.806156, 0, 0, 0, 1, 
 shape = SubResource("BoxShape3D_t232d")
 
 [node name="CollisionShape3D33" type="CollisionShape3D" parent="dimension2/StaticBody3D"]
-transform = Transform3D(0.806156, -0.591704, 0, 0.591704, 0.806156, 0, 0, 0, 1, 49.294, 33.5339, -4.25555)
+transform = Transform3D(0.806156, -0.591704, 0, 0.591704, 0.806156, 0, 0, 0, 1, 50.9365, 34.7394, -4.25555)
 shape = SubResource("BoxShape3D_0dis1")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="dimension2/StaticBody3D"]
@@ -1185,7 +1185,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.120764)
 shape = SubResource("BoxShape3D_d8u1y")
 
 [node name="tower" parent="dimension3" instance=ExtResource("36_fvk6q")]
-transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 63.9336, 7.099, -4.585)
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 70.7961, 7.099, -4.585)
 
 [node name="Cube_010" parent="dimension3/tower" index="0"]
 material_override = SubResource("StandardMaterial3D_ho7sv")
@@ -1195,6 +1195,24 @@ material_override = SubResource("StandardMaterial3D_s4414")
 
 [node name="Cube_027" parent="dimension3/tower" index="2"]
 material_override = SubResource("StandardMaterial3D_4q013")
+
+[node name="Cylinder" parent="dimension3/tower" index="3"]
+material_override = ExtResource("2_tlbxi")
+
+[node name="Cylinder_001" parent="dimension3/tower" index="4"]
+material_override = ExtResource("2_tlbxi")
+
+[node name="Cone" parent="dimension3/tower" index="5"]
+material_override = ExtResource("2_tlbxi")
+
+[node name="Cube" parent="dimension3/tower" index="6"]
+material_override = ExtResource("2_tlbxi")
+
+[node name="Torus" parent="dimension3/tower" index="7"]
+material_override = ExtResource("2_tlbxi")
+
+[node name="Torus_001" parent="dimension3/tower" index="8"]
+material_override = ExtResource("2_tlbxi")
 
 [node name="dimension4" type="Node3D" parent="."]
 visible = false
