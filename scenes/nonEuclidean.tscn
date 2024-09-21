@@ -1,20 +1,17 @@
-[gd_scene load_steps=129 format=3 uid="uid://dppv4w5r1jusc"]
+[gd_scene load_steps=134 format=3 uid="uid://dppv4w5r1jusc"]
 
 [ext_resource type="Script" path="res://scenes/nonEuclideanSpace.gd" id="1_gkibj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_scmjs"]
 [ext_resource type="Texture2D" uid="uid://dxg0notxyr6wk" path="res://assets/2d/hands/paper.jpg" id="2_6n24r"]
 [ext_resource type="Shader" path="res://scripts/shaders/noise.gdshader" id="2_6wxnn"]
 [ext_resource type="Texture2D" uid="uid://dlx1c4j6ftpjk" path="res://assets/2d/laplace/doorway.png" id="2_f8hfn"]
-[ext_resource type="Texture2D" uid="uid://bgfa1ht2jnyo7" path="res://assets/3d/textures/Metal035_1K-JPG/Metal035_1K-JPG_Color.jpg" id="2_r4u6i"]
 [ext_resource type="Material" uid="uid://eybtrki11n5" path="res://assets/3d/materials/gold.tres" id="2_tlbxi"]
 [ext_resource type="FontFile" uid="uid://c7nf20h66non7" path="res://assets/fonts/SpecialElite.ttf" id="3_2tgpc"]
 [ext_resource type="Texture2D" uid="uid://dcevbxxgqar76" path="res://assets/2d/laplace/backgroundNoise.png" id="3_fyruq"]
 [ext_resource type="PackedScene" uid="uid://beb00hj3p7xxj" path="res://assets/3d/nonEuclidean/romanHouse.blend" id="3_ta0m3"]
-[ext_resource type="Texture2D" uid="uid://bqmuhccxalc57" path="res://assets/3d/textures/Metal035_1K-JPG/Metal035_1K-JPG_Metalness.jpg" id="3_xnscv"]
 [ext_resource type="Texture2D" uid="uid://c47pdqpchx4d8" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-albedo.png" id="4_4geko"]
 [ext_resource type="Texture2D" uid="uid://cxdbhjbai6ktn" path="res://assets/2d/laplace/eye.png" id="4_b2kae"]
 [ext_resource type="Shader" path="res://scripts/shaders/filmGrain.gdshader" id="4_rwn6q"]
-[ext_resource type="Texture2D" uid="uid://psu8mbfqsntc" path="res://assets/3d/textures/Metal035_1K-JPG/Metal035_1K-JPG_Roughness.jpg" id="4_ylb2v"]
 [ext_resource type="Texture2D" uid="uid://bijuw13o6gyl2" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-ao.png" id="5_4s6x1"]
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="5_qrto8"]
 [ext_resource type="ArrayMesh" uid="uid://b6pljcc8rmtr7" path="res://assets/3d/nonEuclidean/pillar.obj" id="5_sli1t"]
@@ -47,6 +44,12 @@
 [ext_resource type="Texture2D" uid="uid://e1olanx5gje2" path="res://assets/3d/textures/RoofingTiles012B_1K-JPG/RoofingTiles012B_1K-JPG_Color.jpg" id="25_tyb1h"]
 [ext_resource type="Texture2D" uid="uid://bgc8nr6w5wfhx" path="res://assets/3d/textures/RoofingTiles012B_1K-JPG/RoofingTiles012B_1K-JPG_NormalDX.jpg" id="26_komip"]
 [ext_resource type="Texture2D" uid="uid://c54och7bvdfie" path="res://assets/3d/textures/RoofingTiles012B_1K-JPG/RoofingTiles012B_1K-JPG_Roughness.jpg" id="27_cy5w5"]
+[ext_resource type="Texture2D" uid="uid://dot1c31e87ng0" path="res://assets/3d/textures/Bricks091_1K-JPG/Bricks091_1K-JPG_Color.jpg" id="28_vjitk"]
+[ext_resource type="Texture2D" uid="uid://cc20n2cqpqsed" path="res://assets/3d/textures/Bricks091_1K-JPG/Bricks091_1K-JPG_NormalDX.jpg" id="31_lm5mi"]
+[ext_resource type="Texture2D" uid="uid://b4gpernlvne0" path="res://assets/3d/textures/Bricks091_1K-JPG/Bricks091_1K-JPG_Roughness.jpg" id="32_ret18"]
+[ext_resource type="Texture2D" uid="uid://b007y6na2fowq" path="res://assets/3d/textures/Rock056_1K-JPG/Rock056_1K-JPG_Color.jpg" id="33_c3mhc"]
+[ext_resource type="Texture2D" uid="uid://boq3oqdssp8kp" path="res://assets/3d/textures/Rock056_1K-JPG/Rock056_1K-JPG_NormalDX.jpg" id="34_4e3jv"]
+[ext_resource type="Texture2D" uid="uid://dpu34bq217oey" path="res://assets/3d/textures/Rock056_1K-JPG/Rock056_1K-JPG_Roughness.jpg" id="35_gsa53"]
 [ext_resource type="PackedScene" uid="uid://dubgkevkltw4y" path="res://assets/3d/nonEuclidean/tower.blend" id="36_fvk6q"]
 [ext_resource type="ArrayMesh" uid="uid://ct0oujsqp01pg" path="res://assets/3d/nonEuclidean/easel.obj" id="50_eeb47"]
 [ext_resource type="Texture2D" uid="uid://b3koxxptk440r" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-albedo.png" id="50_vl3xx"]
@@ -80,13 +83,14 @@ glow_enabled = true
 fog_enabled = true
 fog_light_color = Color(1, 0.00784314, 0, 1)
 fog_light_energy = 0.2
-fog_density = 0.0243
-fog_height = 58.51
-fog_height_density = -0.1
+fog_height = 70.0
+fog_height_density = -0.05
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
 volumetric_fog_albedo = Color(1, 0, 0.0196078, 1)
-volumetric_fog_length = 48.0
+adjustment_enabled = true
+adjustment_contrast = 1.02
+adjustment_saturation = 1.02
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aawcy"]
 size = Vector3(2.39273, 4.04442, 0.227417)
@@ -104,7 +108,7 @@ size = Vector3(122.186, 0.24231, 66.8151)
 size = Vector3(11.6913, 1, 1.87738)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0dis1"]
-size = Vector3(95.1888, 1, 8.90026)
+size = Vector3(105.377, 1, 8.90026)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppjos"]
 size = Vector3(7.53224, 5.57227, 0.702202)
@@ -242,15 +246,7 @@ size = Vector3(2.06117, 5.16695, 0.520264)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d8u1y"]
 size = Vector3(2.06117, 5.16695, 0.317871)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ho7sv"]
-albedo_texture = ExtResource("2_r4u6i")
-metallic = 1.0
-metallic_texture = ExtResource("3_xnscv")
-roughness_texture = ExtResource("4_ylb2v")
-uv1_scale = Vector3(0.2, 0.2, 0.2)
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4414"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qflyo"]
 albedo_texture = ExtResource("4_4geko")
 metallic = 1.0
 metallic_texture = ExtResource("7_lupgs")
@@ -264,8 +260,8 @@ heightmap_texture = ExtResource("6_plaj2")
 uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4q013"]
-albedo_color = Color(0.757813, 0.497314, 0.497314, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qb5ml"]
+albedo_color = Color(1, 0.787339, 0.727121, 1)
 albedo_texture = ExtResource("12_etwfj")
 metallic = 1.0
 metallic_texture = ExtResource("15_s2vt4")
@@ -277,6 +273,31 @@ ao_texture = ExtResource("13_pbx17")
 heightmap_texture = ExtResource("14_ug423")
 uv1_scale = Vector3(0.2, 0.2, 0.2)
 uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50qb4"]
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("33_c3mhc")
+roughness_texture = ExtResource("35_gsa53")
+normal_enabled = true
+normal_texture = ExtResource("34_4e3jv")
+uv1_scale = Vector3(5, 5, 5)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ie04"]
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = ExtResource("28_vjitk")
+roughness_texture = ExtResource("32_ret18")
+normal_enabled = true
+normal_texture = ExtResource("31_lm5mi")
+uv1_scale = Vector3(1.5, 1.5, 1.5)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 45.2548
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_copal"]
+albedo_color = Color(1, 0.109282, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0.0274329, 1)
+emission_energy_multiplier = 7.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ajkyp"]
 cull_mode = 1
@@ -501,437 +522,1008 @@ sky_mode = 1
 [node name="pillars" type="Node3D" parent="."]
 
 [node name="pillar1" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5529, 7.66417, 30.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3253, 7.66417, 30.8128)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar2" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.4001, 7.66417, 30.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.278, 7.66417, 30.8128)
 material_override = ExtResource("2_tlbxi")
 cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar3" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5529, 7.66417, -46.2068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3253, 7.66417, -46.2068)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar4" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.4001, 7.66417, -46.2068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.278, 7.66417, -46.2068)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar5" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5529, 7.66417, 184.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3253, 7.66417, 184.306)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar6" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.4001, 7.66417, 184.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.278, 7.66417, 184.306)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar7" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5529, 7.66417, 107.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3253, 7.66417, 107.287)
 material_override = ExtResource("2_tlbxi")
 cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar9" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5529, 7.66417, -123.349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3253, 7.66417, -123.349)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar10" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.4001, 7.66417, -123.349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.278, 7.66417, -123.349)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar11" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.5529, 7.66417, -200.368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3253, 7.66417, -200.368)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar8" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.4001, 7.66417, 107.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.278, 7.66417, 107.287)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar12" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 59.4001, 7.66417, -202.293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.278, 7.66417, -202.293)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar13" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.271, 7.66417, 30.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.149, 7.66417, 30.8128)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar14" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 218.224, 7.66417, 30.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.102, 7.66417, 30.8128)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar15" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.271, 7.66417, -46.2068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.149, 7.66417, -46.2068)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar16" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 218.224, 7.66417, -46.2068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.102, 7.66417, -46.2068)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar17" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.271, 7.66417, 184.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.149, 7.66417, 184.306)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar18" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 218.224, 7.66417, 184.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.102, 7.66417, 184.306)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar19" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.271, 7.66417, 107.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.149, 7.66417, 107.287)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar20" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.271, 7.66417, -123.349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.149, 7.66417, -123.349)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar21" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 218.224, 7.66417, -123.349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.102, 7.66417, -123.349)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar22" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 135.271, 7.66417, -200.368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.149, 7.66417, -200.368)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar23" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 218.224, 7.66417, 107.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.102, 7.66417, 107.287)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar24" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 218.224, 7.66417, -202.293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.102, 7.66417, -202.293)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar25" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 294.354, 7.66417, 30.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.232, 7.66417, 30.8128)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar26" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 377.307, 7.66417, 30.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 449.185, 7.66417, 30.8128)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar27" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 294.354, 7.66417, -46.2068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.232, 7.66417, -46.2068)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar28" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 377.307, 7.66417, -46.2068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 449.185, 7.66417, -46.2068)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar29" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 294.354, 7.66417, 184.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.232, 7.66417, 184.306)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar30" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 377.307, 7.66417, 184.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 449.185, 7.66417, 184.306)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar31" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 294.354, 7.66417, 107.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.232, 7.66417, 107.287)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar32" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 294.354, 7.66417, -123.349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.232, 7.66417, -123.349)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar33" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 377.307, 7.66417, -123.349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 449.185, 7.66417, -123.349)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar34" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 294.354, 7.66417, -200.368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.232, 7.66417, -200.368)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar35" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 377.307, 7.66417, 107.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 449.185, 7.66417, 107.287)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar36" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 377.307, 7.66417, -202.293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 449.185, 7.66417, -202.293)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar37" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -496.227, 7.66417, 30.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424.349, 7.66417, 30.8128)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar38" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -413.274, 7.66417, 30.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -341.396, 7.66417, 30.8128)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar39" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -496.227, 7.66417, -46.2068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424.349, 7.66417, -46.2068)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar40" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -413.274, 7.66417, -46.2068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -341.396, 7.66417, -46.2068)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar41" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -496.227, 7.66417, 184.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424.349, 7.66417, 184.306)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar42" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -413.274, 7.66417, 184.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -341.396, 7.66417, 184.306)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar43" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -496.227, 7.66417, 107.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424.349, 7.66417, 107.287)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar44" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -496.227, 7.66417, -123.349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424.349, 7.66417, -123.349)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar45" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -413.274, 7.66417, -123.349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -341.396, 7.66417, -123.349)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar46" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -496.227, 7.66417, -200.368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424.349, 7.66417, -200.368)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar47" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -413.274, 7.66417, 107.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -341.396, 7.66417, 107.287)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar48" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -413.274, 7.66417, -202.293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -341.396, 7.66417, -202.293)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar49" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -337.403, 7.66417, 30.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.525, 7.66417, 30.8128)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar50" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.45, 7.66417, 30.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.572, 7.66417, 30.8128)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar51" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -337.403, 7.66417, -46.2068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.525, 7.66417, -46.2068)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar52" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.45, 7.66417, -46.2068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.572, 7.66417, -46.2068)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar53" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -337.403, 7.66417, 184.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.525, 7.66417, 184.306)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar54" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.45, 7.66417, 184.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.572, 7.66417, 184.306)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar55" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -337.403, 7.66417, 107.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.525, 7.66417, 107.287)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar56" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -337.403, 7.66417, -123.349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.525, 7.66417, -123.349)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar57" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.45, 7.66417, -123.349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.572, 7.66417, -123.349)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar58" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -337.403, 7.66417, -200.368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.525, 7.66417, -200.368)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar59" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.45, 7.66417, 107.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.572, 7.66417, 107.287)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar60" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -254.45, 7.66417, -202.293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.572, 7.66417, -202.293)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar61" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.32, 7.66417, 30.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.442, 7.66417, 30.8128)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar62" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.3667, 7.66417, 30.8128)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4884, 7.66417, 30.8128)
 material_override = ExtResource("2_tlbxi")
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar63" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.32, 7.66417, -46.2068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.442, 7.66417, -46.2068)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar64" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.3667, 7.66417, -46.2068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4884, 7.66417, -46.2068)
 material_override = ExtResource("2_tlbxi")
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar65" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.32, 7.66417, 184.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.442, 7.66417, 184.306)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar66" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.3667, 7.66417, 184.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4884, 7.66417, 184.306)
 material_override = ExtResource("2_tlbxi")
 cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar67" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.32, 7.66417, 107.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.442, 7.66417, 107.287)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar68" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.32, 7.66417, -123.349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.442, 7.66417, -123.349)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar69" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.3667, 7.66417, -123.349)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4884, 7.66417, -123.349)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar70" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -178.32, 7.66417, -200.368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.442, 7.66417, -200.368)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar71" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.3667, 7.66417, 107.287)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4884, 7.66417, 107.287)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
 [node name="pillar72" type="MeshInstance3D" parent="pillars"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -95.3667, 7.66417, -202.293)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4884, 7.66417, -202.293)
 material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar73" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3253, 7.66417, -439.477)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar74" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.278, 7.66417, -439.477)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar77" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3253, 7.66417, -285.984)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar78" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.278, 7.66417, -285.984)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar79" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3253, 7.66417, -363.003)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar83" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.278, 7.66417, -363.003)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar85" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.149, 7.66417, -439.477)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar86" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.102, 7.66417, -439.477)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar89" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.149, 7.66417, -285.984)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar90" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.102, 7.66417, -285.984)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar91" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.149, 7.66417, -363.003)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar95" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.102, 7.66417, -363.003)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar97" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.232, 7.66417, -439.477)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar98" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 449.185, 7.66417, -439.477)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar101" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.232, 7.66417, -285.984)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar102" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 449.185, 7.66417, -285.984)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar103" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.232, 7.66417, -363.003)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar107" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 449.185, 7.66417, -363.003)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar109" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424.349, 7.66417, -439.477)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar110" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -341.396, 7.66417, -439.477)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar113" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424.349, 7.66417, -285.984)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar114" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -341.396, 7.66417, -285.984)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar115" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424.349, 7.66417, -363.003)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar119" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -341.396, 7.66417, -363.003)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar121" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.525, 7.66417, -439.477)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar122" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.572, 7.66417, -439.477)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar125" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.525, 7.66417, -285.984)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar126" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.572, 7.66417, -285.984)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar127" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.525, 7.66417, -363.003)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar131" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.572, 7.66417, -363.003)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar133" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.442, 7.66417, -439.477)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar134" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4884, 7.66417, -439.477)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar137" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.442, 7.66417, -285.984)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar138" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4884, 7.66417, -285.984)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar139" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.442, 7.66417, -363.003)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar143" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4884, 7.66417, -363.003)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar147" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3253, 7.66417, 421.748)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar148" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.278, 7.66417, 421.748)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar152" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3253, 7.66417, 344.606)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar153" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.278, 7.66417, 344.606)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar154" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3253, 7.66417, 267.587)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar156" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131.278, 7.66417, 265.662)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar159" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.149, 7.66417, 421.748)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar160" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.102, 7.66417, 421.748)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar164" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.149, 7.66417, 344.606)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar165" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.102, 7.66417, 344.606)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar166" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 207.149, 7.66417, 267.587)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar168" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 290.102, 7.66417, 265.662)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar171" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.232, 7.66417, 421.748)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar172" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 449.185, 7.66417, 421.748)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar176" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.232, 7.66417, 344.606)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar177" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 449.185, 7.66417, 344.606)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar178" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 366.232, 7.66417, 267.587)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar180" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 449.185, 7.66417, 265.662)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar183" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424.349, 7.66417, 421.748)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar184" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -341.396, 7.66417, 421.748)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar188" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424.349, 7.66417, 344.606)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar189" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -341.396, 7.66417, 344.606)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar190" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -424.349, 7.66417, 267.587)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar192" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -341.396, 7.66417, 265.662)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar195" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.525, 7.66417, 421.748)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar196" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.572, 7.66417, 421.748)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar200" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.525, 7.66417, 344.606)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar201" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.572, 7.66417, 344.606)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar202" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -265.525, 7.66417, 267.587)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar204" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -182.572, 7.66417, 265.662)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar207" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.442, 7.66417, 421.748)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar208" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4884, 7.66417, 421.748)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar212" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.442, 7.66417, 344.606)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar213" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4884, 7.66417, 344.606)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar214" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -106.442, 7.66417, 267.587)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
+mesh = ExtResource("5_sli1t")
+skeleton = NodePath("../..")
+
+[node name="pillar216" type="MeshInstance3D" parent="pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.4884, 7.66417, 265.662)
+material_override = ExtResource("2_tlbxi")
+cast_shadow = 0
 mesh = ExtResource("5_sli1t")
 skeleton = NodePath("../..")
 
@@ -975,7 +1567,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0526567, -0.561264, -0.2089
 shape = SubResource("BoxShape3D_aawcy")
 
 [node name="showPillars" type="Area3D" parent="dimension2"]
-transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 1.20564, 3.51313, -3.74586)
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 2.81053, 4.20327, -3.74586)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
@@ -985,7 +1577,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0526567, -0.561264, -0.2089
 shape = SubResource("BoxShape3D_aawcy")
 
 [node name="hidePillars" type="Area3D" parent="dimension2"]
-transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 0.369334, 3.03103, -3.74586)
+transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 1.97422, 3.72117, -3.74586)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
@@ -1017,7 +1609,7 @@ transform = Transform3D(0.806156, -0.591704, 0, 0.591704, 0.806156, 0, 0, 0, 1, 
 shape = SubResource("BoxShape3D_t232d")
 
 [node name="CollisionShape3D33" type="CollisionShape3D" parent="dimension2/StaticBody3D"]
-transform = Transform3D(0.806156, -0.591704, 0, 0.591704, 0.806156, 0, 0, 0, 1, 50.9365, 34.7394, -4.25555)
+transform = Transform3D(0.806156, -0.591704, 0, 0.591704, 0.806156, 0, 0, 0, 1, 55.0433, 37.7537, -4.25555)
 shape = SubResource("BoxShape3D_0dis1")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="dimension2/StaticBody3D"]
@@ -1185,34 +1777,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.120764)
 shape = SubResource("BoxShape3D_d8u1y")
 
 [node name="tower" parent="dimension3" instance=ExtResource("36_fvk6q")]
-transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 70.7961, 7.099, -4.585)
+transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 69.4273, 7.099, -4.585)
 
 [node name="Cube_010" parent="dimension3/tower" index="0"]
-material_override = SubResource("StandardMaterial3D_ho7sv")
+material_override = ExtResource("2_tlbxi")
 
 [node name="Cube_026" parent="dimension3/tower" index="1"]
-material_override = SubResource("StandardMaterial3D_s4414")
+material_override = SubResource("StandardMaterial3D_qflyo")
 
-[node name="Cube_027" parent="dimension3/tower" index="2"]
-material_override = SubResource("StandardMaterial3D_4q013")
+[node name="Plane_001" parent="dimension3/tower" index="2"]
+material_override = SubResource("StandardMaterial3D_qb5ml")
 
-[node name="Cylinder" parent="dimension3/tower" index="3"]
-material_override = ExtResource("2_tlbxi")
+[node name="pyramidInterior" parent="dimension3/tower" index="3"]
+material_override = SubResource("StandardMaterial3D_50qb4")
 
-[node name="Cylinder_001" parent="dimension3/tower" index="4"]
-material_override = ExtResource("2_tlbxi")
+[node name="pyramid" parent="dimension3/tower" index="4"]
+material_override = SubResource("StandardMaterial3D_1ie04")
 
-[node name="Cone" parent="dimension3/tower" index="5"]
-material_override = ExtResource("2_tlbxi")
-
-[node name="Cube" parent="dimension3/tower" index="6"]
-material_override = ExtResource("2_tlbxi")
-
-[node name="Torus" parent="dimension3/tower" index="7"]
-material_override = ExtResource("2_tlbxi")
-
-[node name="Torus_001" parent="dimension3/tower" index="8"]
-material_override = ExtResource("2_tlbxi")
+[node name="doorway" parent="dimension3/tower" index="5"]
+material_override = SubResource("StandardMaterial3D_copal")
 
 [node name="dimension4" type="Node3D" parent="."]
 visible = false

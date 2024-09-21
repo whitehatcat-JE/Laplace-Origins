@@ -11,3 +11,4 @@ metallic_texture = ExtResource("2_41u6u")
 roughness_texture = ExtResource("3_rjpj0")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
+proximity_fade_distance = 0.01
