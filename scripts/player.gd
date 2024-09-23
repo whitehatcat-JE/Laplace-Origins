@@ -3,7 +3,7 @@ extends CharacterBody3D
 signal interacted(interactionName:String)
 signal droppedEvent(event:InputEvent)
 # Constants
-const PLAYER_SPEED:float = 4
+@export var PLAYER_SPEED:float = 4
 const MOUSE_SENSITIVITY:float = 0.15
 const DECELERATION:float = 20.0
 # State variables
