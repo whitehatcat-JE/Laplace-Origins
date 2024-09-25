@@ -1,7 +1,7 @@
 extends Node3D
 
 const MAX_DISTANCE_BOTTOM:float = 60.0
-const MAX_DISTANCE_TOP:float = 300.0
+const MAX_DISTANCE_TOP:float = 100.0
 
 var story:int = 1
 var nextDimensionQueued:bool = false
@@ -16,9 +16,6 @@ func _ready():
 func _process(delta: float) -> void:
 	if story == 1:
 		if $player.position.distance_to(Vector3(0, $player.position.y, 0.0)) >= MAX_DISTANCE_BOTTOM:
-			teleportPlayer()
-	elif story == 2:
-		if $player.position.distance_to(Vector3(15.0, $player.position.y, 0.0)) >= MAX_DISTANCE_TOP:
 			teleportPlayer()
 
 func _on_dimension_1_transition_boundary_screen_exited():
@@ -57,3 +54,6 @@ func teleportPlayer():
 			$player.position = $playerBottomRespawnPos.position
 		2:
 			$player.position = $playerTopRespawnPos.position
+
+func _on_second_story_teleport_fields_body_entered(body: Node3D) -> void:
+	teleportPlayer()

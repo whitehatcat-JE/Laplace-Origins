@@ -3,7 +3,7 @@ extends CharacterBody3D
 signal interacted(interactionName:String)
 signal droppedEvent(event:InputEvent)
 # Constants
-@export var PLAYER_SPEED:float = 4
+@export var PLAYER_SPEED:float = 3
 const MOUSE_SENSITIVITY:float = 0.15
 const DECELERATION:float = 20.0
 # State variables
@@ -77,6 +77,8 @@ func _physics_process(delta) -> void:
 	# Create movement matrix
 	var aim:Basis = get_global_transform().basis
 	var direction:Vector3 = Vector3(0, -1, 0)
+	if is_on_floor():
+		direction.y = 0.0
 	
 	if Input.is_action_pressed("moveLeft"): direction -= aim.x
 	if Input.is_action_pressed("moveRight"): direction += aim.x
