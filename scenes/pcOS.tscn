@@ -1841,6 +1841,10 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 [node name="schrodingerView" parent="shooterMinigame" index="12"]
 texture = SubResource("ViewportTexture_474pj")
 
+[node name="schrodingerViewport" parent="shooterMinigame/schrodingerView" index="0"]
+render_target_clear_mode = 1
+render_target_update_mode = 0
+
 [node name="Camera3D" parent="shooterMinigame/schrodingerView/schrodingerViewport/schrodinger" index="19"]
 transform = Transform3D(1, 0, 0, 0, 0.915613, -0.402059, 0, 0.402059, 0.915613, -0.736414, 12.0824, 14.0832)
 

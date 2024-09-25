@@ -175,7 +175,7 @@ func _on_trigger_field_body_entered(_body) -> void:
 # Change scene to outdoors
 func _on_fade_anim_animation_finished(anim_name) -> void:
 	if anim_name == "fadeOut":
-		get_tree().change_scene_to_file("res://scenes/outside.tscn")
+		get_tree().change_scene_to_file("res://scenes/nonEuclidean.tscn")
 # Disable piano room jumpscares
 func _on_trigger_field_2_body_entered(_body) -> void:
 	$pianoRoom/triggerField2.set_deferred("monitoring", false)

@@ -8,9 +8,12 @@ var nextDimensionQueued:bool = false
 var dimensionNum:int = 1
 
 func _ready():
-	$dimension2.position.y = -100
+	$dimension2.position.z = 20.0
+	$dimension3.position = Vector3(-100, -10, 40)
+	await get_tree().create_timer(0.1).timeout
+	$dimension2.position = Vector3(0.0, -100.0, 0.0)
+	$dimension3.position = Vector3(0.0, 0.0, 0.0)
 	$dimension3.visible = false
-	$dimension4.visible = false
 	$pillars.visible = false
 
 func _process(delta: float) -> void:
@@ -57,3 +60,10 @@ func teleportPlayer():
 
 func _on_second_story_teleport_fields_body_entered(body: Node3D) -> void:
 	teleportPlayer()
+
+
+func _on_exit_field_body_entered(body: Node3D) -> void:
+	$player.disabled = true
+	$player/HUD/hudAnims.play("fadeOut")
+	await $player/HUD/hudAnims.animation_finished
+	get_tree().change_scene_to_file("res://scenes/outside.tscn")

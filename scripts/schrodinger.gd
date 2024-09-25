@@ -38,7 +38,12 @@ func _ready():
 func _process(delta):
 	if !isFocused or !GI.shooterActive or !GI.inOS or inCutscene:
 		$player.disabled = true
+		if !(!isFocused or !GI.shooterActive or !GI.inOS) and inCutscene:
+			get_parent().render_target_update_mode = SubViewport.UPDATE_ALWAYS
+		else:
+			get_parent().render_target_update_mode = SubViewport.UPDATE_DISABLED
 	elif $player.disabled:
+		get_parent().render_target_update_mode = SubViewport.UPDATE_ALWAYS
 		$player.disabled = false
 	for pillarIdx in range(len(pillars)):
 		var rectPos:Rect2 = pillars[pillarIdx].get_region_rect()

@@ -372,7 +372,7 @@ script = ExtResource("1_8shjs")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.0504012, 0.998729, 0, -0.998729, 0.0504012, 0, 5.61871, 0)
 light_color = Color(0.196078, 0.227451, 0.533333, 1)
-shadow_enabled = true
+directional_shadow_mode = 0
 
 [node name="player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.123899, 1.57146, 25.4298)

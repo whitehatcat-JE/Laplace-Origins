@@ -600,6 +600,7 @@ axis_lock_linear_y = true
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("2_egrqs")
+PLAYER_SPEED = 4.0
 
 [node name="HUD" type="Control" parent="player"]
 layout_mode = 3

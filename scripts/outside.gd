@@ -10,7 +10,6 @@ func _ready() -> void:
 		enviro.get_environment().set_ssil_enabled(false)
 		enviro.get_environment().set_ssao_enabled(false)
 		enviro.get_environment().set_volumetric_fog_enabled(false)
-	$player/HUD/fadeAnim.play("fade") # Play fade-in animation
 	if GI.previousScreen != null: GI.previousScreen.call_deferred("free"); # Clears home scene cache
 # Play outdoor intro animation
 func playOutdoors():

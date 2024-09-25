@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://dcf34l30ctj4m"]
+[gd_scene load_steps=113 format=3 uid="uid://dcf34l30ctj4m"]
 
 [ext_resource type="Script" path="res://scripts/outside.gd" id="1_6fiwc"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_mu5ff"]
@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://bfp30fvpiae72" path="res://assets/3d/textures/concrete3-bl/concrete3-albedo.png" id="7_l0syg"]
 [ext_resource type="Texture2D" uid="uid://c47pdqpchx4d8" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-albedo.png" id="7_vduld"]
 [ext_resource type="ArrayMesh" uid="uid://ci0y0og4d48dh" path="res://assets/3d/laplace/body.obj" id="7_ynk4e"]
-[ext_resource type="Shader" path="res://scripts/shaders/glitch.gdshader" id="8_1pbpg"]
 [ext_resource type="Texture2D" uid="uid://biteyr737fv10" path="res://assets/3d/textures/concrete3-bl/concrete3-ao.png" id="8_b1gvf"]
 [ext_resource type="Texture2D" uid="uid://bijuw13o6gyl2" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-ao.png" id="8_r08oy"]
 [ext_resource type="Texture2D" uid="uid://dcevbxxgqar76" path="res://assets/2d/laplace/backgroundNoise.png" id="8_xt4jm"]
@@ -116,14 +115,6 @@ shader_parameter/offset = 0.0
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rrkyy"]
 blend_mode = 3
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yxcby"]
-shader = ExtResource("8_1pbpg")
-shader_parameter/shake_power = 0.0
-shader_parameter/shake_rate = 0.2
-shader_parameter/shake_speed = 5.0
-shader_parameter/shake_block_size = 50.0
-shader_parameter/shake_color_rate = 0.0
-
 [sub_resource type="Animation" id="Animation_i7fsc"]
 resource_name = "fade"
 tracks/0/type = "value"
@@ -133,7 +124,7 @@ tracks/0/path = NodePath("..:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -175,6 +166,18 @@ tracks/3/keys = {
 "args": [],
 "method": &"playOutdoors"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fade:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x3k5n"]
@@ -1411,7 +1414,7 @@ sky_mode = 1
 
 [node name="outdoor" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("63_y3pwj")
-volume_db = -20.0
+volume_db = -10.0
 
 [node name="outdoorDistorted" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("64_nkxij")
@@ -1444,6 +1447,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="noise" type="Sprite2D" parent="player/HUD"]
+visible = false
 modulate = Color(1, 0.0352941, 0, 1)
 material = SubResource("ShaderMaterial_racad")
 position = Vector2(25, 25.5)
@@ -1458,6 +1462,7 @@ scale = Vector2(0.25, 0.43)
 texture = ExtResource("9_ix76t")
 
 [node name="text" type="RichTextLabel" parent="player/HUD"]
+visible = false
 layout_mode = 0
 offset_left = -887.0
 offset_top = -265.0
@@ -1476,18 +1481,18 @@ Laplace is born
 And thus"
 
 [node name="fade" type="ColorRect" parent="player/HUD"]
-material = SubResource("ShaderMaterial_yxcby")
 layout_mode = 0
 offset_left = -1084.0
 offset_top = -596.0
 offset_right = 1276.0
 offset_bottom = 684.0
-color = Color(0.819608, 0, 0.00784314, 1)
+color = Color(1, 0.0313726, 0, 1)
 
 [node name="fadeAnim" type="AnimationPlayer" parent="player/HUD"]
 libraries = {
 "": SubResource("AnimationLibrary_x3k5n")
 }
+autoplay = "fade"
 speed_scale = 0.2
 
 [node name="crosshair" type="Sprite2D" parent="player/HUD"]
