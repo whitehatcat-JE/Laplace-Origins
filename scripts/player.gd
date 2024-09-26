@@ -44,6 +44,16 @@ func _input(event) -> void:
 			else:
 				$head/cam.rotate_x(deg_to_rad(change))
 				cameraAngle += change
+		else:
+			if change + cameraAngle > 60:
+				$head/cam.rotate_x(deg_to_rad(60 - cameraAngle))
+				cameraAngle = 60
+			elif change + cameraAngle < -85:
+				$head/cam.rotate_x(deg_to_rad(-(85 + cameraAngle)))
+				cameraAngle = -85
+			else:
+				$head/cam.rotate_x(deg_to_rad(change))
+				cameraAngle += change
 	elif Input.is_action_just_pressed("interact") and HUDinteract.visible: # Interact with object looking at
 		if interactCast.get_collider() == null: return;
 		emit_signal("interacted", interactCast.get_collider().interactionName)

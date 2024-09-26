@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://ca0p6p4ae2vwp"]
+[gd_scene load_steps=57 format=3 uid="uid://ca0p6p4ae2vwp"]
 
 [ext_resource type="Script" path="res://scripts/schrodinger.gd" id="1_8shjs"]
 [ext_resource type="Script" path="res://scripts/schrodingerPlayer.gd" id="3_i11jx"]
@@ -182,6 +182,9 @@ cull_mode = 2
 albedo_texture = ExtResource("10_e21mb")
 texture_filter = 0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2tcwo"]
+size = Vector3(6.07086, 1.85669, 6.08917)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_l7mo3"]
 animations = [{
 "frames": [{
@@ -208,6 +211,9 @@ albedo_texture = ExtResource("19_mo0yp")
 emission_enabled = true
 emission_texture = ExtResource("20_6il73")
 texture_filter = 0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_41x0e"]
+size = Vector3(1, 1.85669, 3.19531)
 
 [sub_resource type="Animation" id="Animation_8ud5b"]
 length = 0.001
@@ -845,6 +851,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 12, 2)
 material_override = SubResource("StandardMaterial3D_w7m4m")
 mesh = SubResource("SphereMesh_5sde6")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="trees/LargePlanterBox"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="trees/LargePlanterBox/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00766, 0.775729, 1.02359)
+shape = SubResource("BoxShape3D_2tcwo")
+
 [node name="LargePlanterBox2" type="MeshInstance3D" parent="trees"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 17.8874, 0.513234, -11.0976)
 material_override = SubResource("StandardMaterial3D_tl85c")
@@ -855,6 +867,12 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00001, 12, 5.72205e-06)
 material_override = SubResource("StandardMaterial3D_w7m4m")
 mesh = SubResource("SphereMesh_5sde6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="trees/LargePlanterBox2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="trees/LargePlanterBox2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00766, 0.775729, 1.02359)
+shape = SubResource("BoxShape3D_2tcwo")
 
 [node name="LargePlanterBox3" type="MeshInstance3D" parent="trees"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1126, 0.513234, 18.4813)
@@ -867,6 +885,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 12, 1.17594)
 material_override = SubResource("StandardMaterial3D_w7m4m")
 mesh = SubResource("SphereMesh_5sde6")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="trees/LargePlanterBox3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="trees/LargePlanterBox3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00766, 0.775729, 1.02359)
+shape = SubResource("BoxShape3D_2tcwo")
+
 [node name="LargePlanterBox4" type="MeshInstance3D" parent="trees"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 17.8874, 0.513234, 20.4813)
 material_override = SubResource("StandardMaterial3D_tl85c")
@@ -877,6 +901,12 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13778, 12, 1.63493)
 material_override = SubResource("StandardMaterial3D_w7m4m")
 mesh = SubResource("SphereMesh_5sde6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="trees/LargePlanterBox4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="trees/LargePlanterBox4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00766, 0.775729, 1.02359)
+shape = SubResource("BoxShape3D_2tcwo")
 
 [node name="lamps" type="Node3D" parent="."]
 
@@ -1080,11 +1110,23 @@ material_override = SubResource("StandardMaterial3D_3lkmc")
 mesh = ExtResource("21_t1l5h")
 skeleton = NodePath("../..")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="benches/Bench"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="benches/Bench/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775729, 0.0634766)
+shape = SubResource("BoxShape3D_41x0e")
+
 [node name="Bench2" type="MeshInstance3D" parent="benches"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 11.397, 0.487265, 16.0638)
 material_override = SubResource("StandardMaterial3D_3lkmc")
 mesh = ExtResource("21_t1l5h")
 skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="benches/Bench2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="benches/Bench2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775729, 0.0634766)
+shape = SubResource("BoxShape3D_41x0e")
 
 [node name="Bench3" type="MeshInstance3D" parent="benches"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -11.6569, 0.487265, 16.0638)
@@ -1092,11 +1134,23 @@ material_override = SubResource("StandardMaterial3D_3lkmc")
 mesh = ExtResource("21_t1l5h")
 skeleton = NodePath("../..")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="benches/Bench3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="benches/Bench3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775729, 0.0634766)
+shape = SubResource("BoxShape3D_41x0e")
+
 [node name="Bench4" type="MeshInstance3D" parent="benches"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, -11.6549, 0.487265, -8.41189)
 material_override = SubResource("StandardMaterial3D_3lkmc")
 mesh = ExtResource("21_t1l5h")
 skeleton = NodePath("../..")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="benches/Bench4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="benches/Bench4/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.775729, 0.0634766)
+shape = SubResource("BoxShape3D_41x0e")
 
 [node name="cutsceneAnims" type="AnimationPlayer" parent="."]
 libraries = {

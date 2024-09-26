@@ -219,6 +219,7 @@ func teleportToHands():
 	player.global_position = %handsSpawnPos.global_position
 
 func teleportFromHands():
+	$hallway/schrodingerView.visible = true
 	player.global_position = %basementReentryPos.global_position
 
 func unlockPlayer():

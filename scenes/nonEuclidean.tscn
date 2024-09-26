@@ -418,35 +418,6 @@ blend_mode = 3
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hvofe"]
 size = Vector2(1920, 1080)
 
-[sub_resource type="Animation" id="Animation_32cip"]
-resource_name = "teleport"
-length = 2.0
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("screenshot:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("screenshot:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(3, 1),
-"update": 0,
-"values": [Vector2(-940, 560), Vector2(-940, 1800)]
-}
-
 [sub_resource type="Animation" id="Animation_n5j2s"]
 resource_name = "fadeIn"
 length = 3.0
@@ -478,6 +449,35 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(-2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_32cip"]
+resource_name = "teleport"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("screenshot:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("screenshot:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(3, 1),
+"update": 0,
+"values": [Vector2(-940, 560), Vector2(-940, 1800)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_fhmw3"]

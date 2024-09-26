@@ -295,6 +295,7 @@ offset_top = 61.0
 offset_right = 2635.0
 offset_bottom = 154.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 0.0352941, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_uvlop")
 theme_override_font_sizes/font_size = 35
@@ -309,6 +310,7 @@ offset_top = 61.0
 offset_right = 1563.0
 offset_bottom = 109.0
 scale = Vector2(0.7, 0.4)
+theme_override_colors/font_outline_color = Color(1, 0.0352941, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_uvlop")
 theme_override_font_sizes/font_size = 35
@@ -337,8 +339,8 @@ scale = Vector2(4, 4)
 texture = ExtResource("5_xy4h8")
 
 [node name="walls" type="StaticBody2D" parent="groundFloorLevel"]
-collision_layer = 16
-collision_mask = 16
+collision_layer = 256
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="groundFloorLevel/walls"]
 position = Vector2(-16, -7.5)
@@ -436,12 +438,12 @@ scale = Vector2(4, 4)
 texture = ExtResource("7_dlpe1")
 
 [node name="basementKey" type="Sprite2D" parent="basementLevel"]
-position = Vector2(-41, 14)
+position = Vector2(-44.25, 24.25)
 texture = ExtResource("8_nwdic")
 
 [node name="walls" type="StaticBody2D" parent="basementLevel"]
-collision_layer = 16
-collision_mask = 16
+collision_layer = 256
+collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="basementLevel/walls"]
 position = Vector2(-12.5, -15.5)
@@ -492,7 +494,7 @@ position = Vector2(-261.25, -82.75)
 scale = Vector2(0.25, 0.25)
 
 [node name="basementKeyInteraction" type="Area2D" parent="basementLevel/basementInteractionPoints"]
-position = Vector2(903, 334)
+position = Vector2(890, 375)
 scale = Vector2(4, 4)
 collision_layer = 0
 collision_mask = 128
@@ -512,8 +514,8 @@ shape = SubResource("RectangleShape2D_ayt6x")
 
 [node name="player" type="CharacterBody2D" parent="."]
 position = Vector2(978, 395)
-collision_layer = 144
-collision_mask = 16
+collision_layer = 384
+collision_mask = 256
 script = ExtResource("7_bx2v0")
 
 [node name="sprite" type="Sprite2D" parent="player"]
@@ -629,7 +631,7 @@ libraries = {
 position = Vector2(0, 10000)
 
 [node name="key" type="Node2D" parent="basementInteractionButtons"]
-position = Vector2(844, 382)
+position = Vector2(844, 418)
 scale = Vector2(1, 1e-05)
 
 [node name="interactBox" type="Sprite2D" parent="basementInteractionButtons/key"]

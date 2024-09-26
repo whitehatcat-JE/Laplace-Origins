@@ -20,6 +20,8 @@ func spawnBullet() -> void:
 	# Move bullet in firing direction
 	bullet.position = position
 	bullet.direction = dir
+	bullet.collision_layer = 16
+
 # Player movement and shoot detection
 func _physics_process(delta) -> void:
 	if !GI.shooterActive or !GI.inOS or !alive: return; # Stop player from moving if game not focused or player dead

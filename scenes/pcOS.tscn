@@ -1415,6 +1415,7 @@ offset_top = 96.0
 offset_right = 208.0
 offset_bottom = 131.0
 scale = Vector2(0.4, 0.4)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("11_830h1")
 theme_override_font_sizes/font_size = 15
@@ -1838,15 +1839,12 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 [node name="quit" parent="shooterMinigame/HUD" index="6"]
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 
-[node name="schrodingerView" parent="shooterMinigame" index="12"]
+[node name="schrodingerView" parent="shooterMinigame" index="13"]
 texture = SubResource("ViewportTexture_474pj")
 
 [node name="schrodingerViewport" parent="shooterMinigame/schrodingerView" index="0"]
 render_target_clear_mode = 1
 render_target_update_mode = 0
-
-[node name="Camera3D" parent="shooterMinigame/schrodingerView/schrodingerViewport/schrodinger" index="19"]
-transform = Transform3D(1, 0, 0, 0, 0.915613, -0.402059, 0, 0.402059, 0.915613, -0.736414, 12.0824, 14.0832)
 
 [node name="internetBrowser" parent="." instance=ExtResource("20_xce36")]
 visible = false

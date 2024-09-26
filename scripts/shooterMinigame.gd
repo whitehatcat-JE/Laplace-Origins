@@ -65,7 +65,7 @@ func corrupt():
 	droneRobot = load("res://objects/droneRobotCorrupt.tscn")
 	motherfish = load("res://objects/motherfishCorrupt.tscn")
 	
-	healingDroneChance = 0.9
+	healingDroneChance = 0.925
 # Enter / exit shooter minigame
 func start():
 	GI.shooterActive = true
@@ -148,14 +148,14 @@ func _on_spawn_timer_timeout():
 				chosenSpawnpoint.get_node("activationPoint").global_position))
 		# Connect drone to self
 		newDrone.heal.connect(playerHealed)
-	elif randf() > 0.95 and timeSinceStarted > 60.0 and timeSinceLastMother > 8: # Spawn motherfish
+	elif randf() > 0.95 and timeSinceStarted > 60.0 and timeSinceLastMother > 8:
 		timeSinceLastMother = 0
 		var newBoss:Node = motherfish.instantiate()
 		# Append motherfish to self
 		allEnemies.append(newBoss)
 		add_child(newBoss)
 		# Position motherfish
-		var chosenSpawnpoint:Node = $spawnpoints.get_child(randi_range(0, 12))
+		var chosenSpawnpoint:Node = $spawnpointsMotherfish.get_child(randi_range(0, 5))
 		var moveAngle:float = chosenSpawnpoint.global_position.angle_to_point(
 			chosenSpawnpoint.get_node("activationPoint").global_position)
 		newBoss.position = chosenSpawnpoint.global_position - Vector2(100, 0).rotated(moveAngle)
@@ -246,6 +246,7 @@ func exitSchrodinger():
 	$schrodingerView.visible = false
 	$schrodingerView/schrodingerViewport/schrodinger.isFocused = false
 	emit_signal("showMouse")
+	schrodingerActive = false
 	schrodingerDisabled = true
 
 func _on_player_scanner_body_entered(body):

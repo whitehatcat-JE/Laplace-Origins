@@ -1,4 +1,4 @@
-[gd_scene load_steps=504 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=507 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -50,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://cwlw5wn1mieku" path="res://assets/3d/textures/moss/Moss002_1K_NormalGL.jpg" id="22_n7f70"]
 [ext_resource type="Texture2D" uid="uid://nldpaaxojube" path="res://assets/2d/3dSprites/keyboardLetteringD.png" id="22_y3tp1"]
 [ext_resource type="Texture2D" uid="uid://cs8ejuh3eotea" path="res://assets/3d/textures/moss/Moss002_1K_Roughness.jpg" id="23_0s3pd"]
+[ext_resource type="Texture2D" uid="uid://bk8ll8pfi84ji" path="res://assets/2d/3dSprites/surrealArt/backgroundLaplaceWall.png" id="25_3qj5w"]
 [ext_resource type="ArrayMesh" uid="uid://cbejr6q6dyhsd" path="res://assets/3d/officeChair.obj" id="26_nhadi"]
 [ext_resource type="Material" uid="uid://3oqvwghgab58" path="res://assets/3d/materials/redFabricShaded.tres" id="27_nncwi"]
 [ext_resource type="Texture2D" uid="uid://d0sgp4a52ffei" path="res://assets/3d/textures/coarse-old-fabric-bl/coarse-old-fabric_albedo.png" id="27_q6856"]
@@ -155,6 +156,8 @@
 [ext_resource type="Shader" path="res://scripts/shaders/filmGrain.gdshader" id="112_dtkwp"]
 [ext_resource type="Texture2D" uid="uid://olkyv4j16hmq" path="res://assets/3d/textures/worn-factory-siding-bl/worn-factory-siding_height.png" id="113_8anbh"]
 [ext_resource type="Texture2D" uid="uid://b4gt0mjqce5no" path="res://assets/3d/textures/worn-factory-siding-bl/worn-factory-siding_metallic.png" id="114_n0jpa"]
+[ext_resource type="Texture2D" uid="uid://cv3or24jbtcdk" path="res://assets/2d/3dSprites/surrealArt/body.png" id="114_x0pxm"]
+[ext_resource type="Texture2D" uid="uid://cn4v5hcyn8jpc" path="res://assets/2d/3dSprites/surrealArt/largeWingsDark.png" id="115_j3ffu"]
 [ext_resource type="Texture2D" uid="uid://dv2fexxpiglh3" path="res://assets/3d/textures/worn-factory-siding-bl/worn-factory-siding_normal-ogl.png" id="115_lou3r"]
 [ext_resource type="Texture2D" uid="uid://bpmhgddwksspn" path="res://assets/3d/textures/worn-factory-siding-bl/worn-factory-siding_roughness.png" id="116_uounf"]
 [ext_resource type="Texture2D" uid="uid://bfp30fvpiae72" path="res://assets/3d/textures/concrete3-bl/concrete3-albedo.png" id="118_vnxjw"]
@@ -321,7 +324,10 @@ size = Vector3(1, 0.9, 0.9)
 viewport_path = NodePath("schrodingerView/schrodingerViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqgce"]
-albedo_texture = ExtResource("193_t8w1n")
+transparency = 3
+alpha_hash_scale = 0.0
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("25_3qj5w")
 emission_energy_multiplier = 0.0
 emission_texture = ExtResource("193_t8w1n")
 heightmap_enabled = true
@@ -329,7 +335,7 @@ heightmap_scale = 16.0
 heightmap_deep_parallax = true
 heightmap_min_layers = 8
 heightmap_max_layers = 32
-heightmap_texture = ExtResource("193_t8w1n")
+heightmap_texture = ExtResource("25_3qj5w")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_xa1hh"]
 viewport_path = NodePath("bedroom/pcWindow")
@@ -1003,6 +1009,15 @@ metallic_specular = 1.0
 roughness = 0.0
 emission_enabled = true
 emission = Color(1, 0.764706, 0.529412, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2p2ue"]
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wkrp"]
+albedo_texture = ExtResource("91_67n5f")
+emission_enabled = true
+emission_texture = ExtResource("91_67n5f")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ryky8"]
 
@@ -2058,10 +2073,10 @@ emission_texture = ExtResource("35_sflak")
 heightmap_texture = ExtResource("28_w1sg1")
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x7lab"]
-resource_local_to_scene = true
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_yt274")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dh3jc"]
+albedo_color = Color(0.535156, 0.0351882, 0, 1)
+emission_enabled = true
+emission = Color(1, 0.0115047, 0, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rjm4n"]
 albedo_color = Color(0, 0, 0, 1)
@@ -2107,7 +2122,7 @@ uv1_scale = Vector3(3, 3, 3)
 
 [sub_resource type="Animation" id="Animation_qt207"]
 resource_name = "displayMessage"
-length = 11.0
+length = 9.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -2115,7 +2130,7 @@ tracks/0/path = NodePath("crtScreen/crtInterface/terminal:visible_ratio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 3, 9, 11),
+"times": PackedFloat32Array(0, 1, 3, 7, 9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 0.528, 0.586, 1.0]
@@ -2151,10 +2166,10 @@ tracks/3/path = NodePath("CeilingLamp/ceilingLight1:light_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2.8, 3, 4.2, 4.4, 4.6, 6.2, 6.4, 6.6, 9, 11),
-"transitions": PackedFloat32Array(1, 4, 1, 4, 0.25, 1, 4, 0.25, 1, -2, 1),
+"times": PackedFloat32Array(0, 2.8, 3, 4.23333, 4.43333, 4.63333, 7, 9),
+"transitions": PackedFloat32Array(1, 4, 1, 4, 0.25, 1, -2, 1),
 "update": 0,
-"values": [Color(0.835294, 0.678431, 0.309804, 1), Color(0.835294, 0.678431, 0.309804, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.537255, 0, 0.0313726, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.537255, 0, 0.0313726, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.607843, 0.00784314, 0, 1)]
+"values": [Color(0.835294, 0.678431, 0.309804, 1), Color(0.835294, 0.678431, 0.309804, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.537255, 0, 0.0313726, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.607843, 0.00784314, 0, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -2163,10 +2178,10 @@ tracks/4/path = NodePath("CeilingLamp2/ceilingLight2:light_color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 2.8, 3, 5.5, 5.7, 5.9, 9, 11),
-"transitions": PackedFloat32Array(1, 4, 1, 4, 0.25, 1, -2, 1),
+"times": PackedFloat32Array(0, 2.8, 3, 7, 9),
+"transitions": PackedFloat32Array(1, 4, 1, -2, 1),
 "update": 0,
-"values": [Color(0.835294, 0.678431, 0.309804, 1), Color(0.835294, 0.678431, 0.309804, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.537255, 0, 0.0313726, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.607843, 0.00784314, 0, 1)]
+"values": [Color(0.835294, 0.678431, 0.309804, 1), Color(0.835294, 0.678431, 0.309804, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.607843, 0.00784314, 0, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -2175,7 +2190,7 @@ tracks/5/path = NodePath("../hallway/staircaseSpotlight2/light:light_color")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 2.8, 3, 9, 11),
+"times": PackedFloat32Array(0, 2.8, 3, 7, 9),
 "transitions": PackedFloat32Array(1, 4, 1, -2, 1),
 "update": 0,
 "values": [Color(1, 0.639216, 0.329412, 1), Color(1, 0.639216, 0.329412, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 0.00784314, 0, 1)]
@@ -2187,7 +2202,7 @@ tracks/6/path = NodePath("../hallway/staircaseSpotlight/light:light_color")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 2.8, 3, 9, 11),
+"times": PackedFloat32Array(0, 2.8, 3, 7, 9),
 "transitions": PackedFloat32Array(1, 4, 1, -2, 1),
 "update": 0,
 "values": [Color(1, 0.639216, 0.329412, 1), Color(1, 0.639216, 0.329412, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.788235, 0.0235294, 0, 1)]
@@ -2199,7 +2214,7 @@ tracks/7/path = NodePath("../hallway/CeilingLamp/OmniLight3D:light_color")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 2.8, 3, 9, 11),
+"times": PackedFloat32Array(0, 2.8, 3, 7, 9),
 "transitions": PackedFloat32Array(1, 4, 1, -2, 1),
 "update": 0,
 "values": [Color(1, 0.662745, 0.447059, 1), Color(1, 0.639216, 0.329412, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.788235, 0.0235294, 0, 1)]
@@ -2211,7 +2226,7 @@ tracks/8/path = NodePath("../hallway/CeilingLamp2/OmniLight3D:light_color")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 2.8, 3, 9, 11),
+"times": PackedFloat32Array(0, 2.8, 3, 7, 9),
 "transitions": PackedFloat32Array(1, 4, 1, -2, 1),
 "update": 0,
 "values": [Color(1, 0.662745, 0.447059, 1), Color(1, 0.639216, 0.329412, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.788235, 0.0235294, 0, 1)]
@@ -2223,7 +2238,7 @@ tracks/9/path = NodePath("../walls/spotLight/light:light_color")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 2.8, 3, 9, 11),
+"times": PackedFloat32Array(0, 2.8, 3, 7, 9),
 "transitions": PackedFloat32Array(1, 4, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 0.521569, 0.168627, 1), Color(1, 0.521569, 0.168627, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.00392157, 0.0666667, 1, 1)]
@@ -2235,7 +2250,7 @@ tracks/10/path = NodePath("../bedroom/CeilingLamp/OmniLight3D:light_color")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0, 2.8, 3, 9, 11),
+"times": PackedFloat32Array(0, 2.8, 3, 7, 9),
 "transitions": PackedFloat32Array(1, 4, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 0.662745, 0.447059, 1), Color(1, 0.662745, 0.447059, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.00392157, 0.0666667, 1, 1)]
@@ -2247,7 +2262,7 @@ tracks/11/path = NodePath("../bedroom/desk/lamp/lampLight:light_color")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 2.8, 3, 9, 11),
+"times": PackedFloat32Array(0, 2.8, 3, 7, 9),
 "transitions": PackedFloat32Array(1, 4, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 0.654902, 0.517647, 1), Color(1, 0.654902, 0.517647, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.00392157, 0.0666667, 1, 1)]
@@ -2271,10 +2286,10 @@ tracks/13/path = NodePath("hologramModule:surface_material_override/1")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(2.8, 13),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(5.3, 6, 11),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_x7lab"), SubResource("StandardMaterial3D_yiq7l")]
+"values": [SubResource("StandardMaterial3D_yiq7l"), SubResource("StandardMaterial3D_dh3jc"), SubResource("StandardMaterial3D_yiq7l")]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -2283,7 +2298,7 @@ tracks/14/path = NodePath("../hallway/staircaseSpotlight2:surface_material_overr
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 2.8, 9),
+"times": PackedFloat32Array(0, 2.8, 7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [SubResource("StandardMaterial3D_arrrt"), SubResource("StandardMaterial3D_rjm4n"), SubResource("StandardMaterial3D_ana1o")]
@@ -2295,7 +2310,7 @@ tracks/15/path = NodePath("../hallway/CeilingLamp2:surface_material_override/2")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 2.8, 9),
+"times": PackedFloat32Array(0, 2.8, 7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [SubResource("StandardMaterial3D_a0p8n"), SubResource("StandardMaterial3D_vmudr"), SubResource("StandardMaterial3D_ana1o")]
@@ -2319,7 +2334,7 @@ tracks/17/path = NodePath("CeilingLamp2:surface_material_override/2")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0, 2.8, 9),
+"times": PackedFloat32Array(0, 2.8, 7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_vmudr"), SubResource("StandardMaterial3D_fqk2p")]
@@ -2331,7 +2346,7 @@ tracks/18/path = NodePath("CeilingLamp:surface_material_override/2")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(0, 2.8, 9),
+"times": PackedFloat32Array(0, 2.8, 7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_vmudr"), SubResource("StandardMaterial3D_fqk2p")]
@@ -2343,7 +2358,7 @@ tracks/19/path = NodePath("../hallway/staircaseSpotlight:surface_material_overri
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0, 2.8, 9),
+"times": PackedFloat32Array(0, 2.8, 7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [SubResource("StandardMaterial3D_arrrt"), SubResource("StandardMaterial3D_vmudr"), SubResource("StandardMaterial3D_fqk2p")]
@@ -2355,7 +2370,7 @@ tracks/20/path = NodePath("../hallway/CeilingLamp:surface_material_override/2")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
-"times": PackedFloat32Array(0, 2.8, 9),
+"times": PackedFloat32Array(0, 2.8, 7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_vmudr"), SubResource("StandardMaterial3D_fqk2p")]
@@ -2367,7 +2382,7 @@ tracks/21/path = NodePath("../bedroom/CeilingLamp:surface_material_override/2")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
-"times": PackedFloat32Array(0, 2.8, 9),
+"times": PackedFloat32Array(0, 2.8, 7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [SubResource("StandardMaterial3D_dppb6"), SubResource("StandardMaterial3D_vmudr"), SubResource("StandardMaterial3D_ugnd4")]
@@ -2379,7 +2394,7 @@ tracks/22/path = NodePath("../walls/spotLight:surface_material_override/2")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
-"times": PackedFloat32Array(0, 2.8, 9),
+"times": PackedFloat32Array(0, 2.8, 7),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [SubResource("StandardMaterial3D_arrrt"), SubResource("StandardMaterial3D_vmudr"), SubResource("StandardMaterial3D_ugnd4")]
@@ -2391,10 +2406,10 @@ tracks/23/path = NodePath("door:surface_material_override/0")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
-"times": PackedFloat32Array(0, 2.8, 9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 2.8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_i8d5n"), SubResource("StandardMaterial3D_e3otq"), SubResource("StandardMaterial3D_i8d5n")]
+"values": [SubResource("StandardMaterial3D_i8d5n"), SubResource("StandardMaterial3D_e3otq")]
 }
 tracks/24/type = "value"
 tracks/24/imported = false
@@ -2415,10 +2430,10 @@ tracks/25/path = NodePath("jumpscareEyeA:visible")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
-"times": PackedFloat32Array(0, 4.3, 4.5, 6.3, 6.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 4.33333, 4.53333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true, false, true, false]
+"values": [false, true, false]
 }
 tracks/26/type = "value"
 tracks/26/imported = false
@@ -2427,10 +2442,10 @@ tracks/26/path = NodePath("jumpscareEyeB:visible")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
-"times": PackedFloat32Array(0, 5.6, 5.8),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true, false]
+"values": [false]
 }
 tracks/27/type = "value"
 tracks/27/imported = false
@@ -2439,7 +2454,7 @@ tracks/27/path = NodePath("crtScreen/crtInterface/eye:modulate")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = {
-"times": PackedFloat32Array(0, 11),
+"times": PackedFloat32Array(0, 9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -2463,7 +2478,7 @@ tracks/29/path = NodePath("stoneFlooring:position")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/keys = {
-"times": PackedFloat32Array(0, 9),
+"times": PackedFloat32Array(0, 7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Vector3(-4.82744, -3.88497, 2.88413), Vector3(-4.827, -10000, 2.884)]
@@ -2475,7 +2490,7 @@ tracks/30/path = NodePath("stoneFlooringHole:position")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/keys = {
-"times": PackedFloat32Array(0, 9),
+"times": PackedFloat32Array(0, 7),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Vector3(-4.82744, -10.4139, 2.88413), Vector3(-3.64542, -4.38729, -3.52729)]
@@ -2487,7 +2502,7 @@ tracks/31/path = NodePath("CeilingLamp/ceilingSpotlight:light_energy")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/keys = {
-"times": PackedFloat32Array(0, 9, 11),
+"times": PackedFloat32Array(0, 7, 9),
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
 "values": [0.0, 0.0, 3.0]
@@ -2511,12 +2526,24 @@ tracks/33/path = NodePath("..")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/keys = {
-"times": PackedFloat32Array(9),
+"times": PackedFloat32Array(7),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"unlockPlayer"
 }]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("hologramModule/seeLabel:visible")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0, 5.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xkoig"]
@@ -2717,15 +2744,6 @@ _data = {
 "spin": SubResource("Animation_dltor")
 }
 
-[sub_resource type="SphereMesh" id="SphereMesh_2p2ue"]
-radial_segments = 8
-rings = 4
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3wkrp"]
-albedo_texture = ExtResource("91_67n5f")
-emission_enabled = true
-emission_texture = ExtResource("91_67n5f")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_sedjo"]
 size = Vector3(4.57578, 8.61974, 1)
 
@@ -2831,30 +2849,30 @@ size = Vector3(2.40508, 1.285, 2.53004)
 
 [sub_resource type="Animation" id="Animation_ccyof"]
 resource_name = "hide"
-length = 0.5
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("arms:position")
+tracks/0/path = NodePath("arms:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(2, 1),
-"update": 0,
-"values": [Vector3(-2.44679, -0.172155, 5.64114), Vector3(-9.87258, -0.172155, 5.64114)]
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("arms:visible")
+tracks/1/path = NodePath("../player/HUD/fadeInBlack:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false]
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oa6t4"]
@@ -3059,10 +3077,10 @@ tracks/13/path = NodePath("bedroom/desk/monitorScreen/monitorImage:surface_mater
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 1.9, 12),
+"times": PackedFloat32Array(1.9, 5.23333, 12),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [SubResource("StandardMaterial3D_4md0b"), SubResource("StandardMaterial3D_vk4p3"), SubResource("StandardMaterial3D_5rhmc")]
+"values": [SubResource("StandardMaterial3D_vk4p3"), SubResource("StandardMaterial3D_4md0b"), SubResource("StandardMaterial3D_5rhmc")]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -3269,6 +3287,18 @@ tracks/30/keys = {
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
 "values": [Color(1, 0.639216, 0.329412, 1), Color(1, 0.639216, 0.329412, 1), Color(0, 0, 0, 1)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("hallway/schrodingerView:visible")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(1.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_gwngi"]
@@ -4396,7 +4426,7 @@ render_target_update_mode = 4
 
 [node name="pcOS" parent="bedroom/pcWindow" instance=ExtResource("6_wgccf")]
 
-[node name="schrodingerView" parent="bedroom/pcWindow/pcOS/shooterMinigame" index="12"]
+[node name="schrodingerView" parent="bedroom/pcWindow/pcOS/shooterMinigame" index="13"]
 texture = SubResource("ViewportTexture_y0ea5")
 
 [node name="Camera3D" parent="bedroom/pcWindow/pcOS/shooterMinigame/schrodingerView/schrodingerViewport/schrodinger" index="19"]
@@ -4408,37 +4438,7 @@ visible = false
 material_override = SubResource("StandardMaterial3D_xqgce")
 pixel_size = 0.0017
 shaded = true
-texture = ExtResource("193_t8w1n")
-
-[node name="eye" type="Sprite3D" parent="bedroom/laplaceWall"]
-transform = Transform3D(0.861035, 0.508546, -2.22292e-08, 0, -4.37114e-08, -1, -0.508546, 0.861035, -3.7637e-08, -1.65777, 1.5347, 0.557472)
-pixel_size = 0.001
-shaded = true
-texture = ExtResource("93_a3ujf")
-
-[node name="eye2" type="Sprite3D" parent="bedroom/laplaceWall"]
-transform = Transform3D(0.815906, -0.578185, 2.52733e-08, 0, -4.37114e-08, -1, 0.578185, 0.815906, -3.56644e-08, -1.11531, 1.5347, 0.400509)
-pixel_size = 0.0005
-shaded = true
-texture = ExtResource("93_a3ujf")
-
-[node name="eye3" type="Sprite3D" parent="bedroom/laplaceWall"]
-transform = Transform3D(0.815906, -0.578185, 2.52733e-08, 0, -4.37114e-08, -1, 0.578185, 0.815906, -3.56644e-08, 1.47995, 1.5347, 0.400509)
-pixel_size = 0.001
-shaded = true
-texture = ExtResource("93_a3ujf")
-
-[node name="eye4" type="Sprite3D" parent="bedroom/laplaceWall"]
-transform = Transform3D(0.923699, -0.383119, 1.67467e-08, -1.44934e-15, -4.37114e-08, -1, 0.383119, 0.923699, -4.03762e-08, 0.5471, 1.5347, 0.72013)
-pixel_size = 0.003
-shaded = true
-texture = ExtResource("93_a3ujf")
-
-[node name="eye5" type="Sprite3D" parent="bedroom/laplaceWall"]
-transform = Transform3D(0.923699, -0.383119, 1.67467e-08, -1.44934e-15, -4.37114e-08, -1, 0.383119, 0.923699, -4.03762e-08, -2.2947, 1.5347, 0.363806)
-pixel_size = 0.0007
-shaded = true
-texture = ExtResource("93_a3ujf")
+texture = ExtResource("25_3qj5w")
 
 [node name="desk" type="MeshInstance3D" parent="bedroom"]
 transform = Transform3D(-0.55, 0, -8.30477e-08, 0, 0.55, 0, 8.30477e-08, 0, -0.55, 0.106782, 0.846775, 3.16816)
@@ -5174,6 +5174,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_qndwv")
 [node name="posterA" type="Sprite3D" parent="bedroom"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.73907, 2.49284, 2.97236)
 pixel_size = 0.0025
+transparent = false
 shaded = true
 texture = ExtResource("62_qo4d7")
 
@@ -5550,6 +5551,7 @@ surface_material_override/0 = ExtResource("27_nncwi")
 [node name="poster3" type="Sprite3D" parent="hallway"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.22977, 2.27447, 3.94696)
 pixel_size = 0.001
+transparent = false
 shaded = true
 texture = ExtResource("84_51n62")
 
@@ -5695,7 +5697,7 @@ surface_material_override/2 = SubResource("StandardMaterial3D_4wdfm")
 
 [node name="light" type="SpotLight3D" parent="hallway/staircaseSpotlight3"]
 transform = Transform3D(5.96046e-08, -1.41421, 1.41421, -1.85452e-07, 1.41421, 1.41421, -2, -1.49012e-07, -8.9407e-08, -0.146716, 0.00752687, -0.133465)
-light_color = Color(0.788235, 0.0235294, 0, 1)
+light_color = Color(1, 0.639216, 0.329412, 1)
 light_energy = 3.0
 shadow_enabled = true
 shadow_bias = 0.01
@@ -5712,7 +5714,7 @@ surface_material_override/2 = SubResource("StandardMaterial3D_4wdfm")
 
 [node name="light" type="SpotLight3D" parent="hallway/staircaseSpotlight4"]
 transform = Transform3D(5.96046e-08, -1.41421, 1.41421, -1.85452e-07, 1.41421, 1.41421, -2, -1.49012e-07, -8.9407e-08, -0.146716, 0.00752687, -0.133465)
-light_color = Color(0.788235, 0.0235294, 0, 1)
+light_color = Color(1, 0.639216, 0.329412, 1)
 light_energy = 3.0
 shadow_enabled = true
 shadow_bias = 0.01
@@ -5765,6 +5767,91 @@ light_energy = 1.5
 shadow_enabled = true
 shadow_opacity = 0.88
 omni_range = 12.0
+
+[node name="schrodingerView" type="Node3D" parent="hallway"]
+visible = false
+
+[node name="schrodinger" type="Sprite3D" parent="hallway/schrodingerView"]
+transform = Transform3D(0.482963, -0.12941, 8.44441e-08, 0.12941, 0.482963, 2.26267e-08, -8.7423e-08, 0, 0.5, -0.193288, 2.29222, 3.94827)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+texture = ExtResource("114_x0pxm")
+
+[node name="wing1" type="Sprite3D" parent="hallway/schrodingerView/schrodinger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7658, 0.416435, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+texture = ExtResource("115_j3ffu")
+
+[node name="wing5" type="Sprite3D" parent="hallway/schrodingerView/schrodinger"]
+transform = Transform3D(1.5, 2.98023e-08, -2.84217e-14, -2.98023e-08, 1.5, -7.10543e-15, 2.84217e-14, -2.08433e-14, 1.5, -0.0346206, 0.458086, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+texture = ExtResource("200_wqtv1")
+
+[node name="wing2" type="Sprite3D" parent="hallway/schrodingerView/schrodinger"]
+transform = Transform3D(0.707107, -0.707107, -5.12112e-08, 0.707107, 0.707107, 1.23635e-07, -5.12112e-08, -1.23635e-07, 1, -0.856759, -0.238703, -9.53674e-07)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+texture = ExtResource("115_j3ffu")
+
+[node name="wing3" type="Sprite3D" parent="hallway/schrodingerView/schrodinger"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.7694, 0.416435, -9.53674e-07)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+texture = ExtResource("115_j3ffu")
+
+[node name="wing4" type="Sprite3D" parent="hallway/schrodingerView/schrodinger"]
+transform = Transform3D(-0.707107, 0.707107, -3.62116e-08, 0.707107, 0.707107, 1.23635e-07, 1.13028e-07, 6.18176e-08, -1, 0.860359, -0.238703, 0)
+pixel_size = 0.001
+shaded = true
+alpha_cut = 1
+texture = ExtResource("115_j3ffu")
+
+[node name="eye1" type="MeshInstance3D" parent="hallway/schrodingerView"]
+transform = Transform3D(0.0983335, -0.000638666, -0.0181685, 0.000671605, 0.0999977, 0.000119775, 0.0181674, -0.0002398, 0.0983356, 1.204, 2.79098, 7.89658)
+mesh = SubResource("SphereMesh_2p2ue")
+surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
+
+[node name="eye2" type="MeshInstance3D" parent="hallway/schrodingerView"]
+transform = Transform3D(0.0604407, 0.0246854, -0.0757465, 0.00654983, 0.0932168, 0.0356051, 0.0793978, -0.0264813, 0.0547241, -9.37727, -0.993726, 8.03521)
+mesh = SubResource("SphereMesh_2p2ue")
+surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
+
+[node name="eye3" type="MeshInstance3D" parent="hallway/schrodingerView"]
+transform = Transform3D(0.0604407, 0.0246854, -0.0757465, 0.00654983, 0.0932168, 0.0356051, 0.0793978, -0.0264813, 0.0547241, -4.73947, 3.42615, 3.8195)
+mesh = SubResource("SphereMesh_2p2ue")
+surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
+
+[node name="eye4" type="MeshInstance3D" parent="hallway/schrodingerView"]
+transform = Transform3D(-0.00979604, -0.0806764, -0.0582697, -0.0112527, 0.0590738, -0.0798978, 0.0988807, -0.00126991, -0.0148651, -3.98912, 1.05378, 2.0658)
+mesh = SubResource("SphereMesh_2p2ue")
+surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
+
+[node name="eye5" type="MeshInstance3D" parent="hallway/schrodingerView"]
+transform = Transform3D(-0.092976, 0.0221072, 0.0294399, 0.00778212, 0.0899588, -0.0429751, -0.0359844, -0.0376656, -0.0853605, 1.04961, 0.672459, -0.128305)
+mesh = SubResource("SphereMesh_2p2ue")
+surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
+
+[node name="eye6" type="MeshInstance3D" parent="hallway/schrodingerView"]
+transform = Transform3D(-0.0402992, 0.0422657, 0.0811762, 0.00778212, 0.0899587, -0.0429751, -0.0911888, -0.0110014, -0.0395418, 1.10427, 1.11526, -0.556903)
+mesh = SubResource("SphereMesh_2p2ue")
+surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
+
+[node name="eye7" type="MeshInstance3D" parent="hallway/schrodingerView"]
+transform = Transform3D(0.0927393, 0.0299545, 0.0224084, -0.00585971, 0.0707944, -0.0703833, -0.0369469, 0.06396, 0.0674095, 0.39532, 0.52203, 2.45768)
+mesh = SubResource("SphereMesh_2p2ue")
+surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
+
+[node name="eye8" type="MeshInstance3D" parent="hallway/schrodingerView"]
+transform = Transform3D(0.0615343, 0.0166042, 0.0770572, -0.00530929, 0.0984073, -0.0169649, -0.0786467, 0.00634809, 0.0614359, 1.92754, 3.16259, 3.19155)
+mesh = SubResource("SphereMesh_2p2ue")
+surface_material_override/0 = SubResource("StandardMaterial3D_3wkrp")
 
 [node name="player" type="CharacterBody3D" parent="."]
 transform = Transform3D(-0.622214, 0, 0.782847, 0, 1, 0, -0.782847, 0, -0.622214, 1.25526, 1.40686, 0.814159)
@@ -5933,6 +6020,16 @@ text = "Loading..."
 
 [node name="fadeIn" type="ColorRect" parent="player/HUD"]
 modulate = Color(0, 0, 0, 0)
+layout_mode = 0
+offset_left = -1083.0
+offset_top = -604.0
+offset_right = 1277.0
+offset_bottom = 676.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="fadeInBlack" type="ColorRect" parent="player/HUD"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -1083.0
 offset_top = -604.0
@@ -6583,7 +6680,7 @@ material_override = SubResource("StandardMaterial3D_a5xvb")
 mesh = SubResource("BoxMesh_nej1a")
 
 [node name="key" type="MeshInstance3D" parent="basement"]
-transform = Transform3D(0.0433013, 0, -0.025, 0, 0.05, 0, 0.025, 0, 0.0433013, -0.167, -103.379, 0.609)
+transform = Transform3D(0.0433013, 0, -0.025, 0, 0.05, 0, 0.025, 0, 0.0433013, 1.45, -103.379, -0.826)
 mesh = ExtResource("147_32n83")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_o8o7w")
@@ -6613,6 +6710,17 @@ shape = SubResource("BoxShape3D_8hirw")
 
 [node name="hologramCam" type="Camera3D" parent="basement/hologramModule"]
 transform = Transform3D(-0.833333, 0, 7.28523e-08, 0, 0.833333, 0, -7.28523e-08, 0, -0.833333, 0, 0, -0.403289)
+
+[node name="seeLabel" type="Label3D" parent="basement/hologramModule"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0210042, -0.0404406)
+visible = false
+pixel_size = 0.001
+modulate = Color(0.308594, 0, 0.0101575, 1)
+text = "I see
+you"
+font = ExtResource("111_uoint")
+font_size = 64
+outline_size = 0
 
 [node name="CeilingLamp" type="MeshInstance3D" parent="basement"]
 transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, -2.27967, -0.146667, 0.761234)
