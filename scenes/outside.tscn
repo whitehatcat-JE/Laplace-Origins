@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://dcf34l30ctj4m"]
+[gd_scene load_steps=116 format=3 uid="uid://dcf34l30ctj4m"]
 
 [ext_resource type="Script" path="res://scripts/outside.gd" id="1_6fiwc"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_mu5ff"]
@@ -64,6 +64,8 @@
 [ext_resource type="ArrayMesh" uid="uid://cj2trunkx0c6t" path="res://assets/3d/laplace/arm3.obj" id="55_x0a8k"]
 [ext_resource type="AudioStream" uid="uid://b2hca4lxv4rfi" path="res://assets/audio/music/outdoors.mp3" id="63_y3pwj"]
 [ext_resource type="AudioStream" uid="uid://dk57886kw16ed" path="res://assets/audio/music/outdoorsDistorted.mp3" id="64_nkxij"]
+[ext_resource type="ArrayMesh" uid="uid://bgwg5027ye2tc" path="res://assets/3d/laplace/planet.obj" id="65_fe8yw"]
+[ext_resource type="Texture2D" uid="uid://cjmrj6k0ds4st" path="res://assets/2d/laplace/bodyTexture.png" id="66_wsfie"]
 
 [sub_resource type="Gradient" id="Gradient_tsefn"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0.0578036, 1)
@@ -1391,6 +1393,14 @@ albedo_color = Color(0.34902, 0.34902, 0.34902, 1)
 cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a368n"]
+disable_fog = true
+albedo_texture = ExtResource("66_wsfie")
+emission_enabled = true
+emission = Color(0.464844, 0.00827035, 0, 1)
+emission_energy_multiplier = 0.16
+emission_texture = ExtResource("66_wsfie")
 
 [node name="outside" type="Node3D"]
 script = ExtResource("1_6fiwc")
@@ -4484,6 +4494,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_0vgvk")
 
 [node name="Body" type="MeshInstance3D" parent="."]
 transform = Transform3D(-2.89778, 4.47035e-08, -0.776456, -0.254404, 2.8344, 0.949448, 0.733596, 0.982941, -2.73782, -552.955, 230, -33.147)
+visible = false
 material_override = SubResource("StandardMaterial3D_ogbp6")
 cast_shadow = 0
 mesh = ExtResource("7_ynk4e")
@@ -4529,6 +4540,11 @@ double_sided = false
 alpha_cut = 1
 alpha_antialiasing_mode = 2
 texture = ExtResource("52_wvbre")
+
+[node name="Planet" type="MeshInstance3D" parent="."]
+transform = Transform3D(-585.83, 459.138, 92.1729, -464.932, -587.91, -26.4606, 56.0537, -77.8075, 743.844, -1010.32, 1348.22, 406.458)
+mesh = ExtResource("65_fe8yw")
+surface_material_override/0 = SubResource("StandardMaterial3D_a368n")
 
 [connection signal="animation_finished" from="player/lookUpAnim" to="." method="_on_look_up_anim_animation_finished"]
 [connection signal="body_entered" from="revealTrigger" to="." method="_on_reveal_trigger_body_entered"]

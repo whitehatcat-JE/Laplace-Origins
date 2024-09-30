@@ -51,7 +51,7 @@ var consoleOutputList = [
 @onready var clickSFX:Node = $clickSFX
 @onready var deniedSFX:Node = $deniedSFX
 # Hides homescreen while login screen visible
-func _ready() -> void:
+func _ready() -> void:a
 	$homeScreen.position.x = 100000
 	#_on_internet_browser_downloaded_singularity()
 # Player inputs
@@ -181,6 +181,8 @@ func eventTriggered(event) -> void:
 				$freeVirus.showDialogue("door")
 			"keyInteract":
 				$freeVirus.showDialogue("key")
+			"laplaceInteract":
+				$freeVirus.showDialogue("laplace")
 			"search":
 				if GI.progress > 2:
 					if $internetBrowser/homepage/resultsWeep.position.y > 1000:
@@ -300,6 +302,7 @@ func _process(delta) -> void:
 			"freeQuit": $freeVirus/quit/quitBack.modulate = "ffffff00";
 			"doorInteract": $freeVirus/groundInteractionButtons/door/interactHovered.visible = false
 			"keyInteract": $freeVirus/basementInteractionButtons/key/interactHovered.visible = false
+			"laplaceInteract": $freeVirus/cityInteractionButtons/laplace/interactHovered.visible = false
 			"singularityExe": $homeScreen/filesWindow/singularityBack.modulate = "ffffff00";
 			"cmdQuit": $homeScreen/consoleWindow/quit/quitBack.modulate = "ffffff00";
 			"emailOpen": $homeScreen/menuBar/email/emailBack.modulate = "ffffff00";
@@ -332,6 +335,7 @@ func _process(delta) -> void:
 			"freeQuit": $freeVirus/quit/quitBack.modulate = "969696d5";
 			"doorInteract": $freeVirus/groundInteractionButtons/door/interactHovered.visible = true
 			"keyInteract": $freeVirus/basementInteractionButtons/key/interactHovered.visible = true
+			"laplaceInteract": $freeVirus/cityInteractionButtons/laplace/interactHovered.visible = true
 			"singularityExe": $homeScreen/filesWindow/singularityBack.modulate = "969696d5";
 			"cmdQuit": $homeScreen/consoleWindow/quit/quitBack.modulate = "969696d5";
 			"emailOpen": $homeScreen/menuBar/email/emailBack.modulate = "969696d5";

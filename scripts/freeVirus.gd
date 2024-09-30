@@ -19,6 +19,8 @@ func showDialogue(dialogueName:String):
 				$dialoguePopup/dialogueText.text = "Missing Key"
 		"key":
 			$dialoguePopup/dialogueText.text = "Wrong Dimension"
+		"laplace":
+			$dialoguePopup/dialogueText.text = "Wrong Dimension"
 	$dialoguePopup/dialogueAnim.play("appear")
 	for child in getAllChildren($groundInteractionButtons):
 		if child is Area2D:
@@ -58,3 +60,25 @@ func _on_basement_key_interaction_body_entered(body):
 	$basementInteractionButtons/key/buttonAnims.play("show")
 func _on_basement_key_interaction_body_exited(body):
 	$basementInteractionButtons/key/buttonAnims.play("hide")
+
+func _on_city_entrance_body_entered(body: Node2D) -> void:
+	$basementLevel.position.y += 10000
+	$basementInteractionButtons.position.y += 10000
+	$cityLevel.position.y -= 10000
+	$cityInteractionButtons.position.y -= 10000
+	$player.global_position = $cityLevel/playerPos.global_position
+	$player.yLocked = true
+
+func _on_exit_interaction_body_entered(body: Node2D) -> void:
+	$basementLevel.position.y -= 10000
+	$basementInteractionButtons.position.y -= 10000
+	$cityLevel.position.y += 10000
+	$cityInteractionButtons.position.y += 10000
+	$player.global_position = $basementLevel/playerPos.global_position
+	$player.yLocked = false
+
+func _on_laplace_interaction_body_entered(body: Node2D) -> void:
+	$cityInteractionButtons/laplace/buttonAnims.play("show")
+
+func _on_laplace_interaction_body_exited(body: Node2D) -> void:
+	$cityInteractionButtons/laplace/buttonAnims.play("hide")

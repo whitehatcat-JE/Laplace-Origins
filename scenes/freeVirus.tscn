@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://c7ud43mdcfxfl"]
+[gd_scene load_steps=62 format=3 uid="uid://c7ud43mdcfxfl"]
 
 [ext_resource type="Script" path="res://scripts/freeVirus.gd" id="1_n1ott"]
 [ext_resource type="Texture2D" uid="uid://2pgc1xtsv12d" path="res://assets/2d/internet/weep/eyes.jpg" id="1_q1w26"]
@@ -10,14 +10,45 @@
 [ext_resource type="Texture2D" uid="uid://dl221lxaen0tn" path="res://assets/2d/free/basement.png" id="7_dlpe1"]
 [ext_resource type="Texture2D" uid="uid://c05aufysx3oyn" path="res://assets/2d/free/basementKey.png" id="8_nwdic"]
 [ext_resource type="AudioStream" uid="uid://kr6tbxg4qy2v" path="res://assets/audio/sfx/shooter/playerHit.mp3" id="9_2mevl"]
+[ext_resource type="Texture2D" uid="uid://dmw1ypwbpk3vf" path="res://assets/2d/free/providentia1.png" id="9_a0wlt"]
+[ext_resource type="Texture2D" uid="uid://6xjc0xmfgwtp" path="res://assets/2d/free/road.png" id="9_e4o1t"]
+[ext_resource type="Texture2D" uid="uid://b84vdsqxb0elq" path="res://assets/2d/free/noisePattern.png" id="9_efx3g"]
 [ext_resource type="AudioStream" uid="uid://hh6fi78ndl7j" path="res://assets/audio/sfx/shooter/playerHeal.mp3" id="10_e8ood"]
 [ext_resource type="Shader" path="res://scripts/shaders/cartridgeError.gdshader" id="10_ilkc1"]
+[ext_resource type="Texture2D" uid="uid://d13fc7lu5c6md" path="res://assets/2d/free/tower1.png" id="10_sm7ib"]
+[ext_resource type="Texture2D" uid="uid://dlwpswu86wj7x" path="res://assets/2d/free/providentia2.png" id="10_vyneo"]
 [ext_resource type="Texture2D" uid="uid://cfrdsaupybk6t" path="res://assets/2d/shooterMinigame/playerCorrupt.png" id="11_0tpyg"]
+[ext_resource type="Texture2D" uid="uid://b4godu71ic86m" path="res://assets/2d/free/providentia3.png" id="11_kjg4f"]
+[ext_resource type="Texture2D" uid="uid://d1ov78f5nnvjn" path="res://assets/2d/free/tower2.png" id="11_m0k5k"]
 [ext_resource type="AudioStream" uid="uid://22ape8t10mla" path="res://assets/audio/sfx/shooter/playerDie.mp3" id="11_vhkvr"]
 [ext_resource type="Texture2D" uid="uid://cv5ro42smq6hu" path="res://assets/2d/free/dialogueBox.png" id="12_dfqfr"]
+[ext_resource type="Texture2D" uid="uid://dhxjrvg17uuv3" path="res://assets/2d/free/providentia4.png" id="12_e02l2"]
+[ext_resource type="Texture2D" uid="uid://dycb4nq2cluit" path="res://assets/2d/free/tower3.png" id="12_pm527"]
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="13_66unh"]
 [ext_resource type="Texture2D" uid="uid://cpxqixc4oihlr" path="res://assets/2d/free/interactBox.png" id="14_f283o"]
 [ext_resource type="Texture2D" uid="uid://cqdgik44c4rba" path="res://assets/2d/free/interactHovered.png" id="15_ruut4"]
+
+[sub_resource type="Animation" id="Animation_t4jf1"]
+resource_name = "windowAnim"
+length = 2.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": ["Free", "Free", "Me"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ndemh"]
+_data = {
+"windowAnim": SubResource("Animation_t4jf1")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r8ehe"]
 size = Vector2(28.5714, 47.5)
@@ -53,7 +84,10 @@ size = Vector2(58.0938, 1)
 size = Vector2(36, 92)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_njm5l"]
-size = Vector2(85, 19)
+size = Vector2(85, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tj3v1"]
+size = Vector2(107, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_if3l6"]
 size = Vector2(115, 19)
@@ -66,6 +100,41 @@ size = Vector2(9.99994, 9.99986)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_esbmd"]
 size = Vector2(13, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_44pom"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_a0wlt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vyneo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kjg4f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_e02l2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_kjg4f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vyneo")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xr0q"]
+size = Vector2(85, 439)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ngbvu"]
+size = Vector2(40, 138)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtk2c"]
+size = Vector2(360, 688)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yplhu"]
 shader = ExtResource("10_ilkc1")
@@ -138,55 +207,10 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yi1rh"]
-size = Vector2(32, 32)
+size = Vector2(24, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ceal"]
 size = Vector2(24, 24)
-
-[sub_resource type="Animation" id="Animation_ikoxa"]
-resource_name = "appear"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("dialogueBox:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.4),
-"transitions": PackedFloat32Array(-2, -2, 1),
-"update": 0,
-"values": [Vector2(1, 0), Vector2(1, 4), Vector2(4, 4)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("dialogueText:visible_ratio")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.5),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.8, 2),
-"transitions": PackedFloat32Array(1, -2, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xyx3h"]
-_data = {
-"appear": SubResource("Animation_ikoxa")
-}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6t30"]
 size = Vector2(128.286, 40)
@@ -254,6 +278,51 @@ _data = {
 "show": SubResource("Animation_j0rlr")
 }
 
+[sub_resource type="Animation" id="Animation_ikoxa"]
+resource_name = "appear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("dialogueBox:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.4),
+"transitions": PackedFloat32Array(-2, -2, 1),
+"update": 0,
+"values": [Vector2(1, 0), Vector2(1, 4), Vector2(4, 4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("dialogueText:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.8, 2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xyx3h"]
+_data = {
+"appear": SubResource("Animation_ikoxa")
+}
+
 [node name="freeVirus" type="Node2D"]
 script = ExtResource("1_n1ott")
 
@@ -302,6 +371,12 @@ theme_override_font_sizes/font_size = 35
 text = "Free"
 text_overrun_behavior = 1
 max_lines_visible = 1
+
+[node name="windowNameAnim" type="AnimationPlayer" parent="windowName"]
+libraries = {
+"": SubResource("AnimationLibrary_ndemh")
+}
+autoplay = "windowAnim"
 
 [node name="quit" type="Label" parent="."]
 modulate = Color(1, 0.0352941, 0, 1)
@@ -450,7 +525,7 @@ position = Vector2(-12.5, -15.5)
 shape = SubResource("RectangleShape2D_njm5l")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="basementLevel/walls"]
-position = Vector2(-63.5, 17.5)
+position = Vector2(-64, 17.5)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_njm5l")
 
@@ -470,8 +545,8 @@ rotation = 4.71238
 shape = SubResource("RectangleShape2D_njm5l")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="basementLevel/walls"]
-position = Vector2(3.5, 43.5001)
-shape = SubResource("RectangleShape2D_if3l6")
+position = Vector2(6.5, 43.5)
+shape = SubResource("RectangleShape2D_tj3v1")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="basementLevel/walls"]
 position = Vector2(105.5, -15.5)
@@ -512,6 +587,170 @@ collision_mask = 128
 position = Vector2(1, 2)
 shape = SubResource("RectangleShape2D_ayt6x")
 
+[node name="cityEntrance" type="Area2D" parent="basementLevel/basementInteractionPoints"]
+position = Vector2(841, 532)
+collision_layer = 0
+collision_mask = 128
+
+[node name="hitbox" type="CollisionShape2D" parent="basementLevel/basementInteractionPoints/cityEntrance"]
+position = Vector2(2, 25)
+shape = SubResource("RectangleShape2D_ayt6x")
+
+[node name="playerPos" type="Node2D" parent="basementLevel"]
+position = Vector2(-50.75, 38.5)
+
+[node name="cityLevel" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 10000)
+
+[node name="noiseBackground" type="Sprite2D" parent="cityLevel"]
+position = Vector2(1061, 333)
+scale = Vector2(1, 0.5)
+texture = ExtResource("9_efx3g")
+region_rect = Rect2(0, 0, 60, 1000)
+
+[node name="noiseBackground2" type="Sprite2D" parent="cityLevel"]
+position = Vector2(1001, 333)
+scale = Vector2(1, 0.5)
+texture = ExtResource("9_efx3g")
+region_rect = Rect2(0, 0, 60, 1000)
+
+[node name="noiseBackground3" type="Sprite2D" parent="cityLevel"]
+position = Vector2(943, 333)
+scale = Vector2(1, 0.5)
+texture = ExtResource("9_efx3g")
+region_rect = Rect2(0, 0, 60, 1000)
+
+[node name="noiseBackground4" type="Sprite2D" parent="cityLevel"]
+position = Vector2(883, 333)
+scale = Vector2(1, 0.5)
+texture = ExtResource("9_efx3g")
+region_rect = Rect2(0, 0, 60, 1000)
+
+[node name="noiseBackground5" type="Sprite2D" parent="cityLevel"]
+position = Vector2(824, 333)
+scale = Vector2(1, 0.5)
+texture = ExtResource("9_efx3g")
+region_rect = Rect2(0, 0, 60, 1000)
+
+[node name="noiseBackground6" type="Sprite2D" parent="cityLevel"]
+position = Vector2(764, 333)
+scale = Vector2(1, 0.5)
+texture = ExtResource("9_efx3g")
+region_rect = Rect2(0, 0, 60, 1000)
+
+[node name="noiseBackground7" type="Sprite2D" parent="cityLevel"]
+position = Vector2(705, 333)
+scale = Vector2(1, 0.5)
+texture = ExtResource("9_efx3g")
+region_rect = Rect2(0, 0, 60, 1000)
+
+[node name="noiseBackground8" type="Sprite2D" parent="cityLevel"]
+position = Vector2(645, 333)
+scale = Vector2(1, 0.5)
+texture = ExtResource("9_efx3g")
+region_rect = Rect2(0, 0, 60, 1000)
+
+[node name="noiseBackground9" type="Sprite2D" parent="cityLevel"]
+position = Vector2(593, 333)
+scale = Vector2(1, 0.5)
+texture = ExtResource("9_efx3g")
+region_rect = Rect2(0, 0, 60, 1000)
+
+[node name="Tower1" type="Sprite2D" parent="cityLevel"]
+position = Vector2(828, 298)
+scale = Vector2(2, 2)
+texture = ExtResource("10_sm7ib")
+
+[node name="Tower4" type="Sprite2D" parent="cityLevel"]
+position = Vector2(586, 339)
+scale = Vector2(2, 2)
+texture = ExtResource("10_sm7ib")
+
+[node name="Tower2" type="Sprite2D" parent="cityLevel"]
+position = Vector2(718, 328)
+scale = Vector2(2, 2)
+texture = ExtResource("11_m0k5k")
+
+[node name="Tower3" type="Sprite2D" parent="cityLevel"]
+position = Vector2(955, 325)
+scale = Vector2(2, 2)
+texture = ExtResource("12_pm527")
+
+[node name="providentia" type="AnimatedSprite2D" parent="cityLevel"]
+position = Vector2(1312, 308)
+scale = Vector2(0.45, 0.45)
+sprite_frames = SubResource("SpriteFrames_44pom")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.660348
+
+[node name="road" type="Sprite2D" parent="cityLevel"]
+position = Vector2(1057, 545)
+scale = Vector2(4, 4)
+texture = ExtResource("9_e4o1t")
+region_enabled = true
+region_rect = Rect2(0, 0, 260, 16)
+
+[node name="playerPos" type="Node2D" parent="cityLevel"]
+position = Vector2(662, 526)
+
+[node name="void" type="ColorRect" parent="cityLevel"]
+offset_left = 603.0
+offset_top = 407.0
+offset_right = 643.0
+offset_bottom = 545.0
+color = Color(0, 0, 0, 1)
+
+[node name="walls" type="StaticBody2D" parent="cityLevel"]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="cityLevel/walls"]
+position = Vector2(1565, 337)
+shape = SubResource("RectangleShape2D_0xr0q")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="cityLevel/walls"]
+position = Vector2(522, 368)
+shape = SubResource("RectangleShape2D_0xr0q")
+
+[node name="cityInteractionPoints" type="Node2D" parent="cityLevel"]
+position = Vector2(-261.25, -82.75)
+scale = Vector2(0.25, 0.25)
+
+[node name="exitInteraction" type="Area2D" parent="cityLevel/cityInteractionPoints"]
+position = Vector2(3549, 2223)
+scale = Vector2(4, 4)
+collision_layer = 0
+collision_mask = 128
+
+[node name="hitbox" type="CollisionShape2D" parent="cityLevel/cityInteractionPoints/exitInteraction"]
+position = Vector2(-3, 3)
+shape = SubResource("RectangleShape2D_ngbvu")
+
+[node name="laplaceInteraction" type="Area2D" parent="cityLevel/cityInteractionPoints"]
+position = Vector2(6325, 1935)
+collision_layer = 0
+collision_mask = 128
+
+[node name="hitbox" type="CollisionShape2D" parent="cityLevel/cityInteractionPoints/laplaceInteraction"]
+position = Vector2(0, 300)
+shape = SubResource("RectangleShape2D_xtk2c")
+
+[node name="background2" type="ColorRect" parent="cityLevel"]
+offset_left = 433.0
+offset_top = 83.0
+offset_right = 587.0
+offset_bottom = 691.0
+color = Color(0, 0, 0, 1)
+
+[node name="background3" type="ColorRect" parent="cityLevel"]
+offset_left = 1522.0
+offset_top = 83.0
+offset_right = 1661.0
+offset_bottom = 683.0
+color = Color(0, 0, 0, 1)
+
 [node name="player" type="CharacterBody2D" parent="."]
 position = Vector2(978, 395)
 collision_layer = 384
@@ -532,7 +771,6 @@ autoplay = "distort"
 speed_scale = 0.5
 
 [node name="hitbox" type="CollisionShape2D" parent="player"]
-visible = false
 shape = SubResource("RectangleShape2D_yi1rh")
 
 [node name="enemyScanner" type="Area2D" parent="player"]
@@ -552,34 +790,6 @@ stream = ExtResource("10_e8ood")
 
 [node name="die" type="AudioStreamPlayer" parent="player" groups=["sfx"]]
 stream = ExtResource("11_vhkvr")
-
-[node name="dialoguePopup" type="Node2D" parent="."]
-position = Vector2(1036, 303)
-scale = Vector2(1, 1e-05)
-
-[node name="dialogueBox" type="Sprite2D" parent="dialoguePopup"]
-texture_filter = 1
-position = Vector2(24, -2)
-scale = Vector2(4, 4)
-texture = ExtResource("12_dfqfr")
-
-[node name="dialogueText" type="Label" parent="dialoguePopup"]
-modulate = Color(1, 0.0392157, 0.0392157, 1)
-texture_filter = 1
-offset_left = -319.0
-offset_top = -34.0
-offset_right = 3116.0
-offset_bottom = 286.0
-scale = Vector2(0.2, 0.2)
-theme_override_fonts/font = ExtResource("13_66unh")
-theme_override_font_sizes/font_size = 300
-text = "Missing Key"
-horizontal_alignment = 1
-
-[node name="dialogueAnim" type="AnimationPlayer" parent="dialoguePopup"]
-libraries = {
-"": SubResource("AnimationLibrary_xyx3h")
-}
 
 [node name="groundInteractionButtons" type="Node2D" parent="."]
 
@@ -623,6 +833,53 @@ text = "Interact"
 horizontal_alignment = 1
 
 [node name="buttonAnims" type="AnimationPlayer" parent="groundInteractionButtons/door"]
+libraries = {
+"": SubResource("AnimationLibrary_8skas")
+}
+
+[node name="cityInteractionButtons" type="Node2D" parent="."]
+position = Vector2(0, 10000)
+
+[node name="laplace" type="Node2D" parent="cityInteractionButtons"]
+position = Vector2(1311, 291)
+scale = Vector2(1, 1e-05)
+
+[node name="interactBox" type="Sprite2D" parent="cityInteractionButtons/laplace"]
+texture_filter = 1
+position = Vector2(0, -2)
+scale = Vector2(4, 4)
+texture = ExtResource("14_f283o")
+
+[node name="interactHovered" type="Sprite2D" parent="cityInteractionButtons/laplace"]
+visible = false
+texture_filter = 1
+position = Vector2(0, -2)
+scale = Vector2(4, 4)
+texture = ExtResource("15_ruut4")
+
+[node name="interact" parent="cityInteractionButtons/laplace" instance=ExtResource("4_r3r3c")]
+position = Vector2(10000, 0)
+collision_layer = 16
+interactionName = "laplaceInteract"
+
+[node name="hitbox" type="CollisionShape2D" parent="cityInteractionButtons/laplace/interact"]
+position = Vector2(-0.142944, -2)
+shape = SubResource("RectangleShape2D_y6t30")
+
+[node name="interactText" type="Label" parent="cityInteractionButtons/laplace"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+texture_filter = 1
+offset_left = -60.0
+offset_top = -18.0
+offset_right = 540.0
+offset_bottom = 142.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("13_66unh")
+theme_override_font_sizes/font_size = 150
+text = "Interact"
+horizontal_alignment = 1
+
+[node name="buttonAnims" type="AnimationPlayer" parent="cityInteractionButtons/laplace"]
 libraries = {
 "": SubResource("AnimationLibrary_8skas")
 }
@@ -674,12 +931,44 @@ libraries = {
 "": SubResource("AnimationLibrary_8skas")
 }
 
+[node name="dialoguePopup" type="Node2D" parent="."]
+position = Vector2(1036, 303)
+scale = Vector2(1, 1e-05)
+
+[node name="dialogueBox" type="Sprite2D" parent="dialoguePopup"]
+texture_filter = 1
+position = Vector2(24, -2)
+scale = Vector2(4, 4)
+texture = ExtResource("12_dfqfr")
+
+[node name="dialogueText" type="Label" parent="dialoguePopup"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+texture_filter = 1
+offset_left = -319.0
+offset_top = -34.0
+offset_right = 3116.0
+offset_bottom = 286.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("13_66unh")
+theme_override_font_sizes/font_size = 300
+text = "Missing Key"
+horizontal_alignment = 1
+
+[node name="dialogueAnim" type="AnimationPlayer" parent="dialoguePopup"]
+libraries = {
+"": SubResource("AnimationLibrary_xyx3h")
+}
+
 [connection signal="body_entered" from="groundFloorLevel/groundInteractionPoints/door" to="." method="_on_door_body_entered"]
 [connection signal="body_exited" from="groundFloorLevel/groundInteractionPoints/door" to="." method="_on_door_body_exited"]
 [connection signal="body_entered" from="groundFloorLevel/groundInteractionPoints/staircaseDown" to="." method="_on_staircase_down_body_entered"]
 [connection signal="body_entered" from="basementLevel/basementInteractionPoints/basementKeyInteraction" to="." method="_on_basement_key_interaction_body_entered"]
 [connection signal="body_exited" from="basementLevel/basementInteractionPoints/basementKeyInteraction" to="." method="_on_basement_key_interaction_body_exited"]
 [connection signal="body_entered" from="basementLevel/basementInteractionPoints/staircaseUp" to="." method="_on_staircase_up_body_entered"]
+[connection signal="body_entered" from="basementLevel/basementInteractionPoints/cityEntrance" to="." method="_on_city_entrance_body_entered"]
+[connection signal="body_entered" from="cityLevel/cityInteractionPoints/exitInteraction" to="." method="_on_exit_interaction_body_entered"]
+[connection signal="body_entered" from="cityLevel/cityInteractionPoints/laplaceInteraction" to="." method="_on_laplace_interaction_body_entered"]
+[connection signal="body_exited" from="cityLevel/cityInteractionPoints/laplaceInteraction" to="." method="_on_laplace_interaction_body_exited"]
 [connection signal="area_entered" from="player/enemyScanner" to="player" method="_on_enemy_scanner_area_entered"]
 [connection signal="body_entered" from="player/enemyScanner" to="player" method="_on_enemy_scanner_body_entered"]
 [connection signal="animation_finished" from="dialoguePopup/dialogueAnim" to="." method="_on_dialogue_anim_animation_finished"]

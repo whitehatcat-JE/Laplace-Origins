@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/SpecialElite.ttf-a8516b4bdf51183cc79d21586e36
 Rendering=null
 antialiasing=1
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
