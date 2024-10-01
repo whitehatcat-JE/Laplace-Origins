@@ -51,7 +51,7 @@ var consoleOutputList = [
 @onready var clickSFX:Node = $clickSFX
 @onready var deniedSFX:Node = $deniedSFX
 # Hides homescreen while login screen visible
-func _ready() -> void:a
+func _ready() -> void:
 	$homeScreen.position.x = 100000
 	#_on_internet_browser_downloaded_singularity()
 # Player inputs

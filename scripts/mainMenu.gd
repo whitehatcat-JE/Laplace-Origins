@@ -85,7 +85,7 @@ func _process(delta) -> void:
 		$backgroundPillar2.set_region_rect(Rect2(0, 400 - scrollPos, 304, 400))
 # Menu inputs
 func _input(event) -> void:
-	if Input.is_action_just_pressed("menu"): # Open / close menu
+	if Input.is_action_just_pressed("menu") and false: # Open / close menu
 		clickSFX.play()
 		if menuOpen: # Close menu
 			$mainAnims.play("zoom")

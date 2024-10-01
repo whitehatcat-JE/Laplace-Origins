@@ -1,4 +1,4 @@
-[gd_scene load_steps=507 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=510 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -168,7 +168,9 @@
 [ext_resource type="Texture2D" uid="uid://gu6483e57qis" path="res://assets/3d/textures/concrete3-bl/concrete3-Normal-ogl.png" id="122_wu4vx"]
 [ext_resource type="Texture2D" uid="uid://u6gxfjjljuen" path="res://assets/3d/textures/concrete3-bl/concrete3-Roughness.png" id="123_4sovt"]
 [ext_resource type="Texture2D" uid="uid://blbaaex80ri42" path="res://assets/3d/textures/modern-metal-wall1-bl/modern-metal-wall_ao.png" id="126_06acd"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="130_au157"]
 [ext_resource type="Texture2D" uid="uid://clmx75f4dw3re" path="res://assets/2d/3dSprites/serverRack.png" id="130_vir3u"]
+[ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="131_a2atm"]
 [ext_resource type="Texture2D" uid="uid://dl80nnchclsac" path="res://assets/2d/3dSprites/decals/TexturesCom_DecalLeakingMossy0008_1_masked_S.png" id="131_awinp"]
 [ext_resource type="ArrayMesh" uid="uid://ctyv51jvb3kcc" path="res://assets/3d/rocks/rockA.obj" id="132_y3d3h"]
 [ext_resource type="ArrayMesh" uid="uid://dn10cns4aux76" path="res://assets/3d/rocks/rockB.obj" id="133_pt485"]
@@ -1586,6 +1588,8 @@ tracks/0/keys = {
 _data = {
 "fadeIn": SubResource("Animation_vjxbb")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cnb8n"]
 
 [sub_resource type="Animation" id="Animation_47qjq"]
 resource_name = "bob"
@@ -6047,6 +6051,124 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_g6j4n")
 }
+
+[node name="menu" type="Control" parent="player"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("130_au157")
+
+[node name="ColorRect" type="ColorRect" parent="player/menu"]
+layout_mode = 0
+offset_right = 547.0
+offset_bottom = 1081.0
+color = Color(0.299055, 0.0201869, 0, 0.752941)
+
+[node name="backgroundTrunk" type="Sprite2D" parent="player/menu"]
+modulate = Color(0.427493, 0.427493, 0.427493, 1)
+texture_filter = 1
+position = Vector2(124, 571)
+scale = Vector2(4, 4)
+texture = ExtResource("151_138o5")
+region_enabled = true
+region_rect = Rect2(0, 0, 304, 400)
+
+[node name="menuGrid" type="GridContainer" parent="player/menu"]
+layout_mode = 0
+offset_right = 546.0
+offset_bottom = 283.0
+
+[node name="VSeparator" type="VSeparator" parent="player/menu/menuGrid"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cnb8n")
+
+[node name="startButton" type="Button" parent="player/menu/menuGrid"]
+custom_minimum_size = Vector2(250, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("131_a2atm")
+theme_override_font_sizes/font_size = 64
+text = "Continue"
+flat = true
+
+[node name="VSeparator2" type="VSeparator" parent="player/menu/menuGrid"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cnb8n")
+
+[node name="VSeparator3" type="VSeparator" parent="player/menu/menuGrid"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cnb8n")
+
+[node name="settingsButton" type="Button" parent="player/menu/menuGrid"]
+custom_minimum_size = Vector2(250, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("131_a2atm")
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+flat = true
+
+[node name="controlButton" type="Button" parent="player/menu/menuGrid"]
+custom_minimum_size = Vector2(250, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("131_a2atm")
+theme_override_font_sizes/font_size = 64
+text = "Controls"
+flat = true
+
+[node name="guideButton" type="Button" parent="player/menu/menuGrid"]
+custom_minimum_size = Vector2(250, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("131_a2atm")
+theme_override_font_sizes/font_size = 64
+text = "Guide"
+flat = true
+
+[node name="VSeparator4" type="VSeparator" parent="player/menu/menuGrid"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cnb8n")
+
+[node name="VSeparator5" type="VSeparator" parent="player/menu/menuGrid"]
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_cnb8n")
+
+[node name="quitButton" type="Button" parent="player/menu/menuGrid"]
+custom_minimum_size = Vector2(250, 75)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("131_a2atm")
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+flat = true
 
 [node name="bobAnim" type="AnimationPlayer" parent="player"]
 root_node = NodePath("../..")

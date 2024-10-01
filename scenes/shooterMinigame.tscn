@@ -1056,6 +1056,9 @@ render_target_update_mode = 4
 
 [node name="schrodinger" parent="schrodingerView/schrodingerViewport" instance=ExtResource("21_6ahgg")]
 
+[node name="Camera3D" parent="schrodingerView/schrodingerViewport/schrodinger" index="19"]
+transform = Transform3D(1, 0, 0, 0, 0.915613, -0.402059, 0, 0.402059, 0.915613, -0.736414, 12.0824, 14.0832)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4v8d0")
 
