@@ -27,6 +27,10 @@ var dialogueLines:Array = [
 @onready var unplugSFX:Node = $bedroom/desk/Pc/unplugSFX
 @onready var insertSFX:Node = $basement/crt/insertSFX
 
+func _ready():
+	$player/menu/helpGrid/helpMessage.text = "I should check my emails."
+	audioManager.play("menu")
+
 # Screen interactions
 func _input(event) -> void:
 	if Input.is_action_just_pressed("back") and (pcCam.current or inPasscodeScreen or inNotepad): # Stops focusing on screen
@@ -41,6 +45,7 @@ func _input(event) -> void:
 	elif $player/HUD/paper.visible and Input.is_action_just_pressed("interact"):
 		$player/HUD/paper.visible = false
 		player.disabled = false
+		$player/menu.disabled = false
 # In-world player interactions
 func _on_player_interacted(interactionName:String) -> void:
 	await get_tree().process_frame # Prevents inputs from being processed during load-in
@@ -58,6 +63,7 @@ func _on_player_interacted(interactionName:String) -> void:
 				$bedroom/pcWindow/pcOS/safeMessage.visible = true
 				$powercutAnim.play("cutPower")
 				$pianoRoom/SpotLight.visible = false
+				$player/menu/helpGrid/helpMessage.text = "I see you."
 			else: # PC focus
 				GI.inOS = true
 				player.disabled = true
@@ -89,6 +95,7 @@ func _on_player_interacted(interactionName:String) -> void:
 			player.unlockedInteractions.erase("usb")
 			$walls/DoorFrame/doorAnims.play("openDoor")
 			GI.progress = 4
+			$player/menu/helpGrid/helpMessage.text = "The basement passcode should be all the previous times of day I've done this experiment. I believe I wrote them down on my desk somewhere."
 		"passcode": # Passcode focus
 			screenSFX.play()
 			player.disabled = true
@@ -151,6 +158,7 @@ func _on_passcode_entry_updated_progress() -> void:
 	player.unlockedInteractions.erase("passcode")
 	$hallway/clock/clockTimer.start()
 	$basement/doorAnims.play("openDoor")
+	$player/menu/helpGrid/helpMessage.text = "I see you."
 	playerCam.current = true
 # Passcode unfocus
 func _on_passcode_entry_exit_passcode() -> void:
@@ -221,6 +229,7 @@ func teleportToHands():
 func teleportFromHands():
 	$hallway/schrodingerView.visible = true
 	player.global_position = %basementReentryPos.global_position
+	$player/menu/helpGrid/helpMessage.text = "I should turn back on the internet now."
 
 func unlockPlayer():
 	player.canMove = true
@@ -237,12 +246,15 @@ func showNextDialogue():
 	dialogueLine += 1
 	player.disabled = true
 	$player/HUD/paper.visible = true
+	$player/menu.disabled = true
 
 func _on_free_virus_unlock_door():
 	GI.pianoDoorUnlocked = true
 	$pianoRoom/triggerField.set_deferred("monitoring", true)
 	$pianoRoom/DoorFrame/doorAnims.play("openDoor")
 	audioManager.play("piano")
+	$player/menu/helpGrid/helpMessage.text = "I think I heard a door open in the hallway."
 
 func _on_pc_os_spawn_key():
 	$basement/key.position.y = -3.379
+	$player/menu/helpGrid/helpMessage.text = "This virus almost looks like my home..."

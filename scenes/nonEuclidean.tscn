@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=3 uid="uid://dppv4w5r1jusc"]
+[gd_scene load_steps=167 format=3 uid="uid://dppv4w5r1jusc"]
 
 [ext_resource type="Script" path="res://scenes/nonEuclideanSpace.gd" id="1_gkibj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_scmjs"]
@@ -55,13 +55,23 @@
 [ext_resource type="Texture2D" uid="uid://dpu34bq217oey" path="res://assets/3d/textures/Rock056_1K-JPG/Rock056_1K-JPG_Roughness.jpg" id="35_gsa53"]
 [ext_resource type="PackedScene" uid="uid://dubgkevkltw4y" path="res://assets/3d/nonEuclidean/tower.blend" id="36_fvk6q"]
 [ext_resource type="ArrayMesh" uid="uid://de1pr0ti1hdx4" path="res://assets/3d/nonEuclidean/towerTopCollisions.obj" id="37_qs3tr"]
+[ext_resource type="Script" path="res://scripts/menu.gd" id="50_b4two"]
 [ext_resource type="ArrayMesh" uid="uid://ct0oujsqp01pg" path="res://assets/3d/nonEuclidean/easel.obj" id="50_eeb47"]
 [ext_resource type="Texture2D" uid="uid://b3koxxptk440r" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-albedo.png" id="50_vl3xx"]
 [ext_resource type="Texture2D" uid="uid://omi2etfctumo" path="res://assets/2d/3dSprites/outside/laplaceSky.jpg" id="50_w0v2a"]
+[ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="51_6nh5w"]
 [ext_resource type="Texture2D" uid="uid://3arokunua8q1" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-height.png" id="51_flnfr"]
 [ext_resource type="Texture2D" uid="uid://h4s4bpdavl5m" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-metallic.png" id="52_utooq"]
+[ext_resource type="AudioStream" uid="uid://biipabva8sjck" path="res://assets/audio/sfx/menus/click.ogg" id="52_w427h"]
 [ext_resource type="Texture2D" uid="uid://dqljkmoa6e70k" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-normal-ogl.png" id="53_tkcqf"]
 [ext_resource type="Texture2D" uid="uid://dcgk10aa4tm8k" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-roughness.png" id="54_kyhwr"]
+[ext_resource type="Script" path="res://scripts/audioManager.gd" id="66_htwj4"]
+[ext_resource type="AudioStream" uid="uid://g3sr5s2mbhbv" path="res://assets/audio/music/menu.mp3" id="67_wbxok"]
+[ext_resource type="AudioStream" uid="uid://lmcy1qlw45v4" path="res://assets/audio/music/hallway.mp3" id="68_psw4w"]
+[ext_resource type="AudioStream" uid="uid://bdo4wwwve61iy" path="res://assets/audio/music/ambienceA.mp3" id="69_os53s"]
+[ext_resource type="AudioStream" uid="uid://buv6wcekvl551" path="res://assets/audio/music/nocturne.mp3" id="70_65lhp"]
+[ext_resource type="AudioStream" uid="uid://fh6dwkt7lotj" path="res://assets/audio/sfx/heartbeat.mp3" id="71_818k0"]
+[ext_resource type="AudioStream" uid="uid://vne8x3iohh10" path="res://assets/audio/music/singularity.mp3" id="72_lq03s"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7brgt"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -486,6 +496,272 @@ _data = {
 "fadeOut": SubResource("Animation_aqago"),
 "teleport": SubResource("Animation_32cip")
 }
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sb72m"]
+
+[sub_resource type="FontVariation" id="FontVariation_ommdb"]
+base_font = ExtResource("51_6nh5w")
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="Shader" id="Shader_ykobt"]
+code = "/*
+Shader from Godot Shaders - the free shader library.
+godotshaders.com/shader/VHS-and-CRT-monitor-effect
+
+This shader is under CC0 license. Feel free to use, improve and 
+change this shader according to your needs and consider sharing 
+the modified result to godotshaders.com.
+*/
+
+shader_type canvas_item;
+
+//*** IMPORTANT! ***/ 
+// - If you are using this shader to affect the node it is applied to set 'overlay' to false (unchecked in the instepctor).
+// - If you are using this shader as an overlay, and want the shader to affect the nodes below in the Scene hierarchy,
+//   set 'overlay' to true (checked in the inspector).
+// On Mac there is potentially a bug causing this to not work properly. If that is the case and you want to use the shader as an overlay
+// change all \"overlay ? SCREEN_TEXTURE : TEXTURE\" to only \"SCREEN_TEXTURE\" on lines 129-140, and \"vec2 uv = overlay ? warp(SCREEN_UV) : warp(UV);\"
+// to \"vec2 uv = warp(SCREEN_UV);\" on line 98.
+uniform bool overlay = false;
+
+uniform float scanlines_opacity : hint_range(0.0, 1.0) = 0.4;
+uniform float scanlines_width : hint_range(0.0, 0.5) = 0.25;
+uniform float grille_opacity : hint_range(0.0, 1.0) = 0.3;
+uniform vec2 resolution = vec2(640.0, 480.0); // Set the number of rows and columns the texture will be divided in. Scanlines and grille will make a square based on these values
+
+uniform bool pixelate = true; // Fill each square (\"pixel\") with a sampled color, creating a pixel look and a more accurate representation of how a CRT monitor would work.
+
+uniform bool roll = true;
+uniform float roll_speed = 8.0; // Positive values are down, negative are up
+uniform float roll_size : hint_range(0.0, 100.0) = 15.0;
+uniform float roll_variation : hint_range(0.1, 5.0) = 1.8; // This valie is not an exact science. You have to play around with the value to find a look you like. How this works is explained in the code below.
+uniform float distort_intensity : hint_range(0.0, 0.2) = 0.05; // The distortion created by the rolling effect.
+
+uniform float noise_opacity : hint_range(0.0, 1.0) = 0.4;
+uniform float noise_speed = 5.0; // There is a movement in the noise pattern that can be hard to see first. This sets the speed of that movement.
+
+uniform float static_noise_intensity : hint_range(0.0, 1.0) = 0.06;
+
+uniform float aberration : hint_range(-1.0, 1.0) = 0.03; // Chromatic aberration, a distortion on each color channel.
+uniform float brightness = 1.4; // When adding scanline gaps and grille the image can get very dark. Brightness tries to compensate for that.
+uniform bool discolor = true; // Add a discolor effect simulating a VHS
+
+uniform float warp_amount :hint_range(0.0, 5.0) = 1.0; // Warp the texture edges simulating the curved glass of a CRT monitor or old TV.
+uniform bool clip_warp = false;
+
+uniform float vignette_intensity = 0.4; // Size of the vignette, how far towards the middle it should go.
+uniform float vignette_opacity : hint_range(0.0, 1.0) = 0.5;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+// Used by the noise functin to generate a pseudo random value between 0.0 and 1.0
+vec2 random(vec2 uv){
+    uv = vec2( dot(uv, vec2(127.1,311.7) ),
+               dot(uv, vec2(269.5,183.3) ) );
+    return -1.0 + 2.0 * fract(sin(uv) * 43758.5453123);
+}
+
+// Generate a Perlin noise used by the distortion effects
+float noise(vec2 uv) {
+    vec2 uv_index = floor(uv);
+    vec2 uv_fract = fract(uv);
+
+    vec2 blur = smoothstep(0.0, 1.0, uv_fract);
+
+    return mix( mix( dot( random(uv_index + vec2(0.0,0.0) ), uv_fract - vec2(0.0,0.0) ),
+                     dot( random(uv_index + vec2(1.0,0.0) ), uv_fract - vec2(1.0,0.0) ), blur.x),
+                mix( dot( random(uv_index + vec2(0.0,1.0) ), uv_fract - vec2(0.0,1.0) ),
+                     dot( random(uv_index + vec2(1.0,1.0) ), uv_fract - vec2(1.0,1.0) ), blur.x), blur.y) * 0.5 + 0.5;
+}
+
+// Takes in the UV and warps the edges, creating the spherized effect
+vec2 warp(vec2 uv){
+	vec2 delta = uv - 0.5;
+	float delta2 = dot(delta.xy, delta.xy);
+	float delta4 = delta2 * delta2;
+	float delta_offset = delta4 * warp_amount;
+	
+	return uv + delta * delta_offset;
+}
+
+// Adds a black border to hide stretched pixel created by the warp effect
+float border (vec2 uv){
+	float radius = min(warp_amount, 0.08);
+	radius = max(min(min(abs(radius * 2.0), abs(1.0)), abs(1.0)), 1e-5);
+	vec2 abs_uv = abs(uv * 2.0 - 1.0) - vec2(1.0, 1.0) + radius;
+	float dist = length(max(vec2(0.0), abs_uv)) / radius;
+	float square = smoothstep(0.96, 1.0, dist);
+	return clamp(1.0 - square, 0.0, 1.0);
+}
+
+// Adds a vignette shadow to the edges of the image
+float vignette(vec2 uv){
+	uv *= 1.0 - uv.xy;
+	float vignette = uv.x * uv.y * 15.0;
+	return pow(vignette, vignette_intensity * vignette_opacity);
+}
+
+void fragment()
+{
+	vec2 uv = overlay ? warp(SCREEN_UV) : warp(UV); // Warp the uv. uv will be used in most cases instead of UV to keep the warping
+	vec2 text_uv = uv;
+	vec2 roll_uv = vec2(0.0);
+	float time = roll ? TIME : 0.0;
+	
+
+	// Pixelate the texture based on the given resolution.
+	if (pixelate)
+	{
+		text_uv = ceil(uv * resolution) / resolution;
+	}
+	
+	// Create the rolling effect. We need roll_line a bit later to make the noise effect.
+	// That is why this runs if roll is true OR noise_opacity is over 0.
+	float roll_line = 0.0;
+	if (roll || noise_opacity > 0.0)
+	{
+		// Create the areas/lines where the texture will be distorted.
+		roll_line = smoothstep(0.3, 0.9, sin(uv.y * roll_size - (time * roll_speed) ) );
+		// Create more lines of a different size and apply to the first set of lines. This creates a bit of variation.
+		roll_line *= roll_line * smoothstep(0.3, 0.9, sin(uv.y * roll_size * roll_variation - (time * roll_speed * roll_variation) ) );
+		// Distort the UV where where the lines are
+		roll_uv = vec2(( roll_line * distort_intensity * (1.-UV.x)), 0.0);
+	}
+	
+	vec4 text;
+	if (roll)
+	{
+		// If roll is true distort the texture with roll_uv. The texture is split up into RGB to 
+		// make some chromatic aberration. We apply the aberration to the red and green channels accorging to the aberration parameter
+		// and intensify it a bit in the roll distortion.
+		text.r = texture(SCREEN_TEXTURE, text_uv + roll_uv * 0.8 + vec2(aberration, 0.0) * .1).r;
+		text.g = texture(SCREEN_TEXTURE, text_uv + roll_uv * 1.2 - vec2(aberration, 0.0) * .1 ).g;
+		text.b = texture(SCREEN_TEXTURE, text_uv + roll_uv).b;
+		text.a = 1.0;
+	}
+	else
+	{
+		// If roll is false only apply the aberration without any distorion. The aberration values are very small so the .1 is only 
+		// to make the slider in the Inspector less sensitive.
+		text.r = texture(SCREEN_TEXTURE, text_uv + vec2(aberration, 0.0) * .1).r;
+		text.g = texture(SCREEN_TEXTURE, text_uv - vec2(aberration, 0.0) * .1).g;
+		text.b = texture(SCREEN_TEXTURE, text_uv).b;
+		text.a = 1.0;
+	}
+	
+	float r = text.r;
+	float g = text.g;
+	float b = text.b;
+	
+	uv = warp(UV);
+	
+	// CRT monitors don't have pixels but groups of red, green and blue dots or lines, called grille. We isolate the texture's color channels 
+	// and divide it up in 3 offsetted lines to show the red, green and blue colors next to each other, with a small black gap between.
+	if (grille_opacity > 0.0){
+		
+		float g_r = smoothstep(0.85, 0.95, abs(sin(uv.x * (resolution.x * 3.14159265))));
+		r = mix(r, r * g_r, grille_opacity);
+		
+		float g_g = smoothstep(0.85, 0.95, abs(sin(1.05 + uv.x * (resolution.x * 3.14159265))));
+		g = mix(g, g * g_g, grille_opacity);
+		
+		float b_b = smoothstep(0.85, 0.95, abs(sin(2.1 + uv.x * (resolution.x * 3.14159265))));
+		b = mix(b, b * b_b, grille_opacity);
+		
+	}
+	
+	// Apply the grille to the texture's color channels and apply Brightness. Since the grille and the scanlines (below) make the image very dark you
+	// can compensate by increasing the brightness.
+	text.r = clamp(r * brightness, 0.0, 1.0);
+	text.g = clamp(g * brightness, 0.0, 1.0);
+	text.b = clamp(b * brightness, 0.0, 1.0);
+	
+	// Scanlines are the horizontal lines that make up the image on a CRT monitor. 
+	// Here we are actual setting the black gap between each line, which I guess is not the right definition of the word, but you get the idea  
+	float scanlines = 0.5;
+	if (scanlines_opacity > 0.0)
+	{
+		// Same technique as above, create lines with sine and applying it to the texture. Smoothstep to allow setting the line size.
+		scanlines = smoothstep(scanlines_width, scanlines_width + 0.5, abs(sin(uv.y * (resolution.y * 3.14159265))));
+		text.rgb = mix(text.rgb, text.rgb * vec3(scanlines), scanlines_opacity);
+	}
+	
+	// Apply the banded noise.
+	if (noise_opacity > 0.0)
+	{
+		// Generate a noise pattern that is very stretched horizontally, and animate it with noise_speed
+		float noise = smoothstep(0.4, 0.5, noise(uv * vec2(2.0, 200.0) + vec2(10.0, (TIME * (noise_speed))) ) );
+		
+		// We use roll_line (set above) to define how big the noise should be vertically (multiplying cuts off all black parts).
+		// We also add in some basic noise with random() to break up the noise pattern above. The noise is sized according to 
+		// the resolution value set in the inspector. If you don't like this look you can 
+		// change \"ceil(uv * resolution) / resolution\" to only \"uv\" to make it less pixelated. Or multiply resolution with som value
+		// greater than 1.0 to make them smaller.
+		roll_line *= noise * scanlines * clamp(random((ceil(uv * resolution) / resolution) + vec2(TIME * 0.8, 0.0)).x + 0.8, 0.0, 1.0);
+		// Add it to the texture based on noise_opacity
+		text.rgb = clamp(mix(text.rgb, text.rgb + roll_line, noise_opacity), vec3(0.0), vec3(1.0));
+	}
+	
+	// Apply static noise by generating it over the whole screen in the same way as above
+	if (static_noise_intensity > 0.0)
+	{
+		text.rgb += clamp(random((ceil(uv * resolution) / resolution) + fract(TIME)).x, 0.0, 1.0) * static_noise_intensity;
+	}
+	
+	// Apply a black border to hide imperfections caused by the warping.
+	// Also apply the vignette
+	text.rgb *= border(uv);
+	text.rgb *= vignette(uv);
+	// Hides the black border and make that area transparent. Good if you want to add the the texture on top an image of a TV or monitor.
+	if (clip_warp)
+	{
+		text.a = border(uv);
+	}
+	
+	// Apply discoloration to get a VHS look (lower saturation and higher contrast)
+	// You can play with the values below or expose them in the Inspector.
+	float saturation = 0.5;
+	float contrast = 1.2;
+	if (discolor)
+	{
+		// Saturation
+		vec3 greyscale = vec3(text.r + text.g + text.b) / 3.;
+		text.rgb = mix(text.rgb, greyscale, saturation);
+		
+		// Contrast
+		float midpoint = pow(0.5, 2.2);
+		text.rgb = (text.rgb - vec3(midpoint)) * contrast + midpoint;
+	}
+	
+	COLOR = text;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_psa72"]
+resource_local_to_scene = true
+shader = SubResource("Shader_ykobt")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.4
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(1920, 1080)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.5
+shader_parameter/roll_size = 10.0
+shader_parameter/roll_variation = 4.0
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.032
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="Animation" id="Animation_47qjq"]
 resource_name = "bob"
@@ -2153,6 +2429,376 @@ libraries = {
 }
 autoplay = "fadeIn"
 
+[node name="menu" type="Control" parent="player" node_paths=PackedStringArray("audioManager", "enviro")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("50_b4two")
+audioManager = NodePath("../../audioManager")
+enviro = NodePath("../../worldEnvironment")
+
+[node name="menuGrid" type="GridContainer" parent="player/menu"]
+visible = false
+layout_mode = 0
+offset_left = 184.0
+offset_right = 1915.0
+offset_bottom = 1085.0
+
+[node name="VSeparator" type="VSeparator" parent="player/menu/menuGrid"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="continueButton" type="Label" parent="player/menu/menuGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 64
+text = "Continue"
+
+[node name="VSeparator2" type="VSeparator" parent="player/menu/menuGrid"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="settingsButton" type="Label" parent="player/menu/menuGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 64
+text = "Settings"
+
+[node name="controlsButton" type="Label" parent="player/menu/menuGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 64
+text = "Controls"
+
+[node name="guideButton" type="Label" parent="player/menu/menuGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 64
+text = "Guide"
+
+[node name="VSeparator4" type="VSeparator" parent="player/menu/menuGrid"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="quitButton" type="Label" parent="player/menu/menuGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 64
+text = "Quit"
+
+[node name="VSeparator3" type="VSeparator" parent="player/menu/menuGrid"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="settingsGrid" type="GridContainer" parent="player/menu"]
+visible = false
+layout_mode = 0
+offset_left = 184.0
+offset_right = 1915.0
+offset_bottom = 1085.0
+
+[node name="VSeparator" type="VSeparator" parent="player/menu/settingsGrid"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="musicButton" type="Label" parent="player/menu/settingsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 64
+text = "Music <0>"
+
+[node name="sfxButton" type="Label" parent="player/menu/settingsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 64
+text = "SFX <0>"
+
+[node name="graphicsButton" type="Label" parent="player/menu/settingsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 64
+text = "Graphics <HIGH>"
+
+[node name="invertButton" type="Label" parent="player/menu/settingsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 64
+text = "Invert-Y <NO>"
+
+[node name="VSeparator4" type="VSeparator" parent="player/menu/settingsGrid"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="backButton" type="Label" parent="player/menu/settingsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 64
+text = "Back"
+
+[node name="VSeparator3" type="VSeparator" parent="player/menu/settingsGrid"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="controlsGrid" type="GridContainer" parent="player/menu"]
+visible = false
+layout_mode = 0
+offset_left = 184.0
+offset_right = 1915.0
+offset_bottom = 1085.0
+
+[node name="VSeparator" type="VSeparator" parent="player/menu/controlsGrid"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="forwardKeybind" type="Label" parent="player/menu/controlsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 48
+text = "Forward - W / Up Arrow"
+
+[node name="backwardKeybind" type="Label" parent="player/menu/controlsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 48
+text = "Backward - S / Down Arrow"
+
+[node name="leftKeybind" type="Label" parent="player/menu/controlsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 48
+text = "Left - A / Left Arrow"
+
+[node name="rightKeybind" type="Label" parent="player/menu/controlsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 48
+text = "Right - D / Right Arrow"
+
+[node name="wasdNote" type="Label" parent="player/menu/controlsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 32
+text = "(Minigame uses WASD for movement and Arrows for shooting)"
+
+[node name="VSeparator5" type="VSeparator" parent="player/menu/controlsGrid"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="interactKeybind" type="Label" parent="player/menu/controlsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 48
+text = "Interact - Left Click / F / Enter"
+
+[node name="unfocusKeybind" type="Label" parent="player/menu/controlsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 48
+text = "Unfocus - Right Click / Backspace"
+
+[node name="unfocusNote" type="Label" parent="player/menu/controlsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 32
+text = "(Used to stop interacting with screens)"
+
+[node name="VSeparator6" type="VSeparator" parent="player/menu/controlsGrid"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="menuKeybind" type="Label" parent="player/menu/controlsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 48
+text = "Menu - Escape"
+
+[node name="VSeparator4" type="VSeparator" parent="player/menu/controlsGrid"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="backButton" type="Label" parent="player/menu/controlsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 64
+text = "Back"
+
+[node name="VSeparator3" type="VSeparator" parent="player/menu/controlsGrid"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="helpGrid" type="GridContainer" parent="player/menu"]
+visible = false
+layout_mode = 0
+offset_left = 184.0
+offset_right = 1915.0
+offset_bottom = 1085.0
+
+[node name="VSeparator" type="VSeparator" parent="player/menu/helpGrid"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="helpMessage" type="Label" parent="player/menu/helpGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+custom_minimum_size = Vector2(1500, 0)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 48
+text = "Welcome player to my inner sanctum, the Minds of Laplace. For now it lies mostly empty, but this shall change by the time we next meet here."
+autowrap_mode = 3
+
+[node name="VSeparator4" type="VSeparator" parent="player/menu/helpGrid"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="backButton" type="Label" parent="player/menu/helpGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_ommdb")
+theme_override_font_sizes/font_size = 64
+text = "Back"
+
+[node name="VSeparator3" type="VSeparator" parent="player/menu/helpGrid"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sb72m")
+
+[node name="crt" type="ColorRect" parent="player/menu"]
+visible = false
+modulate = Color(1, 1, 1, 0.435294)
+material = SubResource("ShaderMaterial_psa72")
+layout_mode = 0
+offset_right = 1919.0
+offset_bottom = 1081.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="clickSFX" type="AudioStreamPlayer" parent="player/menu" groups=["sfx"]]
+stream = ExtResource("52_w427h")
+
 [node name="bobAnim" type="AnimationPlayer" parent="player"]
 root_node = NodePath("../..")
 libraries = {
@@ -2244,6 +2890,32 @@ texture = ExtResource("50_w0v2a")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="paintingDimension/easelCollisions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5465, 1.87505, -0.99633)
 shape = SubResource("BoxShape3D_af7ha")
+
+[node name="audioManager" type="Node3D" parent="."]
+process_mode = 3
+script = ExtResource("66_htwj4")
+
+[node name="menu" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("67_wbxok")
+volume_db = -20.0
+
+[node name="hallway" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("68_psw4w")
+volume_db = -20.0
+
+[node name="ambienceA" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("69_os53s")
+volume_db = -20.0
+
+[node name="piano" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("70_65lhp")
+volume_db = -20.0
+
+[node name="heartbeat" type="AudioStreamPlayer" parent="audioManager" groups=["sfx"]]
+stream = ExtResource("71_818k0")
+
+[node name="singularity" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("72_lq03s")
 
 [connection signal="screen_exited" from="dimension1/dimension1TransitionBoundary" to="." method="_on_dimension_1_transition_boundary_screen_exited"]
 [connection signal="screen_entered" from="dimension1/dimension1SeenBoundary" to="." method="_on_dimension_1_seen_boundary_screen_entered"]

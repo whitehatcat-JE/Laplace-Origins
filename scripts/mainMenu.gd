@@ -50,6 +50,7 @@ var sOutline:Color = Color(0.28627452254295, 0.10588235408068, 0)
 @onready var pcOS = $"../bedroom/pcWindow/pcOS"
 # Apply default setting values on scene load
 func _ready() -> void:
+	return
 	# Stores default SFX volumes
 	for sfx in get_tree().get_nodes_in_group("sfx"):
 		sfxVolumes[sfx] = sfx.volume_db
@@ -75,9 +76,11 @@ func _ready() -> void:
 	for sfx in get_tree().get_nodes_in_group("sfx"):
 		sfx.volume_db = sfxVolumes[sfx] - (10 - sfxSetting) * 2 if sfxSetting > 0 else -80
 	# Stop player from moving when menu is initially open
+	await get_tree().create_timer(0.01).timeout
 	get_tree().paused = true
 # Gradually moves background pillars if menu open
 func _process(delta) -> void:
+	return
 	if menuOpen:
 		scrollPos += SCROLL_SPEED * delta
 		if scrollPos > 400: scrollPos -= 400
@@ -85,6 +88,7 @@ func _process(delta) -> void:
 		$backgroundPillar2.set_region_rect(Rect2(0, 400 - scrollPos, 304, 400))
 # Menu inputs
 func _input(event) -> void:
+	return
 	if Input.is_action_just_pressed("menu") and false: # Open / close menu
 		clickSFX.play()
 		if menuOpen: # Close menu

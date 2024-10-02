@@ -4,7 +4,7 @@ var progress:int = 0
 # Settings
 var sfxVolume:int = 0
 var musicVolume:int = 0
-var graphics:String = "High"
+var graphics:String = "HIGH"
 var invertY:bool = false
 # pcOS
 var playerPos2D:Vector2 = Vector2()
