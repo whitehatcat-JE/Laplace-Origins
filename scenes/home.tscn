@@ -1,4 +1,4 @@
-[gd_scene load_steps=513 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=515 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -173,6 +173,7 @@
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="131_a2atm"]
 [ext_resource type="Texture2D" uid="uid://dl80nnchclsac" path="res://assets/2d/3dSprites/decals/TexturesCom_DecalLeakingMossy0008_1_masked_S.png" id="131_awinp"]
 [ext_resource type="ArrayMesh" uid="uid://ctyv51jvb3kcc" path="res://assets/3d/rocks/rockA.obj" id="132_y3d3h"]
+[ext_resource type="Script" path="res://scripts/fadeIn.gd" id="133_gk8pv"]
 [ext_resource type="ArrayMesh" uid="uid://dn10cns4aux76" path="res://assets/3d/rocks/rockB.obj" id="133_pt485"]
 [ext_resource type="ArrayMesh" uid="uid://lsigni1j6aa2" path="res://assets/3d/rocks/rockC.obj" id="134_q2vt5"]
 [ext_resource type="ArrayMesh" uid="uid://c0bbnk4cxlf7a" path="res://assets/3d/crt.obj" id="135_sofnr"]
@@ -1597,7 +1598,7 @@ variation_opentype = {
 2003265652: 700
 }
 
-[sub_resource type="Shader" id="Shader_n8q34"]
+[sub_resource type="Shader" id="Shader_qir2m"]
 code = "/*
 Shader from Godot Shaders - the free shader library.
 godotshaders.com/shader/VHS-and-CRT-monitor-effect
@@ -1832,7 +1833,7 @@ void fragment()
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8qfhb"]
 resource_local_to_scene = true
-shader = SubResource("Shader_n8q34")
+shader = SubResource("Shader_qir2m")
 shader_parameter/overlay = false
 shader_parameter/scanlines_opacity = 0.4
 shader_parameter/scanlines_width = 0.25
@@ -1848,6 +1849,31 @@ shader_parameter/noise_opacity = 0.032
 shader_parameter/noise_speed = 5.0
 shader_parameter/static_noise_intensity = 0.06
 shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bn80n"]
+resource_local_to_scene = true
+shader = SubResource("Shader_qir2m")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.3
+shader_parameter/scanlines_width = 0.25
+shader_parameter/grille_opacity = 0.3
+shader_parameter/resolution = Vector2(1280, 960)
+shader_parameter/pixelate = true
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.5
+shader_parameter/roll_size = 10.0
+shader_parameter/roll_variation = 4.0
+shader_parameter/distort_intensity = 0.01
+shader_parameter/noise_opacity = 0.1
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.00500005
 shader_parameter/brightness = 1.4
 shader_parameter/discolor = false
 shader_parameter/warp_amount = 1.0
@@ -2317,13 +2343,13 @@ data = PackedVector3Array(-0.65, 1.5, 1, 0.65, 1.5, 1, -0.65, -1.5, 1, 0.65, 1.5
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oqqt8"]
 data = PackedVector3Array(-0.65, 1.5, 1, 0.65, 1.5, 1, -0.65, -1.5, 1, 0.65, 1.5, 1, 0.65, -1.5, 1, -0.65, -1.5, 1, 0.65, 1.5, -1, -0.65, 1.5, -1, 0.65, -1.5, -1, -0.65, 1.5, -1, -0.65, -1.5, -1, 0.65, -1.5, -1, 0.65, 1.5, 1, 0.65, 1.5, -1, 0.65, -1.5, 1, 0.65, 1.5, -1, 0.65, -1.5, -1, 0.65, -1.5, 1, -0.65, 1.5, -1, -0.65, 1.5, 1, -0.65, -1.5, -1, -0.65, 1.5, 1, -0.65, -1.5, 1, -0.65, -1.5, -1, 0.65, 1.5, 1, -0.65, 1.5, 1, 0.65, 1.5, -1, -0.65, 1.5, 1, -0.65, 1.5, -1, 0.65, 1.5, -1, -0.65, -1.5, 1, 0.65, -1.5, 1, -0.65, -1.5, -1, 0.65, -1.5, 1, 0.65, -1.5, -1, -0.65, -1.5, -1)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vden7"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_i0g05"]
 viewport_path = NodePath("basement/crtScreen")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tog35"]
 resource_local_to_scene = true
 shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_vden7")
+albedo_texture = SubResource("ViewportTexture_i0g05")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lace8"]
 size = Vector3(1.07558, 1.12652, 1.03132)
@@ -6686,6 +6712,33 @@ color = Color(0, 0, 0, 1)
 [node name="clickSFX" type="AudioStreamPlayer" parent="player/menu" groups=["sfx"]]
 stream = ExtResource("166_umgxd")
 
+[node name="fadeIn" type="Control" parent="player"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("133_gk8pv")
+
+[node name="crt" type="ColorRect" parent="player/fadeIn"]
+modulate = Color(1, 1, 1, 0.435294)
+material = SubResource("ShaderMaterial_bn80n")
+offset_right = 1919.0
+offset_bottom = 1081.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="crtFade" type="ColorRect" parent="player/fadeIn"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.142
+anchor_top = -3.717
+offset_left = 30.68
+offset_top = 67.68
+offset_right = 2066.0
+offset_bottom = 1151.0
+color = Color(0, 0, 0, 1)
+
 [node name="bobAnim" type="AnimationPlayer" parent="player"]
 root_node = NodePath("../..")
 libraries = {
@@ -8518,7 +8571,7 @@ mesh = SubResource("QuadMesh_6vii6")
 [node name="frame" type="Sprite3D" parent="mainMenu/screen"]
 transform = Transform3D(1, 2.4869e-14, 0, 0, 1, -1.42109e-14, 0, 0, 1, -8.39233e-05, 0, 0.00224304)
 cast_shadow = 0
-modulate = Color(0.356863, 0.356863, 0.356863, 1)
+modulate = Color(0, 0, 0, 0)
 pixel_size = 0.0125
 texture_filter = 0
 texture = ExtResource("159_2hxwc")
@@ -8532,7 +8585,7 @@ font = ExtResource("150_blp0k")
 font_size = 128
 
 [node name="menuCam" type="Camera3D" parent="mainMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.034, 0.258, 0.387)
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0.023, 0.313, 0.046)
 environment = SubResource("Environment_1shus")
 
 [node name="mainAnims" type="AnimationPlayer" parent="mainMenu"]

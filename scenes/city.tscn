@@ -420,7 +420,7 @@ tonemap_mode = 3
 ssao_enabled = true
 fog_enabled = true
 fog_light_color = Color(0.368627, 0.00392157, 0, 1)
-volumetric_fog_density = 0.1029
+volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(1, 0.0235294, 0, 1)
 volumetric_fog_emission = Color(0.152941, 0, 0, 1)
 
@@ -991,7 +991,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("19_5hmvw")
 audioManager = NodePath("../../audioManager")
-enviro = NodePath("../../globalInformation")
+enviro = NodePath("../../WorldEnvironment")
 
 [node name="menuGrid" type="GridContainer" parent="player/menu"]
 visible = false

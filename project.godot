@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="sunset-humanity"
-run/main_scene="res://scenes/home.tscn"
+run/main_scene="res://scenes/titleScreen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -164,4 +164,5 @@ jump={
 [rendering]
 
 global_illumination/gi/use_half_resolution=true
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 anti_aliasing/quality/msaa_3d=3

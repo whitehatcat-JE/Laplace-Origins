@@ -43,6 +43,11 @@ var sfxSetting:int = 10
 
 var sfxVolumes:Dictionary = {}
 
+var sdfgiDefault:bool = false
+var ssilDefault:bool = false
+var ssaoDefault:bool = false
+var volFogDefault:bool = false
+
 @onready var textLabels:Array[Label] = [
 	$controlsGrid/forwardKeybind,
 	$controlsGrid/backwardKeybind, 
@@ -66,6 +71,11 @@ func _ready() -> void:
 	# Stores default SFX volumes
 	for sfx in get_tree().get_nodes_in_group("sfx"):
 		sfxVolumes[sfx] = sfx.volume_db
+	
+	sdfgiDefault = enviro.get_environment().sdfgi_enabled
+	ssilDefault = enviro.get_environment().ssil_enabled
+	ssaoDefault = enviro.get_environment().ssao_enabled
+	volFogDefault = enviro.get_environment().volumetric_fog_enabled
 	
 	if GI.graphics == "LOW":
 		enviro.get_environment().set_sdfgi_enabled(false)
@@ -150,10 +160,10 @@ func _input(_event) -> void:
 						enviro.get_environment().set_volumetric_fog_enabled(false)
 						graphicsSetting = "LOW"
 					"LOW":
-						enviro.get_environment().set_sdfgi_enabled(true)
-						enviro.get_environment().set_ssil_enabled(true)
-						enviro.get_environment().set_ssao_enabled(true)
-						enviro.get_environment().set_volumetric_fog_enabled(true)
+						enviro.get_environment().set_sdfgi_enabled(sdfgiDefault)
+						enviro.get_environment().set_ssil_enabled(ssilDefault)
+						enviro.get_environment().set_ssao_enabled(ssaoDefault)
+						enviro.get_environment().set_volumetric_fog_enabled(volFogDefault)
 						graphicsSetting = "HIGH"
 				$settingsGrid/graphicsButton.text = "Graphics <" + graphicsSetting + ">"
 				GI.graphics = graphicsSetting
