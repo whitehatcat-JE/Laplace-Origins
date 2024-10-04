@@ -2,13 +2,15 @@ extends Node
 ## Global variables
 var progress:int = 0
 # Settings
-var sfxVolume:int = 0
-var musicVolume:int = 0
+var sfxVolume:int = 10
+var musicVolume:int = 10
 var graphics:String = "HIGH"
 var invertY:bool = false
 # pcOS
 var playerPos2D:Vector2 = Vector2()
 var shooterActive:bool = false
+var schrodingerActive:bool = false
+var slimyBirdActive:bool = false
 var freeActive:bool = false
 var hasFreeKey:bool = false
 var freeDownloaded:bool = false

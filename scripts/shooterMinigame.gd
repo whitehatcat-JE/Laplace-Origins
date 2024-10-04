@@ -21,7 +21,6 @@ var laplaceDescended:bool = false
 var laplaceBulletSpeed = 1.0
 
 var healingDroneChance:float = 0.98
-var schrodingerActive:bool = false
 var schrodingerDisabled:bool = false
 
 var eyesCollected:int = 0
@@ -69,12 +68,12 @@ func corrupt():
 # Enter / exit shooter minigame
 func start():
 	GI.shooterActive = true
-	if schrodingerActive:
+	if GI.schrodingerActive:
 		$schrodingerView/schrodingerViewport.set_update_mode(4)
 		emit_signal("hideMouse")
 func stop():
 	GI.shooterActive = false
-	if schrodingerActive:
+	if GI.schrodingerActive:
 		$schrodingerView/schrodingerViewport.set_update_mode(0)
 		emit_signal("showMouse")
 # Start round of minigame
@@ -96,7 +95,7 @@ func begin():
 	_on_spawn_timer_timeout()
 # Increase round time if game active
 func _process(delta):
-	if !GI.shooterActive or schrodingerActive: return;
+	if !GI.shooterActive or GI.schrodingerActive: return;
 	timeSinceStarted += delta
 # Heal player
 func playerHealed():
@@ -108,7 +107,7 @@ func playerHealed():
 	get_node("HUD/heart" + "ABC"[playerHealth - 1]).texture = fullHeartTexture;
 # Damage player
 func _on_player_damage():
-	if schrodingerActive: return;
+	if GI.schrodingerActive: return;
 	if playerHealth > 0: playerHealth -= 1;
 	match playerHealth: # Update game with new health
 		2:
@@ -121,7 +120,7 @@ func _on_player_damage():
 			killGame()
 # Spawn new enemy
 func _on_spawn_timer_timeout():
-	if !$player.alive or schrodingerActive: return;
+	if !$player.alive or GI.schrodingerActive: return;
 	if timeSinceStarted > 115.0 and corrupted: # Spawn laplace
 		var previousSFXVolume:int = GI.sfxVolume
 		GI.sfxVolume = 0
@@ -246,7 +245,7 @@ func exitSchrodinger():
 	$schrodingerView.visible = false
 	$schrodingerView/schrodingerViewport/schrodinger.isFocused = false
 	emit_signal("showMouse")
-	schrodingerActive = false
+	GI.schrodingerActive = false
 	schrodingerDisabled = true
 
 func _on_player_scanner_body_entered(body):
@@ -258,7 +257,7 @@ func _on_player_scanner_body_entered(body):
 	if eyesCollected == EYE_AMT:
 		emit_signal("schrodingerTransition")
 		emit_signal("hideMouse")
-		schrodingerActive = true
+		GI.schrodingerActive = true
 		var previousSFXVolume:int = GI.sfxVolume
 		GI.sfxVolume = 0
 		while len(allEnemies) > 0:

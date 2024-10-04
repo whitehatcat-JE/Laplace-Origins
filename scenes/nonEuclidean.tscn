@@ -1,4 +1,4 @@
-[gd_scene load_steps=167 format=3 uid="uid://dppv4w5r1jusc"]
+[gd_scene load_steps=165 format=3 uid="uid://dppv4w5r1jusc"]
 
 [ext_resource type="Script" path="res://scenes/nonEuclideanSpace.gd" id="1_gkibj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_scmjs"]
@@ -66,12 +66,10 @@
 [ext_resource type="Texture2D" uid="uid://dqljkmoa6e70k" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-normal-ogl.png" id="53_tkcqf"]
 [ext_resource type="Texture2D" uid="uid://dcgk10aa4tm8k" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-roughness.png" id="54_kyhwr"]
 [ext_resource type="Script" path="res://scripts/audioManager.gd" id="66_htwj4"]
-[ext_resource type="AudioStream" uid="uid://g3sr5s2mbhbv" path="res://assets/audio/music/menu.mp3" id="67_wbxok"]
-[ext_resource type="AudioStream" uid="uid://lmcy1qlw45v4" path="res://assets/audio/music/hallway.mp3" id="68_psw4w"]
-[ext_resource type="AudioStream" uid="uid://bdo4wwwve61iy" path="res://assets/audio/music/ambienceA.mp3" id="69_os53s"]
-[ext_resource type="AudioStream" uid="uid://buv6wcekvl551" path="res://assets/audio/music/nocturne.mp3" id="70_65lhp"]
-[ext_resource type="AudioStream" uid="uid://fh6dwkt7lotj" path="res://assets/audio/sfx/heartbeat.mp3" id="71_818k0"]
-[ext_resource type="AudioStream" uid="uid://vne8x3iohh10" path="res://assets/audio/music/singularity.mp3" id="72_lq03s"]
+[ext_resource type="AudioStream" uid="uid://ber3s8se6ofbv" path="res://assets/audio/music/nonEuclidean.mp3" id="67_iasqe"]
+[ext_resource type="AudioStream" uid="uid://bad3k2eexj6ek" path="res://assets/audio/music/nonEuclideanBass.mp3" id="68_fqpb4"]
+[ext_resource type="AudioStream" uid="uid://c64l7oerffoms" path="res://assets/audio/music/nonEuclideanBell.mp3" id="69_7nb3u"]
+[ext_resource type="AudioStream" uid="uid://c1x7ps0vbnsqc" path="res://assets/audio/music/nonEuclideanNoise.mp3" id="70_twegd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7brgt"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -2895,27 +2893,23 @@ shape = SubResource("BoxShape3D_af7ha")
 process_mode = 3
 script = ExtResource("66_htwj4")
 
-[node name="menu" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("67_wbxok")
+[node name="nonEuclidean" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("67_iasqe")
 volume_db = -20.0
+parameters/looping = true
 
-[node name="hallway" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("68_psw4w")
-volume_db = -20.0
+[node name="nonEuclideanTempo" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("67_iasqe")
+volume_db = -80.0
 
-[node name="ambienceA" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("69_os53s")
-volume_db = -20.0
+[node name="nonEuclideanBass" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("68_fqpb4")
 
-[node name="piano" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("70_65lhp")
-volume_db = -20.0
+[node name="nonEuclideanBell" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("69_7nb3u")
 
-[node name="heartbeat" type="AudioStreamPlayer" parent="audioManager" groups=["sfx"]]
-stream = ExtResource("71_818k0")
-
-[node name="singularity" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("72_lq03s")
+[node name="nonEuclideanNoise" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("70_twegd")
 
 [connection signal="screen_exited" from="dimension1/dimension1TransitionBoundary" to="." method="_on_dimension_1_transition_boundary_screen_exited"]
 [connection signal="screen_entered" from="dimension1/dimension1SeenBoundary" to="." method="_on_dimension_1_seen_boundary_screen_entered"]
@@ -2925,6 +2919,10 @@ stream = ExtResource("72_lq03s")
 [connection signal="body_entered" from="dimension2/hidePillars" to="." method="_on_hide_pillars_body_entered"]
 [connection signal="body_entered" from="dimension3/secondStoryTeleportFields" to="." method="_on_second_story_teleport_fields_body_entered"]
 [connection signal="body_entered" from="dimension3/exitField" to="." method="_on_exit_field_body_entered"]
+[connection signal="finished" from="audioManager/nonEuclideanTempo" to="." method="_on_non_euclidean_tempo_finished"]
+[connection signal="finished" from="audioManager/nonEuclideanBass" to="." method="_on_non_euclidean_finished"]
+[connection signal="finished" from="audioManager/nonEuclideanBell" to="." method="_on_non_euclidean_finished"]
+[connection signal="finished" from="audioManager/nonEuclideanNoise" to="." method="_on_non_euclidean_finished"]
 
 [editable path="dimension2/romanHouse"]
 [editable path="dimension3/tower"]

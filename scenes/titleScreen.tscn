@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://di3lqggog13qo"]
+[gd_scene load_steps=27 format=3 uid="uid://di3lqggog13qo"]
 
 [ext_resource type="Script" path="res://scripts/titleScreen.gd" id="1_tv2yb"]
 [ext_resource type="Texture2D" uid="uid://bpecj4jeahrox" path="res://assets/2d/menus/gameView.png" id="2_thl53"]
@@ -10,6 +10,7 @@
 [ext_resource type="Material" uid="uid://cenqpwuerr8ck" path="res://assets/3d/materials/darkPlastic.tres" id="7_l0ntk"]
 [ext_resource type="Texture2D" uid="uid://cxdbhjbai6ktn" path="res://assets/2d/laplace/eye.png" id="9_if65y"]
 [ext_resource type="Texture2D" uid="uid://p2q07wl4p4c8" path="res://assets/2d/3dSprites/crtLogos.png" id="9_op8w8"]
+[ext_resource type="AudioStream" uid="uid://b6h3k06wwsjyh" path="res://assets/audio/music/titleScreen.mp3" id="11_nf0nf"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ks25d"]
 shading_mode = 0
@@ -17,6 +18,33 @@ albedo_texture = ExtResource("2_thl53")
 
 [sub_resource type="QuadMesh" id="QuadMesh_hphjg"]
 size = Vector2(2, 1.125)
+
+[sub_resource type="Animation" id="Animation_8j8mq"]
+resource_name = "complete"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("hud/loadingText:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": ["Loading...", "Complete"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hud/crtFadeOut:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_dyu8f"]
 resource_name = "intro"
@@ -310,33 +338,6 @@ tracks/23/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": ["", "Loading", "Loading.", "Loading..", "Loading..."]
-}
-
-[sub_resource type="Animation" id="Animation_8j8mq"]
-resource_name = "complete"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("hud/loadingText:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": ["Loading...", "Complete"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("hud/crtFadeOut:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_06dcu"]
@@ -671,6 +672,7 @@ grow_vertical = 2
 
 [node name="loadingText" type="RichTextLabel" parent="hud"]
 modulate = Color(1, 1, 1, 0)
+layout_mode = 0
 offset_left = 91.0
 offset_top = 57.0
 offset_right = 1903.0
@@ -683,6 +685,7 @@ bbcode_enabled = true
 
 [node name="clickText" type="RichTextLabel" parent="hud"]
 self_modulate = Color(1, 0, 0.00608206, 1)
+layout_mode = 0
 offset_left = 35.0
 offset_top = 915.0
 offset_right = 1847.0
@@ -699,6 +702,7 @@ text = "[center]-Click anywhere to begin-"
 visible = false
 modulate = Color(1, 1, 1, 0.435294)
 material = SubResource("ShaderMaterial_kqtv6")
+layout_mode = 0
 offset_right = 1919.0
 offset_bottom = 1081.0
 mouse_filter = 2
@@ -862,3 +866,7 @@ environment = SubResource("Environment_rmkg6")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.50055)
 visible = false
+
+[node name="titleScreenMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_nf0nf")
+autoplay = true

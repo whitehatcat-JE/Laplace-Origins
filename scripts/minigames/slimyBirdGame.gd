@@ -46,11 +46,13 @@ func increaseRect(obj:Sprite2D, amt:float):
 
 func start():
 	alive = true
+	GI.slimyBirdActive = true
 	$startButton.position.x = 10000.0
 	$backdrop/floor/floorBody.position.y = 0
 	$backdrop/character/hitbox.disabled = false
 
 func stop():
+	GI.slimyBirdActive = false
 	alive = false
 	timeSinceLastPillar = PILLAR_SPAWN_TIME
 	for pillar in $backdrop/pillars.get_children(): pillar.queue_free();

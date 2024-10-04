@@ -1,4 +1,4 @@
-[gd_scene load_steps=515 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=518 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -24,10 +24,13 @@
 [ext_resource type="ArrayMesh" uid="uid://bff888blpslor" path="res://assets/3d/desk.obj" id="8_xy3sd"]
 [ext_resource type="Material" uid="uid://bak4i13bdfs7n" path="res://assets/3d/materials/greenWallpaper.tres" id="9_6pp1r"]
 [ext_resource type="AudioStream" uid="uid://vne8x3iohh10" path="res://assets/audio/music/singularity.mp3" id="9_dcaq8"]
+[ext_resource type="AudioStream" uid="uid://drqceeo8ss6tv" path="res://assets/audio/music/schrodinger.mp3" id="10_a0lsm"]
 [ext_resource type="Texture2D" uid="uid://c47pdqpchx4d8" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-albedo.png" id="10_b1uw2"]
 [ext_resource type="Environment" uid="uid://b0ok513seha2x" path="res://objects/homeEnvironment.tres" id="10_nrkjx"]
 [ext_resource type="ArrayMesh" uid="uid://bfqtupg7aqnqw" path="res://assets/3d/monitorScreen.obj" id="11_ftqtj"]
+[ext_resource type="AudioStream" uid="uid://eenjp7cx7b6" path="res://assets/audio/music/hands.mp3" id="11_k6m0u"]
 [ext_resource type="Texture2D" uid="uid://bijuw13o6gyl2" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-ao.png" id="11_pet04"]
+[ext_resource type="AudioStream" uid="uid://cvmdk3778rf6r" path="res://assets/audio/music/slimyBird.mp3" id="12_153u8"]
 [ext_resource type="ArrayMesh" uid="uid://buq1uso8urd3a" path="res://assets/3d/monitorStand.obj" id="12_lpolo"]
 [ext_resource type="Texture2D" uid="uid://b6ksegnyj52v6" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-height.png" id="12_x7lx0"]
 [ext_resource type="Texture2D" uid="uid://6i1137wcqu1q" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-metallic.png" id="13_j68nr"]
@@ -3972,6 +3975,19 @@ stream = ExtResource("7_jbwer")
 
 [node name="singularity" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("9_dcaq8")
+volume_db = -20.0
+
+[node name="schrodinger" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("10_a0lsm")
+volume_db = -20.0
+
+[node name="hands" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("11_k6m0u")
+volume_db = -20.0
+
+[node name="slimyBird" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("12_153u8")
+volume_db = -20.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("10_nrkjx")
@@ -6723,6 +6739,7 @@ script = ExtResource("133_gk8pv")
 [node name="crt" type="ColorRect" parent="player/fadeIn"]
 modulate = Color(1, 1, 1, 0.435294)
 material = SubResource("ShaderMaterial_bn80n")
+layout_mode = 0
 offset_right = 1919.0
 offset_bottom = 1081.0
 mouse_filter = 2
@@ -7384,6 +7401,10 @@ interactionName = "freeKey"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="basement/key/interaction"]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 0.999988, 0, 0.707107, 0, 0.707107, -1.39184, -0.849586, -0.481502)
 shape = SubResource("BoxShape3D_o4k3m")
+
+[node name="keyLight" type="OmniLight3D" parent="basement/key"]
+transform = Transform3D(20, 0, 1.90735e-06, 0, 20, 0, -9.53674e-07, 0, 20, 0.121019, 3.7207, 1.82952)
+light_color = Color(1, 0, 0.0204597, 1)
 
 [node name="hologramModule" type="MeshInstance3D" parent="basement"]
 transform = Transform3D(-5.24537e-08, 0, -1.2, 0, 1.2, 0, 1.2, 0, -5.24537e-08, -9.41294, -1.87007, 6.09937)

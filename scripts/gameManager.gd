@@ -225,10 +225,12 @@ func _on_hands_hole_trigger_field_body_entered(body):
 
 func teleportToHands():
 	player.global_position = %handsSpawnPos.global_position
+	audioManager.play("hands")
 
 func teleportFromHands():
 	$hallway/schrodingerView.visible = true
 	player.global_position = %basementReentryPos.global_position
+	audioManager.play("ambienceA")
 	$player/menu/helpGrid/helpMessage.text = "I should turn back on the internet now."
 
 func unlockPlayer():

@@ -15,6 +15,8 @@ func _ready():
 	$dimension3.position = Vector3(0.0, 0.0, 0.0)
 	$dimension3.visible = false
 	$pillars.visible = false
+	$audioManager.play("nonEuclidean")
+	$audioManager/nonEuclideanTempo.play()
 
 func _process(delta: float) -> void:
 	if story == 1:
@@ -67,3 +69,12 @@ func _on_exit_field_body_entered(body: Node3D) -> void:
 	$player/HUD/hudAnims.play("fadeOut")
 	await $player/HUD/hudAnims.animation_finished
 	get_tree().change_scene_to_file("res://scenes/outside.tscn")
+
+func _on_non_euclidean_tempo_finished() -> void:
+	$audioManager/nonEuclideanTempo.play()
+	if randf() > 0.9:
+		$audioManager/nonEuclideanBass.play()
+	elif randf() > 0.8:
+		$audioManager/nonEuclideanBell.play()
+	elif randf() > 0.6:
+		$audioManager/nonEuclideanNoise.play()

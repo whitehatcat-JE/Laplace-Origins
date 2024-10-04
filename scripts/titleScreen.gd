@@ -1,12 +1,14 @@
 extends Node3D
 
 var homeScene = null
+var animStarted:bool = false
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event: InputEvent) -> void:
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("interact") and !animStarted:
+		animStarted = true
 		$introAnim.play("intro")
 		await $introAnim.animation_finished
 
