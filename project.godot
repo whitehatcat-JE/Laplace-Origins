@@ -41,6 +41,11 @@ movie_writer/movie_file="C:/Users/ccporirua/Documents/laplaceOrigins/storeAssets
 
 enabled=PackedStringArray("res://addons/terrain_3d/plugin.cfg")
 
+[global_group]
+
+music=""
+sfx=""
+
 [input]
 
 moveLeft={
@@ -152,9 +157,12 @@ jump={
 2d_physics/layer_4="player"
 3d_physics/layer_4="wood"
 2d_physics/layer_5="bullet"
-3d_physics/layer_5="stone"
+3d_physics/layer_5="gravel"
 2d_physics/layer_6="enemy"
+3d_physics/layer_6="grass"
 2d_physics/layer_7="nonCollidableEnemy"
+3d_physics/layer_7="stone"
+3d_physics/layer_8="flesh"
 2d_physics/layer_9="freeCollisions"
 
 [physics]

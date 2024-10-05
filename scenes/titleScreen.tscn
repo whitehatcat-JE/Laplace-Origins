@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://di3lqggog13qo"]
+[gd_scene load_steps=33 format=3 uid="uid://di3lqggog13qo"]
 
 [ext_resource type="Script" path="res://scripts/titleScreen.gd" id="1_tv2yb"]
 [ext_resource type="Texture2D" uid="uid://bpecj4jeahrox" path="res://assets/2d/menus/gameView.png" id="2_thl53"]
@@ -10,7 +10,13 @@
 [ext_resource type="Material" uid="uid://cenqpwuerr8ck" path="res://assets/3d/materials/darkPlastic.tres" id="7_l0ntk"]
 [ext_resource type="Texture2D" uid="uid://cxdbhjbai6ktn" path="res://assets/2d/laplace/eye.png" id="9_if65y"]
 [ext_resource type="Texture2D" uid="uid://p2q07wl4p4c8" path="res://assets/2d/3dSprites/crtLogos.png" id="9_op8w8"]
+[ext_resource type="AudioStream" uid="uid://kvl6kd44nilj" path="res://assets/audio/sfx/crtEchos/echo2.mp3" id="11_a20ke"]
+[ext_resource type="AudioStream" uid="uid://qgb6p82ra7mj" path="res://assets/audio/sfx/crtEchos/echo1.mp3" id="11_lqrer"]
 [ext_resource type="AudioStream" uid="uid://b6h3k06wwsjyh" path="res://assets/audio/music/titleScreen.mp3" id="11_nf0nf"]
+[ext_resource type="AudioStream" uid="uid://naopovgi01bj" path="res://assets/audio/sfx/crtEchos/echo4.mp3" id="12_a32km"]
+[ext_resource type="AudioStream" uid="uid://dp2mtgd55grab" path="res://assets/audio/sfx/crtEchos/echo3.mp3" id="13_h5117"]
+[ext_resource type="AudioStream" uid="uid://cjl5vc3ybaa1c" path="res://assets/audio/sfx/crtTurnOn.mp3" id="16_mi5p3"]
+[ext_resource type="AudioStream" uid="uid://bogex64taaca2" path="res://assets/audio/sfx/completeBell.mp3" id="17_g7o1y"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ks25d"]
 shading_mode = 0
@@ -44,6 +50,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("crtTurnOn:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [0.0, -80.0]
 }
 
 [sub_resource type="Animation" id="Animation_dyu8f"]
@@ -174,170 +192,230 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("crt4:surface_material_override/3:albedo_color")
+tracks/10/path = NodePath("crt/echoSFX:playing")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0.7, 1.1),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 0.0718111, 0, 1)]
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("crt4/crtLight4:light_energy")
+tracks/11/path = NodePath("crt4:surface_material_override/3:albedo_color")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0.7, 1.1),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [0.0, 0.1]
+"values": [Color(0, 0, 0, 1), Color(1, 0.0718111, 0, 1)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("crt4/eye:modulate")
+tracks/12/path = NodePath("crt4/crtLight4:light_energy")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0.7, 1.1),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+"values": [0.0, 0.1]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("crt4/crtLogos:modulate")
+tracks/13/path = NodePath("crt4/eye:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
+"times": PackedFloat32Array(0.7, 1.1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("crt4/crtLogos:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(0, 0.7, 0.733333, 0.766667, 0.833333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.027451, 1, 0, 1), Color(0, 0, 0, 1), Color(0.027451, 1, 0, 1)]
 }
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("crt5:surface_material_override/3:albedo_color")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0.9, 1.3),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 0.0718111, 0, 1)]
-}
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("crt5/crtLight5:light_energy")
+tracks/15/path = NodePath("crt4/echoSFX:playing")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0.9, 1.3),
-"transitions": PackedFloat32Array(0.5, 1),
-"update": 0,
-"values": [0.0, 0.1]
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("crt5/eye:modulate")
+tracks/16/path = NodePath("crt5:surface_material_override/3:albedo_color")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0.9, 1.3),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+"values": [Color(0, 0, 0, 1), Color(1, 0.0718111, 0, 1)]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("crt5/crtLogos:modulate")
+tracks/17/path = NodePath("crt5/crtLight5:light_energy")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
+"times": PackedFloat32Array(0.9, 1.3),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0.0, 0.1]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("crt5/eye:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0.9, 1.3),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("crt5/crtLogos:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
 "times": PackedFloat32Array(0, 0.9, 0.933333, 0.966667, 1.03333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.027451, 1, 0, 1), Color(0, 0, 0, 1), Color(0.027451, 1, 0, 1)]
 }
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("crt2:surface_material_override/3:albedo_color")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("crt5/echoSFX:playing")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("crt2:surface_material_override/3:albedo_color")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
 "times": PackedFloat32Array(1.1, 1.5),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(1, 0.0718111, 0, 1)]
 }
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("crt2/crtLight2:light_energy")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("crt2/crtLight2:light_energy")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
 "times": PackedFloat32Array(1.1, 1.5),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
 "values": [0.0, 0.1]
 }
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("crt2/eye:modulate")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("crt2/eye:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
 "times": PackedFloat32Array(1.1, 1.5),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
 }
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("crt2/crtLogos:modulate")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("crt2/crtLogos:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
 "times": PackedFloat32Array(0, 1.1, 1.13333, 1.16667, 1.23333),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.027451, 1, 0, 1), Color(0, 0, 0, 1), Color(0.027451, 1, 0, 1)]
 }
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("hud/crtFadeIn:modulate")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("crt2/echoSFX:playing")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("hud/crtFadeIn:modulate")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
 "times": PackedFloat32Array(0, 5, 6),
 "transitions": PackedFloat32Array(0, -2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("hud/loadingText:text")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("hud/loadingText:text")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
 "times": PackedFloat32Array(5.23854, 5.40521, 5.6, 5.8, 6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": ["", "Loading", "Loading.", "Loading..", "Loading..."]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("crtTurnOn:playing")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0, 4.63333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_06dcu"]
@@ -760,6 +838,11 @@ modulate = Color(0, 0, 0, 1)
 pixel_size = 0.0005
 texture = ExtResource("9_if65y")
 
+[node name="echoSFX" type="AudioStreamPlayer3D" parent="crt" groups=["sfx"]]
+transform = Transform3D(1.11111, 0, 0, 0, 1.66667, 0, 0, 0, 1.11111, 0.27621, 1.0187, -0.157767)
+stream = ExtResource("11_a20ke")
+volume_db = -25.0
+
 [node name="crt2" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.889618, 0, -0.136306, 0, 0.6, 0, 0.136306, 0, -0.889618, 0.957363, -0.346774, -0.0375165)
 mesh = ExtResource("4_d3umi")
@@ -787,6 +870,11 @@ transform = Transform3D(0.701503, 0, -0.861662, 0, 1.66667, 0, 0.861662, 0, 0.70
 modulate = Color(0, 0, 0, 1)
 pixel_size = 0.0005
 texture = ExtResource("9_if65y")
+
+[node name="echoSFX" type="AudioStreamPlayer3D" parent="crt2" groups=["sfx"]]
+transform = Transform3D(1.11111, 0, 0, 0, 1.66667, 0, 0, 0, 1.11111, 0.27621, 1.0187, -0.157767)
+stream = ExtResource("12_a32km")
+volume_db = -25.0
 
 [node name="crt3" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.575193, 0, -0.692209, 0, 0.6, 0, 0.692209, 0, -0.575193, 0.134, -0.347, -0.4)
@@ -832,6 +920,11 @@ modulate = Color(0, 0, 0, 1)
 pixel_size = 0.0005
 texture = ExtResource("9_if65y")
 
+[node name="echoSFX" type="AudioStreamPlayer3D" parent="crt4" groups=["sfx"]]
+transform = Transform3D(1.11111, 0, 0, 0, 1.66667, 0, 0, 0, 1.11111, 0.27621, 1.0187, -0.157767)
+stream = ExtResource("13_h5117")
+volume_db = -25.0
+
 [node name="crt5" type="MeshInstance3D" parent="."]
 transform = Transform3D(-0.734751, 0, -0.519751, 0, 0.6, 0, 0.519751, 0, -0.734751, 0.60558, 0.217914, -0.549762)
 mesh = ExtResource("4_d3umi")
@@ -860,13 +953,25 @@ modulate = Color(0, 0, 0, 1)
 pixel_size = 0.0005
 texture = ExtResource("9_if65y")
 
+[node name="echoSFX" type="AudioStreamPlayer3D" parent="crt5" groups=["sfx"]]
+transform = Transform3D(1.11111, 0, 0, 0, 1.66667, 0, 0, 0, 1.11111, 0.27621, 1.0187, -0.157767)
+stream = ExtResource("11_lqrer")
+volume_db = -25.0
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rmkg6")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.50055)
-visible = false
+editor_only = true
 
 [node name="titleScreenMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_nf0nf")
+volume_db = -10.0
 autoplay = true
+
+[node name="crtTurnOn" type="AudioStreamPlayer" parent="." groups=["sfx"]]
+stream = ExtResource("16_mi5p3")
+
+[node name="completeBell" type="AudioStreamPlayer" parent="." groups=["sfx"]]
+stream = ExtResource("17_g7o1y")

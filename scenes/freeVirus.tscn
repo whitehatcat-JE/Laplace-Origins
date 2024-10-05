@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://c7ud43mdcfxfl"]
+[gd_scene load_steps=63 format=3 uid="uid://c7ud43mdcfxfl"]
 
 [ext_resource type="Script" path="res://scripts/freeVirus.gd" id="1_n1ott"]
 [ext_resource type="Texture2D" uid="uid://2pgc1xtsv12d" path="res://assets/2d/internet/weep/eyes.jpg" id="1_q1w26"]
@@ -27,6 +27,7 @@
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="13_66unh"]
 [ext_resource type="Texture2D" uid="uid://cpxqixc4oihlr" path="res://assets/2d/free/interactBox.png" id="14_f283o"]
 [ext_resource type="Texture2D" uid="uid://cqdgik44c4rba" path="res://assets/2d/free/interactHovered.png" id="15_ruut4"]
+[ext_resource type="AudioStream" uid="uid://b4jakrr4um7fl" path="res://assets/audio/sfx/menus/denied.ogg" id="28_6omh2"]
 
 [sub_resource type="Animation" id="Animation_t4jf1"]
 resource_name = "windowAnim"
@@ -958,6 +959,9 @@ horizontal_alignment = 1
 libraries = {
 "": SubResource("AnimationLibrary_xyx3h")
 }
+
+[node name="deniedSFX" type="AudioStreamPlayer" parent="." groups=["sfx"]]
+stream = ExtResource("28_6omh2")
 
 [connection signal="body_entered" from="groundFloorLevel/groundInteractionPoints/door" to="." method="_on_door_body_entered"]
 [connection signal="body_exited" from="groundFloorLevel/groundInteractionPoints/door" to="." method="_on_door_body_exited"]

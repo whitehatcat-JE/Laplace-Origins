@@ -12,15 +12,19 @@ func showDialogue(dialogueName:String):
 		"door":
 			if GI.pianoDoorUnlocked:
 				$dialoguePopup/dialogueText.text = "Wrong Dimension"
+				$deniedSFX.play()
 			elif GI.hasFreeKey:
 				$dialoguePopup/dialogueText.text = "Door Unlocked"
 				emit_signal("unlockDoor")
 			else:
 				$dialoguePopup/dialogueText.text = "Missing Key"
+				$deniedSFX.play()
 		"key":
 			$dialoguePopup/dialogueText.text = "Wrong Dimension"
+			$deniedSFX.play()
 		"laplace":
 			$dialoguePopup/dialogueText.text = "Wrong Dimension"
+			$deniedSFX.play()
 	$dialoguePopup/dialogueAnim.play("appear")
 	for child in getAllChildren($groundInteractionButtons):
 		if child is Area2D:

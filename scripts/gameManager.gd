@@ -46,6 +46,10 @@ func _input(event) -> void:
 		$player/HUD/paper.visible = false
 		player.disabled = false
 		$player/menu.disabled = false
+		var projectorTween:Tween = get_tree().create_tween()
+		projectorTween.tween_property($hands/projectorSFX, "volume_db", -80, 1.0)
+		projectorTween.tween_property($hands/projectorSFX, "playing", false, 0.01)
+		projectorTween.tween_property($hands/projectorSFX, "volume_db", $hands/projectorSFX.volume_db, 0.01)
 # In-world player interactions
 func _on_player_interacted(interactionName:String) -> void:
 	await get_tree().process_frame # Prevents inputs from being processed during load-in
@@ -138,6 +142,7 @@ func _on_player_interacted(interactionName:String) -> void:
 			GI.hasFreeKey = true
 			$basement/key.position.y -= 100.0
 			$bedroom/pcWindow/pcOS/freeVirus.hideKey()
+			$basement/keySFX.play()
 # PC unfocus
 func _on_pc_os_exit_os() -> void:
 	if !pcCam.current: return; # Checks PC is currently being focused
@@ -245,6 +250,10 @@ func triggerDialogue(_self, dialogueNum:int):
 
 func showNextDialogue():
 	$player/HUD/paper/message.set_text("[center]" + dialogueLines[dialogueLine])
+	$hands/projectorSFX.play()
+	var projectorTween:Tween = get_tree().create_tween()
+	projectorTween.tween_property($hands/projectorSFX, "volume_db", $hands/projectorSFX.volume_db, 0.5)
+	$hands/projectorSFX.volume_db = -20
 	dialogueLine += 1
 	player.disabled = true
 	$player/HUD/paper.visible = true

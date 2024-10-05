@@ -15,7 +15,7 @@ var currentGroundType:int = 0
 @export var disabled:bool = false
 @export var canMove:bool = true
 # Nodes
-@onready var groundTypes:Dictionary = {9:$footstepsWood, 17:$footstepsGravel}
+@onready var groundTypes:Dictionary = {9:$footstepsWood, 17:$footstepsGravel, 33:$footstepsGrass, 65:$footstepsStone, 129:$footstepsFlesh}
 
 @onready var interactCast:Node = $head/cam/interactCast
 @onready var collisionCast:Node = $head/cam/collisionCast

@@ -21,6 +21,7 @@ func loadHome():
 	match ResourceLoader.load_threaded_get_status("res://scenes/home.tscn"):
 		ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
 			$introAnim.play("complete")
+			$completeBell.play()
 			await $introAnim.animation_finished
 			homeScene = ResourceLoader.load_threaded_get("res://scenes/home.tscn")
 			print(homeScene)

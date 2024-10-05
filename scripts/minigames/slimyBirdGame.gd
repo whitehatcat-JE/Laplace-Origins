@@ -24,6 +24,7 @@ func _process(delta):
 		velocity = clamp(velocity + GRAVITY * delta, -100000, TERMINAL_VELOCITY)
 		if Input.is_action_just_pressed("jump") and GI.inOS:
 			velocity = -JUMP_HEIGHT
+			$jumpSFX.play()
 		elif $backdrop/character.is_on_ceiling() and velocity < 0:
 			velocity = 0.0
 		$backdrop/character.velocity.y = velocity
@@ -72,4 +73,5 @@ func stop():
 	score = -4
 
 func _on_pillar_scanner_area_entered(area):
+	$deathSFX.play()
 	stop()

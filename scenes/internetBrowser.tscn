@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://2dbuwxwcysa4"]
+[gd_scene load_steps=116 format=3 uid="uid://2dbuwxwcysa4"]
 
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="1_bwl2d"]
 [ext_resource type="Script" path="res://scripts/internetBrowser.gd" id="1_e8bkl"]
@@ -39,8 +39,10 @@
 [ext_resource type="Texture2D" uid="uid://cdkw857er77xk" path="res://assets/2d/internet/minigames/slimyBird/logo.png" id="34_lcadv"]
 [ext_resource type="Texture2D" uid="uid://bx1iqupg8bghy" path="res://assets/2d/internet/minigames/chess-knight-icon.png" id="35_m30n4"]
 [ext_resource type="Texture2D" uid="uid://ckpw7p0mr53tb" path="res://assets/2d/internet/minigames/gaming-gamepad-icon.png" id="36_fye1y"]
+[ext_resource type="AudioStream" uid="uid://22ape8t10mla" path="res://assets/audio/sfx/shooter/playerDie.mp3" id="37_70avg"]
 [ext_resource type="Texture2D" uid="uid://cdw58cq2ul3ku" path="res://assets/2d/internet/minigames/playing-cards-icon.png" id="37_wpbff"]
 [ext_resource type="Texture2D" uid="uid://dpoxd4y0i1yo8" path="res://assets/2d/internet/minigames/portableConsoleIcon.png" id="38_1tm8n"]
+[ext_resource type="AudioStream" uid="uid://b87cl0r6qxkub" path="res://assets/audio/sfx/menus/pop.ogg" id="38_jnn6o"]
 [ext_resource type="Texture2D" uid="uid://bwq660jmpscbf" path="res://assets/2d/internet/minigames/puzzle-icon.png" id="39_jsqro"]
 [ext_resource type="Texture2D" uid="uid://ysjevd8edyn1" path="res://assets/2d/internet/projectSlingshotScreenshots/islesOfSolitude.png" id="40_lqtni"]
 [ext_resource type="Texture2D" uid="uid://b1exxbroyb38v" path="res://assets/2d/internet/minigames/table-tennis-icon.png" id="40_tmv1l"]
@@ -5743,6 +5745,12 @@ vertical_alignment = 1
 position = Vector2(1063, 505)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("34_lcadv")
+
+[node name="deathSFX" type="AudioStreamPlayer" parent="gameResults/article2Open/slimyBirdGame" groups=["sfx"]]
+stream = ExtResource("37_70avg")
+
+[node name="jumpSFX" type="AudioStreamPlayer" parent="gameResults/article2Open/slimyBirdGame" groups=["sfx"]]
+stream = ExtResource("38_jnn6o")
 
 [node name="Chess-knight-icon" type="Sprite2D" parent="gameResults/article2Open"]
 modulate = Color(1, 1, 1, 0.403922)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=518 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=520 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -30,7 +30,6 @@
 [ext_resource type="ArrayMesh" uid="uid://bfqtupg7aqnqw" path="res://assets/3d/monitorScreen.obj" id="11_ftqtj"]
 [ext_resource type="AudioStream" uid="uid://eenjp7cx7b6" path="res://assets/audio/music/hands.mp3" id="11_k6m0u"]
 [ext_resource type="Texture2D" uid="uid://bijuw13o6gyl2" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-ao.png" id="11_pet04"]
-[ext_resource type="AudioStream" uid="uid://cvmdk3778rf6r" path="res://assets/audio/music/slimyBird.mp3" id="12_153u8"]
 [ext_resource type="ArrayMesh" uid="uid://buq1uso8urd3a" path="res://assets/3d/monitorStand.obj" id="12_lpolo"]
 [ext_resource type="Texture2D" uid="uid://b6ksegnyj52v6" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-height.png" id="12_x7lx0"]
 [ext_resource type="Texture2D" uid="uid://6i1137wcqu1q" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-metallic.png" id="13_j68nr"]
@@ -181,6 +180,7 @@
 [ext_resource type="ArrayMesh" uid="uid://lsigni1j6aa2" path="res://assets/3d/rocks/rockC.obj" id="134_q2vt5"]
 [ext_resource type="ArrayMesh" uid="uid://c0bbnk4cxlf7a" path="res://assets/3d/crt.obj" id="135_sofnr"]
 [ext_resource type="Texture2D" uid="uid://p2q07wl4p4c8" path="res://assets/2d/3dSprites/crtLogos.png" id="136_kd2gh"]
+[ext_resource type="AudioStream" uid="uid://crywtgyhidust" path="res://assets/audio/sfx/footsteps/footstepsFlesh.mp3" id="138_d0doc"]
 [ext_resource type="Texture2D" uid="uid://da76e3evduwti" path="res://assets/2d/3dSprites/decals/TexturesCom_DecalBottom0031_1_masked_S.png" id="138_nccd0"]
 [ext_resource type="Texture2D" uid="uid://c0rm0p86imx5j" path="res://assets/2d/3dSprites/vines.png" id="143_b8ogo"]
 [ext_resource type="AudioStream" uid="uid://d3k75xyvaydjg" path="res://assets/audio/sfx/rockGrinding.mp3" id="144_xag2p"]
@@ -196,6 +196,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c6pdole3y7cl7" path="res://assets/3d/hands/floorHole.obj" id="151_nqkl0"]
 [ext_resource type="ArrayMesh" uid="uid://cuj6gq8j5obe3" path="res://assets/3d/laplace/armLowPolyB.obj" id="151_p1bd5"]
 [ext_resource type="ArrayMesh" uid="uid://c4v8lfh82bmww" path="res://assets/3d/laplace/armLowPolyC.obj" id="152_2orbl"]
+[ext_resource type="AudioStream" uid="uid://bdclomf1sc55w" path="res://assets/audio/sfx/keys.mp3" id="158_n28s5"]
 [ext_resource type="Texture2D" uid="uid://7bg41lmgbkb5" path="res://assets/2d/menus/viewFrame.png" id="159_2hxwc"]
 [ext_resource type="AudioStream" uid="uid://da6rlttnlwkq0" path="res://assets/audio/sfx/screenInteract.mp3" id="166_lty44"]
 [ext_resource type="AudioStream" uid="uid://biipabva8sjck" path="res://assets/audio/sfx/menus/click.ogg" id="166_umgxd"]
@@ -214,6 +215,7 @@
 [ext_resource type="ArrayMesh" uid="uid://vck510hbelmw" path="res://assets/3d/hands/hands.obj" id="204_seweo"]
 [ext_resource type="Texture2D" uid="uid://bh4s1812k7ug4" path="res://assets/3d/hands/handsD.jpg" id="205_a4ro2"]
 [ext_resource type="Texture2D" uid="uid://qwksfiwopie" path="res://assets/3d/hands/handsN.jpg" id="206_31p72"]
+[ext_resource type="AudioStream" uid="uid://vtnyerid6vos" path="res://assets/audio/sfx/projector.mp3" id="215_shwy1"]
 
 [sub_resource type="FogMaterial" id="FogMaterial_jgji8"]
 density = 0.5752
@@ -3986,7 +3988,7 @@ stream = ExtResource("11_k6m0u")
 volume_db = -20.0
 
 [node name="slimyBird" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("12_153u8")
+stream = ExtResource("9_dcaq8")
 volume_db = -20.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -6793,7 +6795,7 @@ target_position = Vector3(0, -10, 0)
 [node name="floorCast" type="RayCast3D" parent="player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.61855, 0)
 target_position = Vector3(0, -0.5, 0)
-collision_mask = 24
+collision_mask = 152
 
 [node name="footstepsWood" type="AudioStreamPlayer3D" parent="player" groups=["sfx"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
@@ -6802,6 +6804,10 @@ stream = ExtResource("106_jy4ai")
 [node name="footstepsGravel" type="AudioStreamPlayer3D" parent="player" groups=["sfx"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
 stream = ExtResource("107_kwbdf")
+
+[node name="footstepsFlesh" type="AudioStreamPlayer3D" parent="player" groups=["sfx"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
+stream = ExtResource("138_d0doc")
 
 [node name="walls" type="Node3D" parent="."]
 
@@ -7387,6 +7393,10 @@ transform = Transform3D(1.05211e-06, 0, -1, 0, 16.2749, 0, 8.02314, 0, 1.31134e-
 material_override = SubResource("StandardMaterial3D_a5xvb")
 mesh = SubResource("BoxMesh_nej1a")
 
+[node name="keySFX" type="AudioStreamPlayer3D" parent="basement" groups=["sfx"]]
+transform = Transform3D(0.866026, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866026, 1.45, -3.379, -0.826)
+stream = ExtResource("158_n28s5")
+
 [node name="key" type="MeshInstance3D" parent="basement"]
 transform = Transform3D(0.0433013, 0, -0.025, 0, 0.05, 0, 0.025, 0, 0.0433013, 1.45, -103.379, -0.826)
 mesh = ExtResource("147_32n83")
@@ -7492,6 +7502,7 @@ mesh = ExtResource("151_nqkl0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16801, 0.50133, -3.93797)
 visible = false
 use_collision = true
+collision_layer = 17
 size = Vector3(11.0173, 1, 10.1122)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="basement/stoneFlooringHole/CSGBox3D"]
@@ -8983,6 +8994,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 83.8382, -13.4588)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="hands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.61576)
+collision_layer = 129
+collision_mask = 129
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="hands/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2903, -1.51449, -1.08337)
@@ -9006,7 +9019,7 @@ shape = SubResource("BoxShape3D_rx8t8")
 
 [node name="handsSpawnPos" type="Node3D" parent="hands"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.97073)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.891289, 5.97073)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="hands"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.20646, 3.25667, 6.18738)
@@ -9251,6 +9264,11 @@ libraries = {
 }
 autoplay = "bob"
 speed_scale = 0.2
+
+[node name="projectorSFX" type="AudioStreamPlayer" parent="hands" groups=["sfx"]]
+stream = ExtResource("215_shwy1")
+volume_db = -10.0
+parameters/looping = true
 
 [connection signal="exitOS" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_exit_os"]
 [connection signal="showLaplaceWall" from="bedroom/pcWindow/pcOS" to="." method="_on_pc_os_show_laplace_wall"]
