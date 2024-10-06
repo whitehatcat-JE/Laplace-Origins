@@ -1,4 +1,4 @@
-[gd_scene load_steps=167 format=3 uid="uid://dppv4w5r1jusc"]
+[gd_scene load_steps=170 format=3 uid="uid://dppv4w5r1jusc"]
 
 [ext_resource type="Script" path="res://scenes/nonEuclideanSpace.gd" id="1_gkibj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_scmjs"]
@@ -44,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://e1olanx5gje2" path="res://assets/3d/textures/RoofingTiles012B_1K-JPG/RoofingTiles012B_1K-JPG_Color.jpg" id="25_tyb1h"]
 [ext_resource type="Texture2D" uid="uid://bgc8nr6w5wfhx" path="res://assets/3d/textures/RoofingTiles012B_1K-JPG/RoofingTiles012B_1K-JPG_NormalDX.jpg" id="26_komip"]
 [ext_resource type="Texture2D" uid="uid://c54och7bvdfie" path="res://assets/3d/textures/RoofingTiles012B_1K-JPG/RoofingTiles012B_1K-JPG_Roughness.jpg" id="27_cy5w5"]
+[ext_resource type="Texture2D" uid="uid://cmy1egsxicvdv" path="res://assets/2d/laplace/line2.png" id="27_pmf13"]
 [ext_resource type="Texture2D" uid="uid://bgfa1ht2jnyo7" path="res://assets/3d/textures/Metal035_1K-JPG/Metal035_1K-JPG_Color.jpg" id="28_jchhd"]
 [ext_resource type="Texture2D" uid="uid://dot1c31e87ng0" path="res://assets/3d/textures/Bricks091_1K-JPG/Bricks091_1K-JPG_Color.jpg" id="28_vjitk"]
 [ext_resource type="Texture2D" uid="uid://bqmuhccxalc57" path="res://assets/3d/textures/Metal035_1K-JPG/Metal035_1K-JPG_Metalness.jpg" id="29_pyip5"]
@@ -55,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://dpu34bq217oey" path="res://assets/3d/textures/Rock056_1K-JPG/Rock056_1K-JPG_Roughness.jpg" id="35_gsa53"]
 [ext_resource type="PackedScene" uid="uid://dubgkevkltw4y" path="res://assets/3d/nonEuclidean/tower.blend" id="36_fvk6q"]
 [ext_resource type="ArrayMesh" uid="uid://de1pr0ti1hdx4" path="res://assets/3d/nonEuclidean/towerTopCollisions.obj" id="37_qs3tr"]
+[ext_resource type="Texture2D" uid="uid://b4angvman17m7" path="res://assets/2d/laplace/line3Vertical.png" id="39_t3rsk"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="50_b4two"]
 [ext_resource type="ArrayMesh" uid="uid://ct0oujsqp01pg" path="res://assets/3d/nonEuclidean/easel.obj" id="50_eeb47"]
 [ext_resource type="Texture2D" uid="uid://b3koxxptk440r" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-albedo.png" id="50_vl3xx"]
@@ -70,6 +72,7 @@
 [ext_resource type="Script" path="res://scripts/audioManager.gd" id="66_htwj4"]
 [ext_resource type="AudioStream" uid="uid://ber3s8se6ofbv" path="res://assets/audio/music/nonEuclidean.mp3" id="67_iasqe"]
 [ext_resource type="AudioStream" uid="uid://bad3k2eexj6ek" path="res://assets/audio/music/nonEuclideanBass.mp3" id="68_fqpb4"]
+[ext_resource type="Texture2D" uid="uid://v77dbhstcfcr" path="res://assets/2d/laplace/line1.png" id="68_wjthh"]
 [ext_resource type="AudioStream" uid="uid://c64l7oerffoms" path="res://assets/audio/music/nonEuclideanBell.mp3" id="69_7nb3u"]
 [ext_resource type="AudioStream" uid="uid://c1x7ps0vbnsqc" path="res://assets/audio/music/nonEuclideanNoise.mp3" id="70_twegd"]
 
@@ -2136,6 +2139,12 @@ surface_material_override/0 = ExtResource("2_tlbxi")
 cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_t7hd3")
 
+[node name="line2" type="Decal" parent="dimension2/romanHouse"]
+transform = Transform3D(0.877724, 3.78551e-08, 0.479167, 1.11759e-07, -0.999999, -2.48353e-08, 0.479167, 2.48353e-08, -0.877723, -0.220996, 7.25377, -3.39605)
+size = Vector3(4, 4, 1)
+texture_albedo = ExtResource("27_pmf13")
+texture_emission = ExtResource("27_pmf13")
+
 [node name="dimension3" type="Node3D" parent="."]
 
 [node name="secondStoryTeleportFields" type="Area3D" parent="dimension3"]
@@ -2261,6 +2270,12 @@ material_override = SubResource("StandardMaterial3D_m0gnh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.644712, 207.869, 0.459351)
 visible = false
 mesh = ExtResource("37_qs3tr")
+
+[node name="line3" type="Decal" parent="dimension3/tower"]
+transform = Transform3D(0.999927, 1.32445e-07, 0.0121131, -1.99157e-07, 0.999999, 2.69239e-08, -0.0121125, -7.35304e-09, 0.999926, -0.812021, 205.596, 14.236)
+size = Vector3(5, 5, 30)
+texture_albedo = ExtResource("39_t3rsk")
+texture_emission = ExtResource("39_t3rsk")
 
 [node name="tempMeshes" type="Node3D" parent="."]
 
@@ -2911,6 +2926,12 @@ texture = ExtResource("50_w0v2a")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="paintingDimension/easelCollisions"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5465, 1.87505, -0.99633)
 shape = SubResource("BoxShape3D_af7ha")
+
+[node name="line1" type="Decal" parent="paintingDimension"]
+transform = Transform3D(-0.989853, 0, -0.142093, 0, 1, 0, 0.142093, 0, -0.989853, 4.48579, 0.250733, -2.97248)
+size = Vector3(2, 2, 1)
+texture_albedo = ExtResource("68_wjthh")
+texture_emission = ExtResource("68_wjthh")
 
 [node name="audioManager" type="Node3D" parent="."]
 process_mode = 3

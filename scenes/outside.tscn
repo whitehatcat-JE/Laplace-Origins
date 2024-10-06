@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3 uid="uid://dcf34l30ctj4m"]
+[gd_scene load_steps=136 format=3 uid="uid://dcf34l30ctj4m"]
 
 [ext_resource type="Script" path="res://scripts/outside.gd" id="1_6fiwc"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_mu5ff"]
@@ -68,7 +68,7 @@
 [ext_resource type="AudioStream" uid="uid://b2hca4lxv4rfi" path="res://assets/audio/music/outdoors.mp3" id="63_y3pwj"]
 [ext_resource type="AudioStream" uid="uid://dk57886kw16ed" path="res://assets/audio/music/outdoorsDistorted.mp3" id="64_nkxij"]
 [ext_resource type="ArrayMesh" uid="uid://bgwg5027ye2tc" path="res://assets/3d/laplace/planet.obj" id="65_fe8yw"]
-[ext_resource type="Texture2D" uid="uid://cjmrj6k0ds4st" path="res://assets/2d/laplace/bodyTexture.png" id="66_wsfie"]
+[ext_resource type="Texture2D" uid="uid://dcaggf7xoh46b" path="res://assets/2d/laplace/providentiaTexture.png" id="68_lj232"]
 [ext_resource type="Script" path="res://scripts/audioManager.gd" id="70_mapol"]
 [ext_resource type="AudioStream" uid="uid://g3sr5s2mbhbv" path="res://assets/audio/music/menu.mp3" id="71_ohfrb"]
 [ext_resource type="AudioStream" uid="uid://lmcy1qlw45v4" path="res://assets/audio/music/hallway.mp3" id="72_j2fem"]
@@ -96,7 +96,7 @@ sky_cover = SubResource("NoiseTexture2D_f5fxw")
 ground_bottom_color = Color(0.109804, 0, 0, 1)
 ground_horizon_color = Color(0, 0, 0, 1)
 sun_angle_max = 360.0
-sun_curve = 0.0132582
+sun_curve = 0.0284196
 
 [sub_resource type="Sky" id="Sky_dsr7r"]
 sky_material = SubResource("ProceduralSkyMaterial_ls5x2")
@@ -109,6 +109,11 @@ ambient_light_color = Color(1, 0.0196078, 0, 1)
 ambient_light_energy = 0.06
 ssao_enabled = true
 sdfgi_enabled = true
+glow_enabled = true
+glow_levels/1 = 5.53
+glow_levels/2 = 7.1
+glow_levels/5 = 0.0
+glow_bloom = 0.02
 fog_enabled = true
 fog_light_color = Color(0.372549, 0.0313726, 0, 1)
 fog_sky_affect = 0.0
@@ -116,6 +121,70 @@ fog_height_density = 1.8824
 volumetric_fog_density = 0.01
 volumetric_fog_albedo = Color(1, 0, 0.0196078, 1)
 volumetric_fog_length = 48.0
+
+[sub_resource type="Shader" id="Shader_qdxko"]
+code = "shader_type canvas_item;
+
+uniform float projector_power : hint_range(0,1) = 0.5;
+uniform sampler2D distortionTexture;
+uniform float vignette_param: hint_range(1,10)=20.0;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+//vars related to the passing lines
+
+
+//noise for the projector flickering
+float noise(vec2 input){
+	return fract(sin(dot(input,vec2(3.1415,8952.37)*12.29))*93.116);
+}
+
+void fragment() {
+	//vignette-related:
+	float vignette_param2 =vignette_param+0.5*(noise(vec2(TIME/60.0,TIME/59.0)));
+	float vig=-vignette_param2*((UV.x-0.5)*(UV.x-0.5)+(UV.y-0.5)*(UV.y-0.5));
+	vec4 vignette=vec4(vig,vig,vig,1.0);
+
+	//grayscale-related:
+	vec4 pixelcolor = texture(SCREEN_TEXTURE, SCREEN_UV);
+	float brightness = (.299*pixelcolor.r + 0.487*pixelcolor.g + 0.114*pixelcolor.b);
+	vec4 grayscale= vec4(pixelcolor.r,brightness,brightness,pixelcolor.a);
+
+	//random-fluctuation:
+	vec4 random=texture(distortionTexture,UV);
+
+	//Small speckles:
+	float RTIME1=round(TIME*20.0);
+	vec2 position1=vec2(noise(vec2(RTIME1,RTIME1)),noise(vec2(RTIME1/2.0,RTIME1/2.0)));
+	float energy= 1000000.0*(1.0+0.5*noise(vec2(RTIME1,RTIME1)));
+	float xdev1=(UV.x-position1.x);
+	float ydev1=(UV.y-position1.y);
+	float spec=energy*(xdev1*xdev1+0.5*ydev1*ydev1)+.1*noise(vec2(UV.x,UV.y));
+	vec4 speckle=vec4(max(0.0,20.0-spec),max(0.0,20.0-spec),max(0.0,20.0-spec),1.0);
+
+	//lines:
+	float RTIME2=round(TIME*5.0);
+	vec2 positionline=vec2(noise(vec2(RTIME2,RTIME2))/4.0,noise(vec2(RTIME2/3.0,RTIME2/3.0)));
+	float xline=(UV.x-positionline.x);
+	float yline=(UV.y-positionline.y);
+	float lin=energy*(xline*xline+0.00001*yline*yline)+.1*noise(vec2(UV.x,UV.y));
+	vec4 line=vec4(max(0.0,8.0-lin),max(0.0,8.0-lin),max(0.0,8.0-lin),1.0);
+
+	//combining-the parts:
+	vec4 dirt=mix(speckle,line,0.5);
+	vec4 grayscale2=mix(random,vignette,0.7);
+	vec4 grayscale3=mix(grayscale2,grayscale2,0.7);
+	COLOR = mix(grayscale, grayscale3, projector_power);
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xtn0s"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pdoxb"]
+noise = SubResource("FastNoiseLite_xtn0s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trtwl"]
+shader = SubResource("Shader_qdxko")
+shader_parameter/projector_power = 0.15
+shader_parameter/vignette_param = 20.0
+shader_parameter/distortionTexture = SubResource("NoiseTexture2D_pdoxb")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_racad"]
 shader = ExtResource("7_7tol6")
@@ -1670,13 +1739,31 @@ cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a368n"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0uo1t"]
 disable_fog = true
-albedo_texture = ExtResource("66_wsfie")
+albedo_texture = ExtResource("68_lj232")
 emission_enabled = true
-emission = Color(0.464844, 0.00827035, 0, 1)
-emission_energy_multiplier = 0.16
-emission_texture = ExtResource("66_wsfie")
+emission_texture = ExtResource("68_lj232")
+
+[sub_resource type="Animation" id="Animation_ffhsc"]
+resource_name = "rotate"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.699877, 2.12057, 2.79253), Vector3(-0.699877, 2.12057, 3.66519)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rcby8"]
+_data = {
+"rotate": SubResource("Animation_ffhsc")
+}
 
 [node name="outside" type="Node3D"]
 script = ExtResource("1_6fiwc")
@@ -1685,9 +1772,18 @@ script = ExtResource("1_6fiwc")
 environment = SubResource("Environment_o1eet")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="worldEnvironment"]
-transform = Transform3D(0.616088, 0.537557, -0.575733, 4.39672e-08, 0.730925, 0.682458, 0.787678, -0.420454, 0.450314, 0, 0, 12.3939)
+transform = Transform3D(0.573714, 0.766973, -0.28741, -0.0928867, 0.409567, 0.907539, 0.813772, -0.493971, 0.306216, 0, 0, 12.3939)
 light_color = Color(1, 0.0196078, 0, 1)
-light_energy = 11.222
+light_energy = 8.0
+light_negative = true
+shadow_enabled = true
+sky_mode = 2
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="worldEnvironment"]
+transform = Transform3D(0.616088, 0.537557, -0.575733, 4.39672e-08, 0.730925, 0.682458, 0.787678, -0.420454, 0.450314, 0, 0, 12.3939)
+visible = false
+light_color = Color(1, 0.0196078, 0, 1)
+light_energy = 16.0
 shadow_enabled = true
 sky_mode = 2
 
@@ -1715,10 +1811,27 @@ collision_layer = 4
 floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("2_q1vue")
-lockYRot = true
 disabled = true
 
+[node name="projectorEffect" type="Control" parent="player"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="player/projectorEffect"]
+material = SubResource("ShaderMaterial_trtwl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="HUD" type="Control" parent="player"]
+visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -5187,10 +5300,19 @@ alpha_cut = 1
 alpha_antialiasing_mode = 2
 texture = ExtResource("52_wvbre")
 
-[node name="Planet" type="MeshInstance3D" parent="."]
-transform = Transform3D(-585.83, 459.138, 92.1729, -464.932, -587.91, -26.4606, 56.0537, -77.8075, 743.844, -1010.32, 1348.22, 406.458)
+[node name="providentia" type="MeshInstance3D" parent="."]
+transform = Transform3D(151.574, 347.395, 326.101, 130.809, -359.396, 322.062, 458.164, -12.3184, -199.835, -1010.32, 1246.51, 821.21)
+visible = false
+material_override = SubResource("StandardMaterial3D_0uo1t")
 mesh = ExtResource("65_fe8yw")
-surface_material_override/0 = SubResource("StandardMaterial3D_a368n")
+
+[node name="planetSpinAnim" type="AnimationPlayer" parent="providentia"]
+process_mode = 3
+libraries = {
+"": SubResource("AnimationLibrary_rcby8")
+}
+autoplay = "rotate"
+speed_scale = 0.015
 
 [node name="audioManager" type="Node3D" parent="."]
 process_mode = 3

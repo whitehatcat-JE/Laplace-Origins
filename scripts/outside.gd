@@ -20,10 +20,13 @@ func playOutdoors():
 # Play laplace panoramic animation (Ending animation)
 func _on_reveal_trigger_body_entered(body) -> void:
 	$player.disabled = true
-	$player/lookUpAnim.play("camLookUp" + str(GI.musicVolume))
 	# Rotates player to face laplace
 	var tween:Tween = get_tree().create_tween()
+	tween.set_parallel(true)
 	tween.tween_property($player, "rotation_degrees", Vector3(0.0, 90.0, 0.0), 1).set_trans(Tween.TRANS_SINE)
+	tween.tween_property($player/head/cam, "rotation_degrees", Vector3(-15.0, 0.0, 0.0), 1).set_trans(Tween.TRANS_SINE)
+	await tween.finished
+	$player/lookUpAnim.play("camLookUp" + str(GI.musicVolume))
 # Restarts game once ending played
 func _on_look_up_anim_animation_finished(anim_name) -> void:
 	GI.progress = 0

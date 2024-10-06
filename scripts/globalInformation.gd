@@ -3,7 +3,7 @@ extends Node
 var progress:int = 0
 # Settings
 var sfxVolume:int = 10
-var musicVolume:int = 10
+var musicVolume:int = 0
 var graphics:String = "HIGH"
 var invertY:bool = false
 # pcOS

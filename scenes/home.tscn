@@ -1,4 +1,4 @@
-[gd_scene load_steps=520 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=521 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -161,6 +161,7 @@
 [ext_resource type="Texture2D" uid="uid://cv3or24jbtcdk" path="res://assets/2d/3dSprites/surrealArt/body.png" id="114_x0pxm"]
 [ext_resource type="Texture2D" uid="uid://cn4v5hcyn8jpc" path="res://assets/2d/3dSprites/surrealArt/largeWingsDark.png" id="115_j3ffu"]
 [ext_resource type="Texture2D" uid="uid://dv2fexxpiglh3" path="res://assets/3d/textures/worn-factory-siding-bl/worn-factory-siding_normal-ogl.png" id="115_lou3r"]
+[ext_resource type="Texture2D" uid="uid://b2kglqgbt0p5t" path="res://assets/2d/3dSprites/surrealArt/pillars.png" id="116_afh4s"]
 [ext_resource type="Texture2D" uid="uid://bpmhgddwksspn" path="res://assets/3d/textures/worn-factory-siding-bl/worn-factory-siding_roughness.png" id="116_uounf"]
 [ext_resource type="Texture2D" uid="uid://bfp30fvpiae72" path="res://assets/3d/textures/concrete3-bl/concrete3-albedo.png" id="118_vnxjw"]
 [ext_resource type="Texture2D" uid="uid://biteyr737fv10" path="res://assets/3d/textures/concrete3-bl/concrete3-ao.png" id="119_05773"]
@@ -1029,14 +1030,14 @@ emission_texture = ExtResource("91_67n5f")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ryky8"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pdoxb"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u16dx"]
 noise = SubResource("FastNoiseLite_ryky8")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ij7pa"]
 shader = ExtResource("112_dtkwp")
 shader_parameter/projector_power = 0.5
 shader_parameter/vignette_param = 20.0
-shader_parameter/distortionTexture = SubResource("NoiseTexture2D_pdoxb")
+shader_parameter/distortionTexture = SubResource("NoiseTexture2D_u16dx")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pmhci"]
 shader = ExtResource("90_5slxb")
@@ -6082,8 +6083,15 @@ omni_range = 12.0
 [node name="schrodingerView" type="Node3D" parent="hallway"]
 visible = false
 
+[node name="poster4" type="Sprite3D" parent="hallway/schrodingerView"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.22977, 2.27447, 3.95024)
+pixel_size = 0.001
+transparent = false
+shaded = true
+texture = ExtResource("116_afh4s")
+
 [node name="schrodinger" type="Sprite3D" parent="hallway/schrodingerView"]
-transform = Transform3D(0.482963, -0.12941, 8.44441e-08, 0.12941, 0.482963, 2.26267e-08, -8.7423e-08, 0, 0.5, -0.193288, 2.29222, 3.94827)
+transform = Transform3D(0.482963, -0.12941, 8.44441e-08, 0.12941, 0.482963, 2.26267e-08, -8.7423e-08, 0, 0.5, -0.193288, 2.29222, 3.95128)
 pixel_size = 0.001
 shaded = true
 alpha_cut = 1
