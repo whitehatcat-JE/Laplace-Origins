@@ -1,7 +1,7 @@
 extends Node3D
 
 var homeScene = null
-var animStarted:bool = false
+var animStarted:bool = true
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -31,3 +31,6 @@ func loadHome():
 			get_tree().change_scene_to_file("res://scenes/home.tscn")
 			return
 	loadHome()
+
+func allowIntro():
+	animStarted = false

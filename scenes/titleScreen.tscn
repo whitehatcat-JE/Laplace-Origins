@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://di3lqggog13qo"]
+[gd_scene load_steps=35 format=3 uid="uid://di3lqggog13qo"]
 
 [ext_resource type="Script" path="res://scripts/titleScreen.gd" id="1_tv2yb"]
 [ext_resource type="Texture2D" uid="uid://bpecj4jeahrox" path="res://assets/2d/menus/gameView.png" id="2_thl53"]
@@ -424,7 +424,7 @@ _data = {
 "intro": SubResource("Animation_dyu8f")
 }
 
-[sub_resource type="Shader" id="Shader_n8q34"]
+[sub_resource type="Shader" id="Shader_n7kq8"]
 code = "/*
 Shader from Godot Shaders - the free shader library.
 godotshaders.com/shader/VHS-and-CRT-monitor-effect
@@ -659,7 +659,7 @@ void fragment()
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kqtv6"]
 resource_local_to_scene = true
-shader = SubResource("Shader_n8q34")
+shader = SubResource("Shader_n7kq8")
 shader_parameter/overlay = false
 shader_parameter/scanlines_opacity = 0.4
 shader_parameter/scanlines_width = 0.25
@@ -681,6 +681,41 @@ shader_parameter/warp_amount = 1.0
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="Animation" id="Animation_xklij"]
+resource_name = "fadeIn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fadeIn:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"allowIntro"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_81xrj"]
+_data = {
+"fadeIn": SubResource("Animation_xklij")
+}
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02aq4"]
 resource_local_to_scene = true
@@ -809,6 +844,23 @@ offset_top = -36.44
 offset_right = 2250.0
 offset_bottom = 1155.0
 color = Color(0, 0, 0, 1)
+
+[node name="fadeIn" type="ColorRect" parent="hud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.041
+anchor_top = -0.057
+offset_left = -19.28
+offset_top = -36.44
+offset_right = 2250.0
+offset_bottom = 1155.0
+color = Color(0, 0, 0, 1)
+
+[node name="fadeInAnim" type="AnimationPlayer" parent="hud"]
+libraries = {
+"": SubResource("AnimationLibrary_81xrj")
+}
+autoplay = "fadeIn"
 
 [node name="crt" type="MeshInstance3D" parent="."]
 transform = Transform3D(-3.93403e-08, 0, -0.9, 0, 0.6, 0, 0.9, 0, -3.93403e-08, -0.736461, -0.346774, -0.119468)

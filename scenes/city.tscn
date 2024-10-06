@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://coqwihkas3njv"]
+[gd_scene load_steps=69 format=3 uid="uid://coqwihkas3njv"]
 
 [ext_resource type="Texture2D" uid="uid://bxjoe45irxao5" path="res://assets/city/facade1.png" id="1_21jck"]
 [ext_resource type="Script" path="res://scripts/city.gd" id="1_hsebj"]
@@ -16,10 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://u6gxfjjljuen" path="res://assets/3d/textures/concrete3-bl/concrete3-Roughness.png" id="7_5cetg"]
 [ext_resource type="Shader" path="res://scripts/shaders/noise.gdshader" id="7_6wgwt"]
 [ext_resource type="Texture2D" uid="uid://dcevbxxgqar76" path="res://assets/2d/laplace/backgroundNoise.png" id="8_5q85c"]
-[ext_resource type="Texture2D" uid="uid://cxdbhjbai6ktn" path="res://assets/2d/laplace/eye.png" id="9_f7slg"]
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="10_k8nij"]
 [ext_resource type="AudioStream" uid="uid://c4d2w0yoaal37" path="res://assets/audio/sfx/footsteps/footstepsWood.mp3" id="11_vcntb"]
 [ext_resource type="AudioStream" uid="uid://bxpoaeanda02m" path="res://assets/audio/sfx/footsteps/footstepsGravelReverb.mp3" id="12_o00ln"]
+[ext_resource type="Texture2D" uid="uid://dnkwjio1ljha2" path="res://assets/2d/laplace/lineCity.png" id="15_hmm37"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="19_5hmvw"]
 [ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="20_7audl"]
 [ext_resource type="Material" uid="uid://cjx01qsa37itq" path="res://assets/3d/laplace/laplaceArms.tres" id="21_lq2x0"]
@@ -75,15 +75,12 @@ shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 50.0
 shader_parameter/shake_color_rate = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_e37by"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_828fb"]
 shader = ExtResource("7_6wgwt")
 shader_parameter/resolution = Vector2(512, 512)
-shader_parameter/noise = 0.08
+shader_parameter/noise = 0.027
 shader_parameter/distort = 0.06
 shader_parameter/offset = 0.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_f64w7"]
-blend_mode = 3
 
 [sub_resource type="Animation" id="Animation_nwmgs"]
 resource_name = "fadeOut"
@@ -926,33 +923,14 @@ color = Color(0.819608, 0, 0.00784314, 1)
 [node name="noise" type="Sprite2D" parent="player/HUD/fade"]
 modulate = Color(1, 0.0352941, 0, 1)
 show_behind_parent = true
-material = SubResource("ShaderMaterial_e37by")
+material = SubResource("ShaderMaterial_828fb")
 position = Vector2(1109, 621.5)
 scale = Vector2(8.00781, 4.66016)
 texture = ExtResource("8_5q85c")
 
-[node name="Eye" type="Sprite2D" parent="player/HUD/fade/noise"]
-visible = false
-material = SubResource("CanvasItemMaterial_f64w7")
-position = Vector2(-3.62146, -1.18021)
-scale = Vector2(0.25, 0.43)
-texture = ExtResource("9_f7slg")
-
-[node name="text" type="RichTextLabel" parent="player/HUD/fade"]
-show_behind_parent = true
-layout_mode = 0
-offset_left = 197.0
-offset_top = 331.0
-offset_right = 2009.0
-offset_bottom = 1280.0
-theme_override_colors/default_color = Color(0.768627, 0, 0.00784314, 1)
-theme_override_colors/font_shadow_color = Color(1, 0, 0.054902, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_fonts/normal_font = ExtResource("10_k8nij")
-theme_override_font_sizes/normal_font_size = 100
-bbcode_enabled = true
-text = "[center]The laws of reality
-kneel"
+[node name="LineCity" type="Sprite2D" parent="player/HUD/fade"]
+position = Vector2(1122, 610)
+texture = ExtResource("15_hmm37")
 
 [node name="lightsOut" type="ColorRect" parent="player/HUD"]
 modulate = Color(1, 1, 1, 0)

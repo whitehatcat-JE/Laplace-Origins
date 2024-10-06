@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://dcf34l30ctj4m"]
+[gd_scene load_steps=140 format=3 uid="uid://dcf34l30ctj4m"]
 
 [ext_resource type="Script" path="res://scripts/outside.gd" id="1_6fiwc"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_mu5ff"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b4a1llenxad28" path="res://assets/2d/UI/interactIcon.png" id="4_u8r2v"]
 [ext_resource type="Texture2D" uid="uid://cigjq25fsqn45" path="res://assets/2d/UI/interactIconLocked.png" id="5_nrsfi"]
 [ext_resource type="ArrayMesh" uid="uid://df4qa2heyeu4s" path="res://assets/3d/laplace/houseExterior.obj" id="6_706m6"]
+[ext_resource type="Shader" path="res://scripts/shaders/pixelSort.gdshader" id="6_h7at8"]
 [ext_resource type="Shader" path="res://scripts/shaders/noise.gdshader" id="7_7tol6"]
 [ext_resource type="Texture2D" uid="uid://bfp30fvpiae72" path="res://assets/3d/textures/concrete3-bl/concrete3-albedo.png" id="7_l0syg"]
 [ext_resource type="Texture2D" uid="uid://c47pdqpchx4d8" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-albedo.png" id="7_vduld"]
@@ -65,10 +66,9 @@
 [ext_resource type="Texture2D" uid="uid://bfdk2vfidg3t7" path="res://assets/2d/3dSprites/outside/mountains3.png" id="52_wvbre"]
 [ext_resource type="ArrayMesh" uid="uid://byvrot08qm4yc" path="res://assets/3d/laplace/arm2.obj" id="54_p8ywg"]
 [ext_resource type="ArrayMesh" uid="uid://cj2trunkx0c6t" path="res://assets/3d/laplace/arm3.obj" id="55_x0a8k"]
+[ext_resource type="Texture2D" uid="uid://do3dfwfyypnd5" path="res://assets/2d/laplace/providentiaPicture.png" id="62_udgqp"]
 [ext_resource type="AudioStream" uid="uid://b2hca4lxv4rfi" path="res://assets/audio/music/outdoors.mp3" id="63_y3pwj"]
 [ext_resource type="AudioStream" uid="uid://dk57886kw16ed" path="res://assets/audio/music/outdoorsDistorted.mp3" id="64_nkxij"]
-[ext_resource type="ArrayMesh" uid="uid://bgwg5027ye2tc" path="res://assets/3d/laplace/planet.obj" id="65_fe8yw"]
-[ext_resource type="Texture2D" uid="uid://dcaggf7xoh46b" path="res://assets/2d/laplace/providentiaTexture.png" id="68_lj232"]
 [ext_resource type="Script" path="res://scripts/audioManager.gd" id="70_mapol"]
 [ext_resource type="AudioStream" uid="uid://g3sr5s2mbhbv" path="res://assets/audio/music/menu.mp3" id="71_ohfrb"]
 [ext_resource type="AudioStream" uid="uid://lmcy1qlw45v4" path="res://assets/audio/music/hallway.mp3" id="72_j2fem"]
@@ -76,6 +76,8 @@
 [ext_resource type="AudioStream" uid="uid://buv6wcekvl551" path="res://assets/audio/music/nocturne.mp3" id="74_vr0h8"]
 [ext_resource type="AudioStream" uid="uid://fh6dwkt7lotj" path="res://assets/audio/sfx/heartbeat.mp3" id="75_uw77u"]
 [ext_resource type="AudioStream" uid="uid://vne8x3iohh10" path="res://assets/audio/music/singularity.mp3" id="76_twrma"]
+[ext_resource type="Texture2D" uid="uid://d1ggqm6mo2kbl" path="res://assets/2d/laplace/line4.png" id="77_flaqh"]
+[ext_resource type="ArrayMesh" uid="uid://cfkd1dchiga5y" path="res://assets/3d/laplace/armLowPolyA.obj" id="78_t33nh"]
 
 [sub_resource type="Gradient" id="Gradient_tsefn"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0.0578036, 1)
@@ -104,6 +106,7 @@ sky_material = SubResource("ProceduralSkyMaterial_ls5x2")
 [sub_resource type="Environment" id="Environment_o1eet"]
 background_mode = 2
 sky = SubResource("Sky_dsr7r")
+sky_rotation = Vector3(0, 4.36332, 0)
 ambient_light_source = 2
 ambient_light_color = Color(1, 0.0196078, 0, 1)
 ambient_light_energy = 0.06
@@ -121,150 +124,6 @@ fog_height_density = 1.8824
 volumetric_fog_density = 0.01
 volumetric_fog_albedo = Color(1, 0, 0.0196078, 1)
 volumetric_fog_length = 48.0
-
-[sub_resource type="Shader" id="Shader_qdxko"]
-code = "shader_type canvas_item;
-
-uniform float projector_power : hint_range(0,1) = 0.5;
-uniform sampler2D distortionTexture;
-uniform float vignette_param: hint_range(1,10)=20.0;
-uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
-//vars related to the passing lines
-
-
-//noise for the projector flickering
-float noise(vec2 input){
-	return fract(sin(dot(input,vec2(3.1415,8952.37)*12.29))*93.116);
-}
-
-void fragment() {
-	//vignette-related:
-	float vignette_param2 =vignette_param+0.5*(noise(vec2(TIME/60.0,TIME/59.0)));
-	float vig=-vignette_param2*((UV.x-0.5)*(UV.x-0.5)+(UV.y-0.5)*(UV.y-0.5));
-	vec4 vignette=vec4(vig,vig,vig,1.0);
-
-	//grayscale-related:
-	vec4 pixelcolor = texture(SCREEN_TEXTURE, SCREEN_UV);
-	float brightness = (.299*pixelcolor.r + 0.487*pixelcolor.g + 0.114*pixelcolor.b);
-	vec4 grayscale= vec4(pixelcolor.r,brightness,brightness,pixelcolor.a);
-
-	//random-fluctuation:
-	vec4 random=texture(distortionTexture,UV);
-
-	//Small speckles:
-	float RTIME1=round(TIME*20.0);
-	vec2 position1=vec2(noise(vec2(RTIME1,RTIME1)),noise(vec2(RTIME1/2.0,RTIME1/2.0)));
-	float energy= 1000000.0*(1.0+0.5*noise(vec2(RTIME1,RTIME1)));
-	float xdev1=(UV.x-position1.x);
-	float ydev1=(UV.y-position1.y);
-	float spec=energy*(xdev1*xdev1+0.5*ydev1*ydev1)+.1*noise(vec2(UV.x,UV.y));
-	vec4 speckle=vec4(max(0.0,20.0-spec),max(0.0,20.0-spec),max(0.0,20.0-spec),1.0);
-
-	//lines:
-	float RTIME2=round(TIME*5.0);
-	vec2 positionline=vec2(noise(vec2(RTIME2,RTIME2))/4.0,noise(vec2(RTIME2/3.0,RTIME2/3.0)));
-	float xline=(UV.x-positionline.x);
-	float yline=(UV.y-positionline.y);
-	float lin=energy*(xline*xline+0.00001*yline*yline)+.1*noise(vec2(UV.x,UV.y));
-	vec4 line=vec4(max(0.0,8.0-lin),max(0.0,8.0-lin),max(0.0,8.0-lin),1.0);
-
-	//combining-the parts:
-	vec4 dirt=mix(speckle,line,0.5);
-	vec4 grayscale2=mix(random,vignette,0.7);
-	vec4 grayscale3=mix(grayscale2,grayscale2,0.7);
-	COLOR = mix(grayscale, grayscale3, projector_power);
-}"
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xtn0s"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pdoxb"]
-noise = SubResource("FastNoiseLite_xtn0s")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_trtwl"]
-shader = SubResource("Shader_qdxko")
-shader_parameter/projector_power = 0.15
-shader_parameter/vignette_param = 20.0
-shader_parameter/distortionTexture = SubResource("NoiseTexture2D_pdoxb")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_racad"]
-shader = ExtResource("7_7tol6")
-shader_parameter/resolution = Vector2(512, 512)
-shader_parameter/noise = 0.08
-shader_parameter/distort = 0.06
-shader_parameter/offset = 0.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rrkyy"]
-blend_mode = 3
-
-[sub_resource type="Animation" id="Animation_i7fsc"]
-resource_name = "fade"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../../outdoorDistorted:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../..")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"playOutdoors"
-}]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("fade:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.6, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_x3k5n"]
-_data = {
-"fade": SubResource("Animation_i7fsc")
-}
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iowj3"]
 
@@ -531,6 +390,154 @@ shader_parameter/warp_amount = 1.0
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t8lei"]
+shader = ExtResource("6_h7at8")
+shader_parameter/sort = 0.0
+
+[sub_resource type="Shader" id="Shader_qdxko"]
+code = "shader_type canvas_item;
+
+uniform float projector_power : hint_range(0,1) = 0.5;
+uniform sampler2D distortionTexture;
+uniform float vignette_param: hint_range(1,10)=20.0;
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+//vars related to the passing lines
+
+
+//noise for the projector flickering
+float noise(vec2 input){
+	return fract(sin(dot(input,vec2(3.1415,8952.37)*12.29))*93.116);
+}
+
+void fragment() {
+	//vignette-related:
+	float vignette_param2 =vignette_param+0.5*(noise(vec2(TIME/60.0,TIME/59.0)));
+	float vig=-vignette_param2*((UV.x-0.5)*(UV.x-0.5)+(UV.y-0.5)*(UV.y-0.5));
+	vec4 vignette=vec4(vig,vig,vig,1.0);
+
+	//grayscale-related:
+	vec4 pixelcolor = texture(SCREEN_TEXTURE, SCREEN_UV);
+	float brightness = (.299*pixelcolor.r + 0.487*pixelcolor.g + 0.114*pixelcolor.b);
+	vec4 grayscale= vec4(pixelcolor.r,brightness,brightness,pixelcolor.a);
+
+	//random-fluctuation:
+	vec4 random=texture(distortionTexture,UV);
+
+	//Small speckles:
+	float RTIME1=round(TIME*20.0);
+	vec2 position1=vec2(noise(vec2(RTIME1,RTIME1)),noise(vec2(RTIME1/2.0,RTIME1/2.0)));
+	float energy= 1000000.0*(1.0+0.5*noise(vec2(RTIME1,RTIME1)));
+	float xdev1=(UV.x-position1.x);
+	float ydev1=(UV.y-position1.y);
+	float spec=energy*(xdev1*xdev1+0.5*ydev1*ydev1)+.1*noise(vec2(UV.x,UV.y));
+	vec4 speckle=vec4(max(0.0,20.0-spec),max(0.0,20.0-spec),max(0.0,20.0-spec),1.0);
+
+	//lines:
+	float RTIME2=round(TIME*5.0);
+	vec2 positionline=vec2(noise(vec2(RTIME2,RTIME2))/4.0,noise(vec2(RTIME2/3.0,RTIME2/3.0)));
+	float xline=(UV.x-positionline.x);
+	float yline=(UV.y-positionline.y);
+	float lin=energy*(xline*xline+0.00001*yline*yline)+.1*noise(vec2(UV.x,UV.y));
+	vec4 line=vec4(max(0.0,8.0-lin),max(0.0,8.0-lin),max(0.0,8.0-lin),1.0);
+
+	//combining-the parts:
+	vec4 dirt=mix(speckle,line,0.5);
+	vec4 grayscale2=mix(random,vignette,0.7);
+	vec4 grayscale3=mix(grayscale2,grayscale2,0.7);
+	COLOR = mix(grayscale, grayscale3, projector_power);
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xtn0s"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pdoxb"]
+noise = SubResource("FastNoiseLite_xtn0s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_trtwl"]
+shader = SubResource("Shader_qdxko")
+shader_parameter/projector_power = 0.15
+shader_parameter/vignette_param = 20.0
+shader_parameter/distortionTexture = SubResource("NoiseTexture2D_pdoxb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_racad"]
+shader = ExtResource("7_7tol6")
+shader_parameter/resolution = Vector2(512, 512)
+shader_parameter/noise = 0.08
+shader_parameter/distort = 0.06
+shader_parameter/offset = 0.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rrkyy"]
+blend_mode = 3
+
+[sub_resource type="Animation" id="Animation_i7fsc"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../outdoorDistorted:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"playOutdoors"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("fade:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x3k5n"]
+_data = {
+"fade": SubResource("Animation_i7fsc")
+}
 
 [sub_resource type="Animation" id="Animation_47qjq"]
 resource_name = "bob"
@@ -1562,6 +1569,119 @@ tracks/6/keys = {
 "values": [-80.0, -2.0, -80.0]
 }
 
+[sub_resource type="Animation" id="Animation_706so"]
+resource_name = "lookUp"
+length = 22.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("head/cam:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(-4, 1),
+"update": 0,
+"values": [Vector3(-0.698132, 0, 0), Vector3(0.698132, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("projectorEffect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.3, 1.7, 1.9, 2.1, 2.4, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, true, false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../worldEnvironment/DirectionalLight3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../line4:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../worldEnvironment:environment:sky:sky_material:sky_cover")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("NoiseTexture2D_f5fxw"), ExtResource("62_udgqp")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../worldEnvironment:environment:sky_rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.2, 22),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 4.36332, 0), Vector3(0, 4.53786, 0), Vector3(0, 4.79966, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("pixelSort/sortShader:material:shader_parameter/sort")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 16, 22),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [0.0, 0.0, 2.6]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("pixelSort/backdrop:color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 16, 22),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3uk8"]
 _data = {
 "camLookUp0": SubResource("Animation_fyph1"),
@@ -1574,7 +1694,8 @@ _data = {
 "camLookUp6": SubResource("Animation_7fuih"),
 "camLookUp7": SubResource("Animation_v0s2k"),
 "camLookUp8": SubResource("Animation_33ks4"),
-"camLookUp9": SubResource("Animation_gaps8")
+"camLookUp9": SubResource("Animation_gaps8"),
+"lookUp": SubResource("Animation_706so")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw46a"]
@@ -1739,30 +1860,36 @@ cull_mode = 2
 albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 0.0
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0uo1t"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icsbd"]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+shading_mode = 0
 disable_fog = true
-albedo_texture = ExtResource("68_lj232")
-emission_enabled = true
-emission_texture = ExtResource("68_lj232")
+albedo_color = Color(1, 0, 0.0115047, 1)
+albedo_texture = ExtResource("77_flaqh")
 
-[sub_resource type="Animation" id="Animation_ffhsc"]
-resource_name = "rotate"
+[sub_resource type="Animation" id="Animation_iutoe"]
+resource_name = "sway"
+length = 10.0
+loop_mode = 2
+step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
+tracks/0/path = NodePath("armMesh:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector3(-0.699877, 2.12057, 2.79253), Vector3(-0.699877, 2.12057, 3.66519)]
+"values": [Vector3(0.25268, -2.67794, 0.58355), Vector3(-1.83076e-08, -2.61799, 1.0472)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_rcby8"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5jx1j"]
 _data = {
-"rotate": SubResource("Animation_ffhsc")
+"sway": SubResource("Animation_iutoe")
 }
 
 [node name="outside" type="Node3D"]
@@ -1776,14 +1903,6 @@ transform = Transform3D(0.573714, 0.766973, -0.28741, -0.0928867, 0.409567, 0.90
 light_color = Color(1, 0.0196078, 0, 1)
 light_energy = 8.0
 light_negative = true
-shadow_enabled = true
-sky_mode = 2
-
-[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="worldEnvironment"]
-transform = Transform3D(0.616088, 0.537557, -0.575733, 4.39672e-08, 0.730925, 0.682458, 0.787678, -0.420454, 0.450314, 0, 0, 12.3939)
-visible = false
-light_color = Color(1, 0.0196078, 0, 1)
-light_energy = 16.0
 shadow_enabled = true
 sky_mode = 2
 
@@ -1812,108 +1931,6 @@ floor_constant_speed = true
 floor_block_on_wall = false
 script = ExtResource("2_q1vue")
 disabled = true
-
-[node name="projectorEffect" type="Control" parent="player"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="player/projectorEffect"]
-material = SubResource("ShaderMaterial_trtwl")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HUD" type="Control" parent="player"]
-visible = false
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="noise" type="Sprite2D" parent="player/HUD"]
-visible = false
-modulate = Color(1, 0.0352941, 0, 1)
-material = SubResource("ShaderMaterial_racad")
-position = Vector2(25, 25.5)
-scale = Vector2(8.00781, 4.66016)
-texture = ExtResource("8_xt4jm")
-
-[node name="Eye" type="Sprite2D" parent="player/HUD/noise"]
-visible = false
-material = SubResource("CanvasItemMaterial_rrkyy")
-position = Vector2(-3.62146, -1.18021)
-scale = Vector2(0.25, 0.43)
-texture = ExtResource("9_ix76t")
-
-[node name="text" type="RichTextLabel" parent="player/HUD"]
-visible = false
-layout_mode = 0
-offset_left = -887.0
-offset_top = -265.0
-offset_right = 925.0
-offset_bottom = 684.0
-theme_override_colors/default_color = Color(0.768627, 0, 0.00784314, 1)
-theme_override_colors/font_shadow_color = Color(1, 0, 0.054902, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_fonts/normal_font = ExtResource("9_dxf73")
-theme_override_font_sizes/normal_font_size = 100
-bbcode_enabled = true
-text = "[center]On this day
-
-Laplace is born
-
-And thus"
-
-[node name="fade" type="ColorRect" parent="player/HUD"]
-layout_mode = 0
-offset_left = -1084.0
-offset_top = -596.0
-offset_right = 1276.0
-offset_bottom = 684.0
-color = Color(1, 0.0313726, 0, 1)
-
-[node name="fadeAnim" type="AnimationPlayer" parent="player/HUD"]
-libraries = {
-"": SubResource("AnimationLibrary_x3k5n")
-}
-autoplay = "fade"
-speed_scale = 0.2
-
-[node name="crosshair" type="Sprite2D" parent="player/HUD"]
-visible = false
-modulate = Color(1, 1, 1, 0.784314)
-position = Vector2(0, 2)
-scale = Vector2(0.175532, 0.175532)
-texture = ExtResource("3_oqoul")
-
-[node name="interact" type="Sprite2D" parent="player/HUD"]
-visible = false
-modulate = Color(1, 1, 1, 0.784314)
-position = Vector2(4, 14)
-scale = Vector2(0.188636, 0.188636)
-texture = ExtResource("4_u8r2v")
-
-[node name="lock" type="Sprite2D" parent="player/HUD"]
-visible = false
-modulate = Color(1, 1, 1, 0.784314)
-position = Vector2(4, 14)
-scale = Vector2(0.188636, 0.188636)
-texture = ExtResource("5_nrsfi")
 
 [node name="menu" type="Control" parent="player" node_paths=PackedStringArray("audioManager", "enviro")]
 process_mode = 3
@@ -2285,6 +2302,134 @@ color = Color(0, 0, 0, 1)
 [node name="clickSFX" type="AudioStreamPlayer" parent="player/menu" groups=["sfx"]]
 stream = ExtResource("15_36d4j")
 
+[node name="pixelSort" type="Control" parent="player"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="backdrop" type="ColorRect" parent="player/pixelSort"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="sortShader" type="ColorRect" parent="player/pixelSort"]
+material = SubResource("ShaderMaterial_t8lei")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="projectorEffect" type="Control" parent="player"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="projectorShader" type="ColorRect" parent="player/projectorEffect"]
+material = SubResource("ShaderMaterial_trtwl")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HUD" type="Control" parent="player"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="noise" type="Sprite2D" parent="player/HUD"]
+visible = false
+modulate = Color(1, 0.0352941, 0, 1)
+material = SubResource("ShaderMaterial_racad")
+position = Vector2(25, 25.5)
+scale = Vector2(8.00781, 4.66016)
+texture = ExtResource("8_xt4jm")
+
+[node name="Eye" type="Sprite2D" parent="player/HUD/noise"]
+visible = false
+material = SubResource("CanvasItemMaterial_rrkyy")
+position = Vector2(-3.62146, -1.18021)
+scale = Vector2(0.25, 0.43)
+texture = ExtResource("9_ix76t")
+
+[node name="text" type="RichTextLabel" parent="player/HUD"]
+visible = false
+layout_mode = 0
+offset_left = -887.0
+offset_top = -265.0
+offset_right = 925.0
+offset_bottom = 684.0
+theme_override_colors/default_color = Color(0.768627, 0, 0.00784314, 1)
+theme_override_colors/font_shadow_color = Color(1, 0, 0.054902, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_fonts/normal_font = ExtResource("9_dxf73")
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[center]On this day
+
+Laplace is born
+
+And thus"
+
+[node name="fade" type="ColorRect" parent="player/HUD"]
+layout_mode = 0
+offset_left = -1084.0
+offset_top = -596.0
+offset_right = 1276.0
+offset_bottom = 684.0
+color = Color(1, 0.0313726, 0, 1)
+
+[node name="fadeAnim" type="AnimationPlayer" parent="player/HUD"]
+libraries = {
+"": SubResource("AnimationLibrary_x3k5n")
+}
+autoplay = "fade"
+speed_scale = 0.2
+
+[node name="crosshair" type="Sprite2D" parent="player/HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(0, 2)
+scale = Vector2(0.175532, 0.175532)
+texture = ExtResource("3_oqoul")
+
+[node name="interact" type="Sprite2D" parent="player/HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(4, 14)
+scale = Vector2(0.188636, 0.188636)
+texture = ExtResource("4_u8r2v")
+
+[node name="lock" type="Sprite2D" parent="player/HUD"]
+visible = false
+modulate = Color(1, 1, 1, 0.784314)
+position = Vector2(4, 14)
+scale = Vector2(0.188636, 0.188636)
+texture = ExtResource("5_nrsfi")
+
 [node name="bobAnim" type="AnimationPlayer" parent="player"]
 root_node = NodePath("../..")
 libraries = {
@@ -2305,7 +2450,7 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.678385, 0)
 
 [node name="cam" type="Camera3D" parent="player/head"]
-transform = Transform3D(1, 0.000329798, 4.34772e-05, -0.000329813, 0.965926, 0.258819, 4.33622e-05, -0.258819, 0.965926, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.766045, 0.642788, 0, -0.642788, 0.766045, 0, 0, 0)
 current = true
 
 [node name="interactCast" type="RayCast3D" parent="player/head/cam"]
@@ -5300,20 +5445,6 @@ alpha_cut = 1
 alpha_antialiasing_mode = 2
 texture = ExtResource("52_wvbre")
 
-[node name="providentia" type="MeshInstance3D" parent="."]
-transform = Transform3D(151.574, 347.395, 326.101, 130.809, -359.396, 322.062, 458.164, -12.3184, -199.835, -1010.32, 1246.51, 821.21)
-visible = false
-material_override = SubResource("StandardMaterial3D_0uo1t")
-mesh = ExtResource("65_fe8yw")
-
-[node name="planetSpinAnim" type="AnimationPlayer" parent="providentia"]
-process_mode = 3
-libraries = {
-"": SubResource("AnimationLibrary_rcby8")
-}
-autoplay = "rotate"
-speed_scale = 0.015
-
 [node name="audioManager" type="Node3D" parent="."]
 process_mode = 3
 script = ExtResource("70_mapol")
@@ -5339,6 +5470,459 @@ stream = ExtResource("75_uw77u")
 
 [node name="singularity" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("76_twrma")
+
+[node name="line4" type="Sprite3D" parent="."]
+transform = Transform3D(-3.04789e-08, 0.716802, 0.697278, 3.13323e-08, 0.697278, -0.716802, -1, 0, -4.37114e-08, -232.948, 220.672, -6.29835)
+visible = false
+material_override = SubResource("StandardMaterial3D_icsbd")
+cast_shadow = 0
+pixel_size = 0.2
+double_sided = false
+texture = ExtResource("77_flaqh")
+
+[node name="smallArms" type="Node3D" parent="."]
+
+[node name="arm1" type="Node3D" parent="smallArms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47659, -0.678028, 5.86852)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm1"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm1"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm2" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.923813, 0, -0.382845, 0, 1, 0, 0.382845, 0, 0.923813, 1.77831, -0.739368, 5.3435)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm2"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm2"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm3" type="Node3D" parent="smallArms"]
+transform = Transform3D(-0.673903, 0, 0.73882, 0, 1, 0, -0.73882, 0, -0.673903, -1.15776, -0.739368, 5.3435)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm3"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm3"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm4" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.277633, 0, 0.960687, 0, 1, 0, -0.960687, 0, 0.277633, -1.64657, -0.739368, 5.81021)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm4"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm4"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm5" type="Node3D" parent="smallArms"]
+transform = Transform3D(-0.190997, 0, 0.981591, 0, 1, 0, -0.981591, 0, -0.190997, -1.40955, -0.739368, 6.94192)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm5"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm5"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm6" type="Node3D" parent="smallArms"]
+transform = Transform3D(-0.745185, 0, -0.666858, 0, 1, 0, 0.666858, 0, -0.745185, 1.55585, -0.739368, 6.94192)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm6"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm6"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm7" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.217053, 0, -0.97616, 0, 1, 0, 0.97616, 0, 0.217053, 1.73517, -0.752832, 7.39171)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm7"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm7"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm8" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.217053, 0, -0.97616, 0, 1, 0, 0.97616, 0, 0.217053, 1.58877, -0.752832, 8.37028)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm8"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm8"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm9" type="Node3D" parent="smallArms"]
+transform = Transform3D(-0.627746, 0, -0.778418, 0, 1, 0, 0.778418, 0, -0.627746, -1.3306, -0.752832, 8.37028)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm9"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm9"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm10" type="Node3D" parent="smallArms"]
+transform = Transform3D(-0.627746, 0, -0.778418, 0, 1, 0, 0.778418, 0, -0.627746, -1.15594, -0.752832, 8.87766)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm10"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm10"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm11" type="Node3D" parent="smallArms"]
+transform = Transform3D(-0.627746, 0, -0.778418, 0, 1, 0, 0.778418, 0, -0.627746, -1.40811, -0.752832, 10.149)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm11"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm11"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm12" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.299124, 0, -0.954214, 0, 1, 0, 0.954214, 0, 0.299124, 1.66233, -0.752832, 10.149)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm12"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm12"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm13" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.639197, 0, -0.769043, 0, 1, 0, 0.769043, 0, 0.639197, 1.66233, -0.752832, 12.4039)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm13"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm13"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm14" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.639197, 0, -0.769043, 0, 1, 0, 0.769043, 0, 0.639197, 1.9646, -0.752832, 11.7456)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm14"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm14"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm15" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.786116, 0, -0.618079, 0, 1, 0, 0.618079, 0, 0.786116, 2.36461, -0.752832, 13.1658)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm15"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm15"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm16" type="Node3D" parent="smallArms"]
+transform = Transform3D(-0.125766, 0, -0.99206, 0, 1, 0, 0.99206, 0, -0.125766, 2.36461, -0.752832, 14.4543)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm16"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm16"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm17" type="Node3D" parent="smallArms"]
+transform = Transform3D(-0.125766, 0, -0.99206, 0, 1, 0, 0.99206, 0, -0.125766, -1.62601, -0.752832, 14.4543)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm17"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm17"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm18" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.505221, 0, -0.86299, 0, 1, 0, 0.86299, 0, 0.505221, -1.12586, -0.752832, 13.4828)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm18"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm18"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm19" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.906374, 0, -0.422476, 0, 1, 0, 0.422476, 0, 0.906374, -1.12586, -0.752832, 11.9078)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm19"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm19"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm20" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.902096, 0, 0.431535, 0, 1, 0, -0.431535, 0, 0.902096, -2.30627, -0.95333, 11.9078)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm20"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm20"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm21" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.902096, 0, 0.431535, 0, 1, 0, -0.431535, 0, 0.902096, -1.65724, -0.95333, 9.49488)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm21"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm21"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm22" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.902096, 0, 0.431535, 0, 1, 0, -0.431535, 0, 0.902096, -1.65724, -0.137903, 3.93023)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm22"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm22"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm23" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.637585, 0, 0.77038, 0, 1, 0, -0.77038, 0, 0.637585, -1.92489, -0.255373, 3.40762)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm23"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm23"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm24" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.637585, 0, 0.77038, 0, 1, 0, -0.77038, 0, 0.637585, -1.92489, -0.255373, 2.58394)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm24"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm24"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm25" type="Node3D" parent="smallArms"]
+transform = Transform3D(0.637585, 0, 0.77038, 0, 1, 0, -0.77038, 0, 0.637585, -0.963494, -1.00954, 17.0096)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm25"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm25"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
+
+[node name="arm26" type="Node3D" parent="smallArms"]
+transform = Transform3D(-0.154538, 0, 0.987987, 0, 1, 0, -0.987987, 0, -0.154538, 1.99907, -0.973457, 16.4396)
+
+[node name="armMesh" type="MeshInstance3D" parent="smallArms/arm26"]
+transform = Transform3D(-0.00433102, 0.00749955, -0.0049999, 0.00865981, 0.00500076, -4.78029e-07, 0.00249997, -0.00433003, -0.00866031, 0, 0, 0)
+material_override = ExtResource("52_vpc7n")
+cast_shadow = 0
+mesh = ExtResource("78_t33nh")
+skeleton = NodePath("../../../..")
+
+[node name="swayAnim" type="AnimationPlayer" parent="smallArms/arm26"]
+libraries = {
+"": SubResource("AnimationLibrary_5jx1j")
+}
+autoplay = "sway"
+speed_scale = 0.6
 
 [connection signal="animation_finished" from="player/lookUpAnim" to="." method="_on_look_up_anim_animation_finished"]
 [connection signal="body_entered" from="revealTrigger" to="." method="_on_reveal_trigger_body_entered"]
