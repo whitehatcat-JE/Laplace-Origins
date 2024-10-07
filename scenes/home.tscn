@@ -6339,7 +6339,7 @@ bbcode_enabled = true
 text = "Loading..."
 
 [node name="fadeIn" type="ColorRect" parent="player/HUD"]
-modulate = Color(0, 0, 0, 0)
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -1083.0
 offset_top = -604.0

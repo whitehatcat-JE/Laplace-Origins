@@ -2,7 +2,7 @@ extends Node
 ## Global variables
 var progress:int = 0
 # Settings
-var sfxVolume:int = 10
+var sfxVolume:int = 0
 var musicVolume:int = 0
 var graphics:String = "HIGH"
 var invertY:bool = false
@@ -16,6 +16,7 @@ var hasFreeKey:bool = false
 var freeDownloaded:bool = false
 var pianoDoorUnlocked:bool = false
 var inOS:bool = false
+var flappyBirdActive:bool = false
 # Stored basement scene location for when player is in city
 var previousScreen:Node
 

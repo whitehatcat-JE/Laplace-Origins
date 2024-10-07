@@ -28,9 +28,9 @@ func _process(_delta) -> void:
 func play(songName:String, fadeTime:float = 1.0) -> void:
 	if curSong == songName: return; # Stops same song from playing twice at once
 	if fadeOutTween != null: # Stops song fade out transition
-		if fadeOutTween.is_running(): fadeOutTween.stop();
+		if fadeOutTween.is_running(): fadeOutTween.custom_step(10.0);
 	if fadeInTween != null: # Stops current song fade in transition
-		if fadeInTween.is_running(): fadeInTween.stop();
+		if fadeInTween.is_running(): fadeInTween.custom_step(10.0);
 	if get_node_or_null(curSong) != null: # Fades out current song
 		fadeOutTween = get_tree().create_tween()
 		fadeOutTween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS) # Stops tween from stopping whenever menu opened

@@ -3,6 +3,7 @@ extends Node3D
 @onready var enviro:Node = $worldEnvironment
 # Applies settings during scene spawn-in
 func _ready() -> void:
+	$player/head/cam.rotation_degrees.x = 0.0
 	for sfx in get_tree().get_nodes_in_group("sfx"):
 		sfx.volume_db = sfx.volume_db - (10 - GI.sfxVolume) * 2 if GI.sfxVolume > 0 else -80
 	if GI.graphics == "Low":
@@ -24,7 +25,7 @@ func _on_reveal_trigger_body_entered(body) -> void:
 	# Rotates player to face laplace
 	var tween:Tween = get_tree().create_tween()
 	tween.set_parallel(true)
-	tween.tween_property($player, "rotation_degrees", Vector3(0.0, 90.0, 0.0), 1).set_trans(Tween.TRANS_SINE)
+	tween.tween_property($player, "rotation_degrees", Vector3(0.0, 130.0, 0.0), 1).set_trans(Tween.TRANS_SINE)
 	tween.tween_property($player/head/cam, "rotation_degrees", Vector3(-40.0, 0.0, 0.0), 1).set_trans(Tween.TRANS_SINE)
 	await tween.finished
 	$player/lookUpAnim.play("lookUp")

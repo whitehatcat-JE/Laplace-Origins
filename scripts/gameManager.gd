@@ -202,6 +202,7 @@ func _on_city_trigger_field_body_entered(_body) -> void:
 	player.look_at($basement/cityFacePos.global_position)
 	player.rotation_degrees = Vector3(0.0, player.rotation_degrees.y, 0.0)
 	$player/HUD/cityReentry.play("fadeIn")
+	$player/HUD/fadeIn.modulate.a = 1.0
 	# Saves current scene, to reload once player exits city
 	var root:Node = get_node("/root")
 	var homeScene:Node = get_node("/root/home")

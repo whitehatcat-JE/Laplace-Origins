@@ -69,7 +69,7 @@ func nextDialogue():
 	dialoguePlaying = true
 
 func _on_cutscene_anims_animation_finished(anim_name):
-	if anim_name == "introduceSchrodinger":
+	if anim_name == "introduceSchrodinger" and len(queuedDialogue) > 0:
 		showingDialogue = true
 		nextDialogue()
 

@@ -490,6 +490,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player/HUD/fadeOut:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4, 5),
+"transitions": PackedFloat32Array(1, -2, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pyyvl"]
 _data = {
@@ -931,6 +943,15 @@ texture = ExtResource("8_5q85c")
 [node name="LineCity" type="Sprite2D" parent="player/HUD/fade"]
 position = Vector2(1122, 610)
 texture = ExtResource("15_hmm37")
+
+[node name="fadeOut" type="ColorRect" parent="player/HUD"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -1083.0
+offset_top = -604.0
+offset_right = 1277.0
+offset_bottom = 676.0
+color = Color(0, 0, 0, 1)
 
 [node name="lightsOut" type="ColorRect" parent="player/HUD"]
 modulate = Color(1, 1, 1, 0)

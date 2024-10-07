@@ -1,4 +1,4 @@
-[gd_scene load_steps=140 format=3 uid="uid://dcf34l30ctj4m"]
+[gd_scene load_steps=145 format=3 uid="uid://dcf34l30ctj4m"]
 
 [ext_resource type="Script" path="res://scripts/outside.gd" id="1_6fiwc"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_mu5ff"]
@@ -78,6 +78,8 @@
 [ext_resource type="AudioStream" uid="uid://vne8x3iohh10" path="res://assets/audio/music/singularity.mp3" id="76_twrma"]
 [ext_resource type="Texture2D" uid="uid://d1ggqm6mo2kbl" path="res://assets/2d/laplace/line4.png" id="77_flaqh"]
 [ext_resource type="ArrayMesh" uid="uid://cfkd1dchiga5y" path="res://assets/3d/laplace/armLowPolyA.obj" id="78_t33nh"]
+[ext_resource type="ArrayMesh" uid="uid://bgwg5027ye2tc" path="res://assets/3d/laplace/planet.obj" id="79_pa3v1"]
+[ext_resource type="Texture2D" uid="uid://3yox6ik6fmvm" path="res://assets/3d/laplace/eye.png" id="80_n8d7x"]
 
 [sub_resource type="Gradient" id="Gradient_tsefn"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0, 0.0578036, 1)
@@ -1580,14 +1582,14 @@ tracks/0/path = NodePath("head/cam:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
+"times": PackedFloat32Array(1, 15),
 "transitions": PackedFloat32Array(-4, 1),
 "update": 0,
 "values": [Vector3(-0.698132, 0, 0), Vector3(0.698132, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/path = NodePath("../Body:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -1612,7 +1614,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../worldEnvironment/DirectionalLight3D:visible")
+tracks/3/path = NodePath("../worldEnvironment/DirectionalLight3D4/DirectionalLight3D:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1636,50 +1638,50 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../worldEnvironment:environment:sky:sky_material:sky_cover")
+tracks/5/path = NodePath("pixelSort/sortShader:material:shader_parameter/sort")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [SubResource("NoiseTexture2D_f5fxw"), ExtResource("62_udgqp")]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../worldEnvironment:environment:sky_rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.2, 22),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 4.36332, 0), Vector3(0, 4.53786, 0), Vector3(0, 4.79966, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("pixelSort/sortShader:material:shader_parameter/sort")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0, 16, 22),
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
 "values": [0.0, 0.0, 2.6]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("pixelSort/backdrop:color")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("pixelSort/backdrop:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 16, 22),
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../worldEnvironment/DirectionalLight3D4:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../providentia:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3uk8"]
@@ -1861,13 +1863,12 @@ albedo_color = Color(0, 0, 0, 1)
 metallic_specular = 0.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icsbd"]
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-shading_mode = 0
+transparency = 1
+no_depth_test = true
 disable_fog = true
 albedo_color = Color(1, 0, 0.0115047, 1)
 albedo_texture = ExtResource("77_flaqh")
+emission_enabled = true
 
 [sub_resource type="Animation" id="Animation_iutoe"]
 resource_name = "sway"
@@ -1892,17 +1893,49 @@ _data = {
 "sway": SubResource("Animation_iutoe")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cv3bw"]
+disable_fog = true
+albedo_texture = ExtResource("62_udgqp")
+emission_enabled = true
+emission_texture = ExtResource("62_udgqp")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ql5i6"]
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wgy1a"]
+disable_fog = true
+albedo_texture = ExtResource("80_n8d7x")
+emission_enabled = true
+emission_texture = ExtResource("80_n8d7x")
+
 [node name="outside" type="Node3D"]
 script = ExtResource("1_6fiwc")
 
 [node name="worldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_o1eet")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="worldEnvironment"]
-transform = Transform3D(0.573714, 0.766973, -0.28741, -0.0928867, 0.409567, 0.907539, 0.813772, -0.493971, 0.306216, 0, 0, 12.3939)
+[node name="DirectionalLight3D4" type="DirectionalLight3D" parent="worldEnvironment"]
+transform = Transform3D(-0.421951, -0.902698, 0.0842232, 0.107538, 0.0424092, 0.993296, -0.900218, 0.428179, 0.07918, 0, 0, 12.3939)
+light_color = Color(1, 0.0196078, 0, 1)
+light_energy = 2.0
+light_negative = true
+shadow_enabled = true
+sky_mode = 2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="worldEnvironment/DirectionalLight3D4"]
+transform = Transform3D(0.659643, 0.390733, -0.642027, -0.751549, 0.335283, -0.56812, -0.00672203, 0.857271, 0.514822, 0, 0, 0)
 light_color = Color(1, 0.0196078, 0, 1)
 light_energy = 8.0
 light_negative = true
+shadow_enabled = true
+sky_mode = 2
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="worldEnvironment"]
+transform = Transform3D(0.270557, -0.648027, 0.711941, 0.288626, 0.760105, 0.582181, -0.918419, 0.0479712, 0.392689, 0, 0, 12.3939)
+visible = false
+light_color = Color(1, 0.0196078, 0, 1)
+light_energy = 4.0
 shadow_enabled = true
 sky_mode = 2
 
@@ -5371,7 +5404,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 0.866025, -3.78552e-08, -0.5, 0.5, 
 shape = SubResource("BoxShape3D_513ul")
 
 [node name="revealTrigger" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124381, 0.613764, 15.1005)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124381, 0.613764, 14.1336)
 collision_layer = 0
 collision_mask = 4
 monitorable = false
@@ -5472,11 +5505,11 @@ stream = ExtResource("75_uw77u")
 stream = ExtResource("76_twrma")
 
 [node name="line4" type="Sprite3D" parent="."]
-transform = Transform3D(-3.04789e-08, 0.716802, 0.697278, 3.13323e-08, 0.697278, -0.716802, -1, 0, -4.37114e-08, -232.948, 220.672, -6.29835)
+transform = Transform3D(-0.370347, 0.665833, 0.647697, 3.13323e-08, 0.697278, -0.716802, -0.928894, -0.265465, -0.258235, -473.611, 245.504, 122.304)
 visible = false
 material_override = SubResource("StandardMaterial3D_icsbd")
 cast_shadow = 0
-pixel_size = 0.2
+pixel_size = 0.15
 double_sided = false
 texture = ExtResource("77_flaqh")
 
@@ -5923,6 +5956,101 @@ libraries = {
 }
 autoplay = "sway"
 speed_scale = 0.6
+
+[node name="providentia" type="MeshInstance3D" parent="."]
+transform = Transform3D(-32.5179, 91.115, -25.3109, 16.2024, -21.0015, -96.4179, -93.1669, -35.454, -7.9336, -223.765, 157.262, 227.698)
+visible = false
+cast_shadow = 0
+mesh = ExtResource("79_pa3v1")
+surface_material_override/0 = SubResource("StandardMaterial3D_cv3bw")
+
+[node name="eyes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -172.755, 117.443, 161.74)
+visible = false
+
+[node name="eye1" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, 1.20399, 213.221, 180.692)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
+
+[node name="eye2" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, -54.2472, 162.551, 20.9794)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
+
+[node name="eye3" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, -54.2472, 374.296, 211.335)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
+
+[node name="eye4" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, 73.0887, 36.5164, 211.335)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
+
+[node name="eye5" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, -4.87296, 103.929, 211.335)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
+
+[node name="eye6" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, -3.15616, 299.027, 673.714)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
+
+[node name="eye7" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, -1752.16, 299.027, 673.714)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
+
+[node name="eye8" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, -209.289, 555.18, 683.956)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
+
+[node name="eye10" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, -209.289, 555.18, 268.965)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
+
+[node name="eye11" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, -185.07, 797.705, 893.27)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
+
+[node name="eye12" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, -302.551, 362.939, 71.8197)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
+
+[node name="eye13" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, -302.551, 35.3731, 98.1377)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
+
+[node name="eye14" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, -184.159, 156.717, 660.286)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
+
+[node name="eye9" type="MeshInstance3D" parent="eyes"]
+transform = Transform3D(4.73066, 7.03176, -5.30802, -1.2529, 6.50052, 7.4949, 8.72073, -2.88054, 3.95618, -623.759, 781.875, 239.16)
+cast_shadow = 0
+mesh = SubResource("SphereMesh_ql5i6")
+surface_material_override/0 = SubResource("StandardMaterial3D_wgy1a")
 
 [connection signal="animation_finished" from="player/lookUpAnim" to="." method="_on_look_up_anim_animation_finished"]
 [connection signal="body_entered" from="revealTrigger" to="." method="_on_reveal_trigger_body_entered"]

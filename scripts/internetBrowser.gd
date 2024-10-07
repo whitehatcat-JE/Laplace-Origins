@@ -4,6 +4,10 @@ signal downloadedSingularity
 signal downloadedFree
 signal enableWifi
 
+func _process(delta: float) -> void:
+	if (!$gameResults/article2Open.visible or !visible) and $gameResults/article2Open/slimyBirdGame.alive:
+		$gameResults/article2Open/slimyBirdGame.stop()
+
 func increaseProgressCount(time:float):
 	var pauseTime:float = time / 101.0
 	for num in range(101):
