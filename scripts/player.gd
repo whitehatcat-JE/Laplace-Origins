@@ -82,7 +82,11 @@ func _physics_process(delta) -> void:
 			if interactCast.get_collider().minDistance < intPos.distance_to(curPos):
 				HUDcrosshair.visible = true
 			elif interactCast.get_collider().interactionName in unlockedInteractions: # Check player has unlocked object
-				HUDinteract.visible = true
+				if interactCast.get_collider().interactionName == "router" and GI.progress not in [1, 6]:
+					unlockedInteractions.erase("router")
+					HUDlock.visible = true
+				else:
+					HUDinteract.visible = true
 			else: HUDlock.visible = true;
 	# Create movement matrix
 	var aim:Basis = get_global_transform().basis

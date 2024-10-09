@@ -8,6 +8,7 @@ var nextDimensionQueued:bool = false
 var dimensionNum:int = 1
 
 func _ready():
+	print("z")
 	$dimension2.position.z = 20.0
 	$dimension3.position = Vector3(-100, -10, 40)
 	await get_tree().create_timer(0.1).timeout

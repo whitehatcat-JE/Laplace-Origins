@@ -1,16 +1,13 @@
-[gd_scene load_steps=170 format=3 uid="uid://dppv4w5r1jusc"]
+[gd_scene load_steps=165 format=3 uid="uid://dppv4w5r1jusc"]
 
 [ext_resource type="Script" path="res://scenes/nonEuclideanSpace.gd" id="1_gkibj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_scmjs"]
 [ext_resource type="Texture2D" uid="uid://dxg0notxyr6wk" path="res://assets/2d/hands/paper.jpg" id="2_6n24r"]
-[ext_resource type="Shader" path="res://scripts/shaders/noise.gdshader" id="2_6wxnn"]
 [ext_resource type="Texture2D" uid="uid://dlx1c4j6ftpjk" path="res://assets/2d/laplace/doorway.png" id="2_f8hfn"]
 [ext_resource type="Material" uid="uid://eybtrki11n5" path="res://assets/3d/materials/gold.tres" id="2_tlbxi"]
 [ext_resource type="FontFile" uid="uid://c7nf20h66non7" path="res://assets/fonts/SpecialElite.ttf" id="3_2tgpc"]
-[ext_resource type="Texture2D" uid="uid://dcevbxxgqar76" path="res://assets/2d/laplace/backgroundNoise.png" id="3_fyruq"]
 [ext_resource type="PackedScene" uid="uid://beb00hj3p7xxj" path="res://assets/3d/nonEuclidean/romanHouse.blend" id="3_ta0m3"]
 [ext_resource type="Texture2D" uid="uid://c47pdqpchx4d8" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-albedo.png" id="4_4geko"]
-[ext_resource type="Texture2D" uid="uid://cxdbhjbai6ktn" path="res://assets/2d/laplace/eye.png" id="4_b2kae"]
 [ext_resource type="Shader" path="res://scripts/shaders/filmGrain.gdshader" id="4_rwn6q"]
 [ext_resource type="Texture2D" uid="uid://bijuw13o6gyl2" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-ao.png" id="5_4s6x1"]
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="5_qrto8"]
@@ -417,16 +414,6 @@ shader_parameter/shake_rate = 0.2
 shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 50.0
 shader_parameter/shake_color_rate = 0.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_txxuu"]
-shader = ExtResource("2_6wxnn")
-shader_parameter/resolution = Vector2(512, 512)
-shader_parameter/noise = 0.08
-shader_parameter/distort = 0.06
-shader_parameter/offset = 0.0
-
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i5wjs"]
-blend_mode = 3
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_hvofe"]
 size = Vector2(1920, 1080)
@@ -2359,40 +2346,6 @@ offset_top = -604.0
 offset_right = 1277.0
 offset_bottom = 676.0
 color = Color(0.819608, 0, 0.00784314, 1)
-
-[node name="noise" type="Sprite2D" parent="player/HUD/fade"]
-modulate = Color(1, 0.0352941, 0, 1)
-show_behind_parent = true
-material = SubResource("ShaderMaterial_txxuu")
-position = Vector2(1109, 621.5)
-scale = Vector2(8.00781, 4.66016)
-texture = ExtResource("3_fyruq")
-
-[node name="Eye" type="Sprite2D" parent="player/HUD/fade/noise"]
-visible = false
-material = SubResource("CanvasItemMaterial_i5wjs")
-position = Vector2(-3.62146, -1.18021)
-scale = Vector2(0.25, 0.43)
-texture = ExtResource("4_b2kae")
-
-[node name="text" type="RichTextLabel" parent="player/HUD/fade"]
-show_behind_parent = true
-layout_mode = 0
-offset_left = 197.0
-offset_top = 331.0
-offset_right = 2009.0
-offset_bottom = 1280.0
-theme_override_colors/default_color = Color(0.768627, 0, 0.00784314, 1)
-theme_override_colors/font_shadow_color = Color(1, 0, 0.054902, 1)
-theme_override_constants/shadow_offset_x = 2
-theme_override_fonts/normal_font = ExtResource("5_qrto8")
-theme_override_font_sizes/normal_font_size = 100
-bbcode_enabled = true
-text = "[center]On this day
-
-Laplace is born
-
-And thus"
 
 [node name="loadingText" type="RichTextLabel" parent="player/HUD/fade"]
 modulate = Color(0.466667, 0.466667, 0.466667, 1)

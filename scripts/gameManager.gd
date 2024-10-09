@@ -87,7 +87,7 @@ func _on_player_interacted(interactionName:String) -> void:
 				pcOS.get_node("internetBrowser").enableInternet()
 				audioManager.play("piano")
 				$pianoRoom/piano.visible = false
-			else: # Router switch off
+			elif GI.progress == 1: # Router switch off
 				GI.progress = 2
 				pcOS.get_node("internetBrowser").disableInternet()
 				$walls/Router/routerLogo.visible = false
@@ -137,12 +137,18 @@ func _on_player_interacted(interactionName:String) -> void:
 		"exitHome": # Transition to outdoors scene
 			GI.progress = 9
 			player.disabled = true
+			player.unlockedInteractions.erase("exitHome")
 			$player/HUD/fadeAnim.play("fadeOut")
 		"freeKey":
 			GI.hasFreeKey = true
 			$basement/key.position.y -= 100.0
 			$bedroom/pcWindow/pcOS/freeVirus.hideKey()
 			$basement/keySFX.play()
+	var interactions:Array = player.unlockedInteractions.duplicate()
+	player.unlockedInteractions.clear()
+	for interaction in interactions:
+		if interaction not in player.unlockedInteractions:
+			player.unlockedInteractions.append(interaction)
 # PC unfocus
 func _on_pc_os_exit_os() -> void:
 	if !pcCam.current: return; # Checks PC is currently being focused
@@ -186,9 +192,9 @@ func _on_trigger_field_body_entered(_body) -> void:
 	$pianoRoom/SpotLight.visible = true
 	$pianoRoom/piano.visible = true
 # Change scene to outdoors
-func _on_fade_anim_animation_finished(anim_name) -> void:
-	if anim_name == "fadeOut":
-		get_tree().change_scene_to_file("res://scenes/nonEuclidean.tscn")
+func nonEuclideanSwitch():
+	get_tree().change_scene_to_file("res://scenes/nonEuclidean.tscn")
+	self.queue_free()
 # Disable piano room jumpscares
 func _on_trigger_field_2_body_entered(_body) -> void:
 	$pianoRoom/triggerField2.set_deferred("monitoring", false)
