@@ -1,8 +1,7 @@
 extends Node3D
 # Plays city SFX when scene loaded
 func _ready() -> void:
-	$cityAmbience.volume_db = $cityAmbience.volume_db - (10 - GI.musicVolume) * 2 if GI.musicVolume > 0 else -80
-	$player/footstepsGravel.volume_db = $player/footstepsGravel.volume_db - ((10 - GI.sfxVolume) * 2) if GI.sfxVolume > 0 else -80
+	$audioManager.play("city")
 # Teleports player to basement
 func _on_city_trigger_field_body_entered(_body) -> void:
 	$cityTriggerField.set_deferred("monitoring", false)
@@ -24,4 +23,8 @@ func _on_kneel_anim_animation_finished(_anim_name) -> void:
 # Triggers kneel animation once player walks off cliff
 func _on_kneel_trigger_field_body_entered(_body) -> void:
 	$player.disabled = true
+	$player/menu.disabled = true
+	var cityTween:Tween = get_tree().create_tween()
+	cityTween.tween_interval(3.0)
+	cityTween.tween_property($audioManager/city, "volume_db", -80, 2).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_LINEAR)
 	$kneelAnim.play("kneel")

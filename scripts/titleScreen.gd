@@ -5,11 +5,15 @@ var animStarted:bool = true
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	$audioManager.play("title")
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact") and !animStarted:
 		animStarted = true
 		$introAnim.play("intro")
+		$menu.disabled = true
+		var fadeTween := get_tree().create_tween()
+		fadeTween.tween_property($audioManager/title, "volume_db", -80, 6.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
 		await $introAnim.animation_finished
 
 func startLoadingHome():
@@ -22,6 +26,8 @@ func loadHome():
 		ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
 			$introAnim.play("complete")
 			$completeBell.play()
+			var fadeTween := get_tree().create_tween()
+			fadeTween.tween_property($crtTurnOn, "volume_db", -80, 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_LINEAR)
 			await $introAnim.animation_finished
 			homeScene = ResourceLoader.load_threaded_get("res://scenes/home.tscn")
 			print(homeScene)

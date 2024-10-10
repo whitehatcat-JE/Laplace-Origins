@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=3 uid="uid://dcf34l30ctj4m"]
+[gd_scene load_steps=128 format=3 uid="uid://dcf34l30ctj4m"]
 
 [ext_resource type="Script" path="res://scripts/outside.gd" id="1_6fiwc"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_mu5ff"]
@@ -70,12 +70,6 @@
 [ext_resource type="AudioStream" uid="uid://b2hca4lxv4rfi" path="res://assets/audio/music/outdoors.mp3" id="63_y3pwj"]
 [ext_resource type="AudioStream" uid="uid://dk57886kw16ed" path="res://assets/audio/music/outdoorsDistorted.mp3" id="64_nkxij"]
 [ext_resource type="Script" path="res://scripts/audioManager.gd" id="70_mapol"]
-[ext_resource type="AudioStream" uid="uid://g3sr5s2mbhbv" path="res://assets/audio/music/menu.mp3" id="71_ohfrb"]
-[ext_resource type="AudioStream" uid="uid://lmcy1qlw45v4" path="res://assets/audio/music/hallway.mp3" id="72_j2fem"]
-[ext_resource type="AudioStream" uid="uid://bdo4wwwve61iy" path="res://assets/audio/music/ambienceA.mp3" id="73_32xia"]
-[ext_resource type="AudioStream" uid="uid://buv6wcekvl551" path="res://assets/audio/music/nocturne.mp3" id="74_vr0h8"]
-[ext_resource type="AudioStream" uid="uid://fh6dwkt7lotj" path="res://assets/audio/sfx/heartbeat.mp3" id="75_uw77u"]
-[ext_resource type="AudioStream" uid="uid://vne8x3iohh10" path="res://assets/audio/music/singularity.mp3" id="76_twrma"]
 [ext_resource type="Texture2D" uid="uid://d1ggqm6mo2kbl" path="res://assets/2d/laplace/line4.png" id="77_flaqh"]
 [ext_resource type="ArrayMesh" uid="uid://cfkd1dchiga5y" path="res://assets/3d/laplace/armLowPolyA.obj" id="78_t33nh"]
 [ext_resource type="ArrayMesh" uid="uid://bgwg5027ye2tc" path="res://assets/3d/laplace/planet.obj" id="79_pa3v1"]
@@ -497,39 +491,27 @@ tracks/1/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../outdoorDistorted:playing")
+tracks/2/path = NodePath("../..")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../..")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"playOutdoors"
 }]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("fade:modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("fade:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.6, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
@@ -571,1009 +553,9 @@ height = 1.8
 radius = 0.3
 height = 1.8
 
-[sub_resource type="Animation" id="Animation_fyph1"]
-resource_name = "camLookUp0"
-length = 25.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("head/cam:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(-4, 1),
-"update": 0,
-"values": [Vector3(-0.261799, 4.50109e-05, -0.000341448), Vector3(0.610865, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/noise/Eye:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 15, 21.1, 22.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/text:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 15, 21),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["[center]On this day
-
-Laplace is born
-
-And thus", "[center]Creation Weeps", "[center]End of recording"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HUD:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_nsix1"]
-resource_name = "camLookUp1"
-length = 25.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("head/cam:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(-4, 1),
-"update": 0,
-"values": [Vector3(-0.261799, 4.50109e-05, -0.000341448), Vector3(0.610865, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/noise/Eye:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 15, 21.1, 22.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/text:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 15, 21),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["[center]On this day
-
-Laplace is born
-
-And thus", "[center]Creation Weeps", "[center]End of recording"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HUD:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../outdoor:volume_db")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 14, 15, 25),
-"transitions": PackedFloat32Array(2, 0, -2, 1),
-"update": 0,
-"values": [-18.0, -80.0, -80.0, -20.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../outdoorDistorted:volume_db")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 14, 15),
-"transitions": PackedFloat32Array(0.5, 0, 1),
-"update": 0,
-"values": [-80.0, -18.0, -80.0]
-}
-
-[sub_resource type="Animation" id="Animation_qbi6b"]
-resource_name = "camLookUp10"
-length = 25.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("head/cam:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(-4, 1),
-"update": 0,
-"values": [Vector3(-0.261799, 4.50109e-05, -0.000341448), Vector3(0.610865, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/noise/Eye:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 15, 21.1, 22.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/text:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 15, 21),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["[center]On this day
-
-Laplace is born
-
-And thus", "[center]Creation Weeps", "[center]End of recording"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HUD:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../outdoor:volume_db")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 14, 15, 25),
-"transitions": PackedFloat32Array(2, 0, -2, 1),
-"update": 0,
-"values": [0.0, -80.0, -80.0, -20.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../outdoorDistorted:volume_db")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 14, 15),
-"transitions": PackedFloat32Array(0.5, 0, 1),
-"update": 0,
-"values": [-80.0, 0.0, -80.0]
-}
-
-[sub_resource type="Animation" id="Animation_xxpvw"]
-resource_name = "camLookUp2"
-length = 25.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("head/cam:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(-4, 1),
-"update": 0,
-"values": [Vector3(-0.261799, 4.50109e-05, -0.000341448), Vector3(0.610865, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/noise/Eye:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 15, 21.1, 22.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/text:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 15, 21),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["[center]On this day
-
-Laplace is born
-
-And thus", "[center]Creation Weeps", "[center]End of recording"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HUD:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../outdoor:volume_db")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 14, 15, 25),
-"transitions": PackedFloat32Array(2, 0, -2, 1),
-"update": 0,
-"values": [-16.0, -80.0, -80.0, -20.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../outdoorDistorted:volume_db")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 14, 15),
-"transitions": PackedFloat32Array(0.5, 0, 1),
-"update": 0,
-"values": [-80.0, -16.0, -80.0]
-}
-
-[sub_resource type="Animation" id="Animation_urlkx"]
-resource_name = "camLookUp3"
-length = 25.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("head/cam:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(-4, 1),
-"update": 0,
-"values": [Vector3(-0.261799, 4.50109e-05, -0.000341448), Vector3(0.610865, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/noise/Eye:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 15, 21.1, 22.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/text:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 15, 21),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["[center]On this day
-
-Laplace is born
-
-And thus", "[center]Creation Weeps", "[center]End of recording"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HUD:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../outdoor:volume_db")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 14, 15, 25),
-"transitions": PackedFloat32Array(2, 0, -2, 1),
-"update": 0,
-"values": [-14.0, -80.0, -80.0, -20.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../outdoorDistorted:volume_db")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 14, 15),
-"transitions": PackedFloat32Array(0.5, 0, 1),
-"update": 0,
-"values": [-80.0, -14.0, -80.0]
-}
-
-[sub_resource type="Animation" id="Animation_7sdnv"]
-resource_name = "camLookUp4"
-length = 25.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("head/cam:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(-4, 1),
-"update": 0,
-"values": [Vector3(-0.261799, 4.50109e-05, -0.000341448), Vector3(0.610865, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/noise/Eye:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 15, 21.1, 22.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/text:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 15, 21),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["[center]On this day
-
-Laplace is born
-
-And thus", "[center]Creation Weeps", "[center]End of recording
-"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HUD:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../outdoor:volume_db")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 14, 15, 25),
-"transitions": PackedFloat32Array(2, 0, -2, 1),
-"update": 0,
-"values": [-12.0, -80.0, -80.0, -20.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../outdoorDistorted:volume_db")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 14, 15),
-"transitions": PackedFloat32Array(0.5, 0, 1),
-"update": 0,
-"values": [-80.0, -12.0, -80.0]
-}
-
-[sub_resource type="Animation" id="Animation_2xjgl"]
-resource_name = "camLookUp5"
-length = 25.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("head/cam:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(-4, 1),
-"update": 0,
-"values": [Vector3(-0.261799, 4.50109e-05, -0.000341448), Vector3(0.610865, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/noise/Eye:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 15, 21.1, 22.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/text:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 15, 21),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["[center]On this day
-
-Laplace is born
-
-And thus", "[center]Creation Weeps", "[center]End of recording"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HUD:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../outdoor:volume_db")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 14, 15, 25),
-"transitions": PackedFloat32Array(2, 0, -2, 1),
-"update": 0,
-"values": [-10.0, -80.0, -80.0, -20.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../outdoorDistorted:volume_db")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 14, 15),
-"transitions": PackedFloat32Array(0.5, 0, 1),
-"update": 0,
-"values": [-80.0, -10.0, -80.0]
-}
-
-[sub_resource type="Animation" id="Animation_7fuih"]
-resource_name = "camLookUp6"
-length = 25.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("head/cam:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(-4, 1),
-"update": 0,
-"values": [Vector3(-0.261799, 4.50109e-05, -0.000341448), Vector3(0.610865, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/noise/Eye:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 15, 21.1, 22.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/text:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 15, 21),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["[center]On this day
-
-Laplace is born
-
-And thus", "[center]Creation Weeps", "[center]End of recording"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HUD:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../outdoor:volume_db")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 14, 15, 25),
-"transitions": PackedFloat32Array(2, 0, -2, 1),
-"update": 0,
-"values": [-8.0, -80.0, -80.0, -20.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../outdoorDistorted:volume_db")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 14, 15),
-"transitions": PackedFloat32Array(0.5, 0, 1),
-"update": 0,
-"values": [-80.0, -8.0, -80.0]
-}
-
-[sub_resource type="Animation" id="Animation_v0s2k"]
-resource_name = "camLookUp7"
-length = 25.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("head/cam:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(-4, 1),
-"update": 0,
-"values": [Vector3(-0.261799, 4.50109e-05, -0.000341448), Vector3(0.610865, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/noise/Eye:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 15, 21.1, 22.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/text:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 15, 21),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["[center]On this day
-
-Laplace is born
-
-And thus", "[center]Creation Weeps", "[center]End of recording"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HUD:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../outdoor:volume_db")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 14, 15, 25),
-"transitions": PackedFloat32Array(2, 0, -2, 1),
-"update": 0,
-"values": [-6.0, -80.0, -80.0, -20.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../outdoorDistorted:volume_db")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 14, 15),
-"transitions": PackedFloat32Array(0.5, 0, 1),
-"update": 0,
-"values": [-80.0, -6.0, -80.0]
-}
-
-[sub_resource type="Animation" id="Animation_33ks4"]
-resource_name = "camLookUp8"
-length = 25.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("head/cam:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(-4, 1),
-"update": 0,
-"values": [Vector3(-0.261799, 4.50109e-05, -0.000341448), Vector3(0.610865, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/noise/Eye:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 15, 21.1, 22.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/text:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 15, 21),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["[center]On this day
-
-Laplace is born
-
-And thus", "[center]Creation Weeps", "[center]End of recording"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HUD:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../outdoor:volume_db")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 14, 15, 25),
-"transitions": PackedFloat32Array(2, 0, -2, 1),
-"update": 0,
-"values": [-4.0, -80.0, -80.0, -20.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../outdoorDistorted:volume_db")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 14, 15),
-"transitions": PackedFloat32Array(0.5, 0, 1),
-"update": 0,
-"values": [-80.0, -4.0, -80.0]
-}
-
-[sub_resource type="Animation" id="Animation_gaps8"]
-resource_name = "camLookUp9"
-length = 25.0
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("head/cam:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(-4, 1),
-"update": 0,
-"values": [Vector3(-0.261799, 4.50109e-05, -0.000341448), Vector3(0.610865, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Body:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("HUD/noise/Eye:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 15, 21.1, 22.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, true, false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HUD/text:text")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 15, 21),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": ["[center]On this day
-
-Laplace is born
-
-And thus", "[center]Creation Weeps", "[center]End of recording"]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HUD:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../outdoor:volume_db")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 14, 15, 25),
-"transitions": PackedFloat32Array(2, 0, -2, 1),
-"update": 0,
-"values": [-2.0, -80.0, -80.0, -20.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../outdoorDistorted:volume_db")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 14, 15),
-"transitions": PackedFloat32Array(0.5, 0, 1),
-"update": 0,
-"values": [-80.0, -2.0, -80.0]
-}
-
 [sub_resource type="Animation" id="Animation_706so"]
 resource_name = "lookUp"
-length = 22.0
+length = 25.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1582,7 +564,7 @@ tracks/0/path = NodePath("head/cam:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1, 15),
+"times": PackedFloat32Array(1, 12.5),
 "transitions": PackedFloat32Array(-4, 1),
 "update": 0,
 "values": [Vector3(-0.698132, 0, 0), Vector3(0.698132, 0, 0)]
@@ -1594,7 +576,7 @@ tracks/1/path = NodePath("../Body:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 15),
+"times": PackedFloat32Array(0, 12.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
@@ -1642,7 +624,7 @@ tracks/5/path = NodePath("pixelSort/sortShader:material:shader_parameter/sort")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 16, 22),
+"times": PackedFloat32Array(0, 13.5, 19.5),
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
 "values": [0.0, 0.0, 2.6]
@@ -1654,7 +636,7 @@ tracks/6/path = NodePath("pixelSort/backdrop:color")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 16, 22),
+"times": PackedFloat32Array(0, 13.5, 19.5),
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
@@ -1683,20 +665,23 @@ tracks/8/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("..")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"corruptMusic"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3uk8"]
 _data = {
-"camLookUp0": SubResource("Animation_fyph1"),
-"camLookUp1": SubResource("Animation_nsix1"),
-"camLookUp10": SubResource("Animation_qbi6b"),
-"camLookUp2": SubResource("Animation_xxpvw"),
-"camLookUp3": SubResource("Animation_urlkx"),
-"camLookUp4": SubResource("Animation_7sdnv"),
-"camLookUp5": SubResource("Animation_2xjgl"),
-"camLookUp6": SubResource("Animation_7fuih"),
-"camLookUp7": SubResource("Animation_v0s2k"),
-"camLookUp8": SubResource("Animation_33ks4"),
-"camLookUp9": SubResource("Animation_gaps8"),
 "lookUp": SubResource("Animation_706so")
 }
 
@@ -1945,14 +930,6 @@ light_color = Color(1, 0.201748, 0.246535, 1)
 light_energy = 1.222
 shadow_enabled = true
 sky_mode = 1
-
-[node name="outdoor" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("63_y3pwj")
-volume_db = -10.0
-
-[node name="outdoorDistorted" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("64_nkxij")
-volume_db = -80.0
 
 [node name="globalInformation" type="Node" parent="."]
 script = ExtResource("1_mu5ff")
@@ -2379,7 +1356,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="HUD" type="Control" parent="player"]
-visible = false
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -2439,7 +1415,6 @@ color = Color(1, 0.0313726, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_x3k5n")
 }
-autoplay = "fade"
 speed_scale = 0.2
 
 [node name="crosshair" type="Sprite2D" parent="player/HUD"]
@@ -5482,27 +4457,13 @@ texture = ExtResource("52_wvbre")
 process_mode = 3
 script = ExtResource("70_mapol")
 
-[node name="menu" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("71_ohfrb")
-volume_db = -20.0
+[node name="outdoor" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("63_y3pwj")
+volume_db = -80.0
 
-[node name="hallway" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("72_j2fem")
-volume_db = -20.0
-
-[node name="ambienceA" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("73_32xia")
-volume_db = -20.0
-
-[node name="piano" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("74_vr0h8")
-volume_db = -20.0
-
-[node name="heartbeat" type="AudioStreamPlayer" parent="audioManager" groups=["sfx"]]
-stream = ExtResource("75_uw77u")
-
-[node name="singularity" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("76_twrma")
+[node name="outdoorDistorted" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("64_nkxij")
+volume_db = -80.0
 
 [node name="line4" type="Sprite3D" parent="."]
 transform = Transform3D(-0.370347, 0.665833, 0.647697, 3.13323e-08, 0.697278, -0.716802, -0.928894, -0.265465, -0.258235, -473.611, 245.504, 122.304)

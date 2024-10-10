@@ -6,15 +6,22 @@ var maxVolume:float = 0
 # Audio transition tweens
 var fadeOutTween:Tween
 var fadeInTween:Tween
+
+func _ready():
+	changeVolume(-20 + GI.musicVolume * 2)
+
 # Check if player currently in minigame
 func _process(_delta) -> void:
 	if (GI.shooterActive and GI.inOS):
 		if GI.schrodingerActive and curSong != "schrodinger":
-			if curSong not in ["singularity", "schrodinger"]: previousSong = curSong;
+			if curSong not in ["singularity", "schrodinger", "laplace"]: previousSong = curSong;
 			if curSong == "singularity": play("schrodinger", 4.0);
 			else: play("schrodinger", 1.0);
-		elif !GI.schrodingerActive and curSong != "singularity":
-			if curSong not in ["singularity", "schrodinger"]: previousSong = curSong;
+		elif !GI.schrodingerActive and GI.laplaceActive and curSong != "laplace":
+			if curSong not in ["singularity", "schrodinger", "laplace"]: previousSong = curSong;
+			play("laplace")
+		elif !GI.schrodingerActive and !GI.laplaceActive and curSong != "singularity":
+			if curSong not in ["singularity", "schrodinger", "laplace"]: previousSong = curSong;
 			play("singularity")
 	elif !(GI.shooterActive and GI.inOS) and curSong in ["singularity", "schrodinger"]: # Stop minigame music
 		play(previousSong)
@@ -34,7 +41,8 @@ func play(songName:String, fadeTime:float = 1.0) -> void:
 	if get_node_or_null(curSong) != null: # Fades out current song
 		fadeOutTween = get_tree().create_tween()
 		fadeOutTween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS) # Stops tween from stopping whenever menu opened
-		fadeOutTween.tween_property(get_node(curSong), "volume_db", -20, fadeTime).set_trans(Tween.TRANS_SINE) # Gradually lowers song volume
+		if get_node(curSong).volume_db > -20:
+			fadeOutTween.tween_property(get_node(curSong), "volume_db", -20, fadeTime).set_trans(Tween.TRANS_SINE) # Gradually lowers song volume
 		fadeOutTween.tween_property(get_node(curSong), "playing", false, 0.1).set_trans(Tween.TRANS_SINE) # Stops song after volume lowered
 	curSong = songName
 	if get_node_or_null(curSong) != null:  # Fades in newly requested song

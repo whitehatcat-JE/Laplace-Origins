@@ -7,17 +7,27 @@ var story:int = 1
 var nextDimensionQueued:bool = false
 var dimensionNum:int = 1
 
+var maxVolume:float = 0
+
 func _ready():
-	print("z")
 	$dimension2.position.z = 20.0
 	$dimension3.position = Vector3(-100, -10, 40)
+	changeVolume(-20 + GI.musicVolume * 2)
+	$player/menu.disabled = true
 	await get_tree().create_timer(0.1).timeout
 	$dimension2.position = Vector3(0.0, -100.0, 0.0)
 	$dimension3.position = Vector3(0.0, 0.0, 0.0)
 	$dimension3.visible = false
 	$pillars.visible = false
-	$audioManager.play("nonEuclidean")
+	$audioManager/nonEuclidean.play()
 	$audioManager/nonEuclideanTempo.play()
+	if GI.musicVolume > 0:
+		var musicTween:Tween = get_tree().create_tween()
+		musicTween.tween_property($audioManager/nonEuclidean, "volume_db", $audioManager/nonEuclidean.volume_db, 3.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+		$audioManager/nonEuclidean.volume_db = -80
+	$player/HUD/hudAnims.play("fadeIn")
+	await $player/HUD/hudAnims.animation_finished
+	$player/menu.disabled = false
 
 func _process(delta: float) -> void:
 	if story == 1:
@@ -64,18 +74,32 @@ func teleportPlayer():
 func _on_second_story_teleport_fields_body_entered(body: Node3D) -> void:
 	teleportPlayer()
 
-
 func _on_exit_field_body_entered(body: Node3D) -> void:
 	$player.disabled = true
+	$player/menu.disabled = true
+	var fadeOutTween:Tween = get_tree().create_tween()
+	fadeOutTween.set_parallel(true)
+	fadeOutTween.tween_property($audioManager/nonEuclidean, "volume_db", -80, 1.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_LINEAR)
+	fadeOutTween.tween_property($audioManager/nonEuclideanBass, "volume_db", -80, 1.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_LINEAR)
+	fadeOutTween.tween_property($audioManager/nonEuclideanBell, "volume_db", -80, 1.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_LINEAR)
+	fadeOutTween.tween_property($audioManager/nonEuclideanNoise, "volume_db", -80, 1.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_LINEAR)
 	$player/HUD/hudAnims.play("fadeOut")
 	await $player/HUD/hudAnims.animation_finished
 	get_tree().change_scene_to_file("res://scenes/outside.tscn")
 
 func _on_non_euclidean_tempo_finished() -> void:
 	$audioManager/nonEuclideanTempo.play()
-	if randf() > 0.9:
+	if randf() > 0.8:
 		$audioManager/nonEuclideanBass.play()
-	elif randf() > 0.8:
+	elif randf() > 0.7:
 		$audioManager/nonEuclideanBell.play()
 	elif randf() > 0.6:
 		$audioManager/nonEuclideanNoise.play()
+
+func changeVolume(newVolume:int) -> void:
+	if newVolume == -20: newVolume = -80; # Mutes song
+	maxVolume = newVolume
+	$audioManager/nonEuclidean.volume_db = newVolume
+	$audioManager/nonEuclideanBass.volume_db = newVolume
+	$audioManager/nonEuclideanBell.volume_db = newVolume
+	$audioManager/nonEuclideanNoise.volume_db = newVolume

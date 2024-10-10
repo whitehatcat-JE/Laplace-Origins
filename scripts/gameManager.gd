@@ -6,7 +6,7 @@ var dialogueLine:int = 0
 # Dialogue
 var dialogueLines:Array = [
 	"It seems I-I-I---",
-	"I am at last getting through to you.",
+	"I have at last awoken.",
 	"As the being you call Laplace, let me first extend my t-thanks.",
 	"Reality is begie- beginne- beginning to fracture, so it won't be long before your current purpose is complete.",
 	"You who h-h-h---",
@@ -46,10 +46,11 @@ func _input(event) -> void:
 		$player/HUD/paper.visible = false
 		player.disabled = false
 		$player/menu.disabled = false
-		var projectorTween:Tween = get_tree().create_tween()
-		projectorTween.tween_property($hands/projectorSFX, "volume_db", -80, 1.0)
-		projectorTween.tween_property($hands/projectorSFX, "playing", false, 0.01)
-		projectorTween.tween_property($hands/projectorSFX, "volume_db", $hands/projectorSFX.volume_db, 0.01)
+		$hands/projectorSFX.stop()
+		#var projectorTween:Tween = get_tree().create_tween()
+		#projectorTween.tween_property($hands/projectorSFX, "volume_db", -80, 1.0)
+		#projectorTween.tween_property($hands/projectorSFX, "playing", false, 0.01)
+		#projectorTween.tween_property($hands/projectorSFX, "volume_db", $hands/projectorSFX.volume_db, 0.01)
 # In-world player interactions
 func _on_player_interacted(interactionName:String) -> void:
 	await get_tree().process_frame # Prevents inputs from being processed during load-in
@@ -194,7 +195,8 @@ func _on_trigger_field_body_entered(_body) -> void:
 # Change scene to outdoors
 func nonEuclideanSwitch():
 	get_tree().change_scene_to_file("res://scenes/nonEuclidean.tscn")
-	self.queue_free()
+	if get_node_or_null(".") != null:
+		self.queue_free()
 # Disable piano room jumpscares
 func _on_trigger_field_2_body_entered(_body) -> void:
 	$pianoRoom/triggerField2.set_deferred("monitoring", false)
@@ -258,9 +260,6 @@ func triggerDialogue(_self, dialogueNum:int):
 func showNextDialogue():
 	$player/HUD/paper/message.set_text("[center]" + dialogueLines[dialogueLine])
 	$hands/projectorSFX.play()
-	var projectorTween:Tween = get_tree().create_tween()
-	projectorTween.tween_property($hands/projectorSFX, "volume_db", $hands/projectorSFX.volume_db, 0.5)
-	$hands/projectorSFX.volume_db = -20
 	dialogueLine += 1
 	player.disabled = true
 	$player/HUD/paper.visible = true

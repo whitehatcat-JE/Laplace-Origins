@@ -1,4 +1,4 @@
-[gd_scene load_steps=517 format=3 uid="uid://dsl075xni6koo"]
+[gd_scene load_steps=508 format=3 uid="uid://dsl075xni6koo"]
 
 [ext_resource type="Material" uid="uid://cfcjg7c5hil6t" path="res://assets/3d/materials/wallpaper.tres" id="1_01bfw"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_f3iko"]
@@ -30,6 +30,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bfqtupg7aqnqw" path="res://assets/3d/monitorScreen.obj" id="11_ftqtj"]
 [ext_resource type="AudioStream" uid="uid://eenjp7cx7b6" path="res://assets/audio/music/hands.mp3" id="11_k6m0u"]
 [ext_resource type="Texture2D" uid="uid://bijuw13o6gyl2" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-ao.png" id="11_pet04"]
+[ext_resource type="AudioStream" uid="uid://dr0joc7jcfb66" path="res://assets/audio/music/laplaceShooter.mp3" id="12_l3r0e"]
 [ext_resource type="ArrayMesh" uid="uid://buq1uso8urd3a" path="res://assets/3d/monitorStand.obj" id="12_lpolo"]
 [ext_resource type="Texture2D" uid="uid://b6ksegnyj52v6" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-height.png" id="12_x7lx0"]
 [ext_resource type="Texture2D" uid="uid://6i1137wcqu1q" path="res://assets/3d/textures/stonework-wall-bl/stonework-wall-metallic.png" id="13_j68nr"]
@@ -179,29 +180,23 @@
 [ext_resource type="ArrayMesh" uid="uid://lsigni1j6aa2" path="res://assets/3d/rocks/rockC.obj" id="134_q2vt5"]
 [ext_resource type="ArrayMesh" uid="uid://c0bbnk4cxlf7a" path="res://assets/3d/crt.obj" id="135_sofnr"]
 [ext_resource type="Texture2D" uid="uid://p2q07wl4p4c8" path="res://assets/2d/3dSprites/crtLogos.png" id="136_kd2gh"]
-[ext_resource type="AudioStream" uid="uid://crywtgyhidust" path="res://assets/audio/sfx/footsteps/footstepsFlesh.mp3" id="138_d0doc"]
+[ext_resource type="AudioStream" uid="uid://dxkdnna6g4sba" path="res://assets/audio/sfx/footsteps/footstepsGrass.mp3" id="137_r8eym"]
 [ext_resource type="Texture2D" uid="uid://da76e3evduwti" path="res://assets/2d/3dSprites/decals/TexturesCom_DecalBottom0031_1_masked_S.png" id="138_nccd0"]
 [ext_resource type="Texture2D" uid="uid://c0rm0p86imx5j" path="res://assets/2d/3dSprites/vines.png" id="143_b8ogo"]
 [ext_resource type="AudioStream" uid="uid://d3k75xyvaydjg" path="res://assets/audio/sfx/rockGrinding.mp3" id="144_xag2p"]
 [ext_resource type="AudioStream" uid="uid://buv6wcekvl551" path="res://assets/audio/music/nocturne.mp3" id="146_hevbh"]
 [ext_resource type="ArrayMesh" uid="uid://cnlwt7d7gdegt" path="res://assets/3d/free/key.obj" id="147_32n83"]
-[ext_resource type="Texture2D" uid="uid://bpecj4jeahrox" path="res://assets/2d/menus/gameView.png" id="148_eln84"]
-[ext_resource type="Script" path="res://scripts/mainMenu.gd" id="148_kk8v6"]
 [ext_resource type="Material" uid="uid://cjx01qsa37itq" path="res://assets/3d/laplace/laplaceArms.tres" id="149_safq1"]
 [ext_resource type="FontFile" uid="uid://b7rph0ufewhwu" path="res://assets/fonts/VT323-Regular.ttf" id="150_blp0k"]
 [ext_resource type="ArrayMesh" uid="uid://cfkd1dchiga5y" path="res://assets/3d/laplace/armLowPolyA.obj" id="150_py6wt"]
-[ext_resource type="Texture2D" uid="uid://ul2l14s1r7a" path="res://assets/2d/laplace/backgroundTrunk.png" id="151_138o5"]
 [ext_resource type="AudioStream" uid="uid://by56x0nsowrpw" path="res://assets/audio/sfx/insert.mp3" id="151_idsbu"]
 [ext_resource type="ArrayMesh" uid="uid://c6pdole3y7cl7" path="res://assets/3d/hands/floorHole.obj" id="151_nqkl0"]
 [ext_resource type="ArrayMesh" uid="uid://cuj6gq8j5obe3" path="res://assets/3d/laplace/armLowPolyB.obj" id="151_p1bd5"]
 [ext_resource type="ArrayMesh" uid="uid://c4v8lfh82bmww" path="res://assets/3d/laplace/armLowPolyC.obj" id="152_2orbl"]
 [ext_resource type="AudioStream" uid="uid://bdclomf1sc55w" path="res://assets/audio/sfx/keys.mp3" id="158_n28s5"]
-[ext_resource type="Texture2D" uid="uid://7bg41lmgbkb5" path="res://assets/2d/menus/viewFrame.png" id="159_2hxwc"]
 [ext_resource type="AudioStream" uid="uid://da6rlttnlwkq0" path="res://assets/audio/sfx/screenInteract.mp3" id="166_lty44"]
 [ext_resource type="AudioStream" uid="uid://biipabva8sjck" path="res://assets/audio/sfx/menus/click.ogg" id="166_umgxd"]
-[ext_resource type="AudioStream" uid="uid://bic8hhf1jr3c2" path="res://assets/audio/sfx/menus/openMenu.mp3" id="170_h5y8n"]
 [ext_resource type="Texture2D" uid="uid://bxgx46a4bcvr4" path="res://assets/2d/laplace/eyesHorizontal.png" id="170_w1bso"]
-[ext_resource type="AudioStream" uid="uid://c7fyi8f3075ar" path="res://assets/audio/sfx/menus/closeMenu.mp3" id="171_7e0j7"]
 [ext_resource type="Texture2D" uid="uid://r7neg4je06ve" path="res://assets/2d/laplace/eyeHorizontal.png" id="171_chgct"]
 [ext_resource type="AudioStream" uid="uid://dhjt1wgsogur4" path="res://assets/audio/sfx/pianoThud.mp3" id="171_g1sq0"]
 [ext_resource type="AudioStream" uid="uid://8n7rmuvjk4e1" path="res://assets/audio/sfx/powercut.mp3" id="174_qdmtb"]
@@ -1606,7 +1601,7 @@ variation_opentype = {
 2003265652: 700
 }
 
-[sub_resource type="Shader" id="Shader_qir2m"]
+[sub_resource type="Shader" id="Shader_teeqc"]
 code = "/*
 Shader from Godot Shaders - the free shader library.
 godotshaders.com/shader/VHS-and-CRT-monitor-effect
@@ -1841,7 +1836,7 @@ void fragment()
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8qfhb"]
 resource_local_to_scene = true
-shader = SubResource("Shader_qir2m")
+shader = SubResource("Shader_teeqc")
 shader_parameter/overlay = false
 shader_parameter/scanlines_opacity = 0.4
 shader_parameter/scanlines_width = 0.25
@@ -1863,6 +1858,239 @@ shader_parameter/warp_amount = 1.0
 shader_parameter/clip_warp = false
 shader_parameter/vignette_intensity = 0.4
 shader_parameter/vignette_opacity = 0.5
+
+[sub_resource type="Shader" id="Shader_qir2m"]
+code = "/*
+Shader from Godot Shaders - the free shader library.
+godotshaders.com/shader/VHS-and-CRT-monitor-effect
+
+This shader is under CC0 license. Feel free to use, improve and 
+change this shader according to your needs and consider sharing 
+the modified result to godotshaders.com.
+*/
+
+shader_type canvas_item;
+
+//*** IMPORTANT! ***/ 
+// - If you are using this shader to affect the node it is applied to set 'overlay' to false (unchecked in the instepctor).
+// - If you are using this shader as an overlay, and want the shader to affect the nodes below in the Scene hierarchy,
+//   set 'overlay' to true (checked in the inspector).
+// On Mac there is potentially a bug causing this to not work properly. If that is the case and you want to use the shader as an overlay
+// change all \"overlay ? SCREEN_TEXTURE : TEXTURE\" to only \"SCREEN_TEXTURE\" on lines 129-140, and \"vec2 uv = overlay ? warp(SCREEN_UV) : warp(UV);\"
+// to \"vec2 uv = warp(SCREEN_UV);\" on line 98.
+uniform bool overlay = false;
+
+uniform float scanlines_opacity : hint_range(0.0, 1.0) = 0.4;
+uniform float scanlines_width : hint_range(0.0, 0.5) = 0.25;
+uniform float grille_opacity : hint_range(0.0, 1.0) = 0.3;
+uniform vec2 resolution = vec2(640.0, 480.0); // Set the number of rows and columns the texture will be divided in. Scanlines and grille will make a square based on these values
+
+uniform bool pixelate = true; // Fill each square (\"pixel\") with a sampled color, creating a pixel look and a more accurate representation of how a CRT monitor would work.
+
+uniform bool roll = true;
+uniform float roll_speed = 8.0; // Positive values are down, negative are up
+uniform float roll_size : hint_range(0.0, 100.0) = 15.0;
+uniform float roll_variation : hint_range(0.1, 5.0) = 1.8; // This valie is not an exact science. You have to play around with the value to find a look you like. How this works is explained in the code below.
+uniform float distort_intensity : hint_range(0.0, 0.2) = 0.05; // The distortion created by the rolling effect.
+
+uniform float noise_opacity : hint_range(0.0, 1.0) = 0.4;
+uniform float noise_speed = 5.0; // There is a movement in the noise pattern that can be hard to see first. This sets the speed of that movement.
+
+uniform float static_noise_intensity : hint_range(0.0, 1.0) = 0.06;
+
+uniform float aberration : hint_range(-1.0, 1.0) = 0.03; // Chromatic aberration, a distortion on each color channel.
+uniform float brightness = 1.4; // When adding scanline gaps and grille the image can get very dark. Brightness tries to compensate for that.
+uniform bool discolor = true; // Add a discolor effect simulating a VHS
+
+uniform float warp_amount :hint_range(0.0, 5.0) = 1.0; // Warp the texture edges simulating the curved glass of a CRT monitor or old TV.
+uniform bool clip_warp = false;
+
+uniform float vignette_intensity = 0.4; // Size of the vignette, how far towards the middle it should go.
+uniform float vignette_opacity : hint_range(0.0, 1.0) = 0.5;
+
+uniform sampler2D SCREEN_TEXTURE : hint_screen_texture, filter_linear_mipmap;
+
+// Used by the noise functin to generate a pseudo random value between 0.0 and 1.0
+vec2 random(vec2 uv){
+    uv = vec2( dot(uv, vec2(127.1,311.7) ),
+               dot(uv, vec2(269.5,183.3) ) );
+    return -1.0 + 2.0 * fract(sin(uv) * 43758.5453123);
+}
+
+// Generate a Perlin noise used by the distortion effects
+float noise(vec2 uv) {
+    vec2 uv_index = floor(uv);
+    vec2 uv_fract = fract(uv);
+
+    vec2 blur = smoothstep(0.0, 1.0, uv_fract);
+
+    return mix( mix( dot( random(uv_index + vec2(0.0,0.0) ), uv_fract - vec2(0.0,0.0) ),
+                     dot( random(uv_index + vec2(1.0,0.0) ), uv_fract - vec2(1.0,0.0) ), blur.x),
+                mix( dot( random(uv_index + vec2(0.0,1.0) ), uv_fract - vec2(0.0,1.0) ),
+                     dot( random(uv_index + vec2(1.0,1.0) ), uv_fract - vec2(1.0,1.0) ), blur.x), blur.y) * 0.5 + 0.5;
+}
+
+// Takes in the UV and warps the edges, creating the spherized effect
+vec2 warp(vec2 uv){
+	vec2 delta = uv - 0.5;
+	float delta2 = dot(delta.xy, delta.xy);
+	float delta4 = delta2 * delta2;
+	float delta_offset = delta4 * warp_amount;
+	
+	return uv + delta * delta_offset;
+}
+
+// Adds a black border to hide stretched pixel created by the warp effect
+float border (vec2 uv){
+	float radius = min(warp_amount, 0.08);
+	radius = max(min(min(abs(radius * 2.0), abs(1.0)), abs(1.0)), 1e-5);
+	vec2 abs_uv = abs(uv * 2.0 - 1.0) - vec2(1.0, 1.0) + radius;
+	float dist = length(max(vec2(0.0), abs_uv)) / radius;
+	float square = smoothstep(0.96, 1.0, dist);
+	return clamp(1.0 - square, 0.0, 1.0);
+}
+
+// Adds a vignette shadow to the edges of the image
+float vignette(vec2 uv){
+	uv *= 1.0 - uv.xy;
+	float vignette = uv.x * uv.y * 15.0;
+	return pow(vignette, vignette_intensity * vignette_opacity);
+}
+
+void fragment()
+{
+	vec2 uv = overlay ? warp(SCREEN_UV) : warp(UV); // Warp the uv. uv will be used in most cases instead of UV to keep the warping
+	vec2 text_uv = uv;
+	vec2 roll_uv = vec2(0.0);
+	float time = roll ? TIME : 0.0;
+	
+
+	// Pixelate the texture based on the given resolution.
+	if (pixelate)
+	{
+		text_uv = ceil(uv * resolution) / resolution;
+	}
+	
+	// Create the rolling effect. We need roll_line a bit later to make the noise effect.
+	// That is why this runs if roll is true OR noise_opacity is over 0.
+	float roll_line = 0.0;
+	if (roll || noise_opacity > 0.0)
+	{
+		// Create the areas/lines where the texture will be distorted.
+		roll_line = smoothstep(0.3, 0.9, sin(uv.y * roll_size - (time * roll_speed) ) );
+		// Create more lines of a different size and apply to the first set of lines. This creates a bit of variation.
+		roll_line *= roll_line * smoothstep(0.3, 0.9, sin(uv.y * roll_size * roll_variation - (time * roll_speed * roll_variation) ) );
+		// Distort the UV where where the lines are
+		roll_uv = vec2(( roll_line * distort_intensity * (1.-UV.x)), 0.0);
+	}
+	
+	vec4 text;
+	if (roll)
+	{
+		// If roll is true distort the texture with roll_uv. The texture is split up into RGB to 
+		// make some chromatic aberration. We apply the aberration to the red and green channels accorging to the aberration parameter
+		// and intensify it a bit in the roll distortion.
+		text.r = texture(SCREEN_TEXTURE, text_uv + roll_uv * 0.8 + vec2(aberration, 0.0) * .1).r;
+		text.g = texture(SCREEN_TEXTURE, text_uv + roll_uv * 1.2 - vec2(aberration, 0.0) * .1 ).g;
+		text.b = texture(SCREEN_TEXTURE, text_uv + roll_uv).b;
+		text.a = 1.0;
+	}
+	else
+	{
+		// If roll is false only apply the aberration without any distorion. The aberration values are very small so the .1 is only 
+		// to make the slider in the Inspector less sensitive.
+		text.r = texture(SCREEN_TEXTURE, text_uv + vec2(aberration, 0.0) * .1).r;
+		text.g = texture(SCREEN_TEXTURE, text_uv - vec2(aberration, 0.0) * .1).g;
+		text.b = texture(SCREEN_TEXTURE, text_uv).b;
+		text.a = 1.0;
+	}
+	
+	float r = text.r;
+	float g = text.g;
+	float b = text.b;
+	
+	uv = warp(UV);
+	
+	// CRT monitors don't have pixels but groups of red, green and blue dots or lines, called grille. We isolate the texture's color channels 
+	// and divide it up in 3 offsetted lines to show the red, green and blue colors next to each other, with a small black gap between.
+	if (grille_opacity > 0.0){
+		
+		float g_r = smoothstep(0.85, 0.95, abs(sin(uv.x * (resolution.x * 3.14159265))));
+		r = mix(r, r * g_r, grille_opacity);
+		
+		float g_g = smoothstep(0.85, 0.95, abs(sin(1.05 + uv.x * (resolution.x * 3.14159265))));
+		g = mix(g, g * g_g, grille_opacity);
+		
+		float b_b = smoothstep(0.85, 0.95, abs(sin(2.1 + uv.x * (resolution.x * 3.14159265))));
+		b = mix(b, b * b_b, grille_opacity);
+		
+	}
+	
+	// Apply the grille to the texture's color channels and apply Brightness. Since the grille and the scanlines (below) make the image very dark you
+	// can compensate by increasing the brightness.
+	text.r = clamp(r * brightness, 0.0, 1.0);
+	text.g = clamp(g * brightness, 0.0, 1.0);
+	text.b = clamp(b * brightness, 0.0, 1.0);
+	
+	// Scanlines are the horizontal lines that make up the image on a CRT monitor. 
+	// Here we are actual setting the black gap between each line, which I guess is not the right definition of the word, but you get the idea  
+	float scanlines = 0.5;
+	if (scanlines_opacity > 0.0)
+	{
+		// Same technique as above, create lines with sine and applying it to the texture. Smoothstep to allow setting the line size.
+		scanlines = smoothstep(scanlines_width, scanlines_width + 0.5, abs(sin(uv.y * (resolution.y * 3.14159265))));
+		text.rgb = mix(text.rgb, text.rgb * vec3(scanlines), scanlines_opacity);
+	}
+	
+	// Apply the banded noise.
+	if (noise_opacity > 0.0)
+	{
+		// Generate a noise pattern that is very stretched horizontally, and animate it with noise_speed
+		float noise = smoothstep(0.4, 0.5, noise(uv * vec2(2.0, 200.0) + vec2(10.0, (TIME * (noise_speed))) ) );
+		
+		// We use roll_line (set above) to define how big the noise should be vertically (multiplying cuts off all black parts).
+		// We also add in some basic noise with random() to break up the noise pattern above. The noise is sized according to 
+		// the resolution value set in the inspector. If you don't like this look you can 
+		// change \"ceil(uv * resolution) / resolution\" to only \"uv\" to make it less pixelated. Or multiply resolution with som value
+		// greater than 1.0 to make them smaller.
+		roll_line *= noise * scanlines * clamp(random((ceil(uv * resolution) / resolution) + vec2(TIME * 0.8, 0.0)).x + 0.8, 0.0, 1.0);
+		// Add it to the texture based on noise_opacity
+		text.rgb = clamp(mix(text.rgb, text.rgb + roll_line, noise_opacity), vec3(0.0), vec3(1.0));
+	}
+	
+	// Apply static noise by generating it over the whole screen in the same way as above
+	if (static_noise_intensity > 0.0)
+	{
+		text.rgb += clamp(random((ceil(uv * resolution) / resolution) + fract(TIME)).x, 0.0, 1.0) * static_noise_intensity;
+	}
+	
+	// Apply a black border to hide imperfections caused by the warping.
+	// Also apply the vignette
+	text.rgb *= border(uv);
+	text.rgb *= vignette(uv);
+	// Hides the black border and make that area transparent. Good if you want to add the the texture on top an image of a TV or monitor.
+	if (clip_warp)
+	{
+		text.a = border(uv);
+	}
+	
+	// Apply discoloration to get a VHS look (lower saturation and higher contrast)
+	// You can play with the values below or expose them in the Inspector.
+	float saturation = 0.5;
+	float contrast = 1.2;
+	if (discolor)
+	{
+		// Saturation
+		vec3 greyscale = vec3(text.r + text.g + text.b) / 3.;
+		text.rgb = mix(text.rgb, greyscale, saturation);
+		
+		// Contrast
+		float midpoint = pow(0.5, 2.2);
+		text.rgb = (text.rgb - vec3(midpoint)) * contrast + midpoint;
+	}
+	
+	COLOR = text;
+}"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bn80n"]
 resource_local_to_scene = true
@@ -3661,80 +3889,6 @@ _data = {
 "lightWindow": SubResource("Animation_gwngi")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbo7j"]
-shading_mode = 0
-albedo_texture = ExtResource("148_eln84")
-
-[sub_resource type="QuadMesh" id="QuadMesh_6vii6"]
-size = Vector2(2, 1.125)
-
-[sub_resource type="Environment" id="Environment_1shus"]
-
-[sub_resource type="Animation" id="Animation_ytsih"]
-resource_name = "zoom"
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("menuCam:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector3(-0.034, 0.258, 0.387), Vector3(0.023, 0.313, 0.046)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("menuCam:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, -0.523599, 0)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.9, 0.91, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [false],
-"method": &"toggleLoading"
-}, {
-"args": [true],
-"method": &"toggleLoading"
-}, {
-"args": [],
-"method": &"switchPauseState"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("screen/frame:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(3, 1),
-"update": 0,
-"values": [Color(0.356863, 0.356863, 0.356863, 1), Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jgsmf"]
-_data = {
-"zoom": SubResource("Animation_ytsih")
-}
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_rx8t8"]
 size = Vector3(68.0975, 1, 10.3562)
 
@@ -3961,38 +4115,44 @@ script = ExtResource("3_d4tsq")
 
 [node name="menu" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("4_eyyti")
-volume_db = -20.0
+volume_db = -80.0
 
 [node name="hallway" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("5_yj2lw")
-volume_db = -20.0
+volume_db = -80.0
 
 [node name="ambienceA" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("5_g6dg6")
-volume_db = -20.0
+volume_db = -80.0
 
 [node name="piano" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("146_hevbh")
-volume_db = -20.0
+volume_db = -80.0
 
 [node name="heartbeat" type="AudioStreamPlayer" parent="audioManager" groups=["sfx"]]
 stream = ExtResource("7_jbwer")
+volume_db = -80.0
 
 [node name="singularity" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("9_dcaq8")
-volume_db = -20.0
+volume_db = -80.0
 
 [node name="schrodinger" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("10_a0lsm")
-volume_db = -20.0
+volume_db = -80.0
 
 [node name="hands" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("11_k6m0u")
-volume_db = -20.0
+volume_db = -80.0
 
 [node name="slimyBird" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("9_dcaq8")
-volume_db = -20.0
+volume_db = -80.0
+
+[node name="laplace" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("12_l3r0e")
+volume_db = -80.0
+pitch_scale = 0.7
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("10_nrkjx")
@@ -4740,7 +4900,7 @@ size = Vector2i(4098, 4098)
 
 [node name="pcOS" parent="bedroom/pcWindow" instance=ExtResource("6_wgccf")]
 
-[node name="schrodingerView" parent="bedroom/pcWindow/pcOS/shooterMinigame" index="13"]
+[node name="schrodingerView" parent="bedroom/pcWindow/pcOS/shooterMinigame" index="12"]
 texture = SubResource("ViewportTexture_y0ea5")
 
 [node name="Camera3D" parent="bedroom/pcWindow/pcOS/shooterMinigame/schrodingerView/schrodingerViewport/schrodinger" index="19"]
@@ -6781,7 +6941,7 @@ stream = ExtResource("107_kwbdf")
 
 [node name="footstepsFlesh" type="AudioStreamPlayer3D" parent="player" groups=["sfx"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.824346, 0)
-stream = ExtResource("138_d0doc")
+stream = ExtResource("137_r8eym")
 
 [node name="walls" type="Node3D" parent="."]
 
@@ -8563,398 +8723,6 @@ libraries = {
 "": SubResource("AnimationLibrary_n2502")
 }
 speed_scale = 0.5
-
-[node name="mainMenu" type="Node3D" parent="."]
-process_mode = 3
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -34.7084)
-script = ExtResource("148_kk8v6")
-
-[node name="screen" type="MeshInstance3D" parent="mainMenu"]
-transform = Transform3D(0.216506, 3.26915e-08, -0.125, -3.7749e-08, 0.25, -8.34336e-16, 0.125, 1.88745e-08, 0.216506, 0.112995, 0.312284, -0.112999)
-material_override = SubResource("StandardMaterial3D_nbo7j")
-mesh = SubResource("QuadMesh_6vii6")
-
-[node name="frame" type="Sprite3D" parent="mainMenu/screen"]
-transform = Transform3D(1, 2.4869e-14, 0, 0, 1, -1.42109e-14, 0, 0, 1, -8.39233e-05, 0, 0.00224304)
-cast_shadow = 0
-modulate = Color(0, 0, 0, 0)
-pixel_size = 0.0125
-texture_filter = 0
-texture = ExtResource("159_2hxwc")
-
-[node name="loadingLabel" type="Label3D" parent="mainMenu/screen"]
-transform = Transform3D(1, 2.06057e-13, 0, 0, 1, -9.9476e-14, 0, -2.84217e-14, 1, 0.84919, -0.514215, 0.0108261)
-visible = false
-pixel_size = 0.0005
-text = "Loading..."
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="menuCam" type="Camera3D" parent="mainMenu"]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 0.023, 0.313, 0.046)
-environment = SubResource("Environment_1shus")
-
-[node name="mainAnims" type="AnimationPlayer" parent="mainMenu"]
-libraries = {
-"": SubResource("AnimationLibrary_jgsmf")
-}
-speed_scale = 1.5
-
-[node name="keybindsMenu" type="Node3D" parent="mainMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165359, 0)
-visible = false
-
-[node name="keybindsTitle" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.498248, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Keybinds"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="fowardLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.436275, -0.240002)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Forward - W / Up Arrow"
-font = ExtResource("150_blp0k")
-font_size = 64
-
-[node name="backwardLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.394184, -0.240002)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Backward - S / Down Arrow"
-font = ExtResource("150_blp0k")
-font_size = 64
-
-[node name="leftLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.355005, -0.240002)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Left - A / Left Arrow"
-font = ExtResource("150_blp0k")
-font_size = 64
-
-[node name="rightLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.312914, -0.240002)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Right - D / Right Arrow"
-font = ExtResource("150_blp0k")
-font_size = 64
-
-[node name="interactLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.257793, -0.240002)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Interact - Left Mouse Button / F / Enter"
-font = ExtResource("150_blp0k")
-font_size = 64
-
-[node name="unfocusLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.215702, -0.240002)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Unfocus - Right Mouse Button / Backspace"
-font = ExtResource("150_blp0k")
-font_size = 64
-
-[node name="unfocusNote" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.188711, -0.240002)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "(Used to stop interacting with screens)"
-font = ExtResource("150_blp0k")
-font_size = 48
-
-[node name="shooterNote" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.288537, -0.240002)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "(Minigame uses WASD for movement and Arrows for shooting)"
-font = ExtResource("150_blp0k")
-font_size = 48
-
-[node name="menuLabel" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.154233, -0.240002)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Open / Close Menu - Escape"
-font = ExtResource("150_blp0k")
-font_size = 64
-
-[node name="backOption" type="Label3D" parent="mainMenu/keybindsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.0977547, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0.568627, 0, 1)
-outline_modulate = Color(0.286275, 0.105882, 0, 1)
-text = "Back"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="puzzleMenu" type="Node3D" parent="mainMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165359, 0)
-visible = false
-
-[node name="puzzleTitle" type="Label3D" parent="mainMenu/puzzleMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.498248, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Puzzle Help"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="hintOption" type="Label3D" parent="mainMenu/puzzleMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.368717, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Hint"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="answerOption" type="Label3D" parent="mainMenu/puzzleMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.276929, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Answer"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="backOption" type="Label3D" parent="mainMenu/puzzleMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.18389, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0.568627, 0, 1)
-outline_modulate = Color(0.286275, 0.105882, 0, 1)
-text = "Back"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="hintMenu" type="Node3D" parent="mainMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165359, 0)
-visible = false
-
-[node name="hintTitle" type="Label3D" parent="mainMenu/hintMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.498248, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Hint"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="hintText" type="Label3D" parent="mainMenu/hintMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.335887, -0.240002)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "I seem to remember writing down the passcode somewhere in my notebook."
-font = ExtResource("150_blp0k")
-font_size = 64
-autowrap_mode = 2
-width = 800.0
-
-[node name="backOption" type="Label3D" parent="mainMenu/hintMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.18389, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0.568627, 0, 1)
-outline_modulate = Color(0.286275, 0.105882, 0, 1)
-text = "Back"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="answerMenu" type="Node3D" parent="mainMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0165359, 0)
-visible = false
-
-[node name="answerTitle" type="Label3D" parent="mainMenu/answerMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.498248, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Answer"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="answerText" type="Label3D" parent="mainMenu/answerMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444, 0.335887, -0.240002)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "912346"
-font = ExtResource("150_blp0k")
-font_size = 64
-autowrap_mode = 2
-width = 800.0
-
-[node name="backOption" type="Label3D" parent="mainMenu/answerMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.18389, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0.568627, 0, 1)
-outline_modulate = Color(0.286275, 0.105882, 0, 1)
-text = "Back"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="settingsMenu" type="Node3D" parent="mainMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00501426, 0)
-visible = false
-
-[node name="settingsTitle" type="Label3D" parent="mainMenu/settingsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.498248, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Settings"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="musicOption" type="Label3D" parent="mainMenu/settingsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.440449, 0.402153, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Music <10>"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="sfxOption" type="Label3D" parent="mainMenu/settingsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.440449, 0.334813, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "SFX <10>"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="graphicsOption" type="Label3D" parent="mainMenu/settingsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.440449, 0.272583, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Graphics <High>"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="invertOption" type="Label3D" parent="mainMenu/settingsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.440449, 0.20422, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Invert Y Axis <No>"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="backOption" type="Label3D" parent="mainMenu/settingsMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.115527, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0.568627, 0, 1)
-outline_modulate = Color(0.286275, 0.105882, 0, 1)
-text = "Back"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="navMenu" type="Node3D" parent="mainMenu"]
-
-[node name="startLabel" type="Label3D" parent="mainMenu/navMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.560028, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0.439216, 0, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Start"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="settingsLabel" type="Label3D" parent="mainMenu/navMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.437854, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Settings"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="keybindsLabel" type="Label3D" parent="mainMenu/navMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.307441, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Keybinds"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="helpLabel" type="Label3D" parent="mainMenu/navMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.180733, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Puzzle Help"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="quitLabel" type="Label3D" parent="mainMenu/navMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, 0.0602717, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "Quit"
-font = ExtResource("150_blp0k")
-font_size = 128
-
-[node name="creditsLabel" type="Label3D" parent="mainMenu"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.444195, -0.10998, -0.239532)
-pixel_size = 0.0005
-modulate = Color(1, 0, 0.0392157, 1)
-outline_modulate = Color(0.301961, 0.00784314, 0.0156863, 1)
-text = "By Jayden Everest"
-font = ExtResource("150_blp0k")
-font_size = 64
-
-[node name="backgroundPillar1" type="Sprite3D" parent="mainMenu"]
-transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -0.818827, 0, -1.16574)
-modulate = Color(0.196078, 0.196078, 0.196078, 1)
-texture_filter = 0
-texture = ExtResource("151_138o5")
-region_enabled = true
-region_rect = Rect2(0, 0, 304, 400)
-
-[node name="backgroundPillar2" type="Sprite3D" parent="mainMenu"]
-transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, 1.18177, 0, -1.16574)
-modulate = Color(0.105882, 0.105882, 0.105882, 1)
-texture_filter = 0
-texture = ExtResource("151_138o5")
-region_enabled = true
-region_rect = Rect2(0, 0, 304, 400)
-
-[node name="backgroundPillar3" type="Sprite3D" parent="mainMenu"]
-transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 2.69164, 0, -0.0847397)
-modulate = Color(0.0627451, 0.0627451, 0.0627451, 1)
-texture_filter = 0
-texture = ExtResource("151_138o5")
-region_enabled = true
-region_rect = Rect2(0, 0, 304, 400)
-
-[node name="clickSFX" type="AudioStreamPlayer" parent="mainMenu" groups=["sfx"]]
-stream = ExtResource("166_umgxd")
-
-[node name="openMenu" type="AudioStreamPlayer" parent="mainMenu" groups=["sfx"]]
-stream = ExtResource("170_h5y8n")
-
-[node name="closeMenu" type="AudioStreamPlayer" parent="mainMenu" groups=["sfx"]]
-stream = ExtResource("171_7e0j7")
 
 [node name="screenInteractSFX" type="AudioStreamPlayer" parent="." groups=["sfx"]]
 stream = ExtResource("166_lty44")

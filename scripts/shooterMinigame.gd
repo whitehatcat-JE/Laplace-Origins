@@ -129,6 +129,7 @@ func _on_spawn_timer_timeout():
 			if nextEnemy != null: nextEnemy.kill();
 		GI.sfxVolume = previousSFXVolume
 		$corruptGame.play("laplaceDescend")
+		GI.laplaceActive = true
 		emit_signal("laplaceSpawned")
 		laplaceDescended = true
 		return
@@ -233,6 +234,7 @@ func killGame() -> void:
 		$laplace/laplaceBulletTimer.stop()
 		$laplace/shotContinuousSFX.stop()
 		laplaceDescended = false
+		GI.laplaceActive = false
 		$corruptGame.play("laplaceAscend")
 
 func enterSchrodinger():

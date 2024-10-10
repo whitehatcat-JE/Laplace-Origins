@@ -5670,6 +5670,8 @@ region_rect = Rect2(0, 0, 360, 16)
 
 [node name="floorBody" type="StaticBody2D" parent="gameResults/article2Open/slimyBirdGame/backdrop/floor"]
 position = Vector2(0, 10000)
+collision_layer = 1024
+collision_mask = 1024
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="gameResults/article2Open/slimyBirdGame/backdrop/floor/floorBody"]
 position = Vector2(-85, 1.25)
@@ -5681,6 +5683,8 @@ shape = SubResource("RectangleShape2D_jqapp")
 
 [node name="character" type="CharacterBody2D" parent="gameResults/article2Open/slimyBirdGame/backdrop"]
 position = Vector2(-100, 0)
+collision_layer = 1024
+collision_mask = 1024
 
 [node name="slime" type="Sprite2D" parent="gameResults/article2Open/slimyBirdGame/backdrop/character"]
 texture = ExtResource("27_1c03f")
@@ -5927,7 +5931,6 @@ position = Vector2(10, 24)
 texture = ExtResource("10_acx1e")
 
 [node name="article1" type="Node2D" parent="gameResults"]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(611, 152)
 
 [node name="hoverBackdropA" type="ColorRect" parent="gameResults/article1"]
@@ -5999,7 +6002,6 @@ position = Vector2(-1130, -216.667)
 shape = SubResource("RectangleShape2D_o2sfj")
 
 [node name="article2" type="Node2D" parent="gameResults"]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(611, 255)
 
 [node name="hoverBackdropA" type="ColorRect" parent="gameResults/article2"]
@@ -6065,7 +6067,6 @@ position = Vector2(-1130, -216.667)
 shape = SubResource("RectangleShape2D_hbb7m")
 
 [node name="article3" type="Node2D" parent="gameResults"]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(611, 360)
 
 [node name="hoverBackdropA" type="ColorRect" parent="gameResults/article3"]

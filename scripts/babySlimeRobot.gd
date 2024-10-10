@@ -41,6 +41,7 @@ func activate() -> void:
 	$bulletScanner/hitbox.set_deferred("disabled", false)
 # Damages self when hit with bullet
 func _on_bullet_scanner_area_entered(area) -> void:
-	area.kill()
-	health -= 1
-	if health == 0: kill();
+	if area.has_method("kill"):
+		area.kill()
+		health -= 1
+		if health == 0: kill();

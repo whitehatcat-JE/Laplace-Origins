@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://coqwihkas3njv"]
+[gd_scene load_steps=63 format=3 uid="uid://coqwihkas3njv"]
 
 [ext_resource type="Texture2D" uid="uid://bxjoe45irxao5" path="res://assets/city/facade1.png" id="1_21jck"]
 [ext_resource type="Script" path="res://scripts/city.gd" id="1_hsebj"]
@@ -28,12 +28,6 @@
 [ext_resource type="AudioStream" uid="uid://c2vmxej71sj2h" path="res://assets/audio/music/city.mp3" id="23_acsdr"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="24_1flj2"]
 [ext_resource type="Script" path="res://scripts/audioManager.gd" id="28_um6io"]
-[ext_resource type="AudioStream" uid="uid://g3sr5s2mbhbv" path="res://assets/audio/music/menu.mp3" id="29_l88rr"]
-[ext_resource type="AudioStream" uid="uid://lmcy1qlw45v4" path="res://assets/audio/music/hallway.mp3" id="30_1qhq6"]
-[ext_resource type="AudioStream" uid="uid://bdo4wwwve61iy" path="res://assets/audio/music/ambienceA.mp3" id="31_o34f3"]
-[ext_resource type="AudioStream" uid="uid://buv6wcekvl551" path="res://assets/audio/music/nocturne.mp3" id="32_vph6b"]
-[ext_resource type="AudioStream" uid="uid://fh6dwkt7lotj" path="res://assets/audio/sfx/heartbeat.mp3" id="33_rja7m"]
-[ext_resource type="AudioStream" uid="uid://vne8x3iohh10" path="res://assets/audio/music/singularity.mp3" id="34_1ehax"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_j426g"]
 size = Vector3(25, 100, 1)
@@ -1783,10 +1777,6 @@ libraries = {
 "": SubResource("AnimationLibrary_pyyvl")
 }
 
-[node name="cityAmbience" type="AudioStreamPlayer" parent="." groups=["music"]]
-stream = ExtResource("23_acsdr")
-autoplay = true
-
 [node name="globalInformation" type="Node" parent="."]
 script = ExtResource("24_1flj2")
 
@@ -1794,27 +1784,9 @@ script = ExtResource("24_1flj2")
 process_mode = 3
 script = ExtResource("28_um6io")
 
-[node name="menu" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("29_l88rr")
-volume_db = -20.0
-
-[node name="hallway" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("30_1qhq6")
-volume_db = -20.0
-
-[node name="ambienceA" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("31_o34f3")
-volume_db = -20.0
-
-[node name="piano" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("32_vph6b")
-volume_db = -20.0
-
-[node name="heartbeat" type="AudioStreamPlayer" parent="audioManager" groups=["sfx"]]
-stream = ExtResource("33_rja7m")
-
-[node name="singularity" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
-stream = ExtResource("34_1ehax")
+[node name="city" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("23_acsdr")
+autoplay = true
 
 [connection signal="body_entered" from="cityTriggerField" to="." method="_on_city_trigger_field_body_entered"]
 [connection signal="body_entered" from="kneelTriggerField" to="." method="_on_kneel_trigger_field_body_entered"]

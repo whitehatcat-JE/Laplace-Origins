@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=3 uid="uid://dppv4w5r1jusc"]
+[gd_scene load_steps=164 format=3 uid="uid://dppv4w5r1jusc"]
 
 [ext_resource type="Script" path="res://scenes/nonEuclideanSpace.gd" id="1_gkibj"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_scmjs"]
@@ -66,7 +66,6 @@
 [ext_resource type="AudioStream" uid="uid://dxkdnna6g4sba" path="res://assets/audio/sfx/footsteps/footstepsGrass.mp3" id="54_e5ryy"]
 [ext_resource type="Texture2D" uid="uid://dcgk10aa4tm8k" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-roughness.png" id="54_kyhwr"]
 [ext_resource type="AudioStream" uid="uid://cva3125q822hq" path="res://assets/audio/sfx/footsteps/footstepsStone.mp3" id="54_mdov1"]
-[ext_resource type="Script" path="res://scripts/audioManager.gd" id="66_htwj4"]
 [ext_resource type="AudioStream" uid="uid://ber3s8se6ofbv" path="res://assets/audio/music/nonEuclidean.mp3" id="67_iasqe"]
 [ext_resource type="AudioStream" uid="uid://bad3k2eexj6ek" path="res://assets/audio/music/nonEuclideanBass.mp3" id="68_fqpb4"]
 [ext_resource type="Texture2D" uid="uid://v77dbhstcfcr" path="res://assets/2d/laplace/line1.png" id="68_wjthh"]
@@ -2406,7 +2405,6 @@ offset = Vector2(960, -540)
 libraries = {
 "": SubResource("AnimationLibrary_fhmw3")
 }
-autoplay = "fadeIn"
 
 [node name="menu" type="Control" parent="player" node_paths=PackedStringArray("audioManager", "enviro")]
 process_mode = 3
@@ -2415,7 +2413,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("50_b4two")
-audioManager = NodePath("../../audioManager")
+audioManager = NodePath("../..")
 enviro = NodePath("../../worldEnvironment")
 
 [node name="menuGrid" type="GridContainer" parent="player/menu"]
@@ -2888,11 +2886,10 @@ texture_emission = ExtResource("68_wjthh")
 
 [node name="audioManager" type="Node3D" parent="."]
 process_mode = 3
-script = ExtResource("66_htwj4")
 
 [node name="nonEuclidean" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
 stream = ExtResource("67_iasqe")
-volume_db = -20.0
+volume_db = -80.0
 parameters/looping = true
 
 [node name="nonEuclideanTempo" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
@@ -2917,9 +2914,6 @@ stream = ExtResource("70_twegd")
 [connection signal="body_entered" from="dimension3/secondStoryTeleportFields" to="." method="_on_second_story_teleport_fields_body_entered"]
 [connection signal="body_entered" from="dimension3/exitField" to="." method="_on_exit_field_body_entered"]
 [connection signal="finished" from="audioManager/nonEuclideanTempo" to="." method="_on_non_euclidean_tempo_finished"]
-[connection signal="finished" from="audioManager/nonEuclideanBass" to="." method="_on_non_euclidean_finished"]
-[connection signal="finished" from="audioManager/nonEuclideanBell" to="." method="_on_non_euclidean_finished"]
-[connection signal="finished" from="audioManager/nonEuclideanNoise" to="." method="_on_non_euclidean_finished"]
 
 [editable path="dimension2/romanHouse"]
 [editable path="dimension3/tower"]

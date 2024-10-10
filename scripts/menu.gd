@@ -87,7 +87,6 @@ func _ready() -> void:
 	
 	musicSetting = GI.musicVolume
 	$settingsGrid/musicButton.text = "Music <" + str(musicSetting) + ">"
-	audioManager.changeVolume(-20 + musicSetting * 2)
 	
 	sfxSetting = GI.sfxVolume 
 	$settingsGrid/sfxButton.text = "SFX <" + str(sfxSetting) + ">"

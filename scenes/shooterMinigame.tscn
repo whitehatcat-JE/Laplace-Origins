@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://bofptlnpouy2f"]
+[gd_scene load_steps=56 format=3 uid="uid://bofptlnpouy2f"]
 
 [ext_resource type="Script" path="res://scripts/shooterMinigame.gd" id="1_2loep"]
 [ext_resource type="Texture2D" uid="uid://b6gke7dlju7qm" path="res://assets/2d/shooterMinigame/tilemap.png" id="2_k247b"]
@@ -23,7 +23,6 @@
 [ext_resource type="Texture2D" uid="uid://c3wj0u3lpcyw" path="res://assets/2d/shooterMinigame/laplaceCore.png" id="13_fvfcx"]
 [ext_resource type="Texture2D" uid="uid://bs16k0yleyi6r" path="res://assets/2d/shooterMinigame/controls.png" id="14_6akow"]
 [ext_resource type="AudioStream" uid="uid://drgj4ghmgepy8" path="res://assets/audio/sfx/shooter/enemyShot.mp3" id="17_gd4gk"]
-[ext_resource type="AudioStream" uid="uid://dr0joc7jcfb66" path="res://assets/audio/music/laplaceShooter.mp3" id="17_pgbd4"]
 [ext_resource type="AudioStream" uid="uid://dc22i14iyvq11" path="res://assets/audio/sfx/shooter/enemyShotContinuous.mp3" id="18_xtr3c"]
 [ext_resource type="PackedScene" uid="uid://ca0p6p4ae2vwp" path="res://scenes/schrodinger.tscn" id="21_6ahgg"]
 [ext_resource type="Texture2D" uid="uid://cbfshvxp0cqca" path="res://assets/2d/shooterMinigame/collectableEye1.png" id="22_uuox3"]
@@ -421,34 +420,10 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("laplaceSFX:volume_db")
+tracks/2/path = NodePath("laplace/shotContinuousSFX:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -80.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("laplaceSFX:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.9),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("laplace/shotContinuousSFX:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0, 1.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -483,30 +458,6 @@ tracks/1/keys = {
 "args": [true],
 "method": &"toggleLaplaceBullets"
 }]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("laplaceSFX:volume_db")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 10),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-80.0, 0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("laplaceSFX:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jyb04"]
@@ -1037,11 +988,6 @@ stream = ExtResource("17_gd4gk")
 stream = ExtResource("18_xtr3c")
 volume_db = 5.0
 
-[node name="laplaceSFX" type="AudioStreamPlayer" parent="." groups=["sfx"]]
-stream = ExtResource("17_pgbd4")
-volume_db = -80.0
-pitch_scale = 0.7
-
 [node name="schrodingerView" type="Sprite2D" parent="."]
 visible = false
 z_index = 7
@@ -1055,6 +1001,9 @@ size = Vector2i(1024, 500)
 render_target_update_mode = 4
 
 [node name="schrodinger" parent="schrodingerView/schrodingerViewport" instance=ExtResource("21_6ahgg")]
+
+[node name="Camera3D" parent="schrodingerView/schrodingerViewport/schrodinger" index="19"]
+transform = Transform3D(1, 0, 0, 0, 0.915613, -0.402059, 0, 0.402059, 0.915613, -0.736414, 12.0824, 14.0832)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4v8d0")
