@@ -3,7 +3,15 @@ extends Node3D
 var homeScene = null
 var animStarted:bool = true
 
+var appID:String = "2841470"
+
+func _init():
+	OS.set_environment("SteamAppID", appID)
+	OS.set_environment("SteamGameID", appID)
+
 func _ready() -> void:
+	Steam.steamInit()
+	
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$audioManager.play("title")
 

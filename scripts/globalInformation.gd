@@ -21,4 +21,6 @@ var flappyBirdActive:bool = false
 # Stored basement scene location for when player is in city
 var previousScreen:Node
 
+@onready var steamLoaded:bool = Steam.isSteamRunning()
+
 func _input(event): if Input.is_action_pressed("forceQuit"): get_tree().quit();

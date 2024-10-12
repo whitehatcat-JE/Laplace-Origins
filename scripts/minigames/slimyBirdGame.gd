@@ -68,6 +68,7 @@ func stop():
 	$backdrop/character/slime.rotation_degrees = 0.0
 	$backdrop/character.position.y = 0.0
 	$backdrop/character/hitbox.disabled = true
+	if GI.steamLoaded and score >= 30: Steam.setAchievement("SH_BIRD");
 	if score > 0 or $startButton/score.text != "":
 		$startButton/score.text = "Score: " + str(clamp(score, 0, 10000000))
 	score = -4

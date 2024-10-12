@@ -25,6 +25,10 @@ boot_splash/minimum_display_time=2000
 
 GI="*res://scripts/globalInformation.gd"
 
+[debug]
+
+file_logging/enable_file_logging=true
+
 [display]
 
 window/size/viewport_width=1920

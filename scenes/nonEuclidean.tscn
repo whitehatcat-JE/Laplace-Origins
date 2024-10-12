@@ -53,7 +53,7 @@
 [ext_resource type="Texture2D" uid="uid://dpu34bq217oey" path="res://assets/3d/textures/Rock056_1K-JPG/Rock056_1K-JPG_Roughness.jpg" id="35_gsa53"]
 [ext_resource type="PackedScene" uid="uid://dubgkevkltw4y" path="res://assets/3d/nonEuclidean/tower.blend" id="36_fvk6q"]
 [ext_resource type="ArrayMesh" uid="uid://de1pr0ti1hdx4" path="res://assets/3d/nonEuclidean/towerTopCollisions.obj" id="37_qs3tr"]
-[ext_resource type="Texture2D" uid="uid://b4angvman17m7" path="res://assets/2d/laplace/line3Vertical.png" id="39_t3rsk"]
+[ext_resource type="Texture2D" uid="uid://rb0bhgyvb05s" path="res://assets/2d/laplace/line3.png" id="39_812h3"]
 [ext_resource type="Script" path="res://scripts/menu.gd" id="50_b4two"]
 [ext_resource type="ArrayMesh" uid="uid://ct0oujsqp01pg" path="res://assets/3d/nonEuclidean/easel.obj" id="50_eeb47"]
 [ext_resource type="Texture2D" uid="uid://b3koxxptk440r" path="res://assets/3d/textures/hardwood-brown-planks-bl/hardwood-brown-planks-albedo.png" id="50_vl3xx"]
@@ -2126,8 +2126,8 @@ cast_shadow = 0
 surface_material_override/0 = SubResource("StandardMaterial3D_t7hd3")
 
 [node name="line2" type="Decal" parent="dimension2/romanHouse"]
-transform = Transform3D(0.877724, 3.78551e-08, 0.479167, 1.11759e-07, -0.999999, -2.48353e-08, 0.479167, 2.48353e-08, -0.877723, -0.220996, 7.25377, -3.39605)
-size = Vector3(4, 4, 1)
+transform = Transform3D(0.959284, 0.0195292, -0.281768, -0.281822, -5.29706e-08, -0.959466, -0.0187377, 0.999808, 0.00550371, 2.23473, 6.58825, -5.01503)
+size = Vector3(4, 1.21143, 1)
 texture_albedo = ExtResource("27_pmf13")
 texture_emission = ExtResource("27_pmf13")
 
@@ -2258,10 +2258,10 @@ visible = false
 mesh = ExtResource("37_qs3tr")
 
 [node name="line3" type="Decal" parent="dimension3/tower"]
-transform = Transform3D(0.999927, 1.32445e-07, 0.0121131, -1.99157e-07, 0.999999, 2.69239e-08, -0.0121125, -7.35304e-09, 0.999926, -0.812021, 205.596, 14.236)
-size = Vector3(5, 5, 30)
-texture_albedo = ExtResource("39_t3rsk")
-texture_emission = ExtResource("39_t3rsk")
+transform = Transform3D(0.499963, 1.19316e-07, 0.00605435, 0.00605435, -1.75863e-08, -0.499963, -1.19094e-07, 0.5, -1.90298e-08, -10.0987, 205.147, 38.0476)
+size = Vector3(10, 3.73584, 2.5)
+texture_albedo = ExtResource("39_812h3")
+texture_emission = ExtResource("39_812h3")
 
 [node name="tempMeshes" type="Node3D" parent="."]
 

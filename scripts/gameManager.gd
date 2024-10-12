@@ -195,8 +195,8 @@ func _on_trigger_field_body_entered(_body) -> void:
 # Change scene to outdoors
 func nonEuclideanSwitch():
 	get_tree().change_scene_to_file("res://scenes/nonEuclidean.tscn")
-	if get_node_or_null(".") != null:
-		self.queue_free()
+	if GI.previousScreen != null:
+		GI.previousScreen.queue_free()
 # Disable piano room jumpscares
 func _on_trigger_field_2_body_entered(_body) -> void:
 	$pianoRoom/triggerField2.set_deferred("monitoring", false)

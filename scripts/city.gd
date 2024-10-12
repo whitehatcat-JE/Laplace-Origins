@@ -2,6 +2,7 @@ extends Node3D
 # Plays city SFX when scene loaded
 func _ready() -> void:
 	$audioManager.play("city")
+	if GI.steamLoaded: Steam.setAchievement("SH_KNEEL");
 # Teleports player to basement
 func _on_city_trigger_field_body_entered(_body) -> void:
 	$cityTriggerField.set_deferred("monitoring", false)

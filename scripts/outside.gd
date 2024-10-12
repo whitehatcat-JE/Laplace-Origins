@@ -24,6 +24,7 @@ func playOutdoors():
 func _on_reveal_trigger_body_entered(body) -> void:
 	$player.disabled = true
 	$player/menu.disabled = true
+	if GI.steamLoaded: Steam.setAchievement("SH_COMPLETEGAME");
 	# Rotates player to face laplace
 	var tween:Tween = get_tree().create_tween()
 	tween.set_parallel(true)

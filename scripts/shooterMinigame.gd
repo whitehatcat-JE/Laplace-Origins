@@ -122,6 +122,7 @@ func _on_player_damage():
 func _on_spawn_timer_timeout():
 	if !$player.alive or GI.schrodingerActive: return;
 	if timeSinceStarted > 115.0 and corrupted: # Spawn laplace
+		if GI.steamLoaded: Steam.setAchievement("SH_FATE");
 		var previousSFXVolume:int = GI.sfxVolume
 		GI.sfxVolume = 0
 		while len(allEnemies) > 0:

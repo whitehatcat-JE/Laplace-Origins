@@ -27,13 +27,6 @@ var queuedDialogue:Array[String] = [
 
 @onready var pillars:Array[Sprite3D] = [$pillar1, $pillar2, $pillar3, $pillar4, $pillar5, $pillar6, $pillar7, $pillar8, $pillar9, $pillar10]
 
-func _ready():
-	return
-	GI.shooterActive = true
-	GI.inOS = true
-	isFocused = true
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if !isFocused or !GI.shooterActive or !GI.inOS or inCutscene:
@@ -56,6 +49,7 @@ func _process(delta):
 			elif len(queuedDialogue) > 0:
 				nextDialogue()
 			else:
+				if GI.steamLoaded: Steam.setAchievement("SH_SCHRODINGER");
 				emit_signal("exitSchrodinger")
 
 func _on_pavilion_scanner_body_entered(body):
