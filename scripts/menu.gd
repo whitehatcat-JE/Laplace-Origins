@@ -10,6 +10,7 @@ enum BUTTON {
 	sfx,
 	graphics,
 	invert,
+	vsync,
 	guideBack,
 	controlsBack,
 	settingsBack
@@ -31,7 +32,7 @@ var currentButton:BUTTON = BUTTON.start
 
 var menuButtons:Dictionary = {
 	MENU.main:[BUTTON.start, BUTTON.settings, BUTTON.controls, BUTTON.guide, BUTTON.quit],
-	MENU.settings:[BUTTON.music, BUTTON.sfx, BUTTON.graphics, BUTTON.invert, BUTTON.settingsBack],
+	MENU.settings:[BUTTON.music, BUTTON.sfx, BUTTON.graphics, BUTTON.invert, BUTTON.vsync, BUTTON.settingsBack],
 	MENU.controls:[BUTTON.controlsBack],
 	MENU.guide:[BUTTON.guideBack]
 	
@@ -95,6 +96,11 @@ func _ready() -> void:
 	
 	if GI.invertY: $settingsGrid/invertButton.text = "Invert Y <YES>";
 	else: $settingsGrid/invertButton.text = "Invert Y <NO>";
+	
+	match GI.vsyncOrder[GI.vsyncNum]:
+		GI.VSYNC_MODES.enabled: $settingsGrid/vsyncButton.text = "V-Sync <ON>";
+		GI.VSYNC_MODES.locked60: $settingsGrid/vsyncButton.text = "V-Sync <60>";
+		GI.VSYNC_MODES.disabled: $settingsGrid/vsyncButton.text = "V-Sync <OFF>";
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(_event) -> void:
@@ -181,6 +187,21 @@ func _input(_event) -> void:
 				GI.invertY = !GI.invertY
 				if GI.invertY: $settingsGrid/invertButton.text = "Invert Y <YES>";
 				else: $settingsGrid/invertButton.text = "Invert Y <NO>";
+			BUTTON.vsync:
+				GI.vsyncNum = wrapi(GI.vsyncNum + 1, 0, len(GI.vsyncOrder))
+				match GI.vsyncOrder[GI.vsyncNum]:
+					GI.VSYNC_MODES.enabled:
+						DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
+						Engine.max_fps = 0
+						$settingsGrid/vsyncButton.text = "V-Sync <ON>"
+					GI.VSYNC_MODES.locked60:
+						DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+						Engine.max_fps = 60
+						$settingsGrid/vsyncButton.text = "V-Sync <60>"
+					GI.VSYNC_MODES.disabled:
+						DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+						Engine.max_fps = 0
+						$settingsGrid/vsyncButton.text = "V-Sync <OFF>"
 
 func openMenu():
 	changeButton(BUTTON.start)
@@ -266,6 +287,8 @@ func getButton(button:BUTTON):
 			return $settingsGrid/graphicsButton
 		BUTTON.invert:
 			return $settingsGrid/invertButton
+		BUTTON.vsync:
+			return $settingsGrid/vsyncButton
 		BUTTON.guideBack:
 			return $helpGrid/backButton
 		BUTTON.controlsBack:

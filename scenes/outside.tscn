@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3 uid="uid://dcf34l30ctj4m"]
+[gd_scene load_steps=129 format=3 uid="uid://dcf34l30ctj4m"]
 
 [ext_resource type="Script" path="res://scripts/outside.gd" id="1_6fiwc"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_mu5ff"]
@@ -124,6 +124,12 @@ volumetric_fog_length = 48.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iowj3"]
 
 [sub_resource type="FontVariation" id="FontVariation_cmfer"]
+base_font = ExtResource("14_5rs2a")
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="FontVariation" id="FontVariation_7uak8"]
 base_font = ExtResource("14_5rs2a")
 variation_opentype = {
 2003265652: 700
@@ -1089,6 +1095,17 @@ theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = SubResource("FontVariation_cmfer")
 theme_override_font_sizes/font_size = 64
 text = "Invert-Y <NO>"
+
+[node name="vsyncButton" type="Label" parent="player/menu/settingsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_7uak8")
+theme_override_font_sizes/font_size = 64
+text = "V-Sync <ON>"
 
 [node name="VSeparator4" type="VSeparator" parent="player/menu/settingsGrid"]
 custom_minimum_size = Vector2(0, 50)

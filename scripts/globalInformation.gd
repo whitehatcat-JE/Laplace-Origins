@@ -1,4 +1,10 @@
 extends Node
+enum VSYNC_MODES {
+	disabled,
+	enabled,
+	locked60
+}
+
 ## Global variables
 var progress:int = 0
 # Settings
@@ -6,6 +12,8 @@ var sfxVolume:int = 10
 var musicVolume:int = 10
 var graphics:String = "HIGH"
 var invertY:bool = false
+var vsyncOrder:Array[VSYNC_MODES] = [VSYNC_MODES.enabled, VSYNC_MODES.locked60, VSYNC_MODES.disabled]
+var vsyncNum:int = 0
 # pcOS
 var playerPos2D:Vector2 = Vector2()
 var shooterActive:bool = false

@@ -50,7 +50,7 @@ func start():
 	GI.slimyBirdActive = true
 	$startButton.position.x = 10000.0
 	$backdrop/floor/floorBody.position.y = 0
-	$backdrop/character/hitbox.disabled = false
+	$backdrop/character/hitbox.set_deferred("disabled", false)
 
 func stop():
 	GI.slimyBirdActive = false
@@ -67,7 +67,7 @@ func stop():
 	$startButton.position.x = 1071.222
 	$backdrop/character/slime.rotation_degrees = 0.0
 	$backdrop/character.position.y = 0.0
-	$backdrop/character/hitbox.disabled = true
+	$backdrop/character/hitbox.set_deferred("disabled", true)
 	if GI.steamLoaded and score >= 30: Steam.setAchievement("SH_BIRD");
 	if score > 0 or $startButton/score.text != "":
 		$startButton/score.text = "Score: " + str(clamp(score, 0, 10000000))

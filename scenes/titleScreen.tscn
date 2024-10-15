@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://di3lqggog13qo"]
+[gd_scene load_steps=44 format=3 uid="uid://di3lqggog13qo"]
 
 [ext_resource type="Script" path="res://scripts/titleScreen.gd" id="1_tv2yb"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="2_7epp4"]
@@ -758,6 +758,12 @@ variation_opentype = {
 2003265652: 700
 }
 
+[sub_resource type="FontVariation" id="FontVariation_gwpun"]
+base_font = ExtResource("4_xpsp6")
+variation_opentype = {
+2003265652: 700
+}
+
 [sub_resource type="Shader" id="Shader_qir2m"]
 code = "/*
 Shader from Godot Shaders - the free shader library.
@@ -1440,6 +1446,17 @@ theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = SubResource("FontVariation_p00rw")
 theme_override_font_sizes/font_size = 64
 text = "Invert Y <NO>"
+
+[node name="vsyncButton" type="Label" parent="menu/settingsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_gwpun")
+theme_override_font_sizes/font_size = 64
+text = "V-Sync <ON>"
 
 [node name="VSeparator4" type="VSeparator" parent="menu/settingsGrid"]
 custom_minimum_size = Vector2(0, 50)

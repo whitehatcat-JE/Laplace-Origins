@@ -19,6 +19,4 @@ func kill() -> void:
 	dead = true
 
 func _on_decay_timer_timeout() -> void: kill(); # Destroys self if offscreen
-func _on_body_entered(_body) -> void:
-	print(_body.name)
-	kill(); # Destroys self on wall collision
+func _on_body_entered(_body) -> void: kill(); # Destroys self on wall collision
