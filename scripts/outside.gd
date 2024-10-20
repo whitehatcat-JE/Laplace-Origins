@@ -3,6 +3,7 @@ extends Node3D
 @onready var enviro:Node = $worldEnvironment
 # Applies settings during scene spawn-in
 func _ready() -> void:
+	GI.fromOutside = true
 	$player/head/cam.rotation_degrees.x = 0.0
 	for sfx in get_tree().get_nodes_in_group("sfx"):
 		sfx.volume_db = sfx.volume_db - (10 - GI.sfxVolume) * 2 if GI.sfxVolume > 0 else -80

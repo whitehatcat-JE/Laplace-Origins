@@ -25,6 +25,7 @@ enum MENU {
 
 var menuOpen:bool = false
 var disabled = false
+var justInteracted:bool = false
 
 var crtTween:Tween = null
 
@@ -102,10 +103,10 @@ func _ready() -> void:
 		GI.VSYNC_MODES.locked60: $settingsGrid/vsyncButton.text = "V-Sync <60>";
 		GI.VSYNC_MODES.disabled: $settingsGrid/vsyncButton.text = "V-Sync <OFF>";
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _input(_event) -> void:
 	if disabled: return;
-	if Input.is_action_just_pressed("menu"):
+	if Input.is_action_just_pressed("menu") and !justInteracted:
+		justInteracted = true
 		if menuOpen:
 			closeMenu()
 		else:
@@ -113,19 +114,22 @@ func _input(_event) -> void:
 	
 	if !menuOpen: return;
 	
-	if Input.is_action_just_pressed("moveForward"):
+	if Input.is_action_just_pressed("moveForward") and !justInteracted:
+		justInteracted = true
 		if currentButton in menuButtons[MENU.main]:
 			changeButton(menuButtons[MENU.main][wrapi(menuButtons[MENU.main].find(currentButton) - 1, 0, len(menuButtons[MENU.main]))])
 		elif currentButton in menuButtons[MENU.settings]:
 			changeButton(menuButtons[MENU.settings][wrapi(menuButtons[MENU.settings].find(currentButton) - 1, 0, len(menuButtons[MENU.settings]))])
 	
-	if Input.is_action_just_pressed("moveBackward"):
+	if Input.is_action_just_pressed("moveBackward") and !justInteracted:
+		justInteracted = true
 		if currentButton in menuButtons[MENU.main]:
 			changeButton(menuButtons[MENU.main][wrapi(menuButtons[MENU.main].find(currentButton) + 1, 0, len(menuButtons[MENU.main]))])
 		elif currentButton in menuButtons[MENU.settings]:
 			changeButton(menuButtons[MENU.settings][wrapi(menuButtons[MENU.settings].find(currentButton) + 1, 0, len(menuButtons[MENU.settings]))])
 	
-	if Input.is_action_just_pressed("interact"):
+	if Input.is_action_just_pressed("interact") and !justInteracted:
+		justInteracted = true
 		$clickSFX.play()
 		match currentButton:
 			BUTTON.start:
@@ -202,6 +206,9 @@ func _input(_event) -> void:
 						DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 						Engine.max_fps = 0
 						$settingsGrid/vsyncButton.text = "V-Sync <OFF>"
+
+func _process(delta: float) -> void:
+	justInteracted = false
 
 func openMenu():
 	changeButton(BUTTON.start)

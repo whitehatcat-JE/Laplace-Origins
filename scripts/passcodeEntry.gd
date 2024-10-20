@@ -5,6 +5,8 @@ signal exitPasscode
 # State variables
 var mouseSensitivity:float = 0.5
 
+var justInteracted:bool = false
+
 var currentInteraction:String = ""
 var buttonHeld:String = ""
 var passcode:String = "912346"
@@ -38,7 +40,8 @@ func eventTriggered(event) -> void:
 		newPos.x = clamp(newPos.x, minX, maxX)
 		newPos.y = clamp(newPos.y, minY, maxY)
 		$mouse.position = newPos
-	elif Input.is_action_just_pressed("interact") and currentInteraction != "": # Runs button event
+	elif Input.is_action_just_pressed("interact") and currentInteraction != "" and !justInteracted: # Runs button event
+		justInteracted = true
 		buttonHeld = currentInteraction
 		buttonSFX.play()
 		if currentInteraction in "0123456789": # Number inputs
@@ -60,6 +63,7 @@ func eventTriggered(event) -> void:
 		buttonHeld = ""
 # Checks if mouse currently hovered over button
 func _process(delta) -> void:
+	justInteracted = false
 	# Updates mouse icon if hovered over button
 	$mouse/mousePointer.visible = false
 	$mouse/mouseInteract.visible = false

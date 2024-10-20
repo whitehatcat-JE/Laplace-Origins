@@ -7,6 +7,7 @@ enum VSYNC_MODES {
 
 ## Global variables
 var progress:int = 0
+var fromOutside:bool = false
 # Settings
 var sfxVolume:int = 10
 var musicVolume:int = 10

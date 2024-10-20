@@ -10,6 +10,7 @@ const DECELERATION:float = 20.0
 var cameraAngle:float = 0
 var unlockedInteractions:Array[String] = ["monitor", "passcode", "crt", "piano", "notepad", "freeKey"]
 var currentGroundType:int = 0
+
 # Export variables
 @export var lockYRot:bool = false
 @export var disabled:bool = false

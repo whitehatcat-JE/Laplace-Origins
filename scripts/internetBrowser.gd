@@ -4,6 +4,22 @@ signal downloadedSingularity
 signal downloadedFree
 signal enableWifi
 
+@onready var animationPlayers:Array[AnimationPlayer] = [
+	$internetAnims,
+	$homepage/homepageAnims,
+	$newsResults/newsAnims,
+	$newsResults/article1/hoverAnims,
+	$newsResults/article2/hoverAnims,
+	$weatherResults/weatherAnims,
+	$weatherResults/article1/hoverAnims,
+	$gameResults/gameAnims,
+	$gameResults/article1/description/descriptionAnim,
+	$gameResults/article1/hoverAnims,
+	$gameResults/article2/hoverAnims,
+	$gameResults/article3/hoverAnims,
+	$imageResults/imageAnims
+]
+
 func _process(delta: float) -> void:
 	if (!$gameResults/article2Open.visible or !visible) and $gameResults/article2Open/slimyBirdGame.alive:
 		$gameResults/article2Open/slimyBirdGame.stop()

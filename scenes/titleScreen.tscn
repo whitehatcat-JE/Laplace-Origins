@@ -676,7 +676,7 @@ shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="Animation" id="Animation_xklij"]
 resource_name = "fadeIn"
-length = 2.0
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -684,7 +684,7 @@ tracks/0/path = NodePath("fadeIn:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
+"times": PackedFloat32Array(0, 0.5, 1.5),
 "transitions": PackedFloat32Array(1, -2, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
@@ -696,7 +696,7 @@ tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -744,7 +744,6 @@ sky_material = SubResource("ProceduralSkyMaterial_nrs1g")
 [sub_resource type="Environment" id="Environment_rmkg6"]
 background_mode = 1
 sky = SubResource("Sky_65uhg")
-sdfgi_enabled = true
 fog_light_color = Color(0.608, 0, 0.0494433, 1)
 volumetric_fog_density = 0.1
 volumetric_fog_albedo = Color(1, 0, 0.0329156, 1)
@@ -1128,7 +1127,6 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_81xrj")
 }
-autoplay = "fadeIn"
 
 [node name="crt" type="MeshInstance3D" parent="."]
 transform = Transform3D(-3.93403e-08, 0, -0.9, 0, 0.6, 0, 0.9, 0, -3.93403e-08, -0.736461, -0.346774, -0.119468)

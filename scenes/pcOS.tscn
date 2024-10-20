@@ -1839,7 +1839,7 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 [node name="quit" parent="shooterMinigame/HUD" index="6"]
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 
-[node name="schrodingerView" parent="shooterMinigame" index="13"]
+[node name="schrodingerView" parent="shooterMinigame" index="12"]
 texture = SubResource("ViewportTexture_474pj")
 
 [node name="schrodingerViewport" parent="shooterMinigame/schrodingerView" index="0"]

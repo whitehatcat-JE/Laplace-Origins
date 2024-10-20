@@ -3,6 +3,7 @@ extends Node3D
 var inPasscodeScreen:bool = false
 var inNotepad:bool = false
 var dialogueLine:int = 0
+var justInteracted:bool = true
 # Dialogue
 var dialogueLines:Array = [
 	"It seems I-I-I---",
@@ -11,7 +12,7 @@ var dialogueLines:Array = [
 	"Reality is begie- beginne- beginning to fracture, so it won't be long before your current purpose is complete.",
 	"You who h-h-h---",
 	"Hails from beyond the Zeroed Abyss.",
-	"I look forwards to meeting you in the next world."
+	"I look forward to meeting you in the next world."
 ]
 
 # Nodes
@@ -30,6 +31,10 @@ var dialogueLines:Array = [
 func _ready():
 	$player/menu/helpGrid/helpMessage.text = "I should check my emails."
 	audioManager.play("menu")
+	justInteracted = false
+
+func _process(delta: float) -> void:
+	justInteracted = false
 
 # Screen interactions
 func _input(event) -> void:
@@ -40,20 +45,19 @@ func _input(event) -> void:
 		inPasscodeScreen = false
 		inNotepad = false
 		playerCam.current = true
-	elif pcCam.current: pcOS.eventTriggered(event); # Sends player input to pcOS viewport
+	elif pcCam.current:
+		pcOS.eventTriggered(event); # Sends player input to pcOS viewport
 	elif inPasscodeScreen: $basement/passcode/passcodeEntry.eventTriggered(event); # Sends player input to passcodeEntry viewport
 	elif $player/HUD/paper.visible and Input.is_action_just_pressed("interact"):
 		$player/HUD/paper.visible = false
 		player.disabled = false
 		$player/menu.disabled = false
 		$hands/projectorSFX.stop()
-		#var projectorTween:Tween = get_tree().create_tween()
-		#projectorTween.tween_property($hands/projectorSFX, "volume_db", -80, 1.0)
-		#projectorTween.tween_property($hands/projectorSFX, "playing", false, 0.01)
-		#projectorTween.tween_property($hands/projectorSFX, "volume_db", $hands/projectorSFX.volume_db, 0.01)
 # In-world player interactions
 func _on_player_interacted(interactionName:String) -> void:
-	await get_tree().process_frame # Prevents inputs from being processed during load-in
+	#await get_tree().process_frame # Prevents inputs from being processed during load-in
+	if justInteracted: return;
+	justInteracted = true
 	match interactionName: # Executes code based off interaction name
 		"monitor":
 			screenSFX.play()

@@ -4731,6 +4731,7 @@ position = Vector2(10, 24)
 texture = ExtResource("10_acx1e")
 
 [node name="article1" type="Node2D" parent="newsResults"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(611, 152)
 
 [node name="hoverBackdropA" type="ColorRect" parent="newsResults/article1"]
@@ -4794,6 +4795,7 @@ position = Vector2(-1130, -216.667)
 shape = SubResource("RectangleShape2D_o2sfj")
 
 [node name="article2" type="Node2D" parent="newsResults"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(611, 255)
 
 [node name="hoverBackdropA" type="ColorRect" parent="newsResults/article2"]

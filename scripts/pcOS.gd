@@ -8,6 +8,8 @@ signal spawnKey
 var mouseSensitivity:float = 0.5
 var time:int = 0
 
+var justInteracted:int = 0
+
 var currentInteraction:String = ""
 var menuDisplaying:bool = false
 var filesDisplaying:bool = false
@@ -61,7 +63,8 @@ func eventTriggered(event) -> void:
 		newPos.x = clamp(newPos.x, minX, maxX)
 		newPos.y = clamp(newPos.y, minY, maxY)
 		$mouse.position = newPos
-	elif Input.is_action_just_pressed("interact") and currentInteraction != "": # Click button
+	elif Input.is_action_just_pressed("interact") and currentInteraction != "" and justInteracted == 0: # Click button
+		justInteracted = 2
 		var playDefaultClickSFX:bool = true
 		match currentInteraction:
 			"login": # Replace login screen with homescreen
@@ -280,6 +283,7 @@ func eventTriggered(event) -> void:
 		if playDefaultClickSFX: clickSFX.play();
 # Checks if mouse currently hovered over button
 func _process(delta) -> void:
+	if justInteracted > 0: justInteracted -= 1
 	# Updates mouse icon if hovered over button
 	$mouse/mousePointer.visible = false
 	$mouse/mouseInteract.visible = false
