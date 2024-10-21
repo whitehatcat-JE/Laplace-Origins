@@ -1286,7 +1286,7 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_8omhh"]
 resource_name = "showNews"
 length = 0.2
-step = 0.05
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -4064,12 +4064,10 @@ theme_override_font_sizes/font_size = 35
 text = "Press to search..."
 
 [node name="results" type="Node2D" parent="homepage"]
-position = Vector2(0, 10000)
 
 [node name="resultsPivot" type="Node2D" parent="homepage/results"]
 
 [node name="news" parent="homepage/results/resultsPivot" instance=ExtResource("2_qxlri")]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(1061, 400)
 collision_layer = 8
 interactionName = "newsSearch"
@@ -4103,7 +4101,6 @@ scale = Vector2(0.28125, 0.28125)
 texture = ExtResource("7_md7qo")
 
 [node name="games" parent="homepage/results/resultsPivot" instance=ExtResource("2_qxlri")]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(1061, 424)
 collision_layer = 8
 interactionName = "gameSearch"
@@ -4137,7 +4134,6 @@ scale = Vector2(0.28125, 0.28125)
 texture = ExtResource("8_bvk2b")
 
 [node name="weather" parent="homepage/results/resultsPivot" instance=ExtResource("2_qxlri")]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(1061, 448)
 collision_layer = 8
 interactionName = "weatherSearch"

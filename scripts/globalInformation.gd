@@ -31,5 +31,3 @@ var flappyBirdActive:bool = false
 var previousScreen:Node
 
 @onready var steamLoaded:bool = Steam.isSteamRunning()
-
-func _input(event): if Input.is_action_pressed("forceQuit"): get_tree().quit();

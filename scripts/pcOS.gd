@@ -207,11 +207,15 @@ func eventTriggered(event) -> void:
 				else:
 					$internetBrowser/newsResults/newsAnims.play("hideNews")
 			"newsSearch":
+				$internetBrowser/homepage/results/resultsPivot.scale.y = -1
 				$internetBrowser/weatherResults/weatherAnims.play("hideWeather")
 				$internetBrowser/weatherResults/weatherAnims.advance(2.0)
 				$internetBrowser/gameResults/gameAnims.play("hideGames")
 				$internetBrowser/gameResults/gameAnims.advance(2.0)
 				$internetBrowser/newsResults/newsAnims.play("showNews")
+				$internetBrowser/homepage/homepageAnims.play("hideResults")
+				await get_tree().create_timer(0.1)
+				$internetBrowser/homepage/results/resultsPivot.scale.y = 1
 			"newsArticle1":
 				displayingArticle1 = true
 				$internetBrowser/newsResults/newsAnims.play("showArticle1")
@@ -225,11 +229,15 @@ func eventTriggered(event) -> void:
 				else:
 					$internetBrowser/weatherResults/weatherAnims.play("hideWeather")
 			"weatherSearch":
+				$internetBrowser/homepage/results/resultsPivot.scale.y = -1
 				$internetBrowser/newsResults/newsAnims.play("hideNews")
 				$internetBrowser/newsResults/newsAnims.advance(2.0)
 				$internetBrowser/gameResults/gameAnims.play("hideGames")
 				$internetBrowser/gameResults/gameAnims.advance(2.0)
 				$internetBrowser/weatherResults/weatherAnims.play("showWeather")
+				$internetBrowser/homepage/homepageAnims.play("hideResults")
+				await get_tree().create_timer(0.1)
+				$internetBrowser/homepage/results/resultsPivot.scale.y = 1
 			"weatherArticle1":
 				displayingArticle1 = true
 				$internetBrowser/weatherResults/weatherAnims.play("showArticle1")
@@ -246,12 +254,16 @@ func eventTriggered(event) -> void:
 				else:
 					$internetBrowser/gameResults/gameAnims.play("hideGames")
 			"gameSearch":
+				$internetBrowser/homepage/results/resultsPivot.scale.y = -1
 				$internetBrowser/weatherResults/weatherAnims.play("hideWeather")
 				$internetBrowser/weatherResults/weatherAnims.advance(2.0)
 				$internetBrowser/newsResults/newsAnims.play("hideNews")
 				$internetBrowser/newsResults/newsAnims.advance(2.0)
 				$internetBrowser/gameResults/gameAnims.play("showGames")
 				$internetBrowser/gameResults/article1/description/descriptionAnim.play("flickerDate")
+				$internetBrowser/homepage/homepageAnims.play("hideResults")
+				await get_tree().create_timer(0.1)
+				$internetBrowser/homepage/results/resultsPivot.scale.y = 1
 			"gameArticle1":
 				displayingArticle1 = true
 				$internetBrowser/gameResults/gameAnims.play("showArticle1")
@@ -268,6 +280,7 @@ func eventTriggered(event) -> void:
 			"imageResultsBack":
 				$internetBrowser/imageResults/imageAnims.play("hideImages")
 			"imageSearch":
+				$internetBrowser/homepage/results/resultsPivot.scale.y = -1
 				$internetBrowser/weatherResults/weatherAnims.play("hideWeather")
 				$internetBrowser/weatherResults/weatherAnims.advance(2.0)
 				$internetBrowser/newsResults/newsAnims.play("hideNews")
