@@ -1,12 +1,12 @@
 extends Control
 
-
-# Called when the node enters the scene tree for the first time.
+# Plays fade in animation
 func _ready() -> void:
 	get_tree().paused = true
 	$"../menu".disabled = true
 	var crtTween = get_tree().create_tween()
 	crtTween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	# Hides CRT effect
 	crtTween.set_parallel(true)
 	crtTween.tween_property($crtFade, "modulate:a", 0.0, 0.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	crtTween.tween_property($crt, "material:shader_parameter/warp_amount", 0.0, 1).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
@@ -22,5 +22,6 @@ func _ready() -> void:
 	crtTween.set_parallel(false)
 	crtTween.tween_property($crt, "visible", false, 0.01)
 	await crtTween.finished
+	# Hides UI
 	get_tree().paused = false
 	$"../menu".disabled = false

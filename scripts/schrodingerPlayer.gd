@@ -13,10 +13,8 @@ var currentGroundType:int = 0
 
 @onready var interactCast:Node = $head/cam/interactCast
 @onready var collisionCast:Node = $head/cam/collisionCast
-
-func _input(event):
-	_on_player_dropped_event(event)
-
+# Pass event to sub viewport player
+func _input(event): _on_player_dropped_event(event);
 # Player movement & interaction updates
 func _physics_process(delta) -> void:
 	if disabled: # Prevents player from moving when disabled
@@ -51,13 +49,12 @@ func _physics_process(delta) -> void:
 	elif currentGroundType != 0:
 		groundTypes[currentGroundType].stop()
 		currentGroundType = 0
-
-
+# Player camera rotation events
 func _on_player_dropped_event(event):
 	if disabled: return;
 	if event is InputEventMouseMotion: # Used for mouse movement detection
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
-		
+		# Rotate cam
 		var change:float = (1 if GI.invertY else -1) * event.relative.y * MOUSE_SENSITIVITY
 		if change + cameraAngle > 85:
 			$head/cam.rotate_x(deg_to_rad(85 - cameraAngle))

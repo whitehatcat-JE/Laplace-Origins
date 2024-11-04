@@ -48,6 +48,8 @@ var sOutline:Color = Color(0.28627452254295, 0.10588235408068, 0)
 
 @onready var enviro:Node = $"../WorldEnvironment"
 @onready var pcOS = $"../bedroom/pcWindow/pcOS"
+
+## NOTE: This script has been superseeded by menu.gd, but functions have been retained for dependencies
 # Apply default setting values on scene load
 func _ready() -> void:
 	return

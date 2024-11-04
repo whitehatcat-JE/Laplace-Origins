@@ -1,14 +1,14 @@
 extends Node3D
-
+# Constants
 const MAX_DISTANCE_BOTTOM:float = 60.0
 const MAX_DISTANCE_TOP:float = 100.0
-
+# State variables
 var story:int = 1
 var nextDimensionQueued:bool = false
 var dimensionNum:int = 1
-
+# Max SFX volume
 var maxVolume:float = 0
-
+# Preload shaders
 func _ready():
 	$dimension2.position.z = 20.0
 	$dimension3.position = Vector3(-100, -10, 40)
@@ -19,46 +19,45 @@ func _ready():
 	$dimension3.position = Vector3(0.0, 0.0, 0.0)
 	$dimension3.visible = false
 	$pillars.visible = false
+	# Play music and update volume
 	$audioManager/nonEuclidean.play()
 	$audioManager/nonEuclideanTempo.play()
 	if GI.musicVolume > 0:
 		var musicTween:Tween = get_tree().create_tween()
 		musicTween.tween_property($audioManager/nonEuclidean, "volume_db", $audioManager/nonEuclidean.volume_db, 3.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 		$audioManager/nonEuclidean.volume_db = -80
+	# Play spawn anim
 	$player/HUD/hudAnims.play("fadeIn")
 	await $player/HUD/hudAnims.animation_finished
 	$player/menu.disabled = false
-
+# Reset player location
 func _process(delta: float) -> void:
 	if story == 1:
 		if $player.position.distance_to(Vector3(0, $player.position.y, 0.0)) >= MAX_DISTANCE_BOTTOM:
 			teleportPlayer()
-
+ # Load lower structure when player looks away
 func _on_dimension_1_transition_boundary_screen_exited():
 	if nextDimensionQueued and dimensionNum == 1:
 		dimensionNum = 2
 		nextDimensionQueued = false
 		$dimension1/doorway.visible = false
 		$dimension2.position.y = 0
-
+# Register when player sees building
 func _on_dimension_1_seen_boundary_screen_entered():
 	if dimensionNum == 1:
 		nextDimensionQueued = true
-
+# Show tower
 func _on_show_tower_body_entered(body: Node3D) -> void:
 	$dimension3.visible = true
 	story = 2
-
+# Hide tower
 func _on_hide_tower_body_entered(body: Node3D) -> void:
 	$dimension3.visible = false
 	story = 1
-
-func _on_show_pillars_body_entered(body: Node3D) -> void:
-	$pillars.visible = true
-
-func _on_hide_pillars_body_entered(body: Node3D) -> void:
-	$pillars.visible = false
-
+# Show / hide second story pillars
+func _on_show_pillars_body_entered(body: Node3D) -> void: $pillars.visible = true;
+func _on_hide_pillars_body_entered(body: Node3D) -> void: $pillars.visible = false;
+# Reset player location if out of bounds
 func teleportPlayer():
 	var img := get_viewport().get_texture().get_image()
 	var tex := ImageTexture.create_from_image(img)
@@ -66,14 +65,11 @@ func teleportPlayer():
 	$player/HUD/hudAnims.play("teleport")
 	await RenderingServer.frame_post_draw
 	match story:
-		1:
-			$player.position = $playerBottomRespawnPos.position
-		2:
-			$player.position = $playerTopRespawnPos.position
-
-func _on_second_story_teleport_fields_body_entered(body: Node3D) -> void:
-	teleportPlayer()
-
+		1: $player.position = $playerBottomRespawnPos.position;
+		2: $player.position = $playerTopRespawnPos.position;
+# Check whether player has moved out of bound
+func _on_second_story_teleport_fields_body_entered(body: Node3D) -> void: teleportPlayer();
+# Transition into outdoors scene
 func _on_exit_field_body_entered(body: Node3D) -> void:
 	$player.disabled = true
 	$player/menu.disabled = true
@@ -86,16 +82,13 @@ func _on_exit_field_body_entered(body: Node3D) -> void:
 	$player/HUD/hudAnims.play("fadeOut")
 	await $player/HUD/hudAnims.animation_finished
 	get_tree().change_scene_to_file("res://scenes/outside.tscn")
-
+# Play audio cues
 func _on_non_euclidean_tempo_finished() -> void:
 	$audioManager/nonEuclideanTempo.play()
-	if randf() > 0.8:
-		$audioManager/nonEuclideanBass.play()
-	elif randf() > 0.7:
-		$audioManager/nonEuclideanBell.play()
-	elif randf() > 0.6:
-		$audioManager/nonEuclideanNoise.play()
-
+	if randf() > 0.8: $audioManager/nonEuclideanBass.play();
+	elif randf() > 0.7: $audioManager/nonEuclideanBell.play();
+	elif randf() > 0.6: $audioManager/nonEuclideanNoise.play();
+# Changes music volume
 func changeVolume(newVolume:int) -> void:
 	if newVolume == -20: newVolume = -80; # Mutes song
 	maxVolume = newVolume

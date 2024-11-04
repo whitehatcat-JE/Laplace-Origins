@@ -40,7 +40,7 @@ func _on_look_up_anim_animation_finished(anim_name) -> void:
 	GI.pianoDoorUnlocked = false
 	GI.freeDownloaded = false
 	get_tree().change_scene_to_file("res://scenes/titleScreen.tscn")
-
+# Glitch out music
 func corruptMusic():
 	if GI.musicVolume == 0: return;
 	var musicTween:Tween = get_tree().create_tween()

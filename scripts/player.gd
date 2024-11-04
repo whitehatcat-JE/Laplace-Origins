@@ -35,7 +35,7 @@ func _input(event) -> void:
 		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
 		
 		var change:float = (1 if GI.invertY else -1) * event.relative.y * MOUSE_SENSITIVITY
-		if !lockYRot:
+		if !lockYRot: # Default head rotation
 			if change + cameraAngle > 85:
 				$head/cam.rotate_x(deg_to_rad(85 - cameraAngle))
 				cameraAngle = 85
@@ -45,7 +45,7 @@ func _input(event) -> void:
 			else:
 				$head/cam.rotate_x(deg_to_rad(change))
 				cameraAngle += change
-		else:
+		else: # Restricted head rotation
 			if change + cameraAngle > 60:
 				$head/cam.rotate_x(deg_to_rad(60 - cameraAngle))
 				cameraAngle = 60

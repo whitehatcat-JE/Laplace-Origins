@@ -237,27 +237,29 @@ func killGame() -> void:
 		laplaceDescended = false
 		GI.laplaceActive = false
 		$corruptGame.play("laplaceAscend")
-
+# Transition to schrodinger scene
 func enterSchrodinger():
 	killGame()
 	$schrodingerView.texture = $schrodingerView/schrodingerViewport.get_texture()
 	$schrodingerView.visible = true
 	$schrodingerView/schrodingerViewport/schrodinger.isFocused = true
-
+# Transition from schrodinger scene
 func exitSchrodinger():
 	$schrodingerView.visible = false
 	$schrodingerView/schrodingerViewport/schrodinger.isFocused = false
 	emit_signal("showMouse")
 	GI.schrodingerActive = false
 	schrodingerDisabled = true
-
+# Increment eyes contacted
 func _on_player_scanner_body_entered(body):
 	$eyeData/eye/playerScanner.set_deferred("monitoring", false)
 	$eyeData/eye/eyeSprite.play("close")
 	eyesCollected += 1
 	$glitchAnim.play("glitch")
 	$glitchAnim.speed_scale = 1.0 - (float(eyesCollected) / 10.0)
+	# Check whether eye threshold reached
 	if eyesCollected == EYE_AMT:
+		# Transition to schrodinger
 		emit_signal("schrodingerTransition")
 		emit_signal("hideMouse")
 		GI.schrodingerActive = true
@@ -269,7 +271,7 @@ func _on_player_scanner_body_entered(body):
 		GI.sfxVolume = previousSFXVolume
 	else:
 		$eyeData/eyeSpawnTime.start()
-
+# Spawn eye
 func _on_eye_spawn_time_timeout():
 	if !$player.alive: return;
 	$eyeData/eye.position = $eyeData/eyePositions.get_child(eyesCollected).position

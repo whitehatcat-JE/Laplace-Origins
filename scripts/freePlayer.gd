@@ -8,6 +8,5 @@ func _physics_process(delta) -> void:
 	if !GI.freeActive or !GI.inOS or !playerUnlocked: return; # Stop player from moving if game not focused or player dead
 	# Move in inputted direction
 	velocity = Input.get_vector("shooterMoveLeft", "shooterMoveRight", "shooterMoveUp", "shooterMoveDown") * SPEED
-	if yLocked:
-		velocity.y = 0.0
+	if yLocked: velocity.y = 0.0;
 	move_and_slide()

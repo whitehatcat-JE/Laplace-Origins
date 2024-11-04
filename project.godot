@@ -13,7 +13,6 @@ config_version=5
 config/name="sunset-humanity"
 run/main_scene="res://scenes/titleScreen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-run/max_fps=5
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://assets/2d/menus/sunsetHumanityLayoutTest.png"
 boot_splash/fullsize=false

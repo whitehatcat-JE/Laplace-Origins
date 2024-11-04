@@ -170,23 +170,23 @@ func eventTriggered(event) -> void:
 				$internetBrowser.visible = false
 				$mouse/pointerRay.set_collision_mask_value(2, true)
 				$mouse/pointerRay.set_collision_mask_value(4, false)
-			"freeOpen":
+			"freeOpen": # Show virus
 				GI.freeActive = true
 				$freeVirus.visible = true
 				$mouse/pointerRay.set_collision_mask_value(2, false)
 				$mouse/pointerRay.set_collision_mask_value(5, true)
-			"freeQuit":
+			"freeQuit": # Hide virus
 				GI.freeActive = false
 				$freeVirus.visible = false
 				$mouse/pointerRay.set_collision_mask_value(2, true)
 				$mouse/pointerRay.set_collision_mask_value(5, false)
-			"doorInteract":
+			"doorInteract": # Interact with virus door
 				$freeVirus.showDialogue("door")
-			"keyInteract":
+			"keyInteract": # Interact with virus key
 				$freeVirus.showDialogue("key")
-			"laplaceInteract":
+			"laplaceInteract": # Interact with virus laplace
 				$freeVirus.showDialogue("laplace")
-			"search":
+			"search": # Show / hide internet browser search results
 				if GI.progress > 2:
 					if $internetBrowser/homepage/resultsWeep.position.y > 1000:
 						$internetBrowser/homepage/homepageAnims.play("showResultsWeep")
@@ -197,7 +197,7 @@ func eventTriggered(event) -> void:
 						$internetBrowser/homepage/homepageAnims.play("showResults")
 					else:
 						$internetBrowser/homepage/homepageAnims.play("hideResults")
-			"newsResultsBack":
+			"newsResultsBack": # Return to homepage from news results
 				if displayingArticle1:
 					displayingArticle1 = false
 					$internetBrowser/newsResults/newsAnims.play("hideArticle1")
@@ -206,7 +206,7 @@ func eventTriggered(event) -> void:
 					$internetBrowser/newsResults/newsAnims.play("hideArticle2")
 				else:
 					$internetBrowser/newsResults/newsAnims.play("hideNews")
-			"newsSearch":
+			"newsSearch": # Show news results page
 				$internetBrowser/homepage/results/resultsPivot.scale.y = -1
 				$internetBrowser/weatherResults/weatherAnims.play("hideWeather")
 				$internetBrowser/weatherResults/weatherAnims.advance(2.0)
@@ -216,19 +216,19 @@ func eventTriggered(event) -> void:
 				$internetBrowser/homepage/homepageAnims.play("hideResults")
 				await get_tree().create_timer(0.1)
 				$internetBrowser/homepage/results/resultsPivot.scale.y = 1
-			"newsArticle1":
+			"newsArticle1": # Show news article 1
 				displayingArticle1 = true
 				$internetBrowser/newsResults/newsAnims.play("showArticle1")
-			"newsArticle2":
+			"newsArticle2": # Show news article 2
 				displayingArticle2 = true
 				$internetBrowser/newsResults/newsAnims.play("showArticle2")
-			"weatherResultsBack":
+			"weatherResultsBack": # Return to homepage from weather results
 				if displayingArticle1:
 					displayingArticle1 = false
 					$internetBrowser/weatherResults/weatherAnims.play("hideArticle1")
 				else:
 					$internetBrowser/weatherResults/weatherAnims.play("hideWeather")
-			"weatherSearch":
+			"weatherSearch": # Show weather results page
 				$internetBrowser/homepage/results/resultsPivot.scale.y = -1
 				$internetBrowser/newsResults/newsAnims.play("hideNews")
 				$internetBrowser/newsResults/newsAnims.advance(2.0)
@@ -238,10 +238,10 @@ func eventTriggered(event) -> void:
 				$internetBrowser/homepage/homepageAnims.play("hideResults")
 				await get_tree().create_timer(0.1)
 				$internetBrowser/homepage/results/resultsPivot.scale.y = 1
-			"weatherArticle1":
+			"weatherArticle1": # Show weather article 1
 				displayingArticle1 = true
 				$internetBrowser/weatherResults/weatherAnims.play("showArticle1")
-			"gameResultsBack":
+			"gameResultsBack": # Return to homepage from game results
 				if displayingArticle1:
 					displayingArticle1 = false
 					$internetBrowser/gameResults/gameAnims.play("hideArticle1")
@@ -253,7 +253,7 @@ func eventTriggered(event) -> void:
 					$internetBrowser/gameResults/gameAnims.play("hideArticle3")
 				else:
 					$internetBrowser/gameResults/gameAnims.play("hideGames")
-			"gameSearch":
+			"gameSearch": # Show game results page
 				$internetBrowser/homepage/results/resultsPivot.scale.y = -1
 				$internetBrowser/weatherResults/weatherAnims.play("hideWeather")
 				$internetBrowser/weatherResults/weatherAnims.advance(2.0)
@@ -264,22 +264,22 @@ func eventTriggered(event) -> void:
 				$internetBrowser/homepage/homepageAnims.play("hideResults")
 				await get_tree().create_timer(0.1)
 				$internetBrowser/homepage/results/resultsPivot.scale.y = 1
-			"gameArticle1":
+			"gameArticle1": # Show game article 1
 				displayingArticle1 = true
 				$internetBrowser/gameResults/gameAnims.play("showArticle1")
-			"gameArticle2":
+			"gameArticle2": # Show game article 2
 				displayingArticle2 = true
 				$internetBrowser/gameResults/gameAnims.play("showArticle2")
-			"gameArticle3":
+			"gameArticle3": # Show game article 3
 				displayingArticle3 = true
 				$internetBrowser/gameResults/gameAnims.play("showArticle3")
-			"downloadSingularity":
+			"downloadSingularity": # Play singularity download animation
 				$internetBrowser/download/downloadAnim.play("download")
-			"slimyBirdStart":
+			"slimyBirdStart": # Start slimybird minigame
 				$internetBrowser/gameResults/article2Open/slimyBirdGame.start()
-			"imageResultsBack":
+			"imageResultsBack": # Hide image results
 				$internetBrowser/imageResults/imageAnims.play("hideImages")
-			"imageSearch":
+			"imageSearch": # Show image results
 				$internetBrowser/homepage/results/resultsPivot.scale.y = -1
 				$internetBrowser/weatherResults/weatherAnims.play("hideWeather")
 				$internetBrowser/weatherResults/weatherAnims.advance(2.0)
@@ -290,7 +290,7 @@ func eventTriggered(event) -> void:
 				$internetBrowser/homepage/homepageAnims.play("hideResultsWeep")
 				$internetBrowser/homepage/homepageAnims.advance(2.0)
 				$internetBrowser/imageResults/imageAnims.play("showImages")
-				if !GI.freeDownloaded:
+				if !GI.freeDownloaded: # Play virus download anim
 					GI.freeDownloaded = true
 					$internetBrowser/downloadFree/downloadAnim.play("downloadFree")
 		if playDefaultClickSFX: clickSFX.play();
@@ -432,11 +432,11 @@ func _on_shooter_minigame_laplace_spawned():
 	$background.visible = false
 	$backgroundLaplace.visible = true
 	emit_signal("showLaplaceWall")
-
+# Install singularity minigame
 func _on_internet_browser_downloaded_singularity():
 	$homeScreen/filesWindow/singularityExe.position.x = 0
 	$homeScreen/filesWindow/free.position.x = 62
-
+# Update new email notification
 func updateEmailCount():
 	var totalUnreadEmails = 0
 	if !emailAViewed: totalUnreadEmails += 1
@@ -447,25 +447,25 @@ func updateEmailCount():
 		$homeScreen/menuBar/email/notificationDot/notificationCount.text = str(totalUnreadEmails)
 	else:
 		$homeScreen/menuBar/email/notificationDot.visible = false
-
+# Update wifi icon
 func _on_internet_browser_enable_wifi():
 	$homeScreen/wifiIcon.texture = load("res://assets/2d/pcOS/wifiIcon.png")
 	$homeScreen/menuBar/internet/glitchedInternet.play("glitch")
-
+ # Change singularity minigame to fate
 func unlockFate():
 	$homeScreen/menuBar/menuAnims.play("glitchShooter")
 	$homeScreen/filesWindow/singularityExe/singularityIcon.texture = load("res://assets/2d/shooterMinigame/playerCorrupt.png")
 	$homeScreen/filesWindow/singularityExe/singularityName.text = "   fate.exe"
 	$homeScreen/filesWindow/singularityExe/singularityName.modulate = Color.RED
-
+# Show mouse
 func _on_shooter_minigame_show_mouse():
 	$mouse.visible = true
 	$mouse/pointerRay.enabled = true
-
+# Hide mouse
 func _on_shooter_minigame_hide_mouse():
 	$mouse.visible = false
 	$mouse/pointerRay.enabled = false
-
+# Install virus
 func _on_internet_browser_downloaded_free():
 	$homeScreen/filesWindow/free.position.y = 0
 	emit_signal("spawnKey")

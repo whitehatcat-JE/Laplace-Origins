@@ -6,12 +6,12 @@ var maxVolume:float = 0
 # Audio transition tweens
 var fadeOutTween:Tween
 var fadeInTween:Tween
-
-func _ready():
-	changeVolume(-20 + GI.musicVolume * 2)
+# Updates volume on load
+func _ready(): changeVolume(-20 + GI.musicVolume * 2);
 
 # Check if player currently in minigame
 func _process(_delta) -> void:
+	# Plays music based on which minigame the player is interacting with
 	if (GI.shooterActive and GI.inOS):
 		if GI.schrodingerActive and curSong != "schrodinger":
 			if curSong not in ["singularity", "schrodinger", "laplace"]: previousSong = curSong;
@@ -25,11 +25,11 @@ func _process(_delta) -> void:
 			play("singularity")
 	elif !(GI.shooterActive and GI.inOS) and curSong in ["singularity", "schrodinger"]: # Stop minigame music
 		play(previousSong)
-	
+	# Plays slimybird specific music
 	if GI.slimyBirdActive and GI.inOS and curSong != "slimyBird":
 		previousSong = curSong
 		play("slimyBird")
-	elif !(GI.slimyBirdActive and GI.inOS) and curSong == "slimyBird":
+	elif !(GI.slimyBirdActive and GI.inOS) and curSong == "slimyBird": # Resets minigame music
 		play(previousSong)
 # Play requested song
 func play(songName:String, fadeTime:float = 1.0) -> void:

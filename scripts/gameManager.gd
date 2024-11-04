@@ -27,14 +27,13 @@ var dialogueLines:Array = [
 @onready var screenSFX:Node = $screenInteractSFX
 @onready var unplugSFX:Node = $bedroom/desk/Pc/unplugSFX
 @onready var insertSFX:Node = $basement/crt/insertSFX
-
+# Default menu settings
 func _ready():
 	$player/menu/helpGrid/helpMessage.text = "I should check my emails."
 	audioManager.play("menu")
 	justInteracted = false
-
-func _process(delta: float) -> void:
-	justInteracted = false
+# Prevent player from interacting multiple times per frame
+func _process(delta: float) -> void: justInteracted = false;
 
 # Screen interactions
 func _input(event) -> void:
@@ -45,9 +44,8 @@ func _input(event) -> void:
 		inPasscodeScreen = false
 		inNotepad = false
 		playerCam.current = true
-	elif pcCam.current:
-		pcOS.eventTriggered(event); # Sends player input to pcOS viewport
-	elif inPasscodeScreen: $basement/passcode/passcodeEntry.eventTriggered(event); # Sends player input to passcodeEntry viewport
+	elif pcCam.current and !justInteracted: pcOS.eventTriggered(event); # Sends player input to pcOS viewport
+	elif inPasscodeScreen and !justInteracted: $basement/passcode/passcodeEntry.eventTriggered(event); # Sends player input to passcodeEntry viewport
 	elif $player/HUD/paper.visible and Input.is_action_just_pressed("interact"):
 		$player/HUD/paper.visible = false
 		player.disabled = false
@@ -55,7 +53,6 @@ func _input(event) -> void:
 		$hands/projectorSFX.stop()
 # In-world player interactions
 func _on_player_interacted(interactionName:String) -> void:
-	#await get_tree().process_frame # Prevents inputs from being processed during load-in
 	if justInteracted: return;
 	justInteracted = true
 	match interactionName: # Executes code based off interaction name
@@ -144,11 +141,12 @@ func _on_player_interacted(interactionName:String) -> void:
 			player.disabled = true
 			player.unlockedInteractions.erase("exitHome")
 			$player/HUD/fadeAnim.play("fadeOut")
-		"freeKey":
+		"freeKey": # Retrieve basement key
 			GI.hasFreeKey = true
 			$basement/key.position.y -= 100.0
 			$bedroom/pcWindow/pcOS/freeVirus.hideKey()
 			$basement/keySFX.play()
+	# Ensure there are no duplicate interaction keys
 	var interactions:Array = player.unlockedInteractions.duplicate()
 	player.unlockedInteractions.clear()
 	for interaction in interactions:
@@ -231,36 +229,30 @@ func _on_city_exit_trigger_field_body_entered(_body) -> void:
 
 func unlockOutdoors() -> void: player.unlockedInteractions.append("exitHome"); # Unlocks exit door
 func _on_pc_os_show_laplace_wall() -> void: $bedroom/laplaceWall.visible = true; # Display laplace wall in bedroom
-
-func _on_shooter_minigame_schrodinger_transition():
-	$bedroom/desk/monitorScreen/eyeAnim.play("emergeEyes")
-
-func _on_schrodinger_exit_schrodinger():
-	$bedroom/desk/monitorScreen/eyeAnim.play("hideEyes")
-
-func _on_hands_hole_trigger_field_body_entered(body):
-	$player/HUD/fadeAnim.play("fadeToHands")
-
+# Monitor eye transitions
+func _on_shooter_minigame_schrodinger_transition(): $bedroom/desk/monitorScreen/eyeAnim.play("emergeEyes");
+func _on_schrodinger_exit_schrodinger(): $bedroom/desk/monitorScreen/eyeAnim.play("hideEyes");
+# Hand transition
+func _on_hands_hole_trigger_field_body_entered(body): $player/HUD/fadeAnim.play("fadeToHands");
+# Teleport to hands scene
 func teleportToHands():
 	player.global_position = %handsSpawnPos.global_position
 	audioManager.play("hands")
-
+# Teleport to basement scene
 func teleportFromHands():
 	$hallway/schrodingerView.visible = true
 	player.global_position = %basementReentryPos.global_position
 	audioManager.play("ambienceA")
 	$player/menu/helpGrid/helpMessage.text = "I should turn back on the internet now."
-
-func unlockPlayer():
-	player.canMove = true
-
-func _on_hands_exit_body_entered(body):
-	$player/HUD/fadeAnim.play("fadeFromHands")
-
+# Unlock player movement
+func unlockPlayer(): player.canMove = true;
+# Transition from hands to basement scene
+func _on_hands_exit_body_entered(body): $player/HUD/fadeAnim.play("fadeFromHands");
+# Show next dialogue in hands scene
 func triggerDialogue(_self, dialogueNum:int):
 	if dialogueLine <= dialogueNum:
 		showNextDialogue()
-
+# Update displayed dialogue in hands scene
 func showNextDialogue():
 	$player/HUD/paper/message.set_text("[center]" + dialogueLines[dialogueLine])
 	$hands/projectorSFX.play()
@@ -268,14 +260,14 @@ func showNextDialogue():
 	player.disabled = true
 	$player/HUD/paper.visible = true
 	$player/menu.disabled = true
-
+# Unlock piano room
 func _on_free_virus_unlock_door():
 	GI.pianoDoorUnlocked = true
 	$pianoRoom/triggerField.set_deferred("monitoring", true)
 	$pianoRoom/DoorFrame/doorAnims.play("openDoor")
 	audioManager.play("piano")
 	$player/menu/helpGrid/helpMessage.text = "I think I heard a door open in the hallway."
-
+# Spawn basement key
 func _on_pc_os_spawn_key():
 	$basement/key.position.y = -3.379
 	$player/menu/helpGrid/helpMessage.text = "This virus almost looks like my home..."

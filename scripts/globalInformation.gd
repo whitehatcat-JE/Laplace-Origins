@@ -1,4 +1,5 @@
 extends Node
+# Menu VSYNC options
 enum VSYNC_MODES {
 	disabled,
 	enabled,
@@ -29,5 +30,5 @@ var inOS:bool = false
 var flappyBirdActive:bool = false
 # Stored basement scene location for when player is in city
 var previousScreen:Node
-
+# Steamwords integration
 @onready var steamLoaded:bool = Steam.isSteamRunning()

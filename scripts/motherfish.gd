@@ -5,7 +5,7 @@ const MAX_HEALTH:int = 8
 var health:int = MAX_HEALTH
 var dead:bool = false
 var active:bool = false
-
+# Nodes
 @onready var maxHealthSize:float = $sprite/health.size.x # Health bar width
 @onready var bullet:PackedScene = preload("res://objects/enemyBullet.tscn") # Bullet object
 # Disables collisions after 1 frame, to avoid false player collisions on spawn-in
