@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=3 uid="uid://dcf34l30ctj4m"]
+[gd_scene load_steps=130 format=3 uid="uid://dcf34l30ctj4m"]
 
 [ext_resource type="Script" path="res://scripts/outside.gd" id="1_6fiwc"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_mu5ff"]
@@ -130,6 +130,12 @@ variation_opentype = {
 }
 
 [sub_resource type="FontVariation" id="FontVariation_7uak8"]
+base_font = ExtResource("14_5rs2a")
+variation_opentype = {
+2003265652: 700
+}
+
+[sub_resource type="FontVariation" id="FontVariation_qbxgk"]
 base_font = ExtResource("14_5rs2a")
 variation_opentype = {
 2003265652: 700
@@ -561,7 +567,7 @@ height = 1.8
 
 [sub_resource type="Animation" id="Animation_706so"]
 resource_name = "lookUp"
-length = 25.0
+length = 12.5
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -577,7 +583,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("../Body:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -585,7 +591,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 12.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-552.955, 230, -33.147), Vector3(-552.955, 270, -33.147)]
+"values": [Vector3(-552.955, 230, 342.284), Vector3(-552.955, 350, 342.284)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -659,31 +665,31 @@ tracks/7/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/8/type = "value"
+tracks/8/type = "method"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../providentia:visible")
+tracks/8/path = NodePath("..")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 1.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("..")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(6),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"corruptMusic"
 }]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Body:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3uk8"]
@@ -848,10 +854,12 @@ size = Vector3(50, 0.531, 12.089)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vgvk"]
 albedo_color = Color(0.34902, 0.34902, 0.34902, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ogbp6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ep0n"]
 cull_mode = 2
-albedo_color = Color(0, 0, 0, 1)
-metallic_specular = 0.0
+disable_fog = true
+emission_enabled = true
+emission = Color(0.648438, 0.0355478, 0, 1)
+emission_energy_multiplier = 5.57
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_icsbd"]
 transparency = 1
@@ -1106,6 +1114,17 @@ theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = SubResource("FontVariation_7uak8")
 theme_override_font_sizes/font_size = 64
 text = "V-Sync <ON>"
+
+[node name="sensitivityButton" type="Label" parent="player/menu/settingsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_qbxgk")
+theme_override_font_sizes/font_size = 64
+text = "Sensitivity <100%>"
 
 [node name="VSeparator4" type="VSeparator" parent="player/menu/settingsGrid"]
 custom_minimum_size = Vector2(0, 50)
@@ -4422,11 +4441,14 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_0vgvk")
 
 [node name="Body" type="MeshInstance3D" parent="."]
-transform = Transform3D(-2.89778, 4.47035e-08, -0.776456, -0.254404, 2.8344, 0.949448, 0.733596, 0.982941, -2.73782, -552.955, 230, -33.147)
+transform = Transform3D(-2.35245, 0.398058, -1.81866, -0.254404, 2.8344, 0.949448, 1.84425, 0.898734, -2.18884, -552.955, 230, 342.284)
 visible = false
-material_override = SubResource("StandardMaterial3D_ogbp6")
 cast_shadow = 0
 mesh = ExtResource("7_ynk4e")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ep0n")
+surface_material_override/1 = SubResource("StandardMaterial3D_1ep0n")
+surface_material_override/2 = SubResource("StandardMaterial3D_1ep0n")
+surface_material_override/3 = SubResource("StandardMaterial3D_1ep0n")
 
 [node name="terrain" type="Node3D" parent="."]
 

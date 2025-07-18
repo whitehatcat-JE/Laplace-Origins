@@ -1,7 +1,6 @@
 extends CharacterBody3D
 # Constants
 const PLAYER_SPEED:float = 4
-const MOUSE_SENSITIVITY:float = 0.15
 const DECELERATION:float = 20.0
 # State variables
 var cameraAngle:float = 0
@@ -53,9 +52,9 @@ func _physics_process(delta) -> void:
 func _on_player_dropped_event(event):
 	if disabled: return;
 	if event is InputEventMouseMotion: # Used for mouse movement detection
-		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
+		rotate_y(deg_to_rad(-event.relative.x * GI.sensitivity))
 		# Rotate cam
-		var change:float = (1 if GI.invertY else -1) * event.relative.y * MOUSE_SENSITIVITY
+		var change:float = (1 if GI.invertY else -1) * event.relative.y * GI.sensitivity
 		if change + cameraAngle > 85:
 			$head/cam.rotate_x(deg_to_rad(85 - cameraAngle))
 			cameraAngle = 85

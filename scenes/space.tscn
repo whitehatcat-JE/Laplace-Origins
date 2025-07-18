@@ -1,0 +1,181 @@
+[gd_scene load_steps=12 format=3 uid="uid://522fnraco3h8"]
+
+[ext_resource type="Shader" path="res://scripts/shaders/sky.gdshader" id="1_amxs6"]
+[ext_resource type="ArrayMesh" uid="uid://bgwg5027ye2tc" path="res://assets/3d/laplace/planet.obj" id="2_4f6fa"]
+[ext_resource type="Texture2D" uid="uid://do3dfwfyypnd5" path="res://assets/2d/laplace/providentiaPicture.png" id="3_5st6n"]
+[ext_resource type="ArrayMesh" uid="uid://ci0y0og4d48dh" path="res://assets/3d/laplace/body.obj" id="4_knvxs"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_20d6j"]
+shader = ExtResource("1_amxs6")
+shader_parameter/sky_color = Color(0.03, 0.05, 0.11, 1)
+shader_parameter/star_base_color = Color(1, 0.729412, 0.560784, 1)
+shader_parameter/star_hue_offset = 0.35
+shader_parameter/star_intensity = 0.08
+shader_parameter/star_twinkle_speed = 0.8
+shader_parameter/star_twinkle_intensity = 0.2
+shader_parameter/layer_scale = 20.0
+shader_parameter/layer_scale_step = 10.0
+shader_parameter/layers_count = 3
+
+[sub_resource type="Sky" id="Sky_dodt2"]
+sky_material = SubResource("ShaderMaterial_20d6j")
+
+[sub_resource type="Environment" id="Environment_ym5am"]
+background_mode = 2
+background_energy_multiplier = 0.1
+sky = SubResource("Sky_dodt2")
+ambient_light_source = 2
+ambient_light_sky_contribution = 0.0
+tonemap_mode = 2
+ssr_max_steps = 128
+sdfgi_use_occlusion = true
+sdfgi_y_scale = 0
+glow_enabled = true
+glow_levels/1 = 0.46
+glow_levels/2 = 0.74
+glow_levels/3 = 1.66
+glow_levels/5 = 0.0
+glow_bloom = 0.07
+volumetric_fog_density = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxnyc"]
+disable_fog = true
+albedo_texture = ExtResource("3_5st6n")
+emission_enabled = true
+emission_texture = ExtResource("3_5st6n")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j00so"]
+cull_mode = 2
+shading_mode = 0
+disable_fog = true
+albedo_color = Color(1, 0.0219485, 0, 1)
+
+[sub_resource type="Animation" id="Animation_w4272"]
+resource_name = "zoomOut"
+length = 12.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("closeCam:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.589031, 0), Vector3(0, 0.436332, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-67.5195, 69.7147, -73.8513), Vector3(-69.2267, 69.7147, -80.0759)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("farCam:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.695601, 0), Vector3(0, 0.695601, 0), Vector3(0, 0.591126, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("closeCam:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("farCam:current")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("distantCam:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("distantCam:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 6, 12),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector3(0, 0.591126, 0), Vector3(0, 0.591126, 0), Vector3(0, 0.495778, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rbhc1"]
+_data = {
+"zoomOut": SubResource("Animation_w4272")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ym5am")
+
+[node name="providentia" type="MeshInstance3D" parent="."]
+transform = Transform3D(-32.5179, 91.115, -25.3109, 16.2024, -21.0015, -96.4179, -93.1669, -35.454, -7.93357, -136.38, 89.1936, 6.83767)
+cast_shadow = 0
+mesh = ExtResource("2_4f6fa")
+surface_material_override/0 = SubResource("StandardMaterial3D_fxnyc")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0820461, 0.0461459, 0.033749, 0.0162467, 0.0754183, -0.0636248, -0.0548132, -0.0467186, -0.069375, -67.5195, 69.7147, -73.8513)
+cast_shadow = 0
+mesh = ExtResource("4_knvxs")
+surface_material_override/0 = SubResource("StandardMaterial3D_j00so")
+surface_material_override/1 = SubResource("StandardMaterial3D_j00so")
+surface_material_override/2 = SubResource("StandardMaterial3D_j00so")
+surface_material_override/3 = SubResource("StandardMaterial3D_j00so")
+
+[node name="closeCam" type="Camera3D" parent="."]
+transform = Transform3D(0.831479, 0, 0.555556, 0, 1, 0, -0.555556, 0, 0.831479, -11.1544, 74.5896, -22.8159)
+current = true
+
+[node name="farCam" type="Camera3D" parent="."]
+transform = Transform3D(0.767669, 0, 0.640847, 0, 1, 0, -0.640847, 0, 0.767669, 495.448, 74.5897, 198.575)
+
+[node name="distantCam" type="Camera3D" parent="."]
+transform = Transform3D(0.830314, 0, 0.557296, 0, 1, 0, -0.557296, 0, 0.830314, 3067.27, 74.5898, 751.812)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rbhc1")
+}
+autoplay = "zoomOut"

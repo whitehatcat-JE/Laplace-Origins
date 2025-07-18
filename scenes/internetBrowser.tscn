@@ -2345,7 +2345,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": ["Internet - Project Slingshot - An upcoming action-adventure game - Jayden Everest", "Internet - Free Online Games - Search Results"]
+"values": ["Internet - Akashic Slingshot - An upcoming action-adventure game - Jayden Everest", "Internet - Free Online Games - Search Results"]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -2792,7 +2792,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": ["Internet - Free Online Games - Search Results", "Internet - Project Slingshot - An upcoming action-adventure game - Jayden Everest"]
+"values": ["Internet - Free Online Games - Search Results", "Internet - Akashic Slingshot - An upcoming action-adventure game - Jayden Everest"]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -4064,10 +4064,12 @@ theme_override_font_sizes/font_size = 35
 text = "Press to search..."
 
 [node name="results" type="Node2D" parent="homepage"]
+position = Vector2(0, 10000)
 
 [node name="resultsPivot" type="Node2D" parent="homepage/results"]
 
 [node name="news" parent="homepage/results/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(1061, 400)
 collision_layer = 8
 interactionName = "newsSearch"
@@ -4101,6 +4103,7 @@ scale = Vector2(0.28125, 0.28125)
 texture = ExtResource("7_md7qo")
 
 [node name="games" parent="homepage/results/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(1061, 424)
 collision_layer = 8
 interactionName = "gameSearch"
@@ -4134,6 +4137,7 @@ scale = Vector2(0.28125, 0.28125)
 texture = ExtResource("8_bvk2b")
 
 [node name="weather" parent="homepage/results/resultsPivot" instance=ExtResource("2_qxlri")]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(1061, 448)
 collision_layer = 8
 interactionName = "weatherSearch"
@@ -5871,7 +5875,7 @@ theme_override_constants/outline_size = 14
 theme_override_fonts/normal_font = ExtResource("32_s8xmp")
 theme_override_font_sizes/normal_font_size = 98
 bbcode_enabled = true
-text = "Project Slingshot"
+text = "Akashic Slingshot"
 
 [node name="name2" type="RichTextLabel" parent="gameResults/article3Open"]
 modulate = Color(1, 0.972549, 0.94902, 1)
@@ -6091,7 +6095,7 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("1_bwl2d")
 theme_override_font_sizes/font_size = 40
-text = "Project Slingshot - An Upcoming Action-Adventure"
+text = "Akashic Slingshot - An Upcoming Action-Adventure"
 
 [node name="description" type="RichTextLabel" parent="gameResults/article3"]
 modulate = Color(1, 1, 1, 0.666667)
@@ -6104,7 +6108,7 @@ theme_override_constants/outline_size = 3
 theme_override_fonts/normal_font = ExtResource("1_bwl2d")
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[fade start=100 length=25]Project Slingshot, a recently announced game from the creator of Sunset Humanity, will be coming to PC next year. In it, you
+text = "[fade start=100 length=25]Akashic Slingshot, a recently announced game from the creator of Sunset Humanity, will be coming to PC next year. In it, you
 [/fade]
 [font_size=20]By Jayden Everest | Published 1 month ago"
 

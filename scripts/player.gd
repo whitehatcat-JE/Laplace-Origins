@@ -4,7 +4,6 @@ signal interacted(interactionName:String)
 signal droppedEvent(event:InputEvent)
 # Constants
 @export var PLAYER_SPEED:float = 3
-const MOUSE_SENSITIVITY:float = 0.15
 const DECELERATION:float = 20.0
 # State variables
 var cameraAngle:float = 0
@@ -32,9 +31,9 @@ func _input(event) -> void:
 		emit_signal("droppedEvent", event)
 		return
 	if event is InputEventMouseMotion: # Used for mouse movement detection
-		rotate_y(deg_to_rad(-event.relative.x * MOUSE_SENSITIVITY))
+		rotate_y(deg_to_rad(-event.relative.x * GI.sensitivity))
 		
-		var change:float = (1 if GI.invertY else -1) * event.relative.y * MOUSE_SENSITIVITY
+		var change:float = (1 if GI.invertY else -1) * event.relative.y * GI.sensitivity
 		if !lockYRot: # Default head rotation
 			if change + cameraAngle > 85:
 				$head/cam.rotate_x(deg_to_rad(85 - cameraAngle))

@@ -11,11 +11,13 @@ var progress:int = 0
 var fromOutside:bool = false
 # Settings
 var sfxVolume:int = 10
-var musicVolume:int = 10
+var musicVolume:int = 0
 var graphics:String = "HIGH"
 var invertY:bool = false
 var vsyncOrder:Array[VSYNC_MODES] = [VSYNC_MODES.enabled, VSYNC_MODES.locked60, VSYNC_MODES.disabled]
 var vsyncNum:int = 0
+var sensitivtyID:int = 5
+var sensitivity:float = 0.15 * ((100 + float(sensitivtyID - 5) * 20) / 100.0)
 # pcOS
 var playerPos2D:Vector2 = Vector2()
 var shooterActive:bool = false

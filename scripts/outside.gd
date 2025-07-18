@@ -39,7 +39,7 @@ func _on_look_up_anim_animation_finished(anim_name) -> void:
 	GI.hasFreeKey = false
 	GI.pianoDoorUnlocked = false
 	GI.freeDownloaded = false
-	get_tree().change_scene_to_file("res://scenes/titleScreen.tscn")
+	get_tree().change_scene_to_file("res://scenes/space.tscn")
 # Glitch out music
 func corruptMusic():
 	if GI.musicVolume == 0: return;

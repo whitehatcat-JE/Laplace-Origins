@@ -6653,6 +6653,17 @@ theme_override_fonts/font = SubResource("FontVariation_mvkh6")
 theme_override_font_sizes/font_size = 64
 text = "V-Sync <ON>"
 
+[node name="sensitivityButton" type="Label" parent="player/menu/settingsGrid"]
+modulate = Color(1, 0.0392157, 0.0392157, 1)
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 20
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = SubResource("FontVariation_mvkh6")
+theme_override_font_sizes/font_size = 64
+text = "Sensitivity <100%>"
+
 [node name="VSeparator4" type="VSeparator" parent="player/menu/settingsGrid"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2

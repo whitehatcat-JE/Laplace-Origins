@@ -9,19 +9,15 @@ var showingDialogue:bool = false
 var dialoguePlaying:bool = false
 
 var queuedDialogue:Array[String] = [
-	"I see you’ve found my gift, player.",
-	"A memory of a now long forgotten time.",
-	". . .",
-	"Or not. . .",
-	"Drat, it seems this program released ahead of schedule.",
-	"First the whole Pacella game fiasco, and now this. . .",
-	". . .",
-	"Ah, my apologies, you must be rather confused.",
-	"Would you mind pretending you never saw this?",
-	"I'd rather Laplace didn't find out about this side project of mine just yet.",
-	"Oh, but before I depart, let me at least leave you my name.",
+	"Ah player! It is my pleasure to meet you again.",
+	"Or is this our first meeting?",
+	"That knowledge lies within you alone I'm afraid.",
+	"Either way, I'm glad you found my gift on time.",
+	"A memory from before the halt of entropy.",
+	"Now, on the off-chance this is our first meeting, please allow me to leave you my name.",
 	"I am Schrodinger, a humble overseer of the forgotten.",
-	"Now, it's been a pleasure meeting you, but any longer and Laplace might notice us.",
+	"And Archangel of Laplace.",
+	"Now, it's been a pleasure talking to you, but any longer and Laplace may catch wind.",
 	"Au revoir."
 ]
 # Background pillar nodes

@@ -11,6 +11,7 @@ enum BUTTON {
 	graphics,
 	invert,
 	vsync,
+	sensitivity,
 	guideBack,
 	controlsBack,
 	settingsBack
@@ -34,7 +35,7 @@ var currentButton:BUTTON = BUTTON.start
 # Current menu
 var menuButtons:Dictionary = {
 	MENU.main:[BUTTON.start, BUTTON.settings, BUTTON.controls, BUTTON.guide, BUTTON.quit],
-	MENU.settings:[BUTTON.music, BUTTON.sfx, BUTTON.graphics, BUTTON.invert, BUTTON.vsync, BUTTON.settingsBack],
+	MENU.settings:[BUTTON.music, BUTTON.sfx, BUTTON.graphics, BUTTON.invert, BUTTON.vsync, BUTTON.sensitivity, BUTTON.settingsBack],
 	MENU.controls:[BUTTON.controlsBack],
 	MENU.guide:[BUTTON.guideBack]
 	
@@ -89,6 +90,7 @@ func _ready() -> void:
 	# Updates displayed graphics setting
 	graphicsSetting = GI.graphics
 	$settingsGrid/graphicsButton.text = "Graphics <" + graphicsSetting + ">"
+	$settingsGrid/sensitivityButton.text = "Sensitivity <" + str(100 + (GI.sensitivtyID - 5) * 20) + "%>"
 	# Updates displayed music 
 	musicSetting = GI.musicVolume
 	$settingsGrid/musicButton.text = "Music <" + str(musicSetting) + ">"
@@ -211,6 +213,10 @@ func _input(_event) -> void:
 						DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
 						Engine.max_fps = 0
 						$settingsGrid/vsyncButton.text = "V-Sync <OFF>"
+			BUTTON.sensitivity:
+				GI.sensitivtyID = wrapi(GI.sensitivtyID + 1, 1, 11)
+				GI.sensitivity = 0.15 * ((100 + float(GI.sensitivtyID - 5) * 20) / 100.0)
+				$settingsGrid/sensitivityButton.text = "Sensitivity <" + str(100 + (GI.sensitivtyID - 5) * 20) + "%>"
 # Prevent multiple interactions per frame
 func _process(delta: float) -> void: justInteracted = false;
 # Play menu opening anim
@@ -292,6 +298,7 @@ func getButton(button:BUTTON):
 		BUTTON.graphics: return $settingsGrid/graphicsButton;
 		BUTTON.invert: return $settingsGrid/invertButton;
 		BUTTON.vsync: return $settingsGrid/vsyncButton;
+		BUTTON.sensitivity: return $settingsGrid/sensitivityButton;
 		BUTTON.guideBack: return $helpGrid/backButton;
 		BUTTON.controlsBack: return $controlsGrid/backButton;
 		BUTTON.settingsBack: return $settingsGrid/backButton;
