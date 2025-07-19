@@ -1,9 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://522fnraco3h8"]
+[gd_scene load_steps=21 format=3 uid="uid://522fnraco3h8"]
 
 [ext_resource type="Shader" path="res://scripts/shaders/sky.gdshader" id="1_amxs6"]
+[ext_resource type="Script" path="res://scripts/space.gd" id="1_vs036"]
 [ext_resource type="ArrayMesh" uid="uid://bgwg5027ye2tc" path="res://assets/3d/laplace/planet.obj" id="2_4f6fa"]
 [ext_resource type="Texture2D" uid="uid://do3dfwfyypnd5" path="res://assets/2d/laplace/providentiaPicture.png" id="3_5st6n"]
 [ext_resource type="ArrayMesh" uid="uid://ci0y0og4d48dh" path="res://assets/3d/laplace/body.obj" id="4_knvxs"]
+[ext_resource type="FontFile" uid="uid://bswpuie5guqmd" path="res://assets/fonts/SourceCodePro-VariableFont_wght.ttf" id="5_nj7ee"]
+[ext_resource type="Shader" path="res://scripts/shaders/pixelSort.gdshader" id="7_kkcsb"]
+[ext_resource type="Script" path="res://scripts/audioManager.gd" id="8_0vem1"]
+[ext_resource type="AudioStream" uid="uid://dk57886kw16ed" path="res://assets/audio/music/outdoorsDistorted.mp3" id="9_ovick"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_20d6j"]
 shader = ExtResource("1_amxs6")
@@ -52,7 +57,7 @@ albedo_color = Color(1, 0.0219485, 0, 1)
 
 [sub_resource type="Animation" id="Animation_w4272"]
 resource_name = "zoomOut"
-length = 12.0
+length = 10.0
 step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -85,7 +90,7 @@ tracks/2/path = NodePath("farCam:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 3, 6),
+"times": PackedFloat32Array(0, 2, 5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0.695601, 0), Vector3(0, 0.695601, 0), Vector3(0, 0.591126, 0)]
@@ -109,7 +114,7 @@ tracks/4/path = NodePath("farCam:current")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0, 2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -121,7 +126,7 @@ tracks/5/path = NodePath("distantCam:current")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 6),
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -133,18 +138,126 @@ tracks/6/path = NodePath("distantCam:rotation")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 6, 12),
+"times": PackedFloat32Array(0, 4, 10),
 "transitions": PackedFloat32Array(1, 0.5, 1),
 "update": 0,
 "values": [Vector3(0, 0.591126, 0), Vector3(0, 0.591126, 0), Vector3(0, 0.495778, 0)]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"startDialogue"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("audioManager/outdoorDistorted:pitch_scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.8, 0.2]
+}
+
+[sub_resource type="Animation" id="Animation_fa2mi"]
+resource_name = "exit"
+length = 5.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pixelSort/sortShader:material:shader_parameter/sort")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [0.0, 2.6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pixelSort/backdrop:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Color(1, 0, 0.0850363, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"resetGame"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("audioManager/outdoorDistorted:pitch_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.2, 0.01]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rbhc1"]
 _data = {
+"exit": SubResource("Animation_fa2mi"),
 "zoomOut": SubResource("Animation_w4272")
 }
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="Animation" id="Animation_v62av"]
+resource_name = "revealDialogue"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uw5g1"]
+_data = {
+"revealDialogue": SubResource("Animation_v62av")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1yxcv"]
+shader = ExtResource("7_kkcsb")
+shader_parameter/sort = 0.0
+
+[node name="space" type="Node3D"]
+script = ExtResource("1_vs036")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ym5am")
@@ -174,8 +287,70 @@ transform = Transform3D(0.767669, 0, 0.640847, 0, 1, 0, -0.640847, 0, 0.767669, 
 [node name="distantCam" type="Camera3D" parent="."]
 transform = Transform3D(0.830314, 0, 0.557296, 0, 1, 0, -0.557296, 0, 0.830314, 3067.27, 74.5898, 751.812)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="spaceAnims" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_rbhc1")
 }
 autoplay = "zoomOut"
+
+[node name="dialogueText" type="RichTextLabel" parent="."]
+offset_left = 1229.0
+offset_top = 805.0
+offset_right = 1914.0
+offset_bottom = 1081.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/normal_font = ExtResource("5_nj7ee")
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "[p align=center]I see you’ve found the gift I gave to you player.[color=red][outline_color=red][wave amp=100.0 freq=5.0]⌄"
+visible_characters = 0
+visible_ratio = 0.0
+
+[node name="dialogueAnim" type="AnimationPlayer" parent="dialogueText"]
+libraries = {
+"": SubResource("AnimationLibrary_uw5g1")
+}
+
+[node name="dialogueSpawnTL" type="Node2D" parent="."]
+
+[node name="dialogueSpawnBR" type="Node2D" parent="."]
+position = Vector2(1212, 796)
+
+[node name="pixelSort" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="backdrop" type="ColorRect" parent="pixelSort"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0.0850363, 0)
+
+[node name="sortShader" type="ColorRect" parent="pixelSort"]
+material = SubResource("ShaderMaterial_1yxcv")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="audioManager" type="Node3D" parent="."]
+process_mode = 3
+script = ExtResource("8_0vem1")
+
+[node name="outdoorDistorted" type="AudioStreamPlayer" parent="audioManager" groups=["music"]]
+stream = ExtResource("9_ovick")
+pitch_scale = 0.6
+
+[connection signal="animation_finished" from="dialogueText/dialogueAnim" to="." method="_on_dialogue_anim_animation_finished"]

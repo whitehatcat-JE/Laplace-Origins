@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3 uid="uid://dcf34l30ctj4m"]
+[gd_scene load_steps=133 format=3 uid="uid://dcf34l30ctj4m"]
 
 [ext_resource type="Script" path="res://scripts/outside.gd" id="1_6fiwc"]
 [ext_resource type="Script" path="res://scripts/globalInformation.gd" id="1_mu5ff"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://bq3bpilm5abxs" path="res://assets/3d/textures/RoofingTiles001_2K-JPG/RoofingTiles001_2K_Displacement.jpg" id="14_kehrv"]
 [ext_resource type="Texture2D" uid="uid://csvv6w8ibifdo" path="res://assets/3d/textures/RoofingTiles001_2K-JPG/RoofingTiles001_2K_NormalDX.jpg" id="14_xvop0"]
 [ext_resource type="AudioStream" uid="uid://biipabva8sjck" path="res://assets/audio/sfx/menus/click.ogg" id="15_36d4j"]
+[ext_resource type="Shader" path="res://scripts/shaders/glitch.gdshader" id="15_qbyfq"]
 [ext_resource type="Texture2D" uid="uid://e5t7326gmx64" path="res://assets/3d/textures/RoofingTiles001_2K-JPG/RoofingTiles001_2K_Roughness.jpg" id="15_vxfb2"]
 [ext_resource type="Texture2D" uid="uid://ci3t51aqbg5cv" path="res://assets/3d/textures/streaky-plywood-bl/streaky-plywood_albedo.png" id="20_l30tf"]
 [ext_resource type="Texture2D" uid="uid://bd0xuqa3rif18" path="res://assets/3d/textures/streaky-plywood-bl/streaky-plywood_ao.png" id="21_8og37"]
@@ -69,6 +70,7 @@
 [ext_resource type="Texture2D" uid="uid://do3dfwfyypnd5" path="res://assets/2d/laplace/providentiaPicture.png" id="62_udgqp"]
 [ext_resource type="AudioStream" uid="uid://b2hca4lxv4rfi" path="res://assets/audio/music/outdoors.mp3" id="63_y3pwj"]
 [ext_resource type="AudioStream" uid="uid://dk57886kw16ed" path="res://assets/audio/music/outdoorsDistorted.mp3" id="64_nkxij"]
+[ext_resource type="AudioStream" uid="uid://dymoomv7ymcyr" path="res://assets/audio/sfx/menus/glitch.mp3" id="70_337xf"]
 [ext_resource type="Script" path="res://scripts/audioManager.gd" id="70_mapol"]
 [ext_resource type="Texture2D" uid="uid://d1ggqm6mo2kbl" path="res://assets/2d/laplace/line4.png" id="77_flaqh"]
 [ext_resource type="ArrayMesh" uid="uid://cfkd1dchiga5y" path="res://assets/3d/laplace/armLowPolyA.obj" id="78_t33nh"]
@@ -535,6 +537,15 @@ _data = {
 "fade": SubResource("Animation_i7fsc")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j5n44"]
+resource_local_to_scene = true
+shader = ExtResource("15_qbyfq")
+shader_parameter/shake_power = 0.0
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.0
+
 [sub_resource type="Animation" id="Animation_47qjq"]
 resource_name = "bob"
 length = 0.2
@@ -690,6 +701,42 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("glitch:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 11.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("glitch/glitchEffect:material:shader_parameter/shake_power")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(11.5, 12.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("glitch/glitchEffect:material:shader_parameter/shake_color_rate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(11.5, 12.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.03]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3uk8"]
@@ -1473,6 +1520,30 @@ modulate = Color(1, 1, 1, 0.784314)
 position = Vector2(4, 14)
 scale = Vector2(0.188636, 0.188636)
 texture = ExtResource("5_nrsfi")
+
+[node name="glitch" type="Control" parent="player"]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="glitchEffect" type="ColorRect" parent="player/glitch"]
+z_index = 2
+material = SubResource("ShaderMaterial_j5n44")
+offset_left = -1114.0
+offset_top = -659.0
+offset_right = 1308.0
+offset_bottom = 711.0
+color = Color(1, 0.0627451, 0, 1)
 
 [node name="bobAnim" type="AnimationPlayer" parent="player"]
 root_node = NodePath("../..")
@@ -4491,6 +4562,10 @@ double_sided = false
 alpha_cut = 1
 alpha_antialiasing_mode = 2
 texture = ExtResource("52_wvbre")
+
+[node name="glitch" type="AudioStreamPlayer" parent="." groups=["sfx"]]
+stream = ExtResource("70_337xf")
+volume_db = 20.0
 
 [node name="audioManager" type="Node3D" parent="."]
 process_mode = 3

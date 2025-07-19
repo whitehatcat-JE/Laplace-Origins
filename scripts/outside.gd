@@ -35,18 +35,17 @@ func _on_reveal_trigger_body_entered(body) -> void:
 	$player/lookUpAnim.play("lookUp")
 # Restarts game once ending played
 func _on_look_up_anim_animation_finished(anim_name) -> void:
-	GI.progress = 0
-	GI.hasFreeKey = false
-	GI.pianoDoorUnlocked = false
-	GI.freeDownloaded = false
 	get_tree().change_scene_to_file("res://scenes/space.tscn")
 # Glitch out music
 func corruptMusic():
 	if GI.musicVolume == 0: return;
+	var currentGlitchVol = $glitch.volume_db
+	$glitch.volume_db = -15
 	var musicTween:Tween = get_tree().create_tween()
-	musicTween.tween_property($audioManager/outdoor, "volume_db", -20, 12.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
-	musicTween.parallel().tween_property($audioManager/outdoorDistorted, "volume_db", -25 + GI.musicVolume * 2, 12.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	musicTween.tween_property($audioManager/outdoor, "volume_db", -20, 4.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	musicTween.parallel().tween_property($audioManager/outdoorDistorted, "volume_db", -25 + GI.musicVolume * 2, 4.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 	musicTween.tween_property($audioManager/outdoor, "playing", false, 0.1)
-	musicTween.tween_interval(4.0)
-	musicTween.parallel().tween_property($audioManager/outdoorDistorted, "volume_db", -80, 12.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	musicTween.tween_interval(1.5)
+	musicTween.tween_property($glitch, "playing", true, 0.1)
+	musicTween.tween_property($glitch, "volume_db", currentGlitchVol, 1.0).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
 	
